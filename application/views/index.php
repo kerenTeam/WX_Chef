@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1，user-scalable=0">
-    <title>大厨到家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <title>大厨到家</title>
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
     <!-- No Baidu Siteapp-->
@@ -15,12 +15,13 @@
     <link rel="stylesheet" href="../../skin/css/amazeui.min.css">
     <link rel="stylesheet" href="../../skin/css/app.css">
   </head>
+
   <body>
     <!-- 搜索 -->
     <form action="" method="" class="topform">
       <div class="am-g">
         <button type="submit" class="am-icon-search sb"></button>
-        <input type="search" class="am-form-field" placeholder="请输入菜名或食材">
+        <input type="search" id="search" onfocus="jump()" class="am-form-field" placeholder="请输入菜名或食材">
       </div>
     </form>
     <!-- banner -->
@@ -29,7 +30,7 @@
     <ul class="am-gallery am-avg-sm-4 am-avg-md-4 am-avg-lg-4 am-gallery-default am-shadow veg" data-am-gallery="{ pureview: true }" >
       <li>
         <div class="am-gallery-item">
-          <a href="chef.php">
+          <a href="cailan.php">
             <img src="../../skin/img/menu.png" class="am-circle" alt="大厨到家"/>
             <h3 class="am-gallery-title red">点菜</h3>
           </a>
@@ -63,7 +64,7 @@
     <!-- 热销 -->
     
     <div class="am-g am-shadow hot" data-am-scrollspy="{animation: 'fade'}">
-    <p class="htit"><span class="am-icon-fire red"></span> 特色服务</p>
+      <p class="htit"><span class="am-icon-fire red"></span> 特色服务</p>
       <div class="am-u-sm-4">
         <a href="#" class="am-thumbnail">
           <img class="am-circle" src="../../skin/img/ds.png" width="140" height="140"/>
@@ -82,7 +83,7 @@
           <p class="blue">菜价查询</p>
         </a>
       </div>
-       <div class="am-u-sm-4">
+      <div class="am-u-sm-4">
         <a href="#" class="am-thumbnail">
           <img class="am-circle" src="../../skin/img/js.png" width="140" height="140"/>
           <p class="green">酒水</p>
@@ -105,55 +106,40 @@
       <a href="" class="am-btn am-btn-default am-btn-block bpurple">厨师风采</a>
       <a href="" class="am-btn am-btn-default am-btn-block bgreen">服务员风采</a>
       <p class=""><span class="am-icon-eye red"></span> 发现美食</p>
+      <div class="am-g am-btn-group bota">
+        <a href="" class="am-u-sm-6 am-btn am-btn-primary am-round  bpurple">推荐</a>
+        <a href="" class="am-u-sm-6 am-btn am-btn-primary am-round  bgreen">专题栏目</a>
+      </div>
     </div>
     <!-- footer -->
-    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default" id="">
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
         <li >
-          <a href="tel:123456789" class="">
-            <span class="am-icon-phone"></span>
-            <span class="am-navbar-label">呼叫</span>
+          <a href="tel:123456789" class="active">
+            <span class=""><img src="../../skin/img/home.png" alt=""></span>
+            <span class="am-navbar-label">首页</span>
           </a>
         </li>
-        <li data-am-navbar-share>
-          <a href="###" class="">
-            <span class="am-icon-share-square-o"></span>
-            <span class="am-navbar-label">分享</span>
+        <li>
+          <a href="###">
+            <span class=""><img src="../../skin/img/clz.png" alt=""></span>
+            <span class="am-navbar-label">菜篮子</span>
           </a>
         </li>
-        <li data-am-navbar-qrcode>
-          <a href="###" class="">
-            <span class="am-icon-qrcode"></span>
-            <span class="am-navbar-label">二维码</span>
-          </a>
-        </li>
-        <li >
-          <a href="https://github.com/allmobilize/amazeui" class="">
-            <span class="am-icon-github"></span>
-            <span class="am-navbar-label">GitHub</span>
-          </a>
-        </li>
-        <li >
-          <a href="http://amazeui.org/getting-started" class="">
-            <span class="am-icon-download"></span>
-            <span class="am-navbar-label">下载使用</span>
-          </a>
-        </li>
-        <li >
-          <a href="https://github.com/allmobilize/amazeui/issues" class="">
-            <span class="am-icon-location-arrow"></span>
-            <span class="am-navbar-label">Bug 反馈</span>
+        <li>
+          <a href="###">
+            <span class=""><img src="../../skin/img/gr.png" alt=""></span>
+            <span class="am-navbar-label">个人</span>
           </a>
         </li>
       </ul>
     </div>
     <script src="../../skin/js/jquery.min.js"></script>
-    <!--<![endif]-->
-    <!--[if lte IE 8 ]>
-    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-    <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
-    <![endif]-->
     <script src="../../skin/js/amazeui.min.js"></script>
+      <script>
+     function jump(){
+      window.location.href="search.php";
+     }
+  </script>
   </body>
 </html>

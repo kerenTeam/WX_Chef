@@ -22,7 +22,11 @@ body{
 }
 .amft{
 	height:50px;
+	
 	background:white;
+}
+.a img{
+	width:2rem;
 }
 .b{
 	text-align:center;
@@ -172,7 +176,7 @@ color:#E3494B!important;
   }
   .fcai a{
   	color:white!important;
-  	border-radius:3px;
+  	border-radius:5px;
   	margin:10px auto;
   	transition:all 0.5s ease-out;
   	-webkit-transition: all 0.5s ease-out;
@@ -182,6 +186,37 @@ color:#E3494B!important;
   }
   .fcai a.bpurple:hover{
   	background-color:#9263B3;
+  }
+  .bota a{
+  border:0;
+  }
+  .bota a.bgreen{
+  border-radius:0 5px 5px 0!important;
+  }
+  .bota a.bpurple{
+  	  border-radius:5px 0 0 5px!important;
+  }
+  .nav-bot ul{
+  	background-color: white!important;
+  }
+   .nav-bot ul li a{
+  	color:gray!important;
+  }
+   .nav-bot ul li a.active{
+  	color:#F8D469!important;
+  }
+   .userl li a{
+   	color:black;
+   }
+  .userl li img{
+  	width:2.5rem;
+  	margin:auto 10px;
+  }
+  .foodinfo p{
+  	margin:5px auto;
+  }
+  .foodinfo .am-g{
+  	margin:10px;
   }
 @media only screen and (min-width:767px){
 	.topform input{

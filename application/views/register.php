@@ -8,7 +8,7 @@
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../skin/css/amazeui.min.css">
-  <link rel="stylesheet" href="../../skin/css/app.css">
+  <link rel="stylesheet" href="../../skin/css/login.css">
   <style type="text/css">
   	html{
   		height: 100%;
