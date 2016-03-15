@@ -16,9 +16,14 @@ body{
 .veg li{
 	text-align:center;
 }
+.veg h3{
+    color:white!important;
+ padding-bottom:1rem;
+}
 .veg img{
-	width:5rem!important;
-	height:5rem!important;
+	    width: 3rem!important;
+    height: 3rem!important;
+    margin-top: 1.5rem;
 }
 .amft{
 	height:50px;
@@ -90,7 +95,7 @@ body{
 }
 .topform{
 	    position: relative;
-    background-color: #E44848;
+    background-color: #F85554;
 }
 .topform .am-g{
 	width:80%;
@@ -118,17 +123,26 @@ body{
 .red{
 color:#FE5F59!important;
 }
+.red{
+  background-color:#FE5F59;
+}
 .yellow{
 color:#FFC234!important;
+}
+.byellow{
+background-color:#FFC234;
 }
 .green{
 color:#4AB162!important;
 }
 .pink{
-color:#E3494B!important;
+color:#EC5E52!important;
 }
 .sc{
 	color:#ED4E84;
+}
+.ammake input,.ammake button{
+  border-radius:3px;
 }
 .purple{
 	color:#A770CD;
@@ -137,10 +151,25 @@ color:#E3494B!important;
 	background-color:#A770CD;
 }
 .bgreen{
+  color:white;
 	background-color:#4AB162;
+}
+.cl{
+  width:2.5rem;
+}
+.bred{
+  color:white;
+  background-color:#E3494B!important;
+}
+.bred:hover{
+  color:white;
+  background-color:#F15355!important;
 }
 .blue{
 	color: #5591F3;
+}
+.bblue{
+  background-color: #5591F3;
 }
 .hot{
 	background-color:white;
@@ -176,7 +205,6 @@ color:#E3494B!important;
     }
   .fcai{
   	margin-top:5px; 
-  	padding:10px 15px 5px;
   }
   .fcai a{
   	color:white!important;
@@ -213,8 +241,12 @@ color:#E3494B!important;
    	color:black;
    }
   .userl li img{
-  	width:2.5rem;
-  	margin:auto 10px;
+  	width:2rem;
+  	margin:auto 15px;
+  }
+  .userl li i{
+      font-size: 20px;
+    margin: auto 11px auto 22px;
   }
   .foodinfo p{
   	margin:5px auto;
@@ -222,6 +254,53 @@ color:#E3494B!important;
   .foodinfo .am-g{
   	margin:10px;
   }
+  .asa{
+    padding: 6px 10px;
+    color: black;
+  }
+    .noborder li{
+    text-align:center!important;
+    margin-bottom:5px;
+  }
+  .go{
+    width: 90%;
+    margin: auto 5%;
+    border-radius: 5px;
+  }
+  .sbnt{
+    width:30%; 
+    background-color: #F85554;
+    border-radius: 30px;
+    border:0!important;
+  } 
+  .noborder li a{ 
+    font-size:14px;
+    color:black!important;
+  }
+  .noborder img{
+        width: 80%;
+    margin: auto;
+  }
+  .noborder .am-thumbnail{
+    border:0!important;
+  }
+  .userhead{
+    text-align:center;
+    padding:20px;
+  }
+  .userhead img{
+        border: 5px solid rgba(255,255,255,0.5);
+        width: 10rem;
+  }
+  .acm{
+    margin:20px;
+  }
+  @media only screen and (min-width:600px){
+ 
+  .topform button{
+  left:90px;
+}
+}
 @media only screen and (min-width:767px){
 	.topform input{
 		font-size:16px;
@@ -229,9 +308,10 @@ color:#E3494B!important;
 	}
 	.topform button{
 	top:21px; 
-    left: 90px;
+    left: 100px;
 }
 }
+
 @media only screen and (max-width:320px){
 	.topform button{  
     left: 40px;

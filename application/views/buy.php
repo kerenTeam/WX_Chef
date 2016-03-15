@@ -16,7 +16,7 @@
         }, (t == null ? 300 : t));
         }
         </script>
-        <script type="text/javascript">
+      <!--  <script type="text/javascript">
         (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
@@ -30,7 +30,8 @@
         })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-45741865-3', 'i.waimai.meituan.com');
         ga('send', 'pageview');
-        </script>
+        </script>  -->
+        <script src="skin/js/ga.js"></script>
         <link rel="stylesheet" href="skin/css/globe.css">
         <link href="skin/css/foods.css" rel="stylesheet"/>
 
@@ -618,10 +619,11 @@ data-src-retina="http://p0.meituan.net/100.100.90/xianfu/c3ff83251dc19b0a3a98d40
 </div>
 <div id="cart" class="cart">
 <div class="cart-tip">
+<img src="skin/img/cl.png" class="cl" alt="">
 <div style="display: none" class="cart-icon"><i class="j-ico-cart ico-cart"></i>
 <div class="j-cart-num cart-num"></div>
 </div>
-<span class="j-cart-price cart-price">￥0</span>
+<span class="j-cart-price cart-price"><i class="am-icon-cny"></i>0</span>
 <del class="j-cart-origin cart-origin"></del>
 <br>
 <span class="cart-shipping">配送费4元</span>
@@ -631,7 +633,7 @@ data-src-retina="http://p0.meituan.net/100.100.90/xianfu/c3ff83251dc19b0a3a98d40
 </div>
 <div class="cart-btns" style="">
 <a class="j-cart-btn-confirm cart-btn-confirm" style="display:none" href="javascript:;"><span
-class="combtn inner">选好了</span></a>
+class="inner bgreen">选好了</span></a>
 <a class="j-cart-btn-unavail cart-btn-unavail"><span class="combtn inner">差20
 元起送</span></a>
 </div>
@@ -643,14 +645,7 @@ class="combtn inner">选好了</span></a>
 </div>
 </div>
 </div>
-<div class="j-content menu-content comment-menu-content" style="display: none;">
-<p class="j-c-loading c-loading">正在努力加载中…</p>
-<div class="j-inner-content"></div>
-</div>
-<div class="j-content menu-content detail-menu-content" style="display: none;">
-<p class="j-c-loading c-loading">正在努力加载中…</p>
-<div class="j-inner-content"></div>
-</div>
+
 <script>if (MT_WM.logFirstScreenTime) MT_WM.logFirstScreenTime();</script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>

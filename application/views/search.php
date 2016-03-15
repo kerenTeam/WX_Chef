@@ -19,7 +19,7 @@
 <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
-          <a href="index.php" class="">
+          <a href="javascript:" onclick="javascript:history.go(-1);">
 
                 <i class="am-header-icon am-icon-chevron-left"></i>
           </a>
@@ -29,7 +29,7 @@
           搜索
       </h1>
             <div class="am-header-right am-header-nav">
-          <a href="#right-link" class="">
+          <a href="<?php echo site_url('home/index')?>" class="">
              首页
           </a>
       </div>

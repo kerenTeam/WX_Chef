@@ -1,31 +1,31 @@
 
   <body>
-   <div class="userhead bred">
-     <img class="am-circle" src="skin/img/USER.jpg"/>
-     <h3 class="am-header-title">牛仔裤的夏天</h3>
-   </div>
-  
+
+    <header data-am-widget="header" class="am-header am-header-default topform">
+      <div class="am-header-left am-header-nav">
+          <a href="javascript:" onclick="javascript:history.go(-1);">
+
+                <i class="am-header-icon am-icon-chevron-left"></i>
+          </a>
+      </div>
+
+      <h1 class="am-header-title">
+          客服
+      </h1> 
+  </header>
      <div class="am-list-news-bd">
   <ul class="am-list userl">
 
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/vip')?>" class="am-list-item-hd "><img src="skin/img/bc.png" alt=""> 会员卡</a>  
+          <a href="##" class="am-list-item-hd "><i class="am-icon-envelope-o green"></i>反馈我们</a>  
       </li>
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/')?>" class="am-list-item-hd "><img src="skin/img/cl.png" alt=""> 菜篮子</a> 
+          <a href="tel:02865290246" class="am-list-item-hd "><i class="am-icon-phone pink"></i>一键呼叫</a> 
       </li>
       <li class="am-g am-list-item-dated">
-          <a href="##" class="am-list-item-hd "><img src="skin/img/d.png" alt=""> 订单管理</a> 
+          <a href="##" class="am-list-item-hd "><i class="am-icon-file-text-o purple"></i> 服务协议</a> 
       </li>
-      <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/address')?>" class="am-list-item-hd "><img src="skin/img/addr.png" alt=""> 地址管理</a> 
-      </li>
-      <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/card')?>" class="am-list-item-hd "><img src="skin/img/qu.png" alt=""> 我的优惠券</a> 
-      </li>
-      <li class="am-g am-list-item-dated">
-          <a href="##" class="am-list-item-hd "><img src="skin/img/set.png" alt=""> 个人设置</a> 
-      </li>
+    
   </ul>
   </div>
 

@@ -32,20 +32,76 @@ class home extends CI_Controller
 
 		$this->load->view('order');
 	}
-	//订单 仿美团
+	//订单确认 仿美团
 	public function meiorder(){
 
 		$this->load->view('meiorder');
 	}
-   //个人中心
+    //个人中心
 	public function ucent(){
 
 		$this->load->view('usercenter');
 	}
+    //food
+	public function food(){
 
+		$this->load->view('food');
+	}
+    //搜索
+    public function search(){
 
+		$this->load->view('search');
+	}
+    //订单记录
+    public function orderR(){
 
+		$this->load->view('orderRecorde');
+	}
+   //订单详情
+    public function orderI(){
 
+		$this->load->view('orderInfo');
+	}
+	//优惠券
+    public function card(){
+
+		$this->load->view('card');
+	}
+	//地址管理
+	public function address(){
+
+		$this->load->view('address');
+	}
+	//新增address
+	public function addressAdd(){
+
+		$this->load->view('addressAdd');
+	}
+	//编辑地址
+	public function editAddress(){
+
+		$this->load->view('editAddress');
+	}
+	//宴会定制
+	public function make(){
+
+		$this->load->view('make');
+	}
+	//客服
+	public function custom(){
+
+		$this->load->view('custom');
+	}
+	//会员
+	public function vip(){
+
+		$this->load->view('vip');
+	}
+	//菜价比较
+	public function priceSearch(){
+
+		$this->load->view('priceSearch');
+	}
 }
 
 

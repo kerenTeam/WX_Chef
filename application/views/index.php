@@ -1,3 +1,4 @@
+  
   <body>
     <!-- 搜索 -->
     <form action="" method="" class="topform">
@@ -9,89 +10,78 @@
     <!-- banner -->
     <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
     <!-- 菜品 -->
-    <ul class="am-gallery am-avg-sm-4 am-avg-md-4 am-avg-lg-4 am-gallery-default am-shadow veg" data-am-gallery="{ pureview: true }" >
+    <ul class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default am-shadow veg" data-am-gallery="{ pureview: true }" >
       <li>
-        <div class="am-gallery-item">
-          <a href="cailan.php">
-            <img src="skin/img/menu.png" class="am-circle" alt="大厨到家"/>
-            <h3 class="am-gallery-title red">点菜</h3>
+        <div class="am-gallery-item bred">
+          <a href="<?php echo site_url('home/buy')?>">
+            <img src="skin/img/menu.png" alt="大厨到家"/>
+            <h3 class="am-gallery-title">点菜</h3>
           </a>
         </div>
       </li>
       <li>
-        <div class="am-gallery-item">
+        <div class="am-gallery-item byellow">
           <a href="">
-            <img src="skin/img/fork.png" class="am-circle" alt="大厨到家"/>
-            <h3 class="am-gallery-title yellow">套餐</h3>
+            <img src="skin/img/fork.png" alt="大厨到家"/>
+            <h3 class="am-gallery-title">套餐</h3>
           </a>
         </div>
       </li>
       <li>
-        <div class="am-gallery-item">
-          <a href=" ">
-            <img src="skin/img/food.png" class="am-circle" alt="大厨到家"/>
-            <h3 class="am-gallery-title green">宴会定制</h3>
+        <div class="am-gallery-item bgreen">
+          <a href="<?php echo site_url('home/make')?>">
+            <img src="skin/img/food.png" alt="大厨到家"/>
+            <h3 class="am-gallery-title">宴会定制</h3>
           </a>
         </div>
       </li>
       <li>
-        <div class="am-gallery-item">
+        <div class="am-gallery-item bblue">
           <a href="">
-            <img src="skin/img/tea.png" class="am-circle" alt="大厨到家"/>
-            <h3 class="am-gallery-title pink">燕鲍翅</h3>
+            <img src="skin/img/tea.png" alt="大厨到家"/>
+            <h3 class="am-gallery-title">燕鲍翅</h3>
           </a>
         </div>
       </li>
     </ul>
     <!-- 热销 -->
     
-    <div class="am-g am-shadow hot" data-am-scrollspy="{animation: 'fade'}">
+    <div class="am-g am-shadow hot">
       <p class="htit"><img src="skin/img/fire.png" alt=""> 特色服务</p>
       <div class="am-u-sm-4">
-        <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/ds.png"/>
-          <p class="purple">点杀</p>
+        <a href="<?php echo site_url('home/buy')?>" class="am-thumbnail">
+          <img class="am-circle" src="skin/img/vip.png"/>
+          <p class="purple">会员</p>
         </a>
       </div>
       <div class="am-u-sm-4">
-        <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/sc.png"/>
-          <p class="sc">水产</p>
-        </a>
-      </div>
-      <div class="am-u-sm-4">
-        <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/cj.png"/>
-          <p class="blue">菜价查询</p>
-        </a>
-      </div>
-      <div class="am-u-sm-4">
-        <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/js.png"/>
-          <p class="green">酒水</p>
-        </a>
-      </div>
-      <div class="am-u-sm-4">
-        <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/hg.png"/>
-          <p class="pink">火锅</p>
-        </a>
-      </div>
-      <div class="am-u-sm-4">
-        <a href="#" class="am-thumbnail">
+        <a href="<?php echo site_url('home/custom')?>" class="am-thumbnail">
           <img class="am-circle" src="skin/img/kf.png"/>
-          <p class="purple">客服</p>
+          <p class="sc">客服</p>
         </a>
       </div>
-    </div>
-    <div class="am-shadow fcai">
-      <a href="" class="am-btn am-btn-default am-btn-block bpurple">厨师风采</a>
-      <a href="" class="am-btn am-btn-default am-btn-block bgreen">服务员风采</a>
-      <p class=""><span class="am-icon-eye pink"></span> 发现美食</p>
-      <div class="am-g am-btn-group bota">
-        <a href="" class="am-u-sm-6 am-btn am-btn-primary am-round  bpurple">推荐</a>
-        <a href="" class="am-u-sm-6 am-btn am-btn-primary am-round  bgreen">专题栏目</a>
+      <div class="am-u-sm-4">
+        <a href="<?php echo site_url('home/priceSearch')?>" class="am-thumbnail">
+          <img class="am-circle" src="skin/img/cj.png"/>
+          <p class="pink">菜价查询</p>
+        </a>
       </div>
+     
+    </div>
+    <div class="am-shadow fcai" data-am-scrollspy="{animation: 'fade'}">
+      <p class="htit"><span class="am-icon-eye yellow"></span> 实时菜价</p>
+     <ul class="am-avg-sm-3 am-avg-md-3 am-avg-lg-3 noborder">
+  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+   
+</ul>
     </div>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
@@ -120,7 +110,7 @@
     <script src="skin/js/amazeui.min.js"></script>
       <script>
      function jump(){
-      window.location.href="search.php";
+      window.location.href="<?php echo site_url('home/search')?>";
      }
   </script>
   </body>

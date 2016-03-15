@@ -15,7 +15,7 @@ function handle(self, isAdd){
 	var allmoney = document.getElementById("allmoney"); 
 	var reduce = self.parentNode.childNodes[1];
 	var price = self.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
-	var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
+//	var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
 	var foodId = self.parentNode.parentNode.childNodes[1].value;
 
     if(isAdd){

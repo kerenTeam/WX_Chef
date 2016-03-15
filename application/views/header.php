@@ -15,4 +15,6 @@
     <!-- <link rel="icon" type="image/png" href="assets/i/favicon.png"> -->
     <link rel="stylesheet" href="skin/css/amazeui.min.css">
     <link rel="stylesheet" href="skin/css/app.css">
+  
+
   </head>
