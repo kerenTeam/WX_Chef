@@ -12,12 +12,31 @@ class home extends CI_Controller
 		$this->load->view('header');
 	}
 
-	#首页
+	//首页
 	public function index(){
 
 		$this->load->view('index');
 	}
+	//菜篮子
+	public function cailan(){
 
+		$this->load->view('cailan');
+	}
+	//点菜
+	public function buy(){
+
+		$this->load->view('buy');
+	}
+    //订单
+    public function order(){
+
+		$this->load->view('order');
+	}
+	//订单 仿美团
+	public function meiorder(){
+
+		$this->load->view('meiorder');
+	}
 
 
 

@@ -13,7 +13,6 @@
     <!-- No Baidu Siteapp-->
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <!-- <link rel="icon" type="image/png" href="assets/i/favicon.png"> -->
-    <!-- <base href="<?php echo base_url() ;?>/"/> -->
     <link rel="stylesheet" href="skin/css/amazeui.min.css">
     <link rel="stylesheet" href="skin/css/app.css">
   </head>
