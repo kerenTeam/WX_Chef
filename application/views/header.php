@@ -16,4 +16,3 @@
     <link rel="stylesheet" href="skin/css/amazeui.min.css">
     <link rel="stylesheet" href="skin/css/app.css">
   </head>
-  <body>

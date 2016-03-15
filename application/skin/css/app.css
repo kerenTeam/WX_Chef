@@ -165,6 +165,9 @@ color:#E3494B!important;
     border-bottom: 1px solid rgba(0,0,0,.1);
     margin: 0;
 }
+.htit img{
+      height: 1.5rem;
+}
 .am-thumbnail {
 	border: 1px solid rgba(0,0,0,.1);
     margin-bottom:0!important; 

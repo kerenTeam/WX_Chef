@@ -1,4 +1,4 @@
-
+  <body>
     <!-- 搜索 -->
     <form action="" method="" class="topform">
       <div class="am-g">
@@ -46,40 +46,40 @@
     <!-- 热销 -->
     
     <div class="am-g am-shadow hot" data-am-scrollspy="{animation: 'fade'}">
-      <p class="htit"><span class="am-icon-fire red"></span> 特色服务</p>
+      <p class="htit"><img src="skin/img/fire.png" alt=""> 特色服务</p>
       <div class="am-u-sm-4">
         <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/ds.png" width="140" height="140"/>
+          <img class="am-circle" src="skin/img/ds.png"/>
           <p class="purple">点杀</p>
         </a>
       </div>
       <div class="am-u-sm-4">
         <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/sc.png" width="140" height="140"/>
+          <img class="am-circle" src="skin/img/sc.png"/>
           <p class="sc">水产</p>
         </a>
       </div>
       <div class="am-u-sm-4">
         <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/cj.png" width="140" height="140"/>
+          <img class="am-circle" src="skin/img/cj.png"/>
           <p class="blue">菜价查询</p>
         </a>
       </div>
       <div class="am-u-sm-4">
         <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/js.png" width="140" height="140"/>
+          <img class="am-circle" src="skin/img/js.png"/>
           <p class="green">酒水</p>
         </a>
       </div>
       <div class="am-u-sm-4">
         <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/hg.png" width="140" height="140"/>
+          <img class="am-circle" src="skin/img/hg.png"/>
           <p class="pink">火锅</p>
         </a>
       </div>
       <div class="am-u-sm-4">
         <a href="#" class="am-thumbnail">
-          <img class="am-circle" src="skin/img/kf.png" width="140" height="140"/>
+          <img class="am-circle" src="skin/img/kf.png"/>
           <p class="purple">客服</p>
         </a>
       </div>
@@ -87,7 +87,7 @@
     <div class="am-shadow fcai">
       <a href="" class="am-btn am-btn-default am-btn-block bpurple">厨师风采</a>
       <a href="" class="am-btn am-btn-default am-btn-block bgreen">服务员风采</a>
-      <p class=""><span class="am-icon-eye red"></span> 发现美食</p>
+      <p class=""><span class="am-icon-eye pink"></span> 发现美食</p>
       <div class="am-g am-btn-group bota">
         <a href="" class="am-u-sm-6 am-btn am-btn-primary am-round  bpurple">推荐</a>
         <a href="" class="am-u-sm-6 am-btn am-btn-primary am-round  bgreen">专题栏目</a>
@@ -97,19 +97,19 @@
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
         <li >
-          <a href="tel:123456789" class="active">
+          <a href="<?php echo site_url('home/index')?>" class="active">
             <span class=""><img src="skin/img/home.png" alt=""></span>
             <span class="am-navbar-label">首页</span>
           </a>
         </li>
         <li>
-          <a href="###">
+          <a href="<?php echo site_url('home/buy')?>">
             <span class=""><img src="skin/img/clz.png" alt=""></span>
             <span class="am-navbar-label">菜篮子</span>
           </a>
         </li>
         <li>
-          <a href="###">
+          <a href="<?php echo site_url('home/ucent')?>">
             <span class=""><img src="skin/img/gr.png" alt=""></span>
             <span class="am-navbar-label">个人</span>
           </a>

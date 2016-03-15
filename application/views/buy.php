@@ -1,17 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>菜篮子</title>
-        <meta charset="utf-8"/>
-        <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <meta name="apple-mobile-web-app-capable" content="yes"/>
-        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-        <meta name="format-detection" content="telephone=no"/>
-        <meta http-equiv="X-UA-Compatible" content="edge" />
-        <link href="http://p0.meituan.net" rel="dns-prefetch">
-        <link rel="stylesheet" href="../../skin/css/amazeui.min.css">
-        <script>
+   <script>
         var MT_WM = window.MT_WM || {};
         MT_WM.TimeTracker = {rt: 1457945937841, st: Date.now()};
         MT_WM.logFirstScreenTime = function () {
@@ -44,12 +31,9 @@
         ga('create', 'UA-45741865-3', 'i.waimai.meituan.com');
         ga('send', 'pageview');
         </script>
-        <link rel="stylesheet" href="../../skin/css/globe.css">
-        
-        <meta name="description" content=""/>
-        <meta name="keyword" content=""/>
-        <link href="../../skin/css/foods.css" rel="stylesheet"/>
-    </head>
+        <link rel="stylesheet" href="skin/css/globe.css">
+        <link href="skin/css/foods.css" rel="stylesheet"/>
+
     <body class="i">
         <header id="header" class="header page-header  ">
             <a class="j-back-link back-wrap" href="javascript:;" onclick="if(document.referrer.indexOf(&quot;/order/preview&quot;)&gt;-1){delayGo(&quot;/&quot;);}else{delayGo(function(){history.go(-1)});}return false;">
@@ -715,8 +699,8 @@ foodsAllPage.init();
 <script build='preload'>
 require(['module/preLoader'], function (preLoader) {
 preLoader([
-"../../skin/css/order.css",
-"../../skin/css/order.js"
+"skin/css/order.css",
+"skin/css/order.js"
 ]).preload();
 });
 </script>
@@ -735,7 +719,6 @@ poi: '212049',
 busyTip: ''
 };
 </script>
-  <link rel="stylesheet" href="../../skin/css/app.css">
 
 </body>
 </html>

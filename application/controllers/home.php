@@ -17,7 +17,7 @@ class home extends CI_Controller
 
 		$this->load->view('index');
 	}
-	//菜篮子
+	//菜篮子 by wf
 	public function cailan(){
 
 		$this->load->view('cailan');
@@ -37,7 +37,11 @@ class home extends CI_Controller
 
 		$this->load->view('meiorder');
 	}
+   //个人中心
+	public function ucent(){
 
+		$this->load->view('usercenter');
+	}
 
 
 
