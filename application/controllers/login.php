@@ -1,0 +1,33 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+*    
+*/
+class login extends CI_Controller
+{
+	
+	// function __construct()
+	// {
+	// 	parent::__construct();
+	// 	$this->load->view('header');
+	// }
+
+	#首页
+	// public function index(){
+
+	// 	$this->load->view('index');
+	// }
+	#登录
+	public function index()
+	{
+		$this->load->view('login');
+	}
+
+
+
+
+
+}
+
+
+?>
