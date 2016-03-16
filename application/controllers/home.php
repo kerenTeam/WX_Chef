@@ -42,6 +42,11 @@ class home extends CI_Controller
 
 		$this->load->view('usercenter');
 	}
+	//个人设置
+	public function set(){
+
+		$this->load->view('set');
+	}
     //food
 	public function food(){
 
@@ -101,6 +106,11 @@ class home extends CI_Controller
 	public function priceSearch(){
 
 		$this->load->view('priceSearch');
+	}
+	//意见反馈
+	public function message(){
+
+		$this->load->view('message');
 	}
 }
 

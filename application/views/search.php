@@ -40,15 +40,6 @@
         <input type="search" class="am-form-field" placeholder="请输入菜名或食材">
       </div>
     </form>
-<script src="../../skin/js/jquery.min.js"></script>
-<!--<![endif]-->
-<!--[if lte IE 8 ]>
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
-<![endif]-->
-<script src="../../skin/js/amazeui.min.js"></script>
-<script src="../../skin/js/num.js"></script>
 
 </body>
 </html>

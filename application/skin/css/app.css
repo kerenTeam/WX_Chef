@@ -267,12 +267,32 @@ color:#EC5E52!important;
     margin: auto 5%;
     border-radius: 5px;
   }
-  .sbnt{
-    width:30%; 
-    background-color: #F85554;
-    border-radius: 30px;
-    border:0!important;
-  } 
+  .pform{
+    margin-left: 10px;
+    margin-bottom:40px;
+  }
+  .pta{
+    margin: auto 3%;
+    width: 94%;
+  }
+  .am-selected {
+    width: 100px!important;
+    /* margin-top:15px; */
+    border-radius:5px;
+    background-color: white;
+}
+  .am-selected button{
+ border:none; 
+ background:none;
+ text-align:right;
+}
+.am-slider-default .am-control-nav li a {
+     
+    background-color: rgb(255, 255, 255);
+  }
+  .am-slider-default .am-control-nav li a.am-active {
+    background-color: #F85554; 
+}
   .noborder li a{ 
     font-size:14px;
     color:black!important;
@@ -295,6 +315,69 @@ color:#EC5E52!important;
   .acm{
     margin:20px;
   }
+  .mestxt{
+    border: none;
+    margin: 5%;
+    width: 90%;
+  }
+  .nav-choose {
+    color: #EC5E52!important;
+}
+.nav-bottomline, .nav-bottomlineright {
+    width: 50%;
+    height: 4px;
+    background-color: #EC5E52!important;
+    float: left;
+    margin-top: -3px;
+}
+  .u{
+
+    top: 40px;
+    left: -2px;
+  }
+  .h{
+top: 29px;
+    left: -16px;
+  }
+  .c{
+        top: 22px;
+    left: -15px;
+    padding: 3px 5px;
+  }
+  .s{
+        top: 16px;
+    left: -16px;
+  }
+  .timeline-item .pink{
+        position: relative;
+    padding: 3px 8px;
+    background: white;
+    border-radius: 50%;
+  }
+  .avatar{
+    margin:10px!important;
+  }
+  .userS li{
+    padding:5px;
+     line-height:5rem;
+  } 
+   .userS .am-u-sm-9,.userS .am-u-sm-9 input,.userS .am-u-sm-9 select{
+    text-align:right;
+    background: none;
+    border:none;
+    outline:none; 
+  }
+  .userS .am-u-sm-9 img{
+    height:5rem;
+
+  }
+.setf{
+  background: none;
+    border:none;
+    outline:none; 
+        margin-top: 10px!important;
+    font-size: 16px!important;
+}
   @media only screen and (min-width:600px){
  
   .topform button{
@@ -316,5 +399,11 @@ color:#EC5E52!important;
 	.topform button{  
     left: 40px;
 }
+ .am-selected {
+    width: 80px!important; 
+}
+.pform {
+    margin-left: 2px;
+    }
 }
 

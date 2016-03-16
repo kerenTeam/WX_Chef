@@ -26,15 +26,18 @@
 </head>
 <body class="i"> 
 
-	<header id="header" class="header page-header  ">
-<a class="j-back-link back-wrap" href="#"
-   onclick="if(document.referrer &amp;&amp; document.referrer.indexOf('/order/list')>=0){delayGo(function() {history.go(-1);});} else {delayGo('/order/list')} return false;">
-    <i class="icon i-back"></i>
-</a>
+<header data-am-widget="header" class="am-header am-header-default topform">
+      <div class="am-header-left am-header-nav">
+          <a href="javascript:" onclick="javascript:history.go(-1);">
 
-<div class="header-right"><i class="j-res-phone res-phone"></i></div>
-<h1 class="j-page-name page-name">订单详情</h1>
-	</header>
+                <i class="am-header-icon am-icon-chevron-left"></i>
+          </a>
+      </div>
+
+      <h1 class="am-header-title">
+          订单详情
+      </h1> 
+  </header>
 
 
 
@@ -51,7 +54,7 @@
 
 
             <div class="timeline-item">
-                <img class="timeline-logo" src="http://p1.meituan.net/xianfu/8adf62cf3cb75f1a4b21380be10af9fa2048.png">
+                <span class="am-icon-user u pink"></span>
 
                 <div class="timeline-block">
                     <i class="timline-block-arrow"></i>
@@ -65,7 +68,7 @@
                 <div class="timeline-connect timeline-connect-21"></div>
 
             <div class="timeline-item">
-                <img class="timeline-logo" src="http://p0.meituan.net/xianfu/794ec85889844239f32764861c56660a2048.png">
+                 <span class="am-icon-credit-card-alt c pink"></span>
 
                 <div class="timeline-block">
                     <i class="timline-block-arrow"></i>
@@ -79,8 +82,7 @@
                 <div class="timeline-connect timeline-connect-12"></div>
 
             <div class="timeline-item">
-                <img class="timeline-logo" src="http://p0.meituan.net/xianfu/a34001a981214d535bd8466da34490502048.png">
-
+                <span class="am-icon-home h pink"></span>
                 <div class="timeline-block">
                     <i class="timline-block-arrow"></i>
 
@@ -93,7 +95,7 @@
                 <div class="timeline-connect timeline-connect-21"></div>
 
             <div class="timeline-item">
-                <img class="timeline-logo" src="http://p1.meituan.net/xianfu/e887522748d496915280fc6e97023d1a2048.png">
+                 <span class="am-icon-shopping-basket s pink"></span>
 
                 <div class="timeline-block">
                     <i class="timline-block-arrow"></i>
@@ -107,62 +109,20 @@
     </div>
     <div class="bottombar-placeholder"></div>
 
-
-    <div class="bottombar-down">
-        <div class="bottombar">
-    <div class="bottombar-icon"><i class="icon-tickO2"></i></div>
-            <div class="bottombar-main">
-
-    <div class="bottombar-buttonwrap bottombar-buttonwrap-1">
-<a class="combtn bottombar-btn-dark"
-                             href="/help/feedback?orderViewId=14111000518350084">订单投诉</a>    </div>
-            </div>
-        </div>
-    </div>
+ 
 
 </div>
 
 
-<div id="order-detail" style="display: none">
-
-    <div class="orderregion">
-        <a class="status-hotelname" href="/restaurant/51835">
-            <i class="icon1-detail status-hotelname-icon"></i>
-            <label class="status-hotelname-name">食来运转</label>
-            <i class="icon-arrow-right-thin status-hotelname-back"></i>
-        </a>
-    </div>
+<div id="order-detail" style="display: none"> 
 
     <div class="orderregion orderregion-top">
         <ul class="orderregion-entries">
             <li class="orderregion-entry">
-                <span class="name text-overflow-ellipsis-2">丸子味豆汤饭</span>
-                <span class="price">￥20</span>
-                <span class="num">×2</span>
+                <span class="name text-overflow-ellipsis-2">火锅</span>
             </li>
         </ul>
-    </div>
-
-    <div class="orderregion">
-        <ul class="orderregion-entries">
-            <li class="orderregion-entry order-other-price">
-                <span class="name text-overflow-ellipsis-2">包装盒</span>
-                <span class="price">￥&nbsp;0</span>
-            </li>
-            <li class="orderregion-entry order-other-price">
-                <span class="name text-overflow-ellipsis-2">配送费</span>
-                <span class="price">￥&nbsp;0</span>
-            </li>
-                <li class="orderregion-entry order-other-price coupon">
-                    <span class="name text-overflow-ellipsis-2">首单立减</span>
-                    <span class="price">-￥14</span>
-                </li>
-            <li class="orderregion-entry order-total-price">
-                <span class="name text-overflow-ellipsis-2">合计</span>
-                <span class="price">￥&nbsp;6</span>
-            </li>
-        </ul>
-    </div>
+    </div> 
 
     <script>if (MT_WM.logFirstScreenTime) MT_WM.logFirstScreenTime();</script>
 
@@ -200,8 +160,7 @@
 
 
     <div class="buy-again-placeholder"></div>
-    <div class="buy-again-wrap"><input id="buy-again-btn" class="combtn buy-again-btn" type="button" value="再来一单"/>
-    </div>
+
 </div>
 
 <script src="http://xs01.meituan.net/waimai_i/js/lib/wm_lib.578b6b32.js"></script>

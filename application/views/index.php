@@ -8,7 +8,30 @@
       </div>
     </form>
     <!-- banner -->
-    <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
+     <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
+  <ul class="am-slides">
+      <li>
+         <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
+         
+      </li>
+      <li>
+         <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
+         
+      </li>
+      <li>
+         <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
+         
+      </li>
+      <li>
+        <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
+         
+      </li>
+  </ul>
+</div>
+
+
+
+    
     <!-- 菜品 -->
     <ul class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default am-shadow veg" data-am-gallery="{ pureview: true }" >
       <li>

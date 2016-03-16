@@ -1,7 +1,7 @@
 
   <body>
-
-    <header data-am-widget="header" class="am-header am-header-default topform">
+     <form action="" method="">
+  <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
           <a href="javascript:" onclick="javascript:history.go(-1);">
 
@@ -10,22 +10,42 @@
       </div>
 
       <h1 class="am-header-title">
-          客服
+         牛仔裤的夏天
       </h1> 
+      <div class="am-header-right am-header-nav">
+          <input type="submit" class="setf" value="确定">
+      </div>
   </header>
      <div class="am-list-news-bd">
-  <ul class="am-list userl">
+  <ul class="am-list userS">
 
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/message')?>" class="am-list-item-hd "><i class="am-icon-envelope-o green"></i>反馈我们</a>  
+           <div class="am-u-sm-3">头像</div>
+           <div class="am-u-sm-9"><img class="am-circle" src="skin/img/USER.jpg" alt=""></div>
+      </li>
+       <li class="am-g am-list-item-dated">
+           <div class="am-u-sm-3">昵称</div>
+           <div class="am-u-sm-9">
+             <input type="text" value="牛仔裤的夏天">
+           </div>
       </li>
       <li class="am-g am-list-item-dated">
-          <a href="tel:02865290246" class="am-list-item-hd "><i class="am-icon-phone pink"></i>一键呼叫</a> 
+           <div class="am-u-sm-3">口味</div>
+           <div class="am-u-sm-9">
+             <input type="text" value="未填写">
+           </div>
       </li>
       <li class="am-g am-list-item-dated">
-          <a href="##" class="am-list-item-hd "><i class="am-icon-file-text-o purple"></i> 服务协议</a> 
+           <div class="am-u-sm-3">热爱菜系</div>
+           <div class="am-u-sm-9">
+              <select multiple data-am-selected class="vegtype">
+                <option value="a">Apple</option>
+                <option value="b">Banana</option>
+                <option value="o">Orange</option>
+                <option value="m">Mango</option>
+              </select>
+           </div>
       </li>
-    
   </ul>
   </div>
 
@@ -51,14 +71,9 @@
           </a>
         </li>
       </ul>
-    </div>
-    <script src="skin/js/jquery.min.js"></script>
-    <!--<![endif]-->
-    <!--[if lte IE 8 ]>
-    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-    <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
-    <![endif]-->
-    <script src="skin/js/amazeui.min.js"></script>
+    </div> 
+</form>
   </body>
+  <script src="skin/js/jquery.min.js"></script> 
+<script src="skin/js/amazeui.min.js"></script>
 </html>
