@@ -10,30 +10,30 @@
     <!-- banner -->
      <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">
+    <!--   <li>
+         <img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"> 
+         <button type="button" class="am-btn am-btn-primary cardbtn" data-am-modal="{target: '#my-alert'}"> 领取
+          </button>
+
+      </li> -->
       <li>
-         <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
+         <a href="<?php echo site_url('home/cardGet')?>"><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
          
       </li>
       <li>
-         <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
+         <a href="<?php echo site_url('home/cardGet')?>"><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
          
       </li>
       <li>
-         <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
-         
-      </li>
-      <li>
-        <a href=""><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
+        <a href="<?php echo site_url('home/cardGet')?>"><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
          
       </li>
   </ul>
 </div>
-
-
-
+ 
     
     <!-- 菜品 -->
-    <ul class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default am-shadow veg" data-am-gallery="{ pureview: true }" >
+    <ul class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default am-shadow veg" style="padding-bottom:5px" data-am-gallery="{ pureview: true }" >
       <li>
         <div class="am-gallery-item bred">
           <a href="<?php echo site_url('home/buy')?>">
@@ -72,7 +72,7 @@
     <div class="am-g am-shadow hot">
       <p class="htit"><img src="skin/img/fire.png" alt=""> 特色服务</p>
       <div class="am-u-sm-4">
-        <a href="<?php echo site_url('home/buy')?>" class="am-thumbnail">
+        <a href="<?php echo site_url('home/vip')?>" class="am-thumbnail">
           <img class="am-circle" src="skin/img/vip.png"/>
           <p class="purple">会员</p>
         </a>
@@ -94,7 +94,7 @@
     <div class="am-shadow fcai" data-am-scrollspy="{animation: 'fade'}">
       <p class="htit"><span class="am-icon-eye yellow"></span> 实时菜价</p>
      <ul class="am-avg-sm-3 am-avg-md-3 am-avg-lg-3 noborder">
-  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
+  <li><a href="<?php echo site_url('home/food')?>"><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
   <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
   <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
   <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
@@ -111,7 +111,7 @@
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
         <li >
           <a href="<?php echo site_url('home/index')?>" class="active">
-            <span class=""><img src="skin/img/home.png" alt=""></span>
+            <span class=""><img src="skin/img/home2.png" alt=""></span>
             <span class="am-navbar-label">首页</span>
           </a>
         </li>
@@ -123,7 +123,7 @@
         </li>
         <li>
           <a href="<?php echo site_url('home/ucent')?>">
-            <span class=""><img src="skin/img/gr.png" alt=""></span>
+            <span class=""><img src="skin/img/gr1.png" alt=""></span>
             <span class="am-navbar-label">个人</span>
           </a>
         </li>

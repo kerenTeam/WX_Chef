@@ -27,10 +27,25 @@ class home extends CI_Controller
 
 		$this->load->view('buy');
 	}
+	//菜品详情
+	public function food(){
+
+		$this->load->view('food');
+	}
+	//购物车
+	public function shoppingcart(){
+
+		$this->load->view('shoppingcart');
+	}
     //订单
     public function order(){
 
 		$this->load->view('order');
+	}
+	//评价 
+	public function comment(){
+
+		$this->load->view('comment');
 	}
 	//订单确认 仿美团
 	public function meiorder(){
@@ -46,11 +61,6 @@ class home extends CI_Controller
 	public function set(){
 
 		$this->load->view('set');
-	}
-    //food
-	public function food(){
-
-		$this->load->view('food');
 	}
     //搜索
     public function search(){
@@ -71,6 +81,11 @@ class home extends CI_Controller
     public function card(){
 
 		$this->load->view('card');
+	}
+	//领券
+	public function cardGet(){
+
+		$this->load->view('cardGet');
 	}
 	//地址管理
 	public function address(){

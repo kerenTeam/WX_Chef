@@ -2,9 +2,9 @@
 body{
 	background:rgb(241, 241, 241);
  }
-.am-slider-default .am-control-nav{
+/* .am-slider-default .am-control-nav{
 	bottom: 5px;
- }
+ } */
  .am-direction-nav a{
  	display:none!important;
  }
@@ -12,6 +12,9 @@ body{
 .am-shadow{
 	background: white;
     box-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+}
+.bgray{
+  background-color:gray;
 }
 .veg li{
 	text-align:center;
@@ -35,6 +38,11 @@ body{
 }
 .b{
 	text-align:center;
+}
+.order-time a{
+  margin: -16px 5px auto;
+    border: none;
+    outline: none;
 }
 .add {
     color: #4CAF50;
@@ -89,6 +97,10 @@ body{
     width: 2em;
         margin-top: -0.5rem;
 }
+.all_money{
+  width:50px;
+}
+
 #fen{
 	width:1.5rem;
 	text-align:center;
@@ -113,7 +125,6 @@ body{
     text-align: center;
     border: none;
     border-radius: 5px;
-    height: 2.5rem;
     font-size: 15px;
 }
 .card{
@@ -123,7 +134,7 @@ body{
 .red{
 color:#FE5F59!important;
 }
-.red{
+.bred{
   background-color:#FE5F59;
 }
 .yellow{
@@ -235,7 +246,7 @@ color:#EC5E52!important;
   	color:gray!important;
   }
    .nav-bot ul li a.active{
-  	color:#F8D469!important;
+  	color:#FF2C4D!important;
   }
    .userl li a{
    	color:black;
@@ -251,16 +262,41 @@ color:#EC5E52!important;
   .foodinfo p{
   	margin:5px auto;
   }
-  .foodinfo .am-g{
-  	margin:10px;
+  .comt,.foodinfo .am-g{
+  	padding:10px;
   }
   .asa{
     padding: 6px 10px;
     color: black;
   }
+  .stars p {
+    margin: 14px auto 9px;
+}
+.stars p span{
+      width: 45px;
+    margin-right: 7px;
+    display: inline-block;
+}
+.comimg{
+      width: 6%;
+    margin-right: 5px;
+}
     .noborder li{
     text-align:center!important;
     margin-bottom:5px;
+  }
+  .sad+input{
+    border:none;
+  }
+  .odl a{
+    margin-left: 15px;
+    color:black!important;
+  }
+  .pay,.marginl{
+    margin-left: 15px;
+  }
+  .odl span{
+    margin-right: 15px;
   }
   .go{
     width: 90%;
@@ -275,11 +311,27 @@ color:#EC5E52!important;
     margin: auto 3%;
     width: 94%;
   }
+  .wxradio{
+    margin-top:10px!important;
+  }
   .am-selected {
     width: 100px!important;
     /* margin-top:15px; */
     border-radius:5px;
     background-color: white;
+}
+.cart-summary{
+  margin-right:20px;
+}
+.ats{
+      font-size: 25px; 
+    margin: auto 5px;
+}
+.da{
+  padding:10%;
+}
+.dar{
+  text-align:right;
 }
   .am-selected button{
  border:none; 
@@ -330,6 +382,10 @@ color:#EC5E52!important;
     float: left;
     margin-top: -3px;
 }
+.os{
+  width:90%;
+  margin:5%;
+}
   .u{
 
     top: 40px;
@@ -357,10 +413,41 @@ top: 29px;
   .avatar{
     margin:10px!important;
   }
+  .cardno{
+        position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 40%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    text-align:center;
+  }
+  .cardno img{
+   left:50%;
+   position:relative;
+   margin-left:-42px;
+  }
   .userS li{
     padding:5px;
      line-height:5rem;
-  } 
+  }
+  .userSC li{
+    padding:5px;
+     line-height:3rem;
+  }
+  .cardbtn{
+   margin-top: 23%;
+    margin-right: 9px;
+    width: 56px;
+    text-align: center;
+    font-size: 12px;
+    background-color: #4AB162;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+  }
    .userS .am-u-sm-9,.userS .am-u-sm-9 input,.userS .am-u-sm-9 select{
     text-align:right;
     background: none;
@@ -377,6 +464,26 @@ top: 29px;
     outline:none; 
         margin-top: 10px!important;
     font-size: 16px!important;
+}
+.fimg{
+  max-height: 22rem;
+    width: 100%;
+}
+.acr li{
+  padding:0 5px;
+  margin:5px 0;
+}
+.acr img{
+  width:100%;
+}
+.am-titlebar-default .am-titlebar-title{
+  color:rgba(0, 0, 0, 0.78);
+}
+.am-titlebar-default .am-titlebar-title:before{
+  border-left: 3px solid rgba(0, 0, 0, 0.78);
+}
+.bpa{
+  padding-bottom:15rem;
 }
   @media only screen and (min-width:600px){
  
@@ -395,6 +502,12 @@ top: 29px;
 }
 }
 
+@media only screen and (max-width:375px){ 
+      .cardbtn{
+   margin-top: 19%;
+  }
+}
+
 @media only screen and (max-width:320px){
 	.topform button{  
     left: 40px;
@@ -405,5 +518,8 @@ top: 29px;
 .pform {
     margin-left: 2px;
     }
+      .cardbtn{
+   margin-top: 9%;
+  }
 }
 

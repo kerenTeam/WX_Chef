@@ -19,12 +19,7 @@
    <div data-am-sticky>
 <!-- tab -->
   <div data-am-widget="tabs" class="am-tabs am-tabs-d2 am-shadow">
-      <ul class="am-tabs-nav am-cf">
-          <li class="am-active"><a href="[data-tab-panel-0]">商品</a></li>
-          <li class=""><a href="[data-tab-panel-1]">评价</a></li>
-      </ul>
-      <div class="am-tabs-bd">
-          <div data-tab-panel-0 class="am-tab-panel am-active">
+ 
             <!-- 菜品选择 -->
               <div data-am-widget="list_news" class="am-list-news am-list-news-default" >
  
@@ -78,67 +73,7 @@
                 </li> 
               </ul>
             </div> 
-         </div>
-
-          </div>
-          <div data-tab-panel-1 class="am-tab-panel ">
-            <!-- 评论 -->
-            <article class="am-comment"> <!-- 评论容器 -->
-              <a href="">
-                <img class="am-comment-avatar" alt=""/> <!-- 评论者头像 -->
-              </a>
-
-              <div class="am-comment-main"> <!-- 评论内容容器 -->
-                <header class="am-comment-hd">
-                  <!--<h3 class="am-comment-title">评论标题</h3>-->
-                  <div class="am-comment-meta"> <!-- 评论元数据 -->
-                    <a href="#link-to-user" class="am-comment-author">..</a> <!-- 评论者 -->
-                    评论于 <time datetime="">...</time>
-                  </div>
-                </header>
-
-                <div class="am-comment-bd">...</div> <!-- 评论内容 -->
-              </div>
-            </article>
-
-            <article class="am-comment"> <!-- 评论容器 -->
-              <a href="">
-                <img class="am-comment-avatar" alt=""/> <!-- 评论者头像 -->
-              </a>
-
-              <div class="am-comment-main"> <!-- 评论内容容器 -->
-                <header class="am-comment-hd">
-                  <!--<h3 class="am-comment-title">评论标题</h3>-->
-                  <div class="am-comment-meta"> <!-- 评论元数据 -->
-                    <a href="#link-to-user" class="am-comment-author">..</a> <!-- 评论者 -->
-                    评论于 <time datetime="">...</time>
-                  </div>
-                </header>
-
-                <div class="am-comment-bd">...</div> <!-- 评论内容 -->
-              </div>
-            </article>
-
-            <article class="am-comment"> <!-- 评论容器 -->
-              <a href="">
-                <img class="am-comment-avatar" alt=""/> <!-- 评论者头像 -->
-              </a>
-
-              <div class="am-comment-main"> <!-- 评论内容容器 -->
-                <header class="am-comment-hd">
-                  <!--<h3 class="am-comment-title">评论标题</h3>-->
-                  <div class="am-comment-meta"> <!-- 评论元数据 -->
-                    <a href="#link-to-user" class="am-comment-author">..</a> <!-- 评论者 -->
-                    评论于 <time datetime="">...</time>
-                  </div>
-                </header>
-
-                <div class="am-comment-bd">...</div> <!-- 评论内容 -->
-              </div>
-            </article>
-          </div>
-        
-      </div>
+         </div>  
   </div>
 </div>
 <!-- footer -->

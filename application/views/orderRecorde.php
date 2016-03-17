@@ -56,8 +56,10 @@
         <div class="content">
          <p class="delivery_tip">黄焖鸡</p>
           <p class="price"><i class="am-icon-cny"></i>6</p>
-
-            <p class="order-time">2014-11-10 16:36</p>
+           
+            <p class="order-time">2014-11-10 16:36<a href="" class="am-fr am-btn am-btn-primary am-btn-xs bgray"> 删除
+          </a> <a href="<?php echo site_url('home/comment')?>" class="am-fr am-btn am-btn-primary bgreen am-btn-xs"> 评价
+          </a></p>
 
            
         </div> 
@@ -76,7 +78,11 @@
          <p class="delivery_tip">黄焖鸡</p>
           <p class="price"><i class="am-icon-cny"></i>6</p>
 
-            <p class="order-time">2014-11-10 16:36</p>
+            <p class="order-time">2014-11-10 16:36 
+            <a href="" class="am-fr am-btn am-btn-primary am-btn-xs bgray"> 取消
+          </a>
+           <a href="" class="am-fr am-btn am-btn-primary am-btn-xs bgreen"> 付款
+          </a></p>
 
            
         </div> 
@@ -90,7 +96,7 @@
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
         <li >
           <a href="tel:123456789">
-            <span class=""><img src="skin/img/home.png" alt=""></span>
+            <span class=""><img src="skin/img/home1.png" alt=""></span>
             <span class="am-navbar-label">首页</span>
           </a>
         </li>
@@ -102,7 +108,7 @@
         </li>
         <li>
           <a href="###" class="active">
-            <span class=""><img src="skin/img/gr.png" alt=""></span>
+            <span class=""><img src="skin/img/gr2.png" alt=""></span>
             <span class="am-navbar-label">个人</span>
           </a>
         </li>

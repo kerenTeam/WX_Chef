@@ -34,10 +34,10 @@
                 <div id="asidewrap" class="asidewrap">
                     <div class="taglist">
                         <button id="tag11334091" class="j-tag tag" data-key="11334091">DIY</button>
-                        <button id="tag11383708" class="j-tag tag" data-key="11383708">炒菜</button>
-                        <button id="tag16065504" class="j-tag tag" data-key="16065504">炖菜</button>
+                        <button id="tag11383708" class="j-tag tag" data-key="11383708">点菜</button>
+                        <button id="tag16065504" class="j-tag tag" data-key="16065504">套餐</button>
                         <button id="tag11383694" class="j-tag tag" data-key="11383694">凉菜</button>
-                        <button id="tag11383704" class="j-tag tag" data-key="11383704">蒸菜</button>
+                        <button id="tag11383704" class="j-tag tag" data-key="11383704">燕鲍翅</button>
                         <button id="tag11383695" class="j-tag tag" data-key="11383695">汤煮</button>
                         <div class="cart-placeholder"></div>
                     </div>
@@ -605,7 +605,7 @@ data-src-retina="http://p0.meituan.net/100.100.90/xianfu/c3ff83251dc19b0a3a98d40
 </div>
 <div id="cart" class="cart">
 <div class="cart-tip">
-<img src="skin/img/cl.png" class="cl" alt="">
+<a href="<?php echo site_url('home/shoppingcart')?>"><img src="skin/img/cl.png" class="cl" alt=""></a>
 <div style="display: none" class="cart-icon"><i class="j-ico-cart ico-cart"></i>
 <div class="j-cart-num cart-num"></div>
 </div>
