@@ -127,6 +127,11 @@ class home extends CI_Controller
 
 		$this->load->view('message');
 	}
+	//服务协议
+	public function protocol(){
+
+		$this->load->view('protocol');
+	}
 }
 
 

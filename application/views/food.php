@@ -89,12 +89,12 @@
     </div> -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default amft" id="">
       <div class="am-u-sm-8 a">
-        <i class="am-icon-shopping-cart"><input type="text" id="fen" class="allmoney" value="0">份</i>
-        <i class="am-icon-cny"></i><input type="text" id="allmoney" class="allmoney" value="0">
+        <img src="skin/img/cl.png" class="cartImg" alt=""><input type="text" id="fen" class="allmoney" value="0">份
+        <i class="am-icon-cny red"><input type="text" id="allmoney" class="allmoney" value="0"></i>
       </div>
       <div class="am-u-sm-4 b">
        
-           <button type="submit" disabled="disable" class="am-btn am-btn-success">确认</button>
+           <button type="submit"disabled="disable" class="am-btn am-btn-success tijiao">确认</button>
         
       </div>
   </div>
@@ -103,7 +103,19 @@
   <script src="skin/js/num.js"></script>
   <script>
     $(function(){
-      if()
+  $('.foodNum span').click(function() {
+ if($('.numTxt').val() > 0){ 
+        $('.tijiao').removeAttr('disabled').val('选好了');
+      
+      }
+      else
+         $('.tijiao').attr({
+           disabled: 'disable',
+           value: '选好了'
+         }); 
+
+  });
+     
     })
   </script>
 </body>

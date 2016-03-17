@@ -36,7 +36,7 @@
     <ul class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default am-shadow veg" style="padding-bottom:5px" data-am-gallery="{ pureview: true }" >
       <li>
         <div class="am-gallery-item bred">
-          <a href="<?php echo site_url('home/buy')?>">
+          <a href="<?php echo site_url('home/cailan#2')?>">
             <img src="skin/img/menu.png" alt="大厨到家"/>
             <h3 class="am-gallery-title">点菜</h3>
           </a>
@@ -44,7 +44,7 @@
       </li>
       <li>
         <div class="am-gallery-item byellow">
-          <a href="">
+          <a href="<?php echo site_url('home/cailan#3')?>">
             <img src="skin/img/fork.png" alt="大厨到家"/>
             <h3 class="am-gallery-title">套餐</h3>
           </a>
@@ -60,7 +60,7 @@
       </li>
       <li>
         <div class="am-gallery-item bblue">
-          <a href="">
+          <a href="<?php echo site_url('home/cailan#4')?>">
             <img src="skin/img/tea.png" alt="大厨到家"/>
             <h3 class="am-gallery-title">燕鲍翅</h3>
           </a>
@@ -93,18 +93,57 @@
     </div>
     <div class="am-shadow fcai" data-am-scrollspy="{animation: 'fade'}">
       <p class="htit"><span class="am-icon-eye yellow"></span> 实时菜价</p>
-     <ul class="am-avg-sm-3 am-avg-md-3 am-avg-lg-3 noborder">
-  <li><a href="<?php echo site_url('home/food')?>"><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
-  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
-  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
-  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
-  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
-  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
-  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
-  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
-  <li><a href=""><img class="am-thumbnail" src="skin/img/food1.png" />西兰花</a></li>
-   
-</ul>
+     <div class="htmleaf-content bgcolor-3">
+
+      <div class="content">
+
+        <div class="container">
+
+          <div class="marquee-sibling">
+
+            I am here to iritate you
+
+          </div>
+
+          
+
+        <div class="marquee-1" style="margin-left: -453.603px;">
+
+            <ul class="marquee-content-items">
+
+              <li>Item 1</li>
+
+              <li>Item 2</li>
+
+              <li>Item 3</li>
+
+              <li>Item 4</li>
+
+              <li>Item 5</li>
+
+            </ul>
+
+          </div><div class="marquee-2" style="margin-left: 367.496px;">
+
+            <ul class="marquee-content-items">
+
+              <li>Item 1</li>
+
+              <li>Item 2</li>
+
+              <li>Item 3</li>
+
+              <li>Item 4</li>
+
+              <li>Item 5</li>
+
+            </ul>
+
+          </div></div>
+
+      </div>
+
+    </div>
     </div>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
@@ -116,7 +155,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('home/buy')?>">
+          <a href="<?php echo site_url('home/cailan')?>">
             <span class=""><img src="skin/img/clz.png" alt=""></span>
             <span class="am-navbar-label">菜篮子</span>
           </a>
@@ -131,10 +170,23 @@
     </div>
     <script src="skin/js/jquery.min.js"></script>
     <script src="skin/js/amazeui.min.js"></script>
+    <script src="skin/js/marquee.js"></script>
       <script>
      function jump(){
       window.location.href="<?php echo site_url('home/search')?>";
      }
+
+     $(function (){
+
+
+
+      createMarquee({
+
+      });
+
+ 
+
+       });
   </script>
   </body>
 </html>

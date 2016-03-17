@@ -56,7 +56,7 @@
   </div>
   <br>
 <div class="am-shadow">
-    <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p> 
+    <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址<a href="<?php echo site_url('home/addressAdd')?>" class="add am-fr am-icon-plus-circle"></a></p> 
     <input type="text" class="am-form-field" placeholder="请填写详细地址" required="">
  
     <p class="htit sad"><span class="am-icon-phone green"></span> 联系方式</p> 

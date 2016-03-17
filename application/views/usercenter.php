@@ -6,7 +6,7 @@
      <p>重口味 &nbsp;&nbsp;&nbsp;&nbsp;川菜</p>
    </div>
   
-     <div class="am-list-news-bd">
+     <div class="am-list-news-bd asp">
   <ul class="am-list userl">
 
       <li class="am-g am-list-item-dated">

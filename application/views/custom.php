@@ -23,7 +23,7 @@
           <a href="tel:02865290246" class="am-list-item-hd "><i class="am-icon-phone pink"></i>一键呼叫</a> 
       </li>
       <li class="am-g am-list-item-dated">
-          <a href="##" class="am-list-item-hd "><i class="am-icon-file-text-o purple"></i> 服务协议</a> 
+          <a href="<?php echo site_url('home/protocol')?>" class="am-list-item-hd "><i class="am-icon-file-text-o purple"></i> 服务协议</a> 
       </li>
     
   </ul>

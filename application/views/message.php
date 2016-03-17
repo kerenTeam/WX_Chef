@@ -10,7 +10,7 @@
     </h1>
   </header>
   <form action="" method=""> 
-    <textarea class="am-u-sm-12 am-shadow mestxt" rows="5" id="doc-ta-1" placeholder="你的意见对我们至关重要" required></textarea>
+    <textarea class="am-u-sm-12 am-shadow mestxt" rows="5" id="doc-ta-1" placeholder="评价内容" required></textarea>
  
     <button type="submit" class="am-u-sm-12 am-btn bgreen go">提交</button>
   </form>
