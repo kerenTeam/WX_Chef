@@ -1,4 +1,4 @@
-  
+
   <body>
     <!-- 搜索 -->
     <form action="" method="" class="topform">
@@ -93,58 +93,29 @@
     </div>
     <div class="am-shadow fcai" data-am-scrollspy="{animation: 'fade'}">
       <p class="htit"><span class="am-icon-eye yellow"></span> 实时菜价</p>
-     <div class="htmleaf-content bgcolor-3">
+     <div class="als-container" id="demo3">
+       <link rel="stylesheet" type="text/css" media="screen" href="skin/css/als_demo.css" /> 
 
-      <div class="content">
+        <div class="als-viewport">
+          <ul class="als-wrapper">
+            <li class="als-item">橘子</li>
+            <li class="als-item">苹果</li>
+            <li class="als-item">香蕉</li>
+            <li class="als-item">菠萝</li>
+            <li class="als-item">西瓜</li>
+            <li class="als-item">樱桃</li>
+            <li class="als-item">草莓</li>
+            <li class="als-item">牛油果</li>
+            <li class="als-item">梨子</li>
+            <li class="als-item">菠萝</li>
+            <li class="als-item">木瓜</li>
+            <li class="als-item">木霉</li>
+          </ul>
+        </div> 
+      </div> 
+ 
 
-        <div class="container">
-
-          <div class="marquee-sibling">
-
-            I am here to iritate you
-
-          </div>
-
-          
-
-        <div class="marquee-1" style="margin-left: -453.603px;">
-
-            <ul class="marquee-content-items">
-
-              <li>Item 1</li>
-
-              <li>Item 2</li>
-
-              <li>Item 3</li>
-
-              <li>Item 4</li>
-
-              <li>Item 5</li>
-
-            </ul>
-
-          </div><div class="marquee-2" style="margin-left: 367.496px;">
-
-            <ul class="marquee-content-items">
-
-              <li>Item 1</li>
-
-              <li>Item 2</li>
-
-              <li>Item 3</li>
-
-              <li>Item 4</li>
-
-              <li>Item 5</li>
-
-            </ul>
-
-          </div></div>
-
-      </div>
-
-    </div>
-    </div>
+    </div> 
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
@@ -170,23 +141,28 @@
     </div>
     <script src="skin/js/jquery.min.js"></script>
     <script src="skin/js/amazeui.min.js"></script>
-    <script src="skin/js/marquee.js"></script>
       <script>
      function jump(){
       window.location.href="<?php echo site_url('home/search')?>";
      }
-
-     $(function (){
-
-
-
-      createMarquee({
-
-      });
-
  
+  </script>
 
-       });
+  <script type="text/javascript" src="skin/js/jquery.als-1.7.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() 
+    {
+     
+      $("#demo3").als({
+        visible_items: 4,
+        scrolling_items: 4,
+        orientation: "horizontal",
+        circular: "yes",
+        autoscroll: "yes",
+        interval: 3000
+      });
+       
+    });
   </script>
   </body>
 </html>

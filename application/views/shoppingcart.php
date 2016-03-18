@@ -59,9 +59,8 @@
       $('.da').hide();
       $(".deladd").on('click',function() {
       $(this).next(".da").toggle();
-      
     });
-   
+     
   }) 
 </script>
 <script>

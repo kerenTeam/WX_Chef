@@ -76,17 +76,7 @@
         </div>
       </div>
     </div>
-    <!-- footer -->
-<!--     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default amft" id="">
-      <div class="am-u-sm-8 a">
-        <img src="skin/img/clz.png" alt="">  菜篮子是空的
-      </div>
-      <div class="am-u-sm-4 b">
-        
-        <button type="submit" class="am-btn am-btn-success" disabled="disable">结算（0）</button>
-        
-      </div>
-    </div> -->
+ 
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default amft" id="">
       <div class="am-u-sm-8 a">
         <img src="skin/img/cl.png" class="cartImg" alt=""><input type="text" id="fen" class="allmoney" value="0">份
@@ -111,7 +101,7 @@
       else
          $('.tijiao').attr({
            disabled: 'disable',
-           value: '选好了'
+           value: '空篮子'
          }); 
 
   });
