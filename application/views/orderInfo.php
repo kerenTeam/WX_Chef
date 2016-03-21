@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="skin/css/globe.css">
 
-    <link href="http://xs01.meituan.net/waimai_i/css/page/order/order-detail.e74036c2.css" rel="stylesheet"/>
+    <link href="skin/css/orderDetail.css" rel="stylesheet"/>
 
 </head>
 <body class="i"> 
@@ -118,8 +118,9 @@
 
     <div class="orderregion orderregion-top">
         <ul class="orderregion-entries">
-            <li class="orderregion-entry">
-                <span class="name text-overflow-ellipsis-2">火锅</span>
+            <li class="orderregion-entry am-cf">
+                <span class="name text-overflow-ellipsis-2 am-fl">火锅</span>
+                <span class="am-fr am-icon-cny red am-margin-right-sm"> 20</span>
             </li>
         </ul>
     </div> 
@@ -163,7 +164,7 @@
 
 </div>
 
-<script src="http://xs01.meituan.net/waimai_i/js/lib/wm_lib.578b6b32.js"></script>
+<script src="skin/js/wmLib.js"></script>
 
 <script>require.config({
     baseUrl: "http://xs01.meituan.net/waimai_i/56e1569a/js",
@@ -181,7 +182,7 @@
     }
 });</script>
 
-<script>Raven.config('http://e284c96b17d24de69b3ac24cae61c5d0@sentry.sankuai.com/78').install();</script>  <script src="http://xs01.meituan.net/waimai_i/js/page/order/order-detail.70fb227e.js"></script>
+<script>Raven.config('http://e284c96b17d24de69b3ac24cae61c5d0@sentry.sankuai.com/78').install();</script>  <script src="skin/js/orderDetail.js"></script>
 <script>
     require(['page/order/order-detail'], function (orderDetailPage) {
         orderDetailPage.init({

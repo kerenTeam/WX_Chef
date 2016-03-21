@@ -33,32 +33,24 @@
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
         <li >
-          <a href="tel:123456789">
-            <span class=""><img src="skin/img/home.png" alt=""></span>
+          <a href="<?php echo site_url('home/index')?>">
+            <span class=""><img src="skin/img/home1.png" alt=""></span>
             <span class="am-navbar-label">首页</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('home/buy')?>">
+          <a href="<?php echo site_url('home/cailan')?>">
             <span class=""><img src="skin/img/clz.png" alt=""></span>
             <span class="am-navbar-label">菜篮子</span>
           </a>
         </li>
         <li>
-          <a href="###" class="active">
-            <span class=""><img src="skin/img/gr.png" alt=""></span>
+          <a href="<?php echo site_url('home/ucent')?>" class="active">
+            <span class=""><img src="skin/img/gr2.png" alt=""></span>
             <span class="am-navbar-label">个人</span>
           </a>
         </li>
       </ul>
     </div>
-    <script src="skin/js/jquery.min.js"></script>
-    <!--<![endif]-->
-    <!--[if lte IE 8 ]>
-    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-    <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
-    <![endif]-->
-    <script src="skin/js/amazeui.min.js"></script>
   </body>
 </html>
