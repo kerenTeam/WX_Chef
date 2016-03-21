@@ -30,8 +30,10 @@ body{
 }
 .amft{
 	height:50px;
-	
 	background:white;
+}
+.am-navbar-default a{
+  color:black!important;
 }
 .a img{
 	width:2rem;
@@ -206,7 +208,28 @@ color:black;
 text-align:center;
 padding:0.5rem 0;
 }
+.Tnum{
+position:relative;
+}
+.Tnum:before{
+content:'(';
+}
+.Tnum:after{
+  content:')';
+}
+.typel img{
+ height: 1.5rem;
+ width:1.5rem;
+}
+.mp{
+  width: 30%;
+    margin: 30px auto;
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 5px;
+  }
  .cmn .am-list>li>a.am-active, .am-list>li>a.am-active:focus, .am-list>li>a.am-active:hover { 
+ 
 background:none;
 color:#ED3F59;
     }
@@ -220,12 +243,41 @@ color:#ED3F59;
     margin-left: 15px;
 
 }
+.afiel input{
+  margin-bottom: 10px;
+  border-radius:3p;
+}
 .bgreen{
   color:white;
 	background-color:#4AB162;
 }
+.lpt{
+  padding-left:15px;
+}
+.lpt p{
+  width:84%;
+  margin-top:15px;
+}
+.lpt span{
+      margin-top: 25px;
+}
+.lpt2 span{
+      margin-top: 22px;
+}
 .cl{
   width:2.5rem;
+}
+.adc{
+      display: inline-block;
+    width: 100%;
+    padding: 15px;
+    color: black;
+}
+.lilast{
+  margin-top:15px;
+}
+.adc:hover{ 
+    color: gray;
 }
 .bred{
   color:white;

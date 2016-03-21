@@ -33,7 +33,7 @@
             <div id="menuwrap" class="menuwrap">
                 <div id="asidewrap" class="asidewrap">
                     <div class="taglist">
-                        <button id="tag11334091" class="j-tag tag" data-key="11334091">DIY</button>
+                        <button id="tag01" class="j-tag tag" data-key="01">DIY</button>
                         <button id="tag11383708" class="j-tag tag" data-key="11383708">点菜</button>
                         <button id="tag16065504" class="j-tag tag" data-key="16065504">套餐</button>
                         <button id="tag11383694" class="j-tag tag" data-key="11383694">凉菜</button>
@@ -45,7 +45,7 @@
                 <div id="mainwrap" class="mainwrap">
                     <div class="foodlistwrap">
                         
-<div id="foodlist11334091" data-tagid="11334091" class="j-foodlist foodlist">
+<div id="foodlist01" data-tagid="01" class="j-foodlist foodlist">
 <h3 class="foodlist-label">DIY</h3>
 <ul>
 <li id="food73508627" class="j-fooditem fooditem" data-spuid="73508627"

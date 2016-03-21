@@ -49,7 +49,10 @@
      
      <p class="cart-summary am-fr">共<span class="allnum" id="fen">2</span>&nbsp;份菜 &nbsp;&nbsp;<span class="red"><i class="am-icon-cny all_money">576</i></span></p>
 
-    <button type="submit" class="am-u-sm-12 am-btn bgreen go">去结算</button>
+  <!-- 正确的 -->
+  <!-- <button type="submit" class="am-u-sm-12 am-btn bgreen go">去结算</button> -->
+   <!-- 操作演示用 -->
+   <a href="<?php echo site_url('home/order')?>"> <button type="button" class="am-u-sm-12 am-btn bgreen go">去结算</button></a>
     
   </form>
 </body>

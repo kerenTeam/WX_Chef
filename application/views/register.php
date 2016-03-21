@@ -7,8 +7,8 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../skin/css/amazeui.min.css">
-  <link rel="stylesheet" href="../../skin/css/login.css">
+  <link rel="stylesheet" href="skin/css/amazeui.min.css">
+  <link rel="stylesheet" href="skin/css/login.css">
   <style type="text/css">
   	html{
   		height: 100%;
@@ -45,9 +45,9 @@
 </div>
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="../../skin/js/jquery.min.js"></script>
+<script src="skin/js/jquery.min.js"></script>
 <!--<![endif]-->
-<script src="../../skin/js/amazeui.min.js"></script>
+<script src="skin/js/amazeui.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		// 验证是否同意协议

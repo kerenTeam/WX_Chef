@@ -91,29 +91,32 @@
       </div>
      
     </div>
-    <div class="am-shadow fcai" data-am-scrollspy="{animation: 'fade'}">
+    <div class="am-shadow" data-am-scrollspy="{animation: 'fade'}">
       <p class="htit"><span class="am-icon-eye yellow"></span> 实时菜价</p>
-     <div class="als-container" id="demo3">
-       <link rel="stylesheet" type="text/css" media="screen" href="skin/css/als_demo.css" /> 
 
-        <div class="als-viewport">
-          <ul class="als-wrapper">
-            <li class="als-item">橘子</li>
-            <li class="als-item">苹果</li>
-            <li class="als-item">香蕉</li>
-            <li class="als-item">菠萝</li>
-            <li class="als-item">西瓜</li>
-            <li class="als-item">樱桃</li>
-            <li class="als-item">草莓</li>
-            <li class="als-item">牛油果</li>
-            <li class="als-item">梨子</li>
-            <li class="als-item">菠萝</li>
-            <li class="als-item">木瓜</li>
-            <li class="als-item">木霉</li>
-          </ul>
-        </div> 
-      </div> 
- 
+<style type="text/css" media="all">
+.d1{
+        height: 35px;
+    margin: 10px auto;
+    width: 90%;  
+    overflow: hidden;
+    white-space: nowrap;
+}
+.div2 a{ 
+  color:black;
+width:80px;
+text-align:center;
+display:inline-block;
+}
+.div2{
+ height: 35px;
+width:auto; 
+font-size:14px;
+}
+</style>
+ <div class="d1" id="div1" onmouseover="clearInterval(timer)" onmouseout="timer=setInterval(mar,30)">
+    <span class="div2" id="div2"> <a href="<?php echo site_url('home/price')?>">莴笋</a>  <a href="<?php echo site_url('home/price')?>">大白菜</a>  <a href="<?php echo site_url('home/price')?>">鲜猪肉</a>  <a href="<?php echo site_url('home/price')?>">鸡肉</a>  <a href="<?php echo site_url('home/price')?>">河虾</a>  <a href="<?php echo site_url('home/price')?>">鲤鱼</a>  <a href="<?php echo site_url('home/price')?>">大螃蟹</a>  </span><span id="div3" class="div2"></span>
+</div>  
 
     </div> 
     <!-- footer -->
@@ -150,19 +153,26 @@
 
   <script type="text/javascript" src="skin/js/jquery.als-1.7.min.js"></script>
   <script type="text/javascript">
-    $(document).ready(function() 
-    {
-     
-      $("#demo3").als({
-        visible_items: 4,
-        scrolling_items: 4,
-        orientation: "horizontal",
-        circular: "yes",
-        autoscroll: "yes",
-        interval: 3000
-      });
-       
-    });
+
+var s,s2,s3,timer;
+function init(){
+s=getid("div1");
+s2=getid("div2");
+s3=getid("div3");
+s3.innerHTML=s2.innerHTML;
+timer=setInterval(mar,30)
+}
+function mar(){
+if(s2.offsetWidth<=s.scrollLeft){
+s.scrollLeft-=s2.offsetWidth;
+}else{s.scrollLeft++;}
+}
+function getid(id){
+return document.getElementById(id);
+}
+window.onload=init;
+
+
   </script>
   </body>
 </html>

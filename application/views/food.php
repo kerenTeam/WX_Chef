@@ -32,7 +32,7 @@
       </div>
     </div>
     <!-- 评价 -->
-    <div class="comt am-shadow">
+    <div class="am-shadow">
       <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" >
         <h2 class="am-titlebar-title ">
         消费评价
@@ -77,7 +77,8 @@
       </div>
     </div>
  
-    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default amft" id="">
+    <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
+      <a href="<?php echo site_url('home/order')?>">
       <div class="am-u-sm-8 a">
         <img src="skin/img/cl.png" class="cartImg" alt=""><input type="text" id="fen" class="allmoney" value="0">份
         <i class="am-icon-cny red"><input type="text" id="allmoney" class="allmoney" value="0"></i>
@@ -87,6 +88,7 @@
            <button type="submit"disabled="disable" class="am-btn am-btn-success tijiao">确认</button>
         
       </div>
+      </a>
   </div>
   </form>
    <script src="skin/js/jquery.min.js"></script>

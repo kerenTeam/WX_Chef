@@ -19,7 +19,7 @@
           <a href="<?php echo site_url('home/orderR')?>" class="am-list-item-hd "><img src="skin/img/d.png" alt=""> 订单管理</a> 
       </li>
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/address')?>" class="am-list-item-hd "><img src="skin/img/addr.png" alt=""> 地址管理</a> 
+          <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><img src="skin/img/addr.png" alt=""> 地址管理</a> 
       </li>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/card')?>" class="am-list-item-hd "><img src="skin/img/qu.png" alt=""> 我的优惠券</a> 
@@ -40,7 +40,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('home/buy')?>">
+          <a href="<?php echo site_url('home/cailan')?>">
             <span class=""><img src="skin/img/clz.png" alt=""></span>
             <span class="am-navbar-label">菜篮子</span>
           </a>

@@ -53,20 +53,20 @@
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
         <li >
-          <a href="tel:123456789">
-            <span class=""><img src="skin/img/home.png" alt=""></span>
+          <a href="<?php echo site_url('home/index')?>">
+            <span class=""><img src="skin/img/home1.png" alt=""></span>
             <span class="am-navbar-label">首页</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('home/buy')?>">
+          <a href="<?php echo site_url('home/cailan')?>">
             <span class=""><img src="skin/img/clz.png" alt=""></span>
             <span class="am-navbar-label">菜篮子</span>
           </a>
         </li>
         <li>
-          <a href="###" class="active">
-            <span class=""><img src="skin/img/gr.png" alt=""></span>
+          <a href="<?php echo site_url('home/ucent')?>" class="active">
+            <span class=""><img src="skin/img/gr2.png" alt=""></span>
             <span class="am-navbar-label">个人</span>
           </a>
         </li>

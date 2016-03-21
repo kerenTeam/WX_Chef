@@ -3,6 +3,9 @@
     .am-selected { 
     background-color: #F85554;
 }
+.am-selected button { 
+    color: white;
+}
 </style>
   <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">

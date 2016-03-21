@@ -11,7 +11,26 @@ class home extends CI_Controller
 		parent::__construct();
 		$this->load->view('header');
 	}
+	//引导页
+    public function quota(){
 
+		$this->load->view('quota');
+	}
+    //登录页
+    public function login(){
+
+		$this->load->view('login');
+	}
+	//登录页next
+    public function login2(){
+
+		$this->load->view('login2');
+	}
+	//注册页
+    public function register(){
+
+		$this->load->view('register');
+	}
 	//首页
 	public function index(){
 
@@ -102,6 +121,21 @@ class home extends CI_Controller
 
 		$this->load->view('editAddress');
 	}
+	//地址管理
+	public function address2(){
+
+		$this->load->view('address2');
+	}
+	//新增address
+	public function addressAdd2(){
+
+		$this->load->view('addressAdd2');
+	}
+	//编辑地址
+	public function editAddress2(){
+
+		$this->load->view('editAddress2');
+	}
 	//宴会定制
 	public function make(){
 
@@ -121,6 +155,11 @@ class home extends CI_Controller
 	public function priceSearch(){
 
 		$this->load->view('priceSearch');
+	}
+	//菜价
+	public function price(){
+
+		$this->load->view('price');
 	}
 	//意见反馈
 	public function message(){

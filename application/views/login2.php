@@ -1,32 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>登录</title>
-	<meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../skin/css/amazeui.min.css">
-  <link rel="stylesheet" href="../../skin/css/login.css">
+
+  <link rel="stylesheet" href="skin/css/login.css">
   <style type="text/css">
   	html{
   		height: 100%;
   	}
   </style>
-</head>
 
 <body class="login">
 
 	<div class="login_center">
   <form action="" method="" id="login">
-		<img class="login_logo" src="../../skin/img/login_logo.png">
+		<img class="login_logo" src="skin/img/login_logo.png">
 		<br/>
     <div class="login_form">
     <input type="text" placeholder="用户" class="am-form-field am-radius"></input>
     <input type="password" placeholder="密码" class="am-form-field am-radius"></input>
     <p>
-      <a href="register.php">新用户</a>
+      <a href="<?php echo site_url('home/register')?>">新用户</a>
       <a href="#">忘记密码？</a>
     </p>
     </div>
@@ -41,9 +31,9 @@
 </div>
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="../../skin/js/jquery.min.js"></script>
+<script src="skin/js/jquery.min.js"></script>
 <!--<![endif]-->
-<script src="../../skin/js/amazeui.min.js"></script>
+<script src="skin/js/amazeui.min.js"></script>
 <script type="text/javascript">
     $(function(){
       $("#login").bind('submit',function(){
