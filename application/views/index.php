@@ -35,36 +35,36 @@
     <!-- 菜品 -->
     <ul class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default am-shadow veg" style="padding-bottom:5px" data-am-gallery="{ pureview: true }" >
       <li>
-        <div class="am-gallery-item bred">
-          <a href="<?php echo site_url('home/cailan#2')?>">
+        <a href="<?php echo site_url('home/cailan#1')?>">
+          <div class="am-gallery-item bred">
             <img src="skin/img/menu.png" alt="大厨到家"/>
-            <h3 class="am-gallery-title">点菜</h3>
-          </a>
-        </div>
+            <h3 class="am-gallery-title">点菜</h3> 
+          </div>
+         </a>
       </li>
       <li>
-        <div class="am-gallery-item byellow">
-          <a href="<?php echo site_url('home/cailan#3')?>">
-            <img src="skin/img/fork.png" alt="大厨到家"/>
-            <h3 class="am-gallery-title">套餐</h3>
-          </a>
-        </div>
+        <a href="<?php echo site_url('home/cailan#7')?>">
+            <div class="am-gallery-item byellow">
+               <img src="skin/img/fork.png" alt="大厨到家"/>
+                <h3 class="am-gallery-title">套餐</h3>
+            </div> 
+        </a>
       </li>
       <li>
-        <div class="am-gallery-item bgreen">
-          <a href="<?php echo site_url('home/make')?>">
+        <a href="<?php echo site_url('home/cailan#7')?>">
+          <div class="am-gallery-item bgreen">
             <img src="skin/img/food.png" alt="大厨到家"/>
             <h3 class="am-gallery-title">宴会定制</h3>
-          </a>
-        </div>
+          </div>
+         </a>
       </li>
       <li>
-        <div class="am-gallery-item bblue">
-          <a href="<?php echo site_url('home/cailan#4')?>">
+        <a href="<?php echo site_url('home/cailan#6')?>">
+          <div class="am-gallery-item bblue">
             <img src="skin/img/tea.png" alt="大厨到家"/>
             <h3 class="am-gallery-title">燕鲍翅</h3>
-          </a>
-        </div>
+          </div>
+         </a>
       </li>
     </ul>
     <!-- 热销 -->
@@ -150,25 +150,25 @@ font-size:14px;
      }
  
   </script>
-
-  <script type="text/javascript" src="skin/js/jquery.als-1.7.min.js"></script>
   <script type="text/javascript">
 
 var s,s2,s3,timer;
 function init(){
-s=getid("div1");
-s2=getid("div2");
-s3=getid("div3");
-s3.innerHTML=s2.innerHTML;
-timer=setInterval(mar,30)
+    s=getid("div1");
+    s2=getid("div2");
+    s3=getid("div3");
+    s3.innerHTML=s2.innerHTML;
+    timer=setInterval(mar,30)
 }
 function mar(){
-if(s2.offsetWidth<=s.scrollLeft){
-s.scrollLeft-=s2.offsetWidth;
-}else{s.scrollLeft++;}
+  if(s2.offsetWidth<=s.scrollLeft){
+
+    s.scrollLeft-=s2.offsetWidth;
+
+  }else{s.scrollLeft++;}
 }
 function getid(id){
-return document.getElementById(id);
+    return document.getElementById(id);
 }
 window.onload=init;
 

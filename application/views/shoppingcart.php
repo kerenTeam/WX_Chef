@@ -15,7 +15,7 @@
       <!-- 购物车列表 -->
       <ul class="am-list userSC">
         <li class="am-g am-list-item-dated">
-          <div class="deladd">
+          <div class="deladd am-cf">
             <div class="am-u-sm-6">sad山药松茸滋补汤锅</div>
             <div class="am-u-sm-3"> X <span class="jnum">1</span></div>
             <div class="am-u-sm-3 red"><i class="am-icon-cny"></i><span class="price">288</span></div>
@@ -30,7 +30,7 @@
           </div>
         </li>
         <li class="am-g am-list-item-dated">
-          <div class="deladd">
+          <div class="deladd am-cf">
             <div class="am-u-sm-6">山药松茸滋补汤锅</div>
             <div class="am-u-sm-3"> X <span class="jnum">1</span></div>
             <div class="am-u-sm-3 red"><i class="am-icon-cny"></i><span class="price">288</span></div>
@@ -44,10 +44,25 @@
             </div>
           </div>
         </li>
+         <li class="am-g am-list-item-dated">
+          <div class="deladd am-cf">
+            <div class="am-u-sm-6">团拜宴套餐</div>
+            <div class="am-u-sm-3"> X <span class="jnum">3</span></div>
+            <div class="am-u-sm-3 red"><i class="am-icon-cny"></i><span class="price">1288</span></div>
+          </div>
+          <!-- 删除 数量加减 -->
+          <div class="da">
+             <a href="" class="am-fl"><i class="am-icon-trash red ats"></i></a> 
+            <div class="am-fr dar"> 
+                <span class="am-icon-minus-square-o pink ats" onClick="handle(this,false)"></span>
+                <span class="am-icon-plus-square-o green ats" onClick="handle(this,true)"></span> 
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
      
-     <p class="cart-summary am-fr">共<span class="allnum" id="fen">2</span>&nbsp;份菜 &nbsp;&nbsp;<span class="red"><i class="am-icon-cny all_money">576</i></span></p>
+     <p class="cart-summary am-fr">共<span class="allnum" id="fen">5</span>&nbsp;份菜 &nbsp;&nbsp;<span class="red"><i class="am-icon-cny all_money">1864</i></span></p>
 
   <!-- 正确的 -->
   <!-- <button type="submit" class="am-u-sm-12 am-btn bgreen go">去结算</button> -->

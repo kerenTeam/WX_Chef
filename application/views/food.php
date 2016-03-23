@@ -13,19 +13,18 @@
   <!-- 详情 -->
   <form action="" method="" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
-      <div class="fimg"><img src="skin/img/hgr.png" class="am-img-responsive card" alt="大厨到家"></div>
+      <div class="fimg"><img src="skin/img/product/rjx.jpg" class="am-img-responsive card" alt="大厨到家"></div>
       <div class="am-g">
-
-        <h2>尖椒回锅肉</h2>
+        <h2>蓉记姜葱香辣蟹</h2>
         <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">100</span>份</div>
-        <p class="am-text-sm"><strong>主料：</strong>五花肉；尖椒</p>
-        <p class="am-text-sm"><strong>辅料：</strong>白糖；豆瓣酱；洋葱；芹菜；酱油；鸡精；花生油</p>
+        <p class="am-text-sm"><strong>主料：</strong>八品猪肚、八品绞肉、八品猪舌、八品猪心、八品五花肉。</p>
+        <p class="am-text-sm"><strong>辅料：</strong>青笋、胡萝卜</p>
         <p class="am-text-sm"><strong>简介：</strong>这道菜色泽鲜亮、 肥而不腻、 入口醇香、 香辣下饭, 绝对是米饭杀手。</p>
         
-        <div class="pr"><i class="am-icon-cny"></i><span class="price">18</span></div>
+        <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-          <input type="text" class="numTxt" name="numbers" readonly="readonly" value="0">
+          <input type="text" class="numTxt" name="numbers" readonly="readonly" value="2">
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
         
@@ -76,39 +75,54 @@
         </div>
       </div>
     </div>
- 
+    
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
       <a href="<?php echo site_url('home/order')?>">
-      <div class="am-u-sm-8 a">
-        <img src="skin/img/cl.png" class="cartImg" alt=""><input type="text" id="fen" class="allmoney" value="0">份
-        <i class="am-icon-cny red"><input type="text" id="allmoney" class="allmoney" value="0"></i>
-      </div>
-      <div class="am-u-sm-4 b">
-       
-           <button type="submit"disabled="disable" class="am-btn am-btn-success tijiao">确认</button>
-        
-      </div>
+        <div class="am-u-sm-8 green a">
+          <img src="skin/img/cl.png" class="cartImg" alt=""><input type="text" id="fen" class="allmoney" value="2">份
+          <i class="am-icon-cny red"><input type="text" id="allmoney" class="allmoney" readonly="readonly" value="336.00"></i>
+        </div>
+        <div class="am-u-sm-4 b">
+          
+          <button type="submit" class="am-btn am-btn-success tijiao">确定</button>
+          
+        </div>
       </a>
-  </div>
+    </div>
   </form>
-   <script src="skin/js/jquery.min.js"></script>
+  <script src="skin/js/jquery.min.js"></script>
   <script src="skin/js/num.js"></script>
   <script>
-    $(function(){
-  $('.foodNum span').click(function() {
- if($('.numTxt').val() > 0){ 
-        $('.tijiao').removeAttr('disabled').val('选好了');
-      
-      }
-      else
-         $('.tijiao').attr({
-           disabled: 'disable',
-           value: '空篮子'
-         }); 
+  $(function(){
+      var inputs = $('.numTxt');
 
-  });
+          inputs.each(function() {
+     var numI=$(this).val();
+        if(numI == 0){
+        $(this).css('display','none');
+        $(this).parent('.foodNum').find('.reduce').css('display','none');
+        // $('.tijiao').attr('disabled','disable');
+      }
+      else{
+        $(this).css('display','inline-block'); 
+        // $('.tijiao').removeAttr('disabled').html('选好了');
+        $(this).parent('.foodNum').find('.reduce').css('display','inline-block');
+      }
+   });
+  // $('.foodNum span').click(function() {
+  //   if($('.numTxt').val() > 0){
+  //       $('.tijiao').removeAttr('disabled').html('选好了');
+    
+  // }
+  // else{
+  //    $('.tijiao').attr({
+  //     disabled: 'disable'
+  //    }).html('空篮子');
+  // }
      
-    })
+  // });
+  
+  })
   </script>
 </body>
 </html>

@@ -16,31 +16,36 @@
     <div class="am-list-news-bd">
       <ul class="am-list userS">
         <li class="am-g am-list-item-dated">
-          <div class="am-u-sm-3">头像</div>
-          <div class="am-u-sm-9"><img class="am-circle" src="skin/img/USER.jpg" alt=""></div>
+          <div class="am-u-sm-4">头像</div>
+          <div class="am-u-sm-8"><img class="am-circle" src="skin/img/USER.jpg" alt=""></div>
         </li>
         <li class="am-g am-list-item-dated">
-          <div class="am-u-sm-3">昵称</div>
-          <div class="am-u-sm-9">
+          <div class="am-u-sm-4">昵称</div>
+          <div class="am-u-sm-8">
             <input type="text" value="牛仔裤的夏天">
           </div>
         </li>
         <li class="am-g am-list-item-dated">
-          <div class="am-u-sm-3">口味</div>
-          <div class="am-u-sm-9">
+          <div class="am-u-sm-4">口味</div>
+          <div class="am-u-sm-8">
             <input type="text" value="未填写">
           </div>
         </li>
         <li class="am-g am-list-item-dated">
-          <div class="am-u-sm-3">热爱菜系</div>
-          <div class="am-u-sm-9">
+          <div class="am-u-sm-4">热爱菜系</div>
+          <div class="am-u-sm-8">
             <select multiple data-am-selected class="vegtype">
-              <option value="a">Apple</option>
-              <option value="b">Banana</option>
-              <option value="o">Orange</option>
-              <option value="m">Mango</option>
+              <option value="a">粤菜</option>
+              <option value="b">川菜</option>
+              <option value="o">鲁菜</option>
+              <option value="m">湘菜</option>
             </select>
           </div>
+          <style>
+          .am-selected-list li{
+            line-height:2rem;
+          }
+          </style>
         </li>
       </ul>
     </div>

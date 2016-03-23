@@ -51,6 +51,11 @@ class home extends CI_Controller
 
 		$this->load->view('food');
 	}
+	//套餐详情
+	public function dinner(){
+
+		$this->load->view('dinner');
+	}
 	//购物车
 	public function shoppingcart(){
 
@@ -65,11 +70,6 @@ class home extends CI_Controller
 	public function comment(){
 
 		$this->load->view('comment');
-	}
-	//订单确认 仿美团
-	public function meiorder(){
-
-		$this->load->view('meiorder');
 	}
     //个人中心
 	public function ucent(){
@@ -89,7 +89,7 @@ class home extends CI_Controller
     //订单记录
     public function orderR(){
 
-		$this->load->view('orderRecorde');
+		$this->load->view('orderRecord');
 	}
    //订单详情
     public function orderI(){

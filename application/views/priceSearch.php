@@ -37,11 +37,7 @@
     </div>
     <div class="am-u-sm-4 sbnt">
       <select id="adate" class="date" data-am-selected="{maxHeight: 100}">
-       <!--  <option value="2016-3-16">2016-3-16</option>
-        <option value="2016-3-15">2016-3-15</option>
-        <option value="2016-3-14">2016-3-14</option>
-        <option value="2016-3-13">2016-3-13</option>
-        <option value="2016-3-12">2016-3-12</option> -->
+      
       </select>
     </div>
     <br>
@@ -56,17 +52,17 @@
     </thead>
     <tbody>
       <tr>
-        <td>西兰花</td>
+        <td><a href="<?php echo site_url('home/price')?>">西兰花</a></td>
         <td>1kg</td>
         <td>5.5</td>
       </tr>
       <tr>
-        <td>小青菜</td>
+        <td><a href="<?php echo site_url('home/price')?>">小青菜</a></td>
         <td>1kg</td>
         <td>8</td>
       </tr>
       <tr>
-        <td>瘦肉</td>
+        <td><a href="<?php echo site_url('home/price')?>">瘦肉</a></td>
         <td>1kg</td>
         <td>30</td>
       </tr>

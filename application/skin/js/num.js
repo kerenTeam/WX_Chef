@@ -1,18 +1,26 @@
-/** 总价格 */
-var paymoney = 0;
+
 /** 初始化一个空数组用来存放已经添加的ID */
 var ids = new Array();
 /** 自增ID */
 var tempId = 0;
 /** 总份数*/
-var fen = parseInt(document.getElementById("fen").value); 
-// if(fen = 0){
-	
+var fens = document.getElementById("fen");
+var fen = parseFloat(fens.value); 
+var allmoney = document.getElementById("allmoney"); 
+/** 总价格 */
+var paymoney = parseFloat(allmoney.value); ;
+// function ueserWrite(obj){
+//  var counts = obj.value;
+//  var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
+//     // alert(prices);
+//     fens.value=parseFloat(counts);
+//     paymoney = parseFloat(counts)*prices;
+//     allmoney.value= paymoney.toFixed(2);
 // }
+
 function handle(self, isAdd){
     var countEl = self.parentNode.childNodes[3];
-    var curCount = parseInt(countEl.value); 
-	var allmoney = document.getElementById("allmoney"); 
+    var curCount = parseFloat(countEl.value); 
 	var reduce = self.parentNode.childNodes[1];
 	var price = self.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
 //	var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
@@ -23,28 +31,28 @@ function handle(self, isAdd){
 		fen++;
 		reduce.style.display="inline-block";
 		countEl.style.display="inline-block";
-		paymoney += parseInt(price);
+		paymoney += parseFloat(price);
 		
 	}else{
 		curCount--;
 		fen--;
 		if(curCount <1){
 			curCount = 0; 
-			paymoney =paymoney-parseInt(price)*1;
+			paymoney =paymoney-parseFloat(price)*1;
 			reduce.style.display="none";
 			countEl.style.display="none";
 
 		}else
-			paymoney -= parseInt(price);
+			paymoney -= parseFloat(price);
 	}
-	document.getElementById("fen").value=fen;
+	fens.value=fen;
     countEl.value=curCount;
     
-	if(self.parentNode.id == "")
-		self.parentNode.id = "numId-" + (tempId++);
-	var foodtotal=parseInt(price)*curCount;
+	// if(self.parentNode.id == "")
+	// 	self.parentNode.id = "numId-" + (tempId++);
+	// var foodtotal=parseFloat(price)*curCount;
 	//handleHidden(self.parentNode.id,foodname, curCount,foodtotal, foodId);
-	allmoney.value= paymoney;
+	allmoney.value= paymoney.toFixed(2);
 }
 
 // function handleHidden(id,name, count,total, fid){
