@@ -17,7 +17,7 @@
   <ul class="am-list">
 
       <li class="am-g am-list-item-dated">
-           <a><span class="acm"> 账户 </span> <span class="green"> 15708434450 </span></a>
+            <a class="gray"><span class="acm"> 账户</span> <span class="green"> 15708434450 </span></a>
           <span class="am-list-date">余额<span class="pink acm"> 30 </span></span>
       </li> 
   </ul>

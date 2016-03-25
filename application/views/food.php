@@ -24,7 +24,7 @@
         <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-          <input type="text" class="numTxt" name="numbers" readonly="readonly" value="2">
+          <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="2">
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
         
@@ -76,7 +76,7 @@
       </div>
     </div>
     
-    <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
+    <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">
       <a href="<?php echo site_url('home/order')?>">
         <div class="am-u-sm-8 green a">
           <img src="skin/img/cl.png" class="cartImg" alt=""><input type="text" id="fen" class="allmoney" value="2">份
@@ -90,6 +90,35 @@
       </a>
     </div>
   </form>
+  <!-- footer -->
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
+  <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
+    <li >
+      <a href="<?php echo site_url('home/index')?>" class="active">
+        <span class=""><img src="skin/img/home2.png" alt=""></span>
+        <span class="am-navbar-label">首页</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/cailan')?>">
+        <span class=""><img src="skin/img/clz.png" alt=""></span>
+        <span class="am-navbar-label">菜单</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/ucent')?>">
+        <span class=""><img src="skin/img/gr1.png" alt=""></span>
+        <span class="am-navbar-label">个人</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/search')?>">
+        <span class=""><img src="skin/img/ss.png" alt=""></span>
+        <span class="am-navbar-label">搜索</span>
+      </a>
+    </li>
+  </ul>
+</div>
   <script src="skin/js/jquery.min.js"></script>
   <script src="skin/js/num.js"></script>
   <script>

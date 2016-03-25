@@ -7,31 +7,31 @@
     </a>
   </div>
   <h1 class="am-header-title">
-  菜篮子
+  菜单
   </h1>
   
 </header>
-<form action="" method="" enctype="multipart/form-data" style="position: fixed;top:49px;left:0;width:100%;height:100%;">
+<form action="" method="" enctype="multipart/form-data">
+ <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
   <!-- 菜品栏目 -->
-  <div class="am-u-sm-3 cmn" style="height: 100%;overflow-y:auto; ">
-    <!--  <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: 148}" data-am-sticky> -->
+  <div class="am-u-sm-3 cmn"><!--  style="height: 100%;overflow-y:auto; " -->
+     <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: 148}" data-am-sticky>
     <div class="pink typec"><img src="skin/img/type.png" alt="">&nbsp;分类</div>
     <ul class="am-list typel">
-      <li><a href="<?php echo site_url('home/cailan')?>#1"><img src="skin/img/t1.png" alt="">&nbsp;热菜</a></li>
-      <li><a href="<?php echo site_url('home/cailan')?>#2"><img src="skin/img/t2.png" alt="">&nbsp;小吃</a></li>
-      <li><a href="<?php echo site_url('home/cailan')?>#3"><img src="skin/img/t3.png" alt="">&nbsp;海河鲜</a></li>
-      <li><a href="<?php echo site_url('home/cailan')?>#4"><img src="skin/img/t4.png" alt="">&nbsp;凉菜</a></li>
-      <li><a href="<?php echo site_url('home/cailan')?>#5"><img src="skin/img/t5.png" alt="">&nbsp;汤</a></li>
-      <li><a href="<?php echo site_url('home/cailan')?>#6"><img src="skin/img/t6.png" alt="">&nbsp;燕鲍翅</a></li>
-      <li><a href="<?php echo site_url('home/cailan')?>#7"><img src="skin/img/t7.png" alt="">&nbsp;套餐</a></li>
+      <li><a href="#1"><img src="skin/img/t1.png" alt="">&nbsp;热菜</a></li>
+      <li><a href="#2"><img src="skin/img/t2.png" alt="">&nbsp;小吃</a></li>
+      <li><a href="#3"><img src="skin/img/t3.png" alt="">&nbsp;海河鲜</a></li>
+      <li><a href="#4"><img src="skin/img/t4.png" alt="">&nbsp;凉菜</a></li>
+      <li><a href="#5"><img src="skin/img/t5.png" alt="">&nbsp;汤</a></li>
+      <li><a href="#6"><img src="skin/img/t6.png" alt="">&nbsp;燕鲍翅</a></li>
+      <li><a href="#7"><img src="skin/img/t7.png" alt="">&nbsp;套餐</a></li>
 
     </ul>
-    <!-- </nav> -->
+    </nav>
   </div>
-  <!-- 菜品选择 -->
-  <div class="am-u-sm-9 asp cmn" style="height: 100%;overflow-y:auto;padding-bottom: 8.5rem;">
+  <!-- 菜品选择 --> <!-- style="height: 100%;overflow-y:auto;padding-bottom: 8.5rem;" -->
+  <div data-am-widget="list_news" class="am-u-sm-9 asp cmn">
     <div class="cmn cmnb am-list-news am-list-news-default" >
-      <!-- data-am-widget="list_news"  -->
       <div class="am-list-news-bd">
         <p id="1">热菜</p>
         <ul class="am-list">
@@ -48,7 +48,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -66,7 +66,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">58</span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -85,7 +85,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">28</span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -103,7 +103,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">68</span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -121,7 +121,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">78</span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -142,7 +142,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">28</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -160,7 +160,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">28</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -178,7 +178,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">26</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -196,7 +196,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">26</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -214,7 +214,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">48</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -232,7 +232,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">28</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -253,7 +253,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">188</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -271,7 +271,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">128</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -289,7 +289,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">68</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -307,7 +307,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">88</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -328,7 +328,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">28</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -346,7 +346,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">32</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -364,7 +364,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">22</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -382,7 +382,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">88</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -400,7 +400,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">12</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -418,7 +418,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">38</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -436,7 +436,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">28</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -454,7 +454,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">38</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -475,7 +475,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">48</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -493,7 +493,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">88</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -511,7 +511,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">120</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -532,7 +532,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">208</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -550,7 +550,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">388</span><span class="am-text-xs gray"> /45g</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -568,7 +568,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">888</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -590,7 +590,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">589</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -608,7 +608,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">789</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -626,7 +626,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">889</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -644,7 +644,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">989</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -662,7 +662,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1289</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -680,7 +680,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1589</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -698,7 +698,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1086</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -716,7 +716,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -734,7 +734,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1086</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -752,7 +752,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -770,7 +770,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -788,7 +788,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1086</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -806,7 +806,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -824,7 +824,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -842,209 +842,20 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
           </li>
         </ul>
-       <!--  <p id="8">寿宴套餐</p>
-        <ul class="am-list">
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/bzsbsp.jpg" alt="冰镇素鲍双拼 108"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">1086元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1086</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/qwhqb.jpg" alt="奇味虎掌鲍 168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">1286元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-        </ul> -->
-       <!--  <p id="9">婚宴套餐</p>
-        <ul class="am-list">
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/bzsbsp.jpg" alt="冰镇素鲍双拼 108"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">1314元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1086</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/qwhqb.jpg" alt="奇味虎掌鲍 168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">1520元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/qwhqb.jpg" alt="奇味虎掌鲍 168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">1888元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/qwhqb.jpg" alt="奇味虎掌鲍 168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">2020元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-        </ul> -->
-       <!--  <p id="10">团拜宴套餐</p>
-        <ul class="am-list">
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/bzsbsp.jpg" alt="冰镇素鲍双拼 108"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">899元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1086</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/qwhqb.jpg" alt="奇味虎掌鲍 168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">1099元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/qwhqb.jpg" alt="奇味虎掌鲍 168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">1299元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
-              <a href="" class="vimg">
-                <img src="skin/img/product/qwhqb.jpg" alt="奇味虎掌鲍 168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">1599元系列</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">月销<span class="vimg">100</span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">1286</span></div>
-              <div class="foodNum">
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" readonly name="numbers" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-              </div>
-            </div>
-          </li>
-        </ul> -->
       </div>
     </div>
   </div>
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
-    <a href="<?php echo site_url('home/shoppingcart')?>">
+    <a href="<?php echo site_url('home/cart')?>">
       <div class="am-u-sm-8 a">
-        <span class="green"><img src="skin/img/cart.png" alt=""><input type="text" id="fen" class="allmoney" value="0">份</span>
+        <span class="green"><img src="skin/img/cart.png" alt=""><input type="text" id="fen" readonly class="allmoney" value="0">份</span>
         <i class="am-icon-cny red"></i><input type="text" id="allmoney" readonly class="allmoney red" value="0">
       </div>
       <div class="am-u-sm-4 b">
@@ -1059,24 +870,24 @@
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/num.js"></script>
 <script>
-var urlstr = location.href;
-//alert((urlstr + '/').indexOf($(this).attr('href')));
-var urlstatus=false;
-$(".typel li a").each(function () {
-if ((urlstr + '/').indexOf($(this).attr('href')) > -1&&$(this).attr('href')!='') {
-$(this).addClass('currenta'); urlstatus = true;
-} else {
-$(this).removeClass('currenta');
-}
-});
-if (!urlstatus) {$(".typel li a").eq(0).addClass('currenta'); }
+// var urlstr = location.href;
+// //alert((urlstr + '/').indexOf($(this).attr('href')));
+// var urlstatus=false;
+// $(".typel li a").each(function () {
+// if ((urlstr + '/').indexOf($(this).attr('href')) > -1&&$(this).attr('href')!='') {
+// $(this).addClass('currenta'); urlstatus = true;
+// } else {
+// $(this).removeClass('currenta');
+// }
+// });
+// if (!urlstatus) {$(".typel li a").eq(0).addClass('currenta'); }
 
-$(function(){
+ $(function(){
 
-$('.typel li a').on('click',function(){
-$('.typel li a').removeClass('currenta');
-$(this).addClass('currenta');
-})
+// $('.typel li a').on('click',function(){
+// $('.typel li a').removeClass('currenta');
+// $(this).addClass('currenta');
+// })
 
 var inputs = $('.numTxt');
 inputs.each(function() {

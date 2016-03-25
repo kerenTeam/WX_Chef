@@ -61,7 +61,7 @@
         <li>
           <a href="<?php echo site_url('home/cailan')?>">
             <span class=""><img src="skin/img/clz.png" alt=""></span>
-            <span class="am-navbar-label">菜篮子</span>
+            <span class="am-navbar-label">菜单</span>
           </a>
         </li>
         <li>
@@ -76,4 +76,9 @@
 </body>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
+<script>
+  $(function(){
+    $('.am-selected-status').html('点击选择');
+  })
+</script>
 </html>

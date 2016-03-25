@@ -36,7 +36,7 @@ class home extends CI_Controller
 
 		$this->load->view('index');
 	}
-	//菜篮子 by wf
+	//菜单 by wf
 	public function cailan(){
 
 		$this->load->view('cailan');
@@ -61,15 +61,30 @@ class home extends CI_Controller
 
 		$this->load->view('shoppingcart');
 	}
+	//购物车 new
+	public function cart(){
+
+		$this->load->view('cart');
+	}
     //订单
     public function order(){
 
 		$this->load->view('order');
 	}
+	//付款成功
+    public function paySuccess(){
+
+		$this->load->view('paySuccess');
+	}
 	//评价 
 	public function comment(){
 
 		$this->load->view('comment');
+	}
+	//评价成功 
+	public function comsuc(){
+
+		$this->load->view('comsuc');
 	}
     //个人中心
 	public function ucent(){

@@ -14,45 +14,32 @@
     <div class="am-list-news-bd">
       <ul class="am-list odl">
         <li class="am-g am-list-item-dated">
-          <a href="##" class="am-list-item-hd ">香辣鸡翅 X1</a>
+          <a href="javascript:" class="am-list-item-hd ">香辣鸡翅 X1</a>
           <span class="am-list-date"><i class="am-icon-cny"></i>30</span>
         </li>
         <li class="am-g am-list-item-dated">
-          <a href="##" class="am-list-item-hd ">鱼香茄子 X1</a>
+          <a href="javascript:" class="am-list-item-hd ">鱼香茄子 X1</a>
           <span class="am-list-date"><i class="am-icon-cny"></i>20</span>
         </li>
         <li class="am-g am-list-item-dated">
-          <a href="##" class="am-list-item-hd ">鱼香茄子 X1</a>
+          <a href="javascript:" class="am-list-item-hd ">鱼香茄子 X1</a>
           <span class="am-list-date"><i class="am-icon-cny"></i>20</span>
         </li>
         <li class="am-g am-list-item-dated">
-          <a href="##" class="am-list-item-hd ">订单合计</a>
+          <a href="javascript:" class="am-list-item-hd">订单总计</a>
           <span class="am-list-date"><i class="am-icon-cny red">70</i></span>
         </li>
         <!--  <p class="marginl">合计：<i class="am-icon-cny red">70</i></p> -->
-        <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
-      </ul>
       
+      </ul>
+        <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
     </div>
     <div class="am-shadow">
-      <p class="htit"><span class="am-icon-usd red"></span> 支付方式</p>
-      <div class="am-g pay">
-        <label class="am-radio am-u-sm-6">
-          <input type="radio" name="radio10" value="" data-am-ucheck> 支付宝
-        </label>
-        <label class="am-radio am-u-sm-6 wxradio">
-          <input type="radio" name="radio10" value="" data-am-ucheck> 微信
-        </label>
-      </div>
-      <div class="am-g pay">
-        <label class="am-radio am-u-sm-6">
-          <input type="radio" name="radio10" value="" data-am-ucheck> 预约上门现金支付
-        </label>
-        <label class="am-checkbox am-warning am-u-sm-6">
-          <input type="checkbox" name="radio10" value="" data-am-ucheck> <!-- <img src="skin/img/qu.png" alt=""> -->优惠券立减50
-        </label>
-      </div>
+      <p class="htit"><span class="am-icon-gift red"> </span> 优惠券<span class="am-fr">2张可选</span> </p>
+      <a href="<?php echo site_url('home/card')?>" class="am-cf adc"><img src="skin/img/qu.png" alt=""> 优惠券 <span class="am-icon-cny"></span>5 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
     </div>
+    
+
     <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
     <div class="am-shadow">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
@@ -77,6 +64,8 @@
       </div>
       
       <button type="submit" class="am-u-sm-12 am-btn bgreen os">提交</button>
+      <!-- 演示  可删除-->
+      <a href="<?php echo site_url('home/paySuccess')?>">提交</a>
     </form>
   </body>
 </html>

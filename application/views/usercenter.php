@@ -13,7 +13,7 @@
           <a href="<?php echo site_url('home/vip')?>" class="am-list-item-hd "><img src="skin/img/bc.png" alt=""> 会员卡</a>  
       </li>
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/shoppingcart')?>" class="am-list-item-hd "><img src="skin/img/cl.png" alt=""> 菜篮子</a> 
+          <a href="<?php echo site_url('home/cart')?>" class="am-list-item-hd "><img src="skin/img/cl.png" alt=""> 购物车</a> 
       </li>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/orderR')?>" class="am-list-item-hd "><img src="skin/img/d.png" alt=""> 订单管理</a> 
@@ -26,6 +26,11 @@
       </li>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/set')?>" class="am-list-item-hd "><img src="skin/img/set.png" alt=""> 个人设置</a> 
+      </li>
+  </ul>
+    <ul class="am-list userl">
+      <li class="am-g am-list-item-dated">
+          <a href="<?php echo site_url('home/card')?>" class="am-list-item-hd "><img src="skin/img/set.png" style="visibility: hidden;" alt="">注销</a> 
       </li>
   </ul>
   </div>
@@ -49,6 +54,12 @@
           <a href="<?php echo site_url('home/ucent')?>" class="active">
             <span class=""><img src="skin/img/gr2.png" alt=""></span>
             <span class="am-navbar-label">个人</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('home/search')?>">
+            <span class=""><img src="skin/img/ss.png" alt=""></span>
+            <span class="am-navbar-label">搜索</span>
           </a>
         </li>
       </ul>

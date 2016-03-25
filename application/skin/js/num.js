@@ -8,19 +8,46 @@ var fens = document.getElementById("fen");
 var fen = parseFloat(fens.value); 
 var allmoney = document.getElementById("allmoney"); 
 /** 总价格 */
-var paymoney = parseFloat(allmoney.value); ;
-// function ueserWrite(obj){
-//  var counts = obj.value;
-//  var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
-//     // alert(prices);
-//     fens.value=parseFloat(counts);
-//     paymoney = parseFloat(counts)*prices;
-//     allmoney.value= paymoney.toFixed(2);
-// }
+var paymoney = parseFloat(allmoney.value);
+var curCount;
+var num = 0;
+function IsNum(e) {
+            var k = window.event ? e.keyCode : e.which;
+            if (((k >= 48) && (k <= 57)) || k == 8 || k == 0) {
+            } else {
+                if (window.event) {
+                    window.event.returnValue = false;
+                }
+                else {
+                    e.preventDefault(); //for firefox 
+                }
+            }
+        } 
+
+function blurWrite(input){
+	num = input.value;
+	console.log(num)
+}
+function ueserWrite(obj){
+   curCount = obj.value;
+ if(!/^[0-9]*[1-9][0-9]*$/.test(obj.value) || curCount ==''){
+ 	alert("请输入大于0的整数哟！");
+ 	obj.focus();
+ 	obj.value=num;
+ 	return false;
+ }
+ var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
+    // alert(prices);
+     console.log(fen);
+    fen +=(parseFloat(curCount) - num);
+    fens.value = fen;
+    paymoney += (parseFloat(curCount) - num)*prices;
+    allmoney.value= paymoney.toFixed(2);
+}
 
 function handle(self, isAdd){
     var countEl = self.parentNode.childNodes[3];
-    var curCount = parseFloat(countEl.value); 
+        curCount = parseFloat(countEl.value); 
 	var reduce = self.parentNode.childNodes[1];
 	var price = self.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
 //	var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */

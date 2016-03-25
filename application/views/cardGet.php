@@ -31,7 +31,7 @@
   <div class="am-modal-dialog">
     <div class="am-modal-hd"><!-- <img src="skin/img/chef.png" alt=""> --><i class="am-icon-check green"></i>领券成功</div>
     <div class="am-modal-bd" style="font-size: 14px">
-     该券截止日期：3月18号，<a class="red" href="<?php echo site_url('home/buy')?>">立即使用</a>吧！
+     该券截止日期：3月18号，<a class="red" href="<?php echo site_url('home/cailan')?>">立即使用</a>吧！
     </div>
     <div class="am-modal-footer">
       <span class="am-modal-btn">确定</span>

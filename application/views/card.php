@@ -24,10 +24,10 @@
   <div class="am-list-news-bd">
     <ul class="am-list acr">
       <li class="am-g">
-        <a href=""><img src="skin/img/card1.png" alt=""></a>
+        <a href="javascript:"><img src="skin/img/card1.png" alt=""></a>
       </li>
       <li class="am-g">
-        <a href=""><img src="skin/img/card2.png" alt=""></a>
+        <a href="javascript:"><img src="skin/img/card2.png" alt=""></a>
       </li>
     </ul>
   </div>
@@ -36,7 +36,7 @@
   <div class="am-list-news-bd">
     <ul class="am-list acr">
       <li class="am-g">
-        <a href=""><img src="skin/img/cardo.png" alt=""></a>
+        <a href="javascript:"><img src="skin/img/cardo.png" alt=""></a>
       </li>
     </ul>
   </div>
