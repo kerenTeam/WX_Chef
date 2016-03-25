@@ -70,16 +70,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
+
+/*
+|
+|注解
+|对于 PDO 驱动，你应该使用 $config['dsn'] 取代 'hostname' 和 'database' 参数：
+|$config['dsn'] = 'mysql:host=localhost;dbname=mydatabase';
+*/
 $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn'	=> 'mysql:host=localhost;dbname=chef',
+	//'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => 'mysqli',
+	'username' => 'root',
+	'password' => 'Aaron',
+	'database' => 'chef',
+	//'dbdriver' => 'mysqli',
+	'dbdriver' => 'PDO',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
