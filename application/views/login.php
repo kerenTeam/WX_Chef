@@ -9,7 +9,7 @@
 
 <body class="login">
 	<div class="login_center">
-		<img src="skin/img/login_logo.png">
+		<img src="skin/img/logoico.png">
 		<br/>
 		<a href="<?php echo site_url('home/login2')?>" class="am-btn am-btn-success am-radius">登陆</a>
 		<a href="<?php echo site_url('home/register')?>" class="am-btn am-btn-default am-radius">新用户</a>

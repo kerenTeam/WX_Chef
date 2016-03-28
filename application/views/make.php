@@ -20,16 +20,9 @@
   <div class="am-u-md-8 am-u-sm-centered">
     <form class="am-form">
       <fieldset class="am-form-set">
-        <select data-am-selected>
-          <option value="">“爱大厨”风格套餐选择</option>
-          <option value="a">婚宴套餐</option>
-          <option value="b">寿宴套餐</option>
-          <option value="o">团拜宴套餐</option>
-          <option value="m">日常套餐</option>
-        </select>
-        <input type="text" placeholder="用餐桌数" required>
-        <input type="text" placeholder="用餐时间" required>
-        <input type="text" placeholder="联系方式" required>
+        <input type="text" placeholder="请输入用餐桌数" required>
+        <input type="text" placeholder="请输入用餐时间" required>
+        <input type="text" placeholder="请输入联系方式" required>
       </fieldset>
       <button type="submit" class="am-btn am-btn-block bred">确定</button>
     </form>

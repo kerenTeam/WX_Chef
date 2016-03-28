@@ -21,10 +21,29 @@
       <input type="search" class="am-form-field" placeholder="请输入菜名或食材">
     </div>
   </form>
-    <div class="hotsou">
-        <div class="am-text-sm">热门搜索：</div>
-        <a href="<?php echo site_url('home/dinner')?>">团拜宴</a><a href="<?php echo site_url('home/food')?>">清炖滋补甲鱼汤</a><a href="<?php echo site_url('home/food')?>">婚宴</a><a href="<?php echo site_url('home/dinner')?>">松茸乳鸽盅</a><a href="<?php echo site_url('home/food')?>">红花汁扣辽参</a><a href="<?php echo site_url('home/food')?>">清汤竹荪炖血燕</a>
+  <div class="hotsou">
+    <div class="am-text-sm">热门搜索：</div>
+    <a href="<?php echo site_url('home/dinner')?>">团拜宴</a><a href="<?php echo site_url('home/food')?>">清炖滋补甲鱼汤</a><a href="<?php echo site_url('home/food')?>">婚宴</a><a href="<?php echo site_url('home/dinner')?>">松茸乳鸽盅</a><a href="<?php echo site_url('home/food')?>">红花汁扣辽参</a><a href="<?php echo site_url('home/food')?>">清汤竹荪炖血燕</a>
+  </div>
+   <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+  <div class="hotsou">
+    <div class="am-text-sm">搜索记录：</div>
+    <ul>
+      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/dinner')?>">团拜宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
+      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/food')?>">清炖滋补甲鱼汤</a> <button type="button" class="am-close am-fr">&times;</button></li>
+      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/food')?>">婚宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
+      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/dinner')?>">松茸乳鸽盅</a> <button type="button" class="am-close am-fr">&times;</button></li>
+    </ul>
+  </div>
 
-    </div>
-</body>
+  </body>
+  <script src="skin/js/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('.am-close').on('click',function(){
+        $(this).parent('li').remove();
+      })
+
+    })
+  </script>
 </html>

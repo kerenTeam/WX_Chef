@@ -16,7 +16,7 @@
     <div class="cmn cmnb am-list-news am-list-news-default" >
       <div class="am-list-news-bd">
         <div class="am-text-center oln">点菜</div>
-          <ul class="am-list">
+          <ul class="am-list cul">
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-list-thumb">
                 <a href="<?php echo site_url('home/food')?>" class="vimg">
@@ -28,7 +28,7 @@
                 <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
-                  <input type="text" class="numTxt inborder" onchange="ueserWrite(this)" name="numbers" value="1">
+                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="1">
                   <span class="am-icon-plus" onClick="handle(this, true)"></span>
                 </div>
                 <a href="" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
@@ -36,7 +36,7 @@
             </li>
           </ul>
         <div class="am-text-center oln">套餐</div>
-          <ul class="am-list">
+          <ul class="am-list cul">
             
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-list-thumb">
@@ -49,7 +49,7 @@
                 <div class="pr"><i class="am-icon-cny"></i><span class="price">589</span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
-                  <input type="text" class="numTxt inborder" onchange="ueserWrite(this)" name="numbers" value="1">
+                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="1">
                   <span class="am-icon-plus" onClick="handle(this, true)"></span>
                 </div>
                 <a href="" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
@@ -64,8 +64,8 @@
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
     <a href="<?php echo site_url('home/order')?>">
       <div class="am-u-sm-8 a">
-        <span class="green"><img src="skin/img/cart.png" alt=""><input type="text" id="fen" class="allmoney" value="2">份</span>
-        <i class="am-icon-cny red"></i><input type="text" id="allmoney" readonly class="allmoney red" value="757">
+        <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney">2</span>份</span>
+        <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">757</span>
       </div>
       <div class="am-u-sm-4 b">
         
@@ -78,5 +78,6 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/num.js"></script>
+
 </body>
 </html>

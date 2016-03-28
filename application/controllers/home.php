@@ -51,6 +51,11 @@ class home extends CI_Controller
 
 		$this->load->view('food');
 	}
+	//图文详情
+	public function lifeInfo(){
+
+		$this->load->view('lifeInfo');
+	}
 	//套餐详情
 	public function dinner(){
 
@@ -155,6 +160,11 @@ class home extends CI_Controller
 	public function make(){
 
 		$this->load->view('make');
+	}
+	//宴会定制选餐
+	public function party(){
+
+		$this->load->view('party');
 	}
 	//客服
 	public function custom(){

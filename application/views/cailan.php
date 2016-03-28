@@ -1,13 +1,13 @@
 <body>
   <!-- header -->
-  <header data-am-widget="header" class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
+  <header data-am-widget="header" data-am-sticky class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
   <div class="am-header-left am-header-nav">
     <a href="<?php echo site_url('home/index')?>">
       <i class="am-header-icon am-icon-chevron-left"></i>
     </a>
   </div>
   <h1 class="am-header-title">
-  菜单
+  菜篮子
   </h1>
   
 </header>
@@ -15,7 +15,7 @@
  <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
   <!-- 菜品栏目 -->
   <div class="am-u-sm-3 cmn"><!--  style="height: 100%;overflow-y:auto; " -->
-     <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: 148}" data-am-sticky>
+     <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: -48}" data-am-sticky="{top:49}">
     <div class="pink typec"><img src="skin/img/type.png" alt="">&nbsp;分类</div>
     <ul class="am-list typel">
       <li><a href="#1"><img src="skin/img/t1.png" alt="">&nbsp;热菜</a></li>
@@ -42,13 +42,13 @@
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">蓉记姜葱香辣蟹</h3>
+              <h3 class="am-list-item-hd"><a href="<?php echo site_url('home/food')?>" class="black">蓉记姜葱香辣蟹</a></h3>
               <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
               <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg">100</span>份</div>
               <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -60,13 +60,13 @@
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">渝记精品毛血旺</h3>
+              <h3 class="am-list-item-hd"><a href="<?php echo site_url('home/food')?>" class="black">渝记精品毛血旺</a></h3>
               <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
               <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg">100</span>份</div>
               <div class="pr"><i class="am-icon-cny"></i><span class="price">58</span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -79,7 +79,7 @@
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">烂肉豇豆</h3>
+              <h3 class="am-list-item-hd"><a href="<?php echo site_url('home/food')?>" class="black">烂肉豇豆</a></h3>
               <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
               <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg">100</span>份</div>
               <div class="pr"><i class="am-icon-cny"></i><span class="price">28</span><span class="am-text-xs gray"> /份</span></div>
@@ -97,7 +97,7 @@
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">双味大对虾</h3>
+              <h3 class="am-list-item-hd"><a href="<?php echo site_url('home/food')?>" class="black">双味大对虾</a></h3>
               <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
               <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg">100</span>份</div>
               <div class="pr"><i class="am-icon-cny"></i><span class="price">68</span><span class="am-text-xs gray"> /份</span></div>
@@ -115,7 +115,7 @@
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">山地土豆烧甲鱼</h3>
+              <h3 class="am-list-item-hd"><a href="<?php echo site_url('home/food')?>" class="black">山地土豆烧甲鱼</a></h3>
               <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
               <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg">100</span>份</div>
               <div class="pr"><i class="am-icon-cny"></i><span class="price">78</span><span class="am-text-xs gray"> /份</span></div>
@@ -136,7 +136,7 @@
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd">寿桃</h3>
+              <h3 class="am-list-item-hd"><a href="<?php echo site_url('home/food')?>" class="black">寿桃</a></h3>
               <div class="am-list-item-text"><strong>特点：</strong>香甜松软。</div>
               <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg">100</span>份</div>
               <div class="pr"><i class="am-icon-cny"></i><span class="price">28</span></div>
@@ -855,8 +855,8 @@
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
     <a href="<?php echo site_url('home/cart')?>">
       <div class="am-u-sm-8 a">
-        <span class="green"><img src="skin/img/cart.png" alt=""><input type="text" id="fen" readonly class="allmoney" value="0">份</span>
-        <i class="am-icon-cny red"></i><input type="text" id="allmoney" readonly class="allmoney red" value="0">
+        <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney">0</span>份</span>
+        <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
       </div>
       <div class="am-u-sm-4 b">
         

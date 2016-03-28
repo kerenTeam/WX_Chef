@@ -5,10 +5,11 @@ var ids = new Array();
 var tempId = 0;
 /** 总份数*/
 var fens = document.getElementById("fen");
-var fen = parseFloat(fens.value); 
+//var fen = parseFloat(fens.value); 
+var fen = parseFloat(fens.innerHTML);
 var allmoney = document.getElementById("allmoney"); 
 /** 总价格 */
-var paymoney = parseFloat(allmoney.value);
+var paymoney = parseFloat(allmoney.innerHTML);
 var curCount;
 var num = 0;
 function IsNum(e) {
@@ -25,7 +26,12 @@ function IsNum(e) {
         } 
 
 function blurWrite(input){
-	num = input.value;
+	if(input.value == '' || input.value == NaN ||input.value == 0){
+		input.value = num;
+	}else{
+		num = input.value;
+	}
+	
 	console.log(num)
 }
 function ueserWrite(obj){
@@ -40,9 +46,9 @@ function ueserWrite(obj){
     // alert(prices);
      console.log(fen);
     fen +=(parseFloat(curCount) - num);
-    fens.value = fen;
+    fens.innerHTML = fen;
     paymoney += (parseFloat(curCount) - num)*prices;
-    allmoney.value= paymoney.toFixed(2);
+    allmoney.innerHTML= paymoney.toFixed(2);
 }
 
 function handle(self, isAdd){
@@ -72,14 +78,14 @@ function handle(self, isAdd){
 		}else
 			paymoney -= parseFloat(price);
 	}
-	fens.value=fen;
+	fens.innerHTML=fen;
     countEl.value=curCount;
     
 	// if(self.parentNode.id == "")
 	// 	self.parentNode.id = "numId-" + (tempId++);
 	// var foodtotal=parseFloat(price)*curCount;
 	//handleHidden(self.parentNode.id,foodname, curCount,foodtotal, foodId);
-	allmoney.value= paymoney.toFixed(2);
+	allmoney.innerHTML= paymoney.toFixed(2);
 }
 
 // function handleHidden(id,name, count,total, fid){

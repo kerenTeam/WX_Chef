@@ -30,11 +30,22 @@
   </ul>
     <ul class="am-list userl">
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/card')?>" class="am-list-item-hd "><img src="skin/img/set.png" style="visibility: hidden;" alt="">注销</a> 
+          <a href="javascript:" data-am-modal="{target: '#my-alert'}" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
       </li>
   </ul>
   </div>
-
+  <!-- 注销弹框 -->
+      <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+          <div class="am-modal-bd">
+            你，确定要注销吗？
+          </div>
+          <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+          </div>
+        </div>
+      </div>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
@@ -45,15 +56,9 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('home/cailan')?>">
+          <a href="<?php echo site_url('home/cart')?>">
             <span class=""><img src="skin/img/clz.png" alt=""></span>
             <span class="am-navbar-label">菜篮子</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo site_url('home/ucent')?>" class="active">
-            <span class=""><img src="skin/img/gr2.png" alt=""></span>
-            <span class="am-navbar-label">个人</span>
           </a>
         </li>
         <li>
@@ -62,7 +67,15 @@
             <span class="am-navbar-label">搜索</span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo site_url('home/ucent')?>" class="active">
+            <span class=""><img src="skin/img/gr2.png" alt=""></span>
+            <span class="am-navbar-label">个人</span>
+          </a>
+        </li>
       </ul>
     </div> 
   </body>
+    <script src="skin/js/jquery.min.js"></script>
+  <script src="skin/js/amazeui.min.js"></script>
 </html>
