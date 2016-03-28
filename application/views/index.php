@@ -14,18 +14,12 @@
       <button type="button" class="am-btn am-btn-primary cardbtn" data-am-modal="{target: '#my-alert'}"> 领取
       </button>
     </li> -->
+    <?php foreach($banners as $val):?>
     <li>
-      <a href="<?php echo site_url('home/cardGet')?>"><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
+      <a href="<?php echo site_url('home/cardGet')?>"><img src="<?=$val['thumb']?>" class="am-img-responsive card" alt="<?=$val['title']?>"></a>
       
     </li>
-    <li>
-      <a href="<?php echo site_url('home/cardGet')?>"><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
-      
-    </li>
-    <li>
-      <a href="<?php echo site_url('home/cardGet')?>"><img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家"></a>
-      
-    </li>
+  <?php endforeach;?>
   </ul>
 </div>
 <!-- 菜品 -->

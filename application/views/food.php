@@ -6,25 +6,29 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    尖椒回锅肉
+    <?=$foods['foodName'];?>
     </h1>
     
   </header>
   <!-- 详情 -->
   <form action="" method="" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
-      <div class="fimg"><img src="skin/img/product/rjx.jpg" class="am-img-responsive card" alt="大厨到家"></div>
+      <div class="fimg"><img src="<?=base_url($foods['foodPic']);?>" class="am-img-responsive card" alt="<?=$foods['foodName'];?>"></div>
       <div class="am-g">
-        <h2>蓉记姜葱香辣蟹</h2>
-        <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">100</span>份</div>
-        <p class="am-text-sm"><strong>主料：</strong>八品猪肚、八品绞肉、八品猪舌、八品猪心、八品五花肉。</p>
-        <p class="am-text-sm"><strong>辅料：</strong>青笋、胡萝卜</p>
-        <p class="am-text-sm"><strong>简介：</strong>这道菜色泽鲜亮、 肥而不腻、 入口醇香、 香辣下饭, 绝对是米饭杀手。</p>
+        <h2> <?=$foods['foodName'];?></h2>
+        <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class=""> <?=$foods['monthSalesm'];?></span>份</div>
+        <p class="am-text-sm"><strong>主料：</strong><?=$foods['masterMaterial'];?></p>
+        <p class="am-text-sm"><strong>辅料：</strong><?=$foods['subordinationMaterial'];?></p>
+        <p class="am-text-sm"><strong>简介：</strong><?=$foods['note'];?></p>
         
-        <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
+        <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods['price'];?></span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
+<<<<<<< HEAD
           <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="2">
+=======
+          <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+>>>>>>> 5fb14c426e91046bcdd7657cb06b5b6fca4ca89f
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
         
@@ -38,15 +42,15 @@
         </h2>
       </div>
       <div class="am-u-sm-5 am-text-center">
-        <span class="red am-text-xxl">9.8</span>分<br>
+        <span class="red am-text-xxl"><?=$foods['appraise'];?></span>分<br>
         <span class="am-text-xs red"><i class="am-icon-star "></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i></span><br>
         <span class="am-text-xs"> 共20人评价</span>
         
       </div>
       <div class="am-u-sm-7 stars">
-        <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 4.9分</p>
-        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 4.9分</p>
-        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 4.9分</p>
+        <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods['dishScore'];?></p>
+        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods['chefScore'];?></p>
+        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods['waiterScore'];?></p>
       </div>
       <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
       <!-- 文字评论 -->
@@ -78,8 +82,13 @@
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">
       <a href="<?php echo site_url('home/order')?>">
         <div class="am-u-sm-8 green a">
+<<<<<<< HEAD
           <img src="skin/img/cl.png" class="cartImg" alt=""><span id="fen" class="allmoney">2</span>份
           <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">336</span>
+=======
+          <img src="skin/img/cl.png" class="cartImg" alt=""><input type="text" id="fen" class="allmoney" value="0">份
+          <i class="am-icon-cny red"><input type="text" id="allmoney" class="allmoney" readonly="readonly" value="0.00"></i>
+>>>>>>> 5fb14c426e91046bcdd7657cb06b5b6fca4ca89f
         </div>
         <div class="am-u-sm-4 b">
           <button type="submit" class="am-btn am-btn-success tijiao">确定</button>
