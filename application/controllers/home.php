@@ -9,37 +9,25 @@ class home extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->view('header');
+		$this->load->model('option_model');
+		$this->load->model('pack_model');
+		$data['site'] = $this->option_model->system('siteName');
+		$data['keyword'] = $this->option_model->system('keyWord');
+		$data['description'] = $this->option_model->system('keyWordDescriber');
+		// var_dump($data);
+		$this->load->view('header',$data);
 	}
-	//引导页
-    public function quota(){
-
-		$this->load->view('quota');
-	}
-    //登录页
-    public function login(){
-
-		$this->load->view('login');
-	}
-	//登录页next
-    public function login2(){
-
-		$this->load->view('login2');
-	}
-	//注册页
-    public function register(){
-
-		$this->load->view('register');
-	}
+	
 	//首页
 	public function index(){
-
-		$this->load->view('index');
+		$data = $this->option_model->banners();
+		$banner['banners'] = unserialize($data['banner']); 
+		$this->load->view('index',$banner);
 	}
 	//菜单 by wf
 	public function cailan(){
-
-		$this->load->view('cailan');
+		$data['cates'] = $this->pack_model->listcates();
+		$this->load->view('cailan',$data);
 	}
 	//点菜
 	public function buy(){
@@ -48,8 +36,10 @@ class home extends CI_Controller
 	}
 	//菜品详情
 	public function food(){
-
-		$this->load->view('food');
+		$id = $_GET['id'];
+		$data['foods'] = $this->pack_model->foods($id);
+		// var_dump($data);
+		$this->load->view('food',$data);
 	}
 	//套餐详情
 	public function dinner(){
