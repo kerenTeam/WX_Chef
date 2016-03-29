@@ -62,15 +62,6 @@
           </a>
         </li>
         <li>
-<<<<<<< HEAD
-          <a href="<?php echo site_url('user/ucent')?>" class="active">
-            <span class=""><img src="skin/img/gr2.png" alt=""></span>
-            <span class="am-navbar-label">个人</span>
-          </a>
-        </li>
-        <li>
-=======
->>>>>>> 7705ea9a3e45bbfe7914a4ae8cb00249bd9f593c
           <a href="<?php echo site_url('home/search')?>">
             <span class=""><img src="skin/img/ss.png" alt=""></span>
             <span class="am-navbar-label">搜索</span>

@@ -85,7 +85,7 @@ $db['default'] = array(
 	//'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'Aaron',
+	'password' => 'root',
 	'database' => 'chef',
 	//'dbdriver' => 'mysqli',
 	'dbdriver' => 'PDO',
@@ -102,6 +102,4 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
-
 );

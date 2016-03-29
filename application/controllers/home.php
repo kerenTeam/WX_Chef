@@ -81,11 +81,11 @@ class home extends CI_Controller
 
 		$this->load->view('comsuc');
 	}
- //    //个人中心
-	// public function ucent(){
+   //个人中心
+	public function ucent(){
 
-	// 	$this->load->view('usercenter');
-	// }
+		$this->load->view('usercenter');
+	 }
 	//个人设置
 	public function set(){
 
