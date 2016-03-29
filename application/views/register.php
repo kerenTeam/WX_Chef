@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>用户注册</title>
-	<meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="skin/css/amazeui.min.css">
+
   <link rel="stylesheet" href="skin/css/login.css">
   <style type="text/css">
   	html{
@@ -18,10 +9,10 @@
 </head>
 
 <body class="register">
-<form action="" method="" class="form_test">
+<form action="<?=site_url('login/regadd')?>" method="post" class="form_test">
 	<div class="reg_input flex">
 		<label>中国 +86</label>
-			<input type="tel" placeholder="请输入手机号码"/>
+		<input type="tel" placeholder="请输入手机号码" name="phone" />
 	</div>
 	<div class="reg_test" style="display: none;">
 		<input type="text" placeholder="请输入验证码"/>

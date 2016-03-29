@@ -16,7 +16,7 @@
     </li> -->
     <?php foreach($banners as $val):?>
     <li>
-      <a href="<?php echo site_url('home/cardGet')?>"><img src="<?=$val['thumb']?>" class="am-img-responsive card" alt="<?=$val['title']?>"></a>
+      <a href="<?php echo site_url('home/cardGet?money=').$val['url'];?>"><img src="<?=$val['thumb']?>" class="am-img-responsive card" alt="<?=$val['title']?>"></a>
       
     </li>
   <?php endforeach;?>
@@ -149,7 +149,7 @@
       </a>
     </li>
     <li>
-      <a href="<?php echo site_url('home/ucent')?>">
+      <a href="<?php echo site_url('user/ucent')?>">
         <span class=""><img src="skin/img/gr1.png" alt=""></span>
         <span class="am-navbar-label">个人</span>
       </a>

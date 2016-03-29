@@ -19,7 +19,7 @@
   <ul class="am-list">
 
       <li class="am-g am-list-item-dated">
-           <a><img src="skin/img/quan.png" class="am-u-sm-7" alt="card"></a>
+          <a><img src="skin/img/quan.png" class="am-u-sm-7" alt="card"></a>
           <span class="am-list-date"> <button type="button" class="am-u-sm-5 am-btn am-btn-primary cardbtn" data-am-modal="{target: '#my-alert'}"> 领取
     </button></span>
       </li> 

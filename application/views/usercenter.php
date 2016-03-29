@@ -51,7 +51,7 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo site_url('home/ucent')?>" class="active">
+          <a href="<?php echo site_url('user/ucent')?>" class="active">
             <span class=""><img src="skin/img/gr2.png" alt=""></span>
             <span class="am-navbar-label">个人</span>
           </a>

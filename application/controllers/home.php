@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
-*    
+*      首页+cate+菜品
 */
 class home extends CI_Controller
 {
@@ -76,11 +76,11 @@ class home extends CI_Controller
 
 		$this->load->view('comsuc');
 	}
-    //个人中心
-	public function ucent(){
+ //    //个人中心
+	// public function ucent(){
 
-		$this->load->view('usercenter');
-	}
+	// 	$this->load->view('usercenter');
+	// }
 	//个人设置
 	public function set(){
 
