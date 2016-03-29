@@ -106,18 +106,16 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-<<<<<<< HEAD
 	'username' => '',
 	'password' => '',
 	'database' => '',
 	'dbdriver' => 'mysqli',
-=======
 	'username' => 'root',
 	'password' => 'root',
 	'database' => 'chef',
 	//'dbdriver' => 'mysqli',
 	'dbdriver' => 'PDO',
->>>>>>> 5fb14c426e91046bcdd7657cb06b5b6fca4ca89f
+
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
