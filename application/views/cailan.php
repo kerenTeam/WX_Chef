@@ -17,7 +17,7 @@
  <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
   <!-- 菜品栏目 -->
   <div class="am-u-sm-3 cmn"><!--  style="height: 100%;overflow-y:auto; " -->
-     <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop:49}" data-am-sticky="{top:49}">
+     <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop:149}" data-am-sticky="{top:49}">
     <div class="pink typec"><img src="skin/img/type.png" alt="">&nbsp;分类</div>
     <ul class="am-list typel">
     <?php foreach($cates as $cate):?>
