@@ -115,17 +115,8 @@
     <li>
       <a href="<?php echo site_url('home/cart')?>">
         <span class=""><img src="skin/img/clz.png" alt=""></span>
-<<<<<<< HEAD
-        <span class="am-navbar-label">菜单</span>
-      </a>
-    </li>
-    <li>
-      <a href="<?php echo site_url('user/ucent')?>">
-        <span class=""><img src="skin/img/gr1.png" alt=""></span>
-        <span class="am-navbar-label">个人</span>
-=======
+
         <span class="am-navbar-label">菜篮子</span>
->>>>>>> 7705ea9a3e45bbfe7914a4ae8cb00249bd9f593c
       </a>
     </li>
     <li>
