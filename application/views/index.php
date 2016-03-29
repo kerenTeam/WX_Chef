@@ -1,22 +1,22 @@
 <body>
-  <!-- header -->
-<!--   <header data-am-widget="header" class="am-header am-header-default topform bheader">
-  <h1 class="am-header-title">
-  大厨到家
-  </h1>
-  
-</header> -->
+<!-- 注册弹框 -->
+<div class="tk">
+  <div class="tkcontent">
+    <span class="closetk"><img src="skin/img/closetk.png" alt="大厨到家"></span>
+    <img src="skin/img/tk.png" alt="大厨到家">
+    <div class="tktxt">
+      <div class="am-text-sm">亲，你还没有注册哟！注册即可享优惠</div>
+      <a class="rega" href="<?php echo site_url('home/register')?>">立即注册</a>
+      <p class="am-text-xs">已注册，直接<a class="red" href="<?php echo site_url('home/login')?>">登录</a></p>
+    </div>
+  </div>
+</div>
 <!-- banner -->
 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">
-    <!--   <li>
-      <img src="skin/img/card.png" class="am-img-responsive card" alt="大厨到家">
-      <button type="button" class="am-btn am-btn-primary cardbtn" data-am-modal="{target: '#my-alert'}"> 领取
-      </button>
-    </li> -->
     <?php foreach($banners as $val):?>
     <li>
-      <a href="<?php echo site_url('home/cardGet?money=').$val['url'];?>"><img src="<?=$val['thumb']?>" class="am-img-responsive card" alt="<?=$val['title']?>"></a>
+      <a href="<?=$val['url']?>"><img src="<?=$val['thumb']?>" class="am-img-responsive card" alt="<?=$val['title']?>"></a>
       
     </li>
   <?php endforeach;?>
@@ -135,6 +135,12 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script type="text/javascript">
+$(function(){
+ $('.closetk').click(function(){
+   $('.tk').fadeOut('400');;
+ });
+})
+
 var s,s2,s3,timer;
 function init(){
 s=getid("div1");
