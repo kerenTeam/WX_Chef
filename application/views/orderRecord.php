@@ -418,15 +418,21 @@
         </a>
       </li>
       <li>
-        <a href="<?php echo site_url('home/cailan')?>">
+        <a href="<?php echo site_url('home/cart')?>">
           <span class=""><img src="skin/img/clz.png" alt=""></span>
           <span class="am-navbar-label">菜篮子</span>
         </a>
       </li>
       <li>
+        <a href="<?php echo site_url('home/search')?>">
+          <span class=""><img src="skin/img/ss.png" alt=""></span>
+          <span class="am-navbar-label">搜索</span>
+        </a>
+      </li>
+      <li>
         <a href="<?php echo site_url('home/ucent')?>" class="active">
           <span class=""><img src="skin/img/gr2.png" alt=""></span>
-          <span class="am-navbar-label">个人</span>
+          <span class="am-navbar-label">我的</span>
         </a>
       </li>
     </ul>

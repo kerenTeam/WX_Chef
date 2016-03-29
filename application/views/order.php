@@ -35,6 +35,11 @@
         <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
     </div>
     <div class="am-shadow">
+      <p class="htit"><span class="am-icon-gift red"> </span> 支付方式</p>
+      <div class="adc gray">上门服务之后付款</div>
+    </div>
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
+    <div class="am-shadow">
       <p class="htit"><span class="am-icon-gift red"> </span> 优惠券<span class="am-fr">2张可选</span> </p>
       <a href="<?php echo site_url('home/card')?>" class="am-cf adc"><img src="skin/img/qu.png" alt=""> 优惠券 <span class="am-icon-cny"></span>5 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
     </div>

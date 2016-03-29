@@ -10,7 +10,7 @@
 
 	<div class="login_center">
   <form action="" method="" id="login">
-		<img class="login_logo" src="skin/img/login_logo.png">
+		<img class="login_logo" src="skin/img/logoico.png">
 		<br/>
     <div class="login_form">
     <input type="text" placeholder="用户" class="am-form-field am-radius"></input>

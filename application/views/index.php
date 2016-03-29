@@ -1,11 +1,11 @@
 <body>
   <!-- header -->
-  <header data-am-widget="header" class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
+<!--   <header data-am-widget="header" class="am-header am-header-default topform bheader">
   <h1 class="am-header-title">
   大厨到家
   </h1>
   
-</header>
+</header> -->
 <!-- banner -->
 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">
@@ -33,7 +33,7 @@
     </a>
   </li>
   <li>
-    <a href="<?php echo site_url('home/cailan#7')?>">
+    <a href="<?php echo site_url('home/party')?>">
       <div class="am-gallery-item byellow">
         <img src="skin/img/fork.png" alt="大厨到家"/>
         <h3 class="am-gallery-title">套餐</h3>
@@ -41,7 +41,7 @@
     </a>
   </li>
   <li>
-    <a href="<?php echo site_url('home/cailan#7')?>">
+    <a href="<?php echo site_url('home/party')?>">
       <div class="am-gallery-item bgreen">
         <img src="skin/img/food.png" alt="大厨到家"/>
         <h3 class="am-gallery-title">宴会定制</h3>
@@ -80,58 +80,28 @@
   </div>
   
 </div>
-<div class="am-shadow" data-am-scrollspy="{animation: 'fade'}">
+<div class="am-shadow">
   <p class="htit"><span class="am-icon-eye yellow"></span> 实时菜价<a href="<?php echo site_url('home/priceSearch')?>" class="am-fr am-text-xs gray">更多》</a></p>
   <div class="d1" id="div1" onmouseover="clearInterval(timer)" onmouseout="timer=setInterval(mar,30)">
-    <span class="div2" id="div2"> <a href="<?php echo site_url('home/price')?>">莴笋</a>  <a href="<?php echo site_url('home/price')?>">大白菜</a>  <a href="<?php echo site_url('home/price')?>">鲜猪肉</a>  <a href="<?php echo site_url('home/price')?>">鸡肉</a>  <a href="<?php echo site_url('home/price')?>">河虾</a>  <a href="<?php echo site_url('home/price')?>">鲤鱼</a>  <a href="<?php echo site_url('home/price')?>">大螃蟹</a>  </span><span id="div3" class="div2"></span>
+    <span class="div2" id="div2"> <a href="<?php echo site_url('home/price')?>">莴笋</a>  <a href="<?php echo site_url('home/price')?>">大白菜</a>  <a href="<?php echo site_url('home/priceSearch')?>">鲜猪肉</a>  <a href="<?php echo site_url('home/priceSearch')?>">鸡肉</a>  <a href="<?php echo site_url('home/priceSearch')?>">河虾</a>  <a href="<?php echo site_url('home/priceSearch')?>">鲤鱼</a>  <a href="<?php echo site_url('home/priceSearch')?>">大螃蟹</a>  </span><span id="div3" class="div2"></span>
   </div>
   <div>
   </div>
 </div>
-<div class="am-g am-shadow">
-  <p class="htit"><img src="skin/img/heart.png" alt=""> 精品推荐</p>
-  <div class="am-sm-6 am-cf" data-am-scrollspy="{animation: 'fade'}">
-    <a href="<?php echo site_url('home/food')?>">
-     <div class="am-fl tuimg"><img src="skin/img/product/xyb.jpg" alt=""></div>
-     <div class="am-fr tuinfo">
-         <div class="tutit">瓜仁香芋饼</div>
-         <div class="am-text-xs gray">酥脆可口，老少皆宜</div>
-         <span class="am-icon-cny red">28</span>
-     </div>
-    </a>
-  </div>
-  <div class="am-sm-6 am-cf" data-am-scrollspy="{animation: 'fade'}">
-    <a href="<?php echo site_url('home/food')?>">
-     <div class="am-fl tuimg"><img src="skin/img/product/xyb.jpg" alt=""></div>
-     <div class="am-fr tuinfo">
-         <div class="tutit">瓜仁香芋饼</div>
-         <div class="am-text-xs gray">酥脆可口，老少皆宜</div>
-         <span class="am-icon-cny red">28</span>
-     </div>
-    </a>
-  </div>
-  <div class="am-sm-6 am-cf" data-am-scrollspy="{animation: 'fade'}">
-    <a href="<?php echo site_url('home/food')?>">
-     <div class="am-fl tuimg"><img src="skin/img/product/xyb.jpg" alt=""></div>
-     <div class="am-fr tuinfo">
-         <div class="tutit">瓜仁香芋饼</div>
-         <div class="am-text-xs gray">酥脆可口，老少皆宜</div>
-         <span class="am-icon-cny red">28</span>
-     </div>
-    </a>
-  </div>
-  <div class="am-sm-6 am-cf" data-am-scrollspy="{animation: 'fade'}">
-    <a href="<?php echo site_url('home/food')?>">
-     <div class="am-fl tuimg"><img src="skin/img/product/xyb.jpg" alt=""></div>
-     <div class="am-fr tuinfo">
-         <div class="tutit">瓜仁香芋饼</div>
-         <div class="am-text-xs gray">酥脆可口，老少皆宜</div>
-         <span class="am-icon-cny red">28</span>
-     </div>
-    </a>
-  </div>
-  <div class=" am-cf"></div>
-  <div class="am-margin-vertical-sm am-text-xs am-text-center gray">加载更多</div>
+<div class="am-g am-shadow life">
+  <p class="htit"><img src="skin/img/heart.png" alt=""> 精品生活</p>
+  <figure> 
+     <a href="<?php echo site_url('home/lifeInfo')?>">
+       <img src="skin/img/article/it1.png" alt="大厨到家">
+       <figcaption>A Tribute to Budgie<br><span class="am-text-sm">食色性也</span></figcaption>
+     </a>  
+  </figure>
+  <figure> 
+     <a href="<?php echo site_url('home/lifeInfo')?>">
+       <img src="skin/img/article/it1.png" alt="大厨到家">
+       <figcaption>A Tribute to Budgie<br><span class="am-text-sm">食色性也</span></figcaption>
+     </a>  
+  </figure>
 </div>
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
@@ -143,8 +113,9 @@
       </a>
     </li>
     <li>
-      <a href="<?php echo site_url('home/cailan')?>">
+      <a href="<?php echo site_url('home/cart')?>">
         <span class=""><img src="skin/img/clz.png" alt=""></span>
+<<<<<<< HEAD
         <span class="am-navbar-label">菜单</span>
       </a>
     </li>
@@ -152,12 +123,21 @@
       <a href="<?php echo site_url('user/ucent')?>">
         <span class=""><img src="skin/img/gr1.png" alt=""></span>
         <span class="am-navbar-label">个人</span>
+=======
+        <span class="am-navbar-label">菜篮子</span>
+>>>>>>> 7705ea9a3e45bbfe7914a4ae8cb00249bd9f593c
       </a>
     </li>
     <li>
       <a href="<?php echo site_url('home/search')?>">
         <span class=""><img src="skin/img/ss.png" alt=""></span>
         <span class="am-navbar-label">搜索</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/ucent')?>">
+        <span class=""><img src="skin/img/gr1.png" alt=""></span>
+        <span class="am-navbar-label">我的</span>
       </a>
     </li>
   </ul>
