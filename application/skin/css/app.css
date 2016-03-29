@@ -317,7 +317,7 @@ content:'(';
     padding: 5px;
   }
  .cmn .am-list>li>a.am-active, .am-list>li>a.am-active:focus, .am-list>li>a.am-active:hover { 
- border-left: 2px solid #ed3f59;
+ border-left: 2px solid #ED3F59;
 background:none;
 color:#ED3F59;
     }

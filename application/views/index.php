@@ -25,7 +25,7 @@
 <!-- 菜品 -->
 <ul class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default am-shadow veg" style="padding-bottom:5px" data-am-gallery="{ pureview: true }" >
   <li>
-    <a href="<?php echo site_url('home/cailan#1')?>">
+    <a href="<?php echo site_url('home/cailan')?>">
       <div class="am-gallery-item bred">
         <img src="skin/img/menu.png" alt="大厨到家"/>
         <h3 class="am-gallery-title">点菜</h3>
