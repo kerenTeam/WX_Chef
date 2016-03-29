@@ -11,9 +11,22 @@
   <h1 class="am-header-title">
   菜篮子
   </h1>
-  
+ <script type="text/javascript">
+  function doaction() {
+  $.ajax({
+    type: "POST",
+    url: '<?=site_url('home/cart');?>',
+    data: $('#question').serialize(),
+    success: function(data) { 
+      alert(data);
+
+    }
+
+  });
+}
+</script>
 </header>
-<form action="" method="" enctype="multipart/form-data">
+<form  id='question' enctype="multipart/form-data">
  <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
   <!-- 菜品栏目 -->
   <div class="am-u-sm-3 cmn"><!--  style="height: 100%;overflow-y:auto; " -->
@@ -44,12 +57,13 @@
             </div>
             <div class=" am-u-sm-8 am-list-main">
               <h3 class="am-list-item-hd"><?=$v['foodName'];?></h3>
+              <input type="hidden" name="foodid[]" value="<?=$v['id'];?>">
               <div class="am-list-item-text"><strong>特点：</strong><?=$v['specialty'];?>。</div>
               <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg"><?=$v['monthSalesm'];?></span>份</div>
               <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['price'];?></span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                <input type="text" class="numTxt" name="numbers[]"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
               </div>
             </div>
@@ -60,19 +74,18 @@
       </div>
     </div>
   </div>
+
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
-    <a href="<?php echo site_url('home/cart')?>">
       <div class="am-u-sm-8 a">
         <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney">0</span>份</span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
       </div>
       <div class="am-u-sm-4 b">
         
-        <button type="submit" class="am-btn am-btn-success">确认</button>
+        <button  onclick="doaction()" class="am-btn am-btn-success">确认</button>
         
       </div>
-    </a>
   </div>
 </form>
 

@@ -259,7 +259,8 @@ color:#EC5E52!important;
 .cmn .am-list img{
       vertical-align: top;
       margin-left: 5px!important;
-
+      vertical-align: top;
+      margin-top: -2px;
 }
 .cmn .am-list-news-default .am-list>li {
     border-color: rgba(222, 222, 222, 0.45);

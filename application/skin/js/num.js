@@ -61,6 +61,7 @@ function handle(self, isAdd){
 
     if(isAdd){
 		curCount++;
+		console.log(curCount);
 		fen++;
 		reduce.style.display="inline-block";
 		countEl.style.display="inline-block";
@@ -68,6 +69,7 @@ function handle(self, isAdd){
 		
 	}else{
 		curCount--;
+		console.log(curCount);
 		fen--;
 		if(curCount <1){
 			curCount = 0; 
