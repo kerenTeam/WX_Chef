@@ -309,6 +309,20 @@ content:'(';
  height: 1.5rem;
  width:1.5rem;
 }
+.am-icon-refresh{
+       position: relative;
+    right: -1rem;
+    font-size: 2rem;
+    margin-top: 5.5rem;
+}
+.am-icon-refresh:after{ 
+     content: '换一换';
+    position: relative;
+    font-size: 12px;
+    left: -26px;
+    width: 100%;
+    top: 12px;
+}
 .mp{
   width: 30%;
     margin: 30px auto;
@@ -838,7 +852,7 @@ top: 29px;
     height: 100%;
     text-align: center;
     z-index: 2;
-    font-size: 1.4em;
+    font-size: 1.8rem;
     color: white;
     font-weight: 400;
     padding-top: 17%;

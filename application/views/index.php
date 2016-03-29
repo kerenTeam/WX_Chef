@@ -93,13 +93,13 @@
   <figure> 
      <a href="<?php echo site_url('home/lifeInfo')?>">
        <img src="skin/img/article/it1.png" alt="大厨到家">
-       <figcaption>A Tribute to Budgie<br><span class="am-text-sm">食色性也</span></figcaption>
+       <figcaption>关于美食那些事儿<br><span class="am-text-sm">食色性也</span></figcaption>
      </a>  
   </figure>
   <figure> 
      <a href="<?php echo site_url('home/lifeInfo')?>">
        <img src="skin/img/article/it1.png" alt="大厨到家">
-       <figcaption>A Tribute to Budgie<br><span class="am-text-sm">食色性也</span></figcaption>
+       <figcaption>关于美食那些事儿<br><span class="am-text-sm">食色性也</span></figcaption>
      </a>  
   </figure>
 </div>

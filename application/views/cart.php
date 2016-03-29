@@ -24,7 +24,7 @@
                 </a>
               </div>
               <div class=" am-u-sm-9 am-list-main">
-                <h3 class="am-list-item-hd">蓉记姜葱香辣蟹</h3>
+                <h3 class="am-list-item-hd">蓉记姜葱香辣蟹 <span class="am-icon-refresh am-fr green"></span></h3>
                 <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
