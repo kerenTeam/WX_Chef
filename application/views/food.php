@@ -24,7 +24,6 @@
         <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods['price'];?></span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-
           <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="2">
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
@@ -81,7 +80,6 @@
         <div class="am-u-sm-8 green a">
           <img src="skin/img/cl.png" class="cartImg" alt=""><span id="fen" class="allmoney">2</span>份
           <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">336</span>
-
         </div>
         <div class="am-u-sm-4 b">
           <button type="submit" class="am-btn am-btn-success tijiao">确定</button>
