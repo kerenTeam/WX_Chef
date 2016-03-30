@@ -307,7 +307,9 @@ body {
   margin-top: -1px;
   width: 100%;
 }
-
+.fimg img{
+      max-height: 22rem;
+}
 .red {
   color: #FE5F59!important;
 }
@@ -360,7 +362,19 @@ body {
   padding: 0;
   margin: 0;
 }
-
+.aml{
+  position: fixed;
+    top: 49px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 99999;
+}
+.amr{
+  top:49px;
+  position: relative;
+    left: 25%;
+}
 .cmn .am-list {
   margin-bottom: 0px;
 }
@@ -1203,6 +1217,47 @@ figure a:hover figcaption {
   }
   .partyp{
     padding-left: 1.9rem;
+  }
+  .menutit{
+    font-size:16px;
+  }
+
+  .menutit,.menuname{
+    position:relative;
+    top:15px;
+    margin-bottom: 2rem!important;
+  }
+  .menutit:before{
+    content: '';
+    position: absolute;
+    width: 30%;
+    left: 9%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.65);
+    top: 13px;
+  }
+  .menutit:after{
+    content: '';
+    position: absolute;
+    width: 30%;
+    right: 9%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.65);
+    top: 13px;
+  }
+  .menuname:before{
+    content: '';
+    position: absolute;
+    width: 17%;
+    left: 26%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.65);
+    top: 13px;
+  }
+  .menuname:after{
+    content: '';
+    position: absolute;
+    width: 17%;
+    right: 26%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.65);
+    top: 13px;
   }
 @media only screen and (min-width:600px) {
   .tkcontent img {

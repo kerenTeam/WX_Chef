@@ -75,6 +75,11 @@ class home extends CI_Controller
 
 		$this->load->view('lifeInfo');
 	}
+	//宴会定制详情
+	public function partyInfo(){
+
+		$this->load->view('partyInfo');
+	}
 	//套餐详情
 	public function dinner(){
 

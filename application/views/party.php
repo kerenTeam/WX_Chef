@@ -15,7 +15,7 @@
     <!--   <div class="demo"> -->
     <div class="demo__content">
       <div class="demo__card-cont">
-        <a href="<?php echo site_url('home/dinner')?>">
+        <a href="<?php echo site_url('home/partyInfo')?>">
           <div class="demo__card am-shadow">
             <div class="demo__card__top">
               <div class="demo__card__img"><img src="skin/img/party1.png" alt=""></div>
@@ -29,7 +29,7 @@
             <div class="demo__card__drag"></div>
           </div>
         </a>
-        <a href="<?php echo site_url('home/dinner')?>">
+        <a href="<?php echo site_url('home/partyInfo')?>">
           <div class="demo__card am-shadow">
             <div class="demo__card__top">
               <div class="demo__card__img"><img src="skin/img/party1.png" alt=""></div>
@@ -43,7 +43,7 @@
             <div class="demo__card__drag"></div>
           </div>
         </a>
-        <a href="<?php echo site_url('home/dinner')?>">
+        <a href="<?php echo site_url('home/partyInfo')?>">
           <div class="demo__card am-shadow">
             <div class="demo__card__top">
               <div class="demo__card__img"><img src="skin/img/party1.png" alt=""></div>
@@ -57,7 +57,7 @@
             <div class="demo__card__drag"></div>
           </div>
         </a>
-        <a href="<?php echo site_url('home/dinner')?>">
+        <a href="<?php echo site_url('home/partyInfo')?>">
           <div class="demo__card am-shadow">
             <div class="demo__card__top">
               <div class="demo__card__img"><img src="skin/img/party1.png" alt=""></div>
@@ -71,7 +71,7 @@
             <div class="demo__card__drag"></div>
           </div>
         </a>
-        <a href="<?php echo site_url('home/dinner')?>">
+        <a href="<?php echo site_url('home/partyInfo')?>">
           <div class="demo__card am-shadow">
             <div class="demo__card__top">
               <div class="demo__card__img"><img src="skin/img/party1.png" alt=""></div>
