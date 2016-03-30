@@ -2,7 +2,7 @@
 <!-- 注册弹框 -->
 <div class="tk">
   <div class="tkcontent">
-    <span class="closetk"><img src="skin/img/closetk.png" alt="大厨到家"></span>
+    <span><img class="closetk" src="skin/img/closetk.png" alt="大厨到家"></span>
     <img src="skin/img/tk.png" alt="大厨到家">
     <div class="tktxt">
       <div class="am-text-sm">亲，你还没有注册哟！注册即可享优惠</div>
@@ -25,7 +25,7 @@
 <!-- 菜品 -->
 <ul class="am-gallery am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-gallery-default am-shadow veg" style="padding-bottom:5px" data-am-gallery="{ pureview: true }" >
   <li>
-    <a href="<?php echo site_url('home/cailan')?>">
+    <a href="<?php echo site_url('home/registgift')?>">
       <div class="am-gallery-item bred">
         <img src="skin/img/menu.png" alt="大厨到家"/>
         <h3 class="am-gallery-title">点菜</h3>
@@ -135,11 +135,14 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script type="text/javascript">
-$(function(){
- $('.closetk').click(function(){
-   $('.tk').fadeOut('400');;
- });
-})
+
+  $(function(){
+    $('.closetk').bind('click', function() {
+       $('.tk').css('display','none');
+      // $('.tk').fadeOut('400');
+    });
+  })
+
 
 var s,s2,s3,timer;
 function init(){

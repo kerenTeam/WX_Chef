@@ -41,6 +41,21 @@ class home extends CI_Controller
 		// var_dump($data);
 		$this->load->view('food',$data);
 	}
+	//储值返现
+	public function backmoney(){
+
+		$this->load->view('backmoney');
+	}
+	//注册即送
+	public function registgift(){
+
+		$this->load->view('registgift');
+	}
+	//宴会服务
+	public function partyServ(){
+
+		$this->load->view('partyServ');
+	}
 	//图文详情
 	public function lifeInfo(){
 
