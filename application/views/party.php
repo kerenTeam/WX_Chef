@@ -7,7 +7,7 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    套餐
+    宴会定制
     </h1>
     
   </header>

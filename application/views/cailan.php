@@ -59,7 +59,7 @@
               <h3 class="am-list-item-hd"><?=$v['foodName'];?></h3>
               <input type="hidden" name="foodid[]" value="<?=$v['id'];?>">
               <div class="am-list-item-text"><strong>特点：</strong><?=$v['specialty'];?>。</div>
-              <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg"><?=$v['monthSalesm'];?></span>份</div>
+              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg"><?=$v['monthSalesm'];?></span>份</div>
               <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['price'];?></span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>

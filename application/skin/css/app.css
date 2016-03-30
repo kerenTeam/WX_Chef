@@ -429,8 +429,8 @@ body {
 }
 
 .typel img {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1.7rem;
+  width: 1.7rem;
 }
 
 .am-icon-refresh {
@@ -1374,5 +1374,8 @@ figure a:hover figcaption {
   .typec+ul>li a {
     padding: 1rem 0.2rem;
     font-size: 12px;
+  }
+  .cmn .am-list img {
+    margin-top: -4px;
   }
 }
