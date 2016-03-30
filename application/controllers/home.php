@@ -17,7 +17,21 @@ class home extends CI_Controller
 		// var_dump($data);
 		$this->load->view('header',$data);
 	}
-	
+	//登录
+	public function login(){
+
+		$this->load->view('login');
+	}
+	//老用户登录
+	public function login2(){
+
+		$this->load->view('login2');
+	}
+	//注册
+	public function register(){
+		
+		$this->load->view('register');
+	}
 	//首页
 	public function index(){
 		$data = $this->option_model->banners();

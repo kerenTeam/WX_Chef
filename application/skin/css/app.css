@@ -47,6 +47,7 @@ body {
 }
 
 .tktxt .rega {
+  line-height: 15px;
   padding: 6px 16px;
   background: red;
   color: white;
