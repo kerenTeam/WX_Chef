@@ -10,6 +10,31 @@
     </h1>
     
   </header>
+         <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{&quot;controlNav&quot;:false}' >
+          <ul class="am-slides">
+              <li>
+                  <img src="skin/img/product/rjx.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">1</span>/4</div>山地土豆烧甲鱼</div>
+                 
+              </li>
+              <li>
+                  <img src="skin/img/product/tscsx.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">2</span>/4</div>山地土豆烧甲鱼</div>
+                 
+              </li>
+              <li>
+                  <img src="skin/img/product/tqhtr.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">3</span>/4</div>山地土豆烧甲鱼</div>
+                 
+              </li>
+              <li>
+                  <img src="skin/img/product/qwhqb.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">4</span>/4</div>山地土豆烧甲鱼</div>
+                 
+              </li>
+          </ul>
+        </div>
+
   <!-- 详情 -->
   <form action="" method="" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
@@ -45,7 +70,7 @@
 
       <p class="am-text-center am-text-sm  menuname">主食</p>
         <p class="am-text-center am-text-sm">米饭</p>
-     <!-- 菜品轮播 -->
+     <!-- 菜品轮播 --> 
       <p class="am-text-center menutit">菜品展示</p>
        <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{&quot;controlNav&quot;:false}' >
           <ul class="am-slides">

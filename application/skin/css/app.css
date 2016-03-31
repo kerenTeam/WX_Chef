@@ -1262,6 +1262,7 @@ figure a:hover figcaption {
 @media only screen and (min-width:600px) {
   .tkcontent img {
     width: auto;
+    margin:auto;
   }
 
   .topform button {
