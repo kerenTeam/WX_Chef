@@ -64,7 +64,7 @@
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
                 <input type="text" class="numTxt" name="numbers[]"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
+                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
               </div>
             </div>
           </li>
@@ -78,7 +78,7 @@
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
       <div class="am-u-sm-8 a">
-        <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney">0</span>份</span>
+        <span class="green"><img src="skin/img/cart.png" id="car" alt=""><span id="fen" class="allmoney">0</span>份</span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
       </div>
       <div class="am-u-sm-4 b">
@@ -91,25 +91,7 @@
 
 <script src="skin/js/num.js"></script>
 <script>
-// var urlstr = location.href;
-// //alert((urlstr + '/').indexOf($(this).attr('href')));
-// var urlstatus=false;
-// $(".typel li a").each(function () {
-// if ((urlstr + '/').indexOf($(this).attr('href')) > -1&&$(this).attr('href')!='') {
-// $(this).addClass('currenta'); urlstatus = true;
-// } else {
-// $(this).removeClass('currenta');
-// }
-// });
-// if (!urlstatus) {$(".typel li a").eq(0).addClass('currenta'); }
-
  $(function(){
-
-// $('.typel li a').on('click',function(){
-// $('.typel li a').removeClass('currenta');
-// $(this).addClass('currenta');
-// })
-
 var inputs = $('.numTxt');
 inputs.each(function() {
 var numI=$(this).val();
@@ -125,6 +107,48 @@ $(this).parent('.foodNum').find('.reduce').css('display','inline-block');
 
 })
 
+</script>
+<style>
+   .oo{
+      font-size:20px;
+      z-index:99999999;
+    }
+</style>
+<script type="text/javascript">
+    var add = document.getElementsByClassName("add"); 
+    var car = document.getElementById("car");
+    for (var i = 0; i < add.length; i++) {
+        add[i].onclick = function(){
+            clearInterval(par);
+            var x = this.getBoundingClientRect().left;
+            var y = this.getBoundingClientRect().top;
+            var car_x = car.getBoundingClientRect().left;
+            var car_y = car.getBoundingClientRect().top;
+            var div = document.createElement("div");
+            div.style.position = "absolute";
+            div.style.left = x + "px";
+            div.style.top = y + "px";
+            div.setAttribute("class","add am-icon-plus-circle oo");
+            document.documentElement.appendChild(div);
+             handle(this, true);
+            var par = setInterval(function(){
+                var divX = parseInt(div.style.left);
+                var divY = parseInt(div.style.top);
+                var speedX = (car_x-divX)/10;
+                var speedY = (car_y-divY)/30;
+                speedX=speedX>0?Math.ceil(speedX):Math.floor(speedX);
+                speedY=speedY>0?Math.ceil(speedY):Math.floor(speedY);
+                div.style.left = divX + speedX + "px";
+                div.style.top = divY + speedY + "px";
+                if(divY == car_y && divX == car_x){
+                    clearInterval(par);
+                    div.parentNode.removeChild(div);
+                }
+                // console.log(divX)
+                console.log(divX,divY +'======'+ car_x,car_y);
+            },10)
+        }
+    }
 </script>
 </body>
 </html>

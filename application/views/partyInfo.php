@@ -10,31 +10,6 @@
     </h1>
     
   </header>
-         <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{&quot;controlNav&quot;:false}' >
-          <ul class="am-slides">
-              <li>
-                  <img src="skin/img/product/rjx.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">1</span>/4</div>山地土豆烧甲鱼</div>
-                 
-              </li>
-              <li>
-                  <img src="skin/img/product/tscsx.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">2</span>/4</div>山地土豆烧甲鱼</div>
-                 
-              </li>
-              <li>
-                  <img src="skin/img/product/tqhtr.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">3</span>/4</div>山地土豆烧甲鱼</div>
-                 
-              </li>
-              <li>
-                  <img src="skin/img/product/qwhqb.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">4</span>/4</div>山地土豆烧甲鱼</div>
-                 
-              </li>
-          </ul>
-        </div>
-
   <!-- 详情 -->
   <form action="" method="" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
@@ -44,7 +19,7 @@
         <div class="pr"><i class="am-icon-cny"></i><span class="price">898</span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-          <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="2">
+          <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
       </div>
@@ -72,26 +47,26 @@
         <p class="am-text-center am-text-sm">米饭</p>
      <!-- 菜品轮播 --> 
       <p class="am-text-center menutit">菜品展示</p>
-       <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{&quot;controlNav&quot;:false}' >
+       <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{"controlNav":false}' >
           <ul class="am-slides">
               <li>
-                  <img src="skin/img/product/rjx.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">1</span>/4</div>山地土豆烧甲鱼</div>
+                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/rjx.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">1</span>/4</div>山地土豆烧甲鱼</div></a>
                  
               </li>
               <li>
-                  <img src="skin/img/product/tscsx.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">2</span>/4</div>山地土豆烧甲鱼</div>
+                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/tscsx.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">2</span>/4</div>山地土豆烧甲鱼</div></a>
                  
               </li>
               <li>
-                  <img src="skin/img/product/tqhtr.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">3</span>/4</div>山地土豆烧甲鱼</div>
+                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/tqhtr.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">3</span>/4</div>山地土豆烧甲鱼</div></a>
                  
               </li>
               <li>
-                  <img src="skin/img/product/qwhqb.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">4</span>/4</div>山地土豆烧甲鱼</div>
+                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/qwhqb.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">4</span>/4</div>山地土豆烧甲鱼</div></a>
                  
               </li>
           </ul>
@@ -101,8 +76,8 @@
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">
       <a href="<?php echo site_url('home/order')?>">
         <div class="am-u-sm-8 green a">
-          <img src="skin/img/cl.png" class="cartImg" alt=""><span id="fen" class="allmoney">2</span>份
-          <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">1796</span>
+          <img src="skin/img/cl.png" class="cartImg" alt=""><span id="fen" class="allmoney">0</span>份
+          <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
         </div>
         <div class="am-u-sm-4 b">
           
@@ -141,7 +116,8 @@
     </li>
   </ul>
 </div>
-  <script src="skin/js/jquery.min.js"></script>
+<script src="skin/js/jquery.min.js"></script>
+<script src="skin/js/amazeui.min.js"></script>
   <script src="skin/js/num.js"></script>
   <script>
   $(function(){

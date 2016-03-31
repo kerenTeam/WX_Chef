@@ -1057,7 +1057,7 @@ body {
 }
 
 .bpa {
-  padding-bottom: 10rem;
+  padding-bottom: 9rem;
 }
 
 .b button {
@@ -1258,6 +1258,12 @@ figure a:hover figcaption {
     right: 26%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.65);
     top: 13px;
+  }
+  .am-slider-c3 .am-slider-counter{
+    background-color:#F85554;
+  }
+  .am-slider-c3 img{
+    height:20rem;
   }
 @media only screen and (min-width:600px) {
   .tkcontent img {
