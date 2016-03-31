@@ -19,8 +19,7 @@
       <li class="am-g am-cf lpt">
         <p class="am-fl">
         四川师范大学成龙校区东苑5栋<br>
-        张燕<br>
-        15780975467
+        张燕&nbsp;15780975467
         </p>
         <a href="" class="am-fr edtclose"><span class="am-list-date"><i class="am-icon-close"></i></span></a>
       </li>

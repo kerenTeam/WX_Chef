@@ -12,17 +12,16 @@
       <h1 class="am-header-title">
           会员卡
       </h1> 
-  </header>
-  <div class="am-list-news-bd">
-  <ul class="am-list">
+  </header> 
+ 
 
-      <li class="am-g am-list-item-dated">
-            <a class="gray"><span class="acm"> 账户</span> <span class="green"> 15708434450 </span></a>
-          <span class="am-list-date">余额<span class="pink acm"> 30 </span></span>
-      </li> 
-  </ul>
+      <div class="am-g am-shadow am-cf">
+           <span class="acm am-fl"> 账户 <span class="green"> 15708434450 </span></span>
+          <span class="acm am-fr">余额<span class="pink acm"> 30 </span></span>
+      </div> 
+  <br>
    <a href="" class="am-u-sm-12 am-btn bgreen go">去充值</a> 
-  </div>
+ 
   
   </body>
 </html>

@@ -2,6 +2,9 @@
 body {
   background: rgb(241, 241, 241);
 }
+.am-slider-default .am-control-nav {
+    bottom: 9px;
+  }
 .tk {
   /* pointer-events:auto; */
   z-index: 1999;
@@ -74,7 +77,10 @@ body {
 .bgray {
   background-color: gray;
 }
-
+.veg{
+  padding-bottom:5px;
+   margin-top: -15px;
+}
 .veg li {
   text-align: center;
 }
@@ -773,7 +779,7 @@ body {
 }
 
 .am-selected:first-child, .am-selected:last-child {
-  width: 120px;
+  width: 110px;
 }
 
 .cart-summary {
@@ -835,6 +841,7 @@ body {
 .userhead img {
   border: 5px solid rgba(255,255,255,0.5);
   width: 10rem;
+  border-radius: 50%!important;
 }
 
 .acm {
@@ -963,6 +970,8 @@ body {
 
 .ana {
   padding-left: 0!important;
+  width: 100%;
+    display: block;
 }
 
 .current {
@@ -979,10 +988,11 @@ body {
   color: #F85554!important;
 }
 
-.ana a {
-  width: 20%;
-  text-align: center;
-  line-height: 45px!important;
+.ana a { 
+        width: 15%;
+    text-align: center;
+    line-height: 43px!important;
+    display: inline-block;
 }
 
 .otop {
@@ -1057,7 +1067,7 @@ body {
 }
 
 .bpa {
-  padding-bottom: 9rem;
+  padding-bottom: 10rem;
 }
 
 .b button {
@@ -1304,10 +1314,11 @@ figure a:hover figcaption {
 
   .typec+ul>li a {
     padding: 1.3rem 1rem;
+    font-size: 14px;
   }
 
   .am-selected {
-    margin-left: -8px;
+    margin-left: -6px;
   }
 
   .am-selected button {
@@ -1334,7 +1345,7 @@ figure a:hover figcaption {
   }
 
   .am-selected {
-    margin-left: -15px;
+    margin-left: -12px;
   }
 
   .tc img {
@@ -1343,7 +1354,7 @@ figure a:hover figcaption {
 
   .typec+ul>li a {
     padding: 1.2rem 1rem;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .vimg img {

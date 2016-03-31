@@ -108,7 +108,8 @@
     <!-- 图片上传 --> 
       <div class="commimg am-cf">
         
-        <div class="am-fl prwimage"><span class="am-icon-camera am-icon-sm am-fl"></span><img src="skin/img/user.jpg" alt=""><img src="skin/img/user.jpg" alt=""><img src="skin/img/user.jpg" alt=""><img src="skin/img/user.jpg" alt=""></div>
+        <div class="am-fl prwimage">
+        <span class="am-icon-camera am-icon-sm am-fl"></span><img src="skin/img/user.jpg" alt=""><img src="skin/img/user.jpg" alt=""><img src="skin/img/user.jpg" alt=""><img src="skin/img/user.jpg" alt=""></div>
       </div>
      <textarea class="am-u-sm-12 am-shadow cmt" rows="5" id="doc-ta-1" placeholder="你的意见对我们至关重要"></textarea>
     <!-- footer -->
