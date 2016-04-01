@@ -12,16 +12,6 @@
 
 </header>
 
-<pre>
-  
-<?php
-var_dump($abcdata);
-
-?>
-
-
-</pre>
-
 
 <form action="" method="" enctype="multipart/form-data">
   <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">

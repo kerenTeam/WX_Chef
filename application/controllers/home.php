@@ -93,13 +93,13 @@ class home extends CI_Controller
 	//购物车 new
 	public function cart(){
 
-		$foodid = $_POST['foodid'];
-		$numbers = $_POST['numbers'];
+		// $foodid = $_POST['foodid'];
+		// $numbers = $_POST['numbers'];
 
-		$cards = array_combine($foodid,$numbers);
-		$data = array_filter($cards);
+		// $cards = array_combine($foodid,$numbers);
+		// $data = array_filter($cards);
 		
-		var_dump($data);
+		// var_dump($data);
 
 		$this->load->view('cart');
 	}
