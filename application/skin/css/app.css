@@ -229,7 +229,7 @@ body {
 .numTxt {
   /* display:none;*/
   background: none;
-  width: 3rem;
+  width: 3.2rem;
   text-align: center;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 3px;
@@ -374,7 +374,6 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 99999;
 }
 .amr{
   top:49px;
@@ -1353,7 +1352,7 @@ figure a:hover figcaption {
   }
 
   .typec+ul>li a {
-    padding: 1.2rem 1rem;
+    padding: 1.2rem 0.9rem;
     font-size: 13px;
   }
 

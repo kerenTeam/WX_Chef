@@ -54,6 +54,7 @@ function ueserWrite(obj){
 function handle(self, isAdd){
     var countEl = self.parentNode.childNodes[3];
         curCount = parseFloat(countEl.value); 
+        
 	var reduce = self.parentNode.childNodes[1];
 	var price = self.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
 //	var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
