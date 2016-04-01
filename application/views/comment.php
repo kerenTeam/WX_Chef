@@ -1,6 +1,6 @@
 <body>
   <script type="text/javascript" src="skin/js/star.js"></script>
-  
+  <link rel="stylesheet" href="skin/css/zyUpload.css" type="text/css">
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
       <a href="javascript:" onclick="javascript:history.go(-1);">
@@ -106,11 +106,16 @@
       </ul>
     </div>
     <!-- 图片上传 --> 
-      <div class="commimg am-cf">
+     <!--  <div class="commimg am-cf">
         
         <div class="am-fl prwimage">
         <span class="am-icon-camera am-icon-sm am-fl"></span><img src="skin/img/user.jpg" alt=""><img src="skin/img/user.jpg" alt=""><img src="skin/img/user.jpg" alt=""><img src="skin/img/user.jpg" alt=""></div>
-      </div>
+      </div> -->
+<link rel="stylesheet" href="control/css/zyUpload.css" type="text/css">
+
+    <div id="demo" class="demo"></div>
+
+
      <textarea class="am-u-sm-12 am-shadow cmt" rows="5" id="doc-ta-1" placeholder="你的意见对我们至关重要"></textarea>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default amft" id="">
@@ -126,4 +131,10 @@
 </body>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
+<!-- 引用核心层插件 -->
+<script src="skin/js/zyFile.js"></script>
+<!-- 引用控制层插件 -->
+<script src="skin/js/zyUpload.js"></script>
+<!-- 引用初始化JS -->
+<script src="skin/js/jq22.js"></script>
 </html>

@@ -22,12 +22,12 @@
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-list-thumb">
                 <a href="<?php echo site_url('home/food')?>" class="vimg">
-                  <img src="skin/img/product/rjx.jpg" alt="蓉记姜葱香辣蟹168"/>
+                  <img src="skin/img/product/rjx.jpg" id="img" alt="蓉记姜葱香辣蟹168"/>
                 </a>
               </div>
               <div class=" am-u-sm-9 am-list-main">
                 <h3 class="am-list-item-hd">蓉记姜葱香辣蟹 <span class="am-icon-refresh am-fr green"></span></h3>
-                <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
+                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price">168</span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
                   <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="1">
@@ -80,6 +80,16 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/num.js"></script>
-
+<script>
+  $(function(){
+      $('.am-icon-refresh').click(function(){ 
+      $(this).parent().html("冰镇素鲍双拼 <span class='am-icon-refresh am-fr green'></span>");
+       $('#price').html('108');
+       $('#img').attr({ 
+        src: 'skin/img/product/bzsbsp.jpg'
+        });
+    })
+  })
+</script>
 </body>
 </html>

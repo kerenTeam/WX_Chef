@@ -414,8 +414,9 @@ body {
 
 .cmt {
   width: 98%;
-  margin: 1%;
+  margin: -2% 1%;
   border: none;
+  padding:15px;
 }
 
 .oln {
