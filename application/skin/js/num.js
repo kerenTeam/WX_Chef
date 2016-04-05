@@ -36,7 +36,7 @@ function blurWrite(input){
 }
 function ueserWrite(obj){
    curCount = obj.value;
- if(!/^[0-9]*[1-9][0-9]*$/.test(obj.value) || curCount ==''){
+ if(!/^[0-9]*[1-9][0-9]*$/.test(obj.value) || curCount ==''|| curCount>=200){
  	alert("请输入大于0的整数哟！");
  	obj.focus();
  	obj.value=num;

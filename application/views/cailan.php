@@ -63,7 +63,7 @@
               <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['price'];?></span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
                 <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
               </div>
             </div>
@@ -77,6 +77,7 @@
 
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
+      <a href="<?php echo site_url('home/cart')?>">
       <div class="am-u-sm-8 a">
         <span class="green"><img src="skin/img/cart.png" id="car" alt=""><span id="fen" class="allmoney">0</span>份</span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
@@ -86,6 +87,7 @@
         <button  onclick="doaction()" class="am-btn am-btn-success">确认</button>
         
       </div>
+      </a>
   </div>
 </form>
 

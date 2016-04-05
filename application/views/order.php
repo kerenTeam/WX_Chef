@@ -28,25 +28,41 @@
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd">订单总计</a>
           <span class="am-list-date"><i class="am-icon-cny red">70</i></span>
-        </li>
-        <!--  <p class="marginl">合计：<i class="am-icon-cny red">70</i></p> -->
-      
+        </li>  
       </ul>
-        <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
+     </div>
+         <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
+    <div class="am-shadow am-margin-vertical-sm">
+      <p class="htit"><span class="am-icon-usd red"> </span> 支付方式</p>
+      <div class="am-g pay am-cf">
+
+        <label class="am-checkbox am-success am-u-sm-6">
+          <input type="checkbox" class="v" name="radio10" value="" data-am-ucheck> 会员卡
+        </label>
+        <label class="am-checkbox am-success am-u-sm-6 wxradio">
+          <input type="checkbox" class="zk" name="radio10" value="" data-am-ucheck> 现金
+        </label>
+      </div>
+      <div class="am-g pay am-cf">
+        <label class="am-checkbox am-success am-u-sm-6">
+          <input type="checkbox" class="zk fp" name="radio10" value="" data-am-ucheck> 饭票
+        </label>
+        <label class="am-checkbox am-success am-u-sm-6 wxradio">
+          <input type="checkbox" class="zk" name="radio10" value="" data-am-ucheck> 积分
+        </label>
+      </div>
+      <div class="red am-text-sm am-margin-left-sm zkt">亲，选择饭票、现金、积分支付可享受折扣优惠哦！</div>
     </div>
-    <div class="am-shadow">
-      <p class="htit"><span class="am-icon-gift red"> </span> 支付方式</p>
-      <div class="adc gray">上门服务之后付款</div>
-    </div>
-    <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
-    <div class="am-shadow">
-      <p class="htit"><span class="am-icon-gift red"> </span> 优惠券<span class="am-fr">2张可选</span> </p>
-      <a href="<?php echo site_url('home/card')?>" class="am-cf adc"><img src="skin/img/qu.png" alt=""> 优惠券 <span class="am-icon-cny"></span>5 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
+     <div class="am-shadow am-margin-vertical-sm fpa" style="display: none;">
+      <p class="htit"><span class="am-icon-gift red"> </span> 饭票(满300可用)<span class="am-fr">2张可选</span> </p>
+      <!-- 有饭票时 -->
+      <a href="<?php echo site_url('home/card')?>" class="am-cf adc"><img src="skin/img/qu.png" alt=""> 饭票 <span class="am-icon-cny red">30</span><span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
+      <!-- 没有饭票时 -->
+      <a href="javascript:;" class="am-cf adc"><img src="skin/img/qu.png" alt=""> 饭票 <span class="red">未使用</span> <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
     </div>
     
 
-    <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
-    <div class="am-shadow">
+     <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
 
       <!-- 未添加地址这显示 -->
@@ -63,14 +79,45 @@
           </ul>
           
         </div>
-        <!--   <p class="htit sad"><span class="am-icon-phone green"></span> 联系方式</p>
-        <input type="tel" class="am-form-field" placeholder="电话号码">
-        <br> -->
+       
       </div>
       
-      <button type="submit" class="am-u-sm-12 am-btn bgreen os">提交</button>
+      <button type="submit" id="payorder" class="am-u-sm-12 am-btn bgreen os">提交</button>
       <!-- 演示  可删除-->
       <a href="<?php echo site_url('home/paySuccess')?>">提交</a>
     </form>
   </body>
+<script src="skin/js/jquery.min.js"></script>
+<script src="skin/js/amazeui.min.js"></script>
+<script>
+  $(function(){  
+    var cks = $('input:checkbox');
+    if($('input:checkbox:checked').size() == 0){
+      $('#payorder').attr({
+        disabled: 'disable'
+      });
+    }
+    else{
+      $('#payorder').removeAttr('disabled');
+    }
+     cks.click(function() {
+        console.log($('input:checkbox:checked').size());
+      if($(this).prop("checked")){
+         $('#payorder').removeAttr('disabled');
+      }
+      else if($('input:checkbox:checked').size() == 0){
+      $('#payorder').attr({
+        disabled: 'disable'
+      });
+    }   
+       if($('.fp').prop("checked")){
+        $('.fpa').css('display','block');
+      }else{
+        $('.fpa').css('display','none');
+      }
+ 
+    });
+
+  })
+</script>
 </html>

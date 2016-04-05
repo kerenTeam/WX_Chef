@@ -1,6 +1,8 @@
 /* Write your styles*/
 body {
   background: rgb(241, 241, 241);
+/*   opacity:0;
+  transition:all 1s ; */
 }
 .am-slider-default .am-control-nav {
     bottom: 9px;
@@ -139,7 +141,7 @@ body {
 
 .div2 a {
   color: black;
-  width: 80px;
+  margin: auto 20px;
   text-align: center;
   display: inline-block;
 }
@@ -529,6 +531,15 @@ body {
   width: 100%;
   padding: 15px;
   color: black;
+
+}
+.fpa a{
+  width:97%;
+    margin:auto 1.5%;
+   border-bottom:1px solid rgba(0,0,0,0.1);
+}
+.fpa a:last-child{
+  border-bottom:none;
 }
 
 .lilast {
@@ -1140,8 +1151,7 @@ figure a:hover figcaption {
   position: absolute;
   top: 0;
   z-index: -1;
-}
-
+} 
 .bkn_banner img {
   width: 100%;
 }
@@ -1275,6 +1285,30 @@ figure a:hover figcaption {
   .am-slider-c3 img{
     height:20rem;
   }
+  .onturn{
+    position:fixed;
+    right:0;
+    bottom:0;
+    left:0;
+    text-align:center;
+   top:0;
+    z-index:9999999999;
+    /* display:none; */
+  }
+  .onturn span{
+    position:relative;
+     top:49%;
+     font-size:32px;
+  }
+  a.vimg{
+    width: 7.5rem;
+    display: inline-block;
+    height: 7.5rem;
+  }
+    .vimg img {
+    height: 100%!important;
+    width: 100%!important;
+  }
 @media only screen and (min-width:600px) {
   .tkcontent img {
     width: auto;
@@ -1287,6 +1321,10 @@ figure a:hover figcaption {
 
   .life figcaption {
     padding-top: 6%;
+  }
+  .renote{
+    margin-right: -241px!important;
+    right: 50%!important;
   }
 }
 
@@ -1307,16 +1345,15 @@ figure a:hover figcaption {
 }
 
 @media only screen and (max-width:414px) {
-  .vimg img {
-    height: 85px;
-    width: 100%;
-  }
-
   .typec+ul>li a {
     padding: 1.3rem 1rem;
     font-size: 14px;
   }
-
+  a.vimg{
+    width: 7.5rem;
+    display: inline-block;
+    height: 7.5rem;
+  }
   .am-selected {
     margin-left: -6px;
   }
@@ -1330,7 +1367,11 @@ figure a:hover figcaption {
   .cardbtn {
     margin-top: 19%;
   }
-
+  a.vimg{
+    width: 6.8rem;
+    display: inline-block;
+    height: 6.8rem;
+  }
   .am-selected button {
     font-size: 14px;
   }
@@ -1356,12 +1397,6 @@ figure a:hover figcaption {
     padding: 1.2rem 0.9rem;
     font-size: 13px;
   }
-
-  .vimg img {
-    height: 75px;
-    width: 100%;
-  }
-
   .tuimg {
     height: 75px;
   }
@@ -1378,7 +1413,11 @@ figure a:hover figcaption {
   .topform button {
     left: 40px;
   }
-
+  a.vimg{
+    width: 5.5rem;
+    display: inline-block;
+    height: 5.5rem;
+  }
   .tktxt .rega {
     padding: 3px 13px;
     font-size: 12px;
@@ -1433,11 +1472,6 @@ figure a:hover figcaption {
 
   .cardbtn {
     margin-top: 9%;
-  }
-
-  .vimg img {
-    height: 60px;
-    width: 100%;
   }
 
   .tuimg {

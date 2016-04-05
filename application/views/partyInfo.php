@@ -73,6 +73,52 @@
         </div>
 
     </div> 
+    <!-- 评价 -->
+    <div class="am-shadow am-margin-top">
+      <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" >
+        <h2 class="am-titlebar-title ">
+        消费评价
+        </h2>
+      </div>
+      <div class="am-u-sm-5 am-text-center">
+        <span class="red am-text-xxl">9.8</span>分<br>
+        <span class="am-text-xs red"><i class="am-icon-star "></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i></span><br>
+        <span class="am-text-xs"> 共20人评价</span>
+        
+      </div>
+      <div class="am-u-sm-7 stars">
+        <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 4.9分</p>
+        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 4.9分</p>
+        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 4.9分</p>
+      </div>
+      <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
+      <!-- 文字评论 -->
+      <div class="am-shadow">
+        <header class="am-comment-hd">
+          <!--<h3 class="am-comment-title">评论标题</h3>-->
+          <div class="am-comment-meta">
+            <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">某人</a>
+            <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
+          </div>
+        </header>
+        <div class="am-comment-bd am-text-xs">
+          味道很不错
+        </div>
+      </div>
+      <div class="am-shadow">
+        <header class="am-comment-hd">
+          <!--<h3 class="am-comment-title">评论标题</h3>-->
+          <div class="am-comment-meta">
+            <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">某人</a>
+            <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
+          </div>
+        </header>
+        <div class="am-comment-bd am-text-xs">
+          味道很不错
+        </div>
+      </div>
+    </div>
+
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">
       <a href="<?php echo site_url('home/order')?>">
         <div class="am-u-sm-8 green a">

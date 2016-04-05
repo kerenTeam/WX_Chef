@@ -1,9 +1,14 @@
 <body>
+<!-- 加载动画 -->
+<!-- <div class="onturn am-center am-vertical-align">
+   <span class="am-icon-spinner am-icon-pulse am-vertical-align-middle"></span>
+</div>
+ -->
 <!-- 注册弹框 -->
 <div class="tk">
   <div class="tkcontent">
     <span><img class="closetk" src="skin/img/closetk.png" alt="大厨到家"></span>
-    <img src="skin/img/tk.png" alt="大厨到家">
+    <img src="skin/img/tk.png" class="renote" alt="大厨到家">
     <div class="tktxt">
       <div class="am-text-sm">亲，你还没有注册哟！注册即可享优惠</div>
       <a class="rega" href="<?php echo site_url('home/register')?>">立即注册</a>
@@ -83,7 +88,7 @@
 <div class="am-shadow">
   <p class="htit"><span class="am-icon-eye yellow"></span> 实时菜价<a href="<?php echo site_url('home/priceSearch')?>" class="am-fr am-text-xs gray">更多》</a></p>
   <div class="d1" id="div1" onmouseover="clearInterval(timer)" onmouseout="timer=setInterval(mar,30)">
-    <span class="div2" id="div2"> <a href="<?php echo site_url('home/price')?>">莴笋</a>  <a href="<?php echo site_url('home/price')?>">大白菜</a>  <a href="<?php echo site_url('home/priceSearch')?>">鲜猪肉</a>  <a href="<?php echo site_url('home/priceSearch')?>">鸡肉</a>  <a href="<?php echo site_url('home/priceSearch')?>">河虾</a>  <a href="<?php echo site_url('home/priceSearch')?>">鲤鱼</a>  <a href="<?php echo site_url('home/priceSearch')?>">大螃蟹</a>  </span><span id="div3" class="div2"></span>
+    <span class="div2" id="div2"> <a href="<?php echo site_url('home/price')?>">西兰花 5.5元一斤</a>  <a href="<?php echo site_url('home/price')?>">大白菜 5.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">西兰花 5.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">鸡肉 25.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">西兰花 5.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">西兰花 5.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">鲤鱼 15.5元一斤</a>  </span><span id="div3" class="div2"></span>
   </div>
   <div>
   </div>
@@ -143,6 +148,12 @@
     });
   })
 
+
+// $(document).ready(function(){ 
+//   $('.onturn').css({ 
+//     display: 'none'
+//   });
+// });
 
 var s,s2,s3,timer;
 function init(){

@@ -6,21 +6,21 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    我的优惠券
+    我的饭票
     </h1>
     
   </header>
-  <!-- 无优惠券 -->
+  <!-- 无饭票 -->
 
 
 <!--   <div class="cardno">
     <img  class="am-block" src="skin/img/nocard.jpg" alt="">
-    暂无可用优惠券
+    暂无可用饭票
   </div> -->
 
 
 
-  <!-- 可用优惠券 --> 
+  <!-- 可用饭票 --> 
   <div class="am-list-news-bd">
     <ul class="am-list acr">
       <li class="am-g">
@@ -31,8 +31,8 @@
       </li>
     </ul>
   </div>
-  <!-- 失效优惠券 -->
-  <h3 class="am-text-center">失效优惠券</h3>
+  <!-- 失效饭票 -->
+  <h3 class="am-text-center">失效饭票</h3>
   <div class="am-list-news-bd">
     <ul class="am-list acr">
       <li class="am-g">
