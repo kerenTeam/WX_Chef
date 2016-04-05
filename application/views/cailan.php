@@ -52,7 +52,7 @@
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
             <div class="am-u-sm-4 am-list-thumb">
               <a href="<?php echo site_url('home/food?id=').$v['id'];?>" class="vimg">
-                <img src="<?=base_url($v['thumbnail']);?>" alt="<?=$v['foodName'];?>"/>
+                <img src="skin/img/exp.gif" data-original="<?=base_url($v['thumbnail']);?>" class="lazy" alt="<?=$v['foodName'];?>"/>
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
@@ -92,7 +92,9 @@
 </form>
 
 <script src="skin/js/num.js"></script>
+<script src="skin/js/jqueryLazyload.js"></script>
 <script>
+
  $(function(){
 var inputs = $('.numTxt');
 inputs.each(function() {
@@ -106,9 +108,8 @@ $(this).css('display','inline-block');
 $(this).parent('.foodNum').find('.reduce').css('display','inline-block');
 }
 });
-
-})
-
+ $("img.lazy").lazyload();
+}) 
 </script>
 <style>
    .oo{

@@ -1,137 +1,168 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="format-detection" content="telephone=no,email=no" />
-    <link href="../skin/css/base.css" rel="stylesheet" type="text/css"/>
-    <link href="../skin/css/home.css" rel="stylesheet" type="text/css"/>
-    <script>
-        document.getElementsByTagName("html")[0].style.fontSize = document.documentElement.clientWidth / 3.2 + "px";
-    </script>
-    <title>菜篮子</title>
-</head>
+<script src="skin/js/jquery.min.js"></script>
+<script src="skin/js/amazeui.min.js"></script>
 <body>
+  <!-- header -->
+  <header data-am-widget="header"class="am-header am-header-default topform bheader" style="position:fixed!important;top:0px !important; width: 100%;height: 49px;z-index: 9999"> <!-- data-am-sticky  am-header-fixed header固定在顶部-->
+  <div class="am-header-left am-header-nav">
+    <a href="<?php echo site_url('home/index')?>">
+      <i class="am-header-icon am-icon-chevron-left"></i>
+    </a>
+  </div>
+  <h1 class="am-header-title">
+  菜篮子
+  </h1>
+ <script type="text/javascript">
+  function doaction() {
+  $.ajax({
+    type: "POST",
+    url: '<?=site_url('home/cart');?>',
+    data: $('#question').serialize(),
+    success: function(data) { 
+      alert(data);
 
-<div id="main-container">
-    <div id="search-bar">
-        <img src="./res/logo.png">
-        <p class="title-name">菜妹子</p>
-        <button class="search-button">请输入菜名搜索</button>
-    </div>
-    <div id="search-page">
-        <div class="title-bar">
-            <p class="back-home">&lt;&nbsp;返回</p>
-            <input class="search-input" type="text" spellcheck="false" maxlength="13" placeholder="请输入菜品名称、品牌">
-            <div class="clear-btn-rect">
-                <img class="clear-btn" src="./res/clear.png">
-            </div>
-            <div class="btn-search">搜索</div>
-        </div>
-        <div id="search-res-wrapper"></div>
-    </div>
-    <div id="title-menu" class="clear-fix"></div>
-    <div id="sec-menu-container" class="clear-fix"></div>
-    <div id="spec-item-container" class="clear-fix"></div>
-    <div id="login-tip-container">
-        <p class="no-login">您尚未登录菜妹子，立刻<span>登录/注册</span></p>
-        <p class="has-login">用户<span></span>,您已登录菜妹子!</p>
-    </div>
-    <div id="shopping-cart-container"  class="clear-fix">
-        <img src="./res/shopping-cart.png">
-        <p class="cate-count">品类数: <span>0</span></p>
-        <p class="total-pay">总价:<span class="value">0.00</span>元</p>
-        <div class="button-pay">下一步</div>
-        <p class="pay-tip">当日订单不满100元,无法配送!</p>
-    </div>
-</div>
+    }
 
-<script type="text/template" id="search-res-tmpl">
-    <%if(items.length>0){%>
-    <ul>
-        <%_.each(items, function(vo){%>
-        <li pro-id="<%=vo.id%>">
-            <div class="left-des-wrapper">
-                <p class="item-name"><%=vo.name%></p>
-                <p class="item-des"><%=vo.description%></p>
-                <p class="item-price"><span class="price_value"><%=vo.today_price_value%></span>元/<%=vo.spec_desc%><span class="spec_value"><%=vo.spec_value%></span><%=vo.spec_unit%>装</p>
-                <p class="item-spec"><%=vo.price_desc%></p>
-            </div>
-            <div class="right-des-wrapper">
-                <div class="img-wrapper">
-                    <img class="item-pic" src="<%=(server_base+vo.logo)%>">
-                </div>
-                <div class="button-wrapper">
-                    <img class="img-left" src="./res/reduce.png">
-                    <p class="selected-count">0</p>
-                    <img class="img-right" src="res/add.png">
-                </div>
-                <p class="selected-info">已选<span class="sel_count">0</span><span><%=vo.spec_desc%></span><span>&nbsp;共</span><span class="sel_value">0</span><span><%=vo.spec_unit%></span></p>
-            </div>
-        </li>
-        <%});%>
+  });
+}
+</script>
+</header>
+<form  id='question' enctype="multipart/form-data">
+ <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
+  <!-- 菜品栏目 -->
+  <div class="am-u-sm-3 cmn aml"><!--  style="height: 100%;overflow-y:auto; " -->
+     <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: -48}" data-am-sticky="{top:49}">
+    <div class="pink typec"><img src="skin/img/type.png" alt="">&nbsp;分类</div>
+    <ul class="am-list typel">
+    <?php foreach($cates as $cate):?>
+      <li><a href="#<?=$cate['id']?>"><img src="<?=base_url($cate['packicon']);?>" alt="">&nbsp;<?=$cate['packname'];?></a></li>
+    <?php endforeach;?>
     </ul>
-    <%}else{%>
-    <p class="no-search-result">暂无搜索结果</p>
-    <%}%>
-</script>
-<script type="text/template" id="search-empty-tmpl">
-    <div id="search-empty-wrapper">
-        <p class="empty-title">历史搜索</p>
-        <div class="empty-record">
-            <ul>
-                <%_.each(recordSet, function(item){%>
-                <li><%=item%></li>
-                <%});%>
-            </ul>
-        </div>
-        <div class="clear-btn-wrapper">
-            <p class="empty-clear-btn">清空历史记录</p>
-        </div>
-    </div>
-</script>
+    </nav>
+  </div>
+  <!-- 菜品选择 --> <!-- style="height: 100%;overflow-y:auto;padding-bottom: 8.5rem;" -->
+  <div data-am-widget="list_news" class="am-u-sm-9 asp cmn amr">
+    <div class="cmn cmnb am-list-news am-list-news-default" >
+      <div class="am-list-news-bd">
 
-<script type="text/template" id="sec-menu-tmpl">
-    <div class="category-content">
-        <ul>
-            <%_.each(secMenu, function(vo){%>
-            <li cate-id="<%=vo.id%>"><p><%=vo.name%></p></li>
-            <%});%>
+      <?php foreach($cates as $val):?>
+        <p id="<?=$val['id']?>"><?=$val['packname']?></p>
+        <ul class="am-list">
+        <?php $pid = $val['id']; $foods = $this->db->query("select * from food where pid ='$pid'");$food = $foods->result_array();?>
+        <?php foreach($food as $v):?>
+          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+            <div class="am-u-sm-4 am-list-thumb">
+              <a href="<?php echo site_url('home/food?id=').$v['id'];?>" class="vimg">
+                <img src="<?=base_url($v['thumbnail']);?>" alt="<?=$v['foodName'];?>"/>
+              </a>
+            </div>
+            <div class=" am-u-sm-8 am-list-main">
+              <h3 class="am-list-item-hd"><?=$v['foodName'];?></h3>
+              <input type="hidden" name="foodid[]" value="<?=$v['id'];?>">
+              <div class="am-list-item-text"><strong>特点：</strong><?=$v['specialty'];?>。</div>
+              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg"><?=$v['monthSalesm'];?></span>份</div>
+              <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['price'];?></span><span class="am-text-xs gray"> /份</span></div>
+              <div class="foodNum">
+                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
+                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
+              </div>
+            </div>
+          </li>
+        <?php endforeach;?>
         </ul>
+      <?php endforeach;?>
+      </div>
     </div>
-</script>
+  </div>
 
-<script type="text/template" id="spec-item-tmpl">
-    <div class="spec-content clear-fix">
-        <ul class="clear-fix">
-            <%_.each(itemSpec, function(vo){%>
-            <li pro-id="<%=vo.id%>">
-                <div class="left-des-wrapper">
-                    <p class="item-name"><%=vo.name%></p>
-                    <p class="item-des"><%=vo.description%></p>
-                    <p class="item-price"><span class="price_value"><%=vo.today_price_value%></span>元/<%=vo.spec_desc%><span class="spec_value"><%=vo.spec_value%></span><%=vo.spec_unit%>装</p>
-                    <p class="item-spec"><%=vo.price_desc%></p>
-                </div>
-                <div class="right-des-wrapper">
-                    <div class="img-wrapper">
-                        <img class="item-pic" src="<%=(server_base+vo.logo)%>">
-                    </div>
-                    <div class="button-wrapper">
-                        <img class="img-left" src="./res/reduce.png">
-                        <p class="selected-count">0</p>
-                        <img class="img-right" src="res/add.png">
-                    </div>
-                    <p class="selected-info">已选<span class="sel_count">0</span><span><%=vo.spec_desc%></span><span>&nbsp;共</span><span class="sel_value">0</span><span><%=vo.spec_unit%></span></p>
-                </div>
-            </li>
-            <%});%>
-        </ul>
-    </div>
-</script>
+  <!-- footer -->
+  <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
+      <a href="<?php echo site_url('home/cart')?>">
+      <div class="am-u-sm-8 a">
+        <span class="green"><img src="skin/img/cart.png" id="car" alt=""><span id="fen" class="allmoney">0</span>份</span>
+        <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
+      </div>
+      <div class="am-u-sm-4 b">
+        
+        <button  onclick="doaction()" class="am-btn am-btn-success">确认</button>
+        
+      </div>
+      </a>
+  </div>
+</form>
 
+<script src="skin/js/num.js"></script>
+<script>
+ $(function(){
+var inputs = $('.numTxt');
+inputs.each(function() {
+var numI=$(this).val();
+if(numI == 0){
+$(this).css('display','none');
+$(this).parent('.foodNum').find('.reduce').css('display','none');
+}
+else{
+$(this).css('display','inline-block');
+$(this).parent('.foodNum').find('.reduce').css('display','inline-block');
+}
+});
+
+})
+
+</script>
+<style>
+   .oo{
+      font-size:20px;
+      z-index:99999999;
+       -webkit-transition:0.5s left linear,
+                      0.5s top ease-in,
+                      0.1s 0.5s visibility linear;
+        transition:0.5s left linear,
+                   0.5s top ease-in,
+                   0.1s 0.5s visibility linear;
+  }
+</style>
+<script type="text/javascript">
+    var add = document.getElementsByClassName("add"); 
+    var car = document.getElementById("car");
+    for (var i = 0; i < add.length; i++) {
+        add[i].onclick = function(){
+            clearTimeout(par);
+            var x = this.getBoundingClientRect().left;
+            var y = this.getBoundingClientRect().top;
+            var car_x = car.getBoundingClientRect().left;
+            var car_y = car.getBoundingClientRect().top;
+            var div = document.createElement("div");
+            div.style.position = "fixed";
+            div.style.left = x + "px";
+            div.style.top = y + "px";
+            div.setAttribute("class","add am-icon-plus-circle oo");
+            document.documentElement.appendChild(div);
+             handle(this, true);
+             var par = setTimeout(function(){
+          // var divX = parseInt(div.style.left);
+         //  var divY = parseInt(div.style.top);
+         div.style.zIndex=99999;
+                    div.style.left=car_x + "px";
+                    div.style.top=car_y + "px";//加单位很重要，不然不会动
+        // var speedX = (car_x-divX)/10;
+        // var speedY = (car_y-divY)/30;
+        // speedX=speedX>0?Math.ceil(speedX):Math.floor(speedX);
+        // // speedY=speedY>0?Math.ceil(speedY):Math.floor(speedY);
+        // div.style.left = divX + speedX + "px";
+        // div.style.top = divY + speedY + "px";
+        // if(divY == car_y && divX == car_x){
+        //  clearInterval(par);
+        //  div.parentNode.removeChild(div);
+        // }
+        // // console.log(divX)
+        // console.log(divX,divY +'======'+ car_x,car_y); 
+        var remove=setTimeout(function(){
+               div.parentNode.removeChild(div);
+      },550)
+      },1)
+        }
+    }
+</script>
 </body>
-
-<script type="text/javascript" src="../skin/js/libs/require.js"></script>
-<script type="text/javascript" src="../skin/js/require-config.js"></script>
-<script type="text/javascript" src="../skin/js/home.js"></script>
 </html>

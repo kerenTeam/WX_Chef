@@ -315,8 +315,15 @@ body {
   margin-top: -1px;
   width: 100%;
 }
+.fimg{
+      height: 22rem;
+}
 .fimg img{
-      max-height: 22rem;
+  max-width:100%;
+    background-size: cover;
+    width: auto;
+    height: 100%;
+    margin: auto;
 }
 .red {
   color: #FE5F59!important;
@@ -1054,12 +1061,6 @@ body {
   margin-bottom: 5px;
   border: none;
 }
-
-.fimg {
-  /* max-height: 22rem;*/
-  width: 100%;
-}
-
 .acr li {
   padding: 0 5px;
   margin: 5px 0;
