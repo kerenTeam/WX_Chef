@@ -190,8 +190,8 @@ body {
 
 .fNum {
   position: absolute;
-  top: 2.7rem;
-  right: 5rem;
+  top: 3.9rem;
+  right: 10rem;
 }
 
 .fNum span {
@@ -463,17 +463,18 @@ body {
 }
 
 .am-icon-refresh {
-  position: relative;
-  right: -1rem;
-  font-size: 2rem;
-  margin-top: 5.5rem;
+ position: relative;
+    right: 2rem;
+    font-size: 1.6rem;
 }
-
+.cartb{
+	margin-bottom:3%!important;
+}
 .am-icon-refresh:after {
   content: '换一换';
   position: relative;
   font-size: 12px;
-  left: -26px;
+  left: -25px;
   width: 100%;
   top: 12px;
 }
@@ -630,8 +631,8 @@ body {
 }
 
 .hot .am-u-sm-4 img {
-  height: 6.5rem;
-  width: 6.5rem;
+  height: 5.5rem;
+  width: 5.5rem;
   margin-top: 10px;
 }
 
@@ -811,7 +812,7 @@ body {
 
 .ats2 {
   position: absolute;
-  top: 2.5rem;
+  top: 60%;
   right: 1rem;
 }
 
@@ -1301,7 +1302,7 @@ figure a:hover figcaption {
      top:49%;
      font-size:32px;
   }
-  a.vimg{
+  .vimg{
     width: 7.5rem;
     display: inline-block;
     height: 7.5rem;
@@ -1350,7 +1351,7 @@ figure a:hover figcaption {
     padding: 1.3rem 1rem;
     font-size: 14px;
   }
-  a.vimg{
+  .vimg{
     width: 7.5rem;
     display: inline-block;
     height: 7.5rem;
@@ -1368,7 +1369,7 @@ figure a:hover figcaption {
   .cardbtn {
     margin-top: 19%;
   }
-  a.vimg{
+  .vimg{
     width: 6.8rem;
     display: inline-block;
     height: 6.8rem;
@@ -1414,7 +1415,7 @@ figure a:hover figcaption {
   .topform button {
     left: 40px;
   }
-  a.vimg{
+  .vimg{
     width: 5.5rem;
     display: inline-block;
     height: 5.5rem;

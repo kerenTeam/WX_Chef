@@ -19,35 +19,46 @@
       <div class="am-list-news-bd">
         <div class="am-text-center oln">点菜</div>
           <ul class="am-list cul">
+		  <?php if(!empty($carts)):?>
+		  <?php foreach($carts as $cart):?>
+			<?php 
+				$id = $cart['dishName']; 
+				$foods = $this->pack_model->foods($id);
+			?>
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-              <div class="am-u-sm-3 am-list-thumb">
-                <a href="<?php echo site_url('home/food')?>" class="vimg">
-                  <img src="skin/img/product/rjx.jpg" id="img" alt="蓉记姜葱香辣蟹168"/>
+              <div class="am-u-sm-3 am-text-center am-list-thumb">
+                <a href="<?php echo site_url('home/food?id=').$foods['id'];?>" class="vimg">
+                  <img src="<?=base_url($foods['thumbnail']);?>" id="img" alt="<?=$foods['foodName'];?>"/>
                 </a>
               </div>
               <div class=" am-u-sm-9 am-list-main">
-                <h3 class="am-list-item-hd">蓉记姜葱香辣蟹 <span class="am-icon-refresh am-fr green"></span></h3>
-                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price">168</span></div>
+                <h3 class="am-list-item-hd cartb"><?=$foods['foodName'];?></h3>
+                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$foods['price'];?></span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
-                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="1">
+                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="<?=$cart['num'];?>">
                   <span class="am-icon-plus" onClick="handle(this, true)"></span>
                 </div>
-                <a href="" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
+                 <a href="<?php echo site_url('home/change')?>"><span class="am-icon-refresh am-fr green"></span></a>
+                <a href="<?=site_url('home/delcart?id=').$cart['id'];?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
             </li>
+			<?php endforeach;?>
+			<?php else:?>
+			<p class="am-margin-right-lg">你还没有添加任何食物！</p>
+			<?php endif;?>
           </ul>
         <div class="am-text-center oln">套餐</div>
           <ul class="am-list cul">
             
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-              <div class="am-u-sm-3 am-list-thumb">
+              <div class="am-u-sm-3 am-text-center am-list-thumb">
                 <a href="<?php echo site_url('home/dinner')?>" class="vimg">
                   <img src="skin/img/product/shiguo.jpg" alt="石锅酱仔排58"/>
                 </a>
               </div>
               <div class=" am-u-sm-9 am-list-main">
-                <h3 class="am-list-item-hd">日常589元系列</h3>
+                <h3 class="am-list-item-hd cartb">日常589元系列</h3>
                 <div class="pr"><i class="am-icon-cny"></i><span class="price">589</span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
@@ -80,16 +91,5 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/num.js"></script>
-<script>
-  $(function(){
-      $('.am-icon-refresh').click(function(){ 
-      $(this).parent().html("冰镇素鲍双拼 <span class='am-icon-refresh am-fr green'></span>");
-       $('#price').html('108');
-       $('#img').attr({ 
-        src: 'skin/img/product/bzsbsp.jpg'
-        });
-    })
-  })
-</script>
 </body>
 </html>

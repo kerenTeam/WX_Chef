@@ -48,6 +48,11 @@ class home extends CI_Controller
 
 		$this->load->view('buy');
 	}
+	//换一换
+	public function change(){
+
+		$this->load->view('change');
+	}
 	//菜品详情
 	public function food(){
 		$id = $_GET['id'];
@@ -85,21 +90,22 @@ class home extends CI_Controller
 
 		$this->load->view('dinner');
 	}
-	//购物车
-	public function shoppingcart(){
 
-		$this->load->view('shoppingcart');
-	}
 	//购物车 new
 	public function cart(){
-
-		// $foodid = $_POST['foodid'];
-		// $numbers = $_POST['numbers'];
-
-		// $cards = array_combine($foodid,$numbers);
-		// $data = array_filter($cards);
+		if($_POST){
+			$foodid = $_POST['foodid'];
+			$numbers = $_POST['numbers'];
+			$cards = array_combine($foodid,$numbers);
+			$data = array_filter($cards);
+			foreach($data as $key=>$val){
+				$a['dishName']= $key;
+				$a['num'] = $val;
+				
+				$this->pack_model->addcart($a);
+			}	
+		}
 		
-		// var_dump($data);
 
 		$this->load->view('cart');
 	}

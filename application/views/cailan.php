@@ -19,8 +19,10 @@
     data: $('#question').serialize(),
     success: function(data) { 
       alert(data);
-
+		//window.location.href="<?=site_url('home/cart');?>";
+		//html("<h1>"+data+"</h1>");
     }
+	
 
   });
 }
@@ -50,7 +52,7 @@
         <?php $pid = $val['id']; $foods = $this->db->query("select * from food where pid ='$pid'");$food = $foods->result_array();?>
         <?php foreach($food as $v):?>
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-list-thumb">
+            <div class="am-u-sm-4 am-text-center am-list-thumb">
               <a href="<?php echo site_url('home/food?id=').$v['id'];?>" class="vimg">
                 <img src="skin/img/exp.gif" data-original="<?=base_url($v['thumbnail']);?>" class="lazy" alt="<?=$v['foodName'];?>"/>
               </a>
@@ -59,7 +61,7 @@
               <h3 class="am-list-item-hd"><?=$v['foodName'];?></h3>
               <input type="hidden" name="foodid[]" value="<?=$v['id'];?>">
               <div class="am-list-item-text"><strong>特点：</strong><?=$v['specialty'];?>。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg"><?=$v['monthSalesm'];?></span>份</div>
+              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span><?=$v['monthSalesm'];?></span>份</div>
               <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['price'];?></span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
@@ -77,7 +79,7 @@
 
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
-      <a href="<?php echo site_url('home/cart')?>">
+     
       <div class="am-u-sm-8 a">
         <span class="green"><img src="skin/img/cart.png" id="car" alt=""><span id="fen" class="allmoney">0</span>份</span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
@@ -87,7 +89,6 @@
         <button  onclick="doaction()" class="am-btn am-btn-success">确认</button>
         
       </div>
-      </a>
   </div>
 </form>
 

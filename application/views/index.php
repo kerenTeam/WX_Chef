@@ -21,7 +21,7 @@
   <ul class="am-slides">
     <?php foreach($banners as $val):?>
     <li>
-      <a href="<?=$val['url']?>"><img src="<?=$val['thumb']?>" class="am-img-responsive card" alt="<?=$val['title']?>"></a>
+      <a href="<?=site_url($val['url']);?>"><img src="<?=$val['thumb']?>" class="am-img-responsive card" alt="<?=$val['title']?>"></a>
       
     </li>
   <?php endforeach;?>
