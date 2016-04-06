@@ -257,10 +257,11 @@ body {
 	border: 0;
 	background: none;
 	position: absolute;
-	top: 19px;
-	left: 50px;
+	top: 21px;
+	left: 46px;
 }
 .topform input {
+	-webkit-appearance:none;
 	display: inline-block;
 	margin: 15px auto;
 	text-align: center;
