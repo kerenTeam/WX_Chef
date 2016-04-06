@@ -9,11 +9,7 @@
     <h1 class="am-header-title">
     搜索
     </h1>
-    <div class="am-header-right am-header-nav">
-      <a href="<?php echo site_url('home/index')?>" class="">
-        首页
-      </a>
-    </div>
+ 
   </header>
   <form action="" method="" class="topform">
     <div class="am-g">

@@ -8,33 +8,24 @@ html {
 </head>
 <body class="register">
 <form action="<?=site_url('login/regadd')?>" method="post" class="form_test">
-  <div class="first">
+  	<div class="first">
     <div class="reg_input flex">
-      <label>中国 +86</label>
+      <label>手机号认证</label>
       <input type="tel" placeholder="请输入手机号码" name="phone" />
     </div>
     <div class="reg_test">
       <input type="text" placeholder="请输入验证码"/>
       <input type="button" onclick="time(this)" value="获取验证码" />
     </div>
-    <div class="user_agreement">
-      <label class="am-radio am-success">
-        <input type="checkbox" data-am-ucheck />
-        <span class="user">我已阅读并同意<a href="<?php echo site_url('home/protocol')?>">《大厨到家》</a>用户手册.</span> </label>
     </div>
-  </div>
-  <div class="seconde" style="display:none;">
+     <div class="seconde" style="display:none;">
      <div class="reg_input flex">
-		<label class="am-text-sm">密码</label>
+		<label class="am-text-sm">新密码</label>
 		<input type="password" placeholder="请输入密码" class="pass" required/>
 	</div>
-     <div class="reg_input flex">
-		<label class="am-text-sm">确认密码</label>
-		<input type="password" placeholder="确认密码" class="passcheck" required/>
-	</div>
-  </div>
+  </div> 
   <div class="reg_btn">
-    <button type="button" class="am-btn am-btn-default" disabled>下一步</button>
+    <button type="button" class="am-btn am-btn-success">确认</button>
   </div>
 </form>
 <div class="shade">
@@ -86,9 +77,7 @@ html {
 			var passcheck=$('.passcheck');
 		  if(pass.val() != ''){
 			  $(this).prop('type','submit');
-			  }else if(pass.val()!==passcheck.val()){
-				  shade('am-icon-meh-o','密码输入不一致，请重输！！');
-				  }
+			  }
 		});
 		
 		// 表单验证

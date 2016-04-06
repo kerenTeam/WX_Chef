@@ -9,7 +9,6 @@ class home extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-
 		$this->load->model('option_model');
 		$this->load->model('pack_model');
 		$data['site'] = $this->option_model->system('siteName');
@@ -61,11 +60,12 @@ class home extends CI_Controller
 	public function cailan(){
 
 
-		$catejson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=c');
+		$catejson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=c&foodid=""');
 		$data['cates'] = json_decode(json_decode($catejson));
 
-		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=d');
+		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=d&foodid=""');
 		$data['foods'] = json_decode(json_decode($foodjson));
+		 
 		$this->load->view('cailan',$data);
 	}
 	//点菜
@@ -117,6 +117,11 @@ class home extends CI_Controller
 
 		$this->load->view('partyServ');
 	}
+	//忘记密码
+	public function forgetPassword(){
+
+		$this->load->view('forgetPassword');
+	}
 	//图文详情
 	public function lifeInfo(){
 
@@ -126,6 +131,18 @@ class home extends CI_Controller
 	public function partyInfo(){
 
 		$this->load->view('partyInfo');
+	}
+	public function partyInfo2(){
+
+		$this->load->view('partyInfo2');
+	}
+	public function partyInfo3(){
+
+		$this->load->view('partyInfo3');
+	}
+	public function partyInfo4(){
+
+		$this->load->view('partyInfo4');
 	}
 	//套餐详情
 	public function dinner(){
