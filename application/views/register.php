@@ -84,9 +84,9 @@ html {
 			
 			   var pass=$('.pass');
 			var passcheck=$('.passcheck');
-		  if(pass.val()==passcheck.val()&&pass.val() != ''){
+		  if(pass.val() != ''){
 			  $(this).prop('type','submit');
-			  }else{
+			  }else if(pass.val()!==passcheck.val()){
 				  shade('am-icon-meh-o','密码输入不一致，请重输！！');
 				  }
 		});

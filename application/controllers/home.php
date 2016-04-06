@@ -9,7 +9,6 @@ class home extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-
 		$this->load->model('option_model');
 		$this->load->model('pack_model');
 		$data['site'] = $this->option_model->system('siteName');
@@ -43,11 +42,12 @@ class home extends CI_Controller
 	public function cailan(){
 
 
-		$catejson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=c');
+		$catejson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=c&foodid=""');
 		$data['cates'] = json_decode(json_decode($catejson));
 
-		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=d');
+		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=d&foodid=""');
 		$data['foods'] = json_decode(json_decode($foodjson));
+		 
 		$this->load->view('cailan',$data);
 	}
 	//点菜
