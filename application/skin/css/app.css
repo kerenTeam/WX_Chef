@@ -213,7 +213,8 @@ body {
 }
 .inborder {
 	border: 1px solid rgba(0, 0, 0, 0.498039);
-	width: 2.5rem;
+	width: 3.2rem;
+	font-size:12px;
 }
 .months {
 	font-size: 12px;
@@ -1076,7 +1077,7 @@ figure a:hover figcaption {
 	width: 17%;
 	left: 26%;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.65);
-	top: 13px;
+	top: 11px;
 }
 .menuname:after {
 	content: '';
@@ -1084,7 +1085,7 @@ figure a:hover figcaption {
 	width: 17%;
 	right: 26%;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.65);
-	top: 13px;
+	top: 11px;
 }
 .am-slider-c3 .am-slider-counter {
 	background-color: #F85554;
