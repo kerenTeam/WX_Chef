@@ -9,7 +9,13 @@ class home extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->view('header');
+		$this->load->model('option_model');
+		$this->load->model('pack_model');
+		$data['site'] = $this->option_model->system('siteName');
+		$data['keyword'] = $this->option_model->system('keyWord');
+		$data['description'] = $this->option_model->system('keyWordDescriber');
+		// var_dump($data);
+		$this->load->view('header',$data);
 	}
 	//登录
 	public function login(){
@@ -41,8 +47,7 @@ class home extends CI_Controller
 
 		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=d&foodid=""');
 		$data['foods'] = json_decode(json_decode($foodjson));
-		 var_dump($data);
-		 exit;
+		 
 		$this->load->view('cailan',$data);
 	}
 	//点菜
