@@ -1,7 +1,7 @@
 
 <style>
 .am-slider-c3{
-  top:2rem;
+  margin-top: 11.5%;
   background:none;
   height:100%;
   box-shadow:none!important;
