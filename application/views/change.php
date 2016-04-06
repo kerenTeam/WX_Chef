@@ -11,17 +11,17 @@
     <div class="am-list-news-bd">
       <ul class="am-list">
 	  <?php foreach($foods as $food):?>
-		<?php if($id != $food['id']):?>
+		<?php if($id != $food->foodid):?>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-         <a href="<?=site_url('home/changup?id=').$id.'&uid='.$food['id'];?>" class="black">
+         <a href="<?=site_url('home/changup?id=').$food->foodid.'&shopping='.$shoppingid;?>" class="black">
           <div class="am-u-sm-3 am-text-center am-list-thumb">
-            <div class="vimg"> <img src="<?=base_url($food['thumbnail']);?>" alt="<?=$food['foodName'];?>"/> </div>
+            <div class="vimg"> <img src="<?php echo IP.$food->thumbnail;?>" alt="<?=$food->foodname;?>"/> </div>
           </div>
           <div class=" am-u-sm-9 am-list-main">
-            <h3 class="am-list-item-hd"><?=$food['foodName'];?></h3>
-            <div class="am-list-item-text"><strong>特点：</strong><?=$food['specialty'];?></div>
-            <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class=""><?=$food['monthSalesm'];?></span>份</div>
-            <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food['price'];?></span></div>
+            <h3 class="am-list-item-hd"><?=$food->foodname;?></h3>
+            <div class="am-list-item-text"><strong>特点：</strong><?=$food->foodtrait;?></div>
+            <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">213></span>份</div>
+            <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food->foodprice;?></span></div>
           </div>
             </a>
         </li>

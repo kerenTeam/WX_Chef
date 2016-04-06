@@ -42,7 +42,7 @@
                   <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="<?=$cart->number;?>">
                   <span class="am-icon-plus" onClick="handle(this, true)"></span>
                 </div>
-                 <a href="<?php echo site_url('home/change?id=').$food[0]->foodid.'&pid='.$food[0]->foodpid;?>"><span class="am-icon-refresh am-fr green"></span></a>
+                 <a href="<?php echo site_url('home/change?id=').$food[0]->foodid.'&pid='.$food[0]->foodpid.'&shopingid='.$cart->shoppingid;?>"><span class="am-icon-refresh am-fr green"></span></a>
                 <a href="<?=site_url('home/delcart?id=').$cart->foodid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
             </li>
