@@ -17,7 +17,7 @@
     <input type="password" placeholder="密码" class="am-form-field am-radius"></input>
     <p>
       <a href="<?php echo site_url('home/register')?>">新用户</a>
-      <a href="#">忘记密码？</a>
+      <a href="<?php echo site_url('home/forgetPassword')?>">忘记密码？</a>
     </p>
     </div>
 		<button type="submit" class="am-btn am-btn-success am-radius">登陆</button>

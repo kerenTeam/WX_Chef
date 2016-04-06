@@ -92,8 +92,7 @@
       </div>
       
       <a href="<?php echo site_url('home/payOrder')?>" class="am-u-sm-12 am-btn bgreen os">下一步</button>
-      <!-- 演示  可删除-->
-      <a href="<?php echo site_url('home/paySuccess')?>">提交</a>
+      
     </form>
   </body>
 <!--<script src="skin/js/jquery.min.js"></script>

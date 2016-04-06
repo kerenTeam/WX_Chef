@@ -1,7 +1,7 @@
 
 <style>
 .am-slider-c3{
-  margin-top: 11.5%;
+  margin-top: 8%;
   background:none;
   height:100%;
   box-shadow:none!important;
@@ -21,13 +21,17 @@
 }
 
 .am-slider .am-slides img {
-    width: 70%;
+    width: 75%;
     display: block;
     margin: auto; 
 }
 .am-slider-c3 img {
    height:auto;
 }
+@media only screen and (max-width:320px) {
+	.am-slider-c3{
+  margin-top: 4.3%;
+	}
 </style>
 <body>
   <header data-am-widget="header" class="am-header am-header-default topform">
@@ -47,25 +51,25 @@
       <li>
         <a href="<?php echo site_url('home/partyInfo')?>">
          <img src="skin/img/party1.png" alt="">
-          <div class="am-slider-desc">日常套餐 899系列</div>
+          <div class="am-slider-desc">聚会套餐 989系列</div>
         </a> 
       </li>
        <li>
-        <a href="<?php echo site_url('home/partyInfo')?>">
+        <a href="<?php echo site_url('home/partyInfo2')?>">
          <img src="skin/img/party1.png" alt="">
-          <div class="am-slider-desc">婚宴套餐 599系列</div>
+          <div class="am-slider-desc">商务套餐 599系列</div>
         </a> 
       </li>
        <li>
-       <a href="<?php echo site_url('home/partyInfo')?>">
+       <a href="<?php echo site_url('home/partyInfo3')?>">
          <img src="skin/img/party1.png" alt="">
-          <div class="am-slider-desc">团拜宴套餐 1299系列</div>
+          <div class="am-slider-desc">温馨家宴 1299系列</div>
         </a> 
       </li>
        <li>
-       <a href="<?php echo site_url('home/partyInfo')?>">
+       <a href="<?php echo site_url('home/partyInfo4')?>">
          <img src="skin/img/party1.png" alt="">
-          <div class="am-slider-desc">婚宴套餐 989系列</div>
+          <div class="am-slider-desc">喜宴套餐 989系列</div>
         </a> 
       </li>
   </ul>

@@ -2,18 +2,18 @@
 <dwsync>
 <file name="buy.php" server="www.krfer.com/wwwroot/" local="131038706077085508" remote="131038705800000000" Dst="0" />
 <file name="index.php" server="www.krfer.com/wwwroot/" local="131044248490416164" remote="131044248000000000" Dst="0" />
-<file name="cailan.php" server="www.krfer.com/wwwroot/" local="131043232800000000" remote="131043232800000000" Dst="0" />
-<file name="order.php" server="www.krfer.com/wwwroot/" local="131043868579883158" remote="131043868200000000" Dst="0" />
+<file name="cailan.php" server="www.krfer.com/wwwroot/" local="131044226400000000" remote="131044226400000000" Dst="0" />
+<file name="order.php" server="www.krfer.com/wwwroot/" local="131044262086879504" remote="131044261800000000" Dst="0" />
 <file name="backmoney.php" server="www.krfer.com/wwwroot/" local="131037756670910655" remote="131037756600000000" Dst="0" />
 <file name="registgift.php" server="www.krfer.com/wwwroot/" local="131037775290153024" remote="131037775200000000" Dst="0" />
 <file name="partyServ.php" server="www.krfer.com/wwwroot/" local="131037772666512751" remote="131037772200000000" Dst="0" />
-<file name="partyInfo.php" server="www.krfer.com/wwwroot/" local="131039709895273623" remote="131043100800000000" Dst="0" />
+<file name="partyInfo.php" server="www.krfer.com/wwwroot/" local="131044290389175686" remote="131044290000000000" Dst="0" />
 <file name="address.php" server="www.krfer.com/wwwroot/" local="131036889223515626" remote="131036889000000000" Dst="0" />
 <file name="address2.php" server="www.krfer.com/wwwroot/" local="131038863646203582" remote="131038863600000000" Dst="0" />
 <file name="addressAdd2.php" server="www.krfer.com/wwwroot/" local="131036889223535680" remote="131036889000000000" Dst="0" />
 <file name="card.php" server="www.krfer.com/wwwroot/" local="131039746977393971" remote="131043102000000000" Dst="0" />
 <file name="cardGet.php" server="www.krfer.com/wwwroot/" local="131039750676585800" remote="131043102000000000" Dst="0" />
-<file name="cart.php" server="www.krfer.com/wwwroot/" local="131043871867136008" remote="131043871800000000" Dst="0" />
+<file name="cart.php" server="www.krfer.com/wwwroot/" local="131044226400000000" remote="131044226400000000" Dst="0" />
 <file name="chef.php" server="www.krfer.com/wwwroot/" local="131038667443099889" remote="131038667400000000" Dst="0" />
 <file name="comsuc.php" server="www.krfer.com/wwwroot/" local="131036889223585630" remote="131036889000000000" Dst="0" />
 <file name="custom.php" server="www.krfer.com/wwwroot/" local="131036889223585630" remote="131036889000000000" Dst="0" />
@@ -22,7 +22,7 @@
 <file name="food.php" server="www.krfer.com/wwwroot/" local="131038768586578237" remote="131038768200000000" Dst="0" />
 <file name="lifeInfo.php" server="www.krfer.com/wwwroot/" local="131036889223715640" remote="131036889000000000" Dst="0" />
 <file name="meituan.php" server="www.krfer.com/wwwroot/" local="131036889223745673" remote="131036889000000000" Dst="0" />
-<file name="party.php" server="www.krfer.com/wwwroot/" local="131043885994341936" remote="131043885600000000" Dst="0" />
+<file name="party.php" server="www.krfer.com/wwwroot/" local="131044293133482845" remote="131044293000000000" Dst="0" />
 <file name="priceSearch.php" server="www.krfer.com/wwwroot/" local="131036889223805694" remote="131036889000000000" Dst="0" />
 <file name="price.php" server="www.krfer.com/wwwroot/" local="131036889223795696" remote="131036889000000000" Dst="0" />
 <file name="shoppingcart.php" server="www.krfer.com/wwwroot/" local="131036889223835648" remote="131036889000000000" Dst="0" />
@@ -30,9 +30,15 @@
 <file name="orderInfo.php" server="www.krfer.com/wwwroot/" local="131036889223755646" remote="131036889000000000" Dst="0" />
 <file name="make.php" server="www.krfer.com/wwwroot/" local="131036889223725677" remote="131036889000000000" Dst="0" />
 <file name="change.php" server="www.krfer.com/wwwroot/" local="131043258600000000" remote="131043258600000000" Dst="0" />
-<file name="search.php" server="www.krfer.com/wwwroot/" local="131044192686969269" remote="131044248600000000" Dst="0" />
+<file name="search.php" server="www.krfer.com/wwwroot/" local="131044260343849741" remote="131044260000000000" Dst="0" />
 <file name="payOrder.php" server="www.krfer.com/wwwroot/" local="131044190014206212" remote="131044249200000000" Dst="0" />
 <file name="payLast.php" server="www.krfer.com/wwwroot/" local="131043811200000000" remote="131043811200000000" Dst="0" />
 <file name="searchPage.php" server="www.krfer.com/wwwroot/" local="131044198564335898" remote="131044198200000000" Dst="0" />
 <file name="register.php" server="www.krfer.com/wwwroot/" local="131044255522102020" remote="131044255200000000" Dst="0" />
+<file name="partyInfo2.php" server="www.krfer.com/wwwroot/" local="131044289929149340" remote="131044289400000000" Dst="0" />
+<file name="partyInfo3.php" server="www.krfer.com/wwwroot/" local="131044296072641159" remote="131044296000000000" Dst="0" />
+<file name="partyInfo4.php" server="www.krfer.com/wwwroot/" local="131044295866919378" remote="131044295400000000" Dst="0" />
+<file name="forgetPassword.php" server="www.krfer.com/wwwroot/" local="131044308684954160" remote="131044308600000000" Dst="0" />
+<file name="login.php" server="www.krfer.com/wwwroot/" local="131044226400000000" remote="131044226400000000" Dst="0" />
+<file name="login2.php" server="www.krfer.com/wwwroot/" local="131044301397741728" remote="131044301400000000" Dst="0" />
 </dwsync>

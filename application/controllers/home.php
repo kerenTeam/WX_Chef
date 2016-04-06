@@ -101,6 +101,11 @@ class home extends CI_Controller
 
 		$this->load->view('partyServ');
 	}
+	//忘记密码
+	public function forgetPassword(){
+
+		$this->load->view('forgetPassword');
+	}
 	//图文详情
 	public function lifeInfo(){
 
@@ -110,6 +115,18 @@ class home extends CI_Controller
 	public function partyInfo(){
 
 		$this->load->view('partyInfo');
+	}
+	public function partyInfo2(){
+
+		$this->load->view('partyInfo2');
+	}
+	public function partyInfo3(){
+
+		$this->load->view('partyInfo3');
+	}
+	public function partyInfo4(){
+
+		$this->load->view('partyInfo4');
 	}
 	//套餐详情
 	public function dinner(){

@@ -16,7 +16,7 @@
       <div class=""><img src="skin/img/party1.png" class="am-img-responsive card" alt="大厨到家"></div>
       <div class="am-g">
          <h2>聚会套餐套餐 989元系列</h2>
-          <div>海河鲜类较多，是喜欢吃这类菜品的人群首选，菜品口味多。即高大上又不贵。</div>
+         <div>八凉十二热一汤两小吃，带您体验川菜独特的风味，绝对让您回味无穷。</div>
         <div class="pr"><i class="am-icon-cny"></i><span class="price">898</span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
@@ -28,37 +28,38 @@
 
       <p class="am-text-center am-text-sm  menuname">凉菜</p>
 
-        <p class="am-text-center am-text-sm">老成都拌土鸡元</p>
+        <p class="am-text-center am-text-sm">锦绣刺身拼盘</p>
+        <p class="am-text-center am-text-sm">椒麻乡村鸡</p>
+        <p class="am-text-center am-text-sm">辣子熟女兔丁</p>
         <p class="am-text-center am-text-sm">辣鲜手剥笋</p>
-        <p class="am-text-center am-text-sm">捞汁珊瑚蜇头</p>
         <p class="am-text-center am-text-sm">田七伴桃仁</p>
         <p class="am-text-center am-text-sm">客家卤汁九香鸭</p>
         <p class="am-text-center am-text-sm">酸辣汁黑木耳</p>
-        <p class="am-text-center am-text-sm">巴蜀豆花</p>
+        <p class="am-text-center am-text-sm">蘸酱乳瓜</p>
 
       <p class="am-text-center am-text-sm  menuname">热菜</p>
 
+        <p class="am-text-center am-text-sm">干烧鲜辽参</p>
+        <p class="am-text-center am-text-sm">蓉记姜葱香辣蟹</p>
+        <p class="am-text-center am-text-sm">香烹梅花三弄筋</p>
+        <p class="am-text-center am-text-sm">清蒸多宝鱼</p>
         <p class="am-text-center am-text-sm">白灼基围虾</p>
-        <p class="am-text-center am-text-sm">百年全家福</p>
-        <p class="am-text-center am-text-sm">双椒蒸江团</p>
-        <p class="am-text-center am-text-sm">山地土豆烧甲鱼</p>
-        <p class="am-text-center am-text-sm">馋嘴呱呱叫</p>
-        <p class="am-text-center am-text-sm">石锅酱仔排</p>
+        <p class="am-text-center am-text-sm">农家一品鲜</p>
+        <p class="am-text-center am-text-sm">鸿运狮子头</p>
+        <p class="am-text-center am-text-sm">豉椒火灼耗儿筋</p>
         <p class="am-text-center am-text-sm">香辣仔兔</p>
-        <p class="am-text-center am-text-sm">川味小炒肉</p>
-        <p class="am-text-center am-text-sm">豆豉鲮鱼油麦菜</p>
+        <p class="am-text-center am-text-sm">尖椒香香嘴</p>
         <p class="am-text-center am-text-sm">百合苡仁老南瓜</p>
-        <p class="am-text-center am-text-sm">腊味荷兰豆</p>
         <p class="am-text-center am-text-sm">清炒时蔬</p>
 
       <p class="am-text-center am-text-sm  menuname">汤</p>
 
-        <p class="am-text-center am-text-sm">酸萝卜老鸭汤</p>
+        <p class="am-text-center am-text-sm">清炖滋补甲鱼汤</p>
         
         <p class="am-text-center am-text-sm  menuname">小吃</p>
         
-        <p class="am-text-center am-text-sm">波记小丝煎饺</p>
-        <p class="am-text-center am-text-sm">冰糖银耳羹</p>
+        <p class="am-text-center am-text-sm">蔗汁红糖小锅魁</p>
+        <p class="am-text-center am-text-sm">古镇杏仁糍粑</p>
 
       <p class="am-text-center am-text-sm  menuname">主食</p>
         <p class="am-text-center am-text-sm">米饭</p>
