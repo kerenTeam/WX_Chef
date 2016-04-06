@@ -13,7 +13,7 @@
 </header>
 
 
-<form action="" method="" enctype="multipart/form-data">
+<form action="<?=site_url('home/cart');?>" method="post" enctype="multipart/form-data">
   <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
     <div class="cmn cmnb am-list-news am-list-news-default" >
       <div class="am-list-news-bd">
@@ -39,7 +39,7 @@
                   <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="<?=$cart['num'];?>">
                   <span class="am-icon-plus" onClick="handle(this, true)"></span>
                 </div>
-                 <a href="<?php echo site_url('home/change')?>"><span class="am-icon-refresh am-fr green"></span></a>
+                 <a href="<?php echo site_url('home/change?id=').$foods['id'].'&pid='.$foods['pid'];?>"><span class="am-icon-refresh am-fr green"></span></a>
                 <a href="<?=site_url('home/delcart?id=').$cart['id'];?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
             </li>
@@ -77,8 +77,8 @@
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
     <a href="<?php echo site_url('home/order')?>">
       <div class="am-u-sm-8 a">
-        <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney">2</span>份</span>
-        <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">757</span>
+        <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney"></span>份</span>
+        <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red"></span>
       </div>
       <div class="am-u-sm-4 b">
         
@@ -90,6 +90,22 @@
 </form>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
+
+<!--<script>
+ $(function(){
+	 var nums = $(".numTxt");
+	 var all = 0;
+	 var fen = 0;
+	 nums.each(function() {
+		 var pr = $(this).parentsUntil('li').find('.price').html();
+		  console.log(pr);
+		fen += parseInt($(this).val());
+		all += parseInt($(this).val())*parseFloat(pr);
+	});
+	$('#fen').html(fen);
+	$('#allmoney').html(all.toFixed(2));
+	 })
+</script>-->
 <script src="skin/js/num.js"></script>
 </body>
 </html>

@@ -12,6 +12,20 @@ var allmoney = document.getElementById("allmoney");
 var paymoney = parseFloat(allmoney.innerHTML);
 var curCount;
 var num = 0;
+window.onload=function(){
+	var ordFen = document.getElementsByClassName('numTxt');
+	var ordPrice = document.getElementsByClassName('price');
+	fen = 0;
+	paymoney = 0;
+	for(var i = 0;i < ordFen.length;i++){
+		fen += parseInt(ordFen[i].value);
+		paymoney += parseFloat(parseInt(ordFen[i].value)*parseFloat(ordPrice[i].innerHTML));
+		console.log(paymoney)
+	}
+	fens.innerHTML = fen;
+	allmoney.innerHTML = paymoney.toFixed(2);
+}
+
 function IsNum(e) {
             var k = window.event ? e.keyCode : e.which;
             if (((k >= 48) && (k <= 57)) || k == 8 || k == 0) {
@@ -83,11 +97,6 @@ function handle(self, isAdd){
 	}
 	fens.innerHTML=fen;
     countEl.value=curCount;
-    
-	// if(self.parentNode.id == "")
-	// 	self.parentNode.id = "numId-" + (tempId++);
-	// var foodtotal=parseFloat(price)*curCount;
-	//handleHidden(self.parentNode.id,foodname, curCount,foodtotal, foodId);
 	allmoney.innerHTML= paymoney.toFixed(2);
 }
 
