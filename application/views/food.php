@@ -6,22 +6,22 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    <?=$foods['foodName'];?>
+    <?php echo $foods[0]->foodname;?>
     </h1>
     
   </header>
   <!-- 详情 -->
   <form action="" method="" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
-      <div class="fimg"><img src="<?=base_url($foods['foodPic']);?>" class="am-img-responsive card" alt="<?=$foods['foodName'];?>"></div>
+      <div class="fimg"><img src="<?php echo IP.$foodspic[0]->imgaddress;?>" class="am-img-responsive card" alt="<?=$foods[0]->foodname;?>"></div>
       <div class="am-g">
-        <h2> <?=$foods['foodName'];?></h2>
-        <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class=""> <?=$foods['monthSalesm'];?></span>份</div>
-        <p class="am-text-sm"><strong>主料：</strong><?=$foods['masterMaterial'];?></p>
-        <p class="am-text-sm"><strong>辅料：</strong><?=$foods['subordinationMaterial'];?></p>
-        <p class="am-text-sm"><strong>简介：</strong><?=$foods['note'];?></p>
+        <h2> <?=$foods[0]->foodname;?></h2>
+        <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class=""> 12></span>份</div>
+        <p class="am-text-sm"><strong>主料：</strong><?=$foods[0]->ingredients;?></p>
+        <p class="am-text-sm"><strong>辅料：</strong><?=$foods[0]->accessories;?></p>
+        <p class="am-text-sm"><strong>简介：</strong><?=$foods[0]->blurb;?></p>
         
-        <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods['price'];?></span></div>
+        <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]->foodprice;?></span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
           <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="2">
@@ -38,15 +38,15 @@
         </h2>
       </div>
       <div class="am-u-sm-5 am-text-center">
-        <span class="red am-text-xxl"><?=$foods['appraise'];?></span>分<br>
+        <span class="red am-text-xxl">10</span>分<br>
         <span class="am-text-xs red"><i class="am-icon-star "></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i></span><br>
         <span class="am-text-xs"> 共20人评价</span>
         
       </div>
       <div class="am-u-sm-7 stars">
-        <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods['dishScore'];?></p>
-        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods['chefScore'];?></p>
-        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods['waiterScore'];?></p>
+        <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]->foodstar;?></p>
+        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]->cookstar;?></p>
+        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]->waiterstar;?></p>
       </div>
       <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
       <!-- 文字评论 -->
