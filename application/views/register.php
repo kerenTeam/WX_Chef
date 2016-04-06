@@ -11,7 +11,7 @@ html {
   <div class="first">
     <div class="reg_input flex">
       <label>中国 +86</label>
-      <input type="tel" placeholder="请输入手机号码" name="phone" />
+      <input type="tel" placeholder="请输入手机号码" name="UserPhone" />
     </div>
     <div class="reg_test">
       <input type="text" placeholder="请输入验证码"/>
@@ -26,7 +26,7 @@ html {
   <div class="seconde" style="display:none;">
      <div class="reg_input flex">
 		<label class="am-text-sm">密码</label>
-		<input type="password" placeholder="请输入密码" class="pass" required/>
+		<input type="password" placeholder="请输入密码" class="pass" name="UserPwd" required/>
 	</div>
      <div class="reg_input flex">
 		<label class="am-text-sm">确认密码</label>
