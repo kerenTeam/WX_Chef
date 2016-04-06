@@ -77,17 +77,11 @@ class home extends CI_Controller
 	public function cailan(){
 
 
-<<<<<<< HEAD
-		$catejson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=c');
-		$data['cates'] = json_decode(json_decode($catejson));
 
-		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=d');
-=======
 		$catejson = file_get_contents(APIURL.'Get?dis=c');
 		$data['cates'] = json_decode(json_decode($catejson));
 
 		$foodjson = file_get_contents(APIURL.'Get?dis=d');
->>>>>>> 87d82e7cba880c0a5c440af9b3d91cf9e9cd5bb7
 		$data['foods'] = json_decode(json_decode($foodjson));
 		
 		$this->load->view('cailan',$data);
