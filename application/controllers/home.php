@@ -40,7 +40,14 @@ class home extends CI_Controller
 	}
 	//菜单 by wf
 	public function cailan(){
-		$data['cates'] = $this->pack_model->listcates();
+
+
+		$catejson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=c&foodid=""');
+		$data['cates'] = json_decode(json_decode($catejson));
+
+		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=d&foodid=""');
+		$data['foods'] = json_decode(json_decode($foodjson));
+		 
 		$this->load->view('cailan',$data);
 	}
 	//点菜
@@ -68,8 +75,15 @@ class home extends CI_Controller
 	//菜品详情
 	public function food(){
 		$id = $_GET['id'];
-		$data['foods'] = $this->pack_model->foods($id);
-		// var_dump($data)
+		//产品详情
+		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Food?dis=xq&foodid='.$id);
+		$data['foods'] = json_decode(json_decode($foodjson));
+		// 产品图片
+		$foodpic= file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=xqimg&foodid='.$id);
+		$data['foodspic'] = json_decode(json_decode($foodpic));
+		// echo "<pre>";
+		// var_dump($data);
+		// exit;
 		$this->load->view('food',$data);
 	}
 	//储值返现
@@ -114,9 +128,11 @@ class home extends CI_Controller
 				$a['dishName']= $key;
 				$a['num'] = $val;
 				$a['phone'] = $cookie;
-				
-				$this->pack_model->addcart($a);
+				$b = json_encode($a);
+				var_dump($b);
+				exit;
 			}
+
 			  redirect('home/cart');
 		}
 	}
