@@ -16,6 +16,7 @@
       <div class=""><img src="skin/img/party1.png" class="am-img-responsive card" alt="大厨到家"></div>
       <div class="am-g">
          <h2>温馨家宴套餐 1589元系列</h2>
+         <div>在宴席中也可感受舌尖上的美味,此菜单口味搭配俱佳。可驾驭任何一种宴席。</div>
         <div class="pr"><i class="am-icon-cny"></i><span class="price">1589</span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>

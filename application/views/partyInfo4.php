@@ -16,6 +16,7 @@
       <div class=""><img src="skin/img/party1.png" class="am-img-responsive card" alt="大厨到家"></div>
       <div class="am-g">
          <h2>喜宴套餐 1888元系列</h2>
+         <div>在婚礼中享受幸福。在婚礼中享受祝福。</div>
         <div class="pr"><i class="am-icon-cny"></i><span class="price">1888</span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
