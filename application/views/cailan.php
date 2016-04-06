@@ -21,8 +21,8 @@
     <div class="pink typec"><img src="skin/img/type.png" alt="">&nbsp;分类</div>
     <ul class="am-list typel">
     <?php foreach($cates as $cate):?>
-      <li><a href="#<?=$cate['id']?>"><img src="<?=base_url($cate['packicon']);?>" alt="">&nbsp;<?=$cate['packname'];?></a></li>
-    <?php endforeach;?>
+        <li><a href="#<?=$cate->foodcategoryid;?>"><img src="<?php echo IP.$cate->imgaddress;?>" alt="">&nbsp;<?=$cate->name;?></a></li> 
+      <?php endforeach;?>
     </ul>
     </nav>
   </div>
@@ -32,22 +32,22 @@
       <div class="am-list-news-bd">
 
       <?php foreach($cates as $val):?>
-        <p id="<?=$val['id']?>"><?=$val['packname']?></p>
+        <p id="<?=$val->foodcategoryid?>"><?=$val->name;?></p>
         <ul class="am-list">
-        <?php $pid = $val['id']; $food = $this->pack_model->catefoods($pid);?>
-        <?php foreach($food as $v):?>
+        <?php foreach($foods as $v):?>
+          <?php if($val->foodcategoryid == $v->foodpid):?>
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
             <div class="am-u-sm-4 am-list-thumb">
-              <a href="<?php echo site_url('home/food?id=').$v['id'];?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="<?=base_url($v['thumbnail']);?>" class="lazy" alt="<?=$v['foodName'];?>"/>
+              <a href="<?php echo site_url('home/food?id=').$v->foodid;?>" class="vimg">
+                <img src="skin/img/exp.gif" data-original="<?php echo IP.$v->thumbnail;?>" class="lazy" alt="<?=$v->foodname;?>"/>
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd"><?=$v['foodName'];?></h3>
-              <input type="hidden" name="foodid[]" value="<?=$v['id'];?>">
-              <div class="am-list-item-text"><strong>特点：</strong><?=$v['specialty'];?>。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span><?=$v['monthSalesm'];?></span>份</div>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['price'];?></span><span class="am-text-xs gray"> /份</span></div>
+              <h3 class="am-list-item-hd"><?=$v->foodname;?></h3>
+              <input type="hidden" name="foodid[]" value="<?=$v->foodid;?>">
+              <div class="am-list-item-text"><strong>特点：</strong><?=$v->foodtrait;?>。</div>
+              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
+              <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v->foodprice;?></span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
                 <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
@@ -55,6 +55,7 @@
               </div>
             </div>
           </li>
+           <?php endif;?>
         <?php endforeach;?>
         </ul>
       <?php endforeach;?>

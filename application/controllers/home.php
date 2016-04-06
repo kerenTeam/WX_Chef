@@ -47,7 +47,16 @@ class home extends CI_Controller
 
 		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=d&foodid=""');
 		$data['foods'] = json_decode(json_decode($foodjson));
+<<<<<<< HEAD
 		 
+=======
+<<<<<<< HEAD
+		 
+=======
+		 var_dump($data);
+		 exit;
+>>>>>>> a5a75a286357766d2b2373f9d791d732c8d8a81d
+>>>>>>> 720eeb6380a3109e725654d123d403e5b18fbadf
 		$this->load->view('cailan',$data);
 	}
 	//点菜
