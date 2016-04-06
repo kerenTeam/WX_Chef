@@ -7,7 +7,7 @@ html {
 </style>
 </head>
 <body class="register">
-<form action="<?=site_url('login/regadd')?>" method="post" class="form_test">
+<form action="<?=site_url('home/registeradd')?>" method="post" class="form_test">
   <div class="first">
     <div class="reg_input flex">
       <label>中国 +86</label>

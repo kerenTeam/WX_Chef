@@ -15,6 +15,7 @@ class login extends CI_Controller
 		$data['description'] = $this->option_model->system('keyWordDescriber');
 		// // var_dump($data);
 		$this->load->view('header',$data);
+		$this->load->helper('post_helper');
 	}
 	//引导页
     public function quota(){
@@ -38,23 +39,22 @@ class login extends CI_Controller
 	}
 	// 绑定手机
 	public function regadd(){
-		if($_POST){
-			$phone = $this->input->post('phone',true);
-			$user = $this->user_model->user($phone);
-			if ($user) {
-				echo "<script>alert('你的手机已经被注册！');history.go(-1);</script>";
-			}
-			$data['phone'] = $this->input->post('phone',true);
-			if($this->user_model->adduser($data)){
-				echo "<script>alert('注册成功');window.location='".site_url('user/ucent')."';</script>";
-			}else{
-				echo "<script>alert('注册成功');history.go(-1);</script>";
-			}
-
-			
-		}
+         // $reigsterFrom = array('UserPhone' => $_POST['UserPhone'],'UserPwd' => $_POST['UserPwd']);
+         // $reigsterData = "[".json_encode($reigsterFrom)."]";
+         // $isok = curl_post("http://192.168.199.151/API/API_Poorder/Post?dis=User&value=".$reigsterData,'');
+         // switch ($isok) { //0注册失败   1注册成功  2已有用户
+         // 	case '0':
+         // 		echo "<script>alert('注册失败！');window.location.href='register';</script>"; exit;
+         // 		break;
+         // 	case '2':
+         // 		echo "<script>alert('该号码已注册！');window.location.href='register';</script>"; exit;
+         // 		break;	
+         // 	default:
+         // 		echo "<script>alert('注册成功！');window.location.href='/home/';</script>"; exit;
+         // 		break;
+         // }
+       
 	}
-
 
 
 

@@ -15,7 +15,7 @@ class home extends CI_Controller
 		$data['keyword'] = $this->option_model->system('keyWord');
 		$data['description'] = $this->option_model->system('keyWordDescriber');
 		$this->load->helper('post_helper');
-		// var_dump($data);
+		//var_dump($data);
 		$this->load->view('header',$data);
 	}
 	//登录
@@ -28,7 +28,7 @@ class home extends CI_Controller
 		if($_POST){
 			$phone = $this->input->post('UserPhone');
 			$pwd = $this->input->post('UserPwd');
-			$a = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=login&phone=".$phone."&pwd=".$pwd);
+			$a = file_get_contents(APIURL."Get?dis=login&phone=".$phone."&pwd=".$pwd);
 			switch ($a) {
 				case '0':
 					echo "<script>alert('没有该用户！');window.location.href='login2';</script>";
@@ -47,9 +47,26 @@ class home extends CI_Controller
 	}
 	//注册
 	public function register(){
-		
 		$this->load->view('register');
 	}
+
+	public function registeradd(){
+		 $reigsterFrom = array('UserPhone' => $_POST['UserPhone'],'UserPwd' => $_POST['UserPwd']);
+         $reigsterData = "[".json_encode($reigsterFrom)."]";
+         $isok = curl_post(APIURL."Post?dis=User&value=".$reigsterData,'');
+         switch ($isok) { //0注册失败   1注册成功  2已有用户
+         	case '0':
+         		echo "<script>alert('注册失败！');window.location.href='register';</script>"; exit;
+         		break;
+         	case '2':
+         		echo "<script>alert('该号码已注册！');window.location.href='login2';</script>"; exit;
+         		break;	
+         	default:
+         		echo "<script>alert('注册成功！');window.location.href='ucent';</script>"; exit;
+         		break;
+         }
+	}
+	
 	//首页
 	public function index(){
 		$data = $this->option_model->banners();
@@ -60,10 +77,10 @@ class home extends CI_Controller
 	public function cailan(){
 
 
-		$catejson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=c&foodid=""');
+		$catejson = file_get_contents(APIURL.'Get?dis=c&foodid=""');
 		$data['cates'] = json_decode(json_decode($catejson));
 
-		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=d&foodid=""');
+		$foodjson = file_get_contents(APIURL.'Get?dis=d&foodid=""');
 		$data['foods'] = json_decode(json_decode($foodjson));
 		 
 		$this->load->view('cailan',$data);
@@ -92,10 +109,10 @@ class home extends CI_Controller
 	public function food(){
 		$id = $_GET['id'];
 		//产品详情
-		$foodjson = file_get_contents('http://192.168.199.151/API/API_Poorder/Food?dis=xq&foodid='.$id);
+		$foodjson = file_get_contents(APIURL.'Food?dis=xq&foodid='.$id);
 		$data['foods'] = json_decode(json_decode($foodjson));
 		// 产品图片
-		$foodpic= file_get_contents('http://192.168.199.151/API/API_Poorder/Get?dis=xqimg&foodid='.$id);
+		$foodpic= file_get_contents(APIURL.'Get?dis=xqimg&foodid='.$id);
 		$data['foodspic'] = json_decode(json_decode($foodpic));
 		// echo "<pre>";
 		// var_dump($data);
@@ -166,7 +183,7 @@ class home extends CI_Controller
 				$a['UserId'] = 1;
 				$b = '['.json_encode($a)."]";
 				
-				$c = curl_post("http://192.168.199.151/API/API_Poorder/Post?dis=Shopping&value=".$b,'');
+				$c = curl_post(APIURL."Post?dis=Shopping&value=".$b,'');
 				
 			}
 			redirect('home/cart');
@@ -176,7 +193,7 @@ class home extends CI_Controller
 	//购物车 new
 	public function cart(){
 		$cookie = 1;
-		$carts = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=gwc&foodid=".$cookie);
+		$carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
 		$list['carts'] = json_decode(json_decode($carts));	
 		$this->load->view('cart',$list);
 	}
@@ -219,7 +236,6 @@ class home extends CI_Controller
 	}
    //个人中心
 	public function ucent(){
-		var_dump($_COOKIE);
 		$this->load->view('usercenter');
 	 }
 	//个人设置
