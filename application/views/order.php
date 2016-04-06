@@ -32,7 +32,7 @@
       </ul>
      </div>
          <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
-    <div class="am-shadow am-margin-vertical-sm">
+   <!-- <div class="am-shadow am-margin-vertical-sm">
       <p class="htit"><span class="am-icon-usd red"> </span> 支付方式</p>
       <div class="am-g pay am-cf">
 
@@ -52,7 +52,16 @@
         </label>
       </div>
       <div class="red am-text-sm am-margin-left-sm zkt">亲，选择饭票、现金、积分支付可享受折扣优惠哦！</div>
+    </div>-->
+    
+    
+    <div class="am-shadow am-margin-vertical-sm fpa2">
+      
+      <a href="javascript:;" class="am-cf adc">饭票<span class="am-fr am-icon-xs red">已抵用<span class="am-icon-cny">30</span></span></a>
+      <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">200积分已抵<span class="am-icon-cny">30</span></span></a>
+      <a href="javascript:;" class="am-cf adc">金额<span class="am-fr am-icon-xs am-icon-cny red">10</span></a>
     </div>
+    
      <div class="am-shadow am-margin-vertical-sm fpa" style="display: none;">
       <p class="htit"><span class="am-icon-gift red"> </span> 饭票(满300可用)<span class="am-fr">2张可选</span> </p>
       <!-- 有饭票时 -->
@@ -60,7 +69,7 @@
       <!-- 没有饭票时 -->
       <a href="javascript:;" class="am-cf adc"><img src="skin/img/qu.png" alt=""> 饭票 <span class="red">未使用</span> <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
     </div>
-    
+     <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
 
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
@@ -82,12 +91,12 @@
        
       </div>
       
-      <button type="submit" id="payorder" class="am-u-sm-12 am-btn bgreen os">提交</button>
+      <a href="<?php echo site_url('home/payOrder')?>" class="am-u-sm-12 am-btn bgreen os">下一步</button>
       <!-- 演示  可删除-->
       <a href="<?php echo site_url('home/paySuccess')?>">提交</a>
     </form>
   </body>
-<script src="skin/js/jquery.min.js"></script>
+<!--<script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script>
   $(function(){  
@@ -119,5 +128,5 @@
     });
 
   })
-</script>
+</script>-->
 </html>

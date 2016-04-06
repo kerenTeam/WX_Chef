@@ -17,7 +17,10 @@ body {
   height: 100%;
   background: rgba(0,0,0,.3);
 }
-
+.atf{
+	font-size:16px;
+	line-height:16px;
+}
 .tkcontent {
   position: absolute;
   top: 13%;
@@ -59,7 +62,7 @@ body {
   font-size: 12px;
   border-radius: 5px;
   box-shadow: 0px 0px 3px white inset;
-  margin-top: 20px;
+  margin-top: 17px;
   display: inline-block;
 }
 
@@ -540,6 +543,11 @@ body {
   padding: 15px;
   color: black;
 
+}
+.fpa2 a{
+  width:97%;
+    margin:auto 1.5%;
+   border-bottom:1px solid rgba(0,0,0,0.1);
 }
 .fpa a{
   width:97%;
@@ -1423,7 +1431,7 @@ figure a:hover figcaption {
   .tktxt .rega {
     padding: 3px 13px;
     font-size: 12px;
-    margin-top: 14px;
+    margin-top: 12px;
   }
 
   .tktxt div {

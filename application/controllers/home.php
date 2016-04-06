@@ -50,14 +50,26 @@ class home extends CI_Controller
 	}
 	//换一换
 	public function change(){
+		$data['id'] = $_GET['id'];
+		$pid = $_GET['pid'];
+		
+		$data['foods'] = $this->pack_model->catefoods($pid);
+		$this->load->view('change',$data);
+	}
+	// 换一换处理
+	public function changup(){
+		$id = $_GET['id'];
+		$data['dishName'] = $_GET['uid'];  
+		$this->pack_model->upcart($id,$data);
+		redirect('home/cart');
 
-		$this->load->view('change');
+		
 	}
 	//菜品详情
 	public function food(){
 		$id = $_GET['id'];
 		$data['foods'] = $this->pack_model->foods($id);
-		// var_dump($data);
+		// var_dump($data)
 		$this->load->view('food',$data);
 	}
 	//储值返现
@@ -90,29 +102,52 @@ class home extends CI_Controller
 
 		$this->load->view('dinner');
 	}
-
-	//购物车 new
-	public function cart(){
+	// 加入购物车
+	public function addcart(){
+		$cookie = $_COOKIE['ci_session'];
 		if($_POST){
 			$foodid = $_POST['foodid'];
 			$numbers = $_POST['numbers'];
-			$cards = array_combine($foodid,$numbers);
-			$data = array_filter($cards);
+			$cards = array_combine($foodid,$numbers);  //重组数组
+			$data = array_filter($cards);              //过滤空值
 			foreach($data as $key=>$val){
 				$a['dishName']= $key;
 				$a['num'] = $val;
+				$a['phone'] = $cookie;
 				
 				$this->pack_model->addcart($a);
-			}	
+			}
+			  redirect('home/cart');
 		}
-		
+	}
 
-		$this->load->view('cart');
+	//购物车 new
+	public function cart(){
+		$cookie = $_COOKIE['ci_session'];
+		$list['carts'] = $this->pack_model->listcarts($cookie);
+		$this->load->view('cart',$list);
+	}
+	// 删除购物车
+	function delcart(){
+		$id = $_GET['id'];
+		if($this->pack_model->delcarts($id)){
+			echo "<script>alert('删除成功!');window.location.href='cart';</script>";
+		}
 	}
     //订单
     public function order(){
 
 		$this->load->view('order');
+	}
+	 //支付订单
+    public function payOrder(){
+
+		$this->load->view('payOrder');
+	}
+	//支付账号
+    public function payLast(){
+
+		$this->load->view('payLast');
 	}
 	//付款成功
     public function paySuccess(){
