@@ -24,7 +24,7 @@ class home extends CI_Controller
 		$this->load->view('login');
 	}
 	//老用户登录
-	public function login2(){
+	public function login2(){ 
 		if($_POST){
 			$phone = $this->input->post('UserPhone');
 			$pwd = $this->input->post('UserPwd');
@@ -97,7 +97,7 @@ class home extends CI_Controller
 		$data['shoppingid'] = $_GET['shopingid'];
 		$pid = $_GET['pid'];
 		
-		$cates = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=fl&foodid=".$pid);
+		$cates = file_get_contents(APIURL."Get?dis=fl&foodid=".$pid);
 		$data['foods'] = json_decode(json_decode($cates));
 		$this->load->view('change',$data);
 	}
@@ -107,7 +107,7 @@ class home extends CI_Controller
 		$a['ShoppingId'] = $_GET['shopping'];  
 		$b = '['.json_encode($a).']';
 		var_dump($b);
-		$c = curl_post("http://192.168.199.151/API/API_Poorder/Put?dis=xgcp&value=".$b,'');
+		$c = curl_post(APIURL."/Put?dis=xgcp&value=".$b,'');
 		var_dump($c);	
 		
 		exit;
@@ -201,7 +201,7 @@ class home extends CI_Controller
 	//购物车 new
 	public function cart(){
 		$cookie = $_COOKIE['phone'];
-		$carts = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=gwc&foodid=".$cookie);
+		$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$cookie);
 
 		$list['carts'] = json_decode(json_decode($carts));	
 		$this->load->view('cart',$list);
