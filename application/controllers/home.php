@@ -51,19 +51,19 @@ class home extends CI_Controller
 	}
 
 	public function registeradd(){
-		 $reigsterFrom = array('UserPhone' => $_POST['UserPhone'],'UserPwd' => $_POST['UserPwd']);
+		 $reigsterFrom = array('UserPhone' => $this->input->post('UserPhone'),'UserPwd' => $this->input->post('UserPwd'));
          $reigsterData = "[".json_encode($reigsterFrom)."]";
          $isok = curl_post(APIURL."Post?dis=User&value=".$reigsterData,'');
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
-         		echo "<script>alert('注册失败！');window.location.href='register';</script>"; exit;
+         		echo "<script>alert('注册失败！');  window.location.href='register';</script>"; exit; //？注册
          		break;
-         	case '2':
-         		echo "<script>alert('该号码已注册！');window.location.href='login2';</script>"; exit;
+         	case '1':
+         		echo "<script>alert('注册成功！');    window.location.href='ucent';</script>"; exit;  //？中心
          		break;	
-         	default:
-         		echo "<script>alert('注册成功！');window.location.href='ucent';</script>"; exit;
-         		break;
+         	case '2':
+         		echo "<script>alert('该号码已注册！'); window.location.href='login2';</script>"; exit; //？登陆
+         		break;	
          }
 	}
 	
@@ -77,10 +77,10 @@ class home extends CI_Controller
 	public function cailan(){
 
 
-		$catejson = file_get_contents(APIURL.'Get?dis=c&foodid=""');
+		$catejson = file_get_contents(APIURL.'Get?dis=c');
 		$data['cates'] = json_decode(json_decode($catejson));
 
-		$foodjson = file_get_contents(APIURL.'Get?dis=d&foodid=""');
+		$foodjson = file_get_contents(APIURL.'Get?dis=d');
 		$data['foods'] = json_decode(json_decode($foodjson));
 		 
 		$this->load->view('cailan',$data);
@@ -206,8 +206,10 @@ class home extends CI_Controller
 	}
     //订单
     public function order(){
-
-		$this->load->view('order');
+  //   	$cookie = 1;
+  //       $carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
+		// $list['carts'] = json_decode(json_decode($carts));	
+		// $this->load->view('order'$list);
 	}
 	 //支付订单
     public function payOrder(){
