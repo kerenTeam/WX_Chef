@@ -22,7 +22,7 @@
           <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><img src="skin/img/addr.png" alt=""> 地址管理</a> 
       </li>
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/card')?>" class="am-list-item-hd "><img src="skin/img/qu.png" alt=""> 我的饭票</a> 
+          <a href="<?php echo site_url('home/card')?>" class="am-list-item-hd "><img src="skin/img/qu.png" alt=""> 我的优惠券</a> 
       </li>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/set')?>" class="am-list-item-hd "><img src="skin/img/set.png" alt=""> 个人设置</a> 

@@ -11,9 +11,9 @@
     <div class="am-list-news-bd">
       <ul class="am-list">
 	  <?php foreach($foods as $food):?>
-     
+		<?php if($id != $food['id']):?>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-         <a href="" class="black">
+         <a href="<?=site_url('home/changup?id=').$id.'&uid='.$food['id'];?>" class="black">
           <div class="am-u-sm-3 am-text-center am-list-thumb">
             <div class="vimg"> <img src="<?=base_url($food['thumbnail']);?>" alt="<?=$food['foodName'];?>"/> </div>
           </div>
@@ -25,6 +25,7 @@
           </div>
             </a>
         </li>
+		<?php endif;?>
        
 		<?php endforeach;?>
       

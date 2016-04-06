@@ -81,14 +81,14 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=localhost;dbname=chef',
-	//'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'root',
+	//'dsn'	=> 'mysql:host=localhost;dbname=chef',
+	'dsn'	=> '',
+	'hostname' => '211.149.195.183',
+	'username' => 'chef',
+	'password' => 'chef123456',
 	'database' => 'chef',
-	//'dbdriver' => 'mysqli',
-	'dbdriver' => 'PDO',
+	'dbdriver' => 'mysqli',
+	//'dbdriver' => 'PDO',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

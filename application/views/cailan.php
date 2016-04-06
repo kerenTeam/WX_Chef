@@ -11,24 +11,9 @@
   <h1 class="am-header-title">
   菜篮子
   </h1>
- <script type="text/javascript">
-  function doaction() {
-  $.ajax({
-    type: "POST",
-    url: '<?=site_url('home/cart');?>',
-    data: $('#question').serialize(),
-    success: function(data) { 
-      alert(data);
-		//window.location.href="<?=site_url('home/cart');?>";
-		//html("<h1>"+data+"</h1>");
-    }
-	
 
-  });
-}
-</script>
 </header>
-<form  id='question' enctype="multipart/form-data">
+<form action="<?=site_url('home/addcart');?>" method='post'  id='question' enctype="multipart/form-data">
  <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
   <!-- 菜品栏目 -->
   <div class="am-u-sm-3 cmn aml"><!--  style="height: 100%;overflow-y:auto; " -->
@@ -49,10 +34,10 @@
       <?php foreach($cates as $val):?>
         <p id="<?=$val['id']?>"><?=$val['packname']?></p>
         <ul class="am-list">
-        <?php $pid = $val['id']; $foods = $this->db->query("select * from food where pid ='$pid'");$food = $foods->result_array();?>
+        <?php $pid = $val['id']; $food = $this->pack_model->catefoods($pid);?>
         <?php foreach($food as $v):?>
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
+            <div class="am-u-sm-4 am-list-thumb">
               <a href="<?php echo site_url('home/food?id=').$v['id'];?>" class="vimg">
                 <img src="skin/img/exp.gif" data-original="<?=base_url($v['thumbnail']);?>" class="lazy" alt="<?=$v['foodName'];?>"/>
               </a>
@@ -86,7 +71,7 @@
       </div>
       <div class="am-u-sm-4 b">
         
-        <button  onclick="doaction()" class="am-btn am-btn-success">确认</button>
+        <button type='submit'  class="am-btn am-btn-success">确认</button>
         
       </div>
   </div>
