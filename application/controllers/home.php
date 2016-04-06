@@ -15,6 +15,7 @@ class home extends CI_Controller
 		$data['site'] = $this->option_model->system('siteName');
 		$data['keyword'] = $this->option_model->system('keyWord');
 		$data['description'] = $this->option_model->system('keyWordDescriber');
+		$this->load->helper('post_helper');
 		// var_dump($data);
 		$this->load->view('header',$data);
 	}
@@ -25,8 +26,25 @@ class home extends CI_Controller
 	}
 	//老用户登录
 	public function login2(){
-
-		$this->load->view('login2');
+		if($_POST){
+			$phone = $this->input->post('UserPhone');
+			$pwd = $this->input->post('UserPwd');
+			$a = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=login&phone=".$phone."&pwd=".$pwd);
+			switch ($a) {
+				case '0':
+					echo "<script>alert('没有该用户！');window.location.href='login2';</script>";
+					break;
+				case '1':
+					$this->input->set_cookie("phone",$phone,60);
+					echo "<script>alert('登陆成功');window.location.href='ucent';</script>";
+					break;
+				case '2':
+					echo "<script>alert('密码错误！');window.location.href='login2';</script>";
+					break;
+			}
+		}else{
+		   $this->load->view('login2');
+		}
 	}
 	//注册
 	public function register(){
@@ -69,8 +87,6 @@ class home extends CI_Controller
 		$data['dishName'] = $_GET['uid'];  
 		$this->pack_model->upcart($id,$data);
 		redirect('home/cart');
-
-		
 	}
 	//菜品详情
 	public function food(){
@@ -118,29 +134,33 @@ class home extends CI_Controller
 	}
 	// 加入购物车
 	public function addcart(){
-		$cookie = $_COOKIE['ci_session'];
+		$phone = $_COOKIE['phone'];
+		if(!$phone){
+			echo "<script>alert('你还没有登陆！');</script>";
+		}
 		if($_POST){
 			$foodid = $_POST['foodid'];
 			$numbers = $_POST['numbers'];
 			$cards = array_combine($foodid,$numbers);  //重组数组
 			$data = array_filter($cards);              //过滤空值
 			foreach($data as $key=>$val){
-				$a['dishName']= $key;
-				$a['num'] = $val;
-				$a['phone'] = $cookie;
-				$b = json_encode($a);
-				var_dump($b);
-				exit;
+				$a['FoodId']= $key;
+				$a['Number'] = $val;
+				$a['UserId'] = 1;
+				$b = '['.json_encode($a)."]";
+				
+				$c = curl_post("http://192.168.199.151/API/API_Poorder/Post?dis=Shopping&value=".$b,'');
+				
 			}
-
-			  redirect('home/cart');
+			redirect('home/cart');
 		}
 	}
 
 	//购物车 new
 	public function cart(){
-		$cookie = $_COOKIE['ci_session'];
-		$list['carts'] = $this->pack_model->listcarts($cookie);
+		$cookie = 1;
+		$carts = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=gwc&foodid=".$cookie);
+		$list['carts'] = json_decode(json_decode($carts));	
 		$this->load->view('cart',$list);
 	}
 	// 删除购物车
@@ -182,7 +202,7 @@ class home extends CI_Controller
 	}
    //个人中心
 	public function ucent(){
-
+		var_dump($_COOKIE);
 		$this->load->view('usercenter');
 	 }
 	//个人设置

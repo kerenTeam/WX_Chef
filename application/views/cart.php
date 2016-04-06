@@ -22,25 +22,28 @@
 		  <?php if(!empty($carts)):?>
 		  <?php foreach($carts as $cart):?>
 			<?php 
-				$id = $cart['dishName']; 
-				$foods = $this->pack_model->foods($id);
+				$id = $cart->foodid; 
+				$foods = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=xq&foodid=".$id);
+        $food = json_decode(json_decode($foods));
+        // var_dump($food);
+        // exit;
 			?>
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
-                <a href="<?php echo site_url('home/food?id=').$foods['id'];?>" class="vimg">
-                  <img src="<?=base_url($foods['thumbnail']);?>" id="img" alt="<?=$foods['foodName'];?>"/>
+                <a href="<?php echo site_url('home/food?id=').$food[0]->foodid;?>" class="vimg">
+                  <img src="<?php echo IP.$food[0]->thumbnail;?>" id="img" alt="<?=$food[0]->foodname;?>"/>
                 </a>
               </div>
               <div class=" am-u-sm-9 am-list-main">
-                <h3 class="am-list-item-hd cartb"><?=$foods['foodName'];?></h3>
-                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$foods['price'];?></span></div>
+                <h3 class="am-list-item-hd cartb"><?=$food[0]->foodname;?></h3>
+                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]->foodprice;?></span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
-                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="<?=$cart['num'];?>">
+                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="<?=$cart->number;?>">
                   <span class="am-icon-plus" onClick="handle(this, true)"></span>
                 </div>
-                 <a href="<?php echo site_url('home/change?id=').$foods['id'].'&pid='.$foods['pid'];?>"><span class="am-icon-refresh am-fr green"></span></a>
-                <a href="<?=site_url('home/delcart?id=').$cart['id'];?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
+                 <a href="<?php echo site_url('home/change?id=').$food[0]->foodid.'&pid='.$food[0]->foodpid;?>"><span class="am-icon-refresh am-fr green"></span></a>
+                <a href="<?=site_url('home/delcart?id=').$cart->foodid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
             </li>
 			<?php endforeach;?>
