@@ -54,16 +54,16 @@ class home extends CI_Controller
 		 $reigsterFrom = array('UserPhone' => $this->input->post('UserPhone'),'UserPwd' => $this->input->post('UserPwd'));
          $reigsterData = "[".json_encode($reigsterFrom)."]";
          $isok = curl_post(APIURL."Post?dis=User&value=".$reigsterData,'');
-         //var_dump(APIURL."Post?dis=User&value=".$reigsterData);
+         var_dump(APIURL."Post?dis=User&value=".$reigsterData);
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
-         		echo "<script>alert('注册失败！');  window.location.href='register';</script>"; exit; //？注册
+         		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
          		break;
          	case '1':
-         		echo "<script>alert('注册成功！');    window.location.href='ucent';</script>"; exit;  //？中心
+         		echo "<script>alert('注册成功！');    window.location.href='ucent';</script>";   //？中心
          		break;	
          	case '2':
-         		echo "<script>alert('该号码已注册！'); window.location.href='login2';</script>"; exit; //？登陆
+         		echo "<script>alert('该号码已注册！'); window.location.href='login2';</script>";  //？登陆
          		break;	
          }
 	}
