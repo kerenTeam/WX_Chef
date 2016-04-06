@@ -200,13 +200,9 @@ class home extends CI_Controller
 
 	//购物车 new
 	public function cart(){
-<<<<<<< HEAD
 		$cookie = $_COOKIE['phone'];
 		$carts = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=gwc&foodid=".$cookie);
-=======
-		$cookie = 1;
-		$carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
->>>>>>> 87d82e7cba880c0a5c440af9b3d91cf9e9cd5bb7
+
 		$list['carts'] = json_decode(json_decode($carts));	
 		$this->load->view('cart',$list);
 	}
