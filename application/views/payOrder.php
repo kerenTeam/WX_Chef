@@ -18,7 +18,7 @@
           <span class="am-list-date"><i class="am-icon-cny atf">70</i></span>
         </li> 
         <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/vip')?>" class="am-list-item-hd">会员卡支付</a>
+          <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd">会员卡支付</a>
           <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
         </li>
         
@@ -27,10 +27,10 @@
      <div class="am-shadow fpa">
       <p class="htit sad"><span class="am-icon-usd red"></span> 其他支付方式</p>
  
-      <a href="" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       </div>
     </form>
   </body>

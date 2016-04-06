@@ -88,7 +88,7 @@
 <div class="am-shadow">
   <p class="htit"><span class="am-icon-eye yellow"></span> 实时菜价<a href="<?php echo site_url('home/priceSearch')?>" class="am-fr am-text-xs gray">更多》</a></p>
   <div class="d1" id="div1" onmouseover="clearInterval(timer)" onmouseout="timer=setInterval(mar,30)">
-    <span class="div2" id="div2"> <a href="<?php echo site_url('home/price')?>">西兰花 5.5元一斤</a>  <a href="<?php echo site_url('home/price')?>">大白菜 5.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">西兰花 5.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">鸡肉 25.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">西兰花 5.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">西兰花 5.5元一斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">鲤鱼 15.5元一斤</a>  </span><span id="div3" class="div2"></span>
+    <span class="div2" id="div2"> <a href="<?php echo site_url('home/price')?>">西兰花 5.5元/斤</a>  <a href="<?php echo site_url('home/price')?>">大白菜 5.5元/斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">西兰花 5.5元/斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">鸡肉 25.5元/斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">西兰花 5.5元/斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">西兰花 5.5元/斤</a>  <a href="<?php echo site_url('home/priceSearch')?>">鲤鱼 15.5元/斤</a>  </span><span id="div3" class="div2"></span>
   </div>
   <div>
   </div>

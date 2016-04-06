@@ -179,6 +179,11 @@ class home extends CI_Controller
 
 		$this->load->view('search');
 	}
+	 //搜索结果页
+    public function searchPage(){
+
+		$this->load->view('searchPage');
+	}
     //订单记录
     public function orderR(){
 

@@ -29,10 +29,11 @@
   <div class="hotsou">
     <div class="am-text-sm">搜索记录：</div>
     <ul>
-      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>">团拜宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
+      <li class="am-text-center">空</li>
+     <!-- <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>">团拜宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
       <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/food')?>">清炖滋补甲鱼汤</a> <button type="button" class="am-close am-fr">&times;</button></li>
       <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/food')?>">婚宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
-      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>">松茸乳鸽盅</a> <button type="button" class="am-close am-fr">&times;</button></li>
+      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>">松茸乳鸽盅</a> <button type="button" class="am-close am-fr">&times;</button></li>-->
     </ul>
   </div>
 
