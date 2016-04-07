@@ -113,9 +113,13 @@ class home extends CI_Controller
 	public function changup(){
 		$a['FoodId'] = $_GET['id'];
 		$a['ShoppingId'] = $_GET['shopping'];  
-		$b = '['.json_encode($a).']';
+		$b = '['. ($a).']';
 		var_dump($b);
+<<<<<<< HEAD
 		$c = curl_post(APIURL."/Put?dis=xgcp&value=".$b,'');
+=======
+		$c = curl_post(APIURL."Put?dis=xgcp&value=".$b,'');
+>>>>>>> b495d60f47e4f3d8daad08a09c46752b34b57266
 		var_dump($c);	
 		
 		exit;
@@ -209,7 +213,11 @@ class home extends CI_Controller
 	//购物车 new
 	public function cart(){
 		$cookie = $_COOKIE['phone'];
+<<<<<<< HEAD
 		$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$cookie);
+=======
+		$carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
+>>>>>>> b495d60f47e4f3d8daad08a09c46752b34b57266
 
 		$list['carts'] = json_decode(json_decode($carts));	
 		$this->load->view('cart',$list);
