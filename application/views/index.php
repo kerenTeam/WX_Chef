@@ -5,6 +5,7 @@
 </div>
  -->
 <!-- 注册弹框 -->
+<?php if(get_cookie('phone') == NULL):?>
 <div class="tk">
   <div class="tkcontent">
     <span><img class="closetk" src="skin/img/closetk.png" alt="大厨到家"></span>
@@ -16,6 +17,7 @@
     </div>
   </div>
 </div>
+<?php endif;?>
 <!-- banner -->
 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">

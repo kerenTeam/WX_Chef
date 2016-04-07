@@ -30,7 +30,7 @@
   </ul>
     <ul class="am-list userl">
       <li class="am-g am-list-item-dated">
-          <a href="javascript:" data-am-modal="{target: '#my-alert'}" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
+          <a href="<?=site_url('home/zhuxiao');?>" data-am-modal="{target: '#my-alert'}" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
       </li>
   </ul>
   </div>

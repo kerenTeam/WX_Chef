@@ -22,9 +22,18 @@
 		  <?php if(!empty($carts)):?>
 		  <?php foreach($carts as $cart):?>
 			<?php 
-				$id = $cart->foodid; 
+        if(get_cookie('phone') == NULL){
+          $a = json_decode($cart);
+        
+          $id = $a->FoodId;
+          var_DumP($id);
+        }else{
+          $id = $cart->foodid;
+        }
 				$foods = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=xq&foodid=".$id);
         $food = json_decode(json_decode($foods));
+        var_Dump($food);
+        exit;
         // var_dump($food);
         // exit;
 			?>
