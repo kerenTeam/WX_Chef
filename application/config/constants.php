@@ -83,5 +83,6 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
-defined('IP')                  OR define('IP','http://211.149.195.183:88');
-defined('APIURL')              OR define('APIURL',"http://211.149.195.183:88/API/API_Poorder/");
+defined('IP')                  OR define('IP','http://211.149.195.183:88');  //图像位置
+defined('APIURL')              OR define('APIURL',"http://211.149.195.183:88/API/API_Poorder/");  //API 位置
+defined('randNms')             OR define('randNms', rand(100000,999999)); //长度为6位的随机数

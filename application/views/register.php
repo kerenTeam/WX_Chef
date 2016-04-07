@@ -14,7 +14,7 @@ html {
       <input type="tel" placeholder="请输入手机号码" name="UserPhone" id='userphone'/>
     </div>
     <div class="reg_test">
-      <input type="text" placeholder="请输入验证码"/>
+      <input type="text"  placeholder="请输入验证码"/>
       <input type="button" onclick="yzm(this)" value="获取验证码" />
     </div>
     <div class="user_agreement">
@@ -114,17 +114,15 @@ html {
 		 	if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
 		 		shade('am-icon-meh-o','请输入正确的手机号码');
 		 	}else{
-		 		//<?=site_url('home/');?>
-		 alert(phone);
 		 		time(input);
 		 		$.ajax({
 		 			type: "post",
 		 			url: "<?=site_url('home/send');?>",
-		 			data: "phone="+phone,
+		 			data: {"UserPhone":+phone},
 		 			success: function(data){
 		 				console.log(data);
 		 			}
-		 		})
+		 		});
 		 	}
 
 		}
