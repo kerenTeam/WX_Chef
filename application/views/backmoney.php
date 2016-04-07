@@ -67,6 +67,7 @@
 			</p>
 		</div>
 	</div>
+    <a href="<?=site_url('home/vipCard');?>" class="am-u-sm-12 am-btn bgreen go">开通会员卡</a>
 </div>
 </body>
 </html>

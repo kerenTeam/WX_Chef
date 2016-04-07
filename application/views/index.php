@@ -68,7 +68,7 @@
 <div class="am-g am-shadow hot">
   <p class="htit"><img src="skin/img/fire.png" alt=""> 特色服务</p>
   <div class="am-u-sm-4">
-    <a href="<?php echo site_url('home/vip')?>" class="am-thumbnail">
+    <a href="<?php echo site_url('home/vipCard')?>" class="am-thumbnail">
       <img class="am-circle" src="skin/img/vip.png"/>
       <p class="purple">会员</p>
     </a>

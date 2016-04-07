@@ -6,6 +6,30 @@ body {
 .am-slider-default .am-control-nav {
 	bottom: 9px;
 }
+.flexv{
+	display:flex;
+	flex-direction:column;
+	align-content:space-around;
+	padding:5% 10%;
+}
+.flexv .fitem{
+	width:100%;
+	position:relative;
+	}
+.open{
+	position: absolute;
+    top: 12px;
+    right: 12px;
+    color: rgba(94, 185, 94, 0.55);
+    font-size: 1.4rem;
+    border: 1px solid rgba(94, 185, 94, 0.51);
+    padding: 0px 5px;
+    border-radius: 3px;
+	}
+.flexv .fitem img{
+	width:100%;
+	margin-bottom:20px
+}
 .tk {
 	/* pointer-events:auto; */
 	z-index: 1999;
@@ -655,7 +679,7 @@ body {
 }
 .go {
 	width: 90%;
-	margin: auto 5%;
+	margin: auto 5% 5%;
 	border-radius: 5px;
 }
 .pform {

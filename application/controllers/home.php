@@ -49,7 +49,7 @@ class home extends CI_Controller
 	public function register(){
 		$this->load->view('register');
 	}
-	//  发送验证码
+
 	public function send(){
 	$phone = $this->input->post('UserPhone');
     $ch = curl_init();
@@ -61,20 +61,9 @@ class home extends CI_Controller
     $res = curl_exec($ch);
 
 	}
-	//短信验证码验证
-	public function verifyNms(){
-		$verifyNmsabc = $_POST['verifyNms'];
-
-		if (randNms == $verifyNmsabc) {
-			echo 1;
-			var_dump("等于". randNms .$verifyNmsabc);
-		} else {
-			echo 0;
-			var_dump("不等于". randNms .$verifyNmsabc);
-		}
-	}
 
 	public function registeradd(){
+<<<<<<< HEAD
 
 
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
@@ -82,6 +71,11 @@ class home extends CI_Controller
          $isok = curl_post(POSTAPI."API_User",$reigsterData);
        
 
+=======
+		 $reigsterFrom = array('UserPhone' => $this->input->post('UserPhone'),'UserPwd' => $this->input->post('UserPwd'));
+         $reigsterData = "[".json_encode($reigsterFrom)."]";
+         $isok = curl_post(APIURL."/API_Poorder/Post?dis=User&value=".$reigsterData,'');
+>>>>>>> 3081d6a8023bd4c7be180bf0ff24ff222110212e
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
@@ -94,8 +88,6 @@ class home extends CI_Controller
          		break;	
          }
 	}
-
-
 	
 	//首页
 	public function index(){
@@ -112,7 +104,7 @@ class home extends CI_Controller
 		$data['cates'] = json_decode(json_decode($catejson));
 		$foodjson = file_get_contents(APIURL.'Get?dis=d');
 		$data['foods'] = json_decode(json_decode($foodjson));
-
+		
 		$this->load->view('cailan',$data);
 	}
 	//点菜
@@ -134,9 +126,13 @@ class home extends CI_Controller
 	public function changup(){
 		$a['FoodId'] = $_GET['id'];
 		$a['ShoppingId'] = $_GET['shopping'];  
-		$b = '['.json_encode($a).']';
+		$b = '['. ($a).']';
 		var_dump($b);
+
 		$c = curl_post(APIURL."/Put?dis=xgcp&value=".$b,'');
+
+		$c = curl_post(APIURL."Put?dis=xgcp&value=".$b,'');
+
 		var_dump($c);	
 		
 		exit;
@@ -205,6 +201,7 @@ class home extends CI_Controller
 	}
 	// 加入购物车
 	public function addcart(){
+<<<<<<< HEAD
 		$phone = get_cookie('phone');
 			if($_POST){
 				$foodid = $_POST['foodid'];
@@ -235,6 +232,28 @@ class home extends CI_Controller
 				// var_dump($c);
 				redirect('home/cart');
 			}
+=======
+		$phone = $_COOKIE['phone'];
+		if(!$phone){
+			echo "<script>alert('你还没有登陆！');window.location.href='login2';</script>";
+		}
+		if($_POST){
+			$foodid = $_POST['foodid'];
+			$numbers = $_POST['numbers'];
+			$cards = array_combine($foodid,$numbers);  //重组数组
+			$data = array_filter($cards);              //过滤空值
+			foreach($data as $key=>$val){
+				$a['FoodId']= $key;
+				$a['Number'] = $val;
+				$a['UserId'] = $phone;
+				$b = '['.json_encode($a)."]";
+				
+				$c = curl_post(APIURL."Post?dis=Shopping&value=".$b,'');
+				
+			}
+			redirect('home/cart');
+		}
+>>>>>>> 3081d6a8023bd4c7be180bf0ff24ff222110212e
 	}
 	// 注销
 	public function zhuxiao(){
@@ -243,6 +262,7 @@ class home extends CI_Controller
 	}
 	//购物车 new
 	public function cart(){
+<<<<<<< HEAD
 		$phone = get_cookie('phone');
 		if($phone == NULL){
 			// var_dump($_COOKIE);
@@ -255,9 +275,17 @@ class home extends CI_Controller
 		}else{
 			$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$phone);
 			$list['carts'] = json_decode(json_decode($carts));	
+=======
+		$cookie = $_COOKIE['phone'];
 
-		}
+		$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$cookie);
 
+		$carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
+>>>>>>> 3081d6a8023bd4c7be180bf0ff24ff222110212e
+
+
+
+		$list['carts'] = json_decode(json_decode($carts));	
 		$this->load->view('cart',$list);
 	}
 	// 删除购物车
@@ -387,6 +415,26 @@ class home extends CI_Controller
 	public function vip(){
 
 		$this->load->view('vip');
+	}
+	//会员卡
+	public function vipCard(){
+
+		$this->load->view('vipCard');
+	}
+	//开通会员卡
+	public function open(){
+
+		$this->load->view('open');
+	}
+	//购买会员卡
+	public function buyCard(){
+
+		$this->load->view('buyCard');
+	}
+	//开通成功
+	public function openSuccess(){
+
+		$this->load->view('openSuccess');
 	}
 	//菜价比较
 	public function priceSearch(){
