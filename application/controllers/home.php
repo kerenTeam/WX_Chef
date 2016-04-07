@@ -51,15 +51,37 @@ class home extends CI_Controller
 	}
 	//  发送验证码
 	public function send(){
-		$phone = $_POST['phone'];
-	
+	$phone = $this->input->post('UserPhone');
+    $ch = curl_init();
+    $url = 'http://apis.baidu.com/kingtto_media/106sms/106sms?mobile='.$phone.'&content=%e3%80%90%e5%a4%a7%e5%8e%a8%e5%88%b0%e5%ae%b6%e3%80%91%e6%82%a8%e7%9a%84%e6%b3%a8%e5%86%8c%e9%aa%8c%e8%af%81%e7%a0%81%e4%b8%ba%ef%bc%9a'.randNms;
+    $header = array('apikey: f8ae5ba4094b4d5134303eb87f7a115d');
+    curl_setopt($ch, CURLOPT_HTTPHEADER  , $header);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch , CURLOPT_URL , $url);
+    $res = curl_exec($ch);
+
 	}
+	//短信验证码验证
+	public function verifyNms(){
+		$verifyNmsabc = $_POST['verifyNms'];
+
+		if (randNms == $verifyNmsabc) {
+			echo 1;
+			var_dump("等于". randNms .$verifyNmsabc);
+		} else {
+			echo 0;
+			var_dump("不等于". randNms .$verifyNmsabc);
+		}
+	}
+
 	public function registeradd(){
+
 
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
          $reigsterData = json_encode($reigsterFrom);
          $isok = curl_post(POSTAPI."API_User",$reigsterData);
        
+
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
@@ -72,6 +94,8 @@ class home extends CI_Controller
          		break;	
          }
 	}
+
+
 	
 	//首页
 	public function index(){
@@ -86,7 +110,6 @@ class home extends CI_Controller
 
 		$catejson = file_get_contents(APIURL.'Get?dis=c');
 		$data['cates'] = json_decode(json_decode($catejson));
-
 		$foodjson = file_get_contents(APIURL.'Get?dis=d');
 		$data['foods'] = json_decode(json_decode($foodjson));
 
@@ -191,27 +214,25 @@ class home extends CI_Controller
 				// var_dump($phone);
 				if($phone == NULL){
 					foreach($data as $key=>$val){
-						$a['FoodId']= $key;
-						$a['Number'] = $val;
+						$a['foodid']= $key;
+						$a['number'] = $val;
 
 						$c[] = $a;
 					}
 					$b = json_encode($c);
 					// var_dump($b);
 					 set_cookie('shoping',$b,86500);
-
-					  // exit;
 				}else{
 					foreach($data as $key=>$val){
 						$a['FoodId']= $key;
 						$a['Number'] = $val;
 						$a['UserId'] =get_cookie('phone');
-						$b = '['.json_encode($a)."]";
+						$b = json_encode($a);
 						
-						$c = curl_post(APIURL."Post?dis=Shopping&value=".$b,'');
+						$c = curl_post(POSTAPI."API_Shopping",$b);
 						}
 				}
-			
+				// var_dump($c);
 				redirect('home/cart');
 			}
 	}
