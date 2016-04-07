@@ -11,11 +11,11 @@ html {
   <div class="first">
     <div class="reg_input flex">
       <label>中国 +86</label>
-      <input type="tel" placeholder="请输入手机号码" name="UserPhone" />
+      <input type="tel" placeholder="请输入手机号码" name="UserPhone" id='userphone'/>
     </div>
     <div class="reg_test">
       <input type="text" placeholder="请输入验证码"/>
-      <input type="button" onclick="time(this)" value="获取验证码" />
+      <input type="button" onclick="yzm(this)" value="获取验证码" />
     </div>
     <div class="user_agreement">
       <label class="am-radio am-success">
@@ -48,7 +48,7 @@ html {
 <!--<![endif]--> 
 <script src="skin/js/amazeui.min.js"></script> 
 <script type="text/javascript">
-	$(function(){
+	// $(function(){
 		// 验证是否同意协议
 		var checkbox = $(".user_agreement input[type='checkbox']");
 		checkbox.bind('change',function(){
@@ -72,6 +72,7 @@ html {
 				shade('am-icon-meh-o','请输入正确的手机号码');
 				return false;
 			}
+
 			if(test == ''){
 				shade('am-icon-meh-o','请输入验证码');
 				return false;
@@ -82,7 +83,7 @@ html {
 			    $(this).html('确认');
 			}
 			
-			   var pass=$('.pass');
+			var pass=$('.pass');
 			var passcheck=$('.passcheck');
 		  if(pass.val() != ''){
 			  $(this).prop('type','submit');
@@ -107,23 +108,45 @@ html {
 				$('.shade').append('<div><span class="'+icon+'"></span><p>'+cue+'</p></div>');
 		}
 		
-	});
+	
+		function yzm(input){
+		 	var phone = $("#userphone").val();
+		 	if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+		 		shade('am-icon-meh-o','请输入正确的手机号码');
+		 	}else{
+		 		//<?=site_url('home/');?>
+		 alert(phone);
+		 		time(input);
+		 		$.ajax({
+		 			type: "post",
+		 			url: "<?=site_url('home/send');?>",
+		 			data: "phone="+phone,
+		 			success: function(data){
+		 				console.log(data);
+		 			}
+		 		})
+		 	}
+
+		}
 		var wait = 60;
 		function time(o) {  
         if (wait == 0) {  
             o.removeAttribute("disabled");            
             o.value="获取验证码";  
             wait = 60;  
+
         } else {  
+        	
             o.setAttribute("disabled", true);  
             o.value="重新发送(" + wait + ")";  
             wait--;  
             setTimeout(function() {  
                 time(o)  
-            },  
+            },
             1000)
         }
 		}
+
 </script>
 </body>
 </html>
