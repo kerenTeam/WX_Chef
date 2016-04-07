@@ -16,7 +16,7 @@
       <div class=""><img src="skin/img/party1.png" class="am-img-responsive card" alt="大厨到家"></div>
       <div class="am-g">
          <h2>聚会套餐套餐 989元系列</h2>
-          <div>海河鲜类较多，是喜欢吃这类菜品的人群首选，菜品口味多。即高大上又不贵。</div>
+          <div class="tbref">海河鲜类较多，是喜欢吃这类菜品的人群首选，菜品口味多。即高大上又不贵。</div>
         <div class="pr"><i class="am-icon-cny"></i><span class="price">898</span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>

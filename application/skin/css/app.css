@@ -372,7 +372,7 @@ body {
 }
 .typec {
 	line-height: 29px;
-	margin: 2px 4px -15px;
+	margin: 4px 7px -14px;
 }
 .typec+ul>li a {
 	color: #A6A4A4;
@@ -391,7 +391,7 @@ body {
 }
 .typel img {
 	height: 1.7rem;
-	width: 1.7rem;
+	width: 5rem;
 }
 .am-icon-refresh {
 	position: relative;
@@ -419,7 +419,7 @@ body {
 }
 .cmn .am-list>li>a.am-active, .am-list>li>a.am-active:focus, .am-list>li>a.am-active:hover {
 	border-left: 2px solid #ED3F59;
-	background: none;
+	background: rgba(248, 85, 84, 0.27);
 	color: #ED3F59;
 }
 .clist li {
@@ -532,6 +532,10 @@ body {
 	margin-top: 5px;
 	background: rgba(230, 228, 228, 0.24);
 	margin-right: 1%;
+}
+.tbref{
+	margin-top:-10px;
+	font-size:14px;
 }
 .hot .am-u-sm-4 {
 	padding: 0;
