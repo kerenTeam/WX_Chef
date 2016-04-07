@@ -8,7 +8,7 @@ html {
 </head>
 
 <body class="register">
-<form method="post" action="<?=site_url(home/registeradd)?>" class="form_test">
+<form method="post" action="<?=site_url('home/registeradd');?>" class="form_test">
   <div class="first">
     <div class="reg_input flex">
       <label>中国 +86</label>
