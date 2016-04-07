@@ -63,19 +63,13 @@ class home extends CI_Controller
 	}
 
 	public function registeradd(){
-<<<<<<< HEAD
-
 
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
          $reigsterData = json_encode($reigsterFrom);
          $isok = curl_post(POSTAPI."API_User",$reigsterData);
        
 
-=======
-		 $reigsterFrom = array('UserPhone' => $this->input->post('UserPhone'),'UserPwd' => $this->input->post('UserPwd'));
-         $reigsterData = "[".json_encode($reigsterFrom)."]";
-         $isok = curl_post(APIURL."/API_Poorder/Post?dis=User&value=".$reigsterData,'');
->>>>>>> 3081d6a8023bd4c7be180bf0ff24ff222110212e
+
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
@@ -115,11 +109,12 @@ class home extends CI_Controller
 	//换一换
 	public function change(){
 		$data['id'] = $_GET['id'];
-		$data['shoppingid'] = $_GET['shopingid'];
+		// $data['shoppingid'] = $_GET['shopingid'];
 		$pid = $_GET['pid'];
 		
 		$cates = file_get_contents(APIURL."Get?dis=fl&foodid=".$pid);
 		$data['foods'] = json_decode(json_decode($cates));
+		var_dump($data);
 		$this->load->view('change',$data);
 	}
 	// 换一换处理
@@ -201,7 +196,7 @@ class home extends CI_Controller
 	}
 	// 加入购物车
 	public function addcart(){
-<<<<<<< HEAD
+
 		$phone = get_cookie('phone');
 			if($_POST){
 				$foodid = $_POST['foodid'];
@@ -232,29 +227,7 @@ class home extends CI_Controller
 				// var_dump($c);
 				redirect('home/cart');
 			}
-=======
-		$phone = $_COOKIE['phone'];
-		if(!$phone){
-			echo "<script>alert('你还没有登陆！');window.location.href='login2';</script>";
-		}
-		if($_POST){
-			$foodid = $_POST['foodid'];
-			$numbers = $_POST['numbers'];
-			$cards = array_combine($foodid,$numbers);  //重组数组
-			$data = array_filter($cards);              //过滤空值
-			foreach($data as $key=>$val){
-				$a['FoodId']= $key;
-				$a['Number'] = $val;
-				$a['UserId'] = $phone;
-				$b = '['.json_encode($a)."]";
-				
-				$c = curl_post(APIURL."Post?dis=Shopping&value=".$b,'');
-				
-			}
-			redirect('home/cart');
-		}
->>>>>>> 3081d6a8023bd4c7be180bf0ff24ff222110212e
-	}
+}
 	// 注销
 	public function zhuxiao(){
 		delete_cookie('phone');
@@ -262,30 +235,15 @@ class home extends CI_Controller
 	}
 	//购物车 new
 	public function cart(){
-<<<<<<< HEAD
+
 		$phone = get_cookie('phone');
 		if($phone == NULL){
-			// var_dump($_COOKIE);
 			$list['carts'] = json_decode(get_cookie('shoping'));
-			$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=123");
-			$list['qwe'] = json_decode(json_decode($carts));
-			// echo "<pre>";
-		     // var_dump($list);
-		     // exit;
+			
 		}else{
 			$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$phone);
 			$list['carts'] = json_decode(json_decode($carts));	
-=======
-		$cookie = $_COOKIE['phone'];
-
-		$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$cookie);
-
-		$carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
->>>>>>> 3081d6a8023bd4c7be180bf0ff24ff222110212e
-
-
-
-		$list['carts'] = json_decode(json_decode($carts));	
+		}
 		$this->load->view('cart',$list);
 	}
 	// 删除购物车
