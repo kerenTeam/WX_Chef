@@ -49,37 +49,18 @@ class home extends CI_Controller
 	public function register(){
 		$this->load->view('register');
 	}
-	//  发送验证码
-	public function send(){
-	$phone = $this->input->post('UserPhone');
-    $ch = curl_init();
-    $url = 'http://apis.baidu.com/kingtto_media/106sms/106sms?mobile='.$phone.'&content=%e3%80%90%e5%a4%a7%e5%8e%a8%e5%88%b0%e5%ae%b6%e3%80%91%e6%82%a8%e7%9a%84%e6%b3%a8%e5%86%8c%e9%aa%8c%e8%af%81%e7%a0%81%e4%b8%ba%ef%bc%9a'.randNms;
-    $header = array('apikey: f8ae5ba4094b4d5134303eb87f7a115d');
-    curl_setopt($ch, CURLOPT_HTTPHEADER  , $header);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch , CURLOPT_URL , $url);
-    $res = curl_exec($ch);
-
-	}
-	//短信验证码验证
-	public function verifyNms(){
-		$verifyNmsabc = $_POST['verifyNms'];
-
-		if (randNms == $verifyNmsabc) {
-			echo 1;
-			var_dump("等于". randNms .$verifyNmsabc);
-		} else {
-			echo 0;
-			var_dump("不等于". randNms .$verifyNmsabc);
-		}
-	}
 
 	public function registeradd(){
 		 $reigsterFrom = array('UserPhone' => $this->input->post('UserPhone'),'UserPwd' => $this->input->post('UserPwd'));
          $reigsterData = "[".json_encode($reigsterFrom)."]";
          $isok = curl_post(APIURL."/API_Poorder/Post?dis=User&value=".$reigsterData,'');
+<<<<<<< HEAD
          // echo "<pre>";
          // var_dump(APIURL."Post?dis=User&value=".$reigsterData); 
+=======
+         echo "<pre>";
+         var_dump(APIURL."Post?dis=User&value=".$reigsterData); 
+>>>>>>> 4be0b1e1c7088efcfa490621e74f3f65a9613676
          var_dump($isok);
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
@@ -93,8 +74,6 @@ class home extends CI_Controller
          		break;	
          }
 	}
-
-
 	
 	//首页
 	public function index(){
@@ -112,7 +91,7 @@ class home extends CI_Controller
 
 		$foodjson = file_get_contents(APIURL.'Get?dis=d');
 		$data['foods'] = json_decode(json_decode($foodjson));
-
+		
 		$this->load->view('cailan',$data);
 	}
 	//点菜
@@ -205,40 +184,34 @@ class home extends CI_Controller
 	}
 	// 加入购物车
 	public function addcart(){
-		if(empty($_COOKIE['phone'])){
+		$phone = $_COOKIE['phone'];
+		if(!$phone){
 			echo "<script>alert('你还没有登陆！');window.location.href='login2';</script>";
-			return flash;
-		}else{
-			if($_POST){
-				$foodid = $_POST['foodid'];
-				$numbers = $_POST['numbers'];
-				$cards = array_combine($foodid,$numbers);  //重组数组
-				$data = array_filter($cards);              //过滤空值
-				foreach($data as $key=>$val){
-					$a['FoodId']= $key;
-					$a['Number'] = $val;
-					$a['UserId'] = $_COOKIE['phone'];
-					$b = '['.json_encode($a)."]";
-					
-					$c = curl_post(APIURL."Post?dis=Shopping&value=".$b,'');
-					var_dump($c);
-				}
-				exit;
-				redirect('home/cart');
+		}
+		if($_POST){
+			$foodid = $_POST['foodid'];
+			$numbers = $_POST['numbers'];
+			$cards = array_combine($foodid,$numbers);  //重组数组
+			$data = array_filter($cards);              //过滤空值
+			foreach($data as $key=>$val){
+				$a['FoodId']= $key;
+				$a['Number'] = $val;
+				$a['UserId'] = $phone;
+				$b = '['.json_encode($a)."]";
+				
+				$c = curl_post(APIURL."Post?dis=Shopping&value=".$b,'');
+				
 			}
+			redirect('home/cart');
 		}
 	}
 
 	//购物车 new
 	public function cart(){
-		if(empty($_COOKIE['phone'])){
-			$list['carts'] = '';
-		}else{
-			$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$_COOKIE['phone']);
-			$list['carts'] = json_decode(json_decode($carts));	
+		$cookie = $_COOKIE['phone'];
+		$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$cookie);
 
-		}
-
+		$list['carts'] = json_decode(json_decode($carts));	
 		$this->load->view('cart',$list);
 	}
 	// 删除购物车
@@ -368,6 +341,26 @@ class home extends CI_Controller
 	public function vip(){
 
 		$this->load->view('vip');
+	}
+	//会员卡
+	public function vipCard(){
+
+		$this->load->view('vipCard');
+	}
+	//开通会员卡
+	public function open(){
+
+		$this->load->view('open');
+	}
+	//购买会员卡
+	public function buyCard(){
+
+		$this->load->view('buyCard');
+	}
+	//开通成功
+	public function openSuccess(){
+
+		$this->load->view('openSuccess');
 	}
 	//菜价比较
 	public function priceSearch(){

@@ -30,6 +30,7 @@
 			<p>1张200元饭票，限订单消费满1000元可用一张</p>
 		</div>
 	</div>
+     <a href="<?=site_url('home/register');?>" class="am-u-sm-12 am-btn bgreen go">去注册</a>
 </div>
 </body>
 </html>
