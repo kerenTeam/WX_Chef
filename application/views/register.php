@@ -6,8 +6,15 @@ html {
 }
 </style>
 </head>
+<script type="text/javascript">
+	function postreigster(){
+	jQuery.post('http://192.168.199.151/API/API_User', {UserPhone: $('#UserPhone').val(),UserPwd: $('#UserPwd').val()},
+    });
+    }	
+     
+</script>
 <body class="register">
-<form action="<?=site_url('home/registeradd')?>" method="post" class="form_test">
+<form  class="form_test">
   <div class="first">
     <div class="reg_input flex">
       <label>中国 +86</label>
@@ -26,15 +33,15 @@ html {
   <div class="seconde" style="display:none;">
      <div class="reg_input flex">
 		<label class="am-text-sm">密码</label>
-		<input type="password" placeholder="请输入密码" class="pass" name="UserPwd" required/>
+		<input type="password" placeholder="请输入密码" class="pass" name="UserPwd" id="UserPwd" required/>
 	</div>
      <div class="reg_input flex">
 		<label class="am-text-sm">确认密码</label>
-		<input type="password" placeholder="确认密码" class="passcheck" required/>
+		<input type="password"  placeholder="确认密码" class="passcheck" required/>
 	</div>
   </div>
   <div class="reg_btn">
-    <button type="button" class="am-btn am-btn-default" disabled>下一步</button>
+    <button onclick="postreigster()" class="am-btn am-btn-default" disabled>下一步</button>
   </div>
 </form>
 <div class="shade">
