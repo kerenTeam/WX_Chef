@@ -40,6 +40,7 @@
 			</p>
 		</div>
 	</div>
+     <a href="<?=site_url('home/vipCard');?>" class="am-u-sm-12 am-btn bgreen go">去宴会定制</a>
 </div>
 </body>
 </html>

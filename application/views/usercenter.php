@@ -2,8 +2,8 @@
   <body>
    <div class="userhead bred">
      <img class="am-circle" src="skin/img/USER.jpg"/>
-     <h3 class="am-header-title">牛仔裤的夏天</h3>
-     <p>重口味 &nbsp;&nbsp;&nbsp;&nbsp;川菜</p>
+     <h3 class="am-header-title am-margin-sm">牛仔裤的夏天</h3>
+     <p class="am-margin-xs">重口味 &nbsp;&nbsp;&nbsp;川菜</p>
    </div>
   
      <div class="am-list-news-bd asp">

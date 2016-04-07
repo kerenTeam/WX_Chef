@@ -49,11 +49,7 @@ class home extends CI_Controller
 	public function register(){
 		$this->load->view('register');
 	}
-	//  发送验证码
-	public function send(){
-		$phone = $_POST['phone'];
-	
-	}
+
 	public function registeradd(){
 		 $reigsterFrom = array('UserPhone' => $this->input->post('UserPhone'),'UserPwd' => $this->input->post('UserPwd'));
          $reigsterData = "[".json_encode($reigsterFrom)."]";
@@ -90,7 +86,7 @@ class home extends CI_Controller
 
 		$foodjson = file_get_contents(APIURL.'Get?dis=d');
 		$data['foods'] = json_decode(json_decode($foodjson));
-
+		
 		$this->load->view('cailan',$data);
 	}
 	//点菜
@@ -183,40 +179,34 @@ class home extends CI_Controller
 	}
 	// 加入购物车
 	public function addcart(){
-		if(empty($_COOKIE['phone'])){
+		$phone = $_COOKIE['phone'];
+		if(!$phone){
 			echo "<script>alert('你还没有登陆！');window.location.href='login2';</script>";
-			return flash;
-		}else{
-			if($_POST){
-				$foodid = $_POST['foodid'];
-				$numbers = $_POST['numbers'];
-				$cards = array_combine($foodid,$numbers);  //重组数组
-				$data = array_filter($cards);              //过滤空值
-				foreach($data as $key=>$val){
-					$a['FoodId']= $key;
-					$a['Number'] = $val;
-					$a['UserId'] = $_COOKIE['phone'];
-					$b = '['.json_encode($a)."]";
-					
-					$c = curl_post(APIURL."Post?dis=Shopping&value=".$b,'');
-					var_dump($c);
-				}
-				exit;
-				redirect('home/cart');
+		}
+		if($_POST){
+			$foodid = $_POST['foodid'];
+			$numbers = $_POST['numbers'];
+			$cards = array_combine($foodid,$numbers);  //重组数组
+			$data = array_filter($cards);              //过滤空值
+			foreach($data as $key=>$val){
+				$a['FoodId']= $key;
+				$a['Number'] = $val;
+				$a['UserId'] = $phone;
+				$b = '['.json_encode($a)."]";
+				
+				$c = curl_post(APIURL."Post?dis=Shopping&value=".$b,'');
+				
 			}
+			redirect('home/cart');
 		}
 	}
 
 	//购物车 new
 	public function cart(){
-		if(empty($_COOKIE['phone'])){
-			$list['carts'] = '';
-		}else{
-			$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$_COOKIE['phone']);
-			$list['carts'] = json_decode(json_decode($carts));	
+		$cookie = $_COOKIE['phone'];
+		$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$cookie);
 
-		}
-
+		$list['carts'] = json_decode(json_decode($carts));	
 		$this->load->view('cart',$list);
 	}
 	// 删除购物车
@@ -346,6 +336,26 @@ class home extends CI_Controller
 	public function vip(){
 
 		$this->load->view('vip');
+	}
+	//会员卡
+	public function vipCard(){
+
+		$this->load->view('vipCard');
+	}
+	//开通会员卡
+	public function open(){
+
+		$this->load->view('open');
+	}
+	//购买会员卡
+	public function buyCard(){
+
+		$this->load->view('buyCard');
+	}
+	//开通成功
+	public function openSuccess(){
+
+		$this->load->view('openSuccess');
 	}
 	//菜价比较
 	public function priceSearch(){
