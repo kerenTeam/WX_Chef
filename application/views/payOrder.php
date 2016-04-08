@@ -15,7 +15,7 @@
       <ul class="am-list odl">
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd">订单金额</a>
-          <span class="am-list-date"><i class="am-icon-cny atf">70</i></span>
+          <span class="am-list-date"><i class="am-icon-cny atf">10</i></span>
         </li> 
         <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd">会员卡支付</a>
