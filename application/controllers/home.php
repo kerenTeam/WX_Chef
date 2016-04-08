@@ -251,6 +251,7 @@ class home extends CI_Controller
     public function order(){
     echo "<pre>";
     	var_Dump($_SESSION['booking']);
+    	
   //   	$cookie = 1;
   //       $carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
 		// $list['carts'] = json_decode(json_decode($carts));	

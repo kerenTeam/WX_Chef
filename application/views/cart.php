@@ -21,7 +21,8 @@
           <ul class="am-list cul">
 		  <?php if(!empty($carts)):?>
 		  <?php unset($_SESSION['booking']); foreach($carts as $cart):?>
-			<?php 
+			<?php  
+      
         $id = $cart['foodid'];
         $shopid = $cart['shopid'];
 				$foods = file_get_contents(APIURL."Get?dis=xq&foodid=".$id);
