@@ -17,7 +17,7 @@
 <?php foreach ($booking as $k => $value): ?>
           <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd "><?php echo $value->foodname;?> <span class="am-fr gray">X <?php echo $postBooking[$value->foodid];?></span></a>
-          <span class="am-list-date ath"><i class="am-icon-cny"></i><?php echo $value->foodprice * $postBooking[$value->foodid]; $pricetotal[] = $value->foodprice * $postBooking[$value->foodid];?> </span>
+          <span class="am-list-date ath"><i class="am-icon-cny cc"></i><?php echo $value->foodprice * $postBooking[$value->foodid]; $pricetotal[] = $value->foodprice * $postBooking[$value->foodid];?> </span>
  
         </li>
 <?php endforeach ?>

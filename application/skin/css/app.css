@@ -12,6 +12,10 @@ body {
 	align-content:space-around;
 	padding:5% 10%;
 }
+.cc{
+	margin-right: 2px;
+    font-size: 14px;
+}
 .flexv .fitem{
 	width:100%;
 	position:relative;
