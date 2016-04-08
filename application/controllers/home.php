@@ -68,6 +68,7 @@ class home extends CI_Controller
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
          $reigsterData = json_encode($reigsterFrom);
          $isok = curl_post(POSTAPI."API_User",$reigsterData);
+         	var_dump($isok); exit;
        
 
 

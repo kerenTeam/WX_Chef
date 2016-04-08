@@ -13,7 +13,7 @@
 </header>
 <div class="backNow">
 	<div class="bkn_banner">
-		<img src="skin/img/partyserv.png">
+		<img src="skin/img/regift.png">
 	</div>
 	<div class="bkn_ctt">
 		<h2 class="bkn_crr_tit">活动规则</h2>
