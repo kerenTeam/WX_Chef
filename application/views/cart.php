@@ -22,11 +22,17 @@
 		  <?php if(!empty($carts)):?>
 		  <?php foreach($carts as $cart):?>
 			<?php 
-       
-        $id = $cart->foodid;
+        if(get_cookie('phone') == NULL){
+          $id = $cart['foodid'];
+          $shopid = $cart['shopid'];
+        }else{
+          $id = $cart->foodid;
+
+        }
+       // var_dump($id);
 				$foods = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=xq&foodid=".$id);
         $food = json_decode(json_decode($foods));
-       
+        var_dumP($food);
 			?>
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
@@ -39,11 +45,11 @@
                 <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]->foodprice;?></span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
-                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="<?=$cart->number;?>">
+                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="<?php if(empty($cart->number)){echo $cart['number'];}else{echo $cart->number;};?>">
                   <span class="am-icon-plus" onClick="handle(this, true)"></span>
                 </div>
                  <a href="<?php echo site_url('home/change?id=').$food[0]->foodid.'&pid='.$food[0]->foodpid;?>"><span class="am-icon-refresh am-fr green"></span></a>
-                <a href="<?=site_url('home/delcart?id=').$cart->foodid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
+                <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red ats2"></i></a>
               </div>
             </li>
 			<?php endforeach;?>

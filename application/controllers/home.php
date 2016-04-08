@@ -205,26 +205,42 @@ class home extends CI_Controller
 				$data = array_filter($cards);              //过滤空值
 				// var_dump($phone);
 				if($phone == NULL){
+					$shopid = rand(1,100);
 					foreach($data as $key=>$val){
 						$a['foodid']= $key;
 						$a['number'] = $val;
+						$a['shopid'] = $shopid;
 
 						$c[] = $a;
 					}
-					$b = json_encode($c);
-					// var_dump($b);
-					 set_cookie('shoping',$b,86500);
+					$shoping = get_cookie('shoping');
+					//var_dump($shoping);
+					if(empty($shoping) && $shoping == NULL){
+						$b = serialize($c);
+						//echo '123';
+					 	set_cookie('shoping',$b,86500);
+					}else{
+						//echo "456";
+						$a = unserialize($shoping);
+						$f = array_merge($a,$c);
+						$e = serialize($f);
+					 	set_cookie('shoping',$e,86500);
+					}
+					// var_dump(get_cookie('shoping'));
+					// exit;
 				}else{
 					foreach($data as $key=>$val){
 						$a['FoodId']= $key;
 						$a['Number'] = $val;
 						$a['UserId'] =get_cookie('phone');
 						$b = json_encode($a);
-						
+					
 						$c = curl_post(POSTAPI."API_Shopping",$b);
 						}
+						var_dump(POSTAPI."API_Shopping");
+						var_dump($c);
 				}
-				// var_dump($c);
+				exit;
 				redirect('home/cart');
 			}
 }
@@ -238,8 +254,8 @@ class home extends CI_Controller
 
 		$phone = get_cookie('phone');
 		if($phone == NULL){
-			$list['carts'] = json_decode(get_cookie('shoping'));
-			
+			$list['carts'] = unserialize(get_cookie('shoping'));
+
 		}else{
 			$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$phone);
 			$list['carts'] = json_decode(json_decode($carts));	
@@ -249,9 +265,25 @@ class home extends CI_Controller
 	// 删除购物车
 	function delcart(){
 		$id = $_GET['id'];
-		if($this->pack_model->delcarts($id)){
-			echo "<script>alert('删除成功!');window.location.href='cart';</script>";
+		$shopid = $_GET['shopid'];
+		if(get_cookie('phone') == NULL){
+			$shoping = unserialize(get_cookie('shoping'));
+			echo "<pre>";
+			var_dump($shoping);echo "<br/>";
+			foreach ($shoping as $key => $value) {
+				if($shopid == $value['shopid'] && $value['foodid'] == $id){
+				
+					unset($shoping[$key]);
+				}
+			}
+			$shoping = array_merge($shoping);
+			$e = serialize($shoping);
+			set_cookie('shoping',$e,86500);
+		}else{
+
+
 		}
+		redirect('home/cart');
 	}
     //订单
     public function order(){
