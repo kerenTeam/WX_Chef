@@ -111,26 +111,28 @@ class home extends CI_Controller
 		$data['id'] = $_GET['id'];
 		// $data['shoppingid'] = $_GET['shopingid'];
 		$pid = $_GET['pid'];
+		$data['shopid'] = $_GET['shopid'];
 		
 		$cates = file_get_contents(APIURL."Get?dis=fl&foodid=".$pid);
 		$data['foods'] = json_decode(json_decode($cates));
-		var_dump($data);
+		
 		$this->load->view('change',$data);
 	}
 	// 换一换处理
 	public function changup(){
-		$a['FoodId'] = $_GET['id'];
-		$a['ShoppingId'] = $_GET['shopping'];  
-		$b = '['. ($a).']';
-		var_dump($b);
-
-		$c = curl_post(APIURL."/Put?dis=xgcp&value=".$b,'');
-
-		$c = curl_post(APIURL."Put?dis=xgcp&value=".$b,'');
-
-		var_dump($c);	
-		
-		exit;
+		$shopid = $_GET['shopid'];
+		$id = $_GET['id'];
+		$foodid = $_GET['foodid'];
+		$shoping = unserialize(get_cookie('shoping'));
+		echo "<pre>";
+	 // var_dump($shoping);
+		foreach($shoping as $k=>$value){
+			if($value['foodid'] == $id && $value['shopid'] == $shopid){
+				$shoping[$k]['foodid'] = $foodid;
+			}
+		}
+		$b = serialize($shoping);
+		set_cookie('shoping',$b,0);
 		redirect('home/cart');
 	}
 	//菜品详情
@@ -204,43 +206,28 @@ class home extends CI_Controller
 				$cards = array_combine($foodid,$numbers);  //重组数组
 				$data = array_filter($cards);              //过滤空值
 				// var_dump($phone);
-				if($phone == NULL){
 					$shopid = rand(1,100);
 					foreach($data as $key=>$val){
 						$a['foodid']= $key;
 						$a['number'] = $val;
 						$a['shopid'] = $shopid;
-
+						$a['time'] = date('Y-m-d H:i:s');
 						$c[] = $a;
 					}
+					
 					$shoping = get_cookie('shoping');
-					//var_dump($shoping);
-					if(empty($shoping) && $shoping == NULL){
+					if($shoping == NULL){
 						$b = serialize($c);
 						//echo '123';
-					 	set_cookie('shoping',$b,86500);
+					 	 set_cookie('shoping',$b,0);
 					}else{
-						//echo "456";
 						$a = unserialize($shoping);
 						$f = array_merge($a,$c);
 						$e = serialize($f);
-					 	set_cookie('shoping',$e,86500);
+
+					 	set_cookie('shoping',$e,0);
 					}
-					// var_dump(get_cookie('shoping'));
-					// exit;
-				}else{
-					foreach($data as $key=>$val){
-						$a['FoodId']= $key;
-						$a['Number'] = $val;
-						$a['UserId'] =get_cookie('phone');
-						$b = json_encode($a);
 					
-						$c = curl_post(POSTAPI."API_Shopping",$b);
-						}
-						var_dump(POSTAPI."API_Shopping");
-						var_dump($c);
-				}
-				exit;
 				redirect('home/cart');
 			}
 }
@@ -253,13 +240,9 @@ class home extends CI_Controller
 	public function cart(){
 
 		$phone = get_cookie('phone');
-		if($phone == NULL){
-			$list['carts'] = unserialize(get_cookie('shoping'));
+		$list['carts'] = unserialize(get_cookie('shoping'));
 
-		}else{
-			$carts = file_get_contents(APIURL."/Get?dis=gwc&foodid=".$phone);
-			$list['carts'] = json_decode(json_decode($carts));	
-		}
+	
 		$this->load->view('cart',$list);
 	}
 	// 删除购物车
@@ -278,7 +261,7 @@ class home extends CI_Controller
 			}
 			$shoping = array_merge($shoping);
 			$e = serialize($shoping);
-			set_cookie('shoping',$e,86500);
+			set_cookie('shoping',$e,0);
 		}else{
 
 
