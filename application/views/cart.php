@@ -20,7 +20,6 @@
         <div class="am-text-center oln">点菜</div>
           <ul class="am-list cul">
 		  <?php if(!empty($carts)):?>
-
 		  <?php unset($_SESSION['booking']); foreach($carts as $cart):?>
 			<?php  
         $id = $cart['foodid'];
