@@ -211,13 +211,19 @@ class home extends CI_Controller
 						$a['time'] = date('Y-m-d H:i:s');
 						$c[] = $a;
 					}
-					$shoping = $_SESSION['shoping'];
-					if($shoping == NULL){
-					 	$this->session->set_userdata('shoping',$c,0);
-					}else{
-						$f = array_merge($shoping,$c);
-					 	$this->session->set_userdata('shoping',$f,0);
+					if (isset($_SESSION['shoping'])) {
+						$shoping = $_SESSION['shoping'];
+						} else {
+						$shoping = NULL;
 					}
+						if($shoping == NULL){
+						 	$this->session->set_userdata('shoping',$c,0);
+						}else{
+							$f = array_merge($shoping,$c);
+						 	$this->session->set_userdata('shoping',$f,0);
+						}
+					
+					
 					
 				redirect('home/cart');
 			}
