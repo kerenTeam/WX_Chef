@@ -13,13 +13,14 @@
 </header>
 
 
-<form action="<?=site_url('home/cart');?>" method="post" enctype="multipart/form-data">
+<form action="<?=site_url('home/order');?>" method="post" enctype="multipart/form-data">
   <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
     <div class="cmn cmnb am-list-news am-list-news-default" >
       <div class="am-list-news-bd">
         <div class="am-text-center oln">点菜</div>
           <ul class="am-list cul">
 		  <?php if(!empty($carts)):?>
+<<<<<<< HEAD
 
 		  <?php foreach($carts as $cart):?>
 
@@ -29,6 +30,21 @@
 				$foods = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=xq&foodid=".$id);
         $food = json_decode(json_decode($foods));
         $fooddata[] = json_encode($food);
+=======
+		  <?php unset($_SESSION['booking']); foreach($carts as $cart):?>
+			<?php 
+        $id = $cart['foodid'];
+        $shopid = $cart['shopid'];
+				$foods = file_get_contents(APIURL."Get?dis=xq&foodid=".$id);
+        $food = json_decode(json_decode($foods));
+        if(!isset($_SESSION['booking'])){
+         $this->session->set_userdata('booking',$food);
+        }else{
+          $booking = $_SESSION['booking'];
+          $book = array_merge($booking,$food);
+          $this->session->set_userdata('booking',$book);
+        }
+>>>>>>> a43e1d67971259436e8180a61ac7ec798e84d459
 			?>
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
@@ -58,7 +74,7 @@
         <div class="am-text-center oln">套餐</div>
           <ul class="am-list cul">
             
-            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+            <!-- <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
                 <a href="<?php echo site_url('home/dinner')?>" class="vimg">
                   <img src="skin/img/product/shiguo.jpg" alt="石锅酱仔排58"/>
@@ -74,7 +90,7 @@
                 </div>
                 <a href="" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
-            </li>
+            </li> -->
           </ul>
       </div>
     </div>
