@@ -23,7 +23,7 @@
 <?php endforeach ?>
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd red">订单总计</a>
-          <span class="am-list-date"><i class="am-icon-cny red"><?php echo array_sum($pricetotal);?></i></span>
+          <span class="am-list-date ath"><i class="am-icon-cny red"><?php echo array_sum($pricetotal);?></i></span>
         </li>  
       </ul>
      </div>
