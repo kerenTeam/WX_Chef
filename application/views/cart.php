@@ -20,17 +20,7 @@
         <div class="am-text-center oln">点菜</div>
           <ul class="am-list cul">
 		  <?php if(!empty($carts)):?>
-<<<<<<< HEAD
 
-		  <?php foreach($carts as $cart):?>
-
-			<?php 
-        $id = $cart['foodid'];
-        $shopid = $cart['shopid'];
-				$foods = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=xq&foodid=".$id);
-        $food = json_decode(json_decode($foods));
-        $fooddata[] = json_encode($food);
-=======
 		  <?php unset($_SESSION['booking']); foreach($carts as $cart):?>
 			<?php  
       
@@ -45,7 +35,6 @@
           $book = array_merge($booking,$food);
           $this->session->set_userdata('booking',$book);
         }
->>>>>>> a43e1d67971259436e8180a61ac7ec798e84d459
 			?>
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
@@ -66,8 +55,6 @@
               </div>
             </li>
 			<?php endforeach;?>
-      <?php set_cookie('booking',json_encode($fooddata),36000);?>
-
 			<?php else:?>
 			<p class="am-margin-right-lg">你还没有添加任何食物！</p>
 			<?php endif;?>
