@@ -30,10 +30,9 @@ body {
 	width:100%;
 	margin-bottom:20px
 }
-.tk {
-	/* pointer-events:auto; */
-	z-index: 1999;
-	position: fixed;
+.tk{
+    position: fixed;
+	z-index: 1999;	
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -43,6 +42,10 @@ body {
 .atf {
 	font-size: 16px;
 	line-height: 16px;
+}
+.ath{
+	font-size: 16px;
+	line-height: 20px;
 }
 .tkcontent {
 	position: absolute;
@@ -669,7 +672,7 @@ body {
 }
 .odl a {
 	margin-left: 15px;
-	color: black!important;
+	color: black;
 }
 .pay, .marginl {
 	margin-left: 15px;

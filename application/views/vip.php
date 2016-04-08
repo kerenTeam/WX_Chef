@@ -16,11 +16,12 @@
  
 
       <div class="am-g am-shadow am-cf">
-           <span class="acm am-fl"> 账户 <span class="green"> 15708434450 </span></span>
+           <!-- <span class="acm am-fl"> 账户 <span class="green"> 15708434450 </span></span> -->
+          <span class="acm am-fl"> 至尊金卡 </span>
           <span class="acm am-fr">余额<span class="pink acm"> 30 </span></span>
       </div> 
   <br>
-   <a href="" class="am-u-sm-12 am-btn bgreen go">去充值</a> 
+   <a href="<?=site_url('home/vipCard');?>" class="am-u-sm-12 am-btn bgreen go">再次开通</a> 
  
   
   </body>
