@@ -26,7 +26,7 @@ html {
   </div>
   <div class="seconde" style="display:none;">
      <div class="reg_input flex">
-		<label class="am-text-sm">密码</label>
+		<label class="am-text-sm">设置密码</label>
 		<input type="password" placeholder="请输入密码" class="pass" name="UserPwd" id="UserPwd" required/>
 	</div>
      <div class="reg_input flex">
