@@ -13,10 +13,16 @@
   <form action="" method="">
     <div class="am-list-news-bd">
       <ul class="am-list odl">
+      <?php var_dump($booking); ?>
+      <?php foreach ($booking as $k => $bookval): ?>
         <li class="am-g am-list-item-dated">
-          <a href="javascript:" class="am-list-item-hd ">香辣鸡翅 X1</a>
+          <a href="javascript:" class="am-list-item-hd "><?php var_dump($booking[$k]->foodname);?>X1</a>
           <span class="am-list-date"><i class="am-icon-cny"></i>30</span>
         </li>
+      <?php endforeach ?>
+
+
+        
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd ">鱼香茄子 X1</a>
           <span class="am-list-date"><i class="am-icon-cny"></i>20</span>
