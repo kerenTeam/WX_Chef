@@ -21,7 +21,7 @@
     <div class="pink typec"><img src="skin/img/type.png" alt="">&nbsp;分类</div>
     <ul class="am-list typel">
     <?php foreach($cates as $cate):?>
-        <li><a href="#<?=$cate->foodcategoryid;?>"><img src="<?php echo IP.$cate->imgaddress;?>" alt=""><?=$cate->name;?></a></li><!-- &nbsp;<?=$cate->name;?>-->
+        <li><a href="#<?=$cate->foodcategoryid;?>"><img src="<?php echo IP.$cate->imgaddress;?>" alt=""> <?=$cate->name;?></a></li>
       <?php endforeach;?>
     </ul>
     </nav>

@@ -14,25 +14,50 @@
   <form action="" method="" class="topform">
     <div class="am-g">
       <button type="submit" class="am-icon-search sb"></button>
-      <input type="search" class="am-form-field" placeholder="请输入菜名或食材">
+      <input type="search" class="am-form-field" placeholder="黄焖鸡">
     </div>
   </form>
-  <div class="hotsou">
+<!--   <div class="hotsou">
     <div class="am-text-sm">热门搜索：</div>
     <a href="<?php echo site_url('home/partyInfo')?>">团拜宴</a><a href="<?php echo site_url('home/food')?>">清炖滋补甲鱼汤</a><a href="<?php echo site_url('home/food')?>">婚宴</a><a href="<?php echo site_url('home/partyInfo')?>">松茸乳鸽盅</a><a href="<?php echo site_url('home/food')?>">红花汁扣辽参</a><a href="<?php echo site_url('home/food')?>">清汤竹荪炖血燕</a>
-  </div>
-   <hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+  </div>  -->
+ <!-- <hr data-am-widget="divider" style="" class="am-divider am-divider-default" /> -->
   <div class="hotsou">
     <div class="am-text-sm">搜索记录：</div>
     <ul>
+      <!-- 没有搜索 -->
       <li class="am-text-center">空</li>
-     <!-- <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>">团拜宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
+      <!-- 搜索过 -->
+      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>">团拜宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
       <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/food')?>">清炖滋补甲鱼汤</a> <button type="button" class="am-close am-fr">&times;</button></li>
-      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/food')?>">婚宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
-      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>">松茸乳鸽盅</a> <button type="button" class="am-close am-fr">&times;</button></li>-->
     </ul>
+  </div> 
+  <!-- 搜索显示 -->
+  <div class="cmn cmnb am-list-news am-list-news-default" >
+    <div class="am-list-news-bd">
+      <ul class="am-list">
+      
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+         <a href="<?php echo site_url('home/food')?>" class="black">
+          <div class="am-u-sm-4 am-text-center am-list-thumb"> <div class="vimg"> <img src="skin/img/product/rjx.jpg" alt="蓉记姜葱香辣蟹168"/> </div> </div>
+          <div class=" am-u-sm-8 am-list-main">
+            <h3 class="am-list-item-hd">蓉记姜葱香辣蟹</h3>
+            <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">100</span>份</div>
+            <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
+         </a>
+        </li> 
+         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+         <a href="<?php echo site_url('home/food')?>" class="black">
+          <div class="am-u-sm-4 am-text-center am-list-thumb"> <div class="vimg"> <img src="skin/img/product/rjx.jpg" alt="蓉记姜葱香辣蟹168"/> </div> </div>
+          <div class=" am-u-sm-8 am-list-main">
+            <h3 class="am-list-item-hd">蓉记姜葱香辣蟹</h3>
+            <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">100</span>份</div>
+            <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
+         </a>
+        </li> 
+      </ul>
+    </div>
   </div>
-
   </body>
   <script src="skin/js/jquery.min.js"></script>
   <script>
