@@ -125,7 +125,6 @@ class home extends CI_Controller
 		$id = $_GET['id'];
 		$foodid = $_GET['foodid'];
 		$shoping = unserialize(get_cookie('shoping'));
-		echo "<pre>";
 		foreach($shoping as $k=>$value){
 			if($value['foodid'] == $id && $value['shopid'] == $shopid){
 				$shoping[$k]['foodid'] = $foodid;
@@ -257,6 +256,7 @@ class home extends CI_Controller
     public function order(){
     	$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
     	$data['booking'] = $_SESSION['booking'];
+    	var_dump($data['booking']);
 		$this->load->view('order',$data);
 	}
 	 //支付订单
