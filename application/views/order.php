@@ -13,27 +13,15 @@
   <form action="" method="">
     <div class="am-list-news-bd">
       <ul class="am-list odl">
-      <?php var_dump($booking); ?>
-      <?php foreach ($booking as $k => $bookval): ?>
-        <li class="am-g am-list-item-dated">
-          <a href="javascript:" class="am-list-item-hd "><?php var_dump($booking[$k]->foodname);?>X1</a>
-          <span class="am-list-date"><i class="am-icon-cny"></i>30</span>
+<?php foreach ($booking as $k => $value): ?>
+          <li class="am-g am-list-item-dated">
+          <a href="javascript:" class="am-list-item-hd "><?php echo $value->foodname;?> X <?php echo $postBooking[$value->foodid];?></a>
+          <span class="am-list-date"><i class="am-icon-cny"></i><?php echo $value->foodprice * $postBooking[$value->foodid]; $pricetotal[] = $value->foodprice * $postBooking[$value->foodid];?> </span>
         </li>
-      <?php endforeach ?>
-
-
-        
-        <li class="am-g am-list-item-dated">
-          <a href="javascript:" class="am-list-item-hd ">鱼香茄子 X1</a>
-          <span class="am-list-date"><i class="am-icon-cny"></i>20</span>
-        </li>
-        <li class="am-g am-list-item-dated">
-          <a href="javascript:" class="am-list-item-hd ">鱼香茄子 X1</a>
-          <span class="am-list-date"><i class="am-icon-cny"></i>20</span>
-        </li>
+<?php endforeach ?>
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd">订单总计</a>
-          <span class="am-list-date"><i class="am-icon-cny red">70</i></span>
+          <span class="am-list-date"><i class="am-icon-cny red"><?php echo array_sum($pricetotal);?></i></span>
         </li>  
       </ul>
      </div>

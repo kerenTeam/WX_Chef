@@ -255,14 +255,9 @@ class home extends CI_Controller
 	}
     //订单
     public function order(){
-
-    echo "<pre>";
-    	var_Dump($_SESSION['booking']);
-    	
-  //   	$cookie = 1;
-  //       $carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
-		// $list['carts'] = json_decode(json_decode($carts));	
-		// $this->load->view('order'$list);
+    	$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
+    	$data['booking'] = $_SESSION['booking'];
+		$this->load->view('order',$data);
 	}
 	 //支付订单
     public function payOrder(){
