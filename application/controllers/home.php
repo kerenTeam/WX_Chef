@@ -270,10 +270,8 @@ class home extends CI_Controller
 	}
     //订单
     public function order(){
-  //   	$cookie = 1;
-  //       $carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
-		// $list['carts'] = json_decode(json_decode($carts));	
-		// $this->load->view('order'$list);
+    	$data['booking'] = json_decode(get_cookie('booking'));
+		$this->load->view('order',$data);
 	}
 	 //支付订单
     public function payOrder(){
