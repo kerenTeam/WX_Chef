@@ -15,6 +15,7 @@ class home extends CI_Controller
 		$data['keyword'] = $this->option_model->system('keyWord');
 		$data['description'] = $this->option_model->system('keyWordDescriber');
 		$this->load->helper('post_helper');
+		$this->load->library('session');
 		//var_dump($data);
 		$this->load->view('header',$data);
 	}
@@ -125,7 +126,6 @@ class home extends CI_Controller
 		$foodid = $_GET['foodid'];
 		$shoping = unserialize(get_cookie('shoping'));
 		echo "<pre>";
-	 // var_dump($shoping);
 		foreach($shoping as $k=>$value){
 			if($value['foodid'] == $id && $value['shopid'] == $shopid){
 				$shoping[$k]['foodid'] = $foodid;
@@ -198,14 +198,11 @@ class home extends CI_Controller
 	}
 	// 加入购物车
 	public function addcart(){
-
-		$phone = get_cookie('phone');
 			if($_POST){
 				$foodid = $_POST['foodid'];
 				$numbers = $_POST['numbers'];
 				$cards = array_combine($foodid,$numbers);  //重组数组
 				$data = array_filter($cards);              //过滤空值
-				// var_dump($phone);
 					$shopid = rand(1,100);
 					foreach($data as $key=>$val){
 						$a['foodid']= $key;
@@ -214,19 +211,19 @@ class home extends CI_Controller
 						$a['time'] = date('Y-m-d H:i:s');
 						$c[] = $a;
 					}
-					
-					$shoping = get_cookie('shoping');
-					if($shoping == NULL){
-						$b = serialize($c);
-						//echo '123';
-					 	 set_cookie('shoping',$b,0);
-					}else{
-						$a = unserialize($shoping);
-						$f = array_merge($a,$c);
-						$e = serialize($f);
-
-					 	set_cookie('shoping',$e,0);
+					if (isset($_SESSION['shoping'])) {
+						$shoping = $_SESSION['shoping'];
+						} else {
+						$shoping = NULL;
 					}
+						if($shoping == NULL){
+						 	$this->session->set_userdata('shoping',$c,0);
+						}else{
+							$f = array_merge($shoping,$c);
+						 	$this->session->set_userdata('shoping',$f,0);
+						}
+					
+					
 					
 				redirect('home/cart');
 			}
@@ -238,21 +235,14 @@ class home extends CI_Controller
 	}
 	//购物车 new
 	public function cart(){
-
-		$phone = get_cookie('phone');
-		$list['carts'] = unserialize(get_cookie('shoping'));
-
-	
+		$list['carts'] = $_SESSION['shoping'];
 		$this->load->view('cart',$list);
 	}
 	// 删除购物车
 	function delcart(){
 		$id = $_GET['id'];
 		$shopid = $_GET['shopid'];
-		if(get_cookie('phone') == NULL){
-			$shoping = unserialize(get_cookie('shoping'));
-			echo "<pre>";
-			var_dump($shoping);echo "<br/>";
+		$shoping = $_SESSION['shoping'];
 			foreach ($shoping as $key => $value) {
 				if($shopid == $value['shopid'] && $value['foodid'] == $id){
 				
@@ -260,20 +250,14 @@ class home extends CI_Controller
 				}
 			}
 			$shoping = array_merge($shoping);
-			$e = serialize($shoping);
-			set_cookie('shoping',$e,0);
-		}else{
-
-
-		}
+			$this->session->set_userdata('shoping',$shoping,0);
 		redirect('home/cart');
 	}
     //订单
     public function order(){
-  //   	$cookie = 1;
-  //       $carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
-		// $list['carts'] = json_decode(json_decode($carts));	
-		// $this->load->view('order'$list);
+    	$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
+    	$data['booking'] = $_SESSION['booking'];
+		$this->load->view('order',$data);
 	}
 	 //支付订单
     public function payOrder(){

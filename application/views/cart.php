@@ -13,23 +13,26 @@
 </header>
 
 
-<form action="<?=site_url('home/cart');?>" method="post" enctype="multipart/form-data">
+<form action="<?=site_url('home/order');?>" method="post" enctype="multipart/form-data">
   <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
     <div class="cmn cmnb am-list-news am-list-news-default" >
       <div class="am-list-news-bd">
         <div class="am-text-center oln">点菜</div>
           <ul class="am-list cul">
 		  <?php if(!empty($carts)):?>
-		  <?php foreach($carts as $cart):?>
-			<?php 
-
-          $id = $cart['foodid'];
-          $shopid = $cart['shopid'];
-        
-       // var_dump($id);
-				$foods = file_get_contents("http://192.168.199.151/API/API_Poorder/Get?dis=xq&foodid=".$id);
+		  <?php unset($_SESSION['booking']); foreach($carts as $cart):?>
+			<?php  
+        $id = $cart['foodid'];
+        $shopid = $cart['shopid'];
+				$foods = file_get_contents(APIURL."Get?dis=xq&foodid=".$id);
         $food = json_decode(json_decode($foods));
-        // var_dumP($food);
+        if(!isset($_SESSION['booking'])){
+         $this->session->set_userdata('booking',$food);
+        }else{
+          $booking = $_SESSION['booking'];
+          $book = array_merge($booking,$food);
+          $this->session->set_userdata('booking',$book);
+        }
 			?>
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
@@ -39,10 +42,12 @@
               </div>
               <div class=" am-u-sm-9 am-list-main">
                 <h3 class="am-list-item-hd cartb"><?=$food[0]->foodname;?></h3>
+                <input type="hidden" name="foodid[]" value="<?=$food[0]->foodid;?>">
                 <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]->foodprice;?></span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
-                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="<?php if(empty($cart->number)){echo $cart['number'];}else{echo $cart->number;};?>">
+                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" 
+                  name="numbers[]" value="<?php if(empty($cart->number)){echo $cart['number']; }else{echo $cart->number; };?>">
                   <span class="am-icon-plus" onClick="handle(this, true)"></span>
                 </div>
                  <a href="<?php echo site_url('home/change?id=').$food[0]->foodid.'&pid='.$food[0]->foodpid.'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
@@ -57,7 +62,7 @@
         <div class="am-text-center oln">套餐</div>
           <ul class="am-list cul">
             
-            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+            <!-- <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
                 <a href="<?php echo site_url('home/dinner')?>" class="vimg">
                   <img src="skin/img/product/shiguo.jpg" alt="石锅酱仔排58"/>
@@ -73,7 +78,7 @@
                 </div>
                 <a href="" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
-            </li>
+            </li> -->
           </ul>
       </div>
     </div>
@@ -88,7 +93,7 @@
       </div>
       <div class="am-u-sm-4 b">
         
-        <button type="submit" class="am-btn am-btn-success">确认</button>
+        <button   type="submit" class="am-btn am-btn-success">确认</button>
         
       </div>
     </a>
