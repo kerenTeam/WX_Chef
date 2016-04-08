@@ -254,9 +254,8 @@ class home extends CI_Controller
 	}
     //订单
     public function order(){
-    	$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
+    	if ($_POST) {$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));} else { };
     	$data['booking'] = $_SESSION['booking'];
-    	var_dump($data['booking']);
 		$this->load->view('order',$data);
 	}
 	 //支付订单
