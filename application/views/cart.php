@@ -86,7 +86,7 @@
   <!-- <div class="am-text-center">合计：<i class="am-icon-cny red"></i><input type="text" id="allmoney" readonly class="allmoney red" value="757"></div> -->
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
-    <a href="<?php echo site_url('home/order')?>">
+   
       <div class="am-u-sm-8 a">
         <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney"></span>份</span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red"></span>
@@ -96,7 +96,7 @@
         <button   type="submit" class="am-btn am-btn-success">确认</button>
         
       </div>
-    </a>
+ 
   </div>
 </form>
 <script src="skin/js/jquery.min.js"></script>
