@@ -218,6 +218,7 @@ class home extends CI_Controller
 						if($shoping == NULL){
 						 	$this->session->set_userdata('shoping',$c,0);
 						}else{
+
 							$f = array_merge($shoping,$c);
 						 	$this->session->set_userdata('shoping',$f,0);
 						}
