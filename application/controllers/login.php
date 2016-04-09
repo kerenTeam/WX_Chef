@@ -41,7 +41,7 @@ class login extends CI_Controller
 	public function regadd(){
          // $reigsterFrom = array('UserPhone' => $_POST['UserPhone'],'UserPwd' => $_POST['UserPwd']);
          // $reigsterData = "[".json_encode($reigsterFrom)."]";
-         // $isok = curl_post("http://192.168.199.151/API/API_Poorder/Post?dis=User&value=".$reigsterData,'');
+         // $isok = curl_post("http://211.149.195.183:88/API/API_Poorder/Post?dis=User&value=".$reigsterData,'');
          // switch ($isok) { //0注册失败   1注册成功  2已有用户
          // 	case '0':
          // 		echo "<script>alert('注册失败！');window.location.href='register';</script>"; exit;

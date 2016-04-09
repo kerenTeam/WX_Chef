@@ -44,10 +44,12 @@
               </div>
               <div class=" am-u-sm-9 am-list-main">
                 <h3 class="am-list-item-hd cartb"><?=$food[0]->foodname;?></h3>
+                <input type="hidden" name="foodid[]" value="<?=$food[0]->foodid;?>">
                 <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]->foodprice;?></span></div>
                 <div class="fNum">
                   <span class="am-icon-minus" onClick="handle(this, false)"></span>
-                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers" value="<?php if(empty($cart->number)){echo $cart['number'];}else{echo $cart->number;};?>">
+                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" 
+                  name="numbers[]" value="<?php if(empty($cart->number)){echo $cart['number']; }else{echo $cart->number; };?>">
                   <span class="am-icon-plus" onClick="handle(this, true)"></span>
                 </div>
                  <a href="<?php echo site_url('home/change?id=').$food[0]->foodid.'&pid='.$food[0]->foodpid.'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
@@ -86,17 +88,17 @@
   <!-- <div class="am-text-center">合计：<i class="am-icon-cny red"></i><input type="text" id="allmoney" readonly class="allmoney red" value="757"></div> -->
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
-    <a href="<?php echo site_url('home/order')?>">
+   
       <div class="am-u-sm-8 a">
         <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney"></span>份</span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red"></span>
       </div>
       <div class="am-u-sm-4 b">
         
-        <button type="submit" class="am-btn am-btn-success">确认</button>
+        <button   type="submit" class="am-btn am-btn-success">确认</button>
         
       </div>
-    </a>
+ 
   </div>
 </form>
 <script src="skin/js/jquery.min.js"></script>

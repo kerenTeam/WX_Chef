@@ -40,7 +40,7 @@
     </a>
   </li>
   <li>
-    <a href="<?php echo site_url('home/party')?>">
+    <a href="<?php echo site_url('home/cailan')?>">
       <div class="am-gallery-item byellow">
         <img src="skin/img/fork.png" alt="大厨到家"/>
         <h3 class="am-gallery-title">套餐</h3>

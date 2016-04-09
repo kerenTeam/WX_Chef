@@ -84,9 +84,9 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-defined('IP')                  OR define('IP','http://192.168.199.151');
-defined('APIURL')              OR define('APIURL',"http://192.168.199.151/API/API_Poorder/");
-defined('POSTAPI')              OR define('POSTAPI',"http://192.168.199.151/API/");
+defined('IP')                  OR define('IP','http://211.149.195.183:88');
+defined('APIURL')              OR define('APIURL',"http://211.149.195.183:88/API/API_Poorder/");
+defined('POSTAPI')              OR define('POSTAPI',"http://211.149.195.183:88/API/");
 
 
 

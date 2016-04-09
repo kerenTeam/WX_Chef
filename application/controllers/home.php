@@ -68,6 +68,7 @@ class home extends CI_Controller
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
          $reigsterData = json_encode($reigsterFrom);
          $isok = curl_post(POSTAPI."API_User",$reigsterData);
+         	var_dump($isok); exit;
        
 
 
@@ -124,7 +125,11 @@ class home extends CI_Controller
 		$shopid = $_GET['shopid'];
 		$id = $_GET['id'];
 		$foodid = $_GET['foodid'];
+<<<<<<< HEAD
 		$shoping =$_SESSION['shoping'];
+=======
+		$shoping = unserialize(get_cookie('shoping'));
+>>>>>>> cc5d53387d1db5368108082440a935e0cc8af0de
 		foreach($shoping as $k=>$value){
 			if($value['foodid'] == $id && $value['shopid'] == $shopid){
 				$shoping[$k]['foodid'] = $foodid;
@@ -209,6 +214,7 @@ class home extends CI_Controller
 						$a['time'] = date('Y-m-d H:i:s');
 						$c[] = $a;
 					}
+<<<<<<< HEAD
 					if(isset($_SESSION['shoping'])){
 						$shoping = $_SESSION['shoping'];
 					}else{
@@ -219,7 +225,22 @@ class home extends CI_Controller
 					}else{
 						$f = array_merge($shoping,$c);
 					 	$this->session->set_userdata('shoping',$f,0);
+=======
+					if (isset($_SESSION['shoping'])) {
+						$shoping = $_SESSION['shoping'];
+						} else {
+						$shoping = NULL;
+>>>>>>> cc5d53387d1db5368108082440a935e0cc8af0de
 					}
+						if($shoping == NULL){
+						 	$this->session->set_userdata('shoping',$c,0);
+						}else{
+
+							$f = array_merge($shoping,$c);
+						 	$this->session->set_userdata('shoping',$f,0);
+						}
+					
+					
 					
 				redirect('home/cart');
 			}
@@ -250,14 +271,9 @@ class home extends CI_Controller
 	}
     //订单
     public function order(){
-
-    echo "<pre>";
-    	var_Dump($_SESSION['booking']);
-    	
-  //   	$cookie = 1;
-  //       $carts = file_get_contents(APIURL."Get?dis=gwc&foodid=".$cookie);
-		// $list['carts'] = json_decode(json_decode($carts));	
-		// $this->load->view('order'$list);
+    	if ($_POST) {$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));} else { };
+    	$data['booking'] = $_SESSION['booking'];
+		$this->load->view('order',$data);
 	}
 	 //支付订单
     public function payOrder(){
