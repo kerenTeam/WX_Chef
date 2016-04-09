@@ -17,17 +17,56 @@
     菜市场
     </h1>
   </header>
+  <script src="skin/js/jquery.min.js"></script>
+<script>
+$(function(){
+      var cai =  $("#caishi").val();
+      var time =  $("#adate").val();
+      if(!time){
+        var time = show();
+      }
+      $.ajax({
+        type:'POST',
+        url:"<?=site_url('pricesearch/caiprice')?>",
+        data: "name="+cai+"&time="+time,
+        success: function (data) {
+            $('#group_one').html(data);
+           }
+
+      });
+})
+  function show(){
+   var mydate = new Date();
+   var str = "" + mydate.getFullYear() + "-";
+   str += (mydate.getMonth()+1) + "-";
+   str += mydate.getDate();
+   return str;
+  }
+function getoption(){
+      var cai =  $("#caishi").val();
+      var time =  $("#adate").val();
+      $.ajax({
+        type:'POST',
+        url:"<?=site_url('pricesearch/caiprice')?>",
+        data: "name="+cai+"&time="+time,
+        success: function (data) {
+            $('#group_one').html(data);
+           }
+
+      });
+    } 
+</script>
   <form action="" method="" class="pform">
     <br>
-         
+    
     <div class="am-u-sm-4 sbnt">
-      <select data-am-selected="{maxHeight: 100}">
+      <select data-am-selected="{maxHeight: 100}" name='caishi' id='caishi' onchange="getoption();">
       <?php foreach($cai as $val):?>
         <option value="<?=$val->foodmarketid;?>"><?=$val->name;?></option>
       <?php endforeach;?>
       </select>
     </div>
-    <div class="am-u-sm-4 sbnt">
+   <!--  <div class="am-u-sm-4 sbnt">
       <select data-am-selected="{maxHeight: 100}">
         <option value="b">蔬菜</option>
         <option value="o">肉类</option>
@@ -35,9 +74,9 @@
         <option value="phone">家禽</option>
         <option value="im">海鲜</option>
       </select>
-    </div>
+    </div> -->
     <div class="am-u-sm-4 sbnt">
-      <select id="adate" class="date" data-am-selected="{maxHeight: 100}">
+      <select id="adate" class="date" data-am-selected="{maxHeight: 100}" name='date' onchange="getoption();">
       
       </select>
     </div>
@@ -51,8 +90,8 @@
         <th>价格</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
+    <tbody id='group_one'>
+      <!-- <tr>
         <td><a href="<?php echo site_url('home/price')?>">西兰花</a></td>
         <td>1kg</td>
         <td>5.5</td>
@@ -67,11 +106,10 @@
         <td>1kg</td>
         <td>30</td>
       </tr>
-      
+       -->
     </tbody>
   </table>
 </body>
-<script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script>
  $(function(){
@@ -89,4 +127,5 @@
   }
  })
 </script>
+
 </html>
