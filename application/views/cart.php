@@ -26,10 +26,12 @@
         $shopid = $cart['shopid'];
 				$foods = file_get_contents(APIURL."Get?dis=xq&foodid=".$id);
         $food = json_decode(json_decode($foods));
+       
         if(!isset($_SESSION['booking'])){
          $this->session->set_userdata('booking',$food);
         }else{
           $booking = $_SESSION['booking'];
+
           $book = array_merge($booking,$food);
           $this->session->set_userdata('booking',$book);
         }

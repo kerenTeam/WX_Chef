@@ -124,15 +124,13 @@ class home extends CI_Controller
 		$shopid = $_GET['shopid'];
 		$id = $_GET['id'];
 		$foodid = $_GET['foodid'];
-		$shoping = unserialize(get_cookie('shoping'));
-		echo "<pre>";
+		$shoping =$_SESSION['shoping'];
 		foreach($shoping as $k=>$value){
 			if($value['foodid'] == $id && $value['shopid'] == $shopid){
 				$shoping[$k]['foodid'] = $foodid;
 			}
 		}
-		$b = serialize($shoping);
-		set_cookie('shoping',$b,0);
+		$this->session->set_userdata('shoping',$shoping,0);
 		redirect('home/cart');
 	}
 	//菜品详情
@@ -211,7 +209,11 @@ class home extends CI_Controller
 						$a['time'] = date('Y-m-d H:i:s');
 						$c[] = $a;
 					}
-					$shoping = $_SESSION['shoping'];
+					if(isset($_SESSION['shoping'])){
+						$shoping = $_SESSION['shoping'];
+					}else{
+						$shoping = NULL;
+					}
 					if($shoping == NULL){
 					 	$this->session->set_userdata('shoping',$c,0);
 					}else{
@@ -221,7 +223,7 @@ class home extends CI_Controller
 					
 				redirect('home/cart');
 			}
-}
+	}
 	// 注销
 	public function zhuxiao(){
 		delete_cookie('phone');
@@ -239,7 +241,6 @@ class home extends CI_Controller
 		$shoping = $_SESSION['shoping'];
 			foreach ($shoping as $key => $value) {
 				if($shopid == $value['shopid'] && $value['foodid'] == $id){
-				
 					unset($shoping[$key]);
 				}
 			}
