@@ -371,7 +371,7 @@ class home extends CI_Controller
     		$this->load->view('search',$data);
     	}else{
     		// $data['sear'] = get_cookie('search');
-    		$this->load->view('search',$data);
+    		$this->load->view('search');
     	}
     	
 	}
