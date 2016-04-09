@@ -38,7 +38,7 @@
 			?>
             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
-                <a href="<?php echo site_url('home/food?id=').$food[0]->foodid.'&number='.$cart->number;?>" class="vimg">
+                <a href="<?php echo site_url('home/food?id=').$food[0]->foodid.'&number='.$cart['number'];?>" class="vimg">
                   <img src="<?php echo IP.$food[0]->thumbnail;?>" id="img" alt="<?=$food[0]->foodname;?>"/>
                 </a>
               </div>

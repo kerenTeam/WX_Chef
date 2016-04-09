@@ -67,11 +67,7 @@ class home extends CI_Controller
 
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
          $reigsterData = json_encode($reigsterFrom);
-         $isok = curl_post(POSTAPI."API_User",$reigsterData);
-         	var_dump($isok); exit;
-       
-
-
+         $isok = curl_post(POSTAPI."API_Users?dis=xzyh",$reigsterData);
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
