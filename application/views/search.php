@@ -11,10 +11,12 @@
     </h1>
  
   </header>
-  <form action="" method="" class="topform">
+  <form action="<?=site_url('home/search');?>" method="post"  class="topform">
+  
     <div class="am-g">
       <button type="submit" class="am-icon-search sb"></button>
-      <input type="search" class="am-form-field" placeholder="黄焖鸡">
+      <input type="text" class="am-form-field" name='search' placeholder="黄焖鸡">
+   
     </div>
   </form>
 <!--   <div class="hotsou">
@@ -26,10 +28,16 @@
     <div class="am-text-sm">搜索记录：</div>
     <ul>
       <!-- 没有搜索 -->
-      <li class="am-text-center">空</li>
+   <!--    <?php if(empty($sear)):?>
+      
+            <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>"><?=$sear;?></a> <button type="button" class="am-close am-fr">&times;</button></li>
+      <?php else:?>
+ <li class="am-text-center">空</li>
+      <?php endif;?> -->
+     
       <!-- 搜索过 -->
-      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>">团拜宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
-      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/food')?>">清炖滋补甲鱼汤</a> <button type="button" class="am-close am-fr">&times;</button></li>
+    <!--   <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/partyInfo')?>">团拜宴</a> <button type="button" class="am-close am-fr">&times;</button></li>
+      <li><span class="am-icon-clock-o gray"></span> <a href="<?php echo site_url('home/food')?>">清炖滋补甲鱼汤</a> <button type="button" class="am-close am-fr">&times;</button></li> -->
     </ul>
   </div> 
   <!-- 搜索显示 -->
@@ -37,24 +45,23 @@
     <div class="am-list-news-bd">
       <ul class="am-list">
       
+<?php if(!empty($search)):?>
+  <?php foreach($search as $val):?>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-         <a href="<?php echo site_url('home/food')?>" class="black">
-          <div class="am-u-sm-4 am-text-center am-list-thumb"> <div class="vimg"> <img src="skin/img/product/rjx.jpg" alt="蓉记姜葱香辣蟹168"/> </div> </div>
+         <a href="<?php echo site_url('home/food?id=').$val->foodid.'&number=&shopid='?>" class="black">
+          <div class="am-u-sm-4 am-text-center am-list-thumb"> <div class="vimg"> <img src="<?php echo IP.$val->thumbnail;?>" alt="<?=$val->foodname;?>"/> </div> </div>
           <div class=" am-u-sm-8 am-list-main">
-            <h3 class="am-list-item-hd">蓉记姜葱香辣蟹</h3>
-            <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">100</span>份</div>
-            <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
+            <h3 class="am-list-item-hd"><?=$val->foodname;?></h3>
+            <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">123</span>份</div>
+            <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$val->foodprice;?></span></div>
          </a>
-        </li> 
-         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-         <a href="<?php echo site_url('home/food')?>" class="black">
-          <div class="am-u-sm-4 am-text-center am-list-thumb"> <div class="vimg"> <img src="skin/img/product/rjx.jpg" alt="蓉记姜葱香辣蟹168"/> </div> </div>
-          <div class=" am-u-sm-8 am-list-main">
-            <h3 class="am-list-item-hd">蓉记姜葱香辣蟹</h3>
-            <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">100</span>份</div>
-            <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span></div>
-         </a>
-        </li> 
+        </li>
+        <?php endforeach;?> 
+      <?php else:?>
+       <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">搜索不到你需要的菜品！</li>
+<?php endif;?>
+       
+       
       </ul>
     </div>
   </div>

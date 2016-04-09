@@ -83,9 +83,13 @@ class home extends CI_Controller
 	
 	//首页
 	public function index(){
-		$data = $this->option_model->banners();
-		$banner['banners'] = unserialize($data['banner']); 
-		$this->load->view('index',$banner);
+		$banner = $this->option_model->banners();
+		$data['banners'] = unserialize($banner['banner']);
+
+		$caijia = file_get_contents(POSTAPI.'API_Vegetable');
+		$data['caijia'] = json_decode(json_decode($caijia));
+		// var_dump($data);
+		$this->load->view('index',$data);
 	}
 	//菜单 by wf
 	public function cailan(){
@@ -137,6 +141,7 @@ class home extends CI_Controller
 		$id = $_GET['id'];
 		$number = $_GET['number'];
 		isset($number) ? $data['number'] = $number : $data['number'] = '0';
+		isset($_GET['shopid']) ? $data['shopid'] = $_GET['shopid'] : NULL;
 		//产品详情
 		$foodjson = file_get_contents(APIURL.'Food?dis=xq&foodid='.$id);
 		$data['foods'] = json_decode(json_decode($foodjson));
@@ -195,15 +200,9 @@ class home extends CI_Controller
 	// 加入购物车
 	public function addcart(){
 			if($_POST){
-				var_Dump($_POST);
-				exit;
 				$foodid = $_POST['foodid'];
 				$numbers = $_POST['numbers'];
-				if(!is_array($foodid)){
-					$cards = array($foodid=>$numbers);
-				}else{
-					$cards = array_combine($foodid,$numbers);  //重组数组	
-				}
+				$cards = array_combine($foodid,$numbers);  //重组数组	
 				$data = array_filter($cards); //过滤空值
 					$shopid = rand(1,100);
 					foreach($data as $key=>$val){
@@ -221,11 +220,62 @@ class home extends CI_Controller
 					if($shoping == NULL){
 					 	$this->session->set_userdata('shoping',$c,0);
 					}else{
+						foreach($shoping as $key=>$value){
+							foreach($c as $k=>$v){
+								if($value['foodid'] == $v['foodid']){
+									unset($shoping[$key]);
+								}
+							}
+						}
 						$f = array_merge($shoping,$c);
 					 	$this->session->set_userdata('shoping',$f,0);
 					}	
 				redirect('home/cart');
-			
+		}
+	}
+	// food添加购物车
+	public function foodaddcart(){
+		// var_Dump($_POST);
+		if($_POST){
+			$foodid = trim($_POST['foodid']);
+			$shopid = $_POST['shopid'];
+			$number = $_POST['numbers'];
+			var_dump($number);
+			if($shopid == NULL){
+				$shopid = rand(1,100);
+				$data['foodid'] = $foodid;
+				$data['number'] = $number;
+				$data['shopid'] = $shopid;
+				$data['time'] = date('Y-m-d H:i:s');
+				$c[] = $data;
+				if(isset($_SESSION['shoping'])){
+					$shoping = $_SESSION['shoping'];
+				}else{
+					$shoping = NULL;
+				}
+				if($shoping == NULL){
+				 	$this->session->set_userdata('shoping',$c,0);
+				}else{
+					foreach($shoping as $key=>$value){
+						foreach($c as $k=>$v){
+							if($value['foodid'] == $v['foodid']){
+								unset($shoping[$key]);
+							}
+						}
+					}
+					$f = array_merge($shoping,$c);
+				 	$this->session->set_userdata('shoping',$f,0);
+				}	
+			}else{
+				$shoping = $_SESSION['shoping'];
+				foreach($shoping as $k=>$v){
+					if($shopid == $v['shopid'] && $foodid == $v['foodid']){
+						$shoping[$k]['number'] = $number;
+					}
+				}
+				$this->session->set_userdata('shoping',$shoping,0);
+			}
+			redirect('home/cart');
 		}
 	}
 	// 注销
@@ -294,8 +344,17 @@ class home extends CI_Controller
 	}
     //搜索
     public function search(){
-
-		$this->load->view('search');
+    	if($_POST){
+    		$q = $_POST['search'];
+    		// var_Dump($q);
+    		$search = file_get_contents(POSTAPI."API_Food?dis=ss&name=".$q);
+    		$data['search'] = json_decode(json_decode($search));
+    		$this->load->view('search',$data);
+    	}else{
+    		// $data['sear'] = get_cookie('search');
+    		$this->load->view('search',$data);
+    	}
+    	
 	}
 	 //搜索结果页
     public function searchPage(){
@@ -395,7 +454,9 @@ class home extends CI_Controller
 	//菜价比较
 	public function priceSearch(){
 
-		$this->load->view('priceSearch');
+		$caiprice = file_get_contents(POSTAPI.'API_FoodMarket');
+		$data['cai']= json_decode(json_decode($caiprice));
+		$this->load->view('priceSearch',$data);
 	}
 	//菜价
 	public function price(){
