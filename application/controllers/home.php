@@ -135,23 +135,14 @@ class home extends CI_Controller
 	//菜品详情
 	public function food(){
 		$id = $_GET['id'];
-		if($_GET['nummber']){
-			echo "123";
-		}else{
-			echo "456";	
-		}
-
-		exit;
-
+		$number = $_GET['number'];
+		isset($number) ? $data['number'] = $number : $data['number'] = '0';
 		//产品详情
 		$foodjson = file_get_contents(APIURL.'Food?dis=xq&foodid='.$id);
 		$data['foods'] = json_decode(json_decode($foodjson));
 		// 产品图片
 		$foodpic= file_get_contents(APIURL.'Get?dis=xqimg&foodid='.$id);
 		$data['foodspic'] = json_decode(json_decode($foodpic));
-		// echo "<pre>";
-		// var_dump($data);
-		// exit;
 		$this->load->view('food',$data);
 	}
 	//储值返现
@@ -204,6 +195,8 @@ class home extends CI_Controller
 	// 加入购物车
 	public function addcart(){
 			if($_POST){
+				var_Dump($_POST);
+				exit;
 				$foodid = $_POST['foodid'];
 				$numbers = $_POST['numbers'];
 				if(!is_array($foodid)){

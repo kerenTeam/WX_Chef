@@ -38,7 +38,7 @@
           <?php if($val->foodcategoryid == $v->foodpid):?>
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
             <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food?id=').$v->foodid;?>" class="vimg">
+              <a href="<?php echo site_url('home/food?id=').$v->foodid.'&number=';?>" class="vimg">
                 <img src="skin/img/exp.gif" data-original="<?php echo IP.$v->thumbnail;?>" class="lazy" alt="<?=$v->foodname;?>"/>
               </a>
             </div>
