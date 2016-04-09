@@ -18,7 +18,12 @@
           <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd "><?php echo $value->foodname;?> <span class="am-fr gray">X <?php echo $postBooking[$value->foodid];?></span></a>
           <span class="am-list-date ath"><i class="am-icon-cny cc"></i><?php echo $value->foodprice * $postBooking[$value->foodid]; $pricetotal[] = $value->foodprice * $postBooking[$value->foodid];?> </span>
- 
+          <!-- 发送到order数据 -->
+          <input type="hidden" name="foodname" value="<?php echo $value->foodname;?> ">
+          <input type="hidden" name="foodid" value="<?php echo $postBooking[$value->foodid];?>">
+          <input type="hidden" name="foodprice" value="<?php echo $value->foodprice * $postBooking[$value->foodid]; $pricetotal[] = $value->foodprice * $postBooking[$value->foodid];?>">
+          <input type="hidden" name="pricetotal" value="<?php echo array_sum($pricetotal);?>">
+          <!-- 发送到order数据 END-->
         </li>
 <?php endforeach ?>
         <li class="am-g am-list-item-dated">
@@ -56,6 +61,7 @@
       <a href="javascript:;" class="am-cf adc">饭票<span class="am-fr am-icon-xs red">已抵用<span class="am-icon-cny">30</span></span></a>
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">200积分已抵<span class="am-icon-cny">30</span></span></a>
       <a href="javascript:;" class="am-cf adc">金额<span class="am-fr am-icon-xs am-icon-cny red">10</span></a>
+
     </div>
     
      <div class="am-shadow am-margin-vertical-sm fpa" style="display: none;">
