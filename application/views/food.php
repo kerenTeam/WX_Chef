@@ -24,7 +24,7 @@
         <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]->foodprice;?></span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-          <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+          <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if($number){echo $number;}else{echo "0";}?>">
           <input type="hidden" value="<?=$foods[0]->foodid;?> " name='foodid'/>
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
