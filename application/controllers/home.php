@@ -125,11 +125,9 @@ class home extends CI_Controller
 		$shopid = $_GET['shopid'];
 		$id = $_GET['id'];
 		$foodid = $_GET['foodid'];
-<<<<<<< HEAD
+
 		$shoping =$_SESSION['shoping'];
-=======
-		$shoping = unserialize(get_cookie('shoping'));
->>>>>>> cc5d53387d1db5368108082440a935e0cc8af0de
+
 		foreach($shoping as $k=>$value){
 			if($value['foodid'] == $id && $value['shopid'] == $shopid){
 				$shoping[$k]['foodid'] = $foodid;
@@ -141,6 +139,14 @@ class home extends CI_Controller
 	//菜品详情
 	public function food(){
 		$id = $_GET['id'];
+		if($_GET['nummber']){
+			echo "123";
+		}else{
+			echo "456";	
+		}
+
+		exit;
+
 		//产品详情
 		$foodjson = file_get_contents(APIURL.'Food?dis=xq&foodid='.$id);
 		$data['foods'] = json_decode(json_decode($foodjson));
@@ -204,8 +210,12 @@ class home extends CI_Controller
 			if($_POST){
 				$foodid = $_POST['foodid'];
 				$numbers = $_POST['numbers'];
-				$cards = array_combine($foodid,$numbers);  //重组数组
-				$data = array_filter($cards);              //过滤空值
+				if(!is_array($foodid)){
+					$cards = array($foodid=>$numbers);
+				}else{
+					$cards = array_combine($foodid,$numbers);  //重组数组	
+				}
+				$data = array_filter($cards); //过滤空值
 					$shopid = rand(1,100);
 					foreach($data as $key=>$val){
 						$a['foodid']= $key;
@@ -214,7 +224,6 @@ class home extends CI_Controller
 						$a['time'] = date('Y-m-d H:i:s');
 						$c[] = $a;
 					}
-<<<<<<< HEAD
 					if(isset($_SESSION['shoping'])){
 						$shoping = $_SESSION['shoping'];
 					}else{
@@ -225,25 +234,10 @@ class home extends CI_Controller
 					}else{
 						$f = array_merge($shoping,$c);
 					 	$this->session->set_userdata('shoping',$f,0);
-=======
-					if (isset($_SESSION['shoping'])) {
-						$shoping = $_SESSION['shoping'];
-						} else {
-						$shoping = NULL;
->>>>>>> cc5d53387d1db5368108082440a935e0cc8af0de
-					}
-						if($shoping == NULL){
-						 	$this->session->set_userdata('shoping',$c,0);
-						}else{
-
-							$f = array_merge($shoping,$c);
-						 	$this->session->set_userdata('shoping',$f,0);
-						}
-					
-					
-					
+					}	
 				redirect('home/cart');
-			}
+			
+		}
 	}
 	// 注销
 	public function zhuxiao(){

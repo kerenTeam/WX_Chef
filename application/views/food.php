@@ -11,7 +11,7 @@
     
   </header>
   <!-- 详情 -->
-  <form action="" method="" enctype="mutiltype/data">
+  <form action="<?=site_url('home/addcart');?>" method="post" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
       <div class="fimg"><img src="<?php echo IP.$foodspic[0]->imgaddress;?>" class="am-img-responsive card" alt="<?=$foods[0]->foodname;?>"></div>
       <div class="am-g">
@@ -24,7 +24,8 @@
         <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]->foodprice;?></span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-          <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="2">
+          <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+          <input type="hidden" value="<?=$foods[0]->foodid;?> " name='foodid'/>
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
         
