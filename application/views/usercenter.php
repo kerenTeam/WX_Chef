@@ -1,11 +1,19 @@
 
   <body>
+  <?php if(!empty($users)):?>
    <div class="userhead bred">
      <img class="am-circle" src="skin/img/USER.jpg"/>
-     <h3 class="am-header-title am-margin-sm">牛仔裤的夏天</h3>
-     <p class="am-margin-xs">重口味 &nbsp;&nbsp;&nbsp;川菜</p>
+     <h3 class="am-header-title am-margin-sm"><?=$users[0]['userphone'];?></h3>
+     <!-- <p class="am-margin-xs">&nbsp;&nbsp;&nbsp;川菜</p> -->
    </div>
-  
+  <?php else:?>
+    <div class="userhead bred">
+       <img class="am-circle" src="skin/img/vip.png"/>
+       <h3 class="am-header-title am-margin-sm">你还没有登陆呢！</h3>
+       <!-- <p class="am-margin-xs">重口味 &nbsp;&nbsp;&nbsp;川菜</p> -->
+     </div>
+  <?php endif;?>
+
      <div class="am-list-news-bd asp">
   <ul class="am-list userl">
 
@@ -29,9 +37,11 @@
       </li>
   </ul>
     <ul class="am-list userl">
+    <?php if(isset($_SESSION['phone'])):?>
       <li class="am-g am-list-item-dated">
           <a href="<?=site_url('home/zhuxiao');?>" data-am-modal="{target: '#my-alert'}" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
       </li>
+    <?php endif;?>
   </ul>
   </div>
   <!-- 注销弹框 -->

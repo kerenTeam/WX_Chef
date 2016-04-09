@@ -13,11 +13,11 @@
   <br>
   <div class="am-g ammake">
     <div class="am-u-md-8 am-u-sm-centered">
-      <form class="am-form afcheck" action="" method="">
+      <form class="am-form afcheck" action="<?=site_url('home/addressAdd2');?>" method="post">
         <fieldset class="am-form-set afiel">
-          <input type="text" placeholder="请填写您的姓名" class="uname" required>
-          <input type="text" placeholder="请输入详细送餐地址" class="uaddress" required>
-          <input type="text" placeholder="请填写能够联系到您的电话号码" class="uphone">
+          <input type="text" placeholder="请填写您的姓名" class="uname" name='name' required>
+          <input type="text" placeholder="请输入详细送餐地址" class="uaddress" name='Address' required>
+          <input type="text" placeholder="请填写能够联系到您的电话号码" name='userphone' class="uphone">
           <input type="text" placeholder="备用联系电话（选填）">
         </fieldset>
         <button type="submit" class="am-btn am-btn-block bred" disabled>保存</button>
@@ -40,11 +40,11 @@
       });
   
       $('.afcheck').bind('submit',function() { 
-        if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-          alert("请输入正确电话号码");
-          $('.uphone').focus();
-          return false;
-        }
+        // if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+        //   alert("请输入正确电话号码");
+        //   $('.uphone').focus();
+        //   return false;
+        // }
       });
    })
  </script>
