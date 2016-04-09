@@ -388,7 +388,8 @@ class home extends CI_Controller
 	}
 	//新增address
 	public function addressAdd(){
-
+        var_dump(234567890);
+		var_dump($this->input->post()); 
 		$this->load->view('addressAdd');
 	}
 	//编辑地址

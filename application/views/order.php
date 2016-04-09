@@ -76,42 +76,97 @@
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
       
-<!--   <div class="am-g ammake">
-    <div class="am-u-md-8 am-u-sm-centered">
-      <form class="am-form afcheck" action="" method="">
-        <fieldset class="am-form-set afiel">
-          <input type="text" placeholder="请填写您的姓名" class="uname" required>
-          <input type="text" placeholder="请输入详细送餐地址" class="uaddress" required>
-          <input type="text" placeholder="请填写能够联系到您的电话号码" class="uphone">
-          <input type="text" placeholder="备用联系电话（选填）">
-        </fieldset>
-        <button type="submit" class="am-btn am-btn-block bred" disabled>保存</button>
-      </form>
-    </div>
-  </div> -->
-
-
       <!-- 未添加地址这显示 -->
-      <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
-      <!-- 已添加过地址 -->
+
       <div class="am-list-news-bd">
-        <ul class="am-list odl">
-          <li class="am-g am-list-item-dated lpt2">
-          <?php 
-               if (empty($_COOKIE['phone']) || empty($_COOKIE['openid'])) {
-                      $foods = file_get_contents(APIURL."Get?dis=xq&foodid=".$id);
-                      $food = json_decode(json_decode($foods));
-               } else {
-                 
-               }
-               
-           ?>
-            <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "> 四川师范大学成龙校区东苑5栋<br>
-              张燕<br>
-              15780975467
+       <!-- unset($_COOKIE['phone']); -->
+           
+          <?php   if (empty($_COOKIE['phone']) && empty($_COOKIE['openid'])): ?>
+            
+          <div class="am-g ammake">
+            <div class="am-u-md-8 am-u-sm-centered">
+              
+                <fieldset class="am-form-set afiel" id="addrAction">
+                  <input type="text" placeholder="请填写您的姓名" name="uname" class="uname" required>
+                  <input type="text" placeholder="请输入详细送餐地址" name="uaddress" class="uaddress" required>
+                  <input type="text" placeholder="请填写能够联系到您的电话号码" name="uphone" class="uphone">
+                </fieldset>
+                <button onclick="addrAction()" class="am-btn am-btn-block bred" disabled>保存</button>
+      
+            </div>
+          </div> 
+          <script src="skin/js/jquery.min.js"></script>
+            <script type="text/javascript">
+            function addrAction() {
+                var uname = $('#uname').val();
+                var uaddress = $('#uaddress').val();
+                var uphone = $('#uphone').val();
+
+                $.ajax({
+                type: "POST",
+                url: '<?php echo site_url('home/addressAdd')?>',
+                data: $('#addrAction').serialize(), // 要提交的表单
+                success: function(data) {
+                        console.log(str);
+                         }
+                });
+              }
+              </script>
+
+          <script>
+             $(function(){
+                var name = $('.uname').val();
+                var address = $('.uaddress').val();
+                var phone = $('.uphone').val();
+                $('input[type="text"]').bind('change',function() { 
+                   if($(this).val() != ''){
+                      $('.bred').removeAttr('disabled')
+                }else{
+                     $('.bred').attr('disabled','disable');
+                } 
+                });
+            
+                $('.afcheck').bind('submit',function() { 
+                  if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+                    alert("请输入正确电话号码");
+                    $('.uphone').focus();
+                    return false;
+                  }
+                });
+             })
+          </script>
+            
+          <?php else: ?>
+            
+
+
+           <?php 
+          
+              //获取她的服务地址
+            if (!empty($_COOKIE['phone']))
+            { $foods = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_COOKIE['phone']);
+            }else if(!empty($_COOKIE['openid'])){
+              $foods = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_COOKIE['openid']);
+            } 
+            if (!empty($foods)) { $food = json_decode(json_decode($foods));  }
+            ?>
+       <!-- 已添加过地址 -->
+       <ul class="am-list odl">
+       <?php if (!empty($foods)): ?>
+        <?php foreach ($food as $key => $Foodval): ?>
+          
+            <li class="am-g am-list-item-dated lpt2">
+              <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "> <?php echo $Foodval->address; ?><br>
+              <?php echo $Foodval->name; ?><br>
+              <?php echo $Foodval->userphone; ?>
               <span class="am-list-date"><i class="am-icon-angle-right am-icon-sm"></i></span></a>
             </li>
-          </ul>
+        <?php endforeach ?>
+       <?php endif ?>
+       </ul>  
+          <?php endif ?>
+
+
           
         </div>
        
