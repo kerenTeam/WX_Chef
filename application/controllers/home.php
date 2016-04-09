@@ -310,6 +310,21 @@ class home extends CI_Controller
 	}
 	 //支付订单
     public function payOrder(){
+    	$foodid = $this->input->post('foodid');
+    	$numbers = $this->input->post('numbers');
+    	$foodOrder = array_combine($foodid,$numbers);
+    	$foodJson = array();
+        foreach ($foodOrder as $fid => $fnums)
+        { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
+
+        $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
+        $foodJsondata['UserCouponId'] = $this->input->post('UserCouponId');
+        $foodJsondata['memberaddressid'] = $this->input->post('memberaddressid');
+        $foodJsondata['poorderentry'] = $foodJson;
+
+        $abc = str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))));
+     
+       // var_dump($abc); exit; 
 
 		$this->load->view('payOrder');
 	}
