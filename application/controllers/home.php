@@ -35,7 +35,7 @@ class home extends CI_Controller
 					echo "<script>alert('没有该用户！');window.location.href='login2';</script>";
 					break;
 				case '1':
-					set_cookie("phone",$phone,3600);
+					$this->session->set_userdata("phone",$phone,3600);
 					echo "<script>alert('登陆成功');window.location.href='ucent';</script>";
 					break;
 				case '2':
@@ -67,7 +67,11 @@ class home extends CI_Controller
 
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
          $reigsterData = json_encode($reigsterFrom);
-         $isok = curl_post(POSTAPI."API_Users?dis=xzyh",$reigsterData);
+         $isok = curl_post(POSTAPI."API_User",$reigsterData);
+         	var_dump($isok); exit;
+       
+
+
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
@@ -280,12 +284,21 @@ class home extends CI_Controller
 	}
 	// 注销
 	public function zhuxiao(){
-		delete_cookie('phone');
+		unset(
+		    $_SESSION['shoping'],
+		    $_SESSION['booking'],
+		    $_SESSION['phone']
+		);	
 		redirect('home/index');
 	}
 	//购物车 new
 	public function cart(){
-		$list['carts'] = $_SESSION['shoping'];
+		if(isset($_SESSION['shoping'])){
+			$list['carts'] = $_SESSION['shoping'];
+		}else{
+			$list['carts'] = '';
+		}
+		
 		$this->load->view('cart',$list);
 	}
 	// 删除购物车
@@ -350,7 +363,13 @@ class home extends CI_Controller
 	}
    //个人中心
 	public function ucent(){
-		$this->load->view('usercenter');
+		if(isset($_SESSION['phone'])){
+			$user = file_get_contents(POSTAPI."API_User?dis=ckxx&id=".$_SESSION['phone']);
+			$data['users'] = json_decode(json_decode($user),true);
+		}else{
+			$data['users'] = '';
+		}
+		$this->load->view('usercenter',$data);
 	 }
 	//个人设置
 	public function set(){
@@ -367,7 +386,7 @@ class home extends CI_Controller
     		$this->load->view('search',$data);
     	}else{
     		// $data['sear'] = get_cookie('search');
-    		$this->load->view('search',$data);
+    		$this->load->view('search');
     	}
     	
 	}
@@ -388,8 +407,14 @@ class home extends CI_Controller
 	}
 	//优惠券
     public function card(){
+    	if(isset($_SESSION['phone']) || isset($_SESSION['openid'])){
+    		$card =file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
+    		$data['cards'] = json_decode(json_decode($card),true);
 
-		$this->load->view('card');
+    	}else{
+    		$data['cards'] = '';
+    	}
+    	$this->load->view('card',$data);
 	}
 	//领券
 	public function cardGet(){
@@ -398,8 +423,13 @@ class home extends CI_Controller
 	}
 	//地址管理
 	public function address(){
-
-		$this->load->view('address');
+		if(isset($_SESSION['phone']) || isset($_SESSION['openid'])){
+			$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&userphone=".$_SESSION['phone']);
+			$data['address'] = json_decode(json_decode($address),true);
+		}else{
+			$data['address'] = '';
+		}
+		$this->load->view('address',$data);
 	}
 	//新增address
 	public function addressAdd(){
@@ -414,12 +444,24 @@ class home extends CI_Controller
 	}
 	//地址管理
 	public function address2(){
-
-		$this->load->view('address2');
+		if(isset($_SESSION['phone']) || isset($_SESSION['openid'])){
+			$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&userphone=".$_SESSION['phone']);
+			$data['address'] = json_decode($address);
+		}else{
+			$data['address'] = '';
+		}
+		$this->load->view('address2',$data);
 	}
 	//新增address
 	public function addressAdd2(){
-
+		if($_POST)
+		{
+			$a = "[".json_encode($_POST)."]";
+			$b = curl_post(POSTAPI."API_MenberAddress?dis=xg",$a);
+			if($b == 1){
+				echo "<script>alert('新增地址成功！');window.location.href='address2';</script>";
+			}
+		}
 		$this->load->view('addressAdd2');
 	}
 	//编辑地址
@@ -474,6 +516,8 @@ class home extends CI_Controller
 		$data['cai']= json_decode(json_decode($caiprice));
 		$this->load->view('priceSearch',$data);
 	}
+	//根据菜市获取菜价
+
 	//菜价
 	public function price(){
 

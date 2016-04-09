@@ -5,7 +5,7 @@
 </div>
  -->
 <!-- 注册弹框 -->
-<?php if(get_cookie('phone') == NULL):?>
+<?php if(!isset($_SESSION['phone'])):?>
 <div class="tk">
   <div class="tkcontent">
     <span><img class="closetk" src="skin/img/closetk.png" alt="大厨到家"></span>
