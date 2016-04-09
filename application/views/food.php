@@ -11,12 +11,12 @@
     
   </header>
   <!-- 详情 -->
-  <form action="<?=site_url('home/addcart');?>" method="post" enctype="mutiltype/data">
+  <form action="<?=site_url('home/foodaddcart');?>" method="post" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
       <div class="fimg"><img src="<?php echo IP.$foodspic[0]->imgaddress;?>" class="am-img-responsive card" alt="<?=$foods[0]->foodname;?>"></div>
       <div class="am-g">
         <h2> <?=$foods[0]->foodname;?></h2>
-        <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class=""> 12></span>份</div>
+        <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class=""> 12</span>份</div>
         <p class="am-text-sm"><strong>主料：</strong><?=$foods[0]->ingredients;?></p>
         <p class="am-text-sm"><strong>辅料：</strong><?=$foods[0]->accessories;?></p>
         <p class="am-text-sm"><strong>简介：</strong><?=$foods[0]->blurb;?></p>
@@ -25,7 +25,8 @@
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
           <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if($number){echo $number;}else{echo "0";}?>">
-          <input type="hidden" value="<?=$foods[0]->foodid;?> " name='foodid'/>
+          <input type="hidden" value="<?=$foods[0]->foodid;?> " name='foodid'/> 
+          <input type="hidden" value="<?=$shopid;?>" name='shopid'/>
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
         

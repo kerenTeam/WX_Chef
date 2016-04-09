@@ -19,11 +19,12 @@
   </header>
   <form action="" method="" class="pform">
     <br>
+         
     <div class="am-u-sm-4 sbnt">
       <select data-am-selected="{maxHeight: 100}">
-        <option value="b">百家菜市场</option>
-        <option value="o">中和菜市场</option>
-        <option value="m">伊藤</option>
+      <?php foreach($cai as $val):?>
+        <option value="<?=$val->foodmarketid;?>"><?=$val->name;?></option>
+      <?php endforeach;?>
       </select>
     </div>
     <div class="am-u-sm-4 sbnt">
