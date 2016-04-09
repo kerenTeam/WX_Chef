@@ -75,6 +75,21 @@
 
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
+      
+<!--   <div class="am-g ammake">
+    <div class="am-u-md-8 am-u-sm-centered">
+      <form class="am-form afcheck" action="" method="">
+        <fieldset class="am-form-set afiel">
+          <input type="text" placeholder="请填写您的姓名" class="uname" required>
+          <input type="text" placeholder="请输入详细送餐地址" class="uaddress" required>
+          <input type="text" placeholder="请填写能够联系到您的电话号码" class="uphone">
+          <input type="text" placeholder="备用联系电话（选填）">
+        </fieldset>
+        <button type="submit" class="am-btn am-btn-block bred" disabled>保存</button>
+      </form>
+    </div>
+  </div> -->
+
 
       <!-- 未添加地址这显示 -->
       <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
@@ -82,6 +97,15 @@
       <div class="am-list-news-bd">
         <ul class="am-list odl">
           <li class="am-g am-list-item-dated lpt2">
+          <?php 
+               if (empty($_COOKIE['phone']) || empty($_COOKIE['openid'])) {
+                      $foods = file_get_contents(APIURL."Get?dis=xq&foodid=".$id);
+                      $food = json_decode(json_decode($foods));
+               } else {
+                 
+               }
+               
+           ?>
             <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "> 四川师范大学成龙校区东苑5栋<br>
               张燕<br>
               15780975467
