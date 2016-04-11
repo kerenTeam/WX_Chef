@@ -14,7 +14,7 @@
   <?php else:?>
     <div class="userhead bred">
        <img class="am-circle" src="skin/img/vip.png"/>
-       <h3 class="am-header-title am-margin-sm">你还没有登陆呢！</h3>
+       <div class="am-header-title am-margin-sm"><a href="<?php echo site_url('home/login2')?>" class="white">登录</a> / <a href="<?php echo site_url('home/register')?>" class="white">注册</a></div>
        <!-- <p class="am-margin-xs">重口味 &nbsp;&nbsp;&nbsp;川菜</p> -->
      </div>
   <?php endif;?>
