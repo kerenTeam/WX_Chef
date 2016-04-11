@@ -1,3 +1,13 @@
+  <style> 
+  #fpc li{
+      border:none;
+      border-bottom:1px solid rgba(0,0,0,0.1)!important;
+    }
+  #fpc li:last-child{
+    border-bottom:0;
+   }
+     
+</style>
 <body>
   <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform">
