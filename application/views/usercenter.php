@@ -1,5 +1,10 @@
 
   <body>
+  <?php 
+       // if (!empty($_SESSION('phone'))) {
+       //   header("Location:".site_url('home/login2')); exit;
+       // }
+   ?>
   <?php if(!empty($users)):?>
    <div class="userhead bred">
      <img class="am-circle" src="skin/img/USER.jpg"/>

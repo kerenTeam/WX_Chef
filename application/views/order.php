@@ -76,6 +76,8 @@
       <?php endif ?>
               <!--------------------这里是我的个人ID------------------------>
       <input type="hidden" name="UserPhone" value="<?php  if (!empty($_COOKIE['phone'])) { echo $_COOKIE['phone']; } else { echo $_COOKIE['openid']; } ?>">
+      
+      <?php $integral = json_decode(file_get_contents(POSTAPI."API_User?dis=jf")); ?> 
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">200积分已抵用 <span class="am-icon-cny">30</span></span></a>
       <a href="javascript:;" class="am-cf adc">金额<span class="am-fr am-icon-xs am-icon-cny red">10</span></a>
 

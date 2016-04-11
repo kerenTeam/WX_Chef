@@ -365,7 +365,7 @@ class home extends CI_Controller
    //个人中心
 	public function ucent(){
 		if(isset($_SESSION['phone'])){
-			$user = file_get_contents(POSTAPI."API_User?dis=ckxx&id=".$_SESSION['phone']);
+			$user = file_get_contents(POSTAPI."API_User?dis=ckxx&UserPhone=".$_SESSION['phone']);
 			$data['users'] = json_decode(json_decode($user),true);
 		}else{
 			$data['users'] = '';
