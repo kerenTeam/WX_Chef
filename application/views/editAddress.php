@@ -15,15 +15,15 @@
     <div class="am-u-md-8 am-u-sm-centered">
       <form class="am-form afcheck" action="<?=site_url('home/addressAdd2');?>" method="post">
         <fieldset class="am-form-set afiel">
-          <input type="text" placeholder="张三" class="uname" name='name' required>
-          <input type="text" placeholder="成都市天府二街高新区" class="uaddress" name='Address' required>
-          <input type="text" placeholder="12345678901" name='userphone' class="uphone">
-          <input type="text" placeholder="400654897">
+          <input type="text" value="张三" class="uname" name='name' required>
+          <input type="text" value="成都市天府二街高新区" class="uaddress" name='Address' required>
+          <input type="text" value="12345678901" name='userphone' class="uphone">
+          <input type="text" value="400654897">
           <label class="am-checkbox am-success am-u-sm-6">
             设为默认 <input type="checkbox" name="" value="" data-am-ucheck>
           </label>
         </fieldset>
-        <button type="submit" class="am-btn am-btn-block bred" disabled>保存</button>
+        <button type="submit" class="am-btn am-btn-block bred">保存</button>
       </form>
     </div>
   </div>
@@ -32,11 +32,12 @@
  <script src="skin/js/amazeui.min.js"></script>
  <script>
    $(function(){
-      var name = $('.uname').val();
-      var address = $('.uaddress').val();
-      var phone = $('.uphone').val();
-      $('input[type="text"]').bind('change',function() { 
-         if($(this).val() != ''){
+      
+      $('input[type="text"]').keyup(function() { 
+        var name = $('.uname').val();
+        var address = $('.uaddress').val();
+        var phone = $('.uphone').val();
+         if(name!='' && address!='' && phone!=''){
             $('.bred').removeAttr('disabled')
       }else{
            $('.bred').attr('disabled','disable');
@@ -44,11 +45,12 @@
       });
   
       $('.afcheck').bind('submit',function() { 
-        // if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-        //   alert("请输入正确电话号码");
-        //   $('.uphone').focus();
-        //   return false;
-        // }
+        
+        if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test($('.uphone').val()))){
+          alert("请输入正确电话号码");
+          $('.uphone').focus();
+          return false;
+        }
       });
    })
  </script>

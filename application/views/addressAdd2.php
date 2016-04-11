@@ -32,11 +32,12 @@
  <script src="skin/js/amazeui.min.js"></script>
  <script>
    $(function(){
-      var name = $('.uname').val();
-      var address = $('.uaddress').val();
-      var phone = $('.uphone').val();
-      $('input[type="text"]').bind('change',function() { 
-         if($(this).val() != ''){
+      
+      $('input[type="text"]').keyup(function() { 
+        var name = $('.uname').val();
+        var address = $('.uaddress').val();
+        var phone = $('.uphone').val();
+         if(name!='' && address!='' && phone!=''){
             $('.bred').removeAttr('disabled')
       }else{
            $('.bred').attr('disabled','disable');
@@ -44,11 +45,12 @@
       });
   
       $('.afcheck').bind('submit',function() { 
-        // if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-        //   alert("请输入正确电话号码");
-        //   $('.uphone').focus();
-        //   return false;
-        // }
+        
+        if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test($('.uphone').val()))){
+          alert("请输入正确电话号码");
+          $('.uphone').focus();
+          return false;
+        }
       });
    })
  </script>
