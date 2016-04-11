@@ -15,21 +15,24 @@
   </header>
   
   <div class="am-list-news-bd">
-    <ul class="am-list odl">
+    <ul class="am-list">
     <?php if(empty($address)):?>
       <li class="am-g am-cf lpt">
-        <p class="am-fl">
-        四川师范大学成龙校区东苑5栋<br>
-        张燕&nbsp;15780975467
+        <p class="am-fl"> 
+          四川师范大学成龙校区东苑5栋<br>
+          张燕&nbsp;15780975467 
         </p>
-        <a href="" class="am-fr edtclose"><span class="am-list-date"><i class="am-icon-close"></i></span></a>
+        <div class="am-list-date edtclose">
+         <a href="<?php echo site_url('home/editAddress')?>" class="green">修改</a>
+         <a href="" class="red">删除</a>
+        </div>
       </li>
        <?php else:?>
          <li class="am-g am-list-item-dated lilast">
         你还没有添加收货地址！
             </li> 
     <?php endif;?>
-      <li class="am-g am-list-item-dated lilast">
+      <li class="am-g am-list-item-dated lilast odl">
         <a href="<?php echo site_url('home/addressAdd2')?>" class="am-list-item-hd gray">新增地址
         <span class="am-list-date"><i class="am-icon-angle-right am-icon-sm"></i></span></a>
       </li> 

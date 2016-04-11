@@ -16,6 +16,11 @@ body {
 	margin-right: 2px;
     font-size: 14px;
 }
+
+.edtclose a{
+	    margin: 14px 5px;
+	display:inline-block;
+}
 .flexv .fitem{
 	width:100%;
 	position:relative;

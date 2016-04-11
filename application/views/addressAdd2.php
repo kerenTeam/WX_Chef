@@ -19,6 +19,9 @@
           <input type="text" placeholder="请输入详细送餐地址" class="uaddress" name='Address' required>
           <input type="text" placeholder="请填写能够联系到您的电话号码" name='userphone' class="uphone">
           <input type="text" placeholder="备用联系电话（选填）">
+          <label class="am-checkbox am-success am-u-sm-6">
+            设为默认 <input type="checkbox" name="" value="" data-am-ucheck>
+          </label>
         </fieldset>
         <button type="submit" class="am-btn am-btn-block bred" disabled>保存</button>
       </form>
@@ -26,6 +29,7 @@
   </div>
 </body>
  <script src="skin/js/jquery.min.js"></script>
+ <script src="skin/js/amazeui.min.js"></script>
  <script>
    $(function(){
       var name = $('.uname').val();
