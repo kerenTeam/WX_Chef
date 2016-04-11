@@ -63,10 +63,10 @@
     
     <div class="am-shadow am-margin-vertical-sm fpa2">
       <?php 
-            if (!empty($_COOKIE['phone']))
-            { $UserCoupon = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_COOKIE['openid']);
-            }else if(!empty($_COOKIE['openid']))
-            {$UserCoupon = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_COOKIE['phone']);  } if (!empty($UserCoupon)) 
+            if (!empty($_SESSION['phone']))
+            { $UserCoupon = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['openid']);
+            }else if(!empty($_SESSION['openid']))
+            {$UserCoupon = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);  } if (!empty($UserCoupon)) 
             { $UserCoupondata = json_decode(json_decode($UserCoupon));  }
 
             if ($UserCoupondata == 0): ?>
@@ -96,9 +96,9 @@
 
       <?php endif ?>
               <!--------------------这里是我的个人ID------------------------>
-      <input type="hidden" name="UserPhone" value="<?php  if (!empty($_COOKIE['phone'])) { echo $_COOKIE['phone']; } else { echo $_COOKIE['openid']; } ?>">
+      <input type="hidden" name="UserPhone" value="<?php  if (!empty($_SESSION['phone'])) { echo $_SESSION['phone']; } else { echo $_SESSION['openid']; } ?>">
       
-      <?php $integral = json_decode(file_get_contents(POSTAPI."API_User?dis=jf")); var_dump($integral);?> 
+      <?php $integral = json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION('phone')));?> 
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">200积分已抵用 <span class="am-icon-cny">30</span></span></a>
       <a href="javascript:;" class="am-cf adc">金额<span class="am-fr am-icon-xs am-icon-cny red">10</span></a>
 
