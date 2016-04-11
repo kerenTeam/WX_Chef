@@ -16,6 +16,8 @@ class home extends CI_Controller
 		$data['description'] = $this->option_model->system('keyWordDescriber');
 		$this->load->helper('post_helper');
 		$this->load->library('session');
+		set_cookie('phone',18081322659,36000);
+		set_cookie('openid',18081322659,36000);
 		//var_dump($data);
 		$this->load->view('header',$data);
 	}
@@ -67,10 +69,8 @@ class home extends CI_Controller
 
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
          $reigsterData = json_encode($reigsterFrom);
-         $isok = curl_post(POSTAPI."API_User",$reigsterData);
-         	var_dump($isok); exit;
-       
-
+        $isok = curl_post(POSTAPI."API_Users?dis=xzyh",$reigsterData);
+      
 
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
@@ -348,7 +348,7 @@ class home extends CI_Controller
 	}
 	//付款成功
     public function paySuccess(){
-
+    	$this->session->set_userdata('shoping','',0);
 		$this->load->view('paySuccess');
 	}
 	//评价 
