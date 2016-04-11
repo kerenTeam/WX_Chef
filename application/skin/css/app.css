@@ -12,6 +12,9 @@ body {
 	align-content:space-around;
 	padding:5% 10%;
 }
+.white{
+	color:white;
+}
 .cc{
 	margin-right: 2px;
     font-size: 14px;
