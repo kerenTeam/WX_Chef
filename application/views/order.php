@@ -33,23 +33,7 @@
           <a href="javascript:" class="am-list-item-hd red">订单总计</a>
           <span class="am-list-date ath"><i class="am-icon-cny red"><?php echo array_sum($pricetotal);?></i></span>
         </li>  
-         <a class="am-cf adc fclick">饭票可用3张<span class="am-fr am-icon-xs red">选择 <span class="am-icon-angle-down"></span></span></a>
-       <div class="am-list-news-bd" id="fpc" style="display: none">
-      <ul class="am-list odl"> 
-          <li class="am-g am-list-item-dated">
-           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/qu.png" alt="饭票"> 主题套餐</a> 
-           <span class="am-list-date ath"> <i class="am-icon-cny">20</i></span>
-          </li> 
-          <li class="am-g am-list-item-dated">
-           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/qu.png" alt="饭票"> 主题套餐</a> 
-           <span class="am-list-date ath"> <i class="am-icon-cny">50</i></span>
-          </li> 
-          <li class="am-g am-list-item-dated">
-           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/qu.png" alt="饭票"> 主题套餐</a> 
-           <span class="am-list-date ath"> <i class="am-icon-cny">100</i></span>
-          </li> 
-      </ul>
-     </div>
+
       </ul>
      </div>
          <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
