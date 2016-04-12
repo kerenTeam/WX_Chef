@@ -71,7 +71,7 @@ defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREA
 |       http://www.gsp.com/cgi-bin/man.cgi?section=3&topic=sysexits
 |    Bash scripting:
 |       http://tldp.org/LDP/abs/html/exitcodes.html
-|
+| 
 */
 defined('EXIT_SUCCESS')        OR define('EXIT_SUCCESS', 0); // no errors
 defined('EXIT_ERROR')          OR define('EXIT_ERROR', 1); // generic error
@@ -85,14 +85,10 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 defined('IP')                  OR define('IP','http://211.149.195.183:88');
-<<<<<<< HEAD
 defined('APIURL')              OR define('APIURL',"http://211.149.195.183:88/API/API_Poorder/");
 defined('POSTAPI')              OR define('POSTAPI',"http://192.168.0.154/API/");
-=======
-defined('APIURL')              OR define('APIURL',"http://192.168.199.151/API/API_Poorder/");
-defined('POSTAPI')              OR define('POSTAPI',"http://192.168.199.151/API/");
->>>>>>> 038864b746b856045341aa64b77fa0fe7f1154f2
-
-
-
 defined('randNms')             OR define('randNms', rand(100000,999999)); //长度为6位的随机数
+defined('mchid')             OR define('mchid', ''); //长度为6位的随机数
+defined('privatekey')             OR define('privatekey', ''); //长度为6位的随机数
+defined('appId')             OR define('appId', ''); //长度为6位的随机数
+defined('appSecret')             OR define('appSecret', ''); //长度为6位的随机数
