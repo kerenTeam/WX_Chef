@@ -3,11 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class pricesearch extends CI_Controller {
 
-	
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->helper('post_helper');
+	}
 	public function caiprice(){
 		$name = $_POST['name'];
 		$time = $_POST['time'];
-		$cai = file_get_contents(POSTAPI."API_Vegetable?vegetableid=".$name."&time=".$time);
+		$arr = array(
+			'vegetableid' => $name,
+			'time' => $time,
+			);
+		$json = json_encode($arr);
+		$cai = curl_post(POSTAPI."API_Vegetable?dis=xc",$json);
 		$data = json_decode(json_decode($cai),true);
 		$str ='';
 		for ($i=0; $i < count($data); $i++) { 

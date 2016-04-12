@@ -14,9 +14,6 @@ class home extends CI_Controller
 		
 		$this->load->helper('post_helper');
 		$this->load->library('session');
-		set_cookie('phone',18081322659,36000);
-		set_cookie('openid',18081322659,36000);
-		//var_dump($data);
 		$this->load->view('header');
 	}
 	//登录
@@ -27,15 +24,18 @@ class home extends CI_Controller
 	//老用户登录
 	public function login2(){ 
 		if($_POST){
-			$phone = $this->input->post('UserPhone');
-			$pwd = $this->input->post('UserPwd');
-			$a = file_get_contents(APIURL."Get?dis=login&phone=".$phone."&pwd=".$pwd);
+			$arr = array(
+				'UserPhone' => $this->input->post('UserPhone'),
+				'UserPwd' => $this->input->post('UserPwd'),
+				);
+			$isok = json_encode($arr);
+			$a = curl_post(POSTAPI."API_User?dis=login",$isok);
 			switch ($a) {
 				case '0':
 					echo "<script>alert('没有该用户！');window.location.href='login2';</script>";
 					break;
 				case '1':
-					$this->session->set_userdata("phone",$phone,3600);
+					$this->session->set_tempdata("phone",$_POST['UserPhone'],3600);
 					echo "<script>alert('登陆成功');window.location.href='ucent';</script>";
 					break;
 				case '2':
@@ -96,14 +96,10 @@ class home extends CI_Controller
 	}
 	//菜单 by wf
 	public function cailan(){
-
-
-
-		$catejson = file_get_contents(APIURL.'Get?dis=c');
-		$data['cates'] = json_decode(json_decode($catejson));
-		$foodjson = file_get_contents(APIURL.'Get?dis=d');
-		$data['foods'] = json_decode(json_decode($foodjson));
-		
+		$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
+		$data['cates'] = json_decode(json_decode($catejson),true);
+		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=d');
+		$data['foods'] = json_decode(json_decode($foodjson),true);
 		$this->load->view('cailan',$data);
 	}
 	//点菜
@@ -118,9 +114,9 @@ class home extends CI_Controller
 		$pid = $_GET['pid'];
 		$data['shopid'] = $_GET['shopid'];
 		
-		$cates = file_get_contents(APIURL."Get?dis=fl&foodid=".$pid);
-		$data['foods'] = json_decode(json_decode($cates));
-		
+		$cates = file_get_contents(POSTAPI."API_Food?dis=fl&foodid=".$pid);
+		$data['foods'] = json_decode(json_decode($cates),true);
+		// var_dump($data);
 		$this->load->view('change',$data);
 	}
 	// 换一换处理
@@ -146,11 +142,12 @@ class home extends CI_Controller
 		isset($number) ? $data['number'] = $number : $data['number'] = '0';
 		isset($_GET['shopid']) ? $data['shopid'] = $_GET['shopid'] : NULL;
 		//产品详情
-		$foodjson = file_get_contents(APIURL.'Food?dis=xq&foodid='.$id);
-		$data['foods'] = json_decode(json_decode($foodjson));
+		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=xq&foodid='.$id);
+		$data['foods'] = json_decode(json_decode($foodjson),true);
 		// 产品图片
-		$foodpic= file_get_contents(APIURL.'Get?dis=xqimg&foodid='.$id);
-		$data['foodspic'] = json_decode(json_decode($foodpic));
+
+		$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
+		$data['foodspic'] = json_decode(json_decode($foodpic),true);
 		$this->load->view('food',$data);
 	}
 	//储值返现
@@ -316,9 +313,11 @@ class home extends CI_Controller
 	}
     //订单
     public function order(){
-    	if ($_POST) {$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));} else { };
+    	if ($_POST) {$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
+    	}
     	$data['booking'] = $_SESSION['booking'];
-		$this->load->view('order',$data);
+ 		$this->load->view('order',$data);
+    	
 	}
 	 //支付订单
     public function payOrder(){
@@ -414,7 +413,6 @@ class home extends CI_Controller
     	}else{
     		$data['cards'] = '';
     	}
-    	var_dump($data);
     	$this->load->view('card',$data);
 	}
 	//领券
@@ -559,7 +557,7 @@ class home extends CI_Controller
 	public function priceSearch(){
 
 		$caiprice = file_get_contents(POSTAPI.'API_FoodMarket');
-		$data['cai']= json_decode(json_decode($caiprice));
+		$data['cai']= json_decode(json_decode($caiprice),true);
 		$this->load->view('priceSearch',$data);
 	}
 	//根据菜市获取菜价

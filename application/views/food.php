@@ -6,26 +6,26 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    <?php echo $foods[0]->foodname;?>
+    <?php echo $foods[0]['foodname'];?>
     </h1>
     
   </header>
   <!-- 详情 -->
   <form action="<?=site_url('home/foodaddcart');?>" method="post" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
-      <div class="fimg"><img src="<?php echo IP.$foodspic[0]->imgaddress;?>" class="am-img-responsive card" alt="<?=$foods[0]->foodname;?>"></div>
+      <div class="fimg"><img src="<?php echo IP.$foodspic[0]['imgaddress'];?>" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>"></div>
       <div class="am-g">
-        <h2> <?=$foods[0]->foodname;?></h2>
+        <h2> <?=$foods[0]['foodname'];?></h2>
         <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class=""> 12</span>份</div>
-        <p class="am-text-sm"><strong>主料：</strong><?=$foods[0]->ingredients;?></p>
-        <p class="am-text-sm"><strong>辅料：</strong><?=$foods[0]->accessories;?></p>
-        <p class="am-text-sm"><strong>简介：</strong><?=$foods[0]->blurb;?></p>
+        <p class="am-text-sm"><strong>主料：</strong><?=$foods[0]['ingredients'];?></p>
+        <p class="am-text-sm"><strong>辅料：</strong><?=$foods[0]['accessories'];?></p>
+        <p class="am-text-sm"><strong>简介：</strong><?=$foods[0]['blurb'];?></p>
         
-        <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]->foodprice;?></span></div>
+        <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]['foodprice'];?></span></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
           <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if($number){echo $number;}else{echo "0";}?>">
-          <input type="hidden" value="<?=$foods[0]->foodid;?> " name='foodid'/> 
+          <input type="hidden" value="<?=$foods[0]['foodid'];?> " name='foodid'/> 
           <input type="hidden" value="<?=$shopid;?>" name='shopid'/>
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
@@ -46,9 +46,9 @@
         
       </div>
       <div class="am-u-sm-7 stars">
-        <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]->foodstar;?></p>
-        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]->cookstar;?></p>
-        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]->waiterstar;?></p>
+        <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]['foodstar'];?></p>
+        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]['cookstar'];?></p>
+        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]['waiterstar'];?></p>
       </div>
       <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
       <!-- 文字评论 -->
@@ -80,8 +80,8 @@
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">
       <a href="<?php echo site_url('home/order')?>">
         <div class="am-u-sm-8 green a">
-          <img src="skin/img/cl.png" class="cartImg" alt=""><span id="fen" class="allmoney">2</span>份
-          <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">336</span>
+          <img src="skin/img/cl.png" class="cartImg" alt=""><span id="fen" class="allmoney">0</span>份
+          <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
         </div>
         <div class="am-u-sm-4 b">
           <button type="submit" class="am-btn am-btn-success tijiao">确定</button>

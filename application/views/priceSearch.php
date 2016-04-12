@@ -62,7 +62,7 @@ function getoption(){
     <div class="am-u-sm-4 sbnt">
       <select data-am-selected="{maxHeight: 100}" name='caishi' id='caishi' onchange="getoption();">
       <?php foreach($cai as $val):?>
-        <option value="<?=$val->foodmarketid;?>"><?=$val->name;?></option>
+        <option value="<?=$val['foodmarketid'];?>"><?=$val['name'];?></option>
       <?php endforeach;?>
       </select>
     </div>

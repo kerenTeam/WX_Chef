@@ -19,13 +19,13 @@
       <ul class="am-list odl">
 <?php foreach ($booking as $k => $value): ?>
           <li class="am-g am-list-item-dated">
-          <a href="javascript:" class="am-list-item-hd "><?php echo $value->foodname;?> <span class="am-fr gray">X <?php echo $postBooking[$value->foodid];?></span></a>
-          <span class="am-list-date ath"><i class="am-icon-cny cc"></i><?php echo $value->foodprice * $postBooking[$value->foodid]; $pricetotal[] = $value->foodprice * $postBooking[$value->foodid];?> </span>
+          <a href="javascript:" class="am-list-item-hd "><?php echo $value['foodname'];?> <span class="am-fr gray">X <?php echo $postBooking[$value['foodid']];?></span></a>
+          <span class="am-list-date ath"><i class="am-icon-cny cc"></i><?php echo $value['foodprice'] * $postBooking[$value['foodid']]; $pricetotal[] = $value['foodprice'] * $postBooking[$value['foodid']];?> </span>
           <!-- 发送到order数据 -->
            <!--------------------这里是我的foodID------------------------>
-          <input type="hidden" name="foodid[]" value="<?php echo $value->foodid;?> ">
+          <input type="hidden" name="foodid[]" value="<?php echo $value['foodid'];?> ">
            <!--------------------这里是我的numbers------------------------>
-          <input type="hidden" name="numbers[]" value="<?php echo $postBooking[$value->foodid];?>">
+          <input type="hidden" name="numbers[]" value="<?php echo $postBooking[$value['foodid']];?>">
           <!-- 发送到order数据 END-->
         </li>
 <?php endforeach ?>
