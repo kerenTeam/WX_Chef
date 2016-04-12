@@ -44,7 +44,7 @@
             
           </div>
         </li>
-       <!--  <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md">204</span></div> -->
+        <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md">68</span></div>
         <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
         <p class="orderbot am-cf">
 
@@ -121,7 +121,7 @@
             
           </div>
         </li>
-       <!--  <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md">204</span></div> -->
+        <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md">204.00</span></div>
         <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
         <p class="orderbot am-cf">
 

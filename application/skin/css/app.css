@@ -674,6 +674,10 @@ body {
 	width: 2rem;
 	margin: auto 15px;
 }
+.mob a{
+	    border: none;
+    margin: 0 5px;
+}
 .userl li i {
 	font-size: 20px;
 	margin: auto 11px auto 22px;
@@ -1189,7 +1193,10 @@ figure a:hover figcaption {
 	height: 100%!important;
 	width: 100%!important;
 }
-
+.moa{
+	width:80%;
+	margin-top: 6px;
+}
 @media only screen and (min-width:600px) {
 .tkcontent img {
 	width: auto;
@@ -1243,6 +1250,10 @@ figure a:hover figcaption {
 }
 
 @media only screen and (max-width:375px) {
+.moa{
+    margin-top: 4px;
+}
+	
 	.fpc{
 	  left: 5px!important;
 	}
@@ -1298,6 +1309,9 @@ figure a:hover figcaption {
 .pflist h5 {
     margin: -3px auto 2px!important;
     font-size: 14px;
+}
+.moa{
+    margin-top: 2px;
 }
 .fpc {
     color: white;
