@@ -15,7 +15,6 @@
   </header>
   
   <div class="am-list-news-bd">
-<<<<<<< HEAD
     <ul class="am-list odl">
     <?php if(!empty($address)):?>
       <?php foreach($address as $val):?>
@@ -25,19 +24,6 @@
         <?=$val['name'];?>&nbsp;<?=$val['goodsphone'];?>
         </p>
         <a href="<?=site_url('home/deladdress?id=').$val['memberaddressid'];?>" class="am-fr edtclose"><span class="am-list-date"><i class="am-icon-close"></i></span></a>
-=======
-    <ul class="am-list">
-    <?php if(empty($address)):?>
-      <li class="am-g am-cf lpt">
-        <p class="am-fl"> 
-          四川师范大学成龙校区东苑5栋<br>
-          张燕&nbsp;15780975467 
-        </p>
-        <div class="am-list-date edtclose">
-         <a href="<?php echo site_url('home/editAddress')?>" class="green">修改</a>
-         <a href="" class="red">删除</a>
-        </div>
->>>>>>> 038864b746b856045341aa64b77fa0fe7f1154f2
       </li>
     <?php endforeach;?>
     <?php else:?>
