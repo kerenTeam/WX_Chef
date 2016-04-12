@@ -3,7 +3,7 @@
  * @Author: Harris-Aaron
  * @Date:   2016-04-12 10:31:05
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-04-12 12:10:26
+ * @Last Modified time: 2016-04-12 15:52:34
  */
 
 class WeChat extends WxApi{

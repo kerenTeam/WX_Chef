@@ -83,14 +83,21 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+defined('randNms')             OR define('randNms', rand(100000,999999)); //长度为6位的随机数
 
 defined('IP')                  OR define('IP','http://211.149.195.183:88');
-
 defined('APIURL')              OR define('APIURL',"http://211.149.195.183:88/API/API_Poorder/");
-defined('POSTAPI')              OR define('POSTAPI',"http://192.168.0.154/API/");
+defined('POSTAPI')             OR define('POSTAPI',"http://192.168.0.154/API/");
 
-defined('randNms')             OR define('randNms', rand(100000,999999)); //长度为6位的随机数
-defined('mchid')             OR define('mchid', ''); //长度为6位的随机数
-defined('privatekey')             OR define('privatekey', ''); //长度为6位的随机数
-defined('appId')             OR define('appId', ''); //长度为6位的随机数
-defined('appSecret')             OR define('appSecret', ''); //长度为6位的随机数
+
+
+//～～～～～～～～～～～～～～～～～～～～～微信配置～～～～～～～～～～～～～～～～～～～～～～～
+
+defined('APPID')               OR define('APPID', 'wxa997c956cf6631b0'); 
+defined('APPSECRET')           OR define('APPSECRET', 'ee3f2a43a6c508708780dba0c5bd7393'); 
+defined('mchid')               OR define('mchid', ''); //商户号
+defined('privatekey')          OR define('privatekey', ''); //私钥
+
+
+
+

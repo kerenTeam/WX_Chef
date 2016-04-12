@@ -8,13 +8,13 @@
     ********************************************************/
 
     class WxApi {
-        const appId        = "";
-        const appSecret    = "";
-        const mchid        = ""; //商户号
+        const appId         = APPID;
+        const appSecret     = APPSECRET;
+        const mchid         = ""; //商户号
         const privatekey    = ""; //私钥
-        public $parameters = array();
+        public $parameters  = array();
         public $jsApiTicket = NULL;
-        public $jsApiTime  = NULL;
+        public $jsApiTime   = NULL;
 
         public function __construct(){
 
@@ -116,6 +116,7 @@
                 //print_r($result);
                 $jsoninfo      = json_decode($result, true);
                 $access_token  = $jsoninfo["access_token"];
+                $_SESSION['update_code']=$access_token;
 
 
                 return $access_token;
