@@ -12,6 +12,42 @@ body {
 	align-content:space-around;
 	padding:5% 10%;
 }
+.flexDisplay{
+	display: inline-block!important;
+    padding: 10px 0 5px!important; 
+    margin: 8px auto!important;
+    width: 100%!important;
+	/* border:1px solid rgba(0,0,0,0.1)!important; */
+}
+/* .fpr img{
+	left:0;
+	right:0;
+ height:11%;
+} */
+.fpr{
+	    position: relative;
+    background: #EB7279;
+    border-radius: 5px 0 0 5px; 
+    height: 5.5rem;
+}
+.fpr:before{
+	content:'';
+	position:absolute;
+	width:1px;
+	border:1px dotted white;
+	right:10px;
+	top:0;
+	bottom:0;
+}
+.fpc{
+	    color: white;
+    font-size: 10px;
+    position: absolute;
+    border: 1px solid white;
+    top: 9px;
+    left: 10px;
+    padding: 4px;
+}
 .white{
 	color:white;
 }
@@ -38,10 +74,7 @@ body {
     padding: 0px 5px;
     border-radius: 3px;
 	}
-.flexv .fitem img{
-	width:100%;
-	margin-bottom:20px
-}
+
 .tk{
     position: fixed;
 	z-index: 1999;	
@@ -419,15 +452,7 @@ body {
 	padding: 1.2rem 1.2rem;
 	font-size: 13px;
 }
-.Tnum {
-	position: relative;
-}
-.Tnum:before {
-	content: '(';
-}
-.Tnum:after {
-	content: ')';
-}
+
 .typel img {
 	height: 1.7rem;
 	width: 1.7rem;
@@ -1197,6 +1222,9 @@ figure a:hover figcaption {
 	padding: 1.3rem 1rem;
 	font-size: 14px;
 }
+.pflist h5{
+	margin: 2px auto 10px!important;
+} 
 .vimg {
 	width: 7.5rem;
 	display: inline-block;
@@ -1211,8 +1239,14 @@ figure a:hover figcaption {
 }
 
 @media only screen and (max-width:375px) {
+	.fpc{
+	  left: 5px!important;
+	}
 .cardbtn {
 	margin-top: 19%;
+}
+.pflist h5 {
+    margin: -3px auto 6px!important;
 }
 .vimg {
 	width: 6.8rem;
@@ -1253,6 +1287,28 @@ figure a:hover figcaption {
 @media only screen and (max-width:320px) {
 .topform button {
 	left: 40px;
+}
+.pflist h5 {
+    margin: -3px auto 2px!important;
+    font-size: 14px;
+}
+.fpc {
+    color: white;
+    font-size: 8px;
+    position: absolute;
+    border: 1px solid white;
+    top: 13px;
+    left: 4px!important;
+    padding: 0px;
+}
+.fpr:before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    border: 1px dotted white;
+    right: 6px;
+    top: 0;
+    bottom: 0;
 }
 .vimg {
 	width: 5.5rem;
