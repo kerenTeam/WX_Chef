@@ -17,17 +17,12 @@
         <fieldset class="am-form-set afiel">
           <input type="text" placeholder="请填写您的姓名" class="uname" name='name' required>
           <input type="text" placeholder="请输入详细送餐地址" class="uaddress" name='Address' required>
-<<<<<<< HEAD
           <input type="text" placeholder="请填写能够联系到您的电话号码" name='GoodsPhone' class="uphone">
           <input type="text" placeholder="备用联系电话（选填）" name='SparePhone'> 
-          <input type="radio" placeholder="是否默认？" name='IsDefault' value="1">是否默认该地址为收货地址？
-=======
-          <input type="text" placeholder="请填写能够联系到您的电话号码" name='userphone' class="uphone">
-          <input type="text" placeholder="备用联系电话（选填）">
-          <label class="am-checkbox am-success am-u-sm-6">
-            设为默认 <input type="checkbox" name="" value="" data-am-ucheck>
-          </label>
->>>>>>> 038864b746b856045341aa64b77fa0fe7f1154f2
+         <label class="am-checkbox am-success am-u-sm-6">
+            设为默认 <input type="checkbox" name="IsDefault" value="1" data-am-ucheck>
+            </label>
+
         </fieldset>
         <button type="submit" class="am-btn am-btn-block bred" disabled>保存</button>
       </form>
