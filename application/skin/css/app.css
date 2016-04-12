@@ -261,6 +261,9 @@ body {
 	margin-top: 0px;
 	display: inline-block;
 }
+.pnimg{
+	height: 4rem;
+}
 .prwimage {
 	margin-top: -9px;
 	width: auto;
@@ -317,6 +320,48 @@ body {
 }
 .all_money {
 	width: 50px;
+}
+.nouseLi{
+	position:relative;
+}
+.sx{
+	background-color:rgba(0,0,0,0.3);
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+}
+.tkp{
+	/* pointer-events:none; */
+	position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background:rgba(0,0,0,0.3);
+}
+.payway a{
+	padding: 8px 10px;
+    font-size: 14px;
+}
+.tkp .payway{
+	position:absolute;
+	bottom:0;
+} 
+.nouse{
+	border:2px solid white;
+	display: inline-block;
+    width: 80px;
+    color: white;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    height: 30px;
+    margin-left: -40px;
+    margin-top: -15px;
+    transform: rotate(-15deg);
 }
 #fen {
 	/* width:2rem;*/

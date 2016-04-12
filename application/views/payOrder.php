@@ -18,8 +18,9 @@
           <span class="am-list-date"><i class="am-icon-cny atf">10</i></span>
         </li> 
         <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd">会员卡支付</a>
-          <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
+          <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd">会员卡支付
+            <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
+          </a>
         </li>
         
       </ul>
