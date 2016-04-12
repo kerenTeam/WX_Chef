@@ -19,10 +19,12 @@ body {
     width: 100%!important;
 	/* border:1px solid rgba(0,0,0,0.1)!important; */
 }
-/* .fpr img{
-	left:0;
-	right:0;
- height:11%;
+/* .bgr{
+	background: none;
+    color: red;
+    border: 1px solid red;
+    border-radius: 3px;
+    box-sizing: border-box;
 } */
 .fpr{
 	    position: relative;
@@ -39,14 +41,16 @@ body {
 	top:0;
 	bottom:0;
 }
+
 .fpc{
-	    color: white;
+	color: white;
     font-size: 10px;
     position: absolute;
     border: 1px solid white;
     top: 9px;
     left: 10px;
     padding: 4px;
+    bottom:9px;
 }
 .white{
 	color:white;
@@ -670,6 +674,10 @@ body {
 	width: 2rem;
 	margin: auto 15px;
 }
+.mob a{
+	    border: none;
+    margin: 0 5px;
+}
 .userl li i {
 	font-size: 20px;
 	margin: auto 11px auto 22px;
@@ -1185,7 +1193,10 @@ figure a:hover figcaption {
 	height: 100%!important;
 	width: 100%!important;
 }
-
+.moa{
+	width:80%;
+	margin-top: 6px;
+}
 @media only screen and (min-width:600px) {
 .tkcontent img {
 	width: auto;
@@ -1239,6 +1250,10 @@ figure a:hover figcaption {
 }
 
 @media only screen and (max-width:375px) {
+.moa{
+    margin-top: 4px;
+}
+	
 	.fpc{
 	  left: 5px!important;
 	}
@@ -1276,6 +1291,9 @@ figure a:hover figcaption {
 .tuimg {
 	height: 75px;
 }
+.fpr{
+	height:6rem;
+}
 .prwimage img {
 	width: 6rem;
 	height: 5.5rem;
@@ -1292,6 +1310,9 @@ figure a:hover figcaption {
     margin: -3px auto 2px!important;
     font-size: 14px;
 }
+.moa{
+    margin-top: 2px;
+}
 .fpc {
     color: white;
     font-size: 8px;
@@ -1300,6 +1321,7 @@ figure a:hover figcaption {
     top: 13px;
     left: 4px!important;
     padding: 0px;
+
 }
 .fpr:before {
     content: '';
