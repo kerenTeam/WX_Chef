@@ -85,8 +85,13 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 defined('IP')                  OR define('IP','http://211.149.195.183:88');
+<<<<<<< HEAD
 defined('APIURL')              OR define('APIURL',"http://211.149.195.183:88/API/API_Poorder/");
 defined('POSTAPI')              OR define('POSTAPI',"http://192.168.0.154/API/");
+=======
+defined('APIURL')              OR define('APIURL',"http://192.168.199.151/API/API_Poorder/");
+defined('POSTAPI')              OR define('POSTAPI',"http://192.168.199.151/API/");
+>>>>>>> 038864b746b856045341aa64b77fa0fe7f1154f2
 
 
 

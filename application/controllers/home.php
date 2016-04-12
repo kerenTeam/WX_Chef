@@ -69,9 +69,9 @@ class home extends CI_Controller
 
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
          $reigsterData = json_encode($reigsterFrom);
-        $isok = curl_post(POSTAPI."API_Users?dis=xzyh",$reigsterData);
-      
 
+         $isok = curl_post(POSTAPI."API_Users?dis=xzyh",$reigsterData);
+      
          switch ($isok) { //0注册失败   1注册成功  2已有用户
          	case '0':
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
@@ -332,12 +332,13 @@ class home extends CI_Controller
 
         $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
         $foodJsondata['UserCouponId'] = $this->input->post('UserCouponId');
-        $foodJsondata['memberaddressid'] = $this->input->post('memberaddressid');
+        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
+        $foodJsondata['PaymentMethod'] = '';
         $foodJsondata['poorderentry'] = $foodJson;
-
-        $abc = str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))));
+       
+        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
      
-       // var_dump($abc); exit; 
+        var_dump($abc); exit; 
 
 		$this->load->view('payOrder');
 	}

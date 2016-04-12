@@ -1,3 +1,6 @@
+<style>
+   
+</style>
 <body>
   <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform">
@@ -30,6 +33,7 @@
           <a href="javascript:" class="am-list-item-hd red">订单总计</a>
           <span class="am-list-date ath"><i class="am-icon-cny red"><?php echo array_sum($pricetotal);?></i></span>
         </li>  
+
       </ul>
      </div>
          <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
@@ -59,23 +63,42 @@
     
     <div class="am-shadow am-margin-vertical-sm fpa2">
       <?php 
-            if (!empty($_COOKIE['phone']))
-            { $UserCoupon = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_COOKIE['openid']);
-            }else if(!empty($_COOKIE['openid']))
-            {$UserCoupon = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_COOKIE['phone']);  } if (!empty($UserCoupon)) 
+            if (!empty($_SESSION['phone']))
+            { $UserCoupon = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['openid']);
+            }else if(!empty($_SESSION['openid']))
+            {$UserCoupon = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);  } if (!empty($UserCoupon)) 
             { $UserCoupondata = json_decode(json_decode($UserCoupon));  }
 
             if ($UserCoupondata == 0): ?>
-            <a href="javascript:;" disabled class="am-cf adc">饭票已经用光了哦<span class="am-fr am-icon-xs red">已抵用 <span class="am-icon-cny">30</span></span></a>
+            <a href="javascript:;" disabled class="am-cf adc">饭票已经用光了哦<span class="am-fr am-icon-xs red">无可用饭票 </span></a>
       <?php else: ?>
              <?php //var_dump($UserCoupondata); ?>
-             这里需要一个向下风琴,选择我的优惠券
-             <!--------------------这里是我的优惠劵ID------------------------>
+               <a class="am-cf adc fclick">饭票可用3张<span class="am-fr am-icon-xs red">选择 <span class="am-icon-angle-down"></span></span></a>
+       <div class="am-list-news-bd" id="fpc" style="display: none">
+      <ul class="am-list odl"> 
+          <li class="am-g am-list-item-dated">
+           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/qu.png" alt="饭票"> 主题套餐</a> 
+           <span class="am-list-date ath"> <i class="am-icon-cny">20</i></span>
+          </li> 
+          <li class="am-g am-list-item-dated">
+           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/qu.png" alt="饭票"> 主题套餐</a> 
+           <span class="am-list-date ath"> <i class="am-icon-cny">50</i></span>
+          </li> 
+          <li class="am-g am-list-item-dated">
+           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/qu.png" alt="饭票"> 主题套餐</a> 
+           <span class="am-list-date ath"> <i class="am-icon-cny">100</i></span>
+          </li> 
+      </ul>
+     </div>
+              <!--------------------这里是我的优惠劵ID------------------------>
              <input type="hidden" name="UserCouponId" value="<?php echo $UserCoupondata[0]->couponid;?>">
-             <a href="javascript:;" class="am-cf adc">饭票<span class="am-fr am-icon-xs red">已抵用 <span class="am-icon-cny">30</span></span></a>
+            
+
       <?php endif ?>
-        <!--------------------这里是我的个人ID------------------------>
-      <input type="hidden" name="UserPhone" value="<?php  if (!empty($_COOKIE['phone'])) { echo $_COOKIE['phone']; } else { echo $_COOKIE['openid']; } ?>">
+              <!--------------------这里是我的个人ID------------------------>
+      <input type="hidden" name="UserPhone" value="<?php  if (!empty($_SESSION['phone'])) { echo $_SESSION['phone']; } else { echo $_SESSION['openid']; } ?>">
+      
+      <?php $integral = json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION('phone')));?> 
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">200积分已抵用 <span class="am-icon-cny">30</span></span></a>
       <a href="javascript:;" class="am-cf adc">金额<span class="am-fr am-icon-xs am-icon-cny red">10</span></a>
 
@@ -132,37 +155,19 @@
       
     </form>
   </body>
-<!--<script src="skin/js/jquery.min.js"></script>
+ <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
-<script>
-  $(function(){  
-    var cks = $('input:checkbox');
-    if($('input:checkbox:checked').size() == 0){
-      $('#payorder').attr({
-        disabled: 'disable'
-      });
-    }
-    else{
-      $('#payorder').removeAttr('disabled');
-    }
-     cks.click(function() {
-        console.log($('input:checkbox:checked').size());
-      if($(this).prop("checked")){
-         $('#payorder').removeAttr('disabled');
-      }
-      else if($('input:checkbox:checked').size() == 0){
-      $('#payorder').attr({
-        disabled: 'disable'
-      });
-    }   
-       if($('.fp').prop("checked")){
-        $('.fpa').css('display','block');
-      }else{
-        $('.fpa').css('display','none');
-      }
- 
-    });
+ <script>
+      $(function(){
+        $('.fclick').click(function() {
+          console.log('.fclick');
+           $('#fpc').slideToggle(400);          
+        });
+        $('#fpc li').click(function() {
+          $('#fpc').slideUp(400);
+          $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<span class="am-icon-cny">'+$(this).find('.am-icon-cny').html()+'</span></span>');
+        });
+      })
+    </script>
 
-  })
-</script>-->
 </html>
