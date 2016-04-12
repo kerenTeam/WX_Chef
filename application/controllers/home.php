@@ -337,7 +337,7 @@ class home extends CI_Controller
        
         $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
      
-        var_dump($abc); exit; 
+        //var_dump($abc); exit; 
 
 		$this->load->view('payOrder');
 	}
