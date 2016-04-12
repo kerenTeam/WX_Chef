@@ -364,7 +364,7 @@ class home extends CI_Controller
    //个人中心
 	public function ucent(){
 		if(isset($_SESSION['phone'])){
-			$user = file_get_contents(POSTAPI."API_User?dis=ckxx&id=".$_SESSION['phone']);
+			$user = file_get_contents(POSTAPI."API_User?dis=ckxx&UserPhone=".$_SESSION['phone']);
 			$data['users'] = json_decode(json_decode($user),true);
 		}else{
 			$data['users'] = '';
@@ -409,11 +409,12 @@ class home extends CI_Controller
     public function card(){
     	if(isset($_SESSION['phone']) || isset($_SESSION['openid'])){
     		$card =file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
+  
     		$data['cards'] = json_decode(json_decode($card),true);
-
     	}else{
     		$data['cards'] = '';
     	}
+    	var_dump($data);
     	$this->load->view('card',$data);
 	}
 	//领券
@@ -422,33 +423,12 @@ class home extends CI_Controller
 		$this->load->view('cardGet');
 	}
 	//地址管理
-	public function address(){
-		if(isset($_SESSION['phone']) || isset($_SESSION['openid'])){
-			$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&userphone=".$_SESSION['phone']);
-			$data['address'] = json_decode(json_decode($address),true);
-		}else{
-			$data['address'] = '';
-		}
-		$this->load->view('address',$data);
-	}
-	//新增address
-	public function addressAdd(){
-        var_dump(234567890);
-		var_dump($this->input->post()); 
-		$this->load->view('addressAdd');
-	}
-	//编辑地址
-	public function editAddress(){
-
-		$this->load->view('editAddress');
-	}
-	//地址管理
 	public function address2(){
 		if(isset($_SESSION['phone']) || isset($_SESSION['openid'])){
-			$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&userphone=".$_SESSION['phone']);
-			$data['address'] = json_decode($address);
+			$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
+			$data['address'] = json_decode(json_decode($address),true);
 		}else{
-			$data['address'] = '';
+			$data['address'] = NULL;
 		}
 		$this->load->view('address2',$data);
 	}
@@ -456,13 +436,41 @@ class home extends CI_Controller
 	public function addressAdd2(){
 		if($_POST)
 		{
-			$a = "[".json_encode($_POST)."]";
-			$b = curl_post(POSTAPI."API_MenberAddress?dis=xg",$a);
-			if($b == 1){
+			if(isset($_SESSION['phone']) && isset($_SESSION['openid'])){
+				echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+			}else if(isset($_SESSION['phone'])){
+			    $a['UserPhone'] = $_SESSION['phone'];
+			}else{
+				$a['UserPhone'] = $_SESSION['openid'];
+			}
+			
+			$a['Name'] = $_POST['name'];
+			$a['Address'] = $_POST['Address'];
+			$a['GoodsPhone'] = $_POST['GoodsPhone'];
+			$a['SparePhone'] = $_POST['SparePhone'];
+			if(!isset($_POST['IsDefault'])){
+				$a['IsDefault'] = 0;
+			}else{
+				$a['IsDefault'] = $_POST['IsDefault'];
+			}
+			$c[] = $a;
+			$b = json_encode($c);
+			$postadd = curl_post(POSTAPI."API_MenberAddress?dis=xz",$b);
+			if($postadd == 1){
 				echo "<script>alert('新增地址成功！');window.location.href='address2';</script>";
+			}else{
+				echo "<script>alert('新增地址失败！');</script>";
 			}
 		}
 		$this->load->view('addressAdd2');
+	}
+	// 删除地址
+	public function deladdress()
+	{
+		$id = $_GET['id'];
+		$getid = file_get_contents(POSTAPI."API_MenberAddress?dis=del&value=".$id);
+		echo "<script>alert('删除地址成功！');window.location.href='address2';</script>";
+		
 	}
 	//编辑地址
 	public function editAddress2(){

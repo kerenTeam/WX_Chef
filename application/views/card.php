@@ -32,7 +32,10 @@
       
     <?php else:?>
       <li class="am-g">
-        你还没有饭票！
+       <div class="cardno">
+          <img  class="am-block" src="skin/img/nocard.jpg" alt="">
+          暂无可用饭票！
+        </div>
       </li>
     <?php endif;?>
     </ul>

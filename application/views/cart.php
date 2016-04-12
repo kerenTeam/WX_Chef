@@ -61,9 +61,9 @@
 			<p class="am-margin-right-lg">你还没有添加任何食物！</p>
 			<?php endif;?>
           </ul>
-        <div class="am-text-center oln">套餐</div>
+       <!--  <div class="am-text-center oln">套餐</div>
           <ul class="am-list cul">
-            
+             -->
             <!-- <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
                 <a href="<?php echo site_url('home/dinner')?>" class="vimg">
@@ -81,8 +81,8 @@
                 <a href="" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
             </li> -->
-          </ul>
-      </div>
+         <!--  </ul>
+      </div> -->
     </div>
   </div>
   <!-- <div class="am-text-center">合计：<i class="am-icon-cny red"></i><input type="text" id="allmoney" readonly class="allmoney red" value="757"></div> -->

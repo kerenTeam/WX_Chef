@@ -16,15 +16,17 @@
   
   <div class="am-list-news-bd">
     <ul class="am-list odl">
-    <?php if(empty($address)):?>
+    <?php if(!empty($address)):?>
+      <?php foreach($address as $val):?>
       <li class="am-g am-cf lpt">
         <p class="am-fl">
-        四川师范大学成龙校区东苑5栋<br>
-        张燕&nbsp;15780975467
+        <?=$val['address'];?><br>
+        <?=$val['name'];?>&nbsp;<?=$val['goodsphone'];?>
         </p>
-        <a href="" class="am-fr edtclose"><span class="am-list-date"><i class="am-icon-close"></i></span></a>
+        <a href="<?=site_url('home/deladdress?id=').$val['memberaddressid'];?>" class="am-fr edtclose"><span class="am-list-date"><i class="am-icon-close"></i></span></a>
       </li>
-       <?php else:?>
+    <?php endforeach;?>
+    <?php else:?>
          <li class="am-g am-list-item-dated lilast">
         你还没有添加收货地址！
             </li> 

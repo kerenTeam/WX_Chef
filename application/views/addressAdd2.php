@@ -17,8 +17,9 @@
         <fieldset class="am-form-set afiel">
           <input type="text" placeholder="请填写您的姓名" class="uname" name='name' required>
           <input type="text" placeholder="请输入详细送餐地址" class="uaddress" name='Address' required>
-          <input type="text" placeholder="请填写能够联系到您的电话号码" name='userphone' class="uphone">
-          <input type="text" placeholder="备用联系电话（选填）">
+          <input type="text" placeholder="请填写能够联系到您的电话号码" name='GoodsPhone' class="uphone">
+          <input type="text" placeholder="备用联系电话（选填）" name='SparePhone'> 
+          <input type="radio" placeholder="是否默认？" name='IsDefault' value="1">是否默认该地址为收货地址？
         </fieldset>
         <button type="submit" class="am-btn am-btn-block bred" disabled>保存</button>
       </form>

@@ -86,7 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 defined('IP')                  OR define('IP','http://211.149.195.183:88');
 defined('APIURL')              OR define('APIURL',"http://211.149.195.183:88/API/API_Poorder/");
-defined('POSTAPI')              OR define('POSTAPI',"http://192.168.199.151/API/");
+defined('POSTAPI')              OR define('POSTAPI',"http://192.168.0.154/API/");
 
 
 
