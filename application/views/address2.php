@@ -25,7 +25,7 @@
         </p>
         <div class="am-list-date edtclose">
         <a href="<?=site_url('home/deladdress?id=').$val['memberaddressid'];?>" class="am-fr red">删除</a>
-        <a href="<?=site_url('home/editAddress')?>" class="am-fr green">修改</a>
+        <a href="<?=site_url('home/editAddress?id=').$val['memberaddressid'];?>" class="am-fr green">修改</a>
         </div>
       </li>
     <?php endforeach;?>
