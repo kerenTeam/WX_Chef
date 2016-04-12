@@ -85,17 +85,10 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 defined('IP')                  OR define('IP','http://211.149.195.183:88');
-<<<<<<< HEAD
-defined('APIURL')              OR define('APIURL',"http://211.149.195.183:88/API/API_Poorder/");
-defined('POSTAPI')              OR define('POSTAPI',"http://192.168.0.154/API/");
-=======
 
 defined('APIURL')              OR define('APIURL',"http://211.149.195.183:88/API/API_Poorder/");
 defined('POSTAPI')              OR define('POSTAPI',"http://192.168.0.154/API/");
 
-
-
->>>>>>> 304b8cf6d3ae899a2e0eda2b56e250abd211b709
 defined('randNms')             OR define('randNms', rand(100000,999999)); //长度为6位的随机数
 defined('mchid')             OR define('mchid', ''); //长度为6位的随机数
 defined('privatekey')             OR define('privatekey', ''); //长度为6位的随机数
