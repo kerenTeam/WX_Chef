@@ -13,16 +13,17 @@
   <br>
   <div class="am-g ammake">
     <div class="am-u-md-8 am-u-sm-centered">
-      <form class="am-form afcheck" action="<?=site_url('home/addressAdd2');?>" method="post">
+      <form class="am-form afcheck" action="<?=site_url('home/addressedit');?>" method="post">
         <fieldset class="am-form-set afiel">
-          <input type="text" value="张三" class="uname" name='name' required>
-          <input type="text" value="成都市天府二街高新区" class="uaddress" name='Address' required>
-          <input type="text" value="12345678901" name='userphone' class="uphone">
-          <input type="text" value="400654897">
+          <input type="text" value="<?=$address[0]['name']?>" class="uname" name='name' required>
+          <input type="text" value="<?=$address[0]['address']?>" class="uaddress" name='address' required>
+          <input type="text" value="<?=$address[0]['goodsphone']?>" name='goodsphone' class="uphone">
+          <input type="text" value="<?=$address[0]['sparephone']?>" name='sparephone'>
           <label class="am-checkbox am-success am-u-sm-6">
-            设为默认 <input type="checkbox" name="" value="" data-am-ucheck>
+            设为默认 <input type="checkbox" <?php if($address[0]['isdefault'] == 1){ echo 'checked="checked"';}?> name="isdefault" value="1" data-am-ucheck>
           </label>
         </fieldset>
+        <input type="hidden" value="<?=$address[0]['memberaddressid']?>" name='id'>
         <button type="submit" class="am-btn am-btn-block bred">保存</button>
       </form>
     </div>

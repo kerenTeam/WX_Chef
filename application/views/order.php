@@ -77,15 +77,15 @@
        <div class="am-list-news-bd" id="fpc" style="display: none">
       <ul class="am-list odl"> 
           <li class="am-g am-list-item-dated">
-           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/qu.png" alt="饭票"> 主题套餐</a> 
+           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/fp.png" alt="饭票"> 主题套餐</a> 
            <span class="am-list-date ath"> <i class="am-icon-cny">20</i></span>
           </li> 
           <li class="am-g am-list-item-dated">
-           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/qu.png" alt="饭票"> 主题套餐</a> 
+           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/fp.png" alt="饭票"> 主题套餐</a> 
            <span class="am-list-date ath"> <i class="am-icon-cny">50</i></span>
           </li> 
           <li class="am-g am-list-item-dated">
-           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/qu.png" alt="饭票"> 主题套餐</a> 
+           <a href="javascript:" class="am-list-item-hd "><img src="skin/img/fp.png" alt="饭票"> 主题套餐</a> 
            <span class="am-list-date ath"> <i class="am-icon-cny">100</i></span>
           </li> 
       </ul>

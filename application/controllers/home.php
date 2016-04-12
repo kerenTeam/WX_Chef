@@ -11,15 +11,13 @@ class home extends CI_Controller
 		parent::__construct();
 		$this->load->model('option_model');
 		$this->load->model('pack_model');
-		$data['site'] = $this->option_model->system('siteName');
-		$data['keyword'] = $this->option_model->system('keyWord');
-		$data['description'] = $this->option_model->system('keyWordDescriber');
+		
 		$this->load->helper('post_helper');
 		$this->load->library('session');
 		set_cookie('phone',18081322659,36000);
 		set_cookie('openid',18081322659,36000);
 		//var_dump($data);
-		$this->load->view('header',$data);
+		$this->load->view('header');
 	}
 	//登录
 	public function login(){
@@ -77,7 +75,8 @@ class home extends CI_Controller
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
          		break;
          	case '1':
-         		echo "<script>alert('注册成功！');  window.location.href='ucent';</script>";   //？中心
+         		$this->session->set_userdata('phone',$this->input->post('UserPhone'),3600);
+         		echo "<script>alert('注册成功！');    window.location.href='ucent';</script>";   //？中心
          		break;	
          	case '2':
          		echo "<script>alert('该号码已注册！'); window.location.href='login2';</script>";  //？登陆
@@ -435,8 +434,7 @@ class home extends CI_Controller
 	}
 	//新增address
 	public function addressAdd2(){
-		var_Dump($_SESSION);
-		if(!isset($_SESSION['phone']) && !isset($_SESSION['openid'])){
+		if(isset($_SESSION['phone']) && isset($_SESSION['openid'])){
 			echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
 		}else if(isset($_SESSION['phone'])){
 		    $a['UserPhone'] = $_SESSION['phone'];
@@ -469,14 +467,53 @@ class home extends CI_Controller
 	public function deladdress()
 	{
 		$id = $_GET['id'];
-		$getid = file_get_contents(POSTAPI."API_MenberAddress?dis=del&value=".$id);
+		$isok = file_get_contents(POSTAPI."API_MenberAddress?dis=del&value=".$id);
+		$a = str_replace('"', '', $isok);
+		if($a = 1){
 		echo "<script>alert('删除地址成功！');window.location.href='address2';</script>";
+		}else{
+		echo "<script>alert('删除地址失败！');window.location.href='address2';</script>";
+		}
 		
 	}
 	//编辑地址
-	public function editAddress2(){
-
-		$this->load->view('editAddress2');
+	public function editAddress(){
+		if($_GET){
+			$id = $_GET['id'];
+			$isok = file_get_contents(POSTAPI."API_MenberAddress?dis=dzxq&value=".$id);
+			$data['address'] = json_decode(json_decode($isok),true);
+		
+			$this->load->view('editAddress',$data);
+		}
+	}
+	//编辑地址处理
+	public function addressedit($value='')
+	{
+		if($_POST){
+			// var_dump($_POST);
+			$arr = array(
+				'Name'=>$_POST['name'],
+				'Address'=>$_POST['address'],
+				'MemberAddressId'=>$_POST['id'],
+				'GoodsPhone'=>$_POST['goodsphone'],
+				'SparePhone'=>$_POST['sparephone'],
+				'UserPhone'=>$_SESSION['phone'],
+				);
+			if(!isset($_POST['IsDefault'])){
+				$arr['IsDefault'] = 0;
+			}else{
+				$arr['IsDefault'] = $_POST['IsDefault'];
+			}
+			$jsonval = '['.json_encode($arr).']';
+			$isok = curl_post(POSTAPI."API_MenberAddress?dis=xg",$jsonval);
+			if($isok = 1){
+				echo "<script>alert('编辑地址成功！');window.location.href='address2';</script>";
+			}else{
+				echo "<script>alert('编辑地址失败！');window.location.href='address2?id='".$_POST['id'].";</script>";
+			}
+			
+		}
+	
 	}
 	//宴会定制
 	public function make(){
