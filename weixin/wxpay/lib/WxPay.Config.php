@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 /**
 * 	配置账号信息
 */
@@ -10,7 +10,7 @@ class WxPayConfig
 	/**
 	 * TODO: 修改这里配置为您自己申请的商户信息
 	 * 微信公众号信息配置
-	 *
+	 * 
 	 * APPID：绑定支付的APPID（必须配置，开户邮件中可查看）
 	 *
 	 * MCHID：商户号（必须配置，开户邮件中可查看）
@@ -22,10 +22,10 @@ class WxPayConfig
 	 * 获取地址：https://mp.weixin.qq.com/advanced/advanced?action=dev&t=advanced/dev&token=2005451881&lang=zh_CN
 	 * @var string
 	 */
-	const APPID = 'wxb7b2ba9884d3f463';
-	const MCHID = '1264581501';
-	const KEY = 'e10adc3949ba59abbe56e057f20f883e';
-	const APPSECRET = '07f4e33e10347243c99f3fc34f984ff4';
+	const APPID = APPID;
+	const MCHID = MCHID;
+	const KEY = PRIVATEKEY;
+	const APPSECRET = APPSECRET;
 	//=======【证书路径设置】=====================================
 	/**
 	 * TODO：设置商户证书路径
@@ -33,7 +33,7 @@ class WxPayConfig
 	 * API证书下载地址：https://pay.weixin.qq.com/index.php/account/api_cert，下载之前需要安装商户操作证书）
 	 * @var path
 	 */
-	const SSLCERT_PATH = '../cert/apiclient_cert.pem';
+	const SSLCERT_PATH = '../cert/apiclient_cert.p12';
 	const SSLKEY_PATH = '../cert/apiclient_key.pem';
 
 	//=======【curl代理设置】===================================
@@ -54,5 +54,5 @@ class WxPayConfig
 	 * 上报等级，0.关闭上报; 1.仅错误出错上报; 2.全量上报
 	 * @var int
 	 */
-	const REPORT_LEVENL = 0;
+	const REPORT_LEVENL = 1;
 }

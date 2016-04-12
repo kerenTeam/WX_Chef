@@ -2,8 +2,9 @@
 header("Content-type: text/html; charset=utf-8"); 
 /**  
 * 常用工具类  
-* author Lee.  
-* Last modify $Date: 2012-8-23
+* author Lee. 
+* Last modify by Harris Aaron
+* Last modify $Date: 2016-Apr-12
 */
 class Tool {
 	/**

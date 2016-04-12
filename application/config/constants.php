@@ -95,8 +95,8 @@ defined('POSTAPI')             OR define('POSTAPI',"http://192.168.0.154/API/");
 
 defined('APPID')               OR define('APPID', 'wxa997c956cf6631b0'); 
 defined('APPSECRET')           OR define('APPSECRET', 'ee3f2a43a6c508708780dba0c5bd7393'); 
-defined('mchid')               OR define('mchid', ''); //商户号
-defined('privatekey')          OR define('privatekey', ''); //私钥
+defined('MCHID')               OR define('MCHID', ''); //商户号
+defined('PRIVATEKEY')          OR define('PRIVATEKEY', ''); //私钥
 
 
 
