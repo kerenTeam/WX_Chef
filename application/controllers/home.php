@@ -435,16 +435,16 @@ class home extends CI_Controller
 	}
 	//新增address
 	public function addressAdd2(){
+		var_Dump($_SESSION);
+		if(!isset($_SESSION['phone']) && !isset($_SESSION['openid'])){
+			echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+		}else if(isset($_SESSION['phone'])){
+		    $a['UserPhone'] = $_SESSION['phone'];
+		}else{
+			$a['UserPhone'] = $_SESSION['openid'];
+		}
 		if($_POST)
 		{
-			if(isset($_SESSION['phone']) && isset($_SESSION['openid'])){
-				echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
-			}else if(isset($_SESSION['phone'])){
-			    $a['UserPhone'] = $_SESSION['phone'];
-			}else{
-				$a['UserPhone'] = $_SESSION['openid'];
-			}
-			
 			$a['Name'] = $_POST['name'];
 			$a['Address'] = $_POST['Address'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
