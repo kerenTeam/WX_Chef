@@ -77,7 +77,7 @@ class home extends CI_Controller
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
          		break;
          	case '1':
-         		echo "<script>alert('注册成功！');    window.location.href='ucent';</script>";   //？中心
+         		echo "<script>alert('注册成功！');  window.location.href='ucent';</script>";   //？中心
          		break;	
          	case '2':
          		echo "<script>alert('该号码已注册！'); window.location.href='login2';</script>";  //？登陆
