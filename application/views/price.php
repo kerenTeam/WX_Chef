@@ -7,22 +7,23 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    西兰花
+   <?=$cainame;?>
     </h1>
     
   </header>
  
  <div class="am-text-center am-margin-vertical-lg">
     三月份&nbsp;&nbsp;&nbsp;
-    <select data-am-selected="{maxHeight: 100}">
-      <option value="b">百家菜市场</option>
-      <option value="o">中和菜市场</option>
-      <option value="m">伊藤</option>
+    <select data-am-selected="{maxHeight: 100}" name='mark'>
+    <?php foreach($mark as $val):?>
+      <option value="<?=$val['foodmarketid'];?>"><?=$val['name'];?></option>
+  <?php endforeach;?>
+     
     </select>
  </div>
 
- <div class="am-text-center am-u-sm-6">最高菜价：<i class="am-icon-cny"></i>5.5</div>
- <div class="am-text-center am-u-sm-6">最低菜价：<i class="am-icon-cny"></i>4.8</div>
+ <div class="am-text-center am-u-sm-6">最高菜价：<i class="am-icon-cny"></i><?=$max;?></div>
+ <div class="am-text-center am-u-sm-6">最低菜价：<i class="am-icon-cny"></i><?=$min;?></div>
  <script src="skin/js/Chart.js"></script>
 
 <canvas id="myChart" height="300"></canvas>
@@ -130,7 +131,7 @@
     var ctx = document.getElementById("myChart").getContext("2d");
     new Chart(ctx).Line(data,options);
 </script>
- <p class="am-text-center am-text-lg">今日价格：<i class="am-icon-cny"></i>5</p>
+ <p class="am-text-center am-text-lg">今日价格：<i class="am-icon-cny"></i><?=$price[0]['price'];?></p>
 </body>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>

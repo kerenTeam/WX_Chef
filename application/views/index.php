@@ -93,7 +93,7 @@
     <span class="div2" id="div2"> 
 
     <?php foreach($caijia as $val):?>
-    <a href="<?php echo site_url('home/price?id=').$val->vegetableid;?>"><?=$val->name?> <?=$val->price;?>元/<?=$val->unit;?></a> 
+    <a href="<?php echo site_url('home/price?id=').$val->foodmarketid."&name=".$val->name;?>"><?=$val->name?> <?=$val->price;?>元/<?=$val->unit;?></a> 
     <?php endforeach;?>
      </span><span id="div3" class="div2"></span>
   </div>
