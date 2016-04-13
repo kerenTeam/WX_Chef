@@ -32,4 +32,33 @@ class pricesearch extends CI_Controller {
 			var_dump($str);
 		}
 	}
+
+
+	public function payOrder()
+	{
+		$foodid = $this->input->post('foodid');
+    	$numbers = $this->input->post('numbers');
+    	if(!$this->input->post('couponid')){
+    		$couponid = ' ';
+    	}else{
+    		$couponid = $this->input->post('couponid');
+    	}
+    	// var_dumP($couponid);
+    	$foodOrder = array_combine($foodid,$numbers);
+    	$foodJson = array();
+		 foreach ($foodOrder as $fid => $fnums)
+        { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
+  		// print_r($foodJson) ;
+    	$foodJsondata['UserPhone'] = $this->input->post('UserPhone');
+        $foodJsondata['UserCouponId'] = $couponid;
+        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
+        $foodJsondata['PaymentMethod'] = ' ';
+        $foodJsondata['Integral'] = '0';
+        $foodJsondata['poorderentry'] = $foodJson;
+        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
+     	
+
+     	$cai = curl_post(POSTAPI."API_Poorder?dis=dd",$abc);
+     	// var_dumP($abc);
+	}
 }

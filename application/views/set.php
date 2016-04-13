@@ -7,7 +7,7 @@
         </a>
       </div>
       <h1 class="am-header-title">
-      牛仔裤的夏天
+      <?=$user[0]['username'];?>
       </h1>
       <div class="am-header-right am-header-nav">
         <input type="submit" class="setf" value="确定">
@@ -17,24 +17,28 @@
       <ul class="am-list userS">
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">头像</div>
-          <div class="am-u-sm-8"><img class="am-circle" src="skin/img/USER.jpg" alt=""></div>
+          <?php if($user[0]['userimage'] == NULL):?>
+          <div class="am-u-sm-8"><img class="am-circle" src="skin/img/vip.png" alt=""></div>
+          <?php else:?>
+          <div class="am-u-sm-8"><img class="am-circle" src="<?php echo IP.$user[0]['userimage'];?>" alt=""></div>
+          <?php endif;?>
         </li>
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">昵称</div>
           <div class="am-u-sm-8">
-            <input type="text" value="牛仔裤的夏天">
+            <input type="text" value="<?=$user[0]['username'];?>" placeholder="未填写" >
           </div>
         </li>
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">口味</div>
           <div class="am-u-sm-8">
-            <input type="text" value="未填写">
+            <input type="text" value="<?=$user[0]['personaltaste']?>"  placeholder="未填写">
           </div>
         </li>
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">热爱菜系</div>
           <div class="am-u-sm-8">
-            <select multiple data-am-selected class="vegtype">
+            <select multiple data-am-selected class="vegtype" name='likecuisine'>
               <option value="a">粤菜</option>
               <option value="b">川菜</option>
               <option value="o">鲁菜</option>

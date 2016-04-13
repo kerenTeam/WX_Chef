@@ -10,9 +10,7 @@ class home extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('option_model');
-		$this->load->model('pack_model');
-		$this->session->set_tempdata("phone",'1234567890',3600);
-
+		
 		$this->load->helper('post_helper');
 		$this->load->library('session');
 		$this->load->view('header');
@@ -301,11 +299,10 @@ class home extends CI_Controller
 	//购物车 new
 	public function cart(){
 		if(isset($_SESSION['shoping'])){
-			// echo "<pre>";
 			if($_SESSION['shoping'] == NULL){
 				$data['carts'] = '';
 				$data['taocan'] = '';
-			}
+			}else{
 			$cart = $_SESSION['shoping'];
 			foreach($cart as $k=>$v){
 				if($v['code'] == 0){
@@ -314,12 +311,11 @@ class home extends CI_Controller
 					$data['taocan'][$k] = $v;
 				}
 			}
+			}
 		}else{
 			$data['carts'] = '';
 			$data['taocan'] = '';
 		}
-		// var_dumP($list);
-		// exit;
 		$this->load->view('cart',$data);
 	}
 	// 删除购物车
@@ -336,6 +332,7 @@ class home extends CI_Controller
 			$this->session->set_userdata('shoping',$shoping,0);
 		redirect('home/cart');
 	}
+<<<<<<< HEAD
  //    //订单
  //    public function order(){
  //    	if ($_POST) {
@@ -359,6 +356,48 @@ class home extends CI_Controller
  //        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
  //        $foodJsondata['PaymentMethod'] = '';
  //        $foodJsondata['poorderentry'] = $foodJson;
+=======
+    //订单
+    public function order(){
+    	if ($_POST) {
+    		$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
+    		if(isset($_SESSION['phone'])){
+    				// 获取可用饭票
+    		$fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
+    		$data['usercoupon'] = json_decode(json_decode($fan),true);
+    		// 获取积分
+
+    		$data['jifen'] = file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']);
+    	
+    		//获取用户默认地址、
+    		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
+    		$data['address'] = json_decode(json_decode($address),true);
+
+    		}
+
+
+    		$data['booking'] = $_SESSION['booking'];
+ 			$this->load->view('order/order',$data);
+    	}
+	}
+	 //支付订单
+    public function payOrder(){
+    	$foodid = $this->input->post('foodid');
+    	$numbers = $this->input->post('numbers');
+
+    	$foodOrder = array_combine($foodid,$numbers);
+    	$foodJson = array();
+    	var_dumP($_POST);
+    	exit;
+        foreach ($foodOrder as $fid => $fnums)
+        { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
+
+        $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
+        $foodJsondata['UserCouponId'] = $this->input->post('UserCouponId');
+        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
+        $foodJsondata['PaymentMethod'] = '';
+        $foodJsondata['poorderentry'] = $foodJson;
+>>>>>>> 075eec8833139f36ae634f95bb6db2eefdf43b43
        
  //        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
      
@@ -398,15 +437,27 @@ class home extends CI_Controller
 	 }
 	//个人设置
 	public function set(){
+		if(isset($_SESSION['phone'])){
+			if($_SESSION != NULL){
 
-		$this->load->view('set');
+
+			$userinfo = file_get_contents(POSTAPI.'API_User?dis=ckxx&UserPhone='.$_SESSION['phone']);
+			$data['user'] = json_decode(json_decode($userinfo),true);
+			}else{
+				$data['user'] = '';
+			}
+			$this->load->view('set',$data);
+		}else{
+			echo "<script>alert('你还没有登陆!');window.location.href='login2';</script>";
+		}
+		
 	}
     //搜索
     public function search(){
     	if($_POST){
     		$q = $_POST['search'];
-    		// var_Dump($q);
-    		$search = file_get_contents(POSTAPI."API_Food?dis=ss&name=".$q);
+    		$search = file_get_contents(POSTAPI."API_Food?dis=ss&foodid=".$q);
+
     		$data['search'] = json_decode(json_decode($search));
     		$this->load->view('search',$data);
     	}else{
@@ -422,7 +473,18 @@ class home extends CI_Controller
 	}
     //订单记录
     public function orderR(){
-
+    	if(isset($_SESSION['phone'])){
+    		if(empty($_SESSION['phone'])){
+    			$data['record'] = '';
+    		}else{
+    			// echo "<pre>";
+    			$isok = file_get_contents(POSTAPI.'API_Poorder?dis=dd&UserPhone='.$_SESSION['phone']);
+    			$data['record'] = json_decode(json_decode($isok),true);
+    			// var_dump($data);
+    		}
+    	}else{
+    		$data['record'] = '';
+    	}
 		$this->load->view('orderRecord');
 	}
    //订单详情
@@ -448,7 +510,7 @@ class home extends CI_Controller
 	}
 	//地址管理
 	public function address2(){
-		if(isset($_SESSION['phone']) || isset($_SESSION['openid'])){
+		if(isset($_SESSION['phone'])){
 			$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
 			$data['address'] = json_decode(json_decode($address),true);
 		}else{
@@ -458,12 +520,10 @@ class home extends CI_Controller
 	}
 	//新增address
 	public function addressAdd2(){
-		if(isset($_SESSION['phone']) && isset($_SESSION['openid'])){
+		if(!isset($_SESSION['phone'])){
 			echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
-		}else if(isset($_SESSION['phone'])){
-		    $a['UserPhone'] = $_SESSION['phone'];
 		}else{
-			$a['UserPhone'] = $_SESSION['openid'];
+		    $a['UserPhone'] = $_SESSION['phone'];
 		}
 		if($_POST)
 		{
@@ -590,8 +650,26 @@ class home extends CI_Controller
 
 	//菜价
 	public function price(){
-
-		$this->load->view('price');
+		if($_GET){
+			$id['foodmarketid'] = $_GET['id'];
+			$id['name'] = $_GET['name'];
+			$vegetableid = json_encode($id);
+			$isok = curl_post(POSTAPI."API_Vegetable?dis=foodxc",$vegetableid);
+			$a = json_decode(json_decode($isok),true);
+			for ($i=0; $i <count($a) ; $i++) { 
+				$c[$i] = $a[$i]['price'];
+			}
+			$max= array_search(max($c), $c);
+			$min= array_search(min($c), $c);
+			$data['max'] = $c[$max];
+			$data['min'] = $c[$min];
+			$data['price'] = $a;
+			$mark = file_get_contents(POSTAPI."API_FoodMarket");
+			$data['mark'] = json_decode(json_decode($mark),true);
+			//var_dumP($data);
+			$data['cainame'] = $_GET['name'];
+			$this->load->view('price',$data);
+			}
 	}
 	//意见反馈
 	public function message(){
