@@ -157,7 +157,8 @@
     </form>
     <!-- 支付方式弹框 -->
     <div class="tkp" style="display: none">
-    <div class="am-shadow fpa payway">
+    </div>
+    <div class="am-shadow fpa payway" style="display: none">
       <p class="htit sad red"><span class="am-icon-usd"></span> 支付方式</p>
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">会员卡支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
@@ -165,23 +166,28 @@
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
     </div>
-    </div>
+    
   </body>
  <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
  <script>
      
       $(function(){
-         
+         // 弹出支付选项弹框
          $('#pay').click(function() {
-          //$('.tkp').css('display','');
           $('body').css('overflow-y','hidden');
-          $('.tkp').fadeIn(400);
+          $('.tkp,.payway').fadeIn(400);
         });
+         //隐藏弹框
          $('.tkp').click(function() { 
           $('body').css('overflow-y','auto');
-          $('.tkp').fadeOut(400); 
+          $('.tkp,.payway').fadeOut(400); 
         });
+         //点击选项后隐藏弹框并调用支付接口
+         $('.payway a').click(function() {
+           $('.tkp,.payway').fadeOut(400);
+           
+         });
 
         $('.fclick').click(function() {
           console.log('.fclick');

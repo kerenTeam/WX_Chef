@@ -341,6 +341,13 @@ body {
     top: 0;
     background:rgba(0,0,0,0.3);
 }
+.payway{
+	position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index:999999;
+}
 .payway a{
 	padding: 8px 10px;
     font-size: 14px;
