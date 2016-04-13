@@ -1,112 +1,6 @@
-<?php 
-ini_set('date.timezone','Asia/Shanghai');
-//打印输出数组信息
-function printf_info($data)
-{
-    foreach($data as $key=>$value){
-        echo "<font color='#00ff55;'>$key</font> : $value <br/>";
-    }
-}
-
-//①、获取用户openid
-$tools = new JsApiPay();
-$openId = $tools->GetOpenid();
-//②、统一下单
-$input = new WxPayUnifiedOrder();
-$input->SetBody("test");
-$input->SetAttach("test");
-$input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-$input->SetTotal_fee("1");
-$input->SetTime_start(date("YmdHis"));
-$input->SetTime_expire(date("YmdHis", time() + 600));
-$input->SetGoods_tag("test");
-$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
-$input->SetTrade_type("JSAPI");
-$input->SetOpenid($openId);
-$order = WxPayApi::unifiedOrder($input);
-// echo '<font color="#f00"><b>统一下单支付单信息</b></font><br/>';
-// printf_info($order);
-$jsApiParameters = $tools->GetJsApiParameters($order);
-
-//获取共享收货地址js函数参数
-$editAddress = $tools->GetEditAddressParameters();
-
-//③、在支持成功回调通知中处理成功之后的事宜，见 notify.php
-/**
- * 注意：
- * 1、当你的回调地址不可访问的时候，回调通知会失败，可以通过查询订单来确认支付是否成功
- * 2、jsapi支付时需要填入用户openid，WxPay.JsApiPay.php中有获取openid流程 （文档可以参考微信公众平台“网页授权接口”，
- * 参考http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html）
- */
-?>
-    <script type="text/javascript">
-  //调用微信JS api 支付
-  function jsApiCall()
-  {
-    WeixinJSBridge.invoke(
-      'getBrandWCPayRequest',
-      <?php echo $jsApiParameters; ?>,
-          function(res)
-          {
-            WeixinJSBridge.log(res.err_msg);
-            if (res.err_msg == "get_brand_wcpay_request:ok")
-            { makeform.submit();}
-            else if (res.err_msg == "get_brand_wcpay_request:cancel")
-            { alert("已取消微信支付,你可选择其他支付或线下付款");}
-          }
-    );
-  }
-
-  function callpay()
-  {
-    if (typeof WeixinJSBridge == "undefined"){
-        if( document.addEventListener ){
-            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
-        }else if (document.attachEvent){
-            document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
-            document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
-        }
-    }else{
-        jsApiCall();
-    }
-  }
-  </script>
-  <script type="text/javascript">
-  //获取共享地址
-  function editAddress()
-  {
-    WeixinJSBridge.invoke(
-      'editAddress',
-      <?php echo $editAddress; ?>,
-      function(res){
-        var value1 = res.proviceFirstStageName;
-        var value2 = res.addressCitySecondStageName;
-        var value3 = res.addressCountiesThirdStageName;
-        var value4 = res.addressDetailInfo;
-        var tel = res.telNumber;
-        
-        alert(value1 + value2 + value3 + value4 + ":" + tel);
-      }
-    );
-  }
-  
-  window.onload = function(){
-    if (typeof WeixinJSBridge == "undefined"){
-        if( document.addEventListener ){
-            document.addEventListener('WeixinJSBridgeReady', editAddress, false);
-        }else if (document.attachEvent){
-            document.attachEvent('WeixinJSBridgeReady', editAddress); 
-            document.attachEvent('onWeixinJSBridgeReady', editAddress);
-        }
-    }else{
-      editAddress();
-    }
-  };
-  
-  </script>
-
- <!------------------  微信支付 END  ------------------>
-
+<style>
+   
+</style>
 <body>
   <!-- header -->
   <header data-am-widget="header" am-header-fixed class="am-header am-header-default topform">
@@ -143,7 +37,30 @@ $editAddress = $tools->GetEditAddressParameters();
       </ul>
      </div>
          <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
- 
+   <!-- <div class="am-shadow am-margin-vertical-sm">
+      <p class="htit"><span class="am-icon-usd red"> </span> 支付方式</p>
+      <div class="am-g pay am-cf">
+
+        <label class="am-checkbox am-success am-u-sm-6">
+          <input type="checkbox" class="v" name="radio10" value="" data-am-ucheck> 会员卡
+        </label>
+        <label class="am-checkbox am-success am-u-sm-6 wxradio">
+          <input type="checkbox" class="zk" name="radio10" value="" data-am-ucheck> 现金
+        </label>
+      </div>
+      <div class="am-g pay am-cf">
+        <label class="am-checkbox am-success am-u-sm-6">
+          <input type="checkbox" class="zk fp" name="radio10" value="" data-am-ucheck> 饭票
+        </label>
+        <label class="am-checkbox am-success am-u-sm-6 wxradio">
+          <input type="checkbox" class="zk" name="radio10" value="" data-am-ucheck> 积分
+        </label>
+      </div>
+      <div class="red am-text-sm am-margin-left-sm zkt">亲，选择饭票、现金、积分支付可享受折扣优惠哦！</div>
+    </div>-->
+    
+
+    
     <div class="am-shadow am-margin-vertical-sm fpa2">
       <?php $_SESSION['openid'] = 18081322659;
 
@@ -236,6 +153,7 @@ $editAddress = $tools->GetEditAddressParameters();
       
       <!-- <a href="<?php echo site_url('home/payOrder')?>" class="am-u-sm-12 am-btn bgreen os">下一步</button> -->
       <button type="button" class="am-u-sm-12 am-btn bgreen os" id="pay">支付</button>
+      
     </form>
     <!-- 支付方式弹框 -->
     <div class="tkp" style="display: none">
@@ -244,7 +162,7 @@ $editAddress = $tools->GetEditAddressParameters();
       <p class="htit sad red"><span class="am-icon-usd"></span> 支付方式</p>
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">会员卡支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a  onclick="callpay()" href="javascript:;" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
     </div>

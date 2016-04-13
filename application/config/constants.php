@@ -85,8 +85,8 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 defined('randNms')             OR define('randNms', rand(100000,999999)); //长度为6位的随机数
 
-defined('IP')                  OR define('IP','http://192.168.0.154');
-defined('POSTAPI')             OR define('POSTAPI',"http://192.168.0.154/API/");
+defined('IP')                  OR define('IP','http://211.149.195.183:88');
+defined('POSTAPI')             OR define('POSTAPI',"http://211.149.195.183:88/API/");
 
 
 
@@ -94,7 +94,7 @@ defined('POSTAPI')             OR define('POSTAPI',"http://192.168.0.154/API/");
 defined('APPID')               OR define('APPID', 'wxa997c956cf6631b0'); 
 defined('APPSECRET')           OR define('APPSECRET', 'ee3f2a43a6c508708780dba0c5bd7393'); 
 defined('MCHID')               OR define('MCHID', '1254100101'); //商户号
-defined('PRIVATEKEY')          OR define('PRIVATEKEY', 'krrj65290246krrj65290246krrj65290246'); //私钥
+defined('PRIVATEKEY')          OR define('PRIVATEKEY', 'qwertyuiopasdfghjklzxcvbnmqwerty'); //私钥
 
 
 
