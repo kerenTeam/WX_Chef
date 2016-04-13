@@ -3,13 +3,14 @@
  * @Author: Harris-Aaron
  * @Date:   2016-04-12 10:31:05
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-04-12 15:52:34
+ * @Last Modified time: 2016-04-13 10:46:23
  */
 
 class WeChat extends WxApi{
-    public $token = "IBM Group";
+    //TODO $token ==>开发－>基本配置－>Token
+    public $token = "Chef";
     //put your code here
-    public function __construct($token = "") {
+    public function __construct($token) {
         parent::__construct();
         $this->token = $token;
     }
@@ -82,7 +83,7 @@ class WeChat extends WxApi{
                 $Event = $postObj->Event;
                 switch ($Event) {
                     case 'subscribe'://关注
-                        $contentStr = "你好，欢迎关注途悦！";
+                        $contentStr = "你好，欢迎大厨到家！";
                         break;
                     case 'unsubscribe'://取消关注
                         break;
@@ -94,7 +95,7 @@ class WeChat extends WxApi{
                         switch ($object->EventKey)
                                         {
                                             case "company":
-                                                $contentStr[] = array("Title" =>"联系途悦", 
+                                                $contentStr[] = array("Title" =>"联系我们", 
                                                 "Description" =>"联系我们：
                                                                         您在途悦商城和时间银行的使用中遇到任何问题或有任何疑问，
                                                                         欢迎随时致电联系我们：028-86283456

@@ -3,7 +3,7 @@
 </style>
 <body>
   <!-- header -->
-  <header data-am-widget="header" class="am-header am-header-default topform">
+  <header data-am-widget="header" am-header-fixed class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
       <a href="javascript:" onclick="javascript:history.go(-1);">
         <i class="am-header-icon am-icon-chevron-left"></i>
@@ -13,7 +13,7 @@
     支付订单
     </h1>
   </header>
-  <form action="<?php echo site_url('home/payOrder')?>" method="post">
+  <form action="<?php echo site_url('home/payOrder')?>" method="post"> 
 
     <div class="am-list-news-bd">
       <ul class="am-list odl">
@@ -101,7 +101,7 @@
       
       <?php $integral = json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']));?>
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">200积分已抵用 <span class="am-icon-cny">30</span></span></a>
-      <a href="javascript:;" class="am-cf adc">金额<span class="am-fr am-icon-xs am-icon-cny red">10</span></a>
+      <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red">10</span></a>
 
     </div>
     
@@ -152,14 +152,43 @@
       </div>
       
       <!-- <a href="<?php echo site_url('home/payOrder')?>" class="am-u-sm-12 am-btn bgreen os">下一步</button> -->
-      <button type="submit" class="am-u-sm-12 am-btn bgreen os">下一步</button>
+      <button type="button" class="am-u-sm-12 am-btn bgreen os" id="pay">支付</button>
       
     </form>
+    <!-- 支付方式弹框 -->
+    <div class="tkp" style="display: none">
+    </div>
+    <div class="am-shadow fpa payway" style="display: none">
+      <p class="htit sad red"><span class="am-icon-usd"></span> 支付方式</p>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">会员卡支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+    </div>
+    
   </body>
  <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
  <script>
+     
       $(function(){
+         // 弹出支付选项弹框
+         $('#pay').click(function() {
+          $('body').css('overflow-y','hidden');
+          $('.tkp,.payway').fadeIn(400);
+        });
+         //隐藏弹框
+         $('.tkp').click(function() { 
+          $('body').css('overflow-y','auto');
+          $('.tkp,.payway').fadeOut(400); 
+        });
+         //点击选项后隐藏弹框并调用支付接口
+         $('.payway a').click(function() {
+           $('.tkp,.payway').fadeOut(400);
+           
+         });
+
         $('.fclick').click(function() {
           console.log('.fclick');
            $('#fpc').slideToggle(400);          
@@ -168,7 +197,9 @@
           $('#fpc').slideUp(400);
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<span class="am-icon-cny">'+$(this).find('.am-icon-cny').html()+'</span></span>');
         });
+     
       })
+
     </script>
 
 </html>
