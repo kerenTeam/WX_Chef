@@ -341,7 +341,7 @@ class home extends CI_Controller
     		$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
     	}
     	$data['booking'] = $_SESSION['booking'];
- 		$this->load->view('order',$data);
+ 		$this->load->view('order/order',$data);
 	}
 	 //支付订单
     public function payOrder(){
