@@ -92,7 +92,7 @@
       </ul>
      </div>
               <!--------------------这里是我的优惠劵ID------------------------>
-             <input type="hidden" name="UserCouponId" value="<?php echo $UserCoupondata[0]->couponid;?>">
+             <input type="hidden" name="UserCouponId" value="<?php echo $UserCoupondata[0]['couponid'];?>">
             
 
       <?php endif ?>

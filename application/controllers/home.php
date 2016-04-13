@@ -100,6 +100,7 @@ class home extends CI_Controller
 		$data['cates'] = json_decode(json_decode($catejson),true);
 		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=d');
 		$data['foods'] = json_decode(json_decode($foodjson),true);
+
 		$this->load->view('cailan',$data);
 	}
 	//点菜
@@ -145,7 +146,6 @@ class home extends CI_Controller
 		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=xq&foodid='.$id);
 		$data['foods'] = json_decode(json_decode($foodjson),true);
 		// 产品图片
-
 		$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 		$data['foodspic'] = json_decode(json_decode($foodpic),true);
 		$this->load->view('food',$data);
@@ -202,17 +202,25 @@ class home extends CI_Controller
 			if($_POST){
 				$foodid = $_POST['foodid'];
 				$numbers = $_POST['numbers'];
-				$cards = array_combine($foodid,$numbers);  //重组数组	
-				$data = array_filter($cards); //过滤空值
-					$shopid = rand(1,100);
-					foreach($data as $key=>$val){
-						$a['foodid']= $key;
-						$a['number'] = $val;
-						$a['shopid'] = $shopid;
-						$a['time'] = date('Y-m-d H:i:s');
+				$code = $_POST['code'];
+				$data = array();
+				foreach($foodid as $k=>$v){
+					$data[$k]['foodid'] = $foodid[$k];	
+					$data[$k]['numbers'] = $numbers[$k];	
+					$data[$k]['code'] = $code[$k];	
+				}
+				$arr = array_no_empty($data);
+				// var_dump($a);
+				$shopid = rand(1,100);
+				foreach($arr as $key=>$val){
+						$a['foodid']= $val['foodid'];
+						$a['number']= $val['numbers'];
+						$a['code']= $val['code'];
+						$a['shopid']= $shopid;
+						$a['time']= date('Y-m-d H:i:s');
 						$c[] = $a;
-					}
-					if(isset($_SESSION['shoping'])){
+				}
+				if(isset($_SESSION['shoping'])){
 						$shoping = $_SESSION['shoping'];
 					}else{
 						$shoping = NULL;
@@ -237,15 +245,17 @@ class home extends CI_Controller
 	public function foodaddcart(){
 		// var_Dump($_POST);
 		if($_POST){
+
 			$foodid = trim($_POST['foodid']);
 			$shopid = $_POST['shopid'];
 			$number = $_POST['numbers'];
-			var_dump($number);
+			$code = $_POST['code'];
 			if($shopid == NULL){
 				$shopid = rand(1,100);
 				$data['foodid'] = $foodid;
 				$data['number'] = $number;
 				$data['shopid'] = $shopid;
+				$data['code'] = $code;
 				$data['time'] = date('Y-m-d H:i:s');
 				$c[] = $data;
 				if(isset($_SESSION['shoping'])){
@@ -290,12 +300,26 @@ class home extends CI_Controller
 	//购物车 new
 	public function cart(){
 		if(isset($_SESSION['shoping'])){
-			$list['carts'] = $_SESSION['shoping'];
+			// echo "<pre>";
+			if($_SESSION['shoping'] == NULL){
+				$data['carts'] = '';
+				$data['taocan'] = '';
+			}
+			$cart = $_SESSION['shoping'];
+			foreach($cart as $k=>$v){
+				if($v['code'] == 0){
+					$data['carts'][$k] = $v;
+				}else{
+					$data['taocan'][$k] = $v;
+				}
+			}
 		}else{
-			$list['carts'] = '';
+			$data['carts'] = '';
+			$data['taocan'] = '';
 		}
-		
-		$this->load->view('cart',$list);
+		// var_dumP($list);
+		// exit;
+		$this->load->view('cart',$data);
 	}
 	// 删除购物车
 	function delcart(){
@@ -313,11 +337,11 @@ class home extends CI_Controller
 	}
     //订单
     public function order(){
-    	if ($_POST) {$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
+    	if ($_POST) {
+    		$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
     	}
     	$data['booking'] = $_SESSION['booking'];
  		$this->load->view('order',$data);
-    	
 	}
 	 //支付订单
     public function payOrder(){
@@ -406,7 +430,7 @@ class home extends CI_Controller
 	}
 	//优惠券
     public function card(){
-    	if(isset($_SESSION['phone']) || isset($_SESSION['openid'])){
+    	if(isset($_SESSION['phone'])){
     		$card =file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
   
     		$data['cards'] = json_decode(json_decode($card),true);

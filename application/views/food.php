@@ -22,6 +22,8 @@
         <p class="am-text-sm"><strong>简介：</strong><?=$foods[0]['blurb'];?></p>
         
         <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]['foodprice'];?></span></div>
+
+          <input type="hidden" name='code' value="<?php if ($foods[0]['code'] == 1999){echo "1";}else{echo "0";}?>">
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
           <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if($number){echo $number;}else{echo "0";}?>">

@@ -23,5 +23,14 @@
 	}
 
   
-
+function array_no_empty($arr) {
+            if (is_array($arr)) {
+                foreach ( $arr as $k => $v ) {
+                    if ($v['numbers'] == 0){
+                      unset($arr[$k]);
+                    }
+                }
+            }
+            return $arr;
+        }
 ?>
