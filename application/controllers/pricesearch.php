@@ -18,13 +18,18 @@ class pricesearch extends CI_Controller {
 		$json = json_encode($arr);
 		$cai = curl_post(POSTAPI."API_Vegetable?dis=xc",$json);
 		$data = json_decode(json_decode($cai),true);
-		$str ='';
-		for ($i=0; $i < count($data); $i++) { 
-			$str .="<tr><td>".$data[$i]['name']."</td>";
-            $str .="<td>1".$data[$i]['unit']."</td>";
-            $str .="<td>".$data[$i]['price']."</td>";
+		var_dumP($data);
+		if($data == NULL){
+			var_dumP("<th>没有最新菜价！换前一天试试。</th>");
+		}else{
+			$str ='';
+			for ($i=0; $i < count($data); $i++) { 
+				$str .="<tr><td>".$data[$i]['name']."</td>";
+	            $str .="<td>1".$data[$i]['unit']."</td>";
+	            $str .="<td>".$data[$i]['price']."</td>";
+			}
+			$str .= "</tr>";
+			var_dump($str);
 		}
-		$str .= "</tr>";
-		var_dump($str);
 	}
 }
