@@ -11,7 +11,8 @@ class home extends CI_Controller
 		parent::__construct();
 		$this->load->model('option_model');
 		$this->load->model('pack_model');
-		
+		$this->session->set_tempdata("phone",'1234567890',3600);
+
 		$this->load->helper('post_helper');
 		$this->load->library('session');
 		$this->load->view('header');
