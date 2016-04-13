@@ -430,8 +430,8 @@ class home extends CI_Controller
     public function search(){
     	if($_POST){
     		$q = $_POST['search'];
-    		// var_Dump($q);
-    		$search = file_get_contents(POSTAPI."API_Food?dis=ss&name=".$q);
+    		$search = file_get_contents(POSTAPI."API_Food?dis=ss&foodid=".$q);
+
     		$data['search'] = json_decode(json_decode($search));
     		$this->load->view('search',$data);
     	}else{
@@ -447,7 +447,18 @@ class home extends CI_Controller
 	}
     //订单记录
     public function orderR(){
-
+    	if(isset($_SESSION['phone'])){
+    		if(empty($_SESSION['phone'])){
+    			$data['record'] = '';
+    		}else{
+    			// echo "<pre>";
+    			$isok = file_get_contents(POSTAPI.'API_Poorder?dis=dd&UserPhone='.$_SESSION['phone']);
+    			$data['record'] = json_decode(json_decode($isok),true);
+    			// var_dump($data);
+    		}
+    	}else{
+    		$data['record'] = '';
+    	}
 		$this->load->view('orderRecord');
 	}
    //订单详情
@@ -473,7 +484,7 @@ class home extends CI_Controller
 	}
 	//地址管理
 	public function address2(){
-		if(isset($_SESSION['phone']) || isset($_SESSION['openid'])){
+		if(isset($_SESSION['phone'])){
 			$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
 			$data['address'] = json_decode(json_decode($address),true);
 		}else{

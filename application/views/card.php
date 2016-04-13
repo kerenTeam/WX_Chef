@@ -44,12 +44,7 @@
     </ul>
   </div>
   <?php else:?>
-  
-   <li class="am-g pflist">
-    <img  class="am-block" src="skin/img/nocard.jpg" alt="">
-    暂无可用饭票！
-  </li>
-  
+    <div>你还没有饭票！</div>
   <?php endif;?>
     </ul>
   </div>

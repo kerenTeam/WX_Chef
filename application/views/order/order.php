@@ -13,7 +13,7 @@
     支付订单
     </h1>
   </header>
-  <form action="<?php echo site_url('home/payOrder')?>" method="post"> 
+  <form action="<?php echo site_url('home/payOrder')?>" id='formorder' method="post"> 
 
     <div class="am-list-news-bd">
       <ul class="am-list odl">
@@ -68,8 +68,7 @@
 
     </div>
     
-      <input type="hidden" name="UserPhone" value="<?php  if (!empty($_SESSION['phone'])) { echo $_SESSION['phone']; } else { echo $_SESSION['openid']; } ?>">
-     <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
+      <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
 
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
@@ -79,6 +78,8 @@
       <div class="am-list-news-bd">
          <?php if(empty($address)):?>
          <!--   <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a> -->
+           <input type="hidden" name="UserPhone" value="123456789"/>
+
            <div class="am-g ammake">
               <div class="am-u-md-8 am-u-sm-centered">
                 <form class="am-form afcheck" action="<?=site_url('home/addressAdd2');?>" method="post">
@@ -86,6 +87,8 @@
               </div>
             </div>
          <?php else:?>
+            <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
+   
                  <!-- 已添加过地址 -->
                  <ul class="am-list odl">
                       <li class="am-g am-list-item-dated lpt2">
@@ -108,11 +111,11 @@
     </div>
     <div class="am-shadow fpa payway" style="display: none">
       <p class="htit sad red"><span class="am-icon-usd"></span> 支付方式</p>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">会员卡支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="javascript:" class="am-cf adc" onclick="getorders();">会员卡支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" onclick="getorders();" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" onclick="getorders();" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" onclick="getorders();" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" onclick="getorders();" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
     </div>
     
   </body>
@@ -131,6 +134,9 @@
       $(function(){
          // 弹出支付选项弹框
          $('#pay').click(function() {
+            
+           
+
           $('body').css('overflow-y','hidden');
           $('.tkp,.payway').fadeIn(400);
         });
@@ -162,12 +168,18 @@
         });
      
       })
-
+function getorders(){
+            $.ajax({
+               type: "POST",
+               url: "<?=site_url('pricesearch/payOrder');?>",
+               data: $('#formorder').serialize(),
+               success: function(msg){
+                  console.log(msg);
+               }
+            });
+}
      
 
     </script>
-<script>
-// {"UserPhone":"18081322659","UserCouponId":"asfdasf","MenberAddressId":"4d84d145-9e79-405e-a632-44b8bba8e04d","PaymentMethod":"dasfdsfdsf","poorderentry":[{"FoodId":"5EE6A236-71DD-426E-B65D-8BBD175B6916 ","FoodNumber":"1"},{"FoodId":"2423996A-EB3A-CB4A-B817-C9EB8A2A8BE6 ","FoodNumber":"2"},{"FoodId":"071A8C13-EC4E-3ED2-AE06-1CAFBA564A04 ","FoodNumber":"2"},{"FoodId":"1D719C9D-0755-3402-21E9-2B4D451CEE5F ","FoodNumber":"1"}]}
 
-</script>
 </html>
