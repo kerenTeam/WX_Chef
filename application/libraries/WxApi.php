@@ -10,8 +10,8 @@
     class WxApi {
         const appId         = APPID;
         const appSecret     = APPSECRET;
-        const mchid         = ""; //商户号
-        const privatekey    = ""; //私钥
+        const mchid         = MCHID; //商户号
+        const privatekey    = PRIVATEKEY; //私钥
         public $parameters  = array();
         public $jsApiTicket = NULL;
         public $jsApiTime   = NULL;
