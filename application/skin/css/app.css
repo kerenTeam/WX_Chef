@@ -37,7 +37,7 @@ body {
 	position:absolute;
 	width:1px;
 	border:1px dotted white;
-	right:10px;
+	right:5px;
 	top:0;
 	bottom:0;
 }
@@ -1281,6 +1281,12 @@ figure a:hover figcaption {
 }
 
 @media only screen and (max-width:414px) {
+.fpc{
+	right:16px;
+}
+.acr .am-u-sm-6 .gray{
+    margin-top: -5px;
+}
 .typec+ul>li a {
 	padding: 1.3rem 1rem;
 	font-size: 14px;
@@ -1305,9 +1311,12 @@ figure a:hover figcaption {
 .moa{
     margin-top: 4px;
 }
-	
+.acr .am-u-sm-6 .gray{
+    margin-top: 7px;
+}	
 	.fpc{
-	  left: 5px!important;
+	      left: 3px!important;
+    width: 85%;
 	}
 .cardbtn {
 	margin-top: 19%;
@@ -1373,6 +1382,7 @@ figure a:hover figcaption {
     top: 13px;
     left: 4px!important;
     padding: 0px;
+    width:83%;
 
 }
 .fpr:before {
@@ -1383,6 +1393,12 @@ figure a:hover figcaption {
     right: 6px;
     top: 0;
     bottom: 0;
+}
+.acr .am-u-sm-3{
+	width:28%!important;
+}
+.acr .am-u-sm-6{
+	width:43%!important;
 }
 .vimg {
 	width: 5.5rem;
