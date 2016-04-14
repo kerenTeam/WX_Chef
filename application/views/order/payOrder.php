@@ -16,7 +16,8 @@ $input = new WxPayUnifiedOrder();
 $input->SetBody("大厨到家");
 $input->SetAttach("大厨到家－微信支付");
 $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-$input->SetTotal_fee("1");
+$yfje = $_SESSION['yfje'];
+$input->SetTotal_fee(sprintf( "%.1f ",$yfje/100));
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("大厨到家－微信支付");
@@ -41,7 +42,7 @@ $editAddress = $tools->GetEditAddressParameters();
           {
             WeixinJSBridge.log(res.err_msg);
             if (res.err_msg == "get_brand_wcpay_request:ok")
-            { alert('OK!'); makeformToPayOrder.submit();}
+            { makeformToPayOrder.submit();}
             else if (res.err_msg == "get_brand_wcpay_request:cancel")
             { alert("已取消微信支付,你可选择其他支付或线下付款");}
           }
@@ -114,18 +115,19 @@ $editAddress = $tools->GetEditAddressParameters();
       <ul class="am-list odl">
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd">订单金额</a>
-          <span class="am-list-date red"><i class="am-icon-cny atf">10</i></span>
+          <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo sprintf( "%.1f ",$yfje); ?></i></span>
         </li> 
         <li class="am-g am-list-item-dated preduce">
           <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd"><img src="skin/img/vp.png" class="payimg" alt="">会员卡支付
             <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
           </a>
         </li>
-        
+
+        <!------------------------ 订单数据在此盛放 ---------------------->
+        <input type="hidden" name="OrderAllData" value="<?php echo $_SESSION['OrderAllData'];?>">
+
       </ul>
      </div>
-     <h1>2134567890</h1>
-     <h1>2134567890</h1>
      <div class="am-shadow fpa preduce">
       <p class="htit sad">其他支付方式</p>
  
