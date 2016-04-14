@@ -40,17 +40,14 @@ class orderWXPay extends CI_Controller{
 //支付订单
 	public function payOrder()
 	{
-    
-
 		$foodid = $this->input->post('foodid');
     	$numbers = $this->input->post('numbers');
-        echo "<pre>";
-        // var_dumP($_POST);
+    	var_dump($_POST);
+    	//var_dump($numbers);
     	$foodOrder = array_combine($foodid,$numbers);
     	$foodJson = array();
 		 foreach ($foodOrder as $fid => $fnums)
         { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
-
         $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
         $_SESSION['temporaryOrder'] = $this->input->post('UserPhone');
         $foodJsondata['name'] = $this->input->post('name');
@@ -64,20 +61,27 @@ class orderWXPay extends CI_Controller{
         $foodJsondata['PaymentMethod'] = ' ';
         $foodJsondata['Integral'] = '0';
         $foodJsondata['poorderentry'] = $foodJson;
-        var_dump($foodJsondata);
-        exit;
-
-        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));     	
-        // 
-        $this->load->view('order/payOrder');
+        //将order所有数据转为josn
+        $_SESSION['OrderAllData']  = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
+        //得到支付金额     	
+        $_SESSION['yfje']  = $this->input->post('yfje');
+        $this->load->view('order/payOrder',$data);
 	}
 //订单支付完成,数据提交向后台	
     public function postOrderData()
-    {
-    	$cai = curl_post(POSTAPI."API_Poorder?dis=dd",$abc);
-     	// $_info = '订单已确定,请稍作等待！';
-     	// $_url  = site_url('home/');
-     	// alertLocation($_info, $_url);
+    {	
+    	$cai = curl_post(POSTAPI."API_Poorder?dis=dd",$_SESSION['OrderAllData']);
+        $_SESSION['shoping']       = '';
+        $_SESSION['booking']       = '';
+        $_SESSION['postBooking']   = '';
+        echo "<pre>";
+        var_dump($OrderAllData);
+        var_dump($cai);
+        var_dump($_SESSION);
+        echo "</pre>";
+        exit;
+
+     	redirect('home/index');
     }
 }
  ?>

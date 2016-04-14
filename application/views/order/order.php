@@ -13,7 +13,7 @@
     </h1>
   </header>
 
-  <form action="<?php echo site_url('orderWXPay/payOrder')?>"  method="post"> 
+  <form action="<?php echo site_url('orderWXPay/payOrder');?>"  method="post"> 
     <div class="am-list-news-bd">
       <ul class="am-list odl">
 <?php foreach ($booking as $k => $value): ?>
