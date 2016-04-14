@@ -53,6 +53,7 @@ class orderWXPay extends CI_Controller{
      	$cai = curl_post(POSTAPI."API_Poorder?dis=dd",$abc);
      	var_dumP($abc);
      	alert('订单已确定,请稍作等待！');
+      //  $this->load->view('payOrder');
 	}
 }
  ?>
