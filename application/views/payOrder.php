@@ -17,21 +17,21 @@
           <a href="javascript:" class="am-list-item-hd">订单金额</a>
           <span class="am-list-date"><i class="am-icon-cny atf">10</i></span>
         </li> 
-        <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd">会员卡支付
+        <li class="am-g am-list-item-dated preduce">
+          <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd"><img src="skin/img/vp.png" class="payimg" alt="">会员卡支付
             <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
           </a>
         </li>
         
       </ul>
      </div>
-     <div class="am-shadow fpa">
+     <div class="am-shadow fpa preduce">
       <p class="htit sad"><span class="am-icon-usd red"></span> 其他支付方式</p>
  
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><!-- <img src="skin/img/ap.png" class="payimg" alt=""> --> <span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       </div>
     </form>
   </body>
