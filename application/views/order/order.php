@@ -60,7 +60,7 @@
    <?php if(empty($jifen)):?>
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">你还没有积分!</span></a>
     <?php else:?>
-       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">300积分已抵用 <span class="am-icon-cny" id='jifenmoney'>30</span></span></a>
+       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">300积分已抵用 <span class="am-icon-cny" id='jifenmoney'>30</span> <input type="checkbox" id="jifen"></span></a>
     <?php endif;?>
 
       <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red" id='pricetotal'><?php echo array_sum($pricetotal);?></span></a>
@@ -157,12 +157,16 @@
           $('#fpc').slideUp(400);
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
 
-         
-          var discount = $('#youhui').text();
+         if($('#jifen').prop("checked")){
+           var discount = $('#youhui').text();
           payable = amount - discount - jifenmoney;
           $('#pricetotal').text(payable);
     
-
+        }else {
+          var discount = $('#youhui').text();
+          payable = amount - discount;
+          $('#pricetotal').text(payable);
+       }
         });
      
       })
