@@ -303,14 +303,14 @@ class home extends CI_Controller
 				$data['carts'] = '';
 				$data['taocan'] = '';
 			}else{
-			$cart = $_SESSION['shoping'];
-			foreach($cart as $k=>$v){
-				if($v['code'] == 0){
-					$data['carts'][$k] = $v;
-				}else{
-					$data['taocan'][$k] = $v;
+				$cart = $_SESSION['shoping'];
+				foreach($cart as $k=>$v){
+					if($v['code'] == 0){
+						$data['carts'][$k] = $v;
+					}else{
+						$data['taocan'][$k] = $v;
+					}
 				}
-			}
 			}
 		}else{
 			$data['carts'] = '';
