@@ -29,7 +29,7 @@
         <!--缩略图在标题左边-->
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
-          <span class="am-fr am-text-sm">待评价</span>
+          <span class="am-fr am-text-sm state">待评价</span>
         </div>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <div class="am-u-sm-3 am-list-thumb">
@@ -112,7 +112,7 @@
         <!--缩略图在标题左边-->
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
-          <span class="am-fr am-text-sm">待付款</span>
+          <span class="am-fr am-text-sm state">待付款</span>
         </div>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <div class="am-u-sm-3 am-list-thumb">
@@ -195,7 +195,7 @@
         <!--缩略图在标题左边-->
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
-          <span class="am-fr am-text-sm">待服务</span>
+          <span class="am-fr am-text-sm state">待服务</span>
         </div>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <div class="am-u-sm-3 am-list-thumb">
@@ -243,7 +243,7 @@
         <!--缩略图在标题左边-->
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
-          <span class="am-fr am-text-sm">服务中</span>
+          <span class="am-fr am-text-sm state">服务中</span>
         </div>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <div class="am-u-sm-3 am-list-thumb">
@@ -292,7 +292,7 @@
         <!--缩略图在标题左边-->
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
-          <span class="am-fr am-text-sm">服务中</span>
+          <span class="am-fr am-text-sm state">服务中</span>
         </div>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <div class="am-u-sm-3 am-list-thumb">
@@ -340,7 +340,7 @@
         <!--缩略图在标题左边-->
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
-          <span class="am-fr am-text-sm">服务中</span>
+          <span class="am-fr am-text-sm state">服务中</span>
         </div>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <div class="am-u-sm-3 am-list-thumb">
@@ -377,7 +377,7 @@
         <!--缩略图在标题左边-->
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
-          <span class="am-fr am-text-sm">退款成功</span>
+          <span class="am-fr am-text-sm state">退款成功</span>
         </div>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <div class="am-u-sm-3 am-list-thumb">
@@ -439,11 +439,24 @@
   </div>
   <script src="skin/js/jquery.min.js"></script>
   <script src="skin/js/amazeui.min.js"></script>
-  <script>
+ <script>
   $(function(){
   $('.ana a').on('click',function(){
   $('.ana a').removeClass('current');
   $(this).addClass('current');
+  console.log($(this).text());
+  if($(this).text()!=='全部'){
+    var nav = $(this).text();
+       $('.am-list-news-bd').css('display','none');
+       $('.state').each(function(){
+            if($(this).text().substr(0,2)== nav.substr(0,2)){ 
+           $(this).parentsUntil('.am-list-news-bd').parent().css('display','');
+          } 
+       }) 
+       } 
+  else{
+    $('.am-list-news-bd').css('display','');
+  }
   
   })
   })

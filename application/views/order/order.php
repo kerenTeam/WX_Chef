@@ -1,4 +1,80 @@
 
+<<<<<<< HEAD
+=======
+//③、在支持成功回调通知中处理成功之后的事宜，见 notify.php
+/**
+ * 注意：
+ * 1、当你的回调地址不可访问的时候，回调通知会失败，可以通过查询订单来确认支付是否成功
+ * 2、jsapi支付时需要填入用户openid，WxPay.JsApiPay.php中有获取openid流程 （文档可以参考微信公众平台“网页授权接口”，
+ * 参考http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html）
+ */
+?>
+    <script type="text/javascript">
+  //调用微信JS api 支付
+  function jsApiCall()
+  {
+    WeixinJSBridge.invoke(
+      'getBrandWCPayRequest',
+      <?php echo $jsApiParameters; ?>,
+          function(res)
+          {
+            WeixinJSBridge.log(res.err_msg);
+            if (res.err_msg == "get_brand_wcpay_request:ok")
+            { alert('OK!'); makeformToPayOrder.submit();}
+            else if (res.err_msg == "get_brand_wcpay_request:cancel")
+            { alert("已取消微信支付,你可选择其他支付或线下付款");}
+          }
+    );
+  }
+
+  function callpay()
+  {
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+            document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+        }
+    }else{
+        jsApiCall();
+    }
+  }
+  </script>
+  <script type="text/javascript">
+  //获取共享地址
+  function editAddress()
+  {
+    WeixinJSBridge.invoke(
+      'editAddress',
+      <?php echo $editAddress; ?>,
+      function(res){
+        var value1 = res.proviceFirstStageName;
+        var value2 = res.addressCitySecondStageName;
+        var value3 = res.addressCountiesThirdStageName;
+        var value4 = res.addressDetailInfo;
+        var tel = res.telNumber;
+        
+        alert(value1 + value2 + value3 + value4 + ":" + tel);
+      }
+    );
+  }
+  
+  window.onload = function(){
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', editAddress, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', editAddress); 
+            document.attachEvent('onWeixinJSBridgeReady', editAddress);
+        }
+    }else{
+      editAddress();
+    }
+  };
+  
+  </script>
+>>>>>>> 8c20e651fac2657a941b9cede467ca68783d94a8
 
  <!------------------  微信支付 END  ------------------>
 
@@ -14,8 +90,8 @@
     支付订单
     </h1>
   </header>
-  <form action="<?php echo site_url('home/payOrder')?>" id='formorder' method="post"> 
 
+  <form action="<?php echo site_url('orderWXPay/payOrder')?>" id='makeformToPayOrder' method="post"> 
     <div class="am-list-news-bd">
       <ul class="am-list odl">
 <?php foreach ($booking as $k => $value): ?>
@@ -23,7 +99,7 @@
           <a href="javascript:" class="am-list-item-hd "><?php echo $value['foodname'];?> <span class="am-fr gray">X <?php echo $postBooking[$value['foodid']];?></span></a>
           <span class="am-list-date ath"><i class="am-icon-cny cc"></i><?php echo $value['foodprice'] * $postBooking[$value['foodid']]; $pricetotal[] = $value['foodprice'] * $postBooking[$value['foodid']];?> </span>
           <!-- 发送到order数据 -->
-           <!--------------------这里是我的foodID------------------------>
+           <!--------------------这里是我的foodID ------------------------>
           <input type="hidden" name="foodid[]" value="<?php echo $value['foodid'];?> ">
            <!--------------------这里是我的numbers------------------------>
           <input type="hidden" name="numbers[]" value="<?php echo $postBooking[$value['foodid']];?>">
@@ -111,12 +187,20 @@
     </div>
     <div class="am-shadow fpa payway" style="display: none">
       <p class="htit sad red"><span class="am-icon-usd"></span> 支付方式</p>
+<<<<<<< HEAD
 
       <a href="javascript:" class="am-cf adc" onclick="getorders();">会员卡支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <a href="<?php echo site_url('home/paySuccess')?>" onclick="getorders();" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <a href="<?php echo site_url('home/paySuccess')?>" onclick="getorders();" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <a href="<?php echo site_url('home/paySuccess')?>" onclick="getorders();" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <a href="<?php echo site_url('home/paySuccess')?>" onclick="getorders();" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+=======
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">会员卡支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a  onclick="callpay()" href="javascript:;" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+>>>>>>> 8c20e651fac2657a941b9cede467ca68783d94a8
     </div>
     
   </body>

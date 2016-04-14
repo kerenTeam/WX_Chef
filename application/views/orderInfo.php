@@ -1,30 +1,5 @@
 
-    <script>
-        var MT_WM = window.MT_WM || {};
-        MT_WM.TimeTracker = {rt: 1458014153648, st: Date.now()};
-        MT_WM.logFirstScreenTime = function () {
-            MT_WM.TimeTracker.fst = Date.now();
-        };
-        window.addEventListener('load', function () {
-            //保存性能时间
-            MT_WM.TimeTracker.lt = Date.now();
-        });
-        MT_WM.STATIC_ROOT = 'http://xs01.meituan.net/waimai_i/56e1569a';
-        function delayGo(u, t) {
-            setTimeout(function () {
-                if (typeof u == 'string') location = u;
-                else if (typeof u == 'function') u();
-            }, (t == null ? 300 : t));
-        }
-    </script>
- <script src="skin/js/ga.js"></script>
-
-    <link rel="stylesheet" href="skin/css/globe.css">
-
-    <link href="skin/css/orderDetail.css" rel="stylesheet"/>
-
-</head>
-<body class="i"> 
+<body> 
 
 <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
@@ -38,185 +13,287 @@
           订单详情
       </h1> 
   </header>
-
-
-
-<div id="nav" class="nav">
-    <p class="nav-wrap">
-        <span class="j-nav-item j-nav-status nav-item nav-choose">订单状态</span>
-        <span class="j-nav-item j-nav-detail nav-item">订单详情</span>
-        <label class="j-nav-bottomline nav-bottomline"></label>
-    </p>
-</div>
-
-<div id="order-status">
-    <div class="timeline">
-
-
-            <div class="timeline-item">
-                <span class="am-icon-user u pink"></span>
-
-                <div class="timeline-block">
-                    <i class="timline-block-arrow"></i>
-
-                    <p class="timeline-title">订单已提交<span
-                            class="timeline-time">16:36</span></p>
-
-                        <p class="timeline-sub">请耐心等待商家确认</p>
-                </div>
-            </div>
-                <div class="timeline-connect timeline-connect-21"></div>
-
-            <div class="timeline-item">
-                 <span class="am-icon-credit-card-alt c pink"></span>
-
-                <div class="timeline-block">
-                    <i class="timline-block-arrow"></i>
-
-                    <p class="timeline-title">支付成功<span
-                            class="timeline-time">16:38</span></p>
-
-                        <p class="timeline-sub"></p>
-                </div>
-            </div>
-                <div class="timeline-connect timeline-connect-12"></div>
-
-            <div class="timeline-item">
-                <span class="am-icon-home h pink"></span>
-                <div class="timeline-block">
-                    <i class="timline-block-arrow"></i>
-
-                    <p class="timeline-title">商家已接单<span
-                            class="timeline-time">16:38</span></p>
-
-                        <p class="timeline-sub">商品准备中</p>
-                </div>
-            </div>
-                <div class="timeline-connect timeline-connect-21"></div>
-
-            <div class="timeline-item">
-                 <span class="am-icon-shopping-basket s pink"></span>
-
-                <div class="timeline-block">
-                    <i class="timline-block-arrow"></i>
-
-                    <p class="timeline-title">订单完成<span
-                            class="timeline-time">19:36</span></p>
-
-                        <p class="timeline-sub"></p>
-                </div>
-            </div>
-    </div>
-    <div class="bottombar-placeholder"></div>
-
- 
-
-</div>
-
-
-<div id="order-detail" style="display: none"> 
-
-    <div class="orderregion orderregion-top">
-        <ul class="orderregion-entries">
-            <li class="orderregion-entry am-cf">
-                <span class="name text-overflow-ellipsis-2 am-fl">火锅</span>
-                <span class="am-fr am-icon-cny red am-margin-right-sm"> 20</span>
-            </li>
-        </ul>
-    </div> 
-
-    <script>if (MT_WM.logFirstScreenTime) MT_WM.logFirstScreenTime();</script>
-
-    <div class="orderregion">
-        <h1 class="orderregion-title">
-            <i class="icon1-detail status-detail-icon"></i>
-            <label class="status-name">订单详情</label>
-        </h1>
-        <ul class="orderregion-entries-compact">
-            <li class="orderregion-entry-compact">
-                <span class="label">订单号：</span>14111000518350084
-            </li>
-            <li class="orderregion-entry-compact">
-                <span class="label">下单时间：</span>2014-11-10 16:36:14
-            </li>
-            <li class="orderregion-entry-compact">
-                <span class="label">支付方式：</span>
+  <div data-am-widget="list_news" class="am-list-news am-list-news-default admt" >
+    <!-- 待评价 -->
+    <div class="am-list-news-bd am-shadow">
+      
+      <ul class="am-list olib">
+        <!--缩略图在标题左边-->
+        <div class="am-cf otop">
+          <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
+          <span class="am-fr am-text-sm">待评价</span>
+        </div>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-3 am-list-thumb">
+            <a href="<?php echo site_url('home/food')?>" class="rimg">
+              <img src="skin/img/product/ddx.jpg" alt="双味大对虾68"/>
+            </a>
+          </div>
+          <div class=" am-u-sm-5 am-list-main">
+            <h3 class="am-list-item-hd">双味大对虾</h3>
+            <div class="am-list-item-text">X 1</div>
+          </div>
+          <div class=" am-u-sm-2 am-list-main">
+            <!-- 订单价格 -->
+            <h3 class="am-list-item-hd"><span class="am-icon-cny">68.00</span></h3>
+            <!-- 订单数量 -->
+            <!-- <div class="am-list-item-text"></div> -->
+          </div>
+        </li>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-3 am-list-thumb">
+            <a href="<?php echo site_url('home/food')?>" class="rimg">
+              <img src="skin/img/product/ddx.jpg" alt="双味大对虾68"/>
+            </a>
+          </div>
+          <div class=" am-u-sm-5 am-list-main">
+            <h3 class="am-list-item-hd">双味大对虾</h3>
+            <!-- 订单数量 -->
+            <div class="am-list-item-text">X 1</div>
+          </div>
+          <div class=" am-u-sm-2 am-list-main">
+            <!-- 订单价格 -->
+            <h3 class="am-list-item-hd"><span class="am-icon-cny">68.00</span></h3>
             
-            在线支付
-            </li>
-            <li class="orderregion-entry-compact">
-                <span class="label">手机号：</span>15708434450
-            </li>
-            <li class="orderregion-entry-compact">
-                <span class="label">地址：</span>四川师范大学成龙校区东苑5栋
-            </li>
-            <li class="orderregion-entry-compact">
-                <span class="label">备注：</span>尽快哦
-            </li>
-            <li class="orderregion-entry-compact">
-                <span class="label">配送信息：</span>本订单由食来运转提供配送服务
-            </li>
-        </ul>
+          </div>
+        </li>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-3 am-list-thumb">
+            <a href="<?php echo site_url('home/food')?>" class="rimg">
+              <img src="skin/img/product/ddx.jpg" alt="双味大对虾68"/>
+            </a>
+          </div>
+          <div class=" am-u-sm-5 am-list-main">
+            <h3 class="am-list-item-hd">双味大对虾</h3>
+            <!-- 订单数量 -->
+            <div class="am-list-item-text">X 1</div>
+          </div>
+          <div class=" am-u-sm-2 am-list-main">
+            <!-- 订单价格 -->
+            <h3 class="am-list-item-hd"><span class="am-icon-cny">68.00</span></h3>
+            
+          </div>
+        </li>
+        <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md">204</span></div>
+        <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
+        <p class="orderbot am-cf">
+          
+          <a href="<?php echo site_url('home/comment')?>" class="am-fr am-btn am-btn-primary bgreen am-btn-xs"> 评价
+          </a>
+          <a href="javascript:" data-am-modal="{target: '#my-alert'}" class="am-fr am-btn am-btn-primary am-btn-xs bgray"> 删除</a>
+        </p>
+        
+      </ul>
     </div>
 
-
-    <div class="buy-again-placeholder"></div>
-
-</div>
-
-<script src="skin/js/wmLib.js"></script>
-
-<script>require.config({
-    baseUrl: "http://xs01.meituan.net/waimai_i/56e1569a/js",
-    shim: {
-        'zepto': {
-            exports: 'Zepto'
-        },
-        'jquery': {
-            exports: 'Zepto'
-        }
-    },
-    paths: {
-        'zepto': 'fe_common/lib/zepto',
-        'jquery': 'fe_common/lib/zepto'
-    }
-});</script>
-
-<script>Raven.config('http://e284c96b17d24de69b3ac24cae61c5d0@sentry.sankuai.com/78').install();</script>  <script src="skin/js/orderDetail.js"></script>
-<script>
-    require(['page/order/order-detail'], function (orderDetailPage) {
-        orderDetailPage.init({
-            order: {
-                terminal: 'i',
-                environment: 'production', // 支付区分测试和线上环境
-                baseurl: '',
-                channel: '1033',
-                orderViewId: "14111000518350084",
-                orderTime: "1415608574",
-                hastenTime: "0",
-                status: "8",
-                payStatus: "3",
-                phone: "13088036502",  
-                courierPhone: "",  
-                servicePhone: '4008507777',  
-                orderRecInitTime: [0, 1415608717,1415608717],
-                serverTime: 1458014153,
-                operator_tip: '',
-                poiId: 51835,
-                foodlist: [
-                    
-                    {
-                        id: 3588752,
-                        spu_id: 3588752,
-                        count: 2
-                    }
-                ],
-                longitude: 104200459,
-                latitude: 30564450
-            }
-        });
-    });
-</script>
-
-</body>
-</html>
+    <!-- 等待付款 -->
+    <div class="am-list-news-bd am-shadow">
+      
+      <ul class="am-list olib">
+        <!--缩略图在标题左边-->
+        <div class="am-cf otop">
+          <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
+          <span class="am-fr am-text-sm">待付款</span>
+        </div>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-3 am-list-thumb">
+            <a href="<?php echo site_url('home/food')?>" class="rimg">
+              <img src="skin/img/product/ddx.jpg" alt="双味大对虾68"/>
+            </a>
+          </div>
+          <div class=" am-u-sm-5 am-list-main">
+            <h3 class="am-list-item-hd">双味大对虾</h3>
+            <div class="am-list-item-text">X 1</div>
+          </div>
+          <div class=" am-u-sm-2 am-list-main">
+            <!-- 订单价格 -->
+            <h3 class="am-list-item-hd"><span class="am-icon-cny">68.00</span></h3>
+            <!-- 订单数量 -->
+            <!-- <div class="am-list-item-text"></div> -->
+          </div>
+        </li>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-3 am-list-thumb">
+            <a href="<?php echo site_url('home/food')?>" class="rimg">
+              <img src="skin/img/product/ddx.jpg" alt="双味大对虾68"/>
+            </a>
+          </div>
+          <div class=" am-u-sm-5 am-list-main">
+            <h3 class="am-list-item-hd">双味大对虾</h3>
+            <!-- 订单数量 -->
+            <div class="am-list-item-text">X 1</div>
+          </div>
+          <div class=" am-u-sm-2 am-list-main">
+            <!-- 订单价格 -->
+            <h3 class="am-list-item-hd"><span class="am-icon-cny">68.00</span></h3>
+            
+          </div>
+        </li>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-3 am-list-thumb">
+            <a href="<?php echo site_url('home/food')?>" class="rimg">
+              <img src="skin/img/product/ddx.jpg" alt="双味大对虾68"/>
+            </a>
+          </div>
+          <div class=" am-u-sm-5 am-list-main">
+            <h3 class="am-list-item-hd">双味大对虾</h3>
+            <!-- 订单数量 -->
+            <div class="am-list-item-text">X 1</div>
+          </div>
+          <div class=" am-u-sm-2 am-list-main">
+            <!-- 订单价格 -->
+            <h3 class="am-list-item-hd"><span class="am-icon-cny">68.00</span></h3>
+            
+          </div>
+        </li>
+        <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md">204</span></div>
+        <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
+        <p class="orderbot am-cf">
+          
+          <a href="" class="am-fr am-btn am-btn-primary bgreen am-btn-xs"> 付款
+          </a>
+          <a href="javascript:" data-am-modal="{target: '#my-alert2'}" class="am-fr am-btn am-btn-primary am-btn-xs bgray"> 取消订单</a>
+        </p>
+        
+      </ul>
+      <!-- 取消按钮弹出框 -->
+      <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert2">
+        <div class="am-modal-dialog">
+          <div class="am-modal-bd">
+            你，确定要取消付款吗？
+          </div>
+          <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 等待服务 -->
+    <div class="am-list-news-bd am-shadow">
+      
+      <ul class="am-list olib">
+        <!--缩略图在标题左边-->
+        <div class="am-cf otop">
+          <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
+          <span class="am-fr am-text-sm">待服务</span>
+        </div>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-3 am-list-thumb">
+            <a href="<?php echo site_url('home/food')?>" class="rimg">
+              <img src="skin/img/product/ddx.jpg" alt="双味大对虾68"/>
+            </a>
+          </div>
+          <div class=" am-u-sm-5 am-list-main">
+            <h3 class="am-list-item-hd">双味大对虾</h3>
+            <div class="am-list-item-text">X 1</div>
+          </div>
+          <div class=" am-u-sm-2 am-list-main">
+            <!-- 订单价格 -->
+            <h3 class="am-list-item-hd"><span class="am-icon-cny">68.00</span></h3>
+            <!-- 退款按钮 -->
+            <div class="am-list-item-text mback"><a href="javascript:" data-am-modal="{target: '#my-alert3'}">退款</a></div>
+          </div>
+        </li>
+        <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md">68</span></div>
+        <!-- <hr data-am-widget="divider" class="am-divider am-divider-default ahr" /> -->
+        <p class="orderbot am-cf">
+          
+          <!-- <a href="<?php echo site_url('home/comment')?>" class="am-fr am-btn am-btn-primary bgreen am-btn-xs"> 付款
+          </a>
+          <a href="javascript:" data-am-modal="{target: '#my-alert2'}" class="am-fr am-btn am-btn-primary am-btn-xs bgray"> 取消订单</a> -->
+        </p>
+        
+      </ul>
+      <!-- 退款按钮弹出框 -->
+      <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert3">
+        <div class="am-modal-dialog">
+          <div class="am-modal-bd">
+            你，确定要退款吗？
+          </div>
+          <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- 服务中 -->
+    <div class="am-list-news-bd am-shadow">
+      
+      <ul class="am-list olib">
+        <!--缩略图在标题左边-->
+        <div class="am-cf otop">
+          <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
+          <span class="am-fr am-text-sm">服务中</span>
+        </div>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-3 am-list-thumb">
+            <a href="<?php echo site_url('home/food')?>" class="rimg">
+              <img src="skin/img/product/ddx.jpg" alt="双味大对虾68"/>
+            </a>
+          </div>
+          <div class=" am-u-sm-5 am-list-main">
+            <h3 class="am-list-item-hd">双味大对虾</h3>
+            <div class="am-list-item-text">X 1</div>
+          </div>
+          <div class=" am-u-sm-2 am-list-main">
+            <!-- 订单价格 -->
+            <h3 class="am-list-item-hd"><span class="am-icon-cny">68.00</span></h3>
+            <!-- 退款按钮 -->
+            <!-- <div class="am-list-item-text mback"><a href="javascript:" data-am-modal="{target: '#my-alert3'}"></a>退款</div> -->
+          </div>
+        </li>
+        <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md">68</span></div>
+        <!-- <hr data-am-widget="divider" class="am-divider am-divider-default ahr" /> -->
+        <p class="orderbot am-cf">
+          
+          <!-- <a href="<?php echo site_url('home/comment')?>" class="am-fr am-btn am-btn-primary bgreen am-btn-xs"> 付款
+          </a>
+          <a href="javascript:" data-am-modal="{target: '#my-alert2'}" class="am-fr am-btn am-btn-primary am-btn-xs bgray"> 取消订单</a> -->
+        </p>
+        
+      </ul>
+    </div>
+    <!-- 退款成功 -->
+    <div class="am-list-news-bd am-shadow">
+      
+      <ul class="am-list olib">
+        <!--缩略图在标题左边-->
+        <div class="am-cf otop">
+          <time datetime="2015-03-22T04:54:29-07:00" title="">2015-3-22 15:30</time>
+          <span class="am-fr am-text-sm">退款成功</span>
+        </div>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+          <div class="am-u-sm-3 am-list-thumb">
+            <a href="<?php echo site_url('home/food')?>" class="rimg">
+              <img src="skin/img/product/ddx.jpg" alt="双味大对虾68"/>
+            </a>
+          </div>
+          <div class=" am-u-sm-5 am-list-main">
+            <h3 class="am-list-item-hd">双味大对虾</h3>
+            <div class="am-list-item-text">X 1</div>
+          </div>
+          <div class=" am-u-sm-2 am-list-main">
+            <!-- 订单价格 -->
+            <h3 class="am-list-item-hd"><span class="am-icon-cny">68.00</span></h3>
+            <!-- 退款按钮 -->
+            <!-- <div class="am-list-item-text mback"><a href="javascript:" data-am-modal="{target: '#my-alert3'}"></a>退款</div> -->
+          </div>
+        </li>
+        <div class="oall am-text-sm am-fr am-margin-right-sm">退款金额：<span class="am-icon-cny am-text-md">68</span></div>
+        <!-- <hr data-am-widget="divider" class="am-divider am-divider-default ahr" /> -->
+        <p class="orderbot am-cf">
+          
+          <!-- <a href="<?php echo site_url('home/comment')?>" class="am-fr am-btn am-btn-primary bgreen am-btn-xs"> 付款
+          </a>
+          <a href="javascript:" data-am-modal="{target: '#my-alert2'}" class="am-fr am-btn am-btn-primary am-btn-xs bgray"> 取消订单</a> -->
+        </p>
+        
+      </ul>
+    </div>
+  </div>
+ </body>
+   <script src="skin/js/jquery.min.js"></script>
+  <script src="skin/js/amazeui.min.js"></script>
+ </html>
