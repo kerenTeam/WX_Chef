@@ -9,22 +9,15 @@ class orderWXPay extends CI_Controller{
         // $options = $this->config->item('wechat');
         // $options['logcallback'] = 'logdebug';
         // * 引入自定义lib
-<<<<<<< HEAD
         // $this->load->library('WxPayApi');
         // $this->load->library('JsApiPay');
-=======
-        $this->load->library('WxPayApi');
-        $this->load->library('JsApiPay'); 
->>>>>>> 8c20e651fac2657a941b9cede467ca68783d94a8
        // $this->load->library('WXLog');
         $this->load->view('header');
-        $this->load->helper('post_helper');
 	}
 
 //订单
     public function order()
     {
-<<<<<<< HEAD
     	   if ($_POST) {
             $data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
             if(isset($_SESSION['phone'])){
@@ -46,42 +39,28 @@ class orderWXPay extends CI_Controller{
             $this->load->view('order/order',$data);
         }
        
-=======
-    	if ($_POST)
-    	{ $_SESSION['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); }
-    	$data['booking'] = $_SESSION['booking'];
-    	$data['postBooking'] = $_SESSION['postBooking'];
- 		$this->load->view('order/order',$data);
->>>>>>> 8c20e651fac2657a941b9cede467ca68783d94a8
 	}
 //支付订单
-	public function payOrder()
-	{
-		$foodid = $this->input->post('foodid');
+    public function payOrder()
+    {
+    	$foodid = $this->input->post('foodid');
     	$numbers = $this->input->post('numbers');
-    	if(!$this->input->post('couponid')){
-    		$couponid = ' ';
-    	}else{
-    		$couponid = $this->input->post('couponid');
-    	}
-    	// var_dumP($couponid);
     	$foodOrder = array_combine($foodid,$numbers);
     	$foodJson = array();
-		 foreach ($foodOrder as $fid => $fnums)
+        foreach ($foodOrder as $fid => $fnums)
         { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
-  		// print_r($foodJson) ;
-    	$foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-        $foodJsondata['UserCouponId'] = $couponid;
-        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-        $foodJsondata['PaymentMethod'] = ' ';
-        $foodJsondata['Integral'] = '0';
-        $foodJsondata['poorderentry'] = $foodJson;
-        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
-     	
 
-     	$cai = curl_post(POSTAPI."API_Poorder?dis=dd",$abc);
-     	var_dumP($abc);
-     	alert('订单已确定,请稍作等待！');
-	}
+        $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
+        $foodJsondata['UserCouponId'] = $this->input->post('UserCouponId');
+        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
+        $foodJsondata['PaymentMethod'] = '';
+        $foodJsondata['poorderentry'] = $foodJson;
+       
+        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
+     
+        //var_dump($abc); exit; 
+
+		$this->load->view('payOrder');
+	}	
 }
  ?>
