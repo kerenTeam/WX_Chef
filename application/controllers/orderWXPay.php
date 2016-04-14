@@ -60,15 +60,15 @@ class orderWXPay extends CI_Controller{
         $foodJsondata['Integral'] = '0';
         $foodJsondata['poorderentry'] = $foodJson;
         $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));     	
-        $this->load->view('payOrder');
+        $this->load->view('order/payOrder');
 	}
 //订单支付完成,数据提交向后台	
     public function postOrderData()
     {
     	$cai = curl_post(POSTAPI."API_Poorder?dis=dd",$abc);
-     	$_info = '订单已确定,请稍作等待！';
-     	$_url  = site_url('home/');
-     	alertLocation($_info, $_url);
+     	// $_info = '订单已确定,请稍作等待！';
+     	// $_url  = site_url('home/');
+     	// alertLocation($_info, $_url);
     }
 }
  ?>
