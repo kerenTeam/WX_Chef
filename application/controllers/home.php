@@ -358,7 +358,6 @@ class home extends CI_Controller
 	}
 	 //支付订单
     public function payOrder(){
-<<<<<<< HEAD
     	// $foodid = $this->input->post('foodid');
     	// $numbers = $this->input->post('numbers');
 
@@ -374,31 +373,10 @@ class home extends CI_Controller
      //    $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
      //    $foodJsondata['PaymentMethod'] = '';
      //    $foodJsondata['poorderentry'] = $foodJson;
-=======
-  //   	$foodid = $this->input->post('foodid');
-  //   	$numbers = $this->input->post('numbers');
-
-  //   	$foodOrder = array_combine($foodid,$numbers);
-  //   	$foodJson = array();
-  //   	var_dumP($_POST);
-  //   	exit;
-  //       foreach ($foodOrder as $fid => $fnums)
-  //       { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
-
-  //       $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-  //       $foodJsondata['UserCouponId'] = $this->input->post('UserCouponId');
-  //       $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-  //       $foodJsondata['PaymentMethod'] = '';
-  //       $foodJsondata['poorderentry'] = $foodJson;
->>>>>>> 8c20e651fac2657a941b9cede467ca68783d94a8
        
-  //       $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
+ //        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
      
-<<<<<<< HEAD
         //var_dump($abc); exit; 
-=======
-  //       //var_dump($abc); exit; 
->>>>>>> 8c20e651fac2657a941b9cede467ca68783d94a8
 
 		$this->load->view('payOrder');
 	}
@@ -464,11 +442,6 @@ class home extends CI_Controller
     public function searchPage(){
 
 		$this->load->view('searchPage');
-	}
-	//new 订单记录
-	public function orderRe(){
-
-		$this->load->view('recorde');
 	}
     //订单记录
     public function orderR(){
