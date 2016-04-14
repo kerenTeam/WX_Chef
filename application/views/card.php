@@ -19,11 +19,8 @@
       <?php foreach($cards as $val):?>
       <li class="am-g pflist">
         <a href="javascript:" class="flexDisplay">
-          <div class="am-u-sm-3 am-text-center">
-            <img src="<?php echo  IP.$val['img']?>" class="pnimg" alt="">
-            <div class="am-text-xs gray"><?=$val['coupponname']?></div>
-          </div>
-          <div class="am-u-sm-6">
+          
+          <div class="am-u-sm-9">
             <h5 class="black"><?=$val['coupponname']?></h5>
             <div class="am-text-xs gray">使用期限：<?php $nt = substr($val['begintime'],0,10);$a = str_replace("-",".",$nt);  echo $a;?> - <?php $et = substr($val['endtime'],0,10);$b = str_replace("-",".",$et); echo $b;?></div>
           </div>
