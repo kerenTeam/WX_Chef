@@ -15,7 +15,7 @@
     <div><p>购物车空空如也，老鼠都是含着泪离开的。</p></div>
 <?php else:;?>
 
-<form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">
+<form action="<?=site_url('home/order');?>" method="post" enctype="multipart/form-data">
   <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
     <div class="cmn cmnb am-list-news am-list-news-default" >
       <div class="am-list-news-bd">
