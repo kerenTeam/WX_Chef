@@ -19,7 +19,7 @@
 <?php foreach ($booking as $k => $value): ?>
           <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd "><?php echo $value['foodname'];?> <span class="am-fr gray">X <?php echo $postBooking[$value['foodid']];?></span></a>
-          <span class="am-list-date ath"><i class="am-icon-cny cc"></i><?php echo $value['foodprice'] * $postBooking[$value['foodid']]; $pricetotal[] = $value['foodprice'] * $postBooking[$value['foodid']];?> </span>
+          <span class="am-list-date ath"><i class="am-icon-cny cc"></i><?php echo $value['foodprice'] * $postBooking[$value['foodid']]; $pricetotal[] = $value['foodprice'] * $postBooking[$value['foodid']]; ?> </span>
           <!-- 发送到order数据 -->
            <!--------------------这里是我的foodID ------------------------>
           <input type="hidden" name="foodid[]" value="<?php echo $value['foodid'];?> ">
@@ -28,9 +28,10 @@
           <!-- 发送到order数据 END-->
         </li>
 <?php endforeach ?>
+
         <li class="am-g am-list-item-dated">
-          <a href="javascript:" class="am-list-item-hd red">订单总计</a>
-          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'>                       </i></span>
+          <a href="javascript:" class="am-list-item-hd red">订单总计:</a>
+          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'><?php echo array_sum($pricetotal);?></i></span>
         </li>  
 
       </ul>
@@ -52,7 +53,6 @@
            <span class="am-list-date ath"> <i class="am-icon-cny"><?=$val['coupponmoney'];?></i></span>
           </li>
         <?php endforeach;?>
-         
       </ul>
      </div>
    <?php endif;?>
@@ -63,7 +63,7 @@
        <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">300积分已抵用 <span class="am-icon-cny" id='jifenmoney'>30</span> <input type="checkbox" id="jifen"></span></a>
     <?php endif;?>
 
-      <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red" id='pricetotal'><?php echo array_sum($pricetotal);?></span></a>
+      <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red" id='pricetotal'></span></a>
 
     </div>
     

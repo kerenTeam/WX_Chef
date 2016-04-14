@@ -20,20 +20,18 @@ class orderWXPay extends CI_Controller{
     public function order()
     {
     	if ($_POST)
-    	{
-    	$_SESSION['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); }
+    	{$_SESSION['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); }
     	if(isset($_SESSION['phone'])){
     		// 获取可用饭票
     		$fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
     		$data['usercoupon'] = json_decode(json_decode($fan),true);
     		// 获取积分
-
     		$data['jifen'] = file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']);
-    	
     		//获取用户默认地址、
     		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
-    		$data['address'] = json_decode(json_decode($address),true);
 
+
+    		$data['address'] = json_decode(json_decode($address),true);
     	}
     	$data['booking'] = $_SESSION['booking'];
     	$data['postBooking'] = $_SESSION['postBooking'];
