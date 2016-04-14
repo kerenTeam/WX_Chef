@@ -76,7 +76,7 @@
       <!-- 未添加地址这显示 -->
       <div class="am-list-news-bd">
          <?php if(empty($address)):?>
-         <!--   <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a> -->
+           <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
            <input type="hidden" name="UserPhone" value="123456789"/>
 
            <div class="am-g ammake">
@@ -101,6 +101,11 @@
           <?php endif;?>
         </div>
        
+      </div>
+      <div class="am-shadow am-margin-vertical-sm">
+      <p class="htit sad am-cf">
+      <span class="am-fl" style="line-height: 43px;">是否需要服务员</span> 
+      <label class="am-checkbox am-success am-fr"><input type="checkbox" data-am-ucheck></label></p>
       </div>
       <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
     </form>
