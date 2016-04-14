@@ -94,9 +94,9 @@
            <input type="hidden" name="UserPhone" value="123456789"/>
 
            <div class="am-g ammake am-padding-sm">
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入用餐桌数" required>
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入用餐时间" required>
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系方式" required>
+        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入用餐  地址" required>
+        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系人姓名" required>
+        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系 电话" required>
    <br>
             <button type='button' class="am-fr am-btn am-btn-success" onclick="getorders();">提交</button>
               </div>
