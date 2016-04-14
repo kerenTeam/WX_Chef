@@ -27,7 +27,7 @@ class orderWXPay extends CI_Controller{
     		$fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
     		$data['usercoupon'] = json_decode(json_decode($fan),true);
     		// 获取积分
-    		$data['jifen'] = file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']);
+    		$data['jifen'] =json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']));
     		//获取用户默认地址、
     		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
 
@@ -96,6 +96,15 @@ class orderWXPay extends CI_Controller{
     public function postOrderData()
     {	
     	$isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$_SESSION['OrderAllData']);
+    	echo "<pre>";
+    	var_dump($_SESSION['OrderAllData']);
+    	echo "<hr/>";
+    	var_dump($isComedeOrder);
+    	exit;
+
+    	if ($isComedeOrder == 1) {
+    		echo "<script> alert('OK！') </script>";
+    	}
         $_SESSION['shoping']       = '';
         $_SESSION['booking']       = '';
         $_SESSION['postBooking']   = '';

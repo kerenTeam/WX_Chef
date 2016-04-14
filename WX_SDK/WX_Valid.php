@@ -3,7 +3,7 @@
  * @Author: Harris-Aaron
  * @Date:   2016-04-12 10:31:05
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-04-13 14:21:13
+ * @Last Modified time: 2016-04-14 23:21:35
  */
 define("TOKEN", "Chef");
 
@@ -53,7 +53,7 @@ class Valid
                 $Event = $postObj->Event;
                 switch ($Event) {
                     case 'subscribe'://关注
-                        $contentStr = "你好，欢迎关注途悦！";
+                        $contentStr = "你好，欢迎关注大厨到家！";
                         break;
                     case 'unsubscribe'://取消关注
                         break;
@@ -65,7 +65,7 @@ class Valid
                         switch ($object->EventKey)
                                         {
                                             case "company":
-                                                $contentStr[] = array("Title" =>"联系途悦", 
+                                                $contentStr[] = array("Title" =>"联系大厨到家", 
                                                 "Description" =>"联系我们：
                                                                         您在途悦商城和时间银行的使用中遇到任何问题或有任何疑问，
                                                                         欢迎随时致电联系我们：028-86283456
@@ -140,7 +140,7 @@ class Valid
                             $contentStr['Url'] = $jay['linkurl'];   }
                         //如果没有查询到数据
                         if (is_array($contentStr)) {
-                            $contentStr[] = "很抱歉没有搜索到相关信息，您可以登录<a href='http://www.bestingmedia.com/'> 百喜听官网 </a>或电话 028-86283456 来查询相关信息" ;}
+                            $contentStr[] = "很抱歉没有搜索到相关信息，您可以登录<a href='http://www.baidu.com/'> baidu </a>或电话 028-12345678 来查询相关信息" ;}
 
                         break;
                     case 'image'://图片格式

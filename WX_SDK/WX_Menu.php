@@ -3,49 +3,54 @@
  * @Author: Harris-Aaron
  * @Date:   2016-04-13 11:53:42
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-04-13 14:16:44
+ * @Last Modified time: 2016-04-14 23:18:47
  */
 include_once "WX_API.php";            //  API
 $WxApiObj = new WxApi();
 $menu = '{
     "button": [
         {
-            "name": "个人",
+            "type": "view",
+            "name": "大厨点菜",
+            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/index.php/home/index&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+        },
+        {
+            "name": "大厨到家",
             "sub_button": [
                 {
                     "type": "view",
-                    "name": "用卡信息",
-                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb7b2ba9884d3f463&redirect_uri=http://www.krsmgs.com/application/home/card_buy.php&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                    "name": "套餐",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/index.php/home/cailan#fe7ad9a9-1bec-4929-b160-85f9a784f527&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
                 },
                 {
                     "type": "view",
-                    "name": "购卡中心",
-                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb7b2ba9884d3f463&redirect_uri=http://www.krsmgs.com/application/home/buycard.php&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
-                },
-                {
-                    "type": "view",
-                    "name": "使用纪录",
-                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb7b2ba9884d3f463&redirect_uri=http://www.krsmgs.com/application/home/history.php&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                    "name": "宴会定制",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/index.php/home/party&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
                 }
             ]
         },
-        {
-            "type": "view",
-            "name": "预约",
-            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb7b2ba9884d3f463&redirect_uri=http://www.krsmgs.com/application/home/newBooking.php&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
-        },
-        {
-            "type": "view",
-            "name": "广场",
-			"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8aab25f866819db7&redirect_uri=http://www.krfer.com/Application/home/car.php&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                {
+            "name": "我的大厨",
+            "sub_button": [
+                {
+                    "type": "view",
+                    "name": "我的信息",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/index.php/home/ucent&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                },
+                {
+                    "type": "view",
+                    "name": "app下载",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/index.php/home/registgift&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                }
+            ]
         }
     ]
 }';
     $wxMenuCreateMsg = $WxApiObj->wxMenuCreate($menu);
-    var_dump($_SESSION['update_code']); exit;
+    var_dump($_SESSION['update_code']); 
 
     if ($wxMenuCreateMsg['errmsg'] == 'ok') {
-    	echo "<script>alert('自定义菜单修改成功！');</script>"; exit;
+        echo "<script>alert('自定义菜单修改成功！');</script>"; exit;
     }
 
 ?>
