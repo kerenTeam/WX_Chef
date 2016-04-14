@@ -12,6 +12,28 @@ body {
 	align-content:space-around;
 	padding:5% 10%;
 }
+.lil{
+	margin: 5px 15px;
+    font-size: 15px;
+}
+.apple{
+	margin-right: 10px;
+    text-align: right;
+    margin-left: 5px;
+    font-size: 1.5rem;
+    color: #555;
+}
+.payimg{
+	    width: 1.5rem;
+    margin-top: -3px;
+    margin-right: 5px;
+
+}
+.preduce a{
+	font-size:15px;
+	color:gray;
+	padding: 8px 13px 9px;
+}
 .flexDisplay{
 	display: inline-block!important;
     padding: 10px 0 5px!important; 

@@ -174,6 +174,7 @@
       if(confirm("确认接受订单吗？")){
          $(this).text('已接受');
          // $(this).next('.cancelO').css('display','');
+         //解绑 click方法
          $(this).unbind('click')
       }
       else{
