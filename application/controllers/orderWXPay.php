@@ -22,15 +22,11 @@ class orderWXPay extends CI_Controller{
     	if ($_POST)
     	{$_SESSION['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); }
     	if(isset($_SESSION['phone'])){
-    		// 获取可用饭票
-    		$fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
-    		$data['usercoupon'] = json_decode(json_decode($fan),true);
     		// 获取积分
-    		$data['jifen'] = file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']);
+    		$data['jifen'] = json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']));
     		//获取用户默认地址、
     		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
-
-
+          
     		$data['address'] = json_decode(json_decode($address),true);
     	}
     	$data['booking'] = $_SESSION['booking'];
@@ -44,8 +40,7 @@ class orderWXPay extends CI_Controller{
 
 		$foodid = $this->input->post('foodid');
     	$numbers = $this->input->post('numbers');
-        echo "<pre>";
-        // var_dumP($_POST);
+
     	$foodOrder = array_combine($foodid,$numbers);
     	$foodJson = array();
 		 foreach ($foodOrder as $fid => $fnums)
@@ -53,22 +48,27 @@ class orderWXPay extends CI_Controller{
 
         $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
         $_SESSION['temporaryOrder'] = $this->input->post('UserPhone');
-        $foodJsondata['name'] = $this->input->post('name');
-        $foodJsondata['jifen'] = $this->input->post('jifen');
-        $foodJsondata['yfje'] = $this->input->post('yfje');
-        $foodJsondata['waiter'] = $this->input->post('waiter');
-        $foodJsondata['address'] = $this->input->post('address');
-    	$foodJsondata['phone'] = $this->input->post('phone');
+        $foodJsondata['Name'] = $this->input->post('name');
+        $foodJsondata['MoneyAll'] = $this->input->post('yfje');
+        if($this->input->post('waiter') == NULL){
+             $foodJsondata['WaiterId'] = 0;
+        }else{
+             $foodJsondata['WaiterId'] = $this->input->post('waiter');
+        }
+        $foodJsondata['Address'] = $this->input->post('address');
+    	$foodJsondata['Phone'] = $this->input->post('phone');
         $foodJsondata['UserCouponId'] = $this->input->post('couponid');
         $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
         $foodJsondata['PaymentMethod'] = ' ';
-        $foodJsondata['Integral'] = '0';
+        if($this->input->post('jifen') == NULL){
+            $foodJsondata['Integral'] = 0;
+        }else{
+            $foodJsondata['Integral'] = $this->input->post('jifen');
+        }
         $foodJsondata['poorderentry'] = $foodJson;
-        var_dump($foodJsondata);
-        exit;
 
-        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));     	
-        // 
+        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));  
+
         $this->load->view('order/payOrder');
 	}
 //订单支付完成,数据提交向后台	

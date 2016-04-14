@@ -20,7 +20,7 @@
           <input type="text" value="<?=$address[0]['goodsphone']?>" name='goodsphone' class="uphone">
           <input type="text" value="<?=$address[0]['sparephone']?>" name='sparephone'>
           <label class="am-checkbox am-success am-u-sm-6">
-            设为默认 <input type="checkbox" <?php if($address[0]['isdefault'] == 1){ echo 'checked="checked"';}?> name="isdefault" value="1" data-am-ucheck>
+            设为默认 <input type="checkbox" <?php if($address[0]['isdefault'] == 1){ echo 'checked="checked"';}?> name="IsDefault" value="1" data-am-ucheck>
           </label>
         </fieldset>
         <input type="hidden" value="<?=$address[0]['memberaddressid']?>" name='id'>

@@ -536,6 +536,7 @@ class home extends CI_Controller
 	public function editAddress(){
 		if($_GET){
 			$id = $_GET['id'];
+
 			$isok = file_get_contents(POSTAPI."API_MenberAddress?dis=dzxq&value=".$id);
 			$data['address'] = json_decode(json_decode($isok),true);
 		
@@ -555,11 +556,12 @@ class home extends CI_Controller
 				'SparePhone'=>$_POST['sparephone'],
 				'UserPhone'=>$_SESSION['phone'],
 				);
-			if(!isset($_POST['IsDefault'])){
+			if(empty($_POST['IsDefault'])){
 				$arr['IsDefault'] = 0;
 			}else{
 				$arr['IsDefault'] = $_POST['IsDefault'];
 			}
+			
 			$jsonval = '['.json_encode($arr).']';
 			$isok = curl_post(POSTAPI."API_MenberAddress?dis=xg",$jsonval);
 			if($isok = 1){

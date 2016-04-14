@@ -90,9 +90,9 @@
     
       <!-- 未添加地址这显示 -->
       <div class="am-list-news-bd">
-         <?php if(empty($address)):?>
+          <?php if(empty($address)):?>
          <!--   <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a> -->
-           <input type="hidden" name="UserPhone" value="<?php echo randNms;?>"/>
+           <!-- <input type="hidden" name="UserPhone" value="<?php echo randNms;?>"/> -->
       
            <div class="am-g ammake am-padding-sm">
         <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入用餐 地址" required name='address'>
@@ -117,6 +117,9 @@
                        <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
                         <span class="am-list-date"><i class="am-icon-angle-right am-icon-sm"></i></span></a>
                       </li>
+                       <label class="am-checkbox am-success am-u-sm-6">
+                            是否需要服务员？ <input type="checkbox" name="waiter" value="1" data-am-ucheck>
+                        </label>
                  </ul>  
           <?php endif;?>
         </div>
