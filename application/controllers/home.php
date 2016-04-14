@@ -332,31 +332,7 @@ class home extends CI_Controller
 			$this->session->set_userdata('shoping',$shoping,0);
 		redirect('home/cart');
 	}
-<<<<<<< HEAD
- //    //订单
- //    public function order(){
- //    	if ($_POST) {
- //    		$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
- //    	}
- //    	$data['booking'] = $_SESSION['booking'];
- // 		$this->load->view('order/example/order',$data);
- // 		//$this->load->view('order/example/jsapi',$data);
-	// }
-	//  //支付订单
- //    public function payOrder(){
- //    	$foodid = $this->input->post('foodid');
- //    	$numbers = $this->input->post('numbers');
- //    	$foodOrder = array_combine($foodid,$numbers);
- //    	$foodJson = array();
- //        foreach ($foodOrder as $fid => $fnums)
- //        { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
 
- //        $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
- //        $foodJsondata['UserCouponId'] = $this->input->post('UserCouponId');
- //        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
- //        $foodJsondata['PaymentMethod'] = '';
- //        $foodJsondata['poorderentry'] = $foodJson;
-=======
     //订单
     public function order(){
     	if ($_POST) {
@@ -382,29 +358,28 @@ class home extends CI_Controller
 	}
 	 //支付订单
     public function payOrder(){
-    	$foodid = $this->input->post('foodid');
-    	$numbers = $this->input->post('numbers');
+    	// $foodid = $this->input->post('foodid');
+    	// $numbers = $this->input->post('numbers');
 
-    	$foodOrder = array_combine($foodid,$numbers);
-    	$foodJson = array();
-    	var_dumP($_POST);
-    	exit;
-        foreach ($foodOrder as $fid => $fnums)
-        { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
+    	// $foodOrder = array_combine($foodid,$numbers);
+    	// $foodJson = array();
+    	// var_dumP($_POST);
+    	// exit;
+     //    foreach ($foodOrder as $fid => $fnums)
+     //    { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
 
-        $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-        $foodJsondata['UserCouponId'] = $this->input->post('UserCouponId');
-        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-        $foodJsondata['PaymentMethod'] = '';
-        $foodJsondata['poorderentry'] = $foodJson;
->>>>>>> 075eec8833139f36ae634f95bb6db2eefdf43b43
+     //    $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
+     //    $foodJsondata['UserCouponId'] = $this->input->post('UserCouponId');
+     //    $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
+     //    $foodJsondata['PaymentMethod'] = '';
+     //    $foodJsondata['poorderentry'] = $foodJson;
        
  //        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
      
- //        //var_dump($abc); exit; 
+        //var_dump($abc); exit; 
 
-	// 	$this->load->view('payOrder');
-	// }
+		$this->load->view('payOrder');
+	}
 	//支付账号
     public function payLast(){
 
@@ -439,18 +414,15 @@ class home extends CI_Controller
 	public function set(){
 		if(isset($_SESSION['phone'])){
 			if($_SESSION != NULL){
-
-
-			$userinfo = file_get_contents(POSTAPI.'API_User?dis=ckxx&UserPhone='.$_SESSION['phone']);
-			$data['user'] = json_decode(json_decode($userinfo),true);
-			}else{
-				$data['user'] = '';
-			}
-			$this->load->view('set',$data);
+				$userinfo = file_get_contents(POSTAPI.'API_User?dis=ckxx&UserPhone='.$_SESSION['phone']);
+				$data['user'] = json_decode(json_decode($userinfo),true);
+				}else{
+					$data['user'] = '';
+				}
+				$this->load->view('set',$data);
 		}else{
 			echo "<script>alert('你还没有登陆!');window.location.href='login2';</script>";
 		}
-		
 	}
     //搜索
     public function search(){
@@ -477,11 +449,11 @@ class home extends CI_Controller
     		if(empty($_SESSION['phone'])){
     			$data['record'] = '';
     		}else{
-    			// echo "<pre>";
-    			$isok = file_get_contents(POSTAPI.'API_Poorder?dis=dd&UserPhone='.$_SESSION['phone']);
-    			$data['record'] = json_decode(json_decode($isok),true);
-    			// var_dump($data);
-    		}
+    			echo "<pre>";
+    			$isok = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
+    			var_dumP($isok);
+    			$arr= json_decode($isok);
+       		}
     	}else{
     		$data['record'] = '';
     	}

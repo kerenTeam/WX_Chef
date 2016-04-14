@@ -9,8 +9,8 @@ class orderWXPay extends CI_Controller{
         // $options = $this->config->item('wechat');
         // $options['logcallback'] = 'logdebug';
         // * 引入自定义lib
-        $this->load->library('WxPayApi');
-        $this->load->library('JsApiPay');
+        // $this->load->library('WxPayApi');
+        // $this->load->library('JsApiPay');
        // $this->load->library('WXLog');
         $this->load->view('header');
 	}
@@ -18,11 +18,27 @@ class orderWXPay extends CI_Controller{
 //订单
     public function order()
     {
-    	if ($_POST)
-    	{ $data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); }
-        var_dump($data['postBooking']); exit;
-    	$data['booking'] = $_SESSION['booking'];
- 		$this->load->view('order/order',$data);
+    	   if ($_POST) {
+            $data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
+            if(isset($_SESSION['phone'])){
+                    // 获取可用饭票
+            $fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
+            $data['usercoupon'] = json_decode(json_decode($fan),true);
+            // 获取积分
+
+            $data['jifen'] = file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']);
+        
+            //获取用户默认地址、
+            $address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
+            $data['address'] = json_decode(json_decode($address),true);
+
+            }
+
+
+            $data['booking'] = $_SESSION['booking'];
+            $this->load->view('order/order',$data);
+        }
+       
 	}
 //支付订单
     public function payOrder()
