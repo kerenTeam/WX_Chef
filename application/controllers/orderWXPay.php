@@ -42,8 +42,6 @@ class orderWXPay extends CI_Controller{
 	{
 		$foodid = $this->input->post('foodid');
     	$numbers = $this->input->post('numbers');
-    	var_dump($_POST);
-    	//var_dump($numbers);
     	$foodOrder = array_combine($foodid,$numbers);
     	$foodJson = array();
 		 foreach ($foodOrder as $fid => $fnums)
@@ -62,25 +60,25 @@ class orderWXPay extends CI_Controller{
         $foodJsondata['Integral'] = '0';
         $foodJsondata['poorderentry'] = $foodJson;
         //将order所有数据转为josn
-        $_SESSION['OrderAllData']  = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
+        $data['OrderAllData'] = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
         //得到支付金额     	
-        $_SESSION['yfje']  = $this->input->post('yfje');
-        $this->load->view('order/payOrder',$data);
+        $data['yfje'] = $this->input->post('yfje');
+        $_SESSION['OrderAllData'] = $data['OrderAllData'];
+        $_SESSION['yfje'] = $data['yfje'];
+        $this->load->view('order/payOrder');
 	}
+//跳转兼容
+    public function jumpLink()
+    {
+    	$this->load->view('order/payOrder');
+    }	
 //订单支付完成,数据提交向后台	
     public function postOrderData()
     {	
-    	$cai = curl_post(POSTAPI."API_Poorder?dis=dd",$_SESSION['OrderAllData']);
+    	$isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$_SESSION['OrderAllData']);
         $_SESSION['shoping']       = '';
         $_SESSION['booking']       = '';
         $_SESSION['postBooking']   = '';
-        echo "<pre>";
-        var_dump($OrderAllData);
-        var_dump($cai);
-        var_dump($_SESSION);
-        echo "</pre>";
-        exit;
-
      	redirect('home/index');
     }
 }

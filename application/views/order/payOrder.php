@@ -16,19 +16,19 @@ $input = new WxPayUnifiedOrder();
 $input->SetBody("大厨到家");
 $input->SetAttach("大厨到家－微信支付");
 $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-$yfje = $_SESSION['yfje'];
-$input->SetTotal_fee(sprintf( "%.1f ",$yfje/100));
+//$input->SetTotal_fee($_SESSION['yfje']);
+$input->SetTotal_fee('1');
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("大厨到家－微信支付");
-$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
+$input->SetNotify_url("http://www.baidu.com");
 $input->SetTrade_type("JSAPI");
 $input->SetOpenid($openId);
 $order = WxPayApi::unifiedOrder($input);
 $jsApiParameters = $tools->GetJsApiParameters($order);
 
 //获取共享收货地址js函数参数
-$editAddress = $tools->GetEditAddressParameters();
+//$editAddress = $tools->GetEditAddressParameters();
 
 ?>
     <script type="text/javascript">
@@ -42,7 +42,9 @@ $editAddress = $tools->GetEditAddressParameters();
           {
             WeixinJSBridge.log(res.err_msg);
             if (res.err_msg == "get_brand_wcpay_request:ok")
-            { makeformToPayOrder.submit();}
+            { 
+              document.getElementById("makeformToPayOrder").submit();
+             }
             else if (res.err_msg == "get_brand_wcpay_request:cancel")
             { alert("已取消微信支付,你可选择其他支付或线下付款");}
           }
@@ -110,22 +112,18 @@ $editAddress = $tools->GetEditAddressParameters();
     收银台
     </h1>
   </header>
-  <form action="<?php site_url('orderWXPay/postOrderData');?>" id='makeformToPayOrder' method="post">
+  <form action=' <?php echo base_url()."index.php/orderWXPay/postOrderData"; ?> ' id='makeformToPayOrder' method="post">
     <div class="am-list-news-bd">
       <ul class="am-list odl">
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd">订单金额</a>
-          <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo sprintf( "%.1f ",$yfje); ?></i></span>
+          <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo $_SESSION['yfje']; ?></i></span>
         </li> 
         <li class="am-g am-list-item-dated preduce">
           <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd"><img src="skin/img/vp.png" class="payimg" alt="">会员卡支付
             <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
           </a>
         </li>
-
-        <!------------------------ 订单数据在此盛放 ---------------------->
-        <input type="hidden" name="OrderAllData" value="<?php echo $_SESSION['OrderAllData'];?>">
-
       </ul>
      </div>
      <div class="am-shadow fpa preduce">
