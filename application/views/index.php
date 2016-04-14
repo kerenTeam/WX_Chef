@@ -91,6 +91,7 @@
   <p class="htit"><span class="am-icon-eye yellow"></span> 实时菜价<a href="<?php echo site_url('home/priceSearch')?>" class="am-fr am-text-xs gray">更多》</a></p>
   <div class="d1" id="div1" onmouseover="clearInterval(timer)" onmouseout="timer=setInterval(mar,30)">
     <span class="div2" id="div2"> 
+<<<<<<< HEAD
      
      <?php if (!empty($caijia)): ?>
        <?php foreach($caijia as $val):?>
@@ -98,6 +99,13 @@
        <?php endforeach;?>
      <?php endif ?>
     
+=======
+<?php if(!empty($caijia)):?>
+    <?php foreach($caijia as $val):?>
+    <a href="<?php echo site_url('home/price?id=').$val->foodmarketid."&name=".$val->name;?>"><?=$val->name?> <?=$val->price;?>元/<?=$val->unit;?></a> 
+    <?php endforeach;?>
+<?php endif;?>
+>>>>>>> c3204f0682d85c23d8d7050c4a58a1c9ab9f0c8a
      </span><span id="div3" class="div2"></span>
   </div>
   <div>

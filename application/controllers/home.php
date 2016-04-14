@@ -89,7 +89,9 @@ class home extends CI_Controller
 		$data['banners'] = unserialize($banner['banner']);
 
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable');
+
 		$data['caijia'] = json_decode(json_decode($caijia));
+	
 		// var_dump($data);
 		$this->load->view('index',$data);
 	}
