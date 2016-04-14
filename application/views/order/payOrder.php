@@ -16,7 +16,7 @@ $input = new WxPayUnifiedOrder();
 $input->SetBody("大厨到家");
 $input->SetAttach("大厨到家－微信支付");
 $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-$input->SetTotal_fee("");
+$input->SetTotal_fee("1");
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
 $input->SetGoods_tag("大厨到家－微信支付");
@@ -124,6 +124,8 @@ $editAddress = $tools->GetEditAddressParameters();
         
       </ul>
      </div>
+     <h1>2134567890</h1>
+     <h1>2134567890</h1>
      <div class="am-shadow fpa preduce">
       <p class="htit sad">其他支付方式</p>
  
