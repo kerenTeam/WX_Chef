@@ -40,26 +40,35 @@ class orderWXPay extends CI_Controller{
 //支付订单
 	public function payOrder()
 	{
+    
+
 		$foodid = $this->input->post('foodid');
     	$numbers = $this->input->post('numbers');
-    	if(!$this->input->post('couponid')){
-    		$couponid = ' ';
-    	}else{
-    		$couponid = $this->input->post('couponid');
-    	}
-    	// var_dumP($couponid);
+        echo "<pre>";
+        // var_dumP($_POST);
     	$foodOrder = array_combine($foodid,$numbers);
     	$foodJson = array();
 		 foreach ($foodOrder as $fid => $fnums)
         { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
-  		// print_r($foodJson) ;
-    	$foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-        $foodJsondata['UserCouponId'] = $couponid;
+
+        $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
+        $_SESSION['temporaryOrder'] = $this->input->post('UserPhone');
+        $foodJsondata['name'] = $this->input->post('name');
+        $foodJsondata['jifen'] = $this->input->post('jifen');
+        $foodJsondata['yfje'] = $this->input->post('yfje');
+        $foodJsondata['waiter'] = $this->input->post('waiter');
+        $foodJsondata['address'] = $this->input->post('address');
+    	$foodJsondata['phone'] = $this->input->post('phone');
+        $foodJsondata['UserCouponId'] = $this->input->post('couponid');
         $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
         $foodJsondata['PaymentMethod'] = ' ';
         $foodJsondata['Integral'] = '0';
         $foodJsondata['poorderentry'] = $foodJson;
+        var_dump($foodJsondata);
+        exit;
+
         $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));     	
+        // 
         $this->load->view('order/payOrder');
 	}
 //订单支付完成,数据提交向后台	

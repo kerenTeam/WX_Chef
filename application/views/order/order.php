@@ -78,6 +78,7 @@
     <?php endif;?>
 
       <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red" id='pricetotal'></span></a>
+      <input type="hidden" name='yfje' value="0" id='yfje'>
 
     </div>
     
@@ -91,14 +92,17 @@
       <div class="am-list-news-bd">
          <?php if(empty($address)):?>
          <!--   <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a> -->
-           <input type="hidden" name="UserPhone" value="123456789"/>
-
+           <input type="hidden" name="UserPhone" value="<?php echo randNms;?>"/>
+      
            <div class="am-g ammake am-padding-sm">
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入用餐  地址" required>
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系人姓名" required>
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系 电话" required>
+        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入用餐 地址" required name='address'>
+        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系人姓名" required name='name'>
+        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系 电话" required name='phone'>
+        <label class="am-checkbox am-success am-u-sm-6">
+            是否需要服务员？ <input type="checkbox" name="waiter" value="1" data-am-ucheck>
+        </label>
    <br>
-            <button type='button' class="am-fr am-btn am-btn-success" onclick="getorders();">提交</button>
+            <!-- <button type='button' class="am-fr am-btn am-btn-success" onclick="getorders();">提交</button> -->
               </div>
             </div>
          <?php else:?>
@@ -146,7 +150,8 @@
         var amount = $('#money').text();
 
         payable = amount;
-        $('#pricetotal').text(payable);
+        $('#pricetotal').text(payable); 
+        $('#yfje').val(payable);
         var jifenmoney = 0;
         // 积分
      
@@ -165,6 +170,7 @@
             discount = $('#youhui').text();
             payable = amount - discount - jifenmoney;
             $('#pricetotal').text(payable);
+            $('#yfje').val(payable);
 
         });
 
@@ -174,10 +180,12 @@
             jifenmoney = $('#jifenmoney').text();
             payable = amount - discount - jifenmoney;
             $('#pricetotal').text(payable);
+            $('#yfje').val(payable);
     
         }else{
            payable = amount - discount;
             $('#pricetotal').text(payable);
+            $('#yfje').val(payable);
         }
        
         })
