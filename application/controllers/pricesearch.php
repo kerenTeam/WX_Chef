@@ -39,7 +39,7 @@ class pricesearch extends CI_Controller {
 		$foodid = $this->input->post('foodid');
     	$numbers = $this->input->post('numbers');
     	if(!$this->input->post('couponid')){
-    		$couponid = ' ';
+    		$couponid = '';
     	}else{
     		$couponid = $this->input->post('couponid');
     	}
@@ -52,13 +52,13 @@ class pricesearch extends CI_Controller {
     	$foodJsondata['UserPhone'] = $this->input->post('UserPhone');
         $foodJsondata['UserCouponId'] = $couponid;
         $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-        $foodJsondata['PaymentMethod'] = ' ';
-        $foodJsondata['Integral'] = '0';
+        $foodJsondata['PaymentMethod'] = '';
+        $foodJsondata['Integral'] = 0;
         $foodJsondata['poorderentry'] = $foodJson;
         $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
      	
 
      	$cai = curl_post(POSTAPI."API_Poorder?dis=dd",$abc);
-     	// var_dumP($abc);
+     	var_dumP($cai);
 	}
 }
