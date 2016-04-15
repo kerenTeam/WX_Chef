@@ -48,11 +48,11 @@ html {
 <script src="skin/js/jquery.min.js"></script> 
 <!--<![endif]--> 
 <script src="skin/js/amazeui.min.js"></script> 
-<script type="text/javascript">
-	// $(function(){
+<script type="text/javascript"> 
+		 var code;
 		// 验证是否同意协议
 		var checkbox = $(".user_agreement input[type='checkbox']");
-		checkbox.bind('change',function(){
+		checkbox.bind('change',function(){ 
 			if(checkbox.is(':checked')){
 				$('.reg_btn button').removeAttr('disabled').removeClass('am-btn-default').addClass('am-btn-success');
 			}else{
@@ -62,7 +62,6 @@ html {
 		   
 		// 绑定提交按钮
 		$('.reg_btn button').bind('click',function(){
-			<!--$('.reg_test').css('display','block');-->
 			var tell = $(".reg_input input[type='tel']").val();
 			var test = $(".reg_test input[type='text']").val();
 			if(tell == ''){
@@ -77,7 +76,12 @@ html {
 			if(test == ''){
 				shade('am-icon-meh-o','请输入验证码');
 				return false;
-			}else{
+			}
+		    if(test !== code){
+				shade('am-icon-meh-o','验证码输入错误');
+				return false;
+			}
+			else{
 				$('.first').css('display','none');
 			    $('.seconde').css('display','block');
 				$(this).addClass('submit');
@@ -107,9 +111,7 @@ html {
 				setTimeout(function(){$('.shade').removeClass('up');},1000);
 				$('.shade div').remove();
 				$('.shade').append('<div><span class="'+icon+'"></span><p>'+cue+'</p></div>');
-		}
-		
-	
+		} 
 		function yzm(input){
 		 	var phone = $("#userphone").val();
 		 	if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
@@ -118,10 +120,11 @@ html {
 		 		time(input);
 		 		$.ajax({
 		 			type: "post",
-		 			url: "<?=site_url('home/send');?>",
+		 			url: "<?=site_url('pricesearch/send');?>",
 		 			data: {"UserPhone":+phone},
 		 			success: function(data){
 		 				console.log(data);
+		 				code = data;
 		 			}
 		 		});
 		 	}

@@ -5,10 +5,10 @@
 	box-orient: vertical;
 }
 .login{
-	display: -webkit-box;  /* ÀÏ°æ±¾Óï·¨: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -webkit-box;  /* ÀÏ°æ±¾Óï·¨: Safari,  iOS, Android browser, older WebKit browsers.  */
   display: -moz-box;    /* ÀÏ°æ±¾Óï·¨: Firefox (buggy) */ 
   display: -ms-flexbox;  /* »ìºÏ°æ±¾Óï·¨: IE 10 */
-  display: -webkit-flex;  /* ÐÂ°æ±¾Óï·¨£º Chrome 21+ */
+  display: -o-box;  /* ÐÂ°æ±¾Óï·¨£º Chrome 21+ */
   display: flex;
    /*ÀÏ°æ±¾Óï·¨*/
   -webkit-box-align: center; 
@@ -20,8 +20,9 @@
   align-items: center;
   margin: 0;
   height: 100%;
-  width: 100% ;
+  width: 100% ;    
   background: url('../img/login_bg.png') repeat;
+
 }
 .login_center{
 	-moz-box-flex: 1;

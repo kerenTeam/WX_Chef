@@ -101,7 +101,17 @@ body {
 	margin-right: 2px;
     font-size: 14px;
 }
-
+.safe input{
+	background:none!important;
+	border:0!important;
+	outline:none!important;
+	text-align:right!important;
+}
+.lock{
+	font-size: 2rem;
+    color: rgba(255, 0, 0, 0.7);
+    margin: auto 1.7rem;
+}
 .edtclose a{
 	    margin: 14px 5px;
 	display:inline-block;

@@ -36,6 +36,9 @@
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/set')?>" class="am-list-item-hd "><img src="skin/img/set.png" alt=""> 个人设置</a> 
       </li>
+      <li class="am-g am-list-item-dated">
+          <a href="<?php echo site_url('home/safe')?>" class="am-list-item-hd "><span class="am-icon-lock lock"></span> 账号安全</a> 
+      </li>
   </ul>
     <ul class="am-list userl">
     <?php if(isset($_SESSION['phone'])):?>
