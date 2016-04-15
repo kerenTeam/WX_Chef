@@ -18,7 +18,13 @@
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">头像</div>
           <?php if($user[0]['userimage'] == NULL):?>
-          <div class="am-u-sm-8"><img class="am-circle" src="skin/img/vip.png" alt=""></div>
+          <div class="am-u-sm-8"> 
+              <div class="wx_type_img">
+                <input type="file" id="imgUpload" name="img[]" onchange="previewImage(this)" class="upload-add">
+                  <!-- 图片实时预览 -->
+                <div id="preview"> <img style="border-radius: 3px;" src="skin/img/vip.png" alt="选择图片"> </div>
+              </div> 
+          </div>
           <?php else:?>
           <div class="am-u-sm-8"><img class="am-circle" src="<?php echo IP.$user[0]['userimage'];?>" alt=""></div>
           <?php endif;?>
@@ -86,6 +92,7 @@
 </body>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
+<script src="skin/js/imgup.js"></script>
 <script>
   $(function(){
     $('.am-selected-status').html('点击选择');
