@@ -11,9 +11,8 @@ class orderWXPay extends CI_Controller{
         // * 引入自定义lib
         $this->load->library('WxPayApi');
         $this->load->library('JsApiPay'); 
-        $this->load->library('Tool');
-        $this->load->view('header');
         $this->load->helper('post_helper');
+        $this->load->view('header'); 
 	}
    
 
@@ -82,17 +81,10 @@ class orderWXPay extends CI_Controller{
     public function postOrderData()
     {	
     	$isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$_SESSION['OrderAllData']);
-    	if ($isComedeOrder == 1) {
-    		echo "<script> alert('OK！') </script>";
-    	}
-    	var_dump($_SESSION['OrderAllData']);
-    	var_dump($isComedeOrder);
-
         $_SESSION['shoping']       = '';
         $_SESSION['booking']       = '';
         $_SESSION['postBooking']   = ''; 
-        exit;
-     	redirect('home/index');
+     	redirect('home/orderR');
     }
 }
  ?>
