@@ -6,14 +6,13 @@ header("Content-type: text/html; charset=utf-8");
 * Last modify by Harris Aaron
 * Last modify $Date: 2016-Apr-12
 */
-class Tool {
 	/**
 	 * js 弹窗并且跳转
 	 * @param string $_info
 	 * @param string $_url
 	 * @return js
 	 */
-	static public function alertLocation($_info, $_url) {
+	  function alertLocation($_info, $_url) {
 		echo "<script type='text/javascript'>alert('$_info');location.href='$_url';</script>";
 		exit();
 	}
@@ -23,7 +22,7 @@ class Tool {
 	 * @param string $_info
 	 * @return js
 	 */
-	static public function alertBack($_info) {
+	  function alertBack($_info) {
 		echo "<script type='text/javascript'>alert('$_info');history.back();</script>";
 		exit();
 	}
@@ -33,7 +32,7 @@ class Tool {
 	 * @param string $url
 	 * @return js
 	 */
-	static public function headerUrl($url) {
+	  function headerUrl($url) {
 		echo "<script type='text/javascript'>location.href='{$url}';</script>";
 		exit();
 	}
@@ -43,7 +42,7 @@ class Tool {
 	 * @param string $_info
 	 * @return js
 	 */
-	static public function alertClose($_info) {
+	  function alertClose($_info) {
 		echo "<script type='text/javascript'>alert('$_info');close();</script>";
 		exit();
 	}
@@ -53,7 +52,7 @@ class Tool {
 	 * @param string $_info
 	 * @return js
 	 */
-	static public function alert($_info) {
+	  function alert($_info) {
 		echo "<script type='text/javascript'>alert('$_info');</script>";
 		exit();
 	}
@@ -63,7 +62,7 @@ class Tool {
 	 * @param string $_path
 	 * @return null
 	 */
-	static public function sysUploadImg($_path) {
+	  function sysUploadImg($_path) {
 		echo '<script type="text/javascript">document.getElementById("logo").value="'.$_path.'";</script>';
 		echo '<script type="text/javascript">document.getElementById("pic").src="'.$_path.'";</script>';
 		echo '<script type="text/javascript">$("#loginpop1").hide();</script>';
@@ -75,7 +74,7 @@ class Tool {
 	 * @param array|object $_date
 	 * @return string
 	 */
-	static public function htmlString($_date) {
+	  function htmlString($_date) {
 		if (is_array($_date)) {
 			foreach ($_date as $_key=>$_value) {
 				$_string[$_key] = Tool::htmlString($_value);  //递归
@@ -95,7 +94,7 @@ class Tool {
 	 * @param string $_data
 	 * @return string
 	 */
-	static public function mysqlString($_data) {
+	  function mysqlString($_data) {
 		$_data = trim($_data);
 		return !GPC ? addcslashes($_data) : $_data;
 	}
@@ -103,7 +102,7 @@ class Tool {
 	/**
 	 * 清理session
 	 */
-	static public function unSession() {
+	  function unSession() {
 		if (session_start()) {
 			session_destroy();
 		}
@@ -115,7 +114,7 @@ class Tool {
 	 * @param string $name
 	 * @return bool (true or false)
 	 */
-	static function validateEmpty($str, $name) {
+	 function validateEmpty($str, $name) {
 		if (empty($str)) {
 			self::alertBack('警告：' .$name . '不能为空！');
 		}
@@ -128,7 +127,7 @@ class Tool {
 	 * @param string $alert
 	 * @return JS 
 	 */
-	static function validateAll($str1, $str2, $alert) {
+	 function validateAll($str1, $str2, $alert) {
 		if ($str1 != $str2) self::alertBack('警告：' .$alert);
 	}
 	
@@ -137,7 +136,7 @@ class Tool {
 	 * @param Number $id
 	 * @return JS
 	 */
-	static function validateId($id) {
+	 function validateId($id) {
 		if (empty($id) || !is_numeric($id)) self::alertBack('警告：参数错误！');
 	}
 	
@@ -146,7 +145,7 @@ class Tool {
 	 * @param string $str
 	 * @return string
 	 */
-	static public function formatStr($str) {
+	  function formatStr($str) {
 		$arr = array(' ', '	', '&', '@', '#', '%',  '\'', '"', '\\', '/', '.', ',', '$', '^', '*', '(', ')', '[', ']', '{', '}', '|', '~', '`', '?', '!', ';', ':', '-', '_', '+', '=');
 		foreach ($arr as $v) {
 			$str = str_replace($v, '', $str);
@@ -159,7 +158,7 @@ class Tool {
 	 * @param int $time 时间戳
 	 * @return string
 	 */
-	static public function formatDate($time='default') {
+	  function formatDate($time='default') {
 		$date = $time == 'default' ? date('Y-m-d H:i:s', time()) : date('Y-m-d H:i:s', $time);
 		return $date;
 	}
@@ -168,8 +167,8 @@ class Tool {
 	* 获得真实IP地址  
 	* @return string  
 	*/
-	static public function realIp() {   
-	    static $realip = NULL;   
+	  function realIp() {   
+	     $realip = NULL;   
 	    if ($realip !== NULL) return $realip;  
 	    if (isset($_SERVER)) {  
 	        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {   
@@ -209,7 +208,7 @@ class Tool {
 	 * @param string $html
 	 * @return null;
 	 */
-	static public function display() {
+	  function display() {
 		global $tpl;$html = null;
 		$htmlArr = explode('/', $_SERVER[SCRIPT_NAME]);
 		$html = str_ireplace('.php', '.php', $htmlArr[count($htmlArr)-1]);
@@ -225,7 +224,7 @@ class Tool {
 	 * 创建目录
 	 * @param string $dir
 	 */
-	static public function createDir($dir) {
+	  function createDir($dir) {
 		if (!is_dir($dir)) {
 			mkdir($dir, 0777);
 		}
@@ -235,7 +234,7 @@ class Tool {
 	 * 创建文件（默认为空）
 	 * @param unknown_type $filename
 	 */
-	static public function createFile($filename) {
+	  function createFile($filename) {
 		if (!is_file($filename)) touch($filename);
 	}
 	
@@ -245,7 +244,7 @@ class Tool {
 	 * @param string $type
 	 * @return string
 	 */
-	static public function getData($param, $type='post') {
+	  function getData($param, $type='post') {
 		$type = strtolower($type);
 		if ($type=='post') {
 			return Tool::mysqlString(trim($_POST[$param]));
@@ -258,7 +257,7 @@ class Tool {
 	 * 删除文件
 	 * @param string $filename
 	 */
-	static public function delFile($filename) {
+	  function delFile($filename) {
 		if (file_exists($filename)) unlink($filename);
 	}
 	
@@ -266,7 +265,7 @@ class Tool {
 	 * 删除目录
 	 * @param string $path
 	 */
-	static public function delDir($path) {
+	  function delDir($path) {
 		if (is_dir($path)) rmdir($path);
 	}
 	
@@ -275,7 +274,7 @@ class Tool {
 	 * @param string $dir
 	 * @return bool
 	 */
-	static public function delDirOfAll($dir) {
+	  function delDirOfAll($dir) {
 		//先删除目录下的文件：
 		if (is_dir($dir)) {
 			$dh=opendir($dir);
@@ -302,7 +301,7 @@ class Tool {
 	/**
 	 * 验证登陆
 	 */
-	static public function validateLogin() {
+	  function validateLogin() {
 		if (empty($_SESSION['admin']['user'])) header('Location:/admin/');
 	}
 	
@@ -311,7 +310,7 @@ class Tool {
 	 * @param string $file_path
 	 * @return bool
 	 */
-	static public function addMark($file_path) {
+	  function addMark($file_path) {
 		if (file_exists($file_path) && file_exists(MARK)) {
 			//求出上传图片的名称后缀
 			$ext_name = strtolower(substr($file_path, strrpos($file_path, '.'), strlen($file_path)));
@@ -371,13 +370,13 @@ class Tool {
 	
 	/**
 	*  中文截取2，单字节截取模式
-	* @access public
+	* @access 
 	* @param string $str  需要截取的字符串
 	* @param int $slen  截取的长度
 	* @param int $startdd  开始标记处
 	* @return string
 	*/
-	static public function cn_substr($str, $slen, $startdd=0){
+	  function cn_substr($str, $slen, $startdd=0){
 		$cfg_soft_lang = PAGECHARSET;
 		if($cfg_soft_lang=='utf-8') {
 			return self::cn_substr_utf8($str, $slen, $startdd);
@@ -421,13 +420,13 @@ class Tool {
 	/**
 	*  utf-8中文截取，单字节截取模式
 	*
-	* @access public
+	* @access 
 	* @param string $str 需要截取的字符串
 	* @param int $slen 截取的长度
 	* @param int $startdd 开始标记处
 	* @return string
 	*/
-	static public function cn_substr_utf8($str, $length, $start=0) {
+	  function cn_substr_utf8($str, $length, $start=0) {
 		if(strlen($str) < $start+1) {
 			return '';
 		}
@@ -453,7 +452,7 @@ class Tool {
 	 * 删除图片，根据图片ID
 	 * @param int $image_id
 	 */
-	static function delPicByImageId($image_id) {
+	 function delPicByImageId($image_id) {
 		$db_name = PREFIX . 'images i';
 		$m = new Model();
 		$data = $m->getOne($db_name, "i.id={$image_id}", "i.path as p, i.big_img as b, i.small_img as s");
@@ -474,7 +473,7 @@ class Tool {
 	 * @param string $name    生成图像名称
 	 * @param string $filetype文件类型(.jpg/.gif/.png)
 	 */
-	static public function resizeImage($im, $maxwidth, $maxheight, $name, $filetype) {
+	  function resizeImage($im, $maxwidth, $maxheight, $name, $filetype) {
 		$pic_width = imagesx($im);
 		$pic_height = imagesy($im);
 		if(($maxwidth && $pic_width > $maxwidth) || ($maxheight && $pic_height > $maxheight)) {
@@ -518,7 +517,7 @@ class Tool {
 	 * 下载文件
 	 * @param string $file_path 绝对路径
 	 */
-	static public function downFile($file_path) {
+	  function downFile($file_path) {
 		//判断文件是否存在
 		$file_path = iconv('utf-8', 'gb2312', $file_path); //对可能出现的中文名称进行转码
 		if (!file_exists($file_path)) {
@@ -541,5 +540,5 @@ class Tool {
 		}
 		fclose($fp); //关闭文件
 	}
-}
+
 ?>

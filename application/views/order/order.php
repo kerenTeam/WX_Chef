@@ -1,5 +1,3 @@
-
-
 <body>
   <!-- header -->
   <header data-am-widget="header" am-header-fixed class="am-header am-header-default topform">

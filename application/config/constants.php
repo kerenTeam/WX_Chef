@@ -95,6 +95,47 @@ defined('APPID')               OR define('APPID', 'wxa997c956cf6631b0');
 defined('APPSECRET')           OR define('APPSECRET', 'ee3f2a43a6c508708780dba0c5bd7393'); 
 defined('MCHID')               OR define('MCHID', '1254100101'); //商户号
 defined('PRIVATEKEY')          OR define('PRIVATEKEY', 'qwertyuiopasdfghjklzxcvbnmqwerty'); //私钥
+defined('TOKEN')               OR define('TOKEN', 'Chef'); //TOKEN
+defined('MENU')                OR define('MENU', '{
+    "button": [
+        {
+            "type": "view",
+            "name": "大厨点菜",
+            "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/WXTEST2/index.php/home/index&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+        },
+        {
+            "name": "大厨到家",
+            "sub_button": [
+                {
+                    "type": "view",
+                    "name": "套餐",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/WXTEST2/index.php/home/cailan#fe7ad9a9-1bec-4929-b160-85f9a784f527&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                },
+                {
+                    "type": "view",
+                    "name": "宴会定制",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/WXTEST2/index.php/home/party&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                }
+            ]
+        },
+                {
+            "name": "我的大厨",
+            "sub_button": [
+                {
+                    "type": "view",
+                    "name": "我的信息",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/WXTEST2/index.php/home/ucent&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                },
+                {
+                    "type": "view",
+                    "name": "app下载",
+                    "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/WXTEST2/index.php/home/registgift&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                }
+            ]
+        }
+    ]
+}'); //自定义菜单
+
 
 
 

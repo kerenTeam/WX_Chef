@@ -11,9 +11,8 @@ class orderWXPay extends CI_Controller{
         // * 引入自定义lib
         $this->load->library('WxPayApi');
         $this->load->library('JsApiPay'); 
-        $this->load->library('Tool');
-        $this->load->view('header');
         $this->load->helper('post_helper');
+        $this->load->view('header');
 	}
    
 
