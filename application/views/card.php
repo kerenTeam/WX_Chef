@@ -40,11 +40,13 @@
       <?php endforeach;?>
     </ul>
   </div>
-  <?php else:?>
-    <div>你还没有饭票！</div>
-  <?php endif;?>
-    </ul>
+   <?php else:?>
+  
+  <div class="cardno">
+    <img  class="am-block" src="skin/img/nocard.jpg" alt="">
+    暂无可用饭票！
   </div>
- 
+  
+  <?php endif;?>
 </body>
 </html>
