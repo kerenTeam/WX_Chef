@@ -27,7 +27,10 @@ body {
   opacity: 0;
   filter: alpha(opacity=0);
 }
-
+.cd{
+	    margin-top: 0.8rem;
+    margin-right: 2.8rem;
+}
  
 .cardimg{
 	width:5rem;
@@ -335,7 +338,11 @@ body {
 	margin: auto 5px;
 	margin-bottom: 5px;
 }
-.numTxt {
+.epr{
+	display: inline-block;
+    margin-top: 0.8rem;
+}
+.numTxt,.serinput {
 	/* display:none;*/
 	background: none;
 	width: 3.2rem;
@@ -351,7 +358,7 @@ body {
 	-o-transition: all 0.5s ease;
 }
 .inborder {
-	border: 1px solid rgba(0, 0, 0, 0.498039);
+	 
 	width: 3.2rem;
 	font-size:12px;
 }

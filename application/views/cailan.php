@@ -13,6 +13,24 @@
   </h1>
 
 </header>
+       <ul class="am-shadow am-list" style="display: none">
+             <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
+               服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
+               <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->
+             </li>
+              <li class="am-g am-padding-xs">
+                <label class="am-checkbox am-success am-u-sm-4">
+                服务员 <input type="checkbox" id="serpeople" ata-am-ucheck>
+                </label> 
+                <input type="hidden" id="servTotal" value="0">
+               <div class="epr am-text-center am-text-sm"><span class="price" id="serprice">80</span>元/位</div>
+               <div class="am-marign-top-sm am-fr cd" style="display: none;">
+                  <span class="am-icon-minus gray" onClick="empdel()"></span>
+                  <input type="text" class="serinput" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                  <span class="am-icon-plus gray" onClick="empladd()"></span>
+                </div>
+             </li>
+           </ul>
 <form action="<?=site_url('home/addcart');?>" method='post'  id='question' enctype="multipart/form-data">
  <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
   <!-- 菜品栏目 -->

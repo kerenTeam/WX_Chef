@@ -10,6 +10,23 @@
     </h1>
     
   </header>
+  <ul class="am-shadow am-list" style="display: none">
+             <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
+               服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
+             </li>
+              <li class="am-g am-padding-xs">
+                <label class="am-checkbox am-success am-u-sm-4">
+                服务员 <input type="checkbox" name="IsDefault" value="1" data-am-ucheck>
+                </label> 
+               <div class="pr am-text-center"><span class="price am-text-sm">80元/位</span></div>
+               <div class="am-marign-top-sm am-fr">
+                  <input type="checkbox" value="1" data-am-ucheck> 
+                  <span class="am-icon-minus" onClick="employee()"></span>
+                  <input type="text" class="serinput" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="1">
+                  <span class="am-icon-plus" onClick="employee()"></span>
+                </div>
+             </li>
+           </ul>
   <!-- 详情 -->
   <form action="<?=site_url('home/foodaddcart');?>" method="post" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
@@ -137,21 +154,9 @@
         // $('.tijiao').removeAttr('disabled').html('选好了');
         $(this).parent('.foodNum').find('.reduce').css('display','inline-block');
       }
-   });
-  // $('.foodNum span').click(function() {
-  //   if($('.numTxt').val() > 0){
-  //       $('.tijiao').removeAttr('disabled').html('选好了');
-    
-  // }
-  // else{
-  //    $('.tijiao').attr({
-  //     disabled: 'disable'
-  //    }).html('空篮子');
-  // }
-     
-  // });
-  
+   }); 
   })
+  
   </script>
 </body>
 </html>
