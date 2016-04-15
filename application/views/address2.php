@@ -30,7 +30,7 @@
       </li>
     <?php endforeach;?>
     <?php else:?>
-         <li class="am-g am-list-item-dated lilast">
+         <li class="am-g am-list-item-dated lilast am-padding-sm">
         你还没有添加收货地址！
             </li> 
     <?php endif;?>
