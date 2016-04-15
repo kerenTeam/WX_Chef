@@ -18,7 +18,7 @@ var servmoeny = document.getElementById("servmoney");
 //服务费
 var fwf = parseFloat(servmoeny.innerHTML);
 window.onload=function(){
-
+    var servTotal = document.getElementById('servTotal');
 	var ordFen = document.getElementsByClassName('numTxt');
 	var ordPrice = document.getElementsByClassName('price');
 	fen = 0;
@@ -46,7 +46,7 @@ window.onload=function(){
 	}
 	console.log(paymoney)
 	fens.innerHTML = fen;
-	allmoney.innerHTML = (paymoney+fwf).toFixed(2);
+	allmoney.innerHTML = (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
 }
 
 function IsNum(e) {
@@ -85,7 +85,7 @@ function ueserWrite(obj){
     fen +=(parseFloat(curCount) - num);
     fens.innerHTML = fen;
     paymoney += (parseFloat(curCount) - num)*prices;
-    allmoney.innerHTML= (paymoney+fwf).toFixed(2);
+    allmoney.innerHTML= (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
 }
 
 function handle(self, isAdd){
@@ -136,7 +136,7 @@ function handle(self, isAdd){
 	}
 	fens.innerHTML=fen;
     countEl.value=curCount;
-	allmoney.innerHTML= (paymoney+fwf).toFixed(2);
+	allmoney.innerHTML= (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
 }
 
 
