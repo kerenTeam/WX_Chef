@@ -146,6 +146,7 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/num.js"></script>
+
 </body>
 <script>
   //是否选择服务员
