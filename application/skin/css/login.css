@@ -21,9 +21,15 @@
   margin: 0;
   height: 100%;
   width: 100% ;
-  background: url('../img/login_bg.png');
+  background: url('../img/login_bg.png') repeat;
 }
 .login_center{
+	-moz-box-flex: 1;
+		    -webkit-box-flex: 1;
+		        -o-box-flex: 1;
+		        -ms-flex: 1;
+		            flex: 1;
+
 	width: 100%;
 	text-align: center;
 }
@@ -33,6 +39,8 @@
 }
 .login_center img.login_logo{
 	margin-bottom: 1rem;
+	position: relative;
+    top: -3rem;
 }
 .login_center .am-btn{
 	width: 30%;

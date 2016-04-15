@@ -108,7 +108,11 @@ body {
 }
 .flexv .fitem{
 	width:100%;
+	margin-bottom:20px;
 	position:relative;
+	}
+.flexv .fitem img{
+		width:100%;
 	}
 .open{
 	position: absolute;
@@ -137,6 +141,10 @@ body {
 .ath{
 	font-size: 16px;
 	line-height: 20px;
+}
+.mbtop{
+	margin-top: -1.6rem;
+    border-top: 0!important;
 }
 .tkcontent {
 	position: absolute;
@@ -1359,7 +1367,10 @@ figure a:hover figcaption {
 .moa{
     margin-top: 4px;
 }
-.acr .am-u-sm-6 .gray{
+.acr .am-u-sm-9{
+	margin-top:1rem;
+}
+.acr .am-u-sm-9 .gray{
     margin-top: 7px;
 }	
 	.fpc{
@@ -1443,10 +1454,12 @@ figure a:hover figcaption {
     bottom: 0;
 }
 .acr .am-u-sm-3{
-	width:28%!important;
+	width:30%!important;
 }
-.acr .am-u-sm-6{
-	width:43%!important;
+.acr .am-u-sm-9{
+	width:70%!important;
+	margin-top: 10px;
+    line-height: 27px;
 }
 .vimg {
 	width: 5.5rem;

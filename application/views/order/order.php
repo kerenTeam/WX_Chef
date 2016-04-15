@@ -108,7 +108,7 @@
    
                  <!-- 已添加过地址 -->
                  <ul class="am-list odl">
-                      <li class="am-g am-list-item-dated lpt2">
+                      <li class="am-g am-list-item-dated lpt2 mbtop">
                         <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$address[0]['address'];?><br>
                         <?=$address[0]['name'];?><br>
                         <?=$address[0]['userphone'];?>
