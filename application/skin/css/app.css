@@ -959,7 +959,7 @@ body {
 	margin: 10px!important;
 }
 .cardno {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	height: 100%;
 	top: 40%;
