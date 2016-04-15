@@ -12,6 +12,21 @@ body {
 	align-content:space-around;
 	padding:5% 10%;
 }
+.wx_type_img{
+  position: relative;
+}
+.wx_type_img input#imgUpload{
+  margin: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
 .lil{
 	margin: 5px 15px;
     font-size: 15px;
@@ -961,8 +976,14 @@ body {
 	border: none;
 	outline: none;
 }
+/* #preview{
+	width:5rem;
+	height:5rem;
+} */
 .userS .am-u-sm-8 img {
-	height: 5rem;
+	width: 5rem;
+	height:5rem;
+	border-radius:50%;
 }
 .setf {
 	background: none;

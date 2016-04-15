@@ -13,7 +13,7 @@
     </h1>
   </header>
 
-  <form action="<?php echo site_url('orderWXPay/payOrder');?>"  method="post"> 
+  <form action="<?php echo site_url('orderWXPay/payOrder');?>" id="form" method="post"> 
     <div class="am-list-news-bd">
       <ul class="am-list odl">
 <?php foreach ($booking as $k => $value): ?>
@@ -95,16 +95,15 @@
            <!-- <input type="hidden" name="UserPhone" value="<?php echo randNms;?>"/> -->
       
            <div class="am-g ammake am-padding-sm">
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入用餐 地址" required name='address'>
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系人姓名" required name='name'>
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系 电话" required name='phone'>
+          <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" name='phone'>
+          <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名"  name='name'>
+          <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址"  name='address'>
+       
+        
         <label class="am-checkbox am-success am-u-sm-6">
             是否需要服务员？ <input type="checkbox" name="waiter" value="1" data-am-ucheck>
         </label>
-   <br>
-            <!-- <button type='button' class="am-fr am-btn am-btn-success" onclick="getorders();">提交</button> -->
-              </div>
-            </div>
+              </div> 
          <?php else:?>
             <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
    
@@ -123,21 +122,9 @@
                  </ul>  
           <?php endif;?>
         </div>
-       
-      </div>
       <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
     </form>
-    <!-- 支付方式弹框 -->
-<!--     <div class="tkp" style="display: none">
-    </div>
-    <div class="am-shadow fpa payway" style="display: none">
-      <p class="htit sad red"><span class="am-icon-usd"></span> 支付方式</p>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">会员卡支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="javascript:;" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-    </div> -->
+ 
     
   </body>
  <script src="skin/js/jquery.min.js"></script>
@@ -149,7 +136,7 @@
         //总金额
         var dijifen = $('#diyong').text();
         jine = dijifen/100;
-        $('#jifenmoney').text(jine);
+        $('#jifenmoney').text(jine.toFixed(2));
         var amount = $('#money').text();
 
         payable = amount;
@@ -190,9 +177,21 @@
             $('#pricetotal').text(payable);
             $('#yfje').val(payable);
         }
-       
         })
-       
+        $('#form').submit(function() { 
+        
+          var phone = $('input[type="tel"]').val();
+            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+              alert('还有信息未输入');
+              $(this).focus();
+              return false;
+            }
+          if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+            alert('请输入正确的电话号码');
+            $('.ofp').focus();
+              return false;
+          }
+        });
      
       })
 
