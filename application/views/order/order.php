@@ -94,19 +94,12 @@
           <?php if(empty($address)):?>
       
            <div class="am-g ammake am-padding-sm">
-<<<<<<< HEAD
           <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" name='phone'>
           <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名"  name='name'>
           <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址"  name='address'>
        
         
         <label class="am-checkbox am-success am-u-sm-6">
-=======
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入用餐 地址" required name='address'>
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系人姓名" required name='name'>
-        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系 电话" required name='phone'>
-        <label class="am-checkbox am-success am-margin-sm am-u-sm-6">
->>>>>>> 21277345f21bb66113cbc7707fa5b8d40c8c2eeb
             是否需要服务员？ <input type="checkbox" name="waiter" value="1" data-am-ucheck>
         </label>
               </div> 
@@ -127,12 +120,8 @@
                         </label>
                  </ul>  
           <?php endif;?>
+        </div> 
         </div>
-<<<<<<< HEAD
-=======
-        
-      </div>
->>>>>>> 21277345f21bb66113cbc7707fa5b8d40c8c2eeb
       <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
     </form>
  
