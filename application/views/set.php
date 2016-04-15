@@ -1,5 +1,5 @@
 <body>
-  <form action="<?=site_url('');?>" method="post  ">
+  <form action="<?=site_url('home/userdatum');?>" method="post  ">
     <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
         <a href="javascript:" onclick="javascript:history.go(-1);">
@@ -10,6 +10,8 @@
       <?=$user[0]['username'];?>
       </h1>
       <div class="am-header-right am-header-nav">
+      <input type="hidden" name='userid' value="<?=$user[0]['userid'];?>"/>
+      <input type="hidden" name='userphone' value=""/>
         <input type="submit" class="setf" value="确定">
       </div>
     </header>
@@ -20,25 +22,30 @@
           <?php if($user[0]['userimage'] == NULL):?>
           <div class="am-u-sm-8"> 
               <div class="wx_type_img">
-                <input type="file" id="imgUpload" name="img[]" onchange="previewImage(this)" class="upload-add">
+                <input type="file" id="imgUpload" name="userimg" onchange="previewImage(this)" class="upload-add">
                   <!-- 图片实时预览 -->
                 <div id="preview"> <img style="border-radius: 3px;" src="skin/img/vip.png" alt="选择图片"> </div>
               </div> 
           </div>
           <?php else:?>
-          <div class="am-u-sm-8"><img class="am-circle" src="<?php echo IP.$user[0]['userimage'];?>" alt=""></div>
+             <div class="wx_type_img">
+                <input type="file" id="imgUpload" name="userimg" onchange="previewImage(this)" class="upload-add">
+                  <!-- 图片实时预览 -->
+                <div id="preview"> <img style="border-radius: 3px;" src="<?php echo IP.$user[0]['userimage'];?>" alt="选择图片"> </div>
+              </div> 
+        
           <?php endif;?>
         </li>
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">昵称</div>
           <div class="am-u-sm-8">
-            <input type="text" value="<?=$user[0]['username'];?>" placeholder="未填写" >
+            <input type="text" value="<?=$user[0]['username'];?>" placeholder="未填写" name='username'>
           </div>
         </li>
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">口味</div>
           <div class="am-u-sm-8">
-            <input type="text" value="<?=$user[0]['personaltaste']?>"  placeholder="未填写">
+            <input type="text" value="<?=$user[0]['personaltaste']?>"  placeholder="未填写" name='personaltaste'>
           </div>
         </li>
         <li class="am-g am-list-item-dated">
@@ -59,6 +66,8 @@
         </li>
       </ul>
     </div>
+
+  </form>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
@@ -88,7 +97,6 @@
     </li>
       </ul>
     </div>
-  </form>
 </body>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>

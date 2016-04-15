@@ -89,7 +89,7 @@ class home extends CI_Controller
 		$banner = $this->option_model->banners();
 		$data['banners'] = unserialize($banner['banner']);
 
-		$caijia = file_get_contents(POSTAPI.'API_Vegetable');
+		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
 		$data['caijia'] = json_decode(json_decode($caijia));
 	
@@ -361,25 +361,6 @@ class home extends CI_Controller
 	}
 	 //支付订单
     public function payOrder(){
-    	// $foodid = $this->input->post('foodid');
-    	// $numbers = $this->input->post('numbers');
-
-    	// $foodOrder = array_combine($foodid,$numbers);
-    	// $foodJson = array();
-    	// var_dumP($_POST);
-    	// exit;
-     //    foreach ($foodOrder as $fid => $fnums)
-     //    { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
-
-     //    $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-     //    $foodJsondata['UserCouponId'] = $this->input->post('UserCouponId');
-     //    $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-     //    $foodJsondata['PaymentMethod'] = '';
-     //    $foodJsondata['poorderentry'] = $foodJson;
-       
- //        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
-     
-        //var_dump($abc); exit; 
 
 		$this->load->view('payOrder');
 	}
@@ -427,6 +408,13 @@ class home extends CI_Controller
 			echo "<script>alert('你还没有登陆!');window.location.href='login2';</script>";
 		}
 	}
+	//更改用户资料
+	public function userdatum()
+	{
+		if($_POST){
+			var_dumP($_POST);
+		}
+	}
     //搜索
     public function search(){
     	if($_POST){
@@ -452,15 +440,17 @@ class home extends CI_Controller
     		if(empty($_SESSION['phone'])){
     			$data['record'] = '';
     		}else{
-    			echo "<pre>";
-    			$isok = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
-    			var_dumP($isok);
-    			$arr= json_decode($isok);
+    			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone'].'&Phone=');
+    			$data['record'] = json_decode(json_decode($jsonorder),true);
        		}
+    	}else if(isset($_SESSION['temporaryOrder'])){
+
+    		$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone=&Phone='.$_SESSION['temporaryOrder']);
+    			$data['record'] = json_decode(json_decode($jsonorder),true);
     	}else{
     		$data['record'] = '';
     	}
-		$this->load->view('orderRecord');
+		$this->load->view('orderRecord',$data);
 	}
    //订单详情
     public function orderI(){
