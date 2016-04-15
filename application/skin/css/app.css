@@ -12,7 +12,7 @@ body {
 	align-content:space-around;
 	padding:5% 10%;
 }
-<<<<<<< HEAD
+ 
 .wx_type_img{
   position: relative;
 }
@@ -28,11 +28,10 @@ body {
   filter: alpha(opacity=0);
 }
 
-=======
+ 
 .cardimg{
 	width:5rem;
-}
->>>>>>> 21277345f21bb66113cbc7707fa5b8d40c8c2eeb
+} 
 .lil{
 	margin: 5px 15px;
     font-size: 15px;
