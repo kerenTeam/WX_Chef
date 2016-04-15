@@ -80,7 +80,6 @@
       </div>
     </div> 
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">
-      <a href="<?php echo site_url('home/order')?>">
         <div class="am-u-sm-8 green a">
           <img src="skin/img/cl.png" class="cartImg" alt=""><span id="fen" class="allmoney">0</span>份
           <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
@@ -88,7 +87,6 @@
         <div class="am-u-sm-4 b">
           <button type="submit" class="am-btn am-btn-success tijiao">确定</button>
         </div>
-      </a>
     </div>
   </form>
   <!-- footer -->

@@ -55,7 +55,7 @@
     <div class="am-shadow am-margin-vertical-sm fpa2">
        <?php if(empty($usercoupon)):?>
             
-            <a href="javascript:;" disabled class="am-cf adc">饭票已经用光了哦<span class="am-fr am-icon-xs red">没有饭票 </span></a>
+            <a href="javascript:;" disabled class="am-cf adc">没有可用饭票！<span class="am-fr am-icon-xs red">没有饭票 </span></a>
       <?php else:?>
 
            <a class="am-cf adc fclick">饭票可用<?=count($usercoupon);?>张<span class="am-fr am-icon-xs red">选择 <span class="am-icon-angle-down"></span></span></a>
