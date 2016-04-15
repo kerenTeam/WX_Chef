@@ -48,29 +48,16 @@ class orderWXPay extends CI_Controller{
 		 foreach ($foodOrder as $fid => $fnums)
         { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
         
-     //    $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-     //    $_SESSION['temporaryOrder'] = $this->input->post('UserPhone');
-     //    $foodJsondata['name'] = $this->input->post('name');
-     //    $foodJsondata['jifen'] = $this->input->post('jifen');
-     //    $foodJsondata['yfje'] = $this->input->post('yfje');
-     //    $foodJsondata['waiter'] = $this->input->post('waiter');
-     //    $foodJsondata['address'] = $this->input->post('address');
-    	// $foodJsondata['phone'] = $this->input->post('phone');
-     //    $foodJsondata['UserCouponId'] = $this->input->post('couponid');
-     //    $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-     //    $foodJsondata['PaymentMethod'] = ' ';
         $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-        $_SESSION['temporaryOrder'] = $this->input->post('UserPhone');
         $foodJsondata['Name'] = $this->input->post('name');
+        //$foodJsondata['jifen'] = $this->input->post('jifen');
         $foodJsondata['MoneyAll'] = $this->input->post('yfje');
-        if($this->input->post('waiter') == NULL){
-             $foodJsondata['WaiterId'] = 0;
-        }else{
-             $foodJsondata['WaiterId'] = $this->input->post('waiter');
-        }
+        $foodJsondata['WaiterId'] = $this->input->post('waiter');
         $foodJsondata['Address'] = $this->input->post('address');
     	$foodJsondata['Phone'] = $this->input->post('phone');
-        $foodJsondata['UserCouponId'] = $this->input->post('couponid');
+
+        $_SESSION['temporaryOrder'] = $this->input->post('phone');
+        //$foodJsondata['UserCouponId'] = $this->input->post('couponid');
         $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
         $foodJsondata['PaymentMethod'] = ' ';
         if($this->input->post('jifen') == NULL){
@@ -78,6 +65,7 @@ class orderWXPay extends CI_Controller{
         }else{
             $foodJsondata['Integral'] = $this->input->post('jifen');
         }
+        $foodJsondata['UserCouponId'] = $this->input->post('jifen');
         $foodJsondata['poorderentry'] = $foodJson;
         //将order所有数据转为josn
         $data['OrderAllData'] = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
@@ -96,18 +84,16 @@ class orderWXPay extends CI_Controller{
     public function postOrderData()
     {	
     	$isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$_SESSION['OrderAllData']);
-    	echo "<pre>";
-    	var_dump($_SESSION['OrderAllData']);
-    	echo "<hr/>";
-    	var_dump($isComedeOrder);
-    	exit;
-
     	if ($isComedeOrder == 1) {
     		echo "<script> alert('OK！') </script>";
     	}
+    	var_dump($_SESSION['OrderAllData']);
+    	var_dump($isComedeOrder);
+
         $_SESSION['shoping']       = '';
         $_SESSION['booking']       = '';
-        $_SESSION['postBooking']   = '';
+        $_SESSION['postBooking']   = ''; 
+        exit;
      	redirect('home/index');
     }
 }

@@ -48,6 +48,7 @@ class JsApiPay
 			//获取完整url  上面是一个BUG
 			$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 			$baseUrl = site_url('orderWXPay/jumpLink');
+			var_dump($baseUrl);
 			$url = $this->__CreateOauthUrlForCode($baseUrl);
 			Header("Location: $url");
 			exit();
