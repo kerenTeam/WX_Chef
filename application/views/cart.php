@@ -2,7 +2,7 @@
   <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
   <div class="am-header-left am-header-nav">
-    <a href="<?php echo site_url('home/index')?>">
+    <a href="<?php echo site_url('home/cailan')?>">
       <i class="am-header-icon am-icon-chevron-left"></i>
     </a>
   </div>
@@ -143,5 +143,6 @@
 	 })
 </script>-->
 <script src="skin/js/num.js"></script>
+
 </body>
 </html>

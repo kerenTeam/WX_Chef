@@ -204,7 +204,10 @@ class home extends CI_Controller
 					$data[$k]['code'] = $code[$k];	
 				}
 				$arr = array_no_empty($data);
-				// var_dump($a);
+			if(empty($arr)){
+				echo "<script>alert('你还没有可提交的菜品。');window.location.href='cailan';</script>";
+			}else{
+				
 				$shopid = rand(1,100);
 				foreach($arr as $key=>$val){
 						$a['foodid']= $val['foodid'];
@@ -233,6 +236,8 @@ class home extends CI_Controller
 					 	$this->session->set_userdata('shoping',$f,0);
 					}	
 				redirect('home/cart');
+				}
+			exit;
 		}
 	}
 	// food添加购物车
@@ -244,42 +249,47 @@ class home extends CI_Controller
 			$shopid = $_POST['shopid'];
 			$number = $_POST['numbers'];
 			$code = $_POST['code'];
-			if($shopid == NULL){
-				$shopid = rand(1,100);
-				$data['foodid'] = $foodid;
-				$data['number'] = $number;
-				$data['shopid'] = $shopid;
-				$data['code'] = $code;
-				$data['time'] = date('Y-m-d H:i:s');
-				$c[] = $data;
-				if(isset($_SESSION['shoping'])){
-					$shoping = $_SESSION['shoping'];
-				}else{
-					$shoping = NULL;
-				}
-				if($shoping == NULL){
-				 	$this->session->set_userdata('shoping',$c,0);
-				}else{
-					foreach($shoping as $key=>$value){
-						foreach($c as $k=>$v){
-							if($value['foodid'] == $v['foodid']){
-								unset($shoping[$key]);
+			if(empty($number)){
+				echo "<script>alert('你还没有可提交的菜品。');history.go(-1);</script>";
+			}else{
+				if($shopid == NULL){
+					$shopid = rand(1,100);
+					$data['foodid'] = $foodid;
+					$data['number'] = $number;
+					$data['shopid'] = $shopid;
+					$data['code'] = $code;
+					$data['time'] = date('Y-m-d H:i:s');
+					$c[] = $data;
+					if(isset($_SESSION['shoping'])){
+						$shoping = $_SESSION['shoping'];
+					}else{
+						$shoping = NULL;
+					}
+					if($shoping == NULL){
+					 	$this->session->set_userdata('shoping',$c,0);
+					}else{
+						foreach($shoping as $key=>$value){
+							foreach($c as $k=>$v){
+								if($value['foodid'] == $v['foodid']){
+									unset($shoping[$key]);
+								}
 							}
 						}
+						$f = array_merge($shoping,$c);
+					 	$this->session->set_userdata('shoping',$f,0);
+					}	
+				}else{
+					$shoping = $_SESSION['shoping'];
+					foreach($shoping as $k=>$v){
+						if($shopid == $v['shopid'] && $foodid == $v['foodid']){
+							$shoping[$k]['number'] = $number;
+						}
 					}
-					$f = array_merge($shoping,$c);
-				 	$this->session->set_userdata('shoping',$f,0);
-				}	
-			}else{
-				$shoping = $_SESSION['shoping'];
-				foreach($shoping as $k=>$v){
-					if($shopid == $v['shopid'] && $foodid == $v['foodid']){
-						$shoping[$k]['number'] = $number;
-					}
+					$this->session->set_userdata('shoping',$shoping,0);
 				}
-				$this->session->set_userdata('shoping',$shoping,0);
+				redirect('home/cart');
 			}
-			redirect('home/cart');
+			
 		}
 	}
 	// 注销
@@ -379,8 +389,12 @@ class home extends CI_Controller
    //个人中心
 	public function ucent(){
 		if(isset($_SESSION['phone'])){
-			$user = file_get_contents(POSTAPI."API_User?dis=ckxx&UserPhone=".$_SESSION['phone']);
-			$data['users'] = json_decode(json_decode($user),true);
+			if($_SESSION['phone'] == NULL){
+				$data['user'] = '';
+			}else{
+				$user = file_get_contents(POSTAPI."API_User?dis=ckxx&UserPhone=".$_SESSION['phone']);
+				$data['users'] = json_decode(json_decode($user),true);
+			}
 		}else{
 			$data['users'] = '';
 		}
