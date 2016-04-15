@@ -55,7 +55,7 @@
     <div class="am-shadow am-margin-vertical-sm fpa2">
        <?php if(empty($usercoupon)):?>
             
-            <a href="javascript:;" disabled class="am-cf adc">没有可用饭票！<span class="am-fr am-icon-xs red">没有饭票 </span></a>
+            <a href="javascript:;" disabled class="am-cf adc">饭票<span class="am-fr am-icon-xs red">无可用饭票 </span></a>
       <?php else:?>
 
            <a class="am-cf adc fclick">饭票可用<?=count($usercoupon);?>张<span class="am-fr am-icon-xs red">选择 <span class="am-icon-angle-down"></span></span></a>
@@ -108,7 +108,7 @@
    
                  <!-- 已添加过地址 -->
                  <ul class="am-list odl">
-                      <li class="am-g am-list-item-dated lpt2">
+                      <li class="am-g am-list-item-dated lpt2 mbtop">
                         <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$address[0]['address'];?><br>
                         <?=$address[0]['name'];?><br>
                         <?=$address[0]['userphone'];?>

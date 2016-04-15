@@ -36,17 +36,20 @@
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/set')?>" class="am-list-item-hd "><img src="skin/img/set.png" alt=""> 个人设置</a> 
       </li>
+      <li class="am-g am-list-item-dated">
+          <a href="<?php echo site_url('home/safe')?>" class="am-list-item-hd "><span class="am-icon-lock lock"></span> 账号安全</a> 
+      </li>
   </ul>
     <ul class="am-list userl">
     <?php if(isset($_SESSION['phone'])):?>
       <li class="am-g am-list-item-dated">
-          <a href="<?=site_url('home/zhuxiao');?>" data-am-modal="{target: '#my-alert'}" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
+          <a href="<?=site_url('home/zhuxiao');?>" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
       </li>
     <?php endif;?>
   </ul>
   </div>
   <!-- 注销弹框 -->
-      <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert">
+<!--       <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert">
         <div class="am-modal-dialog">
           <div class="am-modal-bd">
             你，确定要注销吗？
@@ -56,7 +59,7 @@
             <span class="am-modal-btn" data-am-modal-confirm>确定</span>
           </div>
         </div>
-      </div>
+      </div> -->
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
@@ -81,7 +84,7 @@
         <li>
           <a href="<?php echo site_url('home/ucent')?>" class="active">
             <span class=""><img src="skin/img/gr2.png" alt=""></span>
-            <span class="am-navbar-label">个人</span>
+            <span class="am-navbar-label">我的</span>
           </a>
         </li>
       </ul>

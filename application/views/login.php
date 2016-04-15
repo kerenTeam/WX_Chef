@@ -2,7 +2,9 @@
   <link rel="stylesheet" href="skin/css/login.css">
   <style type="text/css">
   	html{
-  		height: 100%;
+  		height: 100%;        
+  		background: url('../img/login_bg.png') repeat;
+
   	}
   </style>
  

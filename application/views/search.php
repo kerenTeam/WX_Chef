@@ -25,7 +25,7 @@
   </div>  -->
  <!-- <hr data-am-widget="divider" style="" class="am-divider am-divider-default" /> -->
   <div class="hotsou">
-    <div class="am-text-sm">搜索记录：</div>
+    
     <ul>
       <!-- 没有搜索 -->
    <!--    <?php if(empty($sear)):?>
@@ -43,10 +43,13 @@
   <!-- 搜索显示 -->
   <div class="cmn cmnb am-list-news am-list-news-default" >
     <div class="am-list-news-bd">
+
       <ul class="am-list">
       
 <?php if(!empty($search)):?>
+  <div class="am-text-sm am-margin">搜索记录：</div>
   <?php foreach($search as $val):?>
+
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
          <a href="<?php echo site_url('home/food?id=').$val->foodid.'&number=&shopid='?>" class="black">
           <div class="am-u-sm-4 am-text-center am-list-thumb"> <div class="vimg"> <img src="<?php echo IP.$val->thumbnail;?>" alt="<?=$val->foodname;?>"/> </div> </div>
@@ -58,7 +61,7 @@
         </li>
         <?php endforeach;?> 
       <?php else:?>
-       <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">搜索不到你需要的菜品！</li>
+       <div class="am-text-center">无记录</div>
 <?php endif;?>
        
        
