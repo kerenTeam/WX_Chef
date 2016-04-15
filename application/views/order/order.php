@@ -43,12 +43,13 @@
         // 优惠卷
         $fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
         $userphone = json_decode(json_decode($fan),true);
-        foreach ($userphone as $key => $value) {
-            if($money > $value['usethreshold']){
-                $usercoupon[$key] = $value;
-            }
+        if(!empty($userphone)){
+          foreach ($userphone as $key => $value) {
+              if($money > $value['usethreshold']){
+                  $usercoupon[$key] = $value;
+              }
+          } 
         }
-       
   }
   ?>
     <div class="am-shadow am-margin-vertical-sm fpa2">
@@ -62,7 +63,7 @@
       <ul class="am-list odl"> 
       <?php foreach($usercoupon as $val):?>
           <li class="am-g am-list-item-dated">
-           <a href="javascript:" class="am-list-item-hd "><img src="<?php echo IP.$val['img'];?>" alt="<?=$val['coupponname']?>"><?=$val['coupponname']?></a> 
+           <a href="javascript:" class="am-list-item-hd "><img src="<?php echo IP.$val['img'];?>" alt="<?=$val['coupponname']?>" class="cardimg"><?=$val['coupponname']?></a> 
            <input type="hidden" value="<?=$val['usercouponid']?>" id='couponid' />
            <span class="am-list-date ath"> <i class="am-icon-cny"><?=$val['coupponmoney'];?></i></span>
           </li>
@@ -74,7 +75,7 @@
    <?php if(empty($jifen)):?>
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">你还没有积分!</span></a>
     <?php else:?>
-       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red"><span id='diyong'><?=$jifen;?></span>积分已抵用 <span class="am-icon-cny" id='jifenmoney'></span> <input type="checkbox" name='jifen' id="jifen" value="1"></span></a>
+       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red"><span id='diyong'><?=$jifen;?></span>积分已抵用  <span class="am-icon-cny" id='jifenmoney'></span> <input type="checkbox" name='jifen' id="jifen" value="1"></span></a>
     <?php endif;?>
 
       <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red" id='pricetotal'></span></a>
@@ -91,16 +92,21 @@
       <!-- 未添加地址这显示 -->
       <div class="am-list-news-bd">
           <?php if(empty($address)):?>
-         <!--   <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a> -->
-           <!-- <input type="hidden" name="UserPhone" value="<?php echo randNms;?>"/> -->
       
            <div class="am-g ammake am-padding-sm">
+<<<<<<< HEAD
           <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" name='phone'>
           <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名"  name='name'>
           <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址"  name='address'>
        
         
         <label class="am-checkbox am-success am-u-sm-6">
+=======
+        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入用餐 地址" required name='address'>
+        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系人姓名" required name='name'>
+        <input type="text" class="am-form-field am-radius am-margin-bottom-sm" placeholder="请输入联系 电话" required name='phone'>
+        <label class="am-checkbox am-success am-margin-sm am-u-sm-6">
+>>>>>>> 21277345f21bb66113cbc7707fa5b8d40c8c2eeb
             是否需要服务员？ <input type="checkbox" name="waiter" value="1" data-am-ucheck>
         </label>
               </div> 
@@ -116,12 +122,17 @@
                        <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
                         <span class="am-list-date"><i class="am-icon-angle-right am-icon-sm"></i></span></a>
                       </li>
-                       <label class="am-checkbox am-success am-u-sm-6">
+                       <label class="am-checkbox am-margin-sm am-success am-u-sm-6">
                             是否需要服务员？ <input type="checkbox" name="waiter" value="1" data-am-ucheck>
                         </label>
                  </ul>  
           <?php endif;?>
         </div>
+<<<<<<< HEAD
+=======
+        
+      </div>
+>>>>>>> 21277345f21bb66113cbc7707fa5b8d40c8c2eeb
       <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
     </form>
  

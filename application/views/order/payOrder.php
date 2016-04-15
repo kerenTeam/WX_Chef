@@ -44,7 +44,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
             if (res.err_msg == "get_brand_wcpay_request:ok")
             { 
               document.getElementById("makeformToPayOrder").submit();
-             }
+            }
             else if (res.err_msg == "get_brand_wcpay_request:cancel")
             { alert("已取消微信支付,你可选择其他支付或线下付款");}
           }
@@ -126,6 +126,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
         </li>
       </ul>
      </div>
+     <input type="hidden" name="aaa" value="aaa">
      <div class="am-shadow fpa preduce">
       <p class="htit sad">其他支付方式</p>
  

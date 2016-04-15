@@ -14,6 +14,7 @@ class home extends CI_Controller
 		$this->load->helper('post_helper');
 		$this->load->library('session');
 		$this->load->view('header');
+		$_SESSION['openid'] = '871dd687-7e12-4457-b5fa-ff47d725739e';
 	}
 	//登录
 	public function login(){
