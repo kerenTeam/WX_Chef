@@ -66,7 +66,7 @@ function getoption(){
       <?php endforeach;?>
       </select>
     </div>
-   <!--  <div class="am-u-sm-4 sbnt">
+    <div class="am-u-sm-4 sbnt">
       <select data-am-selected="{maxHeight: 100}">
         <option value="b">蔬菜</option>
         <option value="o">肉类</option>
@@ -74,7 +74,7 @@ function getoption(){
         <option value="phone">家禽</option>
         <option value="im">海鲜</option>
       </select>
-    </div> -->
+    </div>
     <div class="am-u-sm-4 sbnt">
       <select id="adate" class="date" data-am-selected="{maxHeight: 100}" name='date' onchange="getoption();">
       

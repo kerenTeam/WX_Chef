@@ -17,24 +17,30 @@ class orderWXPay extends CI_Controller{
    
 
 //订单
-    public function order()
-    {
-    	if ($_POST)
-    	{$_SESSION['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); }
-    	if(isset($_SESSION['phone'])){
-    		
-    		// 获取积分
-    		$data['jifen'] =json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']));
-    		//获取用户默认地址、
-    		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
-
-
-    		$data['address'] = json_decode(json_decode($address),true);
-    	}
-    	$data['booking'] = $_SESSION['booking'];
-    	$data['postBooking'] = $_SESSION['postBooking'];
- 	$this->load->view('order/order',$data);
-	}
+    public function order(){
+    	if ($_POST){
+            if(!isset($_SESSION['phone'])){
+                echo "<script>alert('你还没有登陆！');window.location.href='".site_url('home/login')."';</script>";
+            }else{   
+                if($_SESSION['phone'] == NULL){
+                    echo "<script>alert('你还没有登陆！');window.location.href='".site_url('home/login')."';</script>";
+                }else{
+                    $_SESSION['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); 
+            	    if(isset($_SESSION['phone'])){
+                		// 获取积分
+                		$data['jifen'] =json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']));
+                		//获取用户默认地址、
+                		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
+                		$data['address'] = json_decode(json_decode($address),true);
+            	    }
+                	$data['booking'] = $_SESSION['booking'];
+                	$data['postBooking'] = $_SESSION['postBooking'];
+             	    $this->load->view('order/order',$data);
+                }
+            }
+        }
+    }
+  
 //支付订单
 	public function payOrder()
 	{

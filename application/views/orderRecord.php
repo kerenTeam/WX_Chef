@@ -108,10 +108,7 @@
     </div>
   <?php endforeach;?>
   <?php else:?>
-     <div class="am-list-news-bd am-shadow">
-    
-    <div>你还没有订单！赶紧去下单吧。</div>
-  </div>
+     <div class="am-list-news-bd am-shadow am-padding">你还没有订单！赶紧去下单吧。 </div>
   <?php endif;?>
     <!-- 等待付款 -->
   <!-- footer -->

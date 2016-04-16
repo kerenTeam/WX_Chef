@@ -40,7 +40,7 @@
     </a>
   </li>
   <li>
-    <a href="<?php echo site_url('home/cailan')?>#7">
+    <a href="<?php echo site_url('home/cailan')?>#fe7ad9a9-1bec-4929-b160-85f9a784f527">
       <div class="am-gallery-item byellow">
         <img src="skin/img/fork.png" alt="大厨到家"/>
         <h3 class="am-gallery-title">套餐</h3>
@@ -56,7 +56,7 @@
     </a>
   </li>
   <li>
-    <a href="<?php echo site_url('home/cailan')?>#6">
+    <a href="<?php echo site_url('home/cailan')?>#d4599ab9-5dbf-4faa-aa79-d8b46d61f887">
       <div class="am-gallery-item bblue">
         <img src="skin/img/tea.png" alt="大厨到家"/>
         <h3 class="am-gallery-title">燕鲍翅</h3>

@@ -30,6 +30,14 @@
         </li>
 <?php endforeach ?>
         <li class="am-g am-list-item-dated">
+          <a href="javascript:" class="am-list-item-hd">服务费</a>
+          <span class="am-list-date ath"><i class="am-icon-cny">60</span>
+        </li>
+        <li class="am-g am-list-item-dated">
+          <a href="javascript:" class="am-list-item-hd">服务员</a>
+          <span class="am-list-date ath"><i class="am-icon-cny">160</span>
+        </li>  
+        <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd red">订单总计</a>
           <span class="am-list-date ath"><i class="am-icon-cny red"><?php echo array_sum($pricetotal);?></i></span>
         </li>  

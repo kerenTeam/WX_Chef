@@ -12,7 +12,13 @@ var allmoney = document.getElementById("allmoney");
 var paymoney = parseFloat(allmoney.innerHTML);
 var curCount;
 var num = 0;
+
+var ff = document.getElementsByClassName('ff')[0];
+var servmoeny = document.getElementById("servmoney");
+//服务费
+var fwf = parseFloat(servmoeny.innerHTML);
 window.onload=function(){
+    var servTotal = document.getElementById('servTotal');
 	var ordFen = document.getElementsByClassName('numTxt');
 	var ordPrice = document.getElementsByClassName('price');
 	fen = 0;
@@ -22,8 +28,25 @@ window.onload=function(){
 		paymoney += parseFloat(parseInt(ordFen[i].value)*parseFloat(ordPrice[i].innerHTML));
 		console.log(paymoney)
 	}
+	if(paymoney>300 ||paymoney<=0){
+		fwf = 0;
+		ff.style.display='none';
+		servmoeny.innerHTML = fwf;
+	}
+		
+	if(paymoney>0 && paymoney<=240){
+       fwf = 60;
+       ff.style.display='';
+       servmoeny.innerHTML = fwf;
+	}
+	if(paymoney>240 && paymoney<=300){
+		ff.style.display='';
+       fwf = 300-paymoney;
+       servmoeny.innerHTML = fwf;
+	}
+	console.log(paymoney)
 	fens.innerHTML = fen;
-	allmoney.innerHTML = paymoney.toFixed(2);
+	allmoney.innerHTML = (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
 }
 
 function IsNum(e) {
@@ -62,7 +85,7 @@ function ueserWrite(obj){
     fen +=(parseFloat(curCount) - num);
     fens.innerHTML = fen;
     paymoney += (parseFloat(curCount) - num)*prices;
-    allmoney.innerHTML= paymoney.toFixed(2);
+    allmoney.innerHTML= (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
 }
 
 function handle(self, isAdd){
@@ -95,10 +118,28 @@ function handle(self, isAdd){
 		}else
 			paymoney -= parseFloat(price);
 	}
+	if(paymoney>300 ||paymoney<=0){
+		fwf = 0;
+		ff.style.display='none';
+		servmoeny.innerHTML = fwf;
+	}
+		
+	if(paymoney>0 && paymoney<=240){
+       fwf = 60;
+       ff.style.display='';
+       servmoeny.innerHTML = fwf;
+	}
+	if(paymoney>240 && paymoney<=300){
+       fwf = 300-paymoney;
+       ff.style.display='';
+       servmoeny.innerHTML = fwf;
+	}
 	fens.innerHTML=fen;
     countEl.value=curCount;
-	allmoney.innerHTML= paymoney.toFixed(2);
+	allmoney.innerHTML= (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
 }
+
+
 
 
 // function handleHidden(id,name, count,total, fid){

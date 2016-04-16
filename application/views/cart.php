@@ -2,7 +2,7 @@
   <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
   <div class="am-header-left am-header-nav">
-    <a href="<?php echo site_url('home/index')?>">
+    <a href="<?php echo site_url('home/cailan')?>">
       <i class="am-header-icon am-icon-chevron-left"></i>
     </a>
   </div>
@@ -12,7 +12,7 @@
 
 </header>
 <?php if($carts == NULL && $taocan == NULL):?>
-    <div><p>购物车空空如也，老鼠都是含着泪离开的。</p></div>
+    <div class="am-margin">购物车空空如也，老鼠都是含着泪离开的~~</div>
 <?php else:;?>
 
 <form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">
@@ -103,11 +103,30 @@
           <?php endforeach;?>
            </ul>
          <?php endif;?>
+
+           <ul class="am-shadow am-list">
+             <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
+               服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
+               <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->
+             </li>
+              <li class="am-g am-padding-xs">
+                <label class="am-checkbox am-success am-u-sm-4">
+                服务员 <input type="checkbox" id="serpeople" ata-am-ucheck>
+                </label> 
+                <input type="hidden" id="servTotal" value="0">
+               <div class="epr am-text-center am-text-sm"><span class="price" id="serprice">80</span>元/位</div>
+               <div class="am-marign-top-sm am-fr cd" style="display: none;">
+                  <span class="am-icon-minus gray" onClick="empdel()"></span>
+                  <input type="text" class="serinput" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                  <span class="am-icon-plus gray" onClick="empladd()"></span>
+                </div>
+             </li>
+           </ul>
       </div>
 
     </div>
   </div>
-  <!-- <div class="am-text-center">合计：<i class="am-icon-cny red"></i><input type="text" id="allmoney" readonly class="allmoney red" value="757"></div> -->
+  
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
    
@@ -126,22 +145,53 @@
 <?php endif;?>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
-
-<!--<script>
- $(function(){
-	 var nums = $(".numTxt");
-	 var all = 0;
-	 var fen = 0;
-	 nums.each(function() {
-		 var pr = $(this).parentsUntil('li').find('.price').html();
-		  console.log(pr);
-		fen += parseInt($(this).val());
-		all += parseInt($(this).val())*parseFloat(pr);
-	});
-	$('#fen').html(fen);
-	$('#allmoney').html(all.toFixed(2));
-	 })
-</script>-->
 <script src="skin/js/num.js"></script>
+
 </body>
+<script>
+  //是否选择服务员
+
+  var sercheck = document.getElementById('serpeople');
+  var cd = document.getElementsByClassName('cd')[0];
+  var serinput = document.getElementsByClassName('serinput')[0];
+  var serprice = document.getElementById('serprice');
+  var servTotal = document.getElementById('servTotal');
+  var allmoney = document.getElementById('allmoney');
+  var   keep = allmoney.innerHTML;
+  sercheck.onclick = function (){
+    
+    if(sercheck.checked){
+          cd.style.display="";
+          serinput.value=1;
+           allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(serprice.innerHTML);
+    }
+    else{
+      cd.style.display="none";
+       serinput.value=0;
+       allmoney.innerHTML = parseFloat(allmoney.innerHTML)-parseFloat(servTotal.value);
+     }
+      servTotal.value = (serinput.value)*parseInt(serprice.innerHTML);
+       //allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(servTotal.value);
+}
+//服务于数量加减
+ function empdel(){
+  var sernum =serinput.value;
+        sernum--;
+        if(sernum<1){
+          sernum = 0;
+          sercheck.checked = false;
+          cd.style.display="none";
+        }
+         serinput.value = sernum;
+        servTotal.value = sernum*parseFloat(serprice.innerHTML); console.log(servTotal.value);
+        allmoney.innerHTML = parseFloat(allmoney.innerHTML)-parseFloat(serprice.innerHTML);
+ }
+ function empladd(){
+  var sernum =serinput.value;
+        sernum++; 
+        serinput.value =sernum;
+        servTotal.value = sernum*parseFloat(serprice.innerHTML);console.log(servTotal.value);
+         allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(serprice.innerHTML);
+ }
+</script>
 </html>
