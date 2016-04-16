@@ -42,9 +42,9 @@
   </ul>
     <ul class="am-list userl">
     <?php if(isset($_SESSION['phone'])):?>
-      <li class="am-g am-list-item-dated">
+     <!--  <li class="am-g am-list-item-dated">
           <a href="<?=site_url('home/zhuxiao');?>" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
-      </li>
+      </li> -->
     <?php endif;?>
   </ul>
   </div>

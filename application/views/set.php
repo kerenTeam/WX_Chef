@@ -1,5 +1,5 @@
 <body>
-  <form action="<?=site_url('home/userdatum');?>" method="post  ">
+  <form action="<?=site_url('home/userdatum');?>" method="post">
     <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
         <a href="javascript:" onclick="javascript:history.go(-1);">
@@ -11,7 +11,6 @@
       </h1>
       <div class="am-header-right am-header-nav">
       <input type="hidden" name='userid' value="<?=$user[0]['userid'];?>"/>
-      <input type="hidden" name='userphone' value=""/>
         <input type="submit" class="setf" value="确定">
       </div>
     </header>
@@ -51,11 +50,11 @@
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">热爱菜系</div>
           <div class="am-u-sm-8">
-            <select multiple data-am-selected class="vegtype" name='likecuisine'>
-              <option value="a">粤菜</option>
-              <option value="b">川菜</option>
-              <option value="o">鲁菜</option>
-              <option value="m">湘菜</option>
+            <select multiple data-am-selected class="vegtype" name='likecuisine[]'>
+              <option value="粤菜">粤菜</option>
+              <option value="川菜">川菜</option>
+              <option value="鲁菜">鲁菜</option>
+              <option value="湘菜">湘菜</option>
             </select>
           </div>
           <style>
