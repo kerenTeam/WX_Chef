@@ -3,7 +3,7 @@
  * @Author: Harris-Aaron
  * @Date:   2016-04-12 10:31:05
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-04-15 16:40:00
+ * @Last Modified time: 2016-04-15 20:51:41
  */
 
 $wechatObj = new IndexValid();
@@ -34,148 +34,104 @@ class IndexValid
     }
 
 
-    public function responseMsg(){
-        //get post data, May be due to the different environments
-        $postStr = isset($GLOBALS["HTTP_RAW_POST_DATA"]) && !empty($GLOBALS["HTTP_RAW_POST_DATA"]) ? $GLOBALS["HTTP_RAW_POST_DATA"] : "";
-        if(!empty($postStr)){
-            libxml_disable_entity_loader(true);
+    public function responseMsg()
+    {
+        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+        if (!empty($postStr)){
+
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $RX_TYPE = trim($postObj->MsgType);
             $this->AddLog(TRUE,$postObj);
 
-
-            $fromUsername = $postObj->FromUserName;
-            $toUsername = $postObj->ToUserName;
-            $MsgType = $postObj->MsgType;
-
-
-            if($MsgType == 'event'){//执行事件相应
-                $Event = $postObj->Event;
-                switch ($Event) {
-                    case 'subscribe'://关注
-                        $contentStr = "你好，欢迎关注大厨到家！";
-                        break;
-                    case 'unsubscribe'://取消关注
-                        break;
-                    case 'SCAN'://扫描
-                        break;
-                    case 'LOCATION'://地址
-                        break;
-                    case 'CLICK'://点击时间
-                        switch ($object->EventKey)
-                                        {
-                                            case "company":
-                                                $contentStr[] = array("Title" =>"联系大厨到家", 
-                                                "Description" =>"联系我们：
-                                                                        您在途悦商城和时间银行的使用中遇到任何问题或有任何疑问，
-                                                                        欢迎随时致电联系我们：028-86283456
-                                                                        在线时间10：30am-18：30pm
-                                                                        如果未及时接听您的电话，您可在后台留言，看到留言后我们会第一时间与您联系", 
-                                                "PicUrl" =>"http://www.bestingmedia.com/img/contact/img.png", 
-                                                "Url" =>"http://www.bestingmedia.com/contactus.php");
-                                                //文字消息；
-                                                $contentStr = "联系我们：
-                                                                        您在途悦商城和时间银行的使用中遇到任何问题或有任何疑问，
-                                                                        欢迎随时致电联系我们：028-86283456
-                                                                        在线时间10：30am-18：30pm
-                                                                        如果未及时接听您的电话，您可在后台留言，看到留言后我们会第一时间与您联系";
-                                                break;
-                                            default:
-                                                $contentStr[] = array("Title" =>"默认联系途悦回复", 
-                                                                      "Description" =>"您正在使用的是途悦测试接口", 
-                                                                      "PicUrl" =>"http://www.bestingmedia.com/img/contact/img.png", 
-                                                                      "Url" =>"weixin://www.bestingmedia.com");
-                                                break;
-                                        }
-                        break;
-                    case 'VIEW'://跳转
-                        echo "<script>alert('欢迎来到新世界');</script>";
-                        header("Location: http:www.google.com"); exit;
-                        break;
-                    case 'card_pass_check'://卡券审核通过
-                        $contentStr[] = "卡券审核通过";
-                        break;
-                    case 'card_not_pass_check'://卡券审核失败
-                        $contentStr[] = "卡券审核失败";
-                        break;
-                    case 'user_get_card'://用户领取卡券
-                        $contentStr[] = "用户领取卡券";
-                        break;
-                    case 'user_del_card'://用户删除卡券
-                        $contentStr[] = "用户删除卡券";
-                        break;
-                    case 'user_view_card'://用户浏览会员卡
-                        $contentStr[] = "用户浏览会员卡";
-                        break;
-                    case 'user_consume_card'://用户核销卡券
-                        $contentStr[] = "用户核销卡券";
-                        break;
-                    case 'kf_create_session'://创建会话
-                        $contentStr[] = "创建会话";
-                        break;
-                    case 'kf_close_session'://关闭会话
-                        $contentStr[] = "关闭会话";
-                        break;
-                    case 'kf_switch_session'://转接会话
-                        $contentStr[] = "转接会话";
-                        break;
-                    default:
-                        break;
-                }
-                if (is_array($contentStr)){
-                    $resultStr = $this->transmitNews($object, $contentStr);
-                }else{
-                    $resultStr = $this->transmitText($object, $contentStr);
-                }
-                return $resultStr;
-            }else{
-                switch ($MsgType) {
-                    case 'text'://文本格式
-                        
-                        $Feedback = mysql_query("SELECT *  FROM wd_keyreply WHERE `keyword` LIKE '%$keyword%' OR NAME LIKE '%$keyword%'  AND state = '1' AND difference = 'keyReply' LIMIT 1");
-                        while ($jay = mysql_fetch_array($Feedback)) {
-                            $contentStr['Title'] = $jay['name'];
-                            $contentStr['Description'] = mb_substr($jay['keycode'],0,100,'utf-8');
-                            $contentStr['PicUrl'] = SELFURL.$jay['Picurl'];
-                            $contentStr['Url'] = $jay['linkurl'];   }
-                        //如果没有查询到数据
-                        if (is_array($contentStr)) {
-                            $contentStr[] = "很抱歉没有搜索到相关信息，您可以登录<a href='http://www.baidu.com/'> baidu </a>或电话 028-12345678 来查询相关信息" ;}
-
-                        break;
-                    case 'image'://图片格式
-                        $contentStr[] = " Your messge is image ";
-                        break;
-                    case 'voice'://声音
-                        $contentStr[] = " Your messge is voice ";
-                        break;
-                    case 'video'://视频
-                        $contentStr[] = " Your messge is video ";
-                        break;
-                    case 'shortvideo'://小视频
-                        $contentStr[] = " Your messge is shortvideo ";
-                        break;
-                    case 'location'://上传地理位置
-                        $contentStr[] = " Your messge is location ";
-                        break;
-                    case 'link'://链接相应
-                        $contentStr[] = " Your messge is link ";
-                        break;
-                    default:
-                        break;
-                }
-                if (is_array($contentStr)){
-                    $resultStr = $this->transmitNews($object, $contentStr);
-                }else{
-                    $resultStr = $this->transmitText($object, $contentStr);
-                }
-                return $resultStr;
+            switch ($RX_TYPE)
+            {
+                case "text":
+                    $resultStr = $this->receiveText($postObj);
+                    break;
+                case "image":
+                    $resultStr = $this->receiveImage($postObj);
+                    break;
+                case "location":
+                    $resultStr = $this->receiveLocation($postObj);
+                    break;
+                case "voice":
+                    $resultStr = $this->receiveVoice($postObj);
+                    break;
+                case "video":
+                    $resultStr = $this->receiveVideo($postObj);
+                    break;
+                case "link":
+                    $resultStr = $this->receiveLink($postObj);
+                    break;
+                case "event":
+                    $resultStr = $this->receiveEvent($postObj);
+                    break;
+                default:
+                    $resultStr = "unknow msg type: ".$RX_TYPE;
+                    break;
             }
-        }
-        else{
-            echo "暂时没有任何信息！";
+            echo $resultStr;
+        }else {
+            echo "";
             exit;
         }
     }
+
+    private function receiveEvent($object)
+    {
+        $contentStr = "";
+        switch ($object->Event)
+        {
+            case "subscribe":
+                $contentStr = "欢迎关注🤖️".$this->bytes_to_emoji(0x1F1E8).$this->bytes_to_emoji(0x1F1F3);
+                break;
+            case "unsubscribe":
+                $contentStr = "";
+                break;
+
+            case "CLICK":
+                switch ($object->EventKey)
+                {
+                        case "company":
+                            $contentStr[] = array("Title" =>"联系大厨到家", 
+                                                  "Description" =>"联系我们：
+                                                               您在途悦商城和时间银行的使用中遇到任何问题或有任何疑问，
+                                                               欢迎随时致电联系我们：028-86283456
+                                                               在线时间10：30am-18：30pm
+                                                               如果未及时接听您的电话，您可在后台留言，看到留言后我们会第一时间与您联系", 
+                                                  "PicUrl" =>"http://www.bestingmedia.com/img/contact/img.png", 
+                                                  "Url" =>"http://www.bestingmedia.com/contactus.php");
+                            //文字消息
+                            /*$contentStr = "联系我们：
+                                           您在途悦商城和时间银行的使用中遇到任何问题或有任何疑问，
+                                           欢迎随时致电联系我们：028-86283456
+                                           在线时间10：30am-18：30pm
+                                           如果未及时接听您的电话，您可在后台留言，看到留言后我们会第一时间与您联系";
+                            */
+                        break;
+                        default:
+                           $contentStr[] = array("Title" =>"你点击了: ".$object->EventKey, 
+                                               "Description" =>"您正在使用的是测试接口", 
+                                               "PicUrl" =>"http://www.bestingmedia.com/img/contact/img.png", 
+                                               "Url" =>"weixin://www.bestingmedia.com");
+                        break;
+                }
+            break;
+            default:
+                $contentStr = "receive a new event: ".$object->Event;
+            break;
+        }
+                if (is_array($contentStr)){
+                    $resultStr = $this->transmitNews($object, $contentStr);
+                }else{
+                    $resultStr = $this->transmitText($object, $contentStr);
+                }
+                return $resultStr;
+
+                // $resultStr = $this->transmitText($object, $contentStr);
+                // return $resultStr;
+    }
+
 
 
     private function transmitText($object, $content, $funcFlag = 0)
@@ -221,6 +177,68 @@ class IndexValid
                     </xml>";
         $resultStr = sprintf($newsTpl, $object->FromUserName, $object->ToUserName, time(), count($arr_item), $funcFlag);
         return $resultStr;
+    }
+
+    private function receiveText($object)
+    {
+        $funcFlag = 0;
+        $contentStr = "你发送的是文本，内容为：".$object->Content;
+        $resultStr = $this->transmitText($object, $contentStr, $funcFlag);
+        return $resultStr;
+    }
+
+    private function receiveImage($object)
+    {
+        $funcFlag = 0;
+        $contentStr = "你发送的是图片，地址为：".$object->PicUrl;
+        $resultStr = $this->transmitText($object, $contentStr, $funcFlag);
+        return $resultStr;
+    }
+
+    private function receiveLocation($object)
+    {
+        $funcFlag = 0;
+        $contentStr = "你发送的是位置，纬度为：".$object->Location_X."；经度为：".$object->Location_Y."；缩放级别为：".$object->Scale."；位置为：".$object->Label;
+        $resultStr = $this->transmitText($object, $contentStr, $funcFlag);
+        return $resultStr;
+    }
+
+    private function receiveVoice($object)
+    {
+        $funcFlag = 0;
+        $contentStr = "你发送的是语音，媒体ID为：".$object->MediaId;
+        $resultStr = $this->transmitText($object, $contentStr, $funcFlag);
+        return $resultStr;
+    }
+
+    private function receiveVideo($object)
+    {
+        $funcFlag = 0;
+        $contentStr = "你发送的是视频，媒体ID为：".$object->MediaId;
+        $resultStr = $this->transmitText($object, $contentStr, $funcFlag);
+        return $resultStr;
+    }
+
+    private function receiveLink($object)
+    {
+        $funcFlag = 0;
+        $contentStr = "你发送的是链接，标题为：".$object->Title."；内容为：".$object->Description."；链接地址为：".$object->Url;
+        $resultStr = $this->transmitText($object, $contentStr, $funcFlag);
+        return $resultStr;
+    }
+
+    //字节转Emoji表情
+    function bytes_to_emoji($cp)
+    {
+        if ($cp > 0x10000){       # 4 bytes
+            return chr(0xF0 | (($cp & 0x1C0000) >> 18)).chr(0x80 | (($cp & 0x3F000) >> 12)).chr(0x80 | (($cp & 0xFC0) >> 6)).chr(0x80 | ($cp & 0x3F));
+        }else if ($cp > 0x800){   # 3 bytes
+            return chr(0xE0 | (($cp & 0xF000) >> 12)).chr(0x80 | (($cp & 0xFC0) >> 6)).chr(0x80 | ($cp & 0x3F));
+        }else if ($cp > 0x80){    # 2 bytes
+            return chr(0xC0 | (($cp & 0x7C0) >> 6)).chr(0x80 | ($cp & 0x3F));
+        }else{                    # 1 byte
+            return chr($cp);
+        }
     }
     
     //日志LOG
