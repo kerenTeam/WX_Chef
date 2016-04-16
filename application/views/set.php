@@ -1,5 +1,5 @@
 <body>
-  <form action="<?=site_url('home/userdatum');?>" method="post">
+  <form action="<?php echo POSTAPI.'API_User'?>" method="post" enctype="multipart/form-data">
     <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
         <a href="javascript:" onclick="javascript:history.go(-1);">
@@ -10,47 +10,50 @@
       <?=$user[0]['username'];?>
       </h1>
       <div class="am-header-right am-header-nav">
-      <input type="hidden" name='userid' value="<?=$user[0]['userid'];?>"/>
+      <input type="hidden" name='UserId' value="<?=$user[0]['userid'];?>"/>
         <input type="submit" class="setf" value="确定">
       </div>
     </header>
     <div class="am-list-news-bd">
       <ul class="am-list userS">
-        <li class="am-g am-list-item-dated">
+           <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">头像</div>
           <?php if($user[0]['userimage'] == NULL):?>
           <div class="am-u-sm-8"> 
               <div class="wx_type_img">
-                <input type="file" id="imgUpload" name="userimg" onchange="previewImage(this)" class="upload-add">
+                <input type="file" id="imgUpload" name="UserImage" onchange="previewImage(this)" class="upload-add">
                   <!-- 图片实时预览 -->
                 <div id="preview"> <img style="border-radius: 3px;" src="skin/img/vip.png" alt="选择图片"> </div>
               </div> 
           </div>
           <?php else:?>
+             <div class="am-u-sm-8"> 
              <div class="wx_type_img">
-                <input type="file" id="imgUpload" name="userimg" onchange="previewImage(this)" class="upload-add">
+                <input type="file" id="imgUpload" name="UserImage" onchange="previewImage(this)" class="upload-add">
                   <!-- 图片实时预览 -->
-                <div id="preview"> <img style="border-radius: 3px;" src="<?php echo IP.$user[0]['userimage'];?>" alt="选择图片"> </div>
+                <div id="preview"> 
+                <input type="hidden" name='UserImage' value="<?php echo $user[0]['userimage'];?>" />
+                <img style="border-radius: 3px;" src="<?php echo IP.$user[0]['userimage'];?>" alt="选择图片"> </div>
               </div> 
-        
+            </div>
           <?php endif;?>
         </li>
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">昵称</div>
           <div class="am-u-sm-8">
-            <input type="text" value="<?=$user[0]['username'];?>" placeholder="未填写" name='username'>
+            <input type="text" value="<?=$user[0]['username'];?>" placeholder="未填写" name='UserName'>
           </div>
         </li>
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">口味</div>
           <div class="am-u-sm-8">
-            <input type="text" value="<?=$user[0]['personaltaste']?>"  placeholder="未填写" name='personaltaste'>
+            <input type="text" value="<?=$user[0]['personaltaste']?>"  placeholder="未填写" name='PersonalTaste'>
           </div>
         </li>
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">热爱菜系</div>
           <div class="am-u-sm-8">
-            <select multiple data-am-selected class="vegtype" name='likecuisine[]'>
+            <select multiple data-am-selected class="vegtype" name='LikeCuisine[]'>
               <option value="粤菜">粤菜</option>
               <option value="川菜">川菜</option>
               <option value="鲁菜">鲁菜</option>
@@ -63,6 +66,7 @@
           }
           </style>
         </li>
+     
       </ul>
     </div>
 
