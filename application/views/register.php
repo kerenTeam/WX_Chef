@@ -15,7 +15,7 @@ html {
       <input type="tel" placeholder="请输入手机号码" name="UserPhone" id='userphone'/>
     </div>
     <div class="reg_test">
-      <input type="text"  placeholder="请输入验证码"/>
+      <input type="text"  placeholder="请输入验证码" name='code'/>
       <input type="button" onclick="yzm(this)" value="获取验证码" />
     </div>
     <div class="user_agreement">
@@ -51,6 +51,25 @@ html {
 <script type="text/javascript"> 
 		 var code;
 		// 验证是否同意协议
+			function yzm(input){
+		 	var phone = $("#userphone").val();
+		 	if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+		 		shade('am-icon-meh-o','请输入正确的手机号码');
+		 	}else{
+		 		time(input);
+		 		$.ajax({
+		 			type: "post",
+		 			url: "<?=site_url('pricesearch/send');?>",
+		 			data: {"UserPhone":+phone},
+		 			success: function(data){
+		 				console.log(data);
+		 				code = data;
+		 			}
+		 		});
+                // code = "123456";
+		 	}
+
+		}
 		var checkbox = $(".user_agreement input[type='checkbox']");
 		checkbox.bind('change',function(){ 
 			if(checkbox.is(':checked')){
@@ -77,7 +96,7 @@ html {
 				shade('am-icon-meh-o','请输入验证码');
 				return false;
 			}
-		    if(test !== code){
+		    if(test !== code.toString()){
 				shade('am-icon-meh-o','验证码输入错误');
 				return false;
 			}
@@ -112,24 +131,7 @@ html {
 				$('.shade div').remove();
 				$('.shade').append('<div><span class="'+icon+'"></span><p>'+cue+'</p></div>');
 		} 
-		function yzm(input){
-		 	var phone = $("#userphone").val();
-		 	if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-		 		shade('am-icon-meh-o','请输入正确的手机号码');
-		 	}else{
-		 		time(input);
-		 		$.ajax({
-		 			type: "post",
-		 			url: "<?=site_url('pricesearch/send');?>",
-		 			data: {"UserPhone":+phone},
-		 			success: function(data){
-		 				console.log(data);
-		 				code = data;
-		 			}
-		 		});
-		 	}
-
-		}
+	
 		var wait = 60;
 		function time(o) {  
         if (wait == 0) {  
