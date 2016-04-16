@@ -71,6 +71,6 @@ class pricesearch extends CI_Controller {
 	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	    curl_setopt($ch , CURLOPT_URL , $url);
 	    $res = curl_exec($ch);
-	    var_dump(randNms) ;
+
 		}
 }

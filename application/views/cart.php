@@ -12,7 +12,12 @@
 
 </header>
 <?php if($carts == NULL && $taocan == NULL):?>
-    <div class="am-margin">购物车空空如也，老鼠都是含着泪离开的~~</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center><div class="am-margin">购物车空空如也，老鼠都是含着泪离开的~~</div></center>
 <?php else:;?>
 
 <form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">

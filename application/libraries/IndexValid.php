@@ -3,7 +3,7 @@
  * @Author: Harris-Aaron
  * @Date:   2016-04-12 10:31:05
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-04-15 20:51:41
+ * @Last Modified time: 2016-04-16 11:15:49
  */
 
 $wechatObj = new IndexValid();
@@ -83,7 +83,7 @@ class IndexValid
         switch ($object->Event)
         {
             case "subscribe":
-                $contentStr = "欢迎关注🤖️".$this->bytes_to_emoji(0x1F1E8).$this->bytes_to_emoji(0x1F1F3);
+                $contentStr = "欢迎关注".$this->bytes_to_emoji(0x1F1E8).$this->bytes_to_emoji(0x1F1F3);
                 break;
             case "unsubscribe":
                 $contentStr = "";
