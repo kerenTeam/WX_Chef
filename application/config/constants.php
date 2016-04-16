@@ -117,7 +117,7 @@ defined('MENU')                OR define('MENU', '{
                 }
             ]
         },
-                {
+        {
             "name": "我的大厨",
             "sub_button": [
                 {
@@ -129,8 +129,14 @@ defined('MENU')                OR define('MENU', '{
                     "type": "view",
                     "name": "app下载",
                     "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa997c956cf6631b0&redirect_uri=http://www.krfer.com/WXTEST2/index.php/home/registgift&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect"
+                },
+                {
+                     "type":"click",
+                     "name":"点击测试",
+                     "key":"company"
                 }
-            ]
+                
+            ] 
         }
     ]
 }'); //自定义菜单
