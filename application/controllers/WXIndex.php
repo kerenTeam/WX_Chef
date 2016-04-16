@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @Author: Harris-Aaron
  * @Date:   2016-04-15 16:04:05
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-04-15 20:49:35
+ * @Last Modified time: 2016-04-16 15:00:07
  */
     
 class WXIndex extends CI_Controller { 
@@ -17,7 +17,7 @@ class WXIndex extends CI_Controller {
 	}
 	public function index() 
 	{  
-	 echo "这里是WXIndex控制器,管理WXApi、TOKEN和对话及event反馈";  exit; 
+	 echo "<br><br><br><br><br><br><center><h3>这里是WXIndex控制器,管理 WXAPI 、TOKEN 和 INTERLOCUTION 及 EVENT 反馈</h3></center>";  exit; 
 	}
 	public function menu()
 	{

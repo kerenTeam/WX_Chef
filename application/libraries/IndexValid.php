@@ -1,9 +1,10 @@
-<?php  //defined('BASEPATH') OR exit('No direct script access allowed');
+<?php  
+defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * @Author: Harris-Aaron
  * @Date:   2016-04-12 10:31:05
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-04-16 11:15:49
+ * @Last Modified time: 2016-04-16 14:57:13
  */
 
 $wechatObj = new IndexValid();
@@ -36,17 +37,37 @@ class IndexValid
 
     public function responseMsg()
     {
-        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
-        if (!empty($postStr)){
+        //get post data, May be due to the different environments
+        $postStr = isset($GLOBALS["HTTP_RAW_POST_DATA"]) && !empty($GLOBALS["HTTP_RAW_POST_DATA"]) ? $GLOBALS["HTTP_RAW_POST_DATA"] : "";
 
+        if (!empty($postStr)){
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
             $RX_TYPE = trim($postObj->MsgType);
+            $keyword = trim($postObj->Content);
             $this->AddLog(TRUE,$postObj);
 
             switch ($RX_TYPE)
             {
                 case "text":
-                    $resultStr = $this->receiveText($postObj);
+                       $resultStr = $this->receiveText($postObj);
+                       // $shopingdata = json_decode(file_put_contents(POSTAPI.'/API_Food?dis=xqimg&foodid='.$keyword),TRUE);
+                       // foreach ($shopingdata as $key => $jay)
+                       // {
+                       //      $contentStr['Title'] = $jay['name'];
+                       //      $contentStr['Description'] = mb_substr($jay['keycode'],0,100,'utf-8');
+                       //      $contentStr['PicUrl'] = SELFURL.$jay['Picurl'];
+                       //      $contentStr['Url'] = $jay['linkurl'];  
+                       // }
+                       
+                       //  //如果没有查询到数据
+                       //  if (is_array($contentStr)) {
+                       //      $contentStr[] = "很抱歉没有搜索到相关信息，您可以登录<a href='http://www.bbc.com/'> BBC </a>或电话 028-12345678 来查询相关信息" ;}
+                       //  if (is_array($contentStr)){
+                       //      $resultStr = $this->transmitNews($postObj, $contentStr);
+                       //  }else{
+                       //      $resultStr = $this->transmitText($postObj, $contentStr);
+                       //  }
+                        
                     break;
                 case "image":
                     $resultStr = $this->receiveImage($postObj);
@@ -71,9 +92,6 @@ class IndexValid
                     break;
             }
             echo $resultStr;
-        }else {
-            echo "";
-            exit;
         }
     }
 
@@ -83,7 +101,7 @@ class IndexValid
         switch ($object->Event)
         {
             case "subscribe":
-                $contentStr = "欢迎关注".$this->bytes_to_emoji(0x1F1E8).$this->bytes_to_emoji(0x1F1F3);
+                $contentStr = "欢迎关注".$this->bytes_to_emoji(U+FE038);
                 break;
             case "unsubscribe":
                 $contentStr = "";
@@ -93,27 +111,27 @@ class IndexValid
                 switch ($object->EventKey)
                 {
                         case "company":
-                            $contentStr[] = array("Title" =>"联系大厨到家", 
-                                                  "Description" =>"联系我们：
-                                                               您在途悦商城和时间银行的使用中遇到任何问题或有任何疑问，
-                                                               欢迎随时致电联系我们：028-86283456
-                                                               在线时间10：30am-18：30pm
-                                                               如果未及时接听您的电话，您可在后台留言，看到留言后我们会第一时间与您联系", 
-                                                  "PicUrl" =>"http://www.bestingmedia.com/img/contact/img.png", 
-                                                  "Url" =>"http://www.bestingmedia.com/contactus.php");
+                            $contentStr[] = array("Title" =>"卖猪肠粉的女人", 
+                                                  "Description" =>"蔡澜
+
+    家父早餐喜欢吃猪肠粉，没有馅的那种，加甜酱、油、老抽和芝麻。年事渐高，生活变得简单，佣人为方便，每天只做烤面包、牛奶和阿华田，猪肠粉少吃。我回家陪伴他老人家时，一早必到菜市场，光顾做得最好的那一档。哪一档最好？当然是客人最多的。
+    卖猪肠粉的太太，四五十岁人吧，面孔很熟，以为从前在哪里见过，你遇到她也会有这种感觉。因为，所有的弱智人士，长得都很相像。", 
+                                                  "PicUrl" =>"http://cdn1.w3cplus.com/cdn/farfuture/39u1NHSUBwgSp9XVpTTV1Bj8m7cU5DprkOP_FJGf0l8/mtime:1341237809/sites/default/files/transition-browers.png", 
+                                                  "Url" =>"http://meiriyiwen.com/");
                             //文字消息
-                            /*$contentStr = "联系我们：
-                                           您在途悦商城和时间银行的使用中遇到任何问题或有任何疑问，
-                                           欢迎随时致电联系我们：028-86283456
-                                           在线时间10：30am-18：30pm
-                                           如果未及时接听您的电话，您可在后台留言，看到留言后我们会第一时间与您联系";
-                            */
+                           /* $contentStr = "卖猪肠粉的女人
+                            
+    蔡澜 
+
+    家父早餐喜欢吃猪肠粉，没有馅的那种，加甜酱、油、老抽和芝麻。年事渐高，生活变得简单，佣人为方便，每天只做烤面包、牛奶和阿华田，猪肠粉少吃。
+    我回家陪伴他老人家时，一早必到菜市场，光顾做得最好的那一档。哪一档最好？当然是客人最多的。";*/
+                            
                         break;
                         default:
                            $contentStr[] = array("Title" =>"你点击了: ".$object->EventKey, 
                                                "Description" =>"您正在使用的是测试接口", 
-                                               "PicUrl" =>"http://www.bestingmedia.com/img/contact/img.png", 
-                                               "Url" =>"weixin://www.bestingmedia.com");
+                                               "PicUrl" =>"http://cdn1.w3cplus.com/cdn/farfuture/39u1NHSUBwgSp9XVpTTV1Bj8m7cU5DprkOP_FJGf0l8/mtime:1341237809/sites/default/files/transition-browers.png", 
+                                               "Url" =>"weixin://meiriyiwen.com/");
                         break;
                 }
             break;
