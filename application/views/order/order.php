@@ -28,8 +28,25 @@
 <?php endforeach ?>
 
         <li class="am-g am-list-item-dated">
+        <a href="javascript:" class="am-list-item-hd "> 服务员人数 <span class="am-fr gray">X <?php echo $writes[0]; ?></span></a>
+          <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php echo $writes[0]*80; ?></span>
+          <input type="hidden" name="Waiters" value="<?php echo $writes[0]; ?>">
+        </li> 
+        <?php if (empty($servmoneydata)): ?>
+        <li class="am-g am-list-item-dated">
+        <a href="javascript:" class="am-list-item-hd "> 菜品消费额满300元,不收取服务费 <span class="am-fr gray"></span></a>
+        </li> 
+        <?php else: ?>
+        <li class="am-g am-list-item-dated">
+        <a href="javascript:" class="am-list-item-hd "> 服务费 <span class="am-fr gray"></span></a>
+          <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php echo $servmoneydata; ?></span>
+        </li> 
+        <?php endif ?>
+        
+
+        <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd red">订单总计:</a>
-          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'><?php echo array_sum($pricetotal);?></i></span>
+          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'><?php echo array_sum($pricetotal) + $writes[0]*80+$servmoneydata;?></i></span>
         </li>  
 
       </ul>
@@ -62,7 +79,7 @@
       <?php foreach($usercoupon as $val):?>
           <li class="am-g am-list-item-dated">
            <a href="javascript:" class="am-list-item-hd "><img src="<?php echo IP.$val['img'];?>" alt="<?=$val['coupponname']?>" class="cardimg"><?=$val['coupponname']?></a> 
-           <input type="hidden" value="<?=$val['usercouponid']?>" id='couponid' />
+           <input type="hidden" name="usercouponid" value="<?=$val['usercouponid']?>" id='couponid' />
            <span class="am-list-date ath"> <i class="am-icon-cny"><?=$val['coupponmoney'];?></i></span>
           </li>
         <?php endforeach;?>
@@ -72,6 +89,7 @@
   <!-- 积分 -->
    <?php if(empty($jifen)):?>
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">你还没有积分!</span></a>
+      <input type="checkbox" name='jifen' id="jifen" value="0" checked>
     <?php else:?>
        <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red"><span id='diyong'><?=$jifen;?></span>积分已抵用  <span class="am-icon-cny" id='jifenmoney'></span> <input type="checkbox" name='jifen' id="jifen" value="1"></span></a>
     <?php endif;?>
@@ -91,17 +109,14 @@
       <div class="am-list-news-bd">
           <?php if(empty($address)):?>
       
-           <div class="am-g ammake am-padding-sm">
+          <!-- <div class="am-g ammake am-padding-sm">
           <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" name='phone'>
           <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名"  name='name'>
           <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址"  name='address'>
-       
-        
-        <label class="am-checkbox am-success am-u-sm-6">
-            是否需要服务员？ <input type="checkbox" name="waiter" value="1" data-am-ucheck>
-        </label>
-              </div> 
+          </div>  -->
+           <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
          <?php else:?>
+            <!--------------    UserPhone   -------------->
             <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
    
                  <!-- 已添加过地址 -->
@@ -110,12 +125,10 @@
                         <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$address[0]['address'];?><br>
                         <?=$address[0]['name'];?><br>
                         <?=$address[0]['userphone'];?>
+            <!--------------    address   -------------->
                        <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
                         <span class="am-list-date"><i class="am-icon-angle-right am-icon-sm"></i></span></a>
                       </li>
-                       <label class="am-checkbox am-margin-sm am-success am-u-sm-6">
-                            是否需要服务员？ <input type="checkbox" name="waiter" value="1" data-am-ucheck>
-                        </label>
                  </ul>  
           <?php endif;?>
         </div> 
@@ -123,7 +136,6 @@
       <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
     </form>
  
-    
   </body>
  <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
@@ -176,20 +188,20 @@
             $('#yfje').val(payable);
         }
         })
-        $('#form').submit(function() { 
+        // $('#form').submit(function() { 
         
-          var phone = $('input[type="tel"]').val();
-            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
-              alert('还有信息未输入');
-              $(this).focus();
-              return false;
-            }
-          if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-            alert('请输入正确的电话号码');
-            $('.ofp').focus();
-              return false;
-          }
-        });
+        //   var phone = $('input[type="tel"]').val();
+        //     if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+        //       alert('还有信息未输入');
+        //       $(this).focus();
+        //       return false;
+        //     }
+        //   if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+        //     alert('请输入正确的电话号码');
+        //     $('.ofp').focus();
+        //       return false;
+        //   }
+        // });
      
       })
 

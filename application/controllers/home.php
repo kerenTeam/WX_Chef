@@ -36,7 +36,7 @@ class home extends CI_Controller
 					break;
 				case '1':
 					$this->session->set_tempdata("phone",$_POST['UserPhone'],3600);
-					echo "<script>alert('登陆成功');window.location.href='ucent';</script>";
+					echo "<script>window.location.href='ucent';</script>";
 					break;
 				case '2':
 					echo "<script>alert('密码错误！');window.location.href='login2';</script>";

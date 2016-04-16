@@ -1,5 +1,6 @@
 <?php 
 ini_set('date.timezone','Asia/Shanghai');
+$rePayData = json_decode($_SESSION['rePayData'],TRUE);
 //打印输出数组信息
 function printf_info($data)
 {
@@ -13,10 +14,10 @@ $tools = new JsApiPay();
 $openId = $tools->GetOpenid();
 //②、统一下单
 $input = new WxPayUnifiedOrder();
-$input->SetBody("大厨到家");
+$input->SetBody("大厨到家订餐支付");
 $input->SetAttach("大厨到家－微信支付");
 $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-//$input->SetTotal_fee($_SESSION['yfje']);
+//$input->SetTotal_fee(str_replace(".0000","00",$rePayData[0]['MoneyAll']));
 $input->SetTotal_fee('1');
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
@@ -117,7 +118,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
       <ul class="am-list odl">
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd">订单金额</a>
-          <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo $_SESSION['yfje']; ?></i></span>
+          <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo $rePayData['MoneyAll']; ?></i></span>
         </li> 
         <li class="am-g am-list-item-dated preduce">
           <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd"><img src="skin/img/vp.png" class="payimg" alt="">会员卡支付
@@ -126,7 +127,9 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
         </li>
       </ul>
      </div>
-     <input type="hidden" name="aaa" value="aaa">
+
+     <input type="hidden" name="billno" value="<?php echo $rePayData[0]["BillNo"]; ?>">
+
      <div class="am-shadow fpa preduce">
       <p class="htit sad">其他支付方式</p>
  
