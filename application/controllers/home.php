@@ -84,7 +84,11 @@ class home extends CI_Controller
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
 		$data['caijia'] = json_decode(json_decode($caijia));
-	
+		// 精品生活
+		$quality = file_get_contents(POSTAPI.'API_Boutique');
+		$data['quality'] = json_decode(json_decode($quality),true);
+
+
 		// var_dump($data);
 		$this->load->view('index',$data);
 	}
@@ -166,8 +170,14 @@ class home extends CI_Controller
 	}
 	//图文详情
 	public function lifeInfo(){
+		if($_GET){
+			$id = $_GET['id']; 
+			$life = file_get_contents(POSTAPI.'API_Boutique?dis=xc&id='.$id);
+			$data['life'] = json_decode(json_decode($life),true);
+			
+			$this->load->view('lifeInfo',$data);
+		}
 
-		$this->load->view('lifeInfo');
 	}
 	//宴会定制详情
 	public function partyInfo(){
