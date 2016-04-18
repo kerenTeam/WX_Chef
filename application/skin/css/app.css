@@ -6,13 +6,27 @@ body {
 .am-slider-default .am-control-nav {
 	bottom: 9px;
 }
+.label{
+position: relative!important;
+    top: -2.4rem!important;
+    left: 1rem!important;
+}
 .flexv{
 	display:flex;
 	flex-direction:column;
 	align-content:space-around;
 	padding:5% 10%;
 }
- 
+  .bno{
+        background: none;
+    border: none;
+    padding: 10px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    outline:none;
+  }
+  .bno:first-of-type{
+    border-right: 1px solid rgba(0,0,0,0.1)!important;
+  } 
 .wx_type_img{
   position: relative;
 }
