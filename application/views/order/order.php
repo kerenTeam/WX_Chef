@@ -103,10 +103,6 @@
 
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
-<<<<<<< HEAD
-    
-    
-=======
 
     <!-- 地址添加弹框 -->
     <div class="tk" style="display: none;">
@@ -124,17 +120,11 @@
           <button type='button' onclick="getorders();" class="am-u-sm-6 bno green">提交</button>
           </div>
      </div>
->>>>>>> 3a5c6ac7c9fb576bdfdc463691aa85d56a8f5fcc
       <!-- 未添加地址这显示 -->
       <div class="am-list-news-bd" id='mainContent'>
           <?php if(empty($address)):?>
-      
-          <!-- <div class="am-g ammake am-padding-sm">
-          <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" name='phone'>
-          <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名"  name='name'>
-          <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址"  name='address'>
-          </div>  -->
-           <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
+
+           <a href="javascript:;" id="model" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
          <?php else:?>
             <!--------------    UserPhone   -------------->
             <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
@@ -143,20 +133,6 @@
                  <ul class="am-list odl">
                  <?php foreach($address as $val):?>
                       <li class="am-g am-list-item-dated lpt2 mbtop">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-                        <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$address[0]['address'];?><br>
-                        <?=$address[0]['name'];?><br>
-                        <?=$address[0]['userphone'];?>
-            <!--------------    address   -------------->
-                       <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
-                        <span class="am-list-date"><i class="am-icon-angle-right am-icon-sm"></i></span></a>
-                      </li>
-                 </ul>  
-=======
-<<<<<<< HEAD
->>>>>>> c718a258ad6e80393568d28d436541ee7415704c
                         &nbsp;&nbsp;&nbsp;&nbsp;<?=$val['name'];?><br>
                         <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$val['address'];?>
 
@@ -172,7 +148,6 @@
                     <?php endif;?>
                  </ul> 
 
->>>>>>> 3a5c6ac7c9fb576bdfdc463691aa85d56a8f5fcc
           <?php endif;?>
         </div> 
         </div>
@@ -201,7 +176,16 @@
         
       
       $(function(){
-         // 弹出支付选项弹框
+         // 弹出添加地址弹框
+         $('#model').click(function() {
+          //$('.tkp').css('display','');
+          $('body').css('overflow-y','hidden');
+          $('.tk').fadeIn(400);
+        });
+         $('.closem').click(function() { 
+          $('body').css('overflow-y','auto');
+          $('.tk').fadeOut(400); 
+        });
 
         $('.fclick').click(function() {
           console.log('.fclick');
@@ -231,20 +215,20 @@
             $('#yfje').val(payable);
         }
         })
-        // $('#form').submit(function() { 
+        $('#form').submit(function() { 
         
-        //   var phone = $('input[type="tel"]').val();
-        //     if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
-        //       alert('还有信息未输入');
-        //       $(this).focus();
-        //       return false;
-        //     }
-        //   if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-        //     alert('请输入正确的电话号码');
-        //     $('.ofp').focus();
-        //       return false;
-        //   }
-        // });
+          var phone = $('input[type="tel"]').val();
+            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+              alert('还有信息未输入');
+              $(this).focus();
+              return false;
+            }
+          if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+            alert('请输入正确的电话号码');
+            $('.ofp').focus();
+              return false;
+          }
+        });
      
       })
 
