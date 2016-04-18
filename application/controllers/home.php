@@ -67,7 +67,7 @@ class home extends CI_Controller
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
          		break;
          	case '1':
-         		$this->session->set_userdata('phone',$this->input->post('UserPhone'),3600);
+         		$this->session->set_userdata('phone',$this->input->post('UserPhone'),7200);
          		echo "<script>alert('注册成功！');    window.location.href='ucent';</script>";   //？中心
          		break;	
          	case '2':
@@ -323,6 +323,7 @@ class home extends CI_Controller
 					if($v['code'] == 0){
 						$data['carts'][$k] = $v;
 					}else{
+						$data['carts'] = '';
 						$data['taocan'][$k] = $v;
 					}
 				}
