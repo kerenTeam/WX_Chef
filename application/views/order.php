@@ -124,7 +124,6 @@
 
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
-    
 
       <!-- 未添加地址这显示 -->
       <div class="am-list-news-bd">

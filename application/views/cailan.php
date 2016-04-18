@@ -9,28 +9,11 @@
     </a>
   </div>
   <h1 class="am-header-title">
-  菜篮子
+  菜谱
   </h1>
 
 </header>
-       <ul class="am-shadow am-list" style="display: none">
-             <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
-               服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
-               <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->
-             </li>
-              <li class="am-g am-padding-xs">
-                <label class="am-checkbox am-success am-u-sm-4">
-                服务员 <input type="checkbox" id="serpeople" ata-am-ucheck>
-                </label> 
-                <input type="hidden" id="servTotal" value="0">
-               <div class="epr am-text-center am-text-sm"><span class="price" id="serprice">80</span>元/位</div>
-               <div class="am-marign-top-sm am-fr cd" style="display: none;">
-                  <span class="am-icon-minus gray" onClick="empdel()"></span>
-                  <input type="text" class="serinput" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                  <span class="am-icon-plus gray" onClick="empladd()"></span>
-                </div>
-             </li>
-           </ul>
+
 <form action="<?=site_url('home/addcart');?>" method='post'  id='question' enctype="multipart/form-data">
  <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
   <!-- 菜品栏目 -->
@@ -61,10 +44,12 @@
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
-              <h3 class="am-list-item-hd"><?=$v['foodname'];?></h3>
+             <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="gray">
+              <h3 class="am-list-item-hd black"><?=$v['foodname'];?></h3>
               <input type="hidden" name="foodid[]" value="<?=$v['foodid'];?>">
               <div class="am-list-item-text"><strong>特点：</strong><?=$v['foodtrait'];?>。</div>
               <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
+             </a>
               <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['foodprice'];?></span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
             
@@ -99,7 +84,7 @@
   </div>
 </form>
 
-<script src="skin/js/num.js"></script>
+<script src="skin/js/num_cailan.js"></script>
 <script src="skin/js/jqueryLazyload.js"></script>
 <script>
 
