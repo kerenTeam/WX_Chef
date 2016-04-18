@@ -7,7 +7,7 @@
     </a>
   </div>
   <h1 class="am-header-title">
-      购物车
+      菜篮子
   </h1>
 
 </header>
@@ -56,10 +56,10 @@
                 <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
                 <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]['foodprice'];?></span></div>
                 <div class="fNum">
-                  <span class="am-icon-minus" onClick="handle(this, false)"></span>
+                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false)"></span>
                   <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" 
                   name="numbers[]" value="<?=$cart['number'];?>">
-                  <span class="am-icon-plus" onClick="handle(this, true)"></span>
+                  <span class="add am-icon-plus-circle green" onClick="handle(this, true)"></span>
                 </div>
                  <a href="<?php echo site_url('home/change?id=').$food[0]['foodid'].'&pid='.$food[0]['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red ats2"></i></a>
@@ -98,9 +98,9 @@
                 <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
                 <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food[0]['foodprice']?></span></div>
                 <div class="fNum">
-                  <span class="am-icon-minus" onClick="handle(this, false)"></span>
+                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false)"></span>
                   <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
-                  <span class="am-icon-plus" onClick="handle(this, true)"></span>
+                  <span class="add am-icon-plus-circle green" onClick="handle(this, true)"></span>
                 </div>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
@@ -113,6 +113,7 @@
              <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
                服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
                <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->
+               <input type="hidden" id="fee" value="0">
              </li>
               <li class="am-g am-padding-xs">
               <?php if (empty($_SESSION['Writes'])): ?>
@@ -134,9 +135,10 @@
                <?php else: ?>
                  style="display: none;"
                <?php endif ?> >
-                  <span class="am-icon-minus gray" onClick="empdel()"></span>
-                  <input type="text" class="serinput" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="Writes[]" value="<?php echo $writernums; ?>" >
-                  <span class="am-icon-plus gray" onClick="empladd()"></span>
+                  <span class="reduce am-icon-minus-circle red" onClick="empdel()"></span>
+                  <!-- <input type="text" class="serinput" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="Writes[]" value="<?php echo $writernums; ?>" > -->
+                  <input type="text" class="serinput" readonly="" name="Writes[]" value="<?php echo $writernums; ?>" >
+                  <span class="add am-icon-plus-circle green" onClick="empladd()"></span>
 
 
                 </div>

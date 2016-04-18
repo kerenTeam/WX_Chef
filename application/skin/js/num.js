@@ -12,7 +12,7 @@ var allmoney = document.getElementById("allmoney");
 var paymoney = parseFloat(allmoney.innerHTML);
 var curCount;
 var num = 0;
-
+var fee = document.getElementById('fee');
 var ff = document.getElementsByClassName('ff')[0];
 var servmoeny = document.getElementById("servmoney");
 //服务费
@@ -32,19 +32,23 @@ window.onload=function(){
 		fwf = 0;
 		ff.style.display='none';
 		servmoeny.innerHTML = fwf;
+		fee.value = fwf;
+
 	}
 		
 	if(paymoney>0 && paymoney<=240){
        fwf = 60;
        ff.style.display='';
        servmoeny.innerHTML = fwf;
+       fee.value = fwf;
 	}
 	if(paymoney>240 && paymoney<=300){
 		ff.style.display='';
        fwf = 300-paymoney;
        servmoeny.innerHTML = fwf;
+       fee.value = fwf;
 	}
-	console.log(paymoney)
+	console.log(fee.value);
 	fens.innerHTML = fen;
 	allmoney.innerHTML = (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
 }
@@ -79,12 +83,33 @@ function ueserWrite(obj){
  	obj.value=num;
  	return false;
  }
+
  var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
     // alert(prices);
      console.log(fen);
     fen +=(parseFloat(curCount) - num);
     fens.innerHTML = fen;
     paymoney += (parseFloat(curCount) - num)*prices;
+    if(paymoney>300 ||paymoney<=0){
+		fwf = 0;
+		ff.style.display='none';
+		servmoeny.innerHTML = fwf;
+		fee.value = fwf;
+
+	}
+		
+	if(paymoney>0 && paymoney<=240){
+       fwf = 60;
+       ff.style.display='';
+       servmoeny.innerHTML = fwf;
+       fee.value = fwf;
+	}
+	if(paymoney>240 && paymoney<=300){
+		ff.style.display='';
+       fwf = 300-paymoney;
+       servmoeny.innerHTML = fwf;
+       fee.value = fwf;
+	}
     allmoney.innerHTML= (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
 }
 
@@ -122,18 +147,22 @@ function handle(self, isAdd){
 		fwf = 0;
 		ff.style.display='none';
 		servmoeny.innerHTML = fwf;
+		fee.value = fwf;
 	}
 		
 	if(paymoney>0 && paymoney<=240){
        fwf = 60;
        ff.style.display='';
        servmoeny.innerHTML = fwf;
+       fee.value = fwf;
 	}
 	if(paymoney>240 && paymoney<=300){
        fwf = 300-paymoney;
        ff.style.display='';
        servmoeny.innerHTML = fwf;
+       fee.value = fwf;
 	}
+	console.log(fee.value);
 	fens.innerHTML=fen;
     countEl.value=curCount;
 	allmoney.innerHTML= (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
