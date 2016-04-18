@@ -10,27 +10,30 @@
     </h1>
     
   </header>
-  <ul class="am-shadow am-list" style="display: none">
-             <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
-               服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
-             </li>
-              <li class="am-g am-padding-xs">
-                <label class="am-checkbox am-success am-u-sm-4">
-                服务员 <input type="checkbox" name="IsDefault" value="1" data-am-ucheck>
-                </label> 
-               <div class="pr am-text-center"><span class="price am-text-sm">80元/位</span></div>
-               <div class="am-marign-top-sm am-fr">
-                  <input type="checkbox" value="1" data-am-ucheck> 
-                  <span class="am-icon-minus" onClick="employee()"></span>
-                  <input type="text" class="serinput" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="1">
-                  <span class="am-icon-plus" onClick="employee()"></span>
-                </div>
-             </li>
-           </ul>
   <!-- 详情 -->
   <form action="<?=site_url('home/foodaddcart');?>" method="post" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
-      <div class="fimg"><img src="<?php echo IP.$foodspic[0]['imgaddress'];?>" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>"></div>
+ 
+     <!--  <img src="<?php echo IP.$foodspic[0]['imgaddress'];?>" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>"> -->
+
+      <!-- banner -->
+        <div data-am-widget="slider" class="am-slider am-slider-default fimg" data-am-slider='{}' >
+          <ul class="am-slides">
+             
+            <li>
+             <img src="skin/img/product/bzjwx.jpg" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>">
+            </li>
+            <li>
+             <img src="skin/img/product/cxjdg.jpg" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>">
+            </li>
+            <li>
+             <img src="skin/img/product/bzjwx.jpg" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>">
+            </li>
+          
+          </ul>
+        </div>
+
+ 
       <div class="am-g">
         <h2> <?=$foods[0]['foodname'];?></h2>
         <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class=""> 12</span>份</div>
@@ -137,7 +140,8 @@
 
 </div>
   <script src="skin/js/jquery.min.js"></script>
-  <script src="skin/js/num.js"></script>
+  <script src="skin/js/amazeui.min.js"></script>
+  <script src="skin/js/num_cailan.js"></script>
   <script>
   $(function(){
       var inputs = $('.numTxt');

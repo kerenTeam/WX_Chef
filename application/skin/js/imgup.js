@@ -39,7 +39,8 @@ function previewImage(file)
         function clacImgZoomParam( maxWidth, maxHeight, width, height ){
             var param = {top:0, left:0, width:width, height:height};
             if( width>maxWidth || height>maxHeight )
-            {
+            {   
+              alert('sdfdaf');
                 rateWidth = width / maxWidth;
                 rateHeight = height / maxHeight;
 

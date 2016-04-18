@@ -1,3 +1,8 @@
+<style>
+  .adda:hover,.adda:focus{
+    color:black!important;
+  }
+</style>
 <body>
   <!-- header -->
   <header data-am-widget="header" am-header-fixed class="am-header am-header-default topform">
@@ -107,37 +112,47 @@
     <!-- 地址添加弹框 -->
     <div class="tk" style="display: none;">
          <div class="tkcontent bwhite" style="background: white;border-radius: 5px;">
-           <div class="tktxt2" style="    position: relative;width: 100%;height: 100%;">
+           <div class="tktxt2">
               <div class="am-text-center am-text-lg am-margin-top">地址添加</div>
               <div class="am-g ammake am-padding-sm">
-                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required  id='GoodsPhone'>
-                <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required  id='Address'>
-                <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required id='name'>
+                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required name='phone'>
+                <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required name='name'>
+                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required name='address'>
+        <!--         <label class="am-checkbox am-success am-u-sm-12">
+                    是否需要服务员?<input type="checkbox" class="green" name="waiter" value="1" data-am-ucheck>
+                </label> -->
+               
+
               </div> 
             </div>
 
           <button type='button' class="am-u-sm-6 bno gray closem" onclick="noorders();">取消</button>
-          <button type='button' onclick="getorders();" class="am-u-sm-6 bno green">提交</button>
+
+          <button type='button' id="sub" onclick="getorders();" class="am-u-sm-6 bno green">提交</button>
           </div>
      </div>
       <!-- 未添加地址这显示 -->
-      <div class="am-list-news-bd" id='mainContent'>
+      <div class="am-list-news-bd" >
           <?php if(empty($address)):?>
 
+          <div id='mainContent'>
            <a href="javascript:;" id="model" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
+           </div>
+
          <?php else:?>
             <!--------------    UserPhone   -------------->
             <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
    
                  <!-- 已添加过地址 -->
-                 <ul class="am-list odl">
+
+                 <ul class="am-list">
                  <?php foreach($address as $val):?>
                       <li class="am-g am-list-item-dated lpt2 mbtop">
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?=$val['name'];?><br>
-                        <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$val['address'];?>
-
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?=$val['goodsphone'];?>
-                        <br>
+                        <div class="am-margin-top-sm am-margin-left-sm">
+                          <?=$val['name'];?><br>
+                          <?=$val['goodsphone'];?>
+                        </div>
+                         <a href="javascript:;" class="am-list-item-hd black adda"><?=$val['address'];?>
                         <label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="<?=$val['memberaddressid'];?>" data-am-ucheck checked></label>
           
                         </a>
@@ -215,19 +230,28 @@
             $('#yfje').val(payable);
         }
         })
-        $('#form').submit(function() { 
+        $('#sub').click(function() { 
         
           var phone = $('input[type="tel"]').val();
-            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
-              alert('还有信息未输入');
-              $(this).focus();
-              return false;
-            }
+<<<<<<< HEAD
+            if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+=======
           if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+>>>>>>> 04e1911cdb2e4b03371d9306f02f047ccfc866f0
             alert('请输入正确的电话号码');
             $('.ofp').focus();
               return false;
           }
+<<<<<<< HEAD
+          if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+=======
+            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+>>>>>>> 04e1911cdb2e4b03371d9306f02f047ccfc866f0
+              alert('还有信息未输入');
+              $(this).focus();
+              return false;
+            }
+          
         });
      
       })
@@ -247,9 +271,10 @@ function getorders(){
                success: function(msg){
                   console.log(msg);
                  //window.location.reload();
-                  // $("#mainContent").html(dates);
+                  $("#mainContent").html(msg);
                }
             });
+            $('.tk').fadeOut(400);
 }
      
 
