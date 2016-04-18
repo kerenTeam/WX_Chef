@@ -103,35 +103,18 @@
 
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
-
-    <!-- 地址添加弹框 -->
-    <div class="tk" style="display: none;">
-       <form action="" method="">
-         <div class="tkcontent bwhite" style="background: white;border-radius: 5px;">
-           <div class="tktxt2" style="    position: relative;width: 100%;height: 100%;">
-              <div class="am-text-center am-text-lg am-margin-top">地址添加</div>
-              <div class="am-g ammake am-padding-sm">
-                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required name='phone'>
-                <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required name='address'>
-                <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required name='name'>
-                
-        <!--         <label class="am-checkbox am-success am-u-sm-12">
-                    是否需要服务员?<input type="checkbox" class="green" name="waiter" value="1" data-am-ucheck>
-                </label> -->
-               
-              </div> 
-            </div>
-
-          <button type='button' class="am-u-sm-6 bno gray closem" onclick="noorders();">取消</button>
-          <button type='submit' class="am-u-sm-6 bno green">提交</button>
-          </div>
-        </form>
-     </div>
+    
+    
       <!-- 未添加地址这显示 -->
       <div class="am-list-news-bd">
           <?php if(empty($address)):?>
-
-           <a href="javascript:;" id="model" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
+      
+          <!-- <div class="am-g ammake am-padding-sm">
+          <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" name='phone'>
+          <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名"  name='name'>
+          <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址"  name='address'>
+          </div>  -->
+           <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
          <?php else:?>
             <!--------------    UserPhone   -------------->
             <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
@@ -139,24 +122,14 @@
                  <!-- 已添加过地址 -->
                  <ul class="am-list odl">
                       <li class="am-g am-list-item-dated lpt2 mbtop">
-                        <br> &nbsp;&nbsp;&nbsp;<?=$address[0]['name'];?>&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?=$address[0]['userphone'];?>
-                        <?php var_dump( $address); ?>
-<?php foreach ($address as $key => $addressvalue): ?>
-                      <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd ">
-                      <?=$addressvalue['address'];?>
-                      <label class="am-radio am-fr label">
-                      <input type="radio" class="am-margin-left green" name="waiter" value="1" data-am-ucheck checked>
-                      </label>
-                      </a>
-<?php endforeach ?>
-
-
-                      <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
+                        <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$address[0]['address'];?><br>
+                        <?=$address[0]['name'];?><br>
+                        <?=$address[0]['userphone'];?>
+            <!--------------    address   -------------->
+                       <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
+                        <span class="am-list-date"><i class="am-icon-angle-right am-icon-sm"></i></span></a>
                       </li>
-                      <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
-                 </ul> 
-
+                 </ul>  
           <?php endif;?>
         </div> 
         </div>
@@ -185,16 +158,7 @@
         
       
       $(function(){
-         // 弹出添加地址弹框
-         $('#model').click(function() {
-          //$('.tkp').css('display','');
-          $('body').css('overflow-y','hidden');
-          $('.tk').fadeIn(400);
-        });
-         $('.closem').click(function() { 
-          $('body').css('overflow-y','auto');
-          $('.tk').fadeOut(400); 
-        });
+         // 弹出支付选项弹框
 
         $('.fclick').click(function() {
           console.log('.fclick');
@@ -224,20 +188,20 @@
             $('#yfje').val(payable);
         }
         })
-        $('#form').submit(function() { 
+        // $('#form').submit(function() { 
         
-          var phone = $('input[type="tel"]').val();
-            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
-              alert('还有信息未输入');
-              $(this).focus();
-              return false;
-            }
-          if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-            alert('请输入正确的电话号码');
-            $('.ofp').focus();
-              return false;
-          }
-        });
+        //   var phone = $('input[type="tel"]').val();
+        //     if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+        //       alert('还有信息未输入');
+        //       $(this).focus();
+        //       return false;
+        //     }
+        //   if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+        //     alert('请输入正确的电话号码');
+        //     $('.ofp').focus();
+        //       return false;
+        //   }
+        // });
      
       })
 

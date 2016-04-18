@@ -42,14 +42,14 @@
   </ul>
     <ul class="am-list userl">
     <?php if(isset($_SESSION['phone'])):?>
-     <!--  <li class="am-g am-list-item-dated">
+      <li class="am-g am-list-item-dated">
           <a href="<?=site_url('home/zhuxiao');?>" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
-      </li> -->
+      </li> 
     <?php endif;?>
   </ul>
   </div>
   <!-- 注销弹框 -->
-<!--       <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert">
+<!--      <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert">
         <div class="am-modal-dialog">
           <div class="am-modal-bd">
             你，确定要注销吗？
