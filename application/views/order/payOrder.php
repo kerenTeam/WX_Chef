@@ -136,9 +136,11 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><!-- <img src="skin/img/ap.png" class="payimg" alt=""> --> <span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <?php if ( str_replace(".0000","00",$rePayData[0]['MoneyAll']) >= 5000):?>
             <center> 为保证你的网银安全,请选择会员卡支付或线下支付 </center>
-            <a onclick="callpay()" href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-            <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-            <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <div disabled>
+              <a onclick="callpay()" href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+              <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+              <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            </div>
       <?php else: ?>
             <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>

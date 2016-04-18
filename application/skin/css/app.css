@@ -9,7 +9,7 @@ body {
 .label{
     position: absolute!important;
     top: -1.4rem!important;
-    left: 21rem!important;
+    left: 22rem!important;
 }
 .tktxt2{
 	position: relative;width: 100%;height: 100%;
@@ -1378,6 +1378,10 @@ figure a:hover figcaption {
 .fpc{
 	right:16px;
 }
+.fimg .am-slides li{
+	height: 22rem;
+}
+
 .acr .am-u-sm-6 .gray{
     margin-top: -5px;
 }
@@ -1410,6 +1414,9 @@ figure a:hover figcaption {
 }
 .acr .am-u-sm-9 .gray{
     margin-top: 7px;
+}
+.fimg .am-slides li{
+	height: 20rem;
 }	
 	.fpc{
 	      left: 3px!important;

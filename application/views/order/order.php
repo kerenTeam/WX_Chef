@@ -1,3 +1,8 @@
+<style>
+  .adda:hover,.adda:focus{
+    color:black!important;
+  }
+</style>
 <body>
   <!-- header -->
   <header data-am-widget="header" am-header-fixed class="am-header am-header-default topform">
@@ -140,14 +145,14 @@
    
                  <!-- 已添加过地址 -->
 
-                 <ul class="am-list odl">
+                 <ul class="am-list">
                  <?php foreach($address as $val):?>
                       <li class="am-g am-list-item-dated lpt2 mbtop">
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?=$val['name'];?><br>
-                        <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$val['address'];?>
-
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?=$val['goodsphone'];?>
-                        <br>
+                        <div class="am-margin-top-sm am-margin-left-sm">
+                          <?=$val['name'];?><br>
+                          <?=$val['goodsphone'];?>
+                        </div>
+                         <a href="javascript:;" class="am-list-item-hd black adda"><?=$val['address'];?>
                         <label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="<?=$val['memberaddressid'];?>" data-am-ucheck checked></label>
           
                         </a>
