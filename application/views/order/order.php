@@ -133,6 +133,7 @@
                  <ul class="am-list odl">
                  <?php foreach($address as $val):?>
                       <li class="am-g am-list-item-dated lpt2 mbtop">
+<<<<<<< HEAD
                         &nbsp;&nbsp;&nbsp;&nbsp;<?=$val['name'];?><br>
                         <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$val['address'];?>
 
@@ -141,6 +142,22 @@
                         <label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="<?=$val['memberaddressid'];?>" data-am-ucheck checked></label>
           
                         </a>
+=======
+                        <br> &nbsp;&nbsp;&nbsp;<?=$address[0]['name'];?>&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;<?=$address[0]['userphone'];?>
+                        <?php var_dump( $address); ?>
+<?php foreach ($address as $key => $addressvalue): ?>
+                      <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd ">
+                      <?=$addressvalue['address'];?>
+                      <label class="am-radio am-fr label">
+                      <input type="radio" class="am-margin-left green" name="waiter" value="1" data-am-ucheck checked>
+                      </label>
+                      </a>
+<?php endforeach ?>
+
+
+                      <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
+>>>>>>> 5062a0cd65349fa5ea31ce31fe0253ba53613c88
                       </li>
                     <?php endforeach;?>
                     <?php if(count($address) <= 5):?>

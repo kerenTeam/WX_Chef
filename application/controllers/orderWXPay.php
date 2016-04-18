@@ -28,7 +28,7 @@ class orderWXPay extends CI_Controller{
                     if ($this->input->post('servmoneydata')) {
                        $_SESSION['servmoneydata'] = $this->input->post('servmoneydata');
                     }else{
-                       $_SESSION['servmoneydata'] = 45;
+                       $_SESSION['servmoneydata'] = 0;
                     }
                     $_SESSION['Writes'] = $this->input->post('Writes');
                     $_SESSION['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); 
