@@ -361,8 +361,10 @@ class home extends CI_Controller
 
     		$data['jifen'] = file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']);
     	
-    		//获取用户默认地址、
-    		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
+    		//获取用户地址、
+    		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
+    		var_dumP($address);
+    		exit;
     		$data['address'] = json_decode(json_decode($address),true);
 
     		}
@@ -429,7 +431,7 @@ class home extends CI_Controller
 	public function userdatum()
 	{
 		if($_POST){
-			var_dumP($_POST);
+			
 		}
 	}
     //搜索
