@@ -113,7 +113,7 @@
              <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
                服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
                <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->
-               <input type="text" id="fee" name="servmoneydata" value="0">
+               <input type="hidden" id="fee" name="servmoneydata" value="0">
              </li>
               <li class="am-g am-padding-xs">
               <?php if (empty($_SESSION['Writes'])): ?>

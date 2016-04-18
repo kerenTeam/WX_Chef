@@ -44,12 +44,16 @@
     <?php if(isset($_SESSION['phone'])):?>
       <li class="am-g am-list-item-dated">
           <a href="<?=site_url('home/zhuxiao');?>" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
+<<<<<<< HEAD
+      </li> 
+=======
       </li>
+>>>>>>> 3a5c6ac7c9fb576bdfdc463691aa85d56a8f5fcc
     <?php endif;?>
   </ul>
   </div>
   <!-- 注销弹框 -->
-<!--       <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert">
+<!--      <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert">
         <div class="am-modal-dialog">
           <div class="am-modal-bd">
             你，确定要注销吗？
