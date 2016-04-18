@@ -313,6 +313,7 @@ class home extends CI_Controller
 					if($v['code'] == 0){
 						$data['carts'][$k] = $v;
 					}else{
+						$data['carts'] = '';
 						$data['taocan'][$k] = $v;
 					}
 				}
