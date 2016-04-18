@@ -1,3 +1,12 @@
+<style>
+  .am-selected{
+    width:150px!important;
+   
+  }
+  .am-selected span{
+    text-align:right;
+  }
+</style>
 <body>
   <form action="<?php echo POSTAPI.'API_User'?>" method="post" enctype="multipart/form-data">
     <header data-am-widget="header" class="am-header am-header-default topform">
@@ -21,19 +30,19 @@
           <?php if($user[0]['userimage'] == NULL):?>
           <div class="am-u-sm-8"> 
               <div class="wx_type_img">
-                <input type="file" id="imgUpload" name="UserImage" onchange="previewImage(this)" class="upload-add">
+                <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="previewImage(this)" class="upload-add">
                   <!-- 图片实时预览 -->
-                <div id="preview"> <img style="border-radius: 3px;" src="skin/img/vip.png" alt="选择图片"> </div>
+                <div id="preview"> <img style="border-radius: 50%;" src="skin/img/vip.png" alt="选择图片"> </div>
               </div> 
           </div>
           <?php else:?>
              <div class="am-u-sm-8"> 
              <div class="wx_type_img">
-                <input type="file" id="imgUpload" name="UserImage" onchange="previewImage(this)" class="upload-add">
+                <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="previewImage(this)" class="upload-add">
                   <!-- 图片实时预览 -->
                 <div id="preview"> 
                 <input type="hidden" name='UserImage' value="<?php echo $user[0]['userimage'];?>" />
-                <img style="border-radius: 3px;" src="<?php echo IP.$user[0]['userimage'];?>" alt="选择图片"> </div>
+                <img style="border-radius: 50%;" src="<?php echo IP.$user[0]['userimage'];?>" alt="选择图片"> </div>
               </div> 
             </div>
           <?php endif;?>
@@ -51,7 +60,7 @@
           </div>
         </li>
         <li class="am-g am-list-item-dated">
-          <div class="am-u-sm-4">热爱菜系</div>
+          <div class="am-u-sm-4">喜爱菜系</div>
           <div class="am-u-sm-8">
             <select multiple data-am-selected class="vegtype" name='LikeCuisine[]'>
               <option value="粤菜">粤菜</option>
@@ -104,9 +113,4 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/imgup.js"></script>
-<script>
-  $(function(){
-    $('.am-selected-status').html('点击选择');
-  })
-</script>
 </html>
