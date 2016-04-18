@@ -139,13 +139,20 @@
                  <!-- 已添加过地址 -->
                  <ul class="am-list odl">
                       <li class="am-g am-list-item-dated lpt2 mbtop">
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?=$address[0]['name'];?><br>
+                        <br> &nbsp;&nbsp;&nbsp;<?=$address[0]['name'];?>&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;<?=$address[0]['userphone'];?>
-                        <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$address[0]['address'];?><label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="waiter" value="1" data-am-ucheck checked></label><br>
-                       
-            <!--------------    address   -------------->
-                       <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
-                        </a>
+                        <?php var_dump( $address); ?>
+<?php foreach ($address as $key => $addressvalue): ?>
+                      <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd ">
+                      <?=$addressvalue['address'];?>
+                      <label class="am-radio am-fr label">
+                      <input type="radio" class="am-margin-left green" name="waiter" value="1" data-am-ucheck checked>
+                      </label>
+                      </a>
+<?php endforeach ?>
+
+
+                      <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
                       </li>
                       <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
                  </ul> 
