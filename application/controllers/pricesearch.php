@@ -45,9 +45,8 @@ class pricesearch extends CI_Controller {
 		
 			$c[] = $a;
 			$b = json_encode($c);
-			 // var_dumP($b);
-			$postadd = curl_post(POSTAPI."API_MenberAddress?dis=xz",$b);
-			// var_dump($postadd);
+			$postadd = curl_post(POSTAPI."API_MenberAddress?dis=xz&phone=".$_SESSION['phone'],$b);
+			 var_dump($postadd);
 	}
 
 	public function send(){
