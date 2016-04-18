@@ -104,18 +104,16 @@
 </div>
 <div class="am-g am-shadow life">
   <p class="htit"><img src="skin/img/heart.png" alt=""> 精品生活</p>
+  <?php if(!empty($quality)):?>
+    <?php foreach($quality as $val):?>
   <figure> 
-     <a href="<?php echo site_url('home/lifeInfo')?>">
-       <img src="skin/img/article/it1.png" alt="大厨到家">
-       <figcaption>关于美食那些事儿<br><span class="am-text-sm">食色性也</span></figcaption>
+     <a href="<?php echo site_url('home/lifeInfo?id=').$val['boutiqueid'];?>">
+       <img src="<?php echo IP.$val['backgoungimg'];?>" alt="<?=$val['name']?>">
+       <figcaption><?=$val['name']?><br><span class="am-text-sm"><?=$val['abstract']?></span></figcaption>
      </a>  
   </figure>
-  <figure> 
-     <a href="<?php echo site_url('home/lifeInfo')?>">
-       <img src="skin/img/article/it1.png" alt="大厨到家">
-       <figcaption>关于美食那些事儿<br><span class="am-text-sm">食色性也</span></figcaption>
-     </a>  
-  </figure>
+    <?php endforeach;?>
+<?php endif;?>
 </div>
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
