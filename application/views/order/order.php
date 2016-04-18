@@ -117,14 +117,15 @@
             </div>
 
           <button type='button' class="am-u-sm-6 bno gray closem" onclick="noorders();">取消</button>
-          <button type='button' onclick="getorders();" class="am-u-sm-6 bno green">提交</button>
+          <button type='button' id="sub" onclick="getorders();" class="am-u-sm-6 bno green">提交</button>
           </div>
      </div>
       <!-- 未添加地址这显示 -->
-      <div class="am-list-news-bd" id='mainContent'>
+      <div class="am-list-news-bd" >
           <?php if(empty($address)):?>
-
+          <div id='mainContent'>
            <a href="javascript:;" id="model" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
+           </div>
          <?php else:?>
             <!--------------    UserPhone   -------------->
             <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
@@ -215,19 +216,20 @@
             $('#yfje').val(payable);
         }
         })
-        $('#form').submit(function() { 
+        $('#sub').click(function() { 
         
           var phone = $('input[type="tel"]').val();
-            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
-              alert('还有信息未输入');
-              $(this).focus();
-              return false;
-            }
           if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
             alert('请输入正确的电话号码');
             $('.ofp').focus();
               return false;
           }
+            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+              alert('还有信息未输入');
+              $(this).focus();
+              return false;
+            }
+          
         });
      
       })
@@ -247,9 +249,10 @@ function getorders(){
                success: function(msg){
                   console.log(msg);
                  //window.location.reload();
-                  // $("#mainContent").html(dates);
+                  $("#mainContent").html(msg);
                }
             });
+            $('.tk').fadeOut(400);
 }
      
 
