@@ -67,7 +67,7 @@ class home extends CI_Controller
          		echo "<script>alert('注册失败！');  window.location.href='register';</script>";  //？注册
          		break;
          	case '1':
-         		$this->session->set_userdata('phone',$this->input->post('UserPhone'),3600);
+         		$this->session->set_userdata('phone',$this->input->post('UserPhone'),7200);
          		echo "<script>alert('注册成功！');    window.location.href='ucent';</script>";   //？中心
          		break;	
          	case '2':
@@ -323,6 +323,7 @@ class home extends CI_Controller
 					if($v['code'] == 0){
 						$data['carts'][$k] = $v;
 					}else{
+						$data['carts'] = '';
 						$data['taocan'][$k] = $v;
 					}
 				}
@@ -360,8 +361,10 @@ class home extends CI_Controller
 
     		$data['jifen'] = file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']);
     	
-    		//获取用户默认地址、
-    		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
+    		//获取用户地址、
+    		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
+    		var_dumP($address);
+    		exit;
     		$data['address'] = json_decode(json_decode($address),true);
 
     		}
@@ -428,7 +431,7 @@ class home extends CI_Controller
 	public function userdatum()
 	{
 		if($_POST){
-			var_dumP($_POST);
+			
 		}
 	}
     //搜索

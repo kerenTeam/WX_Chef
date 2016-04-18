@@ -18,7 +18,7 @@ class pricesearch extends CI_Controller {
 		$json = json_encode($arr);
 		$cai = curl_post(POSTAPI."API_Vegetable?dis=xc",$json);
 		$data = json_decode(json_decode($cai),true);
-		var_dumP($data);
+		// var_dumP($data);
 		if($data == NULL){
 			var_dumP("<th>没有最新菜价！换前一天试试。</th>");
 		}else{
@@ -36,30 +36,29 @@ class pricesearch extends CI_Controller {
 
 	public function payOrder()
 	{
-		$foodid = $this->input->post('foodid');
-    	$numbers = $this->input->post('numbers');
-    	if(!$this->input->post('couponid')){
-    		$couponid = '';
-    	}else{
-    		$couponid = $this->input->post('couponid');
-    	}
-    	// var_dumP($couponid);
-    	$foodOrder = array_combine($foodid,$numbers);
-    	$foodJson = array();
-		 foreach ($foodOrder as $fid => $fnums)
-        { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
-  		// print_r($foodJson) ;
-    	$foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-        $foodJsondata['UserCouponId'] = $couponid;
-        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-        $foodJsondata['PaymentMethod'] = '';
-        $foodJsondata['Integral'] = 0;
-        $foodJsondata['poorderentry'] = $foodJson;
-        $abc = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
-     	
+			$a['Name'] = $_POST['name'];
+			$a['UserPhone'] = $_SESSION['phone'];
+			$a['Address'] = $_POST['address'];
+			$a['GoodsPhone'] = $_POST['GoodsPhone'];
+			$a['SparePhone'] = '';
+			$a['IsDefault'] = 0;
+		
+			$c[] = $a;
+			$b = json_encode($c);
+			$postadd = curl_post(POSTAPI."API_MenberAddress?dis=xz&phone=".$_SESSION['phone'],$b);
+			$add = json_decode(json_decode($postadd),true);
+			$htmlstr = '<ul class="am-list odl">';
+			foreach ($add as $key => $value) {
+				$htmlstr .= '<li class="am-g am-list-item-dated lpt2 mbtop">';
+                $htmlstr .= '&nbsp;&nbsp;&nbsp;&nbsp;'.$value["name"].'<br>';
+                $htmlstr .= '<a href="'.site_url("home/address2").'" class="am-list-item-hd ">'.$value["address"];
+                $htmlstr .= '&nbsp;&nbsp;&nbsp;&nbsp;'.$value["goodsphone"].'
+                        <br>';
+                  $htmlstr .= '<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'.$value["memberaddressid"].'" data-am-ucheck checked></label></a> </li>';
+			}
+			$htmlstr .= "</ul>";
+			echo $htmlstr;
 
-     	$cai = curl_post(POSTAPI."API_Poorder?dis=dd",$abc);
-     	var_dumP($cai);
 	}
 
 	public function send(){

@@ -28,7 +28,7 @@ class orderWXPay extends CI_Controller{
                     if ($this->input->post('servmoneydata')) {
                        $_SESSION['servmoneydata'] = $this->input->post('servmoneydata');
                     }else{
-                       $_SESSION['servmoneydata'] = 45;
+                       $_SESSION['servmoneydata'] = 0;
                     }
                     $_SESSION['Writes'] = $this->input->post('Writes');
                     $_SESSION['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); 
@@ -36,7 +36,7 @@ class orderWXPay extends CI_Controller{
                 		// 获取积分
                 		$data['jifen'] =json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']));
                 		//获取用户默认地址、
-                		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=default&value=".$_SESSION['phone']);
+                		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
                 		$data['address'] = json_decode(json_decode($address),true);
             	    }
                     $data['servmoneydata'] = $_SESSION['servmoneydata'];

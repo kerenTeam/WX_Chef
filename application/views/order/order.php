@@ -89,9 +89,9 @@
   <!-- 积分 -->
    <?php if(empty($jifen)):?>
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">你还没有积分!</span></a>
-      <input type="checkbox" name='jifen' id="jifen" value="0" checked>
+      <input type="hidden" name='jifen' id="jifen" value="0" checked>
     <?php else:?>
-       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red"><span id='diyong'><?=$jifen;?></span>积分已抵用  <span class="am-icon-cny" id='jifenmoney'></span> <input type="checkbox" name='jifen' id="jifen" value="1"></span></a>
+       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red"><span id='diyong'><?=$jifen;?></span>积分已抵用  <span class="am-icon-cny" id='jifenmoney'></span> <input type="hidden" name='jifen' id="jifen" value="1"></span></a>
     <?php endif;?>
 
       <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red" id='pricetotal'></span></a>
@@ -106,7 +106,6 @@
 
     <!-- 地址添加弹框 -->
     <div class="tk" style="display: none;">
-       <form action="" method="">
          <div class="tkcontent bwhite" style="background: white;border-radius: 5px;">
            <div class="tktxt2">
               <div class="am-text-center am-text-lg am-margin-top">地址添加</div>
@@ -118,36 +117,45 @@
                     是否需要服务员?<input type="checkbox" class="green" name="waiter" value="1" data-am-ucheck>
                 </label> -->
                
+
               </div> 
             </div>
 
           <button type='button' class="am-u-sm-6 bno gray closem" onclick="noorders();">取消</button>
-          <button type='submit' id="sub" class="am-u-sm-6 bno green">提交</button>
+
+          <button type='button' id="sub" onclick="getorders();" class="am-u-sm-6 bno green">提交</button>
           </div>
-        </form>
      </div>
       <!-- 未添加地址这显示 -->
-      <div class="am-list-news-bd">
+      <div class="am-list-news-bd" >
           <?php if(empty($address)):?>
-          <a href="javascript:;" id="model" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
-          
+
+          <div id='mainContent'>
+           <a href="javascript:;" id="model" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
+           </div>
+
          <?php else:?>
             <!--------------    UserPhone   -------------->
             <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
    
                  <!-- 已添加过地址 -->
-                 <ul class="am-list">
+
+                 <ul class="am-list odl">
+                 <?php foreach($address as $val):?>
                       <li class="am-g am-list-item-dated lpt2 mbtop">
-                       <div class="am-margin-top-sm am-margin-left-sm"><?=$address[0]['name'];?><br>
-                            <?=$address[0]['userphone'];?>
-                       </div>
-                        <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd black adda"><?=$address[0]['address'];?><label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="waiter" value="1" data-am-ucheck checked></label><br>
-                       
-            <!--------------    address   -------------->
-                       <input type="hidden" name="memberaddressid" value="<?php echo $address[0]['memberaddressid'];?>">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<?=$val['name'];?><br>
+                        <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><?=$val['address'];?>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;<?=$val['goodsphone'];?>
+                        <br>
+                        <label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="<?=$val['memberaddressid'];?>" data-am-ucheck checked></label>
+          
                         </a>
                       </li>
+                    <?php endforeach;?>
+                    <?php if(count($address) <= 5):?>
                       <a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
+                    <?php endif;?>
                  </ul> 
 
           <?php endif;?>
@@ -220,12 +228,20 @@
         $('#sub').click(function() { 
         
           var phone = $('input[type="tel"]').val();
+<<<<<<< HEAD
             if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+=======
+          if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+>>>>>>> 04e1911cdb2e4b03371d9306f02f047ccfc866f0
             alert('请输入正确的电话号码');
             $('.ofp').focus();
               return false;
           }
+<<<<<<< HEAD
           if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+=======
+            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+>>>>>>> 04e1911cdb2e4b03371d9306f02f047ccfc866f0
               alert('还有信息未输入');
               $(this).focus();
               return false;
@@ -235,20 +251,25 @@
      
       })
 
-      var name=$('#name').val();
-      var address=$('#Address').val();
-      var phone=$('#GoodsPhone').val();
+     
 
 
 function getorders(){
+            var name=$('#name').val();
+            var address=$('#Address').val();
+            var phone=$('#GoodsPhone').val();
+           
             $.ajax({
                type: "POST",
                url: "<?=site_url('pricesearch/payOrder');?>",
-               data: $('#formorder').serialize(),
+               data: 'GoodsPhone='+phone+"&address="+address+"&name="+name,
                success: function(msg){
                   console.log(msg);
+                 //window.location.reload();
+                  $("#mainContent").html(msg);
                }
             });
+            $('.tk').fadeOut(400);
 }
      
 
