@@ -51,8 +51,9 @@
           </div>
         </li>
         <li class="am-g am-list-item-dated">
-          <div class="am-u-sm-4">热爱菜系</div>
+          <div class="am-u-sm-4">喜爱菜系</div>
           <div class="am-u-sm-8">
+            <?php echo $user[0]['likecuisine'];?>
             <select multiple data-am-selected class="vegtype" name='LikeCuisine[]'>
               <option value="粤菜">粤菜</option>
               <option value="川菜">川菜</option>
