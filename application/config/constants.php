@@ -85,8 +85,8 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 defined('randNms')             OR define('randNms', rand(100000,999999)); //长度为6位的随机数
 
-defined('IP')                  OR define('IP','http://192.168.0.154');
-defined('POSTAPI')             OR define('POSTAPI',"http://192.168.0.154/API/");
+defined('IP')                  OR define('IP','http://211.149.195.183:88');
+defined('POSTAPI')             OR define('POSTAPI',"http://211.149.195.183:88/API/");
 
 
 //～～～～～～～～～～～～～～～～～～～～～微信配置～～～～～～～～～～～～～～～～～～～～～～～
