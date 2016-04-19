@@ -101,13 +101,35 @@ class orderWXPay extends CI_Controller{
     }
 //订单支付完成,数据提交向后台	
     public function postOrderData()
-    {	
-        $postOrderData['MenberMoney'] = 0;
+    {	//如果是会员卡支付
+        if ($_GET['MenberMoney'] == 1) {
+        $postOrderData['MenberMoney'] = 1;
+        }else{
+        $postOrderData['MenberMoney'] = 0;  
+        }
+        // //如果是线下支付
+        // if ($_GET['PaymentMethod'] == 2) {
+        // $postOrderData['PaymentMethod'] = 2;
+        // }else{
+        // $postOrderData['PaymentMethod'] = 1;  
+        // }
+        // //如果是支付宝支付
+        // if ($_GET['PaymentMethod'] == 3) {
+        // $postOrderData['PaymentMethod'] = 3;
+        // }else{
+        // $postOrderData['PaymentMethod'] = 1;
+        // }
+        // //如果是apple Pay支付
+        // if ($_GET['PaymentMethod'] == 4) {
+        // $postOrderData['PaymentMethod'] = 4;
+        // }else{
+        // $postOrderData['PaymentMethod'] = 1;
+        // }
+
         $postOrderData['POOrderId'] = $_SESSION['rePayData'][0]['POOrderId'];
         $postOrderData['PaymentMethod'] = 1;
         $postOrderData['PaymentMoney'] = str_replace(".0000","",$_SESSION['rePayData'][0]['MoneyAll']);
         $postOrderData['UserPhone'] = $_SESSION['phone'];
-
 
         $reMsg = curl_post(POSTAPI."API_Poorder?dis=money",json_encode($postOrderData));
        

@@ -120,9 +120,21 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
           <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo $_SESSION['rePayData'][0]['MoneyAll']; ?></i></span>
         </li> 
         <li class="am-g am-list-item-dated preduce">
-          <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd"><img src="skin/img/vp.png" class="payimg" alt="">会员卡支付
+        <?php 
+         $user = file_get_contents(POSTAPI."API_User?dis=ckxx&UserPhone=".$_SESSION['phone']);
+        $userdata = json_decode(json_decode($user),true);
+        $balance  =  $userdata[0]['balance'];
+         ?>
+         <?php if ($balance >= $_SESSION['rePayData'][0]['MoneyAll']): ?>
+            <a href="<?php echo base_url().'index.php/orderWXPay/postOrderData?MenberMoney=1'?>" class="am-list-item-hd">&nbsp;&nbsp;&nbsp;<img src="skin/img/vp.png" class="payimg" alt="">&nbsp;会员卡支付
             <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
           </a>
+         <?php else: ?>
+            <a href="javascript:;" class="am-list-item-hd" style="color:#ccc;">&nbsp;&nbsp;&nbsp;<img src="skin/img/vp_gray.png" class="payimg" alt="">&nbsp;会员卡支付  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会员卡余额不足
+            <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
+          </a>
+         <?php endif ?>
+          
         </li>
       </ul>
      </div>
@@ -141,18 +153,18 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
  
             <div class="gsf" style="color:rgb(248, 85, 84);">
               <a href="javascript:;"  class="am-cf adc"><span style="color:gray;" class="am-icon-apple apple"></span>Apple Pay </span></a>
-              <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp_gray.png" class="payimg" alt=""> 微信支付 </a>
-              <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/zp_gray.png" class="payimg" alt="">支付宝支付</a>
+              <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp_gray.png" class="payimg" alt="">&nbsp;微信支付 </a>
+              <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/zp_gray.png" class="payimg" alt="">&nbsp;支付宝支付</a>
               <div class="gs"></div>
  
             </div>
       <?php else: ?>
             <a href="" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-            <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-            <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt="">&nbsp;微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">&nbsp;支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             
       <?php endif ?>
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">&nbsp;线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
 
 
 

@@ -1,9 +1,6 @@
 
   <body>
-<<<<<<< HEAD
-  <?php var_dump($users);?>
-=======
->>>>>>> f1e3b2c4875758dc74f9f26cc62cb105916cc985
+
   <?php if(!empty($users)):?>
    <div class="userhead bred">
      <img class="am-circle" src="<?php echo IP.$users[0]['userimage'];?>"/>
