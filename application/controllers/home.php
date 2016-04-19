@@ -85,6 +85,10 @@ class home extends CI_Controller
 
 		$data['caijia'] = json_decode(json_decode($caijia));
 
+		// 精品生活
+		// $quality = file_get_contents(POSTAPI.'API_Boutique');
+		// $data['quality'] = json_decode(json_decode($quality),true);
+
 		$this->load->view('index',$data);
 	}
 	// 首页精品生活

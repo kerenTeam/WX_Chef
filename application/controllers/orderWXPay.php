@@ -77,11 +77,12 @@ class orderWXPay extends CI_Controller{
         //将order所有数据转为josn
         $data['OrderAllData'] = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
         //得到支付金额     	
+        
         $isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$data['OrderAllData']);
+        // var_dump($data['OrderAllData']);
+        // var_dump($isComedeOrder);  exit;
 
-        $_SESSION['rePayData'] = str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isComedeOrder)));
-
- 
+        $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isComedeOrder))),TRUE);
         $this->load->view('order/payOrder');
 	}
 //跳转兼容
@@ -89,17 +90,30 @@ class orderWXPay extends CI_Controller{
     {
     	$this->load->view('order/payOrder');
     }	
+    public function unshopdata()
+    {
+        $_SESSION['shoping']       = '';
+        $_SESSION['booking']       = '';
+        $_SESSION['Writes']        = '';
+        $_SESSION['postBooking']   = ''; 
+        $_SESSION['rePayData']     = ''; 
+        echo "清除完成";
+    }
 //订单支付完成,数据提交向后台	
     public function postOrderData()
     {	
-        $postOrderData['MenberMoney'] = 1;
-        $postOrderData['PoorderId'] = $this->input->post('billno');
+        $postOrderData['MenberMoney'] = 0;
+        $postOrderData['POOrderId'] = $_SESSION['rePayData'][0]['POOrderId'];
         $postOrderData['PaymentMethod'] = 1;
-        $postOrderData['PaymentMoney'] = 32;
+        $postOrderData['PaymentMoney'] = str_replace(".0000","",$_SESSION['rePayData'][0]['MoneyAll']);
         $postOrderData['UserPhone'] = $_SESSION['phone'];
 
 
         $reMsg = curl_post(POSTAPI."API_Poorder?dis=money",json_encode($postOrderData));
+       
+        var_dump(POSTAPI."API_Poorder?dis=money",json_encode($postOrderData)); 
+        var_dump($reMsg);
+        exit;
         if ($reMsg = '""3""') {
             echo "<script>alert('支付异常，请联系028-1234567！')</script>";
          }else{
@@ -113,5 +127,29 @@ class orderWXPay extends CI_Controller{
         
      	redirect('home/orderR');
     }
+//购买｜充值会员卡  页面
+    public function payCardPage()
+    {   if ($_SESSION['phone'] == null) {
+        echo "<script>alert('为保证安全，请重新登录！');window.location.href='".site_url('home/login')."';</script>"; exit;
+        }
+        $PayVipCard['UserPhone'] = $_SESSION['phone'];
+        $PayVipCard['PaymentMethod'] = '0';
+        $_SESSION['PayVipCard'] = $_GET['Money'];
+        $PayVipCard['Money'] = $_SESSION['PayVipCard'];
+        $_SESSION['PayVipCardData'] =json_encode($PayVipCard);
+        $this->load->view('order/payCardPage');
+
+    }  
+//购买或充值会员卡
+    public function PayVipCard()
+    {  
+        $reMsg = curl_post(POSTAPI."API_Recharge",$_SESSION['PayVipCardData']);
+        if ($reMsg != '1') {
+        echo "<script>alert('订单异常，请重新充值或购买！');window.location.href='".site_url('home/vipCard')."';</script>";exit;
+        }
+        $_SESSION['PayVipCardData'] ="";
+        $_SESSION['PayVipCard'] = "";
+        redirect('home/vip');   
+    }   
 }
  ?>
