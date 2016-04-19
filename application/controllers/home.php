@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 class home extends CI_Controller
 {
-	
+	 
 	function __construct()
 	{
 		parent::__construct();
@@ -94,11 +94,26 @@ class home extends CI_Controller
 	}
 	//菜单 by wf
 	public function cailan(){
+		//var_Dump($_SESSION['shoping']);
 		$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
 		$data['cates'] = json_decode(json_decode($catejson),true);
 		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=d');
-		$data['foods'] = json_decode(json_decode($foodjson),true);
-
+		$foods = json_decode(json_decode($foodjson),true);
+		if(isset($_SESSION['shoping'])){
+			if($_SESSION['shoping'] != ''){
+				$shop = $_SESSION['shoping'];
+				foreach($foods as $k=>$v){
+					$foods[$k]['number'] = '0';
+					foreach ($shop as $key => $value) {
+						if($v['foodid'] == $value['foodid']){
+							$foods[$k]['number'] = $value['number'];
+						}
+					}
+					
+				}
+			}
+		}
+		$data['foods'] = $foods;
 		$this->load->view('cailan',$data);
 	}
 	//点菜

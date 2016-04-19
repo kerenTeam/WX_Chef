@@ -9,7 +9,7 @@
 </style>
 <link rel="stylesheet" href="skin/css/login.css">
 <body>
-  <form action="<?=site_url('home/userdatum');?>" method="post" enctype="multipart/form-data">
+  <form action="<?=site_url('home/userdatum');?>" method="post" enctype="multipart/form-data" >
     <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
         <a href="javascript:" onclick="javascript:history.go(-1);">
