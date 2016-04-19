@@ -109,6 +109,10 @@
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
 
+      <!-- 未添加地址这显示 -->
+      <div class="am-list-news-bd" >
+          <?php if(empty($address)):?>
+
     <!-- 地址添加弹框 -->
 
     <div class="tk" style="display: none;">
@@ -132,10 +136,6 @@
           <button type='button' id="sub" class="am-u-sm-6 bno green">提交</button>
           </div>
      </div>
-      <!-- 未添加地址这显示 -->
-      <div class="am-list-news-bd" >
-          <?php if(empty($address)):?>
-
           <div id='mainContent' <style="margin-top: 3rem;">
             
           </style>>
