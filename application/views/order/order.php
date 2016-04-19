@@ -115,9 +115,9 @@
            <div class="tktxt2">
               <div class="am-text-center am-text-lg am-margin-top">地址添加</div>
               <div class="am-g ammake am-padding-sm">
-                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required name='phone'>
-                <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required name='name'>
-                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required name='address'>
+                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required id='GoodsPhone'>
+                <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required id='name'>
+                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required id='Address'>
         <!--         <label class="am-checkbox am-success am-u-sm-12">
                     是否需要服务员?<input type="checkbox" class="green" name="waiter" value="1" data-am-ucheck>
                 </label> -->
@@ -231,22 +231,13 @@
         }
         })
         $('#sub').click(function() { 
-        
-          var phone = $('input[type="tel"]').val();
-<<<<<<< HEAD
+            var phone = $('input[type="tel"]').val();
             if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-=======
-          if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
->>>>>>> 04e1911cdb2e4b03371d9306f02f047ccfc866f0
             alert('请输入正确的电话号码');
             $('.ofp').focus();
               return false;
           }
-<<<<<<< HEAD
           if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
-=======
-            if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
->>>>>>> 04e1911cdb2e4b03371d9306f02f047ccfc866f0
               alert('还有信息未输入');
               $(this).focus();
               return false;
