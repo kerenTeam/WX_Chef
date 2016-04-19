@@ -137,19 +137,40 @@ class orderWXPay extends CI_Controller{
         $_SESSION['PayVipCard'] = $_GET['Money'];
         $PayVipCard['Money'] = $_SESSION['PayVipCard'];
         $_SESSION['PayVipCardData'] =json_encode($PayVipCard);
+        $_COOKIE['PayVipCardData'] = json_encode($PayVipCard);
         $this->load->view('order/payCardPage');
 
     }  
 //购买或充值会员卡
     public function PayVipCard()
-    {  
+    { 
+        // var_dump($_SESSION['PayVipCard']);
+        // echo "<hr/>";
+        // var_dump($_COOKIE['PayVipCard']);
+        //         echo "<hr/>";
         $reMsg = curl_post(POSTAPI."API_Recharge",$_SESSION['PayVipCardData']);
-        if ($reMsg != '1') {
-        echo "<script>alert('订单异常，请重新充值或购买！');window.location.href='".site_url('home/vipCard')."';</script>";exit;
-        }
+        //         echo "<hr/>";
+        // var_dump(POSTAPI."API_Recharge",$_SESSION['PayVipCardData']);
+        //         echo "<hr/>";
+        // var_dump($reMsg);  
+        // if ($reMsg != 1) {
+        //     var_dump($reMsg); 
+        //    echo '订单异常，请重新充值或购买！';  exit;
+        // echo "<script>alert('订单异常，请重新充值或购买！');window.location.href='".site_url('home/vipCard')."';</script>";exit;
+        // }
         $_SESSION['PayVipCardData'] ="";
-        $_SESSION['PayVipCard'] = "";
-        redirect('home/vip');   
-    }   
+        $_SESSION['PayVipCard']     = "";
+        if(isset($_SESSION['phone'])){
+            if($_SESSION['phone'] == NULL){
+                $data['user'] = '';
+            }else{
+                $user = file_get_contents(POSTAPI."API_User?dis=ckxx&UserPhone=".$_SESSION['phone']);
+                $userdata['users'] = json_decode(json_decode($user),true);
+                $data['name']    = $userdata['users'][0]['name'];
+                $data['balance'] = $userdata['users'][0]['balance'];
+            }
+        }
+        $this->load->view('vip',$data);
+    } 
 }
  ?>

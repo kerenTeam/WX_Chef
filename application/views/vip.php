@@ -14,14 +14,23 @@
       </h1> 
   </header> 
  
-
+  <?php if ($name && $balance): ?>
       <div class="am-g am-shadow am-cf">
            <!-- <span class="acm am-fl"> 账户 <span class="green"> 15708434450 </span></span> -->
           <span class="acm am-fl"> <?=$name;?> </span>
           <span class="acm am-fr">余额<span class="pink acm"> <?=$balance;?> </span></span>
       </div> 
-  <br>
-   <a href="<?=site_url('home/vipCard');?>" class="am-u-sm-12 am-btn bgreen go">去充值</a> 
+      <br>
+      <a href="<?=site_url('home/vipCard');?>" class="am-u-sm-12 am-btn bgreen go">去充值</a> 
+  <?php else: ?>
+            <br><br><br>
+            <br><br><br>
+            <center><a href="<?php echo site_url('home/vipCard'); ?>"> 您还没有办理会员卡，点击办理 </a></center>
+            <br><br><br>
+            <a href="<?=site_url('home/vipCard');?>" class="am-u-sm-12 am-btn bgreen go">去办理</a> 
+  <?php endif ?>    
+  
+   
  
    <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">

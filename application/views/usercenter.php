@@ -1,6 +1,6 @@
 
   <body>
-  <?php var_dumP($users);?>
+  <?php var_dump($users);?>
   <?php if(!empty($users)):?>
    <div class="userhead bred">
      <img class="am-circle" src="skin/img/USER.jpg"/>

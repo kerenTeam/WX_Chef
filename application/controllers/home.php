@@ -655,7 +655,7 @@ class home extends CI_Controller
 	public function vip(){
 		if($_GET){
 			$balance = $_GET['balance'];
-			if(empty($balance)){
+			if(empty($_SESSION['phone'])){
 				echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
 			}else{
 				$arr['balance'] = $balance;
@@ -774,7 +774,7 @@ class home extends CI_Controller
 			$id = $_GET['id']; 
 			$del = file_get_contents(POSTAPI.'API_Poorder?dis=IsDisplay&UserPhone='.$id);
 			if($del == '"1"'){
-				echo "<script>alert('删除订单记录成功！');window.location.href='orderR';</script>";
+				    echo "<script>alert('删除订单记录成功！');window.location.href='orderR';</script>";
 			}else{
 					echo "<script>alert('删除订单记录失败！');window.location.href='orderR';</script>";
 			}
