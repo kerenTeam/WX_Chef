@@ -46,9 +46,18 @@ class JsApiPay
 			//触发微信返回code码
 			//$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING']);
 			//获取完整url  上面是一个BUG
-			$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-			$baseUrl = site_url('orderWXPay/jumpLink');
-			var_dump($baseUrl);
+			if ('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING'].'/orderWXPay/payOrder' == base_url().'index.php/orderWXPay/payOrder') {
+				//订单支付跳转
+			    $baseUrl = site_url('orderWXPay/jumpLink');
+			}else{
+				//日常
+				$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+			}
+			// var_dump($_SERVER['REQUEST_URI']);
+			// var_dump($baseUrl);
+			// var_dump(base_url().'/index.php/orderWXPay/order'); exit;
+			
+
 			$url = $this->__CreateOauthUrlForCode($baseUrl);
 			Header("Location: $url");
 			exit();

@@ -1,6 +1,7 @@
 <?php 
 ini_set('date.timezone','Asia/Shanghai');
 //打印输出数组信息
+
 function printf_info($data)
 {
     foreach($data as $key=>$value){
@@ -13,10 +14,10 @@ $tools = new JsApiPay();
 $openId = $tools->GetOpenid();
 //②、统一下单
 $input = new WxPayUnifiedOrder();
-$input->SetBody("大厨到家订餐支付");
+$input->SetBody("大厨到家VIP");
 $input->SetAttach("大厨到家－微信支付");
 $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-//$input->SetTotal_fee(str_replace(".0000","00",$_SESSION['rePayData'][0]['MoneyAll']));
+//$input->SetTotal_fee($_GET['Money'].'00');
 $input->SetTotal_fee('1');
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 600));
@@ -31,7 +32,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 //$editAddress = $tools->GetEditAddressParameters();
 
 ?>
-    <script type="text/javascript">
+  <script type="text/javascript">
   //调用微信JS api 支付
   function jsApiCall()
   {
@@ -43,7 +44,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
             WeixinJSBridge.log(res.err_msg);
             if (res.err_msg == "get_brand_wcpay_request:ok")
             { 
-              document.getElementById("makeformToPayOrder").submit();
+              document.getElementById("makeformToPayCardPage").submit();
             }
             else if (res.err_msg == "get_brand_wcpay_request:cancel")
             { alert("已取消微信支付,你可选择其他支付或线下付款");}
@@ -112,32 +113,20 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
     收银台
     </h1>
   </header>
-  <form action=' <?php echo base_url()."index.php/orderWXPay/postOrderData"; ?> ' id='makeformToPayOrder' method="post">
-    <div class="am-list-news-bd">
-      <ul class="am-list odl">
-        <li class="am-g am-list-item-dated">
-          <a href="javascript:" class="am-list-item-hd">订单金额</a>
-          <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo $_SESSION['rePayData'][0]['MoneyAll']; ?></i></span>
-        </li> 
-        <li class="am-g am-list-item-dated preduce">
-          <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd"><img src="skin/img/vp.png" class="payimg" alt="">会员卡支付
-            <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
-          </a>
-        </li>
-      </ul>
-     </div>
+  <form action=' <?php echo base_url()."index.php/orderWXPay/PayVipCard"; ?> ' id='makeformToPayCardPage' method="post">
 
 
-     <div class="am-shadow fpa preduce">
+
+      <div class="am-shadow fpa preduce">
       <p class="htit sad am-cf am-text-center"><span class="am-fl">其他支付方式</span> 
-        <?php if ( str_replace(".0000","00",$rePayData[0]['MoneyAll']) >= 5000):?>
-        <span class="red am-fr">交易额大于5K,请选择会员卡支付或线下支付</span>
+        <?php if ($_GET['Money'] >= 5000):?>
+        <span class="red am-fr">会员卡面值大于5K,请选择线下支付</span>
         <?php endif ?>
       </p>
  
     
 
-      <?php if ( str_replace(".0000","00",$rePayData[0]['MoneyAll']) >= 5000):?>
+      <?php if ( $_GET['Money'] >= 5000):?>
             <div style="position: relative;" style="color:rgb(248, 85, 84);">
               <a href="javascript:;"  class="am-cf adc"><span style="color:gray;" class="am-icon-apple apple"></span>Apple Pay </span></a>
               <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp_gray.png" class="payimg" alt=""> 微信支付 </a>
@@ -148,11 +137,9 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
             <a href="" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-            
       <?php endif ?>
+
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-
-
 
 
       </div>
