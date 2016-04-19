@@ -11,23 +11,17 @@
     
   </header>
     <div class="flexv">
+    <?php foreach($vip as $val):?>
       <div class="fitem">
-         <img src="skin/img/vip1.png" alt="">
-         <a href="<?=site_url('orderWXPay/payCardPage?Money=300');?>" class="open">开通</a>
+         <img src="<?=IP.$val['img']?>" alt="<?=$val['name']?>">
+         <?php if($users[0]['balance'] == ''):?>
+         <a href="<?=site_url('orderWXPay/payCardPage?Money=').$val['money'];?>" class="open">开通</a>
+         <?php else:?>
+            <a href="<?=site_url('orderWXPay/payCardPage?Money=').$val['money'];?>" class="open">充值</a>
+        <?php endif;?>
       </div>
-      <div class="fitem">
-        <img src="skin/img/vip2.png" alt="">
-         <!-- 已开通过一次则显示  再次购买-->
-        <a href="<?=site_url('orderWXPay/payCardPage?Money=1500');?>" class="open">再次购买</a>
-      </div>
-       <div class="fitem">
-        <img src="skin/img/vip3.png" alt="">
-        <a href="<?=site_url('orderWXPay/payCardPage?Money=5000');?>" class="open">开通</a>
-      </div>
-       <div class="fitem">
-        <img src="skin/img/vip4.png" alt="">
-        <a href="<?=site_url('orderWXPay/payCardPage?Money=10000');?>" class="open">开通</a>
-      </div>
+    <?php endforeach;?>
+     
     </div>
      <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
