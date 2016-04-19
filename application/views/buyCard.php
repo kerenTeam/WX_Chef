@@ -20,13 +20,12 @@
         
       </ul>
      </div>
-     <div class="am-shadow fpa">
+     <div class="am-shadow fpa preduce">
       <p class="htit sad"><span class="am-icon-usd red"></span> 支付方式</p>
- 
-      <a href="<?php echo site_url('home/openSuccess')?>" class="am-cf adc">Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/openSuccess')?>" class="am-cf adc">微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/openSuccess')?>" class="am-cf adc">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-      <a href="<?php echo site_url('home/openSuccess')?>" class="am-cf adc">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><!-- <img src="skin/img/ap.png" class="payimg" alt=""> --> <span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       </div>
     </form>
   </body>
