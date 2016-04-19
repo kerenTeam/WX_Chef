@@ -214,7 +214,7 @@
             discount = $('#youhui').text();
             payable = amount - discount - jifenmoney;
             $('#pricetotal').text(payable);
-            $('#yfje').val(payable);
+            $('#yfje').val(payable.toFixed(2));
 
         });
 
@@ -224,12 +224,12 @@
             jifenmoney = $('#jifenmoney').text();
             payable = amount - discount - jifenmoney;
             $('#pricetotal').text(payable);
-            $('#yfje').val(payable);
+            $('#yfje').val(payable.toFixed(2));
     
         }else{
            payable = amount - discount;
             $('#pricetotal').text(payable);
-            $('#yfje').val(payable);
+            $('#yfje').val(payable.toFixed(2));
         }
         })
         $('#sub').click(function() { 

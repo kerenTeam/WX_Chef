@@ -1,9 +1,10 @@
+<style type="text/css">
+            .per{padding: 20px; border-bottom: 1px dotted #d3d3d3;}
+            .title{font-weight:bold; color:#39f;}
+            .nodata{display:none; height:32px; line-height:32px; text-align:center; color:#999; font-size:14px;}
+            h2.tip{margin:20px;font-size: 18px}
+        </style>
 <body>
-<!-- 加载动画 -->
-<!-- <div class="onturn am-center am-vertical-align">
-   <span class="am-icon-spinner am-icon-pulse am-vertical-align-middle"></span>
-</div>
- -->
 <!-- 注册弹框 -->
 <?php if(!isset($_SESSION['phone'])):?>
 <div class="tk">
@@ -102,8 +103,8 @@
   <div>
   </div>
 </div>
-<div class="am-g am-shadow life">
-  <p class="htit"><img src="skin/img/heart.png" alt=""> 精品生活</p>
+<div class="am-g life">
+  <p class="htit am-shadow"><img src="skin/img/heart.png" alt=""> 精品生活</p>
   <?php if(!empty($quality)):?>
     <?php foreach($quality as $val):?>
   <figure> 
@@ -115,6 +116,16 @@
     <?php endforeach;?>
 <?php endif;?>
 </div>
+<!-- 图文加载 -->
+    <div class="container am-shadow">
+      <div class="am-g life">
+            <div class="demo">
+                <div id="lists"> 
+                
+                </div> 
+                <div class="nodata"></div>
+            </div>   </div> 
+    </div>
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
   <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
@@ -146,14 +157,58 @@
 </div>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
-<script type="text/javascript">
 
+<script type="text/javascript">
+var i=1
   $(function(){
     $('.closetk').bind('click', function() {
        $('.tk').css('display','none');
       // $('.tk').fadeOut('400');
     });
+
+   //加载
+     var totalpage = 6; //总页数，防止超过总页数继续滚动
+                var winH = $(window).height(); //页面可视区域高度 
+
+                $(window).scroll(function() {
+                    if (i < totalpage) { // 当滚动的页数小于总页数的时候，继续加载
+                        var pageH = $(document.body).height();
+                        var scrollT = $(window).scrollTop(); //滚动条top 
+                        var aa = (pageH - winH - scrollT) / winH;
+                        if (aa < 0.01) {
+                           getJson(i)
+                        }
+                    } else { //否则显示无数据
+                        showEmpty();
+                    }
+                });
+                getJson(0); //加载第一页
+
+
   })
+
+            function getJson(page) {
+                $(".nodata").show().html("<img src='http://www.sucaihuo.com/Public/images/loading.gif'/>");
+                $.getJSON("ajax.php", {page: i}, function(json) {
+                    if (json) {
+                        var str = "";
+                        $.each(json, function(index, array) {
+                            var str = "<figure> <a href='";
+                            var str = str + array['href']+"'><img src='" + array['src'] + "'><figcaption>" + array['title'] + "<br><span class='am-text-sm'>"+ array['txt'] + "</span></figcaption></a></figure>";
+                            $("#lists").append(str);
+                        });
+                        $(".nodata").hide()
+                    } else {
+                        showEmpty();
+                    }
+                });
+                i++;
+            }
+            function showEmpty() {
+                $(".nodata").show().html("别滚动了，已经到底了。。。");
+            }
+
+
 var s,s2,s3,timer;
 function init(){
 s=getid("div1");
@@ -172,47 +227,6 @@ return document.getElementById(id);
 }
 window.onload=init;
 </script>
-        <script type="text/javascript">
-            i = 1; //设置当前页数 
 
-            $(function() {
-                var totalpage = 6; //总页数，防止超过总页数继续滚动
-                var winH = $(window).height(); //页面可视区域高度 
-
-                $(window).scroll(function() {
-                    if (i < totalpage) { // 当滚动的页数小于总页数的时候，继续加载
-                        var pageH = $(document.body).height();
-                        var scrollT = $(window).scrollTop(); //滚动条top 
-                        var aa = (pageH - winH - scrollT) / winH;
-                        if (aa < 0.01) {
-                           getJson(i)
-                        }
-                    } else { //否则显示无数据
-                        showEmpty();
-                    }
-                });
-                getJson(0); //加载第一页
-            });
-            function getJson(page) {
-                $(".nodata").show().html("<img src='http://www.sucaihuo.com/Public/images/loading.gif'/>");
-                $.getJSON("ajax.php", {page: i}, function(json) {
-                    if (json) {
-                        var str = "";
-                        $.each(json, function(index, array) {
-                            var str = "<div class='per'>";
-                            var str = str + "<div class='title'>" + array['id'] + "、" + array['title'] + "</div></div>";
-                            $("#lists").append(str);
-                        });
-                        $(".nodata").hide()
-                    } else {
-                        showEmpty();
-                    }
-                });
-                i++;
-            }
-            function showEmpty() {
-                $(".nodata").show().html("别滚动了，已经到底了。。。");
-            }
-        </script>
 </body>
 </html>
