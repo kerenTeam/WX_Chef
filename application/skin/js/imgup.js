@@ -1,5 +1,21 @@
 function previewImage(file)
         {
+   //图片文件判断
+        var name=file.value;
+        var fileName = name.substring(name.lastIndexOf(".")+1).toLowerCase();
+        if(fileName !="jpg" && fileName !="jpeg" && fileName !="png" && fileName !="dwg" && fileName !="gif" ){
+          alert("请选择图片格式文件上传(jpg,png,gif,dwg,gif等)！");
+            target.value="";
+            return
+        }
+
+        var img = new Image();
+        document.getElementsByTagName('img')[0].src = window.URL.createObjectURL(file.files[0]);
+        img.src = window.URL.createObjectURL(file.files[0]);
+        img.onload = function(){
+       alert(img.width+","+img.height);
+        }
+
           var MAXWIDTH  = 350;
           var MAXHEIGHT = 249;
           //var div = document.getElementById('preview');

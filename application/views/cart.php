@@ -57,7 +57,7 @@
                 <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]['foodprice'];?></span></div>
                 <div class="fNum">
                   <span class="reduce am-icon-minus-circle red" onClick="handle(this, false)"></span>
-                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" 
+                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" 
                   name="numbers[]" value="<?=$cart['number'];?>">
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true)"></span>
                 </div>
@@ -99,7 +99,7 @@
                 <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food[0]['foodprice']?></span></div>
                 <div class="fNum">
                   <span class="reduce am-icon-minus-circle red" onClick="handle(this, false)"></span>
-                  <input type="text" class="numTxt inborder" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
+                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true)"></span>
                 </div>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>

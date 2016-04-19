@@ -8,8 +8,8 @@ body {
 }
 .label{
     position: absolute!important;
-    top: -1.4rem!important;
-    left: 22rem!important;
+    top: -1.5em!important;
+    left: 30rem!important;
 }
 .tktxt2{
 	position: relative;width: 100%;height: 100%;
@@ -50,7 +50,7 @@ body {
   filter: alpha(opacity=0);
 }
 .cd{
-	    margin-top: 0.8rem;
+	    margin-top: 0.2rem;
     margin-right: 2.8rem;
 }
  
@@ -325,7 +325,7 @@ body {
 }
 .fNum {
 	position: absolute;
-	top: 4.2rem;
+	top: 4rem;
 	right: 3.5rem;
 }
 .fNum span {
@@ -1437,10 +1437,10 @@ figure a:hover figcaption {
 	font-size: 14px;
 }
 .life figcaption {
-	padding-top: 20%;
+	padding-top: 23%;
 }
 .life figure {
-	height: 17rem;
+	height: 20rem;
 	margin-bottom: 6px;
 }
 .am-selected {
