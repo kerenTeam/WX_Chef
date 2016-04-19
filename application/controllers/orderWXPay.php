@@ -104,8 +104,10 @@ class orderWXPay extends CI_Controller{
     {	//如果是会员卡支付
         if ($_GET['MenberMoney'] == 1) {
         $postOrderData['MenberMoney'] = 1;
+         $postOrderData['PaymentMoney'] = 0;
         }else{
         $postOrderData['MenberMoney'] = 0;  
+        $postOrderData['PaymentMoney'] = str_replace(".0000","",$_SESSION['rePayData'][0]['MoneyAll']);
         }
         // //如果是线下支付
         // if ($_GET['PaymentMethod'] == 2) {
@@ -127,10 +129,8 @@ class orderWXPay extends CI_Controller{
         // }
 
         $postOrderData['POOrderId'] = $_SESSION['rePayData'][0]['POOrderId'];
-        $postOrderData['PaymentMethod'] = 1;
-        $postOrderData['PaymentMoney'] = str_replace(".0000","",$_SESSION['rePayData'][0]['MoneyAll']);
+        $postOrderData['PaymentMethod'] = 1;   
         $postOrderData['UserPhone'] = $_SESSION['phone'];
-
         $reMsg = curl_post(POSTAPI."API_Poorder?dis=money",json_encode($postOrderData));
        
         var_dump(POSTAPI."API_Poorder?dis=money",json_encode($postOrderData)); 
