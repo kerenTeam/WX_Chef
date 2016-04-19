@@ -85,8 +85,7 @@
         <div class="am-comment-bd am-text-xs">
           味道很不错
         </div>
-        <ul data-am-widget="gallery" class="am-gallery am-avg-sm-3
-  am-avg-md-3 am-avg-lg-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
+        <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
       <li>
         <div class="am-gallery-item">
             <a href="skin/img/bzsbsp.jpg.jpg" class="">
@@ -130,8 +129,7 @@
         <div class="am-comment-bd am-text-xs">
           味道很不错
         </div>
-          <ul data-am-widget="gallery" class="am-gallery am-avg-sm-3
-  am-avg-md-3 am-avg-lg-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
+          <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
       <li>
         <div class="am-gallery-item">
             <a href="skin/img/bzsbsp.jpg.jpg" class="">

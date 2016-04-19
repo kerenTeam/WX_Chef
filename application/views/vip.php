@@ -21,7 +21,7 @@
           <span class="acm am-fr">余额<span class="pink acm"> 30 </span></span>
       </div> 
   <br>
-   <a href="<?=site_url('home/vipCard');?>" class="am-u-sm-12 am-btn bgreen go">再次开通</a> 
+   <a href="<?=site_url('home/vipCard');?>" class="am-u-sm-12 am-btn bgreen go">去开通</a> 
  
    <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">

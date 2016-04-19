@@ -85,13 +85,40 @@ class home extends CI_Controller
 
 		$data['caijia'] = json_decode(json_decode($caijia));
 		// 精品生活
-		$quality = file_get_contents(POSTAPI.'API_Boutique');
-		$data['quality'] = json_decode(json_decode($quality),true);
+		// $quality = file_get_contents(POSTAPI.'API_Boutique');
+		// $data['quality'] = json_decode(json_decode($quality),true);
 
 
 		// var_dump($data);
 		$this->load->view('index',$data);
 	}
+	// 首页精品生活
+	public function quality()
+	{
+		$page = intval($_GET['page']);  
+	//	var_dump($page);
+		$pagenum = 5; //ÿҳ����
+		$start = ($page - 1) * $pagenum;
+		$quality = file_get_contents(POSTAPI.'API_Boutique?dis=jpsh&star='.$start.'&end='.$pagenum);
+		$shops = json_decode(json_decode($quality),true);
+
+		// $shops = array();
+		// $query =  $pdo->query("SELECT * FROM wd_bank_shops where state='1' ORDER BY id ASC LIMIT $start," . $pagenum . "");
+		// while ($ruser = $query->fetch(PDO::FETCH_ASSOC)) { $shops[] = $ruser; };
+		$arr = array();
+		foreach($shops as $shop){
+			$arr[] = array(
+				'boutiqueid' =>$shop['boutiqueid'],
+				'name' =>$shop['name'],
+				'abstract' =>$shop['abstract'],
+				'backgoungimg' =>$shop['backgoungimg'],
+			);
+		}
+		
+		echo json_encode($arr);exit;
+	}
+
+
 	//菜单 by wf
 	public function cailan(){
 		//var_Dump($_SESSION['shoping']);
