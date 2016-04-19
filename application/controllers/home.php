@@ -84,13 +84,10 @@ class home extends CI_Controller
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
 		$data['caijia'] = json_decode(json_decode($caijia));
-<<<<<<< HEAD
+
 		// 精品生活
 		// $quality = file_get_contents(POSTAPI.'API_Boutique');
 		// $data['quality'] = json_decode(json_decode($quality),true);
-
-=======
->>>>>>> 1fa9ea57ac7b248d500b20601c51e293ec94c1f3
 
 		$this->load->view('index',$data);
 	}

@@ -13,7 +13,6 @@
     <div class="flexv">
       <div class="fitem">
          <img src="skin/img/vip1.png" alt="">
-<<<<<<< HEAD
          <a href="<?=site_url('orderWXPay/payCardPage?Money=300');?>" class="open">开通</a>
       </div>
       <div class="fitem">
@@ -28,22 +27,6 @@
        <div class="fitem">
         <img src="skin/img/vip4.png" alt="">
         <a href="<?=site_url('orderWXPay/payCardPage?Money=10000');?>" class="open">开通</a>
-=======
-         <a href="<?=site_url('home/open');?>" class="open">充值</a>
-      </div>
-      <div class="fitem">
-        <img src="skin/img/vip2.png" alt="">
-         <!-- 已充值过一次则显示  再次购买-->
-        <a href="<?=site_url('home/open');?>" class="open">充值</a>
-      </div>
-       <div class="fitem">
-        <img src="skin/img/vip3.png" alt="">
-        <a href="<?=site_url('home/open');?>" class="open">充值</a>
-      </div>
-       <div class="fitem">
-        <img src="skin/img/vip4.png" alt="">
-        <a href="<?=site_url('home/open');?>" class="open">充值</a>
->>>>>>> 1fa9ea57ac7b248d500b20601c51e293ec94c1f3
       </div>
     </div>
      <!-- footer -->
