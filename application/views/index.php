@@ -2,6 +2,7 @@
             .per{padding: 20px; border-bottom: 1px dotted #d3d3d3;}
             .title{font-weight:bold; color:#39f;}
             .nodata{display:none; height:32px; line-height:32px; text-align:center; color:#999; font-size:14px;}
+            .nodata img{width:25px;}
             h2.tip{margin:20px;font-size: 18px}
         </style>
 <body>
@@ -205,7 +206,7 @@ var i=1
                 i++;
             }
             function showEmpty() {
-               setTimeout(function(){  $(".nodata").show().html("别滚动了，已经到底了。。。");},5000);
+               setTimeout(function(){  $(".nodata").show().html("别滚动了，已经到底了。。。");},50000);
             }
 
 
