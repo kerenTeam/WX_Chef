@@ -230,9 +230,10 @@ class home extends CI_Controller
 				if(isset($_SESSION['shoping'])){
 						$shoping = $_SESSION['shoping'];
 					}else{
-						$shoping = NULL;
+						$shoping = '';
 					}
-					if($shoping == NULL){
+
+					if($shoping == ''){
 					 	$this->session->set_userdata('shoping',$c,0);
 					}else{
 						foreach($shoping as $key=>$value){
@@ -431,7 +432,21 @@ class home extends CI_Controller
 	public function userdatum()
 	{
 		if($_POST){
-			
+			// var_dump($_POST);
+			$data['UserId'] = $_POST['UserId'];
+		
+			if(!empty($_FILES['UserImage']['tmp_name'])){
+				$data['UserImage'] = $_FILES['UserImage'];
+			}else{
+				$data['UserImage'] = $_POST['UserImage'];
+			}
+			$data['UserName'] = $_POST['UserName'];
+			$data['PersonalTaste'] = $_POST['PersonalTaste'];
+			$data['LikeCuisine'] = $this->input->post('LikeCuisine') ? $this->input->post('LikeCuisine') : '';
+			var_dump($data);
+			$postdata = postData(POSTAPI.'API_User',$data);
+			var_dumP($postdata);
+
 		}
 	}
     //搜索
@@ -667,6 +682,63 @@ class home extends CI_Controller
 
 		$this->load->view('protocol');
 	}
+
+	//订单状态
+	public function orderState()
+	{
+		$data['State'] = $_GET['state'];
+		$data['POOrderId'] = $_GET['id'];
+		//var_dump($data);
+		$jsonorder = json_encode($data);
+		$state = curl_post(POSTAPI.'API_Poorder?dis=state',$jsonorder);
+		if($state == '"1"'){
+			if($_GET['state'] == 5){
+				echo "<script>alert('你的退款信息已经提交！');window.location.href='orderR';</script>";
+			}else{
+				echo "<script>alert('你的订单已经取消！');window.location.href='orderR';</script>";
+			}
+		}else{
+			if($_GET['state'] == 5){
+				echo "<script>alert('你的退款信息提交失败！')；window.location.href='orderR';</script>";
+			}else{
+				echo "<script>alert('你的订单取消失败！')；window.location.href='orderR';</script>";
+			}
+		}
+
+	}
+
+	// 订单历史支付
+	public function payment()
+	{
+		if($_GET){
+		//	var_dumP($_SESSION['rePayData']);
+			$data['POOrderId'] = $_GET['id'];
+			$data['MoneyAll'] = $_GET['money'];
+			$arr[] = $data;
+			$_SESSION['rePayData'] = $arr;
+			//var_dumP($_SESSION['rePayData']);
+			 redirect('orderWXPay/jumpLink');
+		}
+	}
+
+	//删除订单
+	public function delorder()
+	{
+		if($_GET){
+			$id = $_GET['id']; 
+			$del = file_get_contents(POSTAPI.'API_Poorder?dis=IsDisplay&UserPhone='.$id);
+			if($del == '"1"'){
+				echo "<script>alert('删除订单记录成功！');window.location.href='orderR';</script>";
+			}else{
+					echo "<script>alert('删除订单记录失败！');window.location.href='orderR';</script>";
+			}
+		}
+	}
+
+
+
+
+
 }
 
 

@@ -9,7 +9,7 @@
 </style>
 <link rel="stylesheet" href="skin/css/login.css">
 <body>
-  <form action="<?php echo POSTAPI.'API_User'?>" method="post" enctype="multipart/form-data">
+  <form action="<?=site_url('home/userdatum');?>" method="post" enctype="multipart/form-data">
     <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
         <a href="javascript:" onclick="javascript:history.go(-1);">
@@ -28,7 +28,7 @@
       <ul class="am-list userS">
            <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">头像</div>
-          <?php if($user[0]['userimage'] == NULL):?>
+          <?php if($user[0]['userimage'] == ''):?>
           <div class="am-u-sm-8"> 
               <div class="wx_type_img">
                 <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="previewImage(this)" class="upload-add">
@@ -57,13 +57,13 @@
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">口味</div>
           <div class="am-u-sm-8">
-            <input type="text" value="<?=$user[0]['personaltaste']?>"  placeholder="未填写" name='PersonalTaste'>
+            <input type="text" value="<?=$user[0]['personaltaste']?>" placeholder="未填写" name='PersonalTaste'>
           </div>
         </li>
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">喜爱菜系</div>
           <div class="am-u-sm-8">
-            <?php echo iconv("UTF-8","UTF-8",$user[0]['likecuisine']);?>
+            <?php header("Content-Type:text/html;charset=utf-8"); echo urldecode($user[0]['likecuisine']);?>
             <select multiple data-am-selected class="vegtype" name='LikeCuisine[]'>
               <option value="粤菜">粤菜</option>
               <option value="川菜">川菜</option>
