@@ -44,12 +44,8 @@
     <?php if(isset($_SESSION['phone'])):?>
       <li class="am-g am-list-item-dated">
           <a href="<?=site_url('home/zhuxiao');?>" class="am-list-item-hd "><img src="skin/img/signout.png" alt="">注销</a> 
-<<<<<<< HEAD
       </li> 
-=======
 
-      </li>
->>>>>>> f047e978bf16f23e9ee696d0d0c03cf5f9ed8cb8
     <?php endif;?>
   </ul>
   </div>

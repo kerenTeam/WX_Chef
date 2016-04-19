@@ -129,14 +129,16 @@
 
           <button type='button' class="am-u-sm-6 bno gray closem" onclick="noorders();">取消</button>
 
-          <button type='button' id="sub" onclick="getorders();" class="am-u-sm-6 bno green">提交</button>
+          <button type='button' id="sub" class="am-u-sm-6 bno green">提交</button>
           </div>
      </div>
       <!-- 未添加地址这显示 -->
       <div class="am-list-news-bd" >
           <?php if(empty($address)):?>
 
-          <div id='mainContent'>
+          <div id='mainContent' <style="margin-top: 3rem;">
+            
+          </style>>
            <a href="javascript:;" id="model" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
            </div>
 
@@ -150,9 +152,9 @@
                  <?php foreach($address as $val):?>
                       <li class="am-g am-list-item-dated lpt2 mbtop">
                         <div class="am-margin-top-sm am-margin-left-sm">
-                          <?=$val['name'];?><br>
+                          <?=$val['name'];?>&nbsp;&nbsp;<?=$val['goodsphone'];?><br>
                         </div>
-                         <a href="javascript:;" class="am-list-item-hd black adda"><?=$val['address'];?>&nbsp;&nbsp;<?=$val['goodsphone'];?>
+                         <a href="javascript:;" class="am-list-item-hd black adda"><?=$val['address'];?>
                         <label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="<?=$val['memberaddressid'];?>" data-am-ucheck checked></label>
           
                         </a>
@@ -194,11 +196,11 @@
          // 弹出添加地址弹框
          $('#model').click(function() {
           //$('.tkp').css('display','');
-          $('body').css('overflow-y','hidden');
+          // $('body').css('overflow-y','hidden');
           $('.tk').fadeIn(400);
         });
          $('.closem').click(function() { 
-          $('body').css('overflow-y','auto');
+          // $('body').css('overflow-y','auto');
           $('.tk').fadeOut(400); 
         });
 
@@ -242,7 +244,9 @@
               $(this).focus();
               return false;
             }
-          
+          else{
+            getorders();
+          }
         });
      
       })

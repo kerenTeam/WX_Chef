@@ -50,10 +50,11 @@ class pricesearch extends CI_Controller {
 			$htmlstr = '<ul class="am-list odl">';
 			foreach ($add as $key => $value) {
 				$htmlstr .= '<li class="am-g am-list-item-dated lpt2 mbtop">';
-                $htmlstr .= '&nbsp;&nbsp;&nbsp;&nbsp;'.$value["name"].'<br>';
-                $htmlstr .= '<a href="'.site_url("home/address2").'" class="am-list-item-hd ">'.$value["address"];
-                $htmlstr .= '&nbsp;&nbsp;&nbsp;&nbsp;'.$value["goodsphone"].'
+                $htmlstr .= '&nbsp;&nbsp;&nbsp;&nbsp;'.$value["name"];
+                  $htmlstr .= '&nbsp;&nbsp;&nbsp;&nbsp;'.$value["goodsphone"].'
                         <br>';
+                $htmlstr .= '<a href="'.site_url("home/address2").'" class="am-list-item-hd ">'.$value["address"];
+              
                   $htmlstr .= '<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'.$value["memberaddressid"].'" data-am-ucheck checked></label></a> </li>';
 			}
 			$htmlstr .= "</ul>";

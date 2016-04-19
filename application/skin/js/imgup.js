@@ -14,18 +14,19 @@ function previewImage(file)
         img.src = window.URL.createObjectURL(file.files[0]);
         img.onload = function(){
        alert(img.width+","+img.height);
-        }
-
+       if(img.width>500 || img.height>500){
+        alert("上传图片的宽或高不能超过500px;")
+       }else{
           var MAXWIDTH  = 350;
           var MAXHEIGHT = 249;
           //var div = document.getElementById('preview');
-		  var div = findPreview(file.parentNode);
-		  
+      var div = findPreview(file.parentNode);
+      
           if (file.files && file.files[0])
           {
               div.innerHTML ='<img id=imghead>';
               //var img = document.getElementById('imghead');
-			  var img = div.lastChild;
+        var img = div.lastChild;
               img.onload = function(){
                 var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
                 img.width  =  rect.width;
@@ -39,13 +40,13 @@ function previewImage(file)
           }
           else //鍏煎IE
           {
-		  //alert("123");
+      //alert("123");
             var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
             file.select();
             var src = document.selection.createRange().text;
             div.innerHTML = '<img id=imghead>';
             //var img = document.getElementById('imghead');
-			var img = div.lastChild;
+      var img = div.lastChild;
             img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
             var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
             status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
@@ -75,13 +76,17 @@ function previewImage(file)
             param.top = Math.round((maxHeight - param.height) / 2);
             return param;
         }
-		
-		function findPreview(parent){
-			var childs = parent.childNodes;
-			for(var i = 0; i < childs.length; i++){
-				if(childs[i].id == "preview")
-					return childs[i];
-			}
-			
-			return div = document.getElementById('preview');
+    
+    function findPreview(parent){
+      var childs = parent.childNodes;
+      for(var i = 0; i < childs.length; i++){
+        if(childs[i].id == "preview")
+          return childs[i];
+      }
+      
+      return div = document.getElementById('preview');
+       }
+        }
+
+        
 		}
