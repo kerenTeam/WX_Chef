@@ -140,21 +140,13 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
     
 
       <?php if ( str_replace(".0000","00",$rePayData[0]['MoneyAll']) >= 5000):?>
-<<<<<<< HEAD
-            <center> 为保证你的网银安全,请选择会员卡支付或线下支付 </center>
-            <div class="gsf">
-              <a onclick="callpay()" href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-              <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-              <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-              <div class="gs"></div>
-
-=======
-            <div style="position: relative;" style="color:rgb(248, 85, 84);">
+ 
+            <div class="gsf" style="color:rgb(248, 85, 84);">
               <a href="javascript:;"  class="am-cf adc"><span style="color:gray;" class="am-icon-apple apple"></span>Apple Pay </span></a>
               <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp_gray.png" class="payimg" alt=""> 微信支付 </a>
               <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/zp_gray.png" class="payimg" alt="">支付宝支付</a>
               <div class="gs"></div>
->>>>>>> ca97c6d3a1d422aa21fd2dccfdedba46aef94df4
+ 
             </div>
       <?php else: ?>
             <a href="" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>

@@ -105,7 +105,7 @@
 </div>
 <div class="am-g life">
   <p class="htit am-shadow"><img src="skin/img/heart.png" alt=""> 精品生活</p>
-  <?php if(!empty($quality)):?>
+ <!--  <?php if(!empty($quality)):?>
     <?php foreach($quality as $val):?>
   <figure> 
      <a href="<?php echo site_url('home/lifeInfo?id=').$val['boutiqueid'];?>">
@@ -114,14 +114,14 @@
      </a>  
   </figure>
     <?php endforeach;?>
-<?php endif;?>
+<?php endif;?> -->
 </div>
 <!-- 图文加载 -->
     <div class="container am-shadow">
       <div class="am-g life">
             <div class="demo">
                 <div id="lists"> 
-                
+
                 </div> 
                 <div class="nodata"></div>
             </div>   </div> 
@@ -164,8 +164,7 @@ var i=1
     $('.closetk').bind('click', function() {
        $('.tk').css('display','none');
       // $('.tk').fadeOut('400');
-    });
-
+    })
    //加载
      var totalpage = 6; //总页数，防止超过总页数继续滚动
                 var winH = $(window).height(); //页面可视区域高度 
@@ -185,27 +184,28 @@ var i=1
                 getJson(0); //加载第一页
 
 
-  })
+  });
 
             function getJson(page) {
                 $(".nodata").show().html("<img src='http://www.sucaihuo.com/Public/images/loading.gif'/>");
-                $.getJSON("ajax.php", {page: i}, function(json) {
+                $.getJSON("<?=site_url('home/quality');?>", {page: i}, function(json) {
+                  console.log(json);
                     if (json) {
                         var str = "";
                         $.each(json, function(index, array) {
-                            var str = "<figure> <a href='";
-                            var str = str + array['href']+"'><img src='" + array['src'] + "'><figcaption>" + array['title'] + "<br><span class='am-text-sm'>"+ array['txt'] + "</span></figcaption></a></figure>";
+                            var str = "<figure> <a href='<?php echo site_url('home/lifeInfo?id=');?>";
+                            var str = str + array['boutiqueid']+"'><img src='<?php echo IP;?>" + array['backgoungimg'] + "'><figcaption>" + array['name'] + "<br><span class='am-text-sm'>"+ array['abstract'] + "</span></figcaption></a></figure>";
                             $("#lists").append(str);
                         });
-                        $(".nodata").hide()
+                       setTimeout(function(){ $(".nodata").hide();},50000);
                     } else {
-                        showEmpty();
+                       showEmpty();
                     }
                 });
                 i++;
             }
             function showEmpty() {
-                $(".nodata").show().html("别滚动了，已经到底了。。。");
+               setTimeout(function(){  $(".nodata").show().html("别滚动了，已经到底了。。。");},5000);
             }
 
 
