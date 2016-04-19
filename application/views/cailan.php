@@ -31,7 +31,7 @@
   <div data-am-widget="list_news" class="am-u-sm-9 asp cmn amr">
     <div class="cmn cmnb am-list-news am-list-news-default" >
       <div class="am-list-news-bd">
-
+  
       <?php foreach($cates as $val):?>
         <p id="<?=$val['foodcategoryid']?>"><?=$val['name'];?></p>
         <ul class="am-list">
