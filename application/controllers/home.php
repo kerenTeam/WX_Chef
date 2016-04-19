@@ -281,7 +281,8 @@ class home extends CI_Controller
 						}
 						$f = array_merge($shoping,$c);
 					 	$this->session->set_userdata('shoping',$f,0);
-					}	
+					}
+					// var_dumP($_SESSION['shoping']);	
 				redirect('home/cart');
 				}
 			exit;
@@ -357,10 +358,17 @@ class home extends CI_Controller
 			}else{
 				$cart = $_SESSION['shoping'];
 				foreach($cart as $k=>$v){
+					// var_Dump($v);
 					if($v['code'] == 0){
 						$data['carts'][$k] = $v;
 					}else{
-						$data['carts'] = '';
+						if(isset($data['carts'])){
+							if($data['carts'] == ''){
+								$data['carts']= '';
+							}
+						}else{
+							$data['carts'] = '';
+						}
 						$data['taocan'][$k] = $v;
 					}
 				}
