@@ -16,7 +16,7 @@
     </h1>
   </header>
 
-  <form action="<?php echo site_url('orderWXPay/payOrder');?>" id="form" method="post"> 
+  <form action="<?php echo site_url('orderWXPay/payOrder');?>" method="post"> 
     <div class="am-list-news-bd">
       <ul class="am-list odl">
 <?php foreach ($booking as $k => $value): ?>
@@ -109,20 +109,28 @@
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
 
+<<<<<<< HEAD
+    
+      <!-- 未添加地址这显示 -->
+      <div class="am-list-news-bd" >
+          <?php if(empty($address)):?>
+          <!-- 地址添加弹框 -->
+=======
       <!-- 未添加地址这显示 -->
       <div class="am-list-news-bd" >
           <?php if(empty($address)):?>
 
     <!-- 地址添加弹框 -->
+>>>>>>> 67401716e08e97d0e6bf48f9bb3515329ae9ec41
 
     <div class="tk" style="display: none;">
          <div class="tkcontent bwhite" style="background: white;border-radius: 5px;">
            <div class="tktxt2">
               <div class="am-text-center am-text-lg am-margin-top">地址添加</div>
               <div class="am-g ammake am-padding-sm">
-                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required id='GoodsPhone'>
-                <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required id='name'>
-                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required id='Address'>
+                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required id='GoodsPhone'/>
+                <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required id='name'/>
+                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required id='Address'/>
         <!--         <label class="am-checkbox am-success am-u-sm-12">
                     是否需要服务员?<input type="checkbox" class="green" name="waiter" value="1" data-am-ucheck>
                 </label> -->
@@ -136,9 +144,14 @@
           <button type='button' id="sub" class="am-u-sm-6 bno green">提交</button>
           </div>
      </div>
+<<<<<<< HEAD
+          <div id='mainContent' style="margin-top: 3rem;">
+      
+=======
           <div id='mainContent' <style="margin-top: 3rem;">
             
           </style>>
+>>>>>>> 67401716e08e97d0e6bf48f9bb3515329ae9ec41
            <a href="javascript:;" id="model" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
            </div>
 
