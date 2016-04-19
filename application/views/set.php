@@ -30,7 +30,7 @@
           <?php if($user[0]['userimage'] == NULL):?>
           <div class="am-u-sm-8"> 
               <div class="wx_type_img">
-                <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="previewImage(this)" class="upload-add">
+                <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="check(this)" class="upload-add">
                   <!-- 图片实时预览 -->
                 <div id="preview"> <img style="border-radius: 50%;" src="skin/img/vip.png" alt="选择图片"> </div>
               </div> 
@@ -38,7 +38,7 @@
           <?php else:?>
              <div class="am-u-sm-8"> <!-- previewImage(this) -->
              <div class="wx_type_img">
-                <input type="file" id="imgUpload" name="UserImage" onchange="previewImage(this)" class="upload-add">
+                <input type="file" id="imgUpload" name="UserImage" onchange="check(this)" class="upload-add">
                   <!-- 图片实时预览 -->
                 <div id="preview"> 
                 <input type="hidden" name='UserImage' value="<?php echo $user[0]['userimage'];?>" />
@@ -115,37 +115,27 @@
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/imgup.js"></script>
 <script language="javascript"> 
-function imgSel(){
-    var img = new Image();//构造JS的Image对象
-    var s =document.getElementById('imgUpload');
-    console.log(s);
-    var src = window.URL.createObjectURL(s);
+function check(obj){
+            var name=obj.value;
+        var fileName = name.substring(name.lastIndexOf(".")+1).toLowerCase();
+        if(fileName !="jpg" && fileName !="jpeg" && fileName !="png" && fileName !="dwg" && fileName !="gif" ){
+          alert("请选择图片格式文件上传(jpg,png,gif,dwg,gif等)!");
+            target.value="";
+            return
+        }
 
-    img.src = s;//将本地图片赋给image对象
-    img.onreadystatechange=function(){
-       if (img.readyState=="complete"){
-           alert(["图片大小是:",img.width,img.height]);  
-       }
-    }
+        var img = new Image();
+        document.getElementsByTagName('img')[0].src = window.URL.createObjectURL(obj.files[0]);
+        img.src = window.URL.createObjectURL(obj.files[0]);
+        img.onload = function(){
+       alert(img.width+","+img.height);
+       if(img.width>500 || img.height>500){
+          alert("上传图片的宽或高不能超过500px");
+     
+        }
+        else{
+          previewImage(obj);
+        }
 }
-
-// function checkImgPX(ths, width, height) {  
-//     var img = null;  
-//     img = document.createElement("img");  
-//     document.body.insertAdjacentElement("beforeEnd", img); // firefox不行  
-//     img.style.visibility = "hidden";   
-//     img.src = ths.value;  
-//     var imgwidth = img.offsetWidth;  
-//     var imgheight = img.offsetHeight;  
-       
-//     alert(imgwidth + "," + imgheight);  
-       
-//     if(imgwidth != width || imgheight != height) {  
-//         alert("图的尺寸应该是" + width + "x"+ height);  
-//         ths.value = "";  
-//         return false;  
-//     }  
-//     return true;  
-// }  
 </script>
 </html>
