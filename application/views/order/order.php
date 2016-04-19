@@ -109,11 +109,19 @@
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
 
+<<<<<<< HEAD
     
       <!-- 未添加地址这显示 -->
       <div class="am-list-news-bd" >
           <?php if(empty($address)):?>
           <!-- 地址添加弹框 -->
+=======
+      <!-- 未添加地址这显示 -->
+      <div class="am-list-news-bd" >
+          <?php if(empty($address)):?>
+
+    <!-- 地址添加弹框 -->
+>>>>>>> 67401716e08e97d0e6bf48f9bb3515329ae9ec41
 
     <div class="tk" style="display: none;">
          <div class="tkcontent bwhite" style="background: white;border-radius: 5px;">
@@ -136,8 +144,14 @@
           <button type='button' id="sub" class="am-u-sm-6 bno green">提交</button>
           </div>
      </div>
+<<<<<<< HEAD
           <div id='mainContent' style="margin-top: 3rem;">
       
+=======
+          <div id='mainContent' <style="margin-top: 3rem;">
+            
+          </style>>
+>>>>>>> 67401716e08e97d0e6bf48f9bb3515329ae9ec41
            <a href="javascript:;" id="model" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>
            </div>
 
@@ -213,7 +227,7 @@
             discount = $('#youhui').text();
             payable = amount - discount - jifenmoney;
             $('#pricetotal').text(payable);
-            $('#yfje').val(payable);
+            $('#yfje').val(payable.toFixed(2));
 
         });
 
@@ -223,12 +237,12 @@
             jifenmoney = $('#jifenmoney').text();
             payable = amount - discount - jifenmoney;
             $('#pricetotal').text(payable);
-            $('#yfje').val(payable);
+            $('#yfje').val(payable.toFixed(2));
     
         }else{
            payable = amount - discount;
             $('#pricetotal').text(payable);
-            $('#yfje').val(payable);
+            $('#yfje').val(payable.toFixed(2));
         }
         })
         $('#sub').click(function() { 

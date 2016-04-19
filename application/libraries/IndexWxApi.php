@@ -1,4 +1,5 @@
-<?php //defined('BASEPATH') OR exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
     /********************************************************
     *      @author Kyler You <QQ:2444756311>
     *      @link http://mp.weixin.qq.com/wiki/home/index.html

@@ -118,7 +118,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
       <ul class="am-list odl">
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd">订单金额</a>
-          <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo $rePayData['MoneyAll']; ?></i></span>
+          <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo $rePayData[0]['MoneyAll']; ?></i></span>
         </li> 
         <li class="am-g am-list-item-dated preduce">
           <a href="<?php echo site_url('home/paySuccess')?>" class="am-list-item-hd"><img src="skin/img/vp.png" class="payimg" alt="">会员卡支付
@@ -131,22 +131,38 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
      <input type="hidden" name="billno" value="<?php echo $rePayData[0]["BillNo"]; ?>">
 
      <div class="am-shadow fpa preduce">
-      <p class="htit sad">其他支付方式</p>
+      <p class="htit sad am-cf am-text-center"><span class="am-fl">其他支付方式</span> 
+        <?php if ( str_replace(".0000","00",$rePayData[0]['MoneyAll']) >= 5000):?>
+        <span class="red am-fr">交易额大于5K,请选择会员卡支付或线下支付</span>
+        <?php endif ?>
+      </p>
  
-      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><!-- <img src="skin/img/ap.png" class="payimg" alt=""> --> <span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+    
+
       <?php if ( str_replace(".0000","00",$rePayData[0]['MoneyAll']) >= 5000):?>
+<<<<<<< HEAD
             <center> 为保证你的网银安全,请选择会员卡支付或线下支付 </center>
-            <div style="position: relative;">
+            <div class="gsf">
               <a onclick="callpay()" href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
               <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
               <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
               <div class="gs"></div>
+
+=======
+            <div style="position: relative;" style="color:rgb(248, 85, 84);">
+              <a href="javascript:;"  class="am-cf adc"><span style="color:gray;" class="am-icon-apple apple"></span>Apple Pay </span></a>
+              <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp_gray.png" class="payimg" alt=""> 微信支付 </a>
+              <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/zp_gray.png" class="payimg" alt="">支付宝支付</a>
+              <div class="gs"></div>
+>>>>>>> ca97c6d3a1d422aa21fd2dccfdedba46aef94df4
             </div>
       <?php else: ?>
+            <a href="" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-            <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            
       <?php endif ?>
+      <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
 
 
 
