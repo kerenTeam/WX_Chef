@@ -85,6 +85,38 @@
         <div class="am-comment-bd am-text-xs">
           味道很不错
         </div>
+        <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
+      <li>
+        <div class="am-gallery-item">
+            <a href="skin/img/bzsbsp.jpg.jpg" class="">
+              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
+            </a>
+        </div>
+      </li>
+      <li>
+        <div class="am-gallery-item">
+            <a href="skin/img/bzsbsp.jpg.jpg" class="">
+              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
+            </a>
+        </div>
+      </li>
+     <li>
+        <div class="am-gallery-item">
+            <a href="skin/img/bzsbsp.jpg.jpg" class="">
+              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
+            </a>
+        </div>
+      </li>
+    <li>
+        <div class="am-gallery-item">
+            <a href="skin/img/bzsbsp.jpg.jpg" class="">
+              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
+            </a>
+        </div>
+      </li>
+  </ul>
+
+
       </div>
       <div class="am-shadow">
         <header class="am-comment-hd">
@@ -97,6 +129,36 @@
         <div class="am-comment-bd am-text-xs">
           味道很不错
         </div>
+          <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
+      <li>
+        <div class="am-gallery-item">
+            <a href="skin/img/bzsbsp.jpg.jpg" class="">
+              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
+            </a>
+        </div>
+      </li>
+      <li>
+        <div class="am-gallery-item">
+            <a href="skin/img/bzsbsp.jpg.jpg" class="">
+              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
+            </a>
+        </div>
+      </li>
+     <li>
+        <div class="am-gallery-item">
+            <a href="skin/img/bzsbsp.jpg.jpg" class="">
+              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
+            </a>
+        </div>
+      </li>
+    <li>
+        <div class="am-gallery-item">
+            <a href="skin/img/bzsbsp.jpg.jpg" class="">
+              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
+            </a>
+        </div>
+      </li>
+  </ul>
       </div>
     </div> 
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">

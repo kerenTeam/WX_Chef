@@ -46,6 +46,9 @@
               break;
             case '5':
               echo "退款中";
+              break;  
+            case '6':
+              echo "退款成功";
               break;
           }?></span>
         </div>
@@ -69,24 +72,26 @@
           </div>
         </li>
       <?php endforeach;?>
-      
         <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md"><?=$value['Amount'];?></span></div>
         <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
         <p class="orderbot am-cf">
         <?php switch ($value['State']) {
             case '1':
-              echo "<a href='' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
+              echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=5'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
               break;
             case '2':
-              echo "<a href='' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>";
-              echo "<a href='' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
+              echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.$value['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>";
+              echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
               break;
             case '4':
               echo "<a href='' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
-              echo "<a href='' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
+              echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
               break;
             case '5':
-              echo "";
+              echo "<a href='javascript:' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款中</a>";
+              break; 
+            case '6':
+              echo "<a href='javascript:' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款成功</a>";
               break;
           }?>
         

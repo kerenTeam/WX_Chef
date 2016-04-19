@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 class home extends CI_Controller
 {
-	
+	 
 	function __construct()
 	{
 		parent::__construct();
@@ -84,21 +84,60 @@ class home extends CI_Controller
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
 		$data['caijia'] = json_decode(json_decode($caijia));
+<<<<<<< HEAD
 		// 精品生活
 		// $quality = file_get_contents(POSTAPI.'API_Boutique');
 		// $data['quality'] = json_decode(json_decode($quality),true);
 
+=======
+>>>>>>> 1fa9ea57ac7b248d500b20601c51e293ec94c1f3
 
-		// var_dump($data);
 		$this->load->view('index',$data);
 	}
+	// 首页精品生活
+	public function quality()
+	{
+		$page = intval($_GET['page']);  
+	//	var_dump($page);
+		$pagenum = 5; //ÿҳ����
+		$start = ($page - 1) * $pagenum;
+		$quality = file_get_contents(POSTAPI.'API_Boutique?dis=jpsh&star='.$start.'&end='.$pagenum);
+		$shops = json_decode(json_decode($quality),true);
+		$arr = array();
+		foreach($shops as $shop){
+			$arr[] = array(
+				'boutiqueid' =>$shop['boutiqueid'],
+				'name' =>$shop['name'],
+				'abstract' =>$shop['abstract'],
+				'backgoungimg' =>$shop['backgoungimg'],
+			);
+		}
+		echo json_encode($arr);exit;
+	}
+
+
 	//菜单 by wf
 	public function cailan(){
+		//var_Dump($_SESSION['shoping']);
 		$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
 		$data['cates'] = json_decode(json_decode($catejson),true);
 		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=d');
-		$data['foods'] = json_decode(json_decode($foodjson),true);
-
+		$foods = json_decode(json_decode($foodjson),true);
+		if(isset($_SESSION['shoping'])){
+			if($_SESSION['shoping'] != ''){
+				$shop = $_SESSION['shoping'];
+				foreach($foods as $k=>$v){
+					$foods[$k]['number'] = '0';
+					foreach ($shop as $key => $value) {
+						if($v['foodid'] == $value['foodid']){
+							$foods[$k]['number'] = $value['number'];
+						}
+					}
+					
+				}
+			}
+		}
+		$data['foods'] = $foods;
 		$this->load->view('cailan',$data);
 	}
 	//点菜
@@ -230,9 +269,10 @@ class home extends CI_Controller
 				if(isset($_SESSION['shoping'])){
 						$shoping = $_SESSION['shoping'];
 					}else{
-						$shoping = NULL;
+						$shoping = '';
 					}
-					if($shoping == NULL){
+
+					if($shoping == ''){
 					 	$this->session->set_userdata('shoping',$c,0);
 					}else{
 						foreach($shoping as $key=>$value){
@@ -431,7 +471,21 @@ class home extends CI_Controller
 	public function userdatum()
 	{
 		if($_POST){
-			
+			// var_dump($_POST);
+			$data['UserId'] = $_POST['UserId'];
+		
+			if(!empty($_FILES['UserImage']['tmp_name'])){
+				$data['UserImage'] = $_FILES['UserImage'];
+			}else{
+				$data['UserImage'] = $_POST['UserImage'];
+			}
+			$data['UserName'] = $_POST['UserName'];
+			$data['PersonalTaste'] = $_POST['PersonalTaste'];
+			$data['LikeCuisine'] = $this->input->post('LikeCuisine') ? $this->input->post('LikeCuisine') : '';
+			var_dump($data);
+			$postdata = postData(POSTAPI.'API_User',$data);
+			var_dumP($postdata);
+
 		}
 	}
     //搜索
@@ -602,12 +656,22 @@ class home extends CI_Controller
 	}
 	//会员
 	public function vip(){
-
-		$this->load->view('vip');
+		if($_GET){
+			$balance = $_GET['balance'];
+			if(empty($balance)){
+				echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+			}else{
+				$arr['balance'] = $balance;
+				$arr['name'] = $_GET['name'];
+			}
+			$this->load->view('vip',$arr);
+		}
 	}
 	//会员卡
 	public function vipCard(){
-
+		$vip = file_get_contents(POSTAPI.'API_Grades');
+		$data['vip'] = json_decode(json_decode($vip),true);
+		var_dumP($data);
 		$this->load->view('vipCard');
 	}
 	//开通会员卡
@@ -667,6 +731,63 @@ class home extends CI_Controller
 
 		$this->load->view('protocol');
 	}
+
+	//订单状态
+	public function orderState()
+	{
+		$data['State'] = $_GET['state'];
+		$data['POOrderId'] = $_GET['id'];
+		//var_dump($data);
+		$jsonorder = json_encode($data);
+		$state = curl_post(POSTAPI.'API_Poorder?dis=state',$jsonorder);
+		if($state == '"1"'){
+			if($_GET['state'] == 5){
+				echo "<script>alert('你的退款信息已经提交！');window.location.href='orderR';</script>";
+			}else{
+				echo "<script>alert('你的订单已经取消！');window.location.href='orderR';</script>";
+			}
+		}else{
+			if($_GET['state'] == 5){
+				echo "<script>alert('你的退款信息提交失败！')；window.location.href='orderR';</script>";
+			}else{
+				echo "<script>alert('你的订单取消失败！')；window.location.href='orderR';</script>";
+			}
+		}
+
+	}
+
+	// 订单历史支付
+	public function payment()
+	{
+		if($_GET){
+		//	var_dumP($_SESSION['rePayData']);
+			$data['POOrderId'] = $_GET['id'];
+			$data['MoneyAll'] = $_GET['money'];
+			$arr[] = $data;
+			$_SESSION['rePayData'] = $arr;
+			//var_dumP($_SESSION['rePayData']);
+			 redirect('orderWXPay/jumpLink');
+		}
+	}
+
+	//删除订单
+	public function delorder()
+	{
+		if($_GET){
+			$id = $_GET['id']; 
+			$del = file_get_contents(POSTAPI.'API_Poorder?dis=IsDisplay&UserPhone='.$id);
+			if($del == '"1"'){
+				echo "<script>alert('删除订单记录成功！');window.location.href='orderR';</script>";
+			}else{
+					echo "<script>alert('删除订单记录失败！');window.location.href='orderR';</script>";
+			}
+		}
+	}
+
+
+
+
+
 }
 
 

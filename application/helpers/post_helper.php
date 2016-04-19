@@ -22,6 +22,26 @@
         return $data; 
 	}
 
+function postData($url, $data = array()){      
+  $header = array(
+    'Content-Type: multipart/form-data',
+  );
+  $ch = curl_init(); 
+  curl_setopt ($ch, CURLOPT_URL, $url);
+  curl_setopt( $ch, CURLOPT_HTTPHEADER, $header);
+  curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1); 
+  curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT,10);
+  curl_setopt ($ch, CURLOPT_BINARYTRANSFER,true); 
+  //curl_setopt ($ch, CURLOPT_POSTFIELDS, $data);
+   curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data)); 
+ // curl_custom_postfields($ch, $data, $data1);
+  $dxycontent = curl_exec($ch);
+  curl_close($ch);
+  return $dxycontent;
+}
+
+
+
   
 function array_no_empty($arr) {
             if (is_array($arr)) {

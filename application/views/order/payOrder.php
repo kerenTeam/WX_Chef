@@ -138,11 +138,13 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
     
 
       <?php if ( str_replace(".0000","00",$rePayData[0]['MoneyAll']) >= 5000):?>
-            <div style="position: relative;" style="color:rgb(248, 85, 84);">
+ 
+            <div class="gsf" style="color:rgb(248, 85, 84);">
               <a href="javascript:;"  class="am-cf adc"><span style="color:gray;" class="am-icon-apple apple"></span>Apple Pay </span></a>
               <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp_gray.png" class="payimg" alt=""> 微信支付 </a>
               <a  href="javascript:;" class="am-cf adc" disabled><img src="skin/img/zp_gray.png" class="payimg" alt="">支付宝支付</a>
               <div class="gs"></div>
+ 
             </div>
       <?php else: ?>
             <a href="" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>

@@ -36,7 +36,10 @@
         <p id="<?=$val['foodcategoryid']?>"><?=$val['name'];?></p>
         <ul class="am-list">
         <?php foreach($foods as $v):?>
+  
           <?php if($val['foodcategoryid'] == $v['foodpid']):?>
+       
+           
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
             <div class="am-u-sm-4 am-text-center am-list-thumb">
               <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="vimg">
@@ -54,7 +57,7 @@
               <div class="foodNum">
             
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="<?=$v['number'];?>">
                 <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
               </div>
             </div>
