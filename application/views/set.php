@@ -7,6 +7,7 @@
     text-align:right;
   }
 </style>
+<link rel="stylesheet" href="skin/css/login.css">
 <body>
   <form action="<?php echo POSTAPI.'API_User'?>" method="post" enctype="multipart/form-data">
     <header data-am-widget="header" class="am-header am-header-default topform">
@@ -30,7 +31,7 @@
           <?php if($user[0]['userimage'] == NULL):?>
           <div class="am-u-sm-8"> 
               <div class="wx_type_img">
-                <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="check(this)" class="upload-add">
+                <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="previewImage(this)" class="upload-add">
                   <!-- 图片实时预览 -->
                 <div id="preview"> <img style="border-radius: 50%;" src="skin/img/vip.png" alt="选择图片"> </div>
               </div> 
@@ -38,7 +39,7 @@
           <?php else:?>
              <div class="am-u-sm-8"> <!-- previewImage(this) -->
              <div class="wx_type_img">
-                <input type="file" id="imgUpload" name="UserImage" onchange="check(this)" class="upload-add">
+                <input type="file" id="imgUpload" name="UserImage" onchange="previewImage(this)" class="upload-add">
                   <!-- 图片实时预览 -->
                 <div id="preview"> 
                 <input type="hidden" name='UserImage' value="<?php echo $user[0]['userimage'];?>" />
@@ -81,6 +82,11 @@
     </div>
 
   </form>
+  <div class="shade">
+  <div> <span class="am-icon-meh-o"></span>
+    <p>请输入正确的手机号码</p>
+  </div>
+</div>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
@@ -114,28 +120,4 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/imgup.js"></script>
-<script language="javascript"> 
-function check(obj){
-            var name=obj.value;
-        var fileName = name.substring(name.lastIndexOf(".")+1).toLowerCase();
-        if(fileName !="jpg" && fileName !="jpeg" && fileName !="png" && fileName !="dwg" && fileName !="gif" ){
-          alert("请选择图片格式文件上传(jpg,png,gif,dwg,gif等)!");
-            target.value="";
-            return
-        }
-
-        var img = new Image();
-        document.getElementsByTagName('img')[0].src = window.URL.createObjectURL(obj.files[0]);
-        img.src = window.URL.createObjectURL(obj.files[0]);
-        img.onload = function(){
-       alert(img.width+","+img.height);
-       if(img.width>500 || img.height>500){
-          alert("上传图片的宽或高不能超过500px");
-     
-        }
-        else{
-          previewImage(obj);
-        }
-}
-</script>
 </html>
