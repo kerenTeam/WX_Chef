@@ -84,12 +84,7 @@ class home extends CI_Controller
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
 		$data['caijia'] = json_decode(json_decode($caijia));
-		// 精品生活
-		// $quality = file_get_contents(POSTAPI.'API_Boutique');
-		// $data['quality'] = json_decode(json_decode($quality),true);
 
-
-		// var_dump($data);
 		$this->load->view('index',$data);
 	}
 	// 首页精品生活
@@ -101,10 +96,6 @@ class home extends CI_Controller
 		$start = ($page - 1) * $pagenum;
 		$quality = file_get_contents(POSTAPI.'API_Boutique?dis=jpsh&star='.$start.'&end='.$pagenum);
 		$shops = json_decode(json_decode($quality),true);
-
-		// $shops = array();
-		// $query =  $pdo->query("SELECT * FROM wd_bank_shops where state='1' ORDER BY id ASC LIMIT $start," . $pagenum . "");
-		// while ($ruser = $query->fetch(PDO::FETCH_ASSOC)) { $shops[] = $ruser; };
 		$arr = array();
 		foreach($shops as $shop){
 			$arr[] = array(
@@ -114,7 +105,6 @@ class home extends CI_Controller
 				'backgoungimg' =>$shop['backgoungimg'],
 			);
 		}
-		
 		echo json_encode($arr);exit;
 	}
 
@@ -659,12 +649,22 @@ class home extends CI_Controller
 	}
 	//会员
 	public function vip(){
-
-		$this->load->view('vip');
+		if($_GET){
+			$balance = $_GET['balance'];
+			if(empty($balance)){
+				echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+			}else{
+				$arr['balance'] = $balance;
+				$arr['name'] = $_GET['name'];
+			}
+			$this->load->view('vip',$arr);
+		}
 	}
 	//会员卡
 	public function vipCard(){
-
+		$vip = file_get_contents(POSTAPI.'API_Grades');
+		$data['vip'] = json_decode(json_decode($vip),true);
+		var_dumP($data);
 		$this->load->view('vipCard');
 	}
 	//开通会员卡

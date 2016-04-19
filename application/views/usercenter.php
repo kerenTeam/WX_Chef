@@ -1,6 +1,6 @@
 
   <body>
-
+  <?php var_dumP($users);?>
   <?php if(!empty($users)):?>
    <div class="userhead bred">
      <img class="am-circle" src="skin/img/USER.jpg"/>
@@ -19,7 +19,7 @@
   <ul class="am-list userl">
 
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/vip')?>" class="am-list-item-hd "><img src="skin/img/bc.png" alt=""> 会员卡</a>  
+          <a href="<?php echo site_url('home/vip?name=').$users[0]['name'].'&balance='.$users[0]['balance']?>" class="am-list-item-hd "><img src="skin/img/bc.png" alt=""> 会员卡</a>  
       </li>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/cart')?>" class="am-list-item-hd "><img src="skin/img/cl.png" alt=""> 购物车</a> 
