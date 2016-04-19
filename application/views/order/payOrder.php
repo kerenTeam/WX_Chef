@@ -141,7 +141,8 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
               <a onclick="callpay()" href="javascript:;" class="am-cf adc" disabled><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付 <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
               <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
               <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc" disabled><img src="skin/img/op.png" class="payimg" alt="">线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-              <div style="position: absolute;top:0;left:0;width:100%;height:100%; -webkit-filter: blur(1); -moz-filter:blur(1);-o-filter: blur(1);-ms-filter: blur(1);filter: blur(1);"></div>
+              <div class="gs"></div>
+              
             </div>
       <?php else: ?>
             <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>

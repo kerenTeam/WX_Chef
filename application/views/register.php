@@ -15,7 +15,7 @@ html {
       <input type="tel" placeholder="请输入手机号码" name="UserPhone" id='userphone'/>
     </div>
     <div class="reg_test">
-      <input type="text"  placeholder="请输入验证码" name='code'/>
+      <input type="text"  placeholder="输入验证码" name='code'/>
       <input type="button" onclick="yzm(this)" value="获取验证码" />
     </div>
     <div class="user_agreement">

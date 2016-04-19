@@ -201,8 +201,8 @@
 	
 }
 .shade.up{
-	animation:mymove 1s 1;
-    -webkit-animation:mymove 1s 1;
+	animation:mymove 2s 1;
+    -webkit-animation:mymove 2s 1;
 }
 .shade div{
 	width: 12rem;

@@ -154,14 +154,6 @@
       // $('.tk').fadeOut('400');
     });
   })
-
-
-// $(document).ready(function(){ 
-//   $('.onturn').css({ 
-//     display: 'none'
-//   });
-// });
-
 var s,s2,s3,timer;
 function init(){
 s=getid("div1");
@@ -180,5 +172,47 @@ return document.getElementById(id);
 }
 window.onload=init;
 </script>
+        <script type="text/javascript">
+            i = 1; //设置当前页数 
+
+            $(function() {
+                var totalpage = 6; //总页数，防止超过总页数继续滚动
+                var winH = $(window).height(); //页面可视区域高度 
+
+                $(window).scroll(function() {
+                    if (i < totalpage) { // 当滚动的页数小于总页数的时候，继续加载
+                        var pageH = $(document.body).height();
+                        var scrollT = $(window).scrollTop(); //滚动条top 
+                        var aa = (pageH - winH - scrollT) / winH;
+                        if (aa < 0.01) {
+                           getJson(i)
+                        }
+                    } else { //否则显示无数据
+                        showEmpty();
+                    }
+                });
+                getJson(0); //加载第一页
+            });
+            function getJson(page) {
+                $(".nodata").show().html("<img src='http://www.sucaihuo.com/Public/images/loading.gif'/>");
+                $.getJSON("ajax.php", {page: i}, function(json) {
+                    if (json) {
+                        var str = "";
+                        $.each(json, function(index, array) {
+                            var str = "<div class='per'>";
+                            var str = str + "<div class='title'>" + array['id'] + "、" + array['title'] + "</div></div>";
+                            $("#lists").append(str);
+                        });
+                        $(".nodata").hide()
+                    } else {
+                        showEmpty();
+                    }
+                });
+                i++;
+            }
+            function showEmpty() {
+                $(".nodata").show().html("别滚动了，已经到底了。。。");
+            }
+        </script>
 </body>
 </html>

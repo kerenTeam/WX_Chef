@@ -7,6 +7,7 @@
     text-align:right;
   }
 </style>
+<link rel="stylesheet" href="skin/css/login.css">
 <body>
   <form action="<?php echo POSTAPI.'API_User'?>" method="post" enctype="multipart/form-data">
     <header data-am-widget="header" class="am-header am-header-default topform">
@@ -81,6 +82,11 @@
     </div>
 
   </form>
+  <div class="shade">
+  <div> <span class="am-icon-meh-o"></span>
+    <p>请输入正确的手机号码</p>
+  </div>
+</div>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
@@ -114,38 +120,4 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/imgup.js"></script>
-<script language="javascript"> 
-function imgSel(){
-    var img = new Image();//构造JS的Image对象
-    var s =document.getElementById('imgUpload');
-    console.log(s);
-    var src = window.URL.createObjectURL(s);
-
-    img.src = s;//将本地图片赋给image对象
-    img.onreadystatechange=function(){
-       if (img.readyState=="complete"){
-           alert(["图片大小是:",img.width,img.height]);  
-       }
-    }
-}
-
-// function checkImgPX(ths, width, height) {  
-//     var img = null;  
-//     img = document.createElement("img");  
-//     document.body.insertAdjacentElement("beforeEnd", img); // firefox不行  
-//     img.style.visibility = "hidden";   
-//     img.src = ths.value;  
-//     var imgwidth = img.offsetWidth;  
-//     var imgheight = img.offsetHeight;  
-       
-//     alert(imgwidth + "," + imgheight);  
-       
-//     if(imgwidth != width || imgheight != height) {  
-//         alert("图的尺寸应该是" + width + "x"+ height);  
-//         ths.value = "";  
-//         return false;  
-//     }  
-//     return true;  
-// }  
-</script>
 </html>
