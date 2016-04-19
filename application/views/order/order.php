@@ -110,6 +110,7 @@
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
 
     <!-- 地址添加弹框 -->
+
     <div class="tk" style="display: none;">
          <div class="tkcontent bwhite" style="background: white;border-radius: 5px;">
            <div class="tktxt2">
@@ -150,9 +151,8 @@
                       <li class="am-g am-list-item-dated lpt2 mbtop">
                         <div class="am-margin-top-sm am-margin-left-sm">
                           <?=$val['name'];?><br>
-                          <?=$val['goodsphone'];?>
                         </div>
-                         <a href="javascript:;" class="am-list-item-hd black adda"><?=$val['address'];?>
+                         <a href="javascript:;" class="am-list-item-hd black adda"><?=$val['address'];?>&nbsp;&nbsp;<?=$val['goodsphone'];?>
                         <label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="<?=$val['memberaddressid'];?>" data-am-ucheck checked></label>
           
                         </a>
