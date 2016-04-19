@@ -1,4 +1,7 @@
 /* Write your styles*/
+html{
+	overflow-y:visible;
+}
 body {
 	background: rgb(241, 241, 241);/*   opacity:0;
   transition:all 1s ; */
@@ -1170,7 +1173,7 @@ body {
 	z-index: 1;
 	position: relative;
 	background-size: cover;
-	height: 19rem;
+	height: 22rem;
 	width: 100%;
 	margin-bottom: 7px;
 }
@@ -1365,11 +1368,16 @@ figure a:hover figcaption {
 	left: 90px;
 }
 .life figcaption {
-	padding-top: 6%;
+	padding-top: 16%;
 }
 .renote {
 	margin-right: -241px!important;
 	right: 50%!important;
+}
+ 
+.life figure {
+	height: 25rem;
+	margin-bottom: 6px;
 }
 }
 
