@@ -1,9 +1,12 @@
 
   <body>
+<<<<<<< HEAD
   <?php var_dump($users);?>
+=======
+>>>>>>> f1e3b2c4875758dc74f9f26cc62cb105916cc985
   <?php if(!empty($users)):?>
    <div class="userhead bred">
-     <img class="am-circle" src="skin/img/USER.jpg"/>
+     <img class="am-circle" src="<?php echo IP.$users[0]['userimage'];?>"/>
      <h3 class="am-header-title am-margin-sm"><?=$users[0]['userphone'];?></h3>
      <!-- <p class="am-margin-xs">&nbsp;&nbsp;&nbsp;川菜</p> -->
    </div>
@@ -17,10 +20,11 @@
 
      <div class="am-list-news-bd asp">
   <ul class="am-list userl">
-
+  <?php if(isset($_SESSION['phone'])):?>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/vip?name=').$users[0]['name'].'&balance='.$users[0]['balance']?>" class="am-list-item-hd "><img src="skin/img/bc.png" alt=""> 会员卡</a>  
       </li>
+    <?php endif;?>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/cart')?>" class="am-list-item-hd "><img src="skin/img/cl.png" alt=""> 购物车</a> 
       </li>

@@ -666,10 +666,19 @@ class home extends CI_Controller
 	}
 	//会员卡
 	public function vipCard(){
+		if(isset($_SESSION['phone'])){
+			if($_SESSION['phone'] == ''){
+				echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+			}
+		}else{
+			echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+		}
 		$vip = file_get_contents(POSTAPI.'API_Grades');
 		$data['vip'] = json_decode(json_decode($vip),true);
-		var_dumP($data);
-		$this->load->view('vipCard');
+		$user = file_get_contents(POSTAPI."API_User?dis=ckxx&UserPhone=".$_SESSION['phone']);
+		$data['users'] = json_decode(json_decode($user),true);
+
+		$this->load->view('vipCard',$data);
 	}
 	//开通会员卡
 	public function open(){
