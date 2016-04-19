@@ -39,6 +39,7 @@ class orderWXPay extends CI_Controller{
                 		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
                 		$data['address'] = json_decode(json_decode($address),true);
             	    }
+
                     $data['servmoneydata'] = $_SESSION['servmoneydata'];
                     $data['booking'] = $_SESSION['booking'];
                 	$data['writes'] = $_SESSION['Writes'];
@@ -77,6 +78,7 @@ class orderWXPay extends CI_Controller{
         $data['OrderAllData'] = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
         //得到支付金额     	
         $isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$data['OrderAllData']);
+
         $_SESSION['rePayData'] = str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isComedeOrder)));
 
  
@@ -99,9 +101,9 @@ class orderWXPay extends CI_Controller{
 
         $reMsg = curl_post(POSTAPI."API_Poorder?dis=money",json_encode($postOrderData));
         if ($reMsg = '""3""') {
-            alert('支付异常，请联系028-1234567！');
+            echo "<script>alert('支付异常，请联系028-1234567！')</script>";
          }else{
-            alert('支付失败，请联系028-1234567！');
+             echo "<script>alert('支付失败，请联系028-1234567！')</script>";
          } 
         $_SESSION['shoping']       = '';
         $_SESSION['booking']       = '';

@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-header("Content-type: text/html; charset=utf-8"); 
+
 /**  
 * 常用工具类  
 * author Lee. 
@@ -116,7 +116,7 @@ header("Content-type: text/html; charset=utf-8");
 	 */
 	 function validateEmpty($str, $name) {
 		if (empty($str)) {
-			self::alertBack('警告：' .$name . '不能为空！');
+			alertBack('警告：' .$name . '不能为空！');
 		}
 	}
 	
@@ -128,7 +128,7 @@ header("Content-type: text/html; charset=utf-8");
 	 * @return JS 
 	 */
 	 function validateAll($str1, $str2, $alert) {
-		if ($str1 != $str2) self::alertBack('警告：' .$alert);
+		if ($str1 != $str2) alertBack('警告：' .$alert);
 	}
 	
 	/**
@@ -137,7 +137,7 @@ header("Content-type: text/html; charset=utf-8");
 	 * @return JS
 	 */
 	 function validateId($id) {
-		if (empty($id) || !is_numeric($id)) self::alertBack('警告：参数错误！');
+		if (empty($id) || !is_numeric($id)) alertBack('警告：参数错误！');
 	}
 	
 	/**
@@ -284,7 +284,7 @@ header("Content-type: text/html; charset=utf-8");
 					if(!is_dir($fullpath)) {
 						unlink($fullpath);
 					} else {
-						self::delDirOfAll($fullpath);
+						delDirOfAll($fullpath);
 					}
 				}
 			}
@@ -379,7 +379,7 @@ header("Content-type: text/html; charset=utf-8");
 	  function cn_substr($str, $slen, $startdd=0){
 		$cfg_soft_lang = PAGECHARSET;
 		if($cfg_soft_lang=='utf-8') {
-			return self::cn_substr_utf8($str, $slen, $startdd);
+			return cn_substr_utf8($str, $slen, $startdd);
 		}
 		$restr = '';
 		$c = '';
@@ -457,9 +457,9 @@ header("Content-type: text/html; charset=utf-8");
 		$m = new Model();
 		$data = $m->getOne($db_name, "i.id={$image_id}", "i.path as p, i.big_img as b, i.small_img as s");
 		foreach ($data as $v) {
-			@self::delFile(ROOT_PATH . $v['p']);
-			@self::delFile(ROOT_PATH . $v['b']);
-			@self::delFile(ROOT_PATH . $v['s']);
+			@delFile(ROOT_PATH . $v['p']);
+			@delFile(ROOT_PATH . $v['b']);
+			@delFile(ROOT_PATH . $v['s']);
 		}
 		$m->del(PREFIX . 'images', "id={$image_id}");
 		unset($m);

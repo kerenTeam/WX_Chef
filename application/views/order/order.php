@@ -96,7 +96,7 @@
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">你还没有积分!</span></a>
       <input type="hidden" name='jifen' id="jifen" value="0" checked>
     <?php else:?>
-       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red"><span id='diyong'><?=$jifen;?></span>积分已抵用  <span class="am-icon-cny" id='jifenmoney'></span> <input type="hidden" name='jifen' id="jifen" value="1"></span></a>
+       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red"><span id='diyong'><?=$jifen;?></span>积分已抵用  <span class="am-icon-cny" id='jifenmoney'></span> <input type="checkbox" name='jifen' id="jifen" value="1"></span></a>
     <?php endif;?>
 
       <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red" id='pricetotal'></span></a>
@@ -108,6 +108,10 @@
 
      <div class="am-shadow am-margin-vertical-sm">
       <p class="htit sad"><span class="am-icon-map-marker red"></span> 服务地址</p>
+
+      <!-- 未添加地址这显示 -->
+      <div class="am-list-news-bd" >
+          <?php if(empty($address)):?>
 
     <!-- 地址添加弹框 -->
 
@@ -132,10 +136,6 @@
           <button type='button' id="sub" class="am-u-sm-6 bno green">提交</button>
           </div>
      </div>
-      <!-- 未添加地址这显示 -->
-      <div class="am-list-news-bd" >
-          <?php if(empty($address)):?>
-
           <div id='mainContent' <style="margin-top: 3rem;">
             
           </style>>
