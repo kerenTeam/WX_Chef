@@ -5,6 +5,7 @@ html{
 body {
 	background: rgb(241, 241, 241);/*   opacity:0;
   transition:all 1s ; */
+  overflow-y:visible;
 }
 .am-slider-default .am-control-nav {
 	bottom: 9px;
