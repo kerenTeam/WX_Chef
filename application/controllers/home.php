@@ -31,6 +31,16 @@ class home extends CI_Controller
 	public function share(){
 		$this->load->view('share/index');
 	}
+	//
+	public function sharetosql()
+	{
+	  $postshare['UserPhone'] = $this->input->post('UserPhone');
+	  $sharedata = json_encode($postshare);
+	  $abc = curl_post(POSTAPI."API_Evaluate?dis=fx",$sharedata);
+	  // var_dump($abc);
+	  // var_dump(POSTAPI."API_Evaluate?dis=fx",$sharedata); exit;
+      redirect('home/ucent');
+	}
 
 	//老用户登录
 	public function login2(){ 
