@@ -62,104 +62,52 @@
         </h2>
       </div>
       <div class="am-u-sm-5 am-text-center">
-        <span class="red am-text-xxl">10</span>分<br>
+        <span class="red am-text-xxl"><?php $zong=$foods[0]['foodstar'] + $fen['cookscore'] + $fen['consumptionscore']; $pin = $zong/3*2;echo $pin;?></span>分<br>
         <span class="am-text-xs red"><i class="am-icon-star "></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i></span><br>
-        <span class="am-text-xs"> 共20人评价</span>
+        <span class="am-text-xs"> 共<?php echo count($evaluate);?>人评价</span>
         
       </div>
       <div class="am-u-sm-7 stars">
         <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]['foodstar'];?></p>
-        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]['cookstar'];?></p>
-        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$foods[0]['waiterstar'];?></p>
+        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$fen['cookscore'];?></p>
+        <p class="am-text-xs"><span class="am-text-right">服务分</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=$fen['consumptionscore'];?></p>
       </div>
       <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
       <!-- 文字评论 -->
+      <?php if(!empty($evaluate)):?>
+        <?php foreach($evaluate as $v):?>
       <div class="am-shadow">
         <header class="am-comment-hd">
           <!--<h3 class="am-comment-title">评论标题</h3>-->
           <div class="am-comment-meta">
-            <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">某人</a>
-            <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
+            <a href="#link-to-user" class="am-comment-author"><img src="<?=IP.$v['userimage'];?>" class="am-circle comimg" alt=""><?=$v['username'];?></a>
+            <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800"><?php echo substr($v['createtime'],0,10);?></time>
           </div>
         </header>
         <div class="am-comment-bd am-text-xs">
-          味道很不错
+          <?=$v['comment'];?>
         </div>
         <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
+        <?php 
+        // var_dumP($v);
+        $pinimg = file_get_contents(POSTAPI.'API_Food?dis=img&foodid='.$v['poorderid']);
+        $arrimg = json_decode(json_decode($pinimg),true);
+        ?>
+        <?php if(!empty($arrimg)):?>
+          <?php foreach($arrimg as $val):?>
       <li>
         <div class="am-gallery-item">
-            <a href="skin/img/bzsbsp.jpg.jpg" class="">
-              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
+            <a href="<?=IP.$val['poorderimg']?>" class="">
+              <img src="<?=IP.$val['poorderimg']?>"  alt="<?=IP.$val['poorderimg']?>"/>
             </a>
         </div>
       </li>
-      <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/bzsbsp.jpg.jpg" class="">
-              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
-            </a>
-        </div>
-      </li>
-     <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/bzsbsp.jpg.jpg" class="">
-              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
-            </a>
-        </div>
-      </li>
-    <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/bzsbsp.jpg.jpg" class="">
-              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
-            </a>
-        </div>
-      </li>
-  </ul>
-
-
-      </div>
-      <div class="am-shadow">
-        <header class="am-comment-hd">
-          <!--<h3 class="am-comment-title">评论标题</h3>-->
-          <div class="am-comment-meta">
-            <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">某人</a>
-            <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
-          </div>
-        </header>
-        <div class="am-comment-bd am-text-xs">
-          味道很不错
-        </div>
-          <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
-      <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/bzsbsp.jpg.jpg" class="">
-              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
-            </a>
-        </div>
-      </li>
-      <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/bzsbsp.jpg.jpg" class="">
-              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
-            </a>
-        </div>
-      </li>
-     <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/bzsbsp.jpg.jpg" class="">
-              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
-            </a>
-        </div>
-      </li>
-    <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/bzsbsp.jpg.jpg" class="">
-              <img src="skin/img/product/bzsbsp.jpg"  alt="bzsbsp"/>
-            </a>
-        </div>
-      </li>
+    <?php endforeach;?>
+    <?php endif;?>
   </ul>
       </div>
+    <?php endforeach;?>
+    <?php endif;?>
     </div> 
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">
         <div class="am-u-sm-8 green a">

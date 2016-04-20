@@ -203,6 +203,13 @@ class home extends CI_Controller
 		// 产品图片
 		$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 		$data['foodspic'] = json_decode(json_decode($foodpic),true);
+		// 菜品评分
+		$fen = file_get_contents(POSTAPI.'API_Food?dis=number&foodid='.$id);
+		$data['fen'] = json_decode(json_decode($fen),true);
+		// 菜品评价
+		$commen = file_get_contents(POSTAPI.'API_Food?dis=pl&foodid='.$id);
+	    $data['evaluate'] = json_decode(json_decode($commen),true);
+		
 		$this->load->view('food',$data);
 	}
 	//储值返现
