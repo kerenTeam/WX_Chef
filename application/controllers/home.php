@@ -10,10 +10,8 @@ class home extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('option_model');
-		$this->load->library('IndexWxApi');
+		
 		$this->load->helper('post_helper');
-		$this->load->helper('tool_helper');
-		$this->load->helper('wxuser_helper');
 		$this->load->library('session');
 		$this->load->view('header');
 		$_SESSION['openid'] = '871dd687-7e12-4457-b5fa-ff47d725739e';
@@ -53,13 +51,9 @@ class home extends CI_Controller
 		$this->load->view('register');
 	}
 
-	//账号安全
+	//密码和手机号修改
 	public function safe(){
 		$this->load->view('safe');
-	}
-	//密码修改
-	public function pwdchange(){
-		$this->load->view('pwdchange');
 	}
 	public function registeradd(){
 
@@ -89,11 +83,11 @@ class home extends CI_Controller
 
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
-		$data['caijia'] = json_decode(json_decode($caijia));  
+		$data['caijia'] = json_decode(json_decode($caijia));
 
-        //public function wxAccessToken($appId = NULL , $appSecret = NULL)
-        //$data['wxAccessToken'] = $this->indexwxapi->wxAccessToken(APPID,APPSECRET);
-        
+		// 精品生活
+		// $quality = file_get_contents(POSTAPI.'API_Boutique');
+		// $data['quality'] = json_decode(json_decode($quality),true);
 
 		$this->load->view('index',$data);
 	}
@@ -101,8 +95,8 @@ class home extends CI_Controller
 	public function quality()
 	{
 		$page = intval($_GET['page']);  
-	   //var_dump($page);
-		$pagenum = 5; 
+	//	var_dump($page);
+		$pagenum = 5; //ÿҳ����
 		$start = ($page - 1) * $pagenum;
 		$quality = file_get_contents(POSTAPI.'API_Boutique?dis=jpsh&star='.$start.'&end='.$pagenum);
 		$shops = json_decode(json_decode($quality),true);
@@ -483,7 +477,6 @@ class home extends CI_Controller
 	}
 	//更改用户资料
 	public function userdatum()
-<<<<<<< HEAD
 	{
 		if($_POST){
 			// var_dump($_POST);
@@ -524,52 +517,6 @@ class home extends CI_Controller
 			}
 
 		}
-=======
-	{   
-		echo "<pre>";
-		print_r($this->input->post());
-	    
-		if($_FILES){
-	    $photo = $_FILES['img']['name'];
-	    $tmp_addr = $_FILES['img']['tmp_name'];
-	    $path = base_url('upload').'/';
-	    $type=array("jpg","gif","jpeg","png");
-	    $tool = substr(strrchr($photo,'.'),1);
-	    if(!in_array(strtolower($tool),$type)){
-	    
-	    $filename = explode(".",$photo); //把上传的文件名以"."好为准做一个数组。
-	    $time = date("m-d-H-i-s"); //取当前上传的时间
-	    $filename[0] = $time; //取文件名
-	    $name = implode(".",$filename); //上传后的文件名
-	    $uploadfile = $path.$name;
-	    $_SESSION['upfile'] = $uploadfile;//上传后的文件名地址
-	    move_uploaded_file($tmp_addr,$uploadfile);
-
-        }
-	    }
-		$type = pathinfo($uploadfile, PATHINFO_EXTENSION);
-		print_r($uploadfile);
-		print_r($type);
-		// $data = file_get_contents($path);
-		// $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-		// if($_POST){
-		// 	// var_dump($_POST);
-		// 	$data['UserId'] = $_POST['UserId'];
-		
-		// 	if(!empty($_FILES['UserImage']['tmp_name'])){
-		// 		$data['UserImage'] = $_FILES['UserImage'];
-		// 	}else{
-		// 		$data['UserImage'] = $_POST['UserImage'];
-		// 	}
-		// 	$data['UserName'] = $_POST['UserName'];
-		// 	$data['PersonalTaste'] = $_POST['PersonalTaste'];
-		// 	$data['LikeCuisine'] = $this->input->post('LikeCuisine') ? $this->input->post('LikeCuisine') : '';
-		// 	var_dump($data);
-		// 	$postdata = postData(POSTAPI.'API_User',$data);
-		// 	var_dumP($postdata);
-
-		// }
->>>>>>> 52b31f061146dd8997bb8685bc9b0bb153549b6b
 	}
     //搜索
     public function search(){
