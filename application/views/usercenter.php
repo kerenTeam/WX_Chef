@@ -1,6 +1,6 @@
 
   <body>
-  <?php if(!empty($users) || isset($_SESSION['userinfo'])):?>
+  <?php if(!empty($users) && isset($_SESSION['userinfo'])):?>
    <div class="userhead bred">
      <?php if ($_SESSION['userinfo']): ?>
        <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
