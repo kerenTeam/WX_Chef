@@ -1,15 +1,16 @@
 
   <body>
-  <?php if(!empty($users) && isset($_SESSION['userinfo'])):?>
+  <?php if(!empty($users)):?>
    <div class="userhead bred">
+   <?php if(isset($_SESSION['userinfo'])): ?>
      <?php if ($_SESSION['userinfo']): ?>
        <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
        <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
      <?php else: ?>
        <img class="am-circle" src="<?php echo IP.$users[0]['userimage'];?>"/>
        <h3 class="am-header-title am-margin-sm"><?=$users[0]['userphone'];?></h3>
-     <?php endif ?>
-     
+     <?php endif;?>
+    <?php endif; ?>
      
      <!-- <p class="am-margin-xs">&nbsp;&nbsp;&nbsp;川菜</p> -->
    </div>
