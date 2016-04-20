@@ -61,6 +61,10 @@ class home extends CI_Controller
 	public function pwdchange(){
 		$this->load->view('pwdchange');
 	}
+	//分享
+	public function share(){
+		$this->load->view('share');
+	}
 	public function registeradd(){
 
 		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
