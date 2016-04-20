@@ -51,9 +51,13 @@ class home extends CI_Controller
 		$this->load->view('register');
 	}
 
-	//密码和手机号修改
+	//账号安全
 	public function safe(){
 		$this->load->view('safe');
+	}
+	//密码修改
+	public function pwdchange(){
+		$this->load->view('pwdchange');
 	}
 	public function registeradd(){
 
