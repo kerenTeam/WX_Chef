@@ -15,9 +15,9 @@
     </header>
 <div class="am-list-news-bd">
   <ul class="am-list">
-
+<!-- 
       <li class="am-g am-padding-sm safe">手机号<input type="tel" class="am-fr tel gray" value="15708434450" > 
-      </li>
+      </li> -->
       <li class="am-g am-padding-sm safe">密码<input type="password" class="am-fr gray" value="1234" >
       </li>
   </ul>
@@ -58,16 +58,10 @@
 <script src="skin/js/imgup.js"></script>
 <script>
   $(function(){
-    $('#form').submit(function() {
-      var phone = $('input[type="tel"]').val();
+    $('#form').submit(function() { 
       var password = $('input[type="password"]').val();
-      if(phone ==''||password ==''){
-        alert('手机号和密码均不能为空！'); 
-        return false;
-      }
-      if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-        alert('手机号格式错误！'); 
-        $('input[type="tel"]').focus();
+      if(password ==''){
+        alert('密码均不能为空！'); 
         return false;
       }
     });

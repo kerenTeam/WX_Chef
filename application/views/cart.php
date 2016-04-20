@@ -150,7 +150,7 @@
   </div>
   
   <!-- footer -->
-  <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
+  <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="" style="bottom:49px;">
    
       <div class="am-u-sm-8 a">
         <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney"></span>份</span>
@@ -163,6 +163,35 @@
       </div>
  
   </div>
+  <!-- footer -->
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
+      <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
+        <li >
+      <a href="<?php echo site_url('home/index')?>">
+        <span class=""><img src="skin/img/home1.png" alt=""></span>
+        <span class="am-navbar-label">首页</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/cart')?>" class="active">
+        <span class=""><img src="skin/img/clz2.png" alt=""></span>
+        <span class="am-navbar-label">菜篮子</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/search')?>">
+        <span class=""><img src="skin/img/ss.png" alt=""></span>
+        <span class="am-navbar-label">搜索</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/ucent')?>">
+        <span class=""><img src="skin/img/gr.png" alt=""></span>
+        <span class="am-navbar-label">我的</span>
+      </a>
+    </li>
+      </ul>
+    </div>
 </form>
 <?php endif;?>
 <script src="skin/js/jquery.min.js"></script>

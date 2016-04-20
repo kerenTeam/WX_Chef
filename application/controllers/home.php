@@ -438,8 +438,11 @@ class home extends CI_Controller
 	}
 	//评价 
 	public function comment(){
-
-		$this->load->view('comment');
+		if($_GET){
+			$POOrderId = $_GET['id'];
+			
+			$this->load->view('comment');
+		}
 	}
 	//评价成功 
 	public function comsuc(){
