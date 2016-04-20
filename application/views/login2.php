@@ -14,7 +14,7 @@
 		<img class="login_logo" src="skin/img/logoico.png">
 		<br/>
     <div class="login_form">
-    <input type="text" placeholder="用户" id='UserPhone' name='UserPhone' class="am-form-field am-radius"></input>
+    <input type="tel" placeholder="用户" id='UserPhone' name='UserPhone' class="am-form-field am-radius"></input>
     <input type="password" placeholder="密码" name='UserPwd' id='UserPwd' class="am-form-field am-radius"></input>
     <p>
       <a href="<?php echo site_url('home/register')?>">新用户</a>

@@ -17,9 +17,15 @@ function previewImage(file)
        if(imgs.width>500 || imgs.height>500){
         // alert("上传图片的宽或高不能超过500px");
         shade('am-icon-meh-o','上传图片的宽或高不能超过500px');
-       }
-         else{
+       }else{
             document.getElementsByTagName('img')[0].src = window.URL.createObjectURL(file.files[0]);
+             $.ajax({
+              url: '',
+              type: 'post',
+              dataType: '',
+              data: {param1: 'value1'},
+            });
+
          }
         }
         function shade(icon,cue){

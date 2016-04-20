@@ -133,14 +133,14 @@ class orderWXPay extends CI_Controller{
         $postOrderData['UserPhone'] = $_SESSION['phone'];
         $reMsg = curl_post(POSTAPI."API_Poorder?dis=money",json_encode($postOrderData));
        
-        var_dump(POSTAPI."API_Poorder?dis=money",json_encode($postOrderData)); 
-        var_dump($reMsg);
-        exit;
-        if ($reMsg = '""3""') {
-            echo "<script>alert('支付异常，请联系028-1234567！')</script>";
-         }else{
-             echo "<script>alert('支付失败，请联系028-1234567！')</script>";
-         } 
+        // var_dump(POSTAPI."API_Poorder?dis=money",json_encode($postOrderData)); 
+        // var_dump($reMsg);
+        // exit;
+        // if ($reMsg = '""3""') {
+        //     echo "<script>alert('支付异常，请联系028-1234567！')</script>";
+        //  }else{
+        //      echo "<script>alert('支付失败，请联系028-1234567！')</script>";
+        //  } 
         $_SESSION['shoping']       = '';
         $_SESSION['booking']       = '';
         $_SESSION['Writes']        = '';
