@@ -34,6 +34,10 @@ class home extends CI_Controller
 	//
 	public function sharetosql()
 	{
+	  if (!empty($_COOKIE['share'])) {
+	  	alertBack('太频繁了！');
+	  }
+	  set_cookie('share',$_SESSION['phone'],7200);
 	  $postshare['UserPhone'] = $this->input->post('UserPhone');
 	  $sharedata = json_encode($postshare);
 	  $abc = curl_post(POSTAPI."API_Evaluate?dis=fx",$sharedata);
@@ -56,7 +60,7 @@ class home extends CI_Controller
 					echo "<script>alert('没有该用户！');window.location.href='login2';</script>";
 					break;
 				case '1':
-					$this->session->set_tempdata("phone",$_POST['UserPhone'],3600);
+					$this->session->set_tempdata("phone",$_POST['UserPhone'],72000);
 					echo "<script>window.location.href='ucent';</script>";
 					break;
 				case '2':
