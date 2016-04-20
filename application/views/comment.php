@@ -12,7 +12,7 @@
     </h1>
   </header>
   <!-- 评价内容填写 -->
-  <form action="" method="">
+  <form action="" method="post">
   <!-- 保存打分内容 -->
 
     <input id="rating" name="serving" value="0" hidden type="txt">

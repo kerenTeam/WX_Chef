@@ -10,6 +10,45 @@ body {
 .am-slider-default .am-control-nav {
 	bottom: 9px;
 }
+.shareimg{
+    height: 15rem;
+    overflow: hidden;
+}
+.shareto{
+	display:none;
+       position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    background: rgba(0,0,0,0.3);
+    padding:0 2rem;
+
+}
+.shareto span{
+	    font-size: 4rem;
+    color: white;
+    transform: rotate(-23deg);
+    -webkit-transform: rotate(-23deg);
+}
+.sline{
+	line-height:30px;
+}
+.shareimg img{
+	width:100%;
+}
+.share{
+	    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 3rem auto;
+    background: #FF5A54;
+    color: white;
+    font-size: 16px;
+    border-radius: 3px;
+}
 .gs{
 	position: absolute;
 	top:0;
@@ -84,6 +123,9 @@ body {
 	margin: 5px 15px;
     font-size: 15px;
 }
+.apn{
+	padding:0!important;
+}
 .apple{
 	margin-right: 10px;
     text-align: right;
@@ -148,6 +190,13 @@ body {
 .cc{
 	margin-right: 2px;
     font-size: 14px;
+}
+.cp input{
+    width: 80%;
+    background:none!important;
+	border:0!important;
+	outline:none!important;
+    text-align: left;
 }
 .safe input{
 	background:none!important;
@@ -959,6 +1008,7 @@ body {
 .userhead img {
 	border: 5px solid rgba(255,255,255,0.5);
 	width: 10rem;
+	height:10rem;
 	border-radius: 50%!important;
 }
 .acm {
@@ -1088,7 +1138,7 @@ body {
 	color: #F85554!important;
 }
 .ana a {
-	width: 15%;
+	width: 13%;
 	text-align: center;
 	line-height: 43px!important;
 	display: inline-block;

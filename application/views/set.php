@@ -6,9 +6,6 @@
   .am-selected span{
     text-align:right;
   }
-  #inputfile{
-        margin-top: -2rem;
-  }
 </style>
 <link rel="stylesheet" href="skin/css/login.css">
 <body>
@@ -32,27 +29,21 @@
            <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">头像</div>
           <?php if($user[0]['userimage'] == ''):?>
-            <div class="am-u-sm-8" id="feedback"> 
-                <!-- <div class="wx_type_img">
-                  <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="previewImage(this)" class="upload-add">
-                  
-                  <div id="preview"> <img style="border-radius: 50%;" src="skin/img/vip.png" alt="选择图片"> </div>
-                </div>  -->
-                 <img src="skin/img/vip.png" onclick="getElementById('inputfile').click()" title="点击添加图片" alt="点击添加图片">
-                <input type="file" name="image" style="opacity:0;filter:alpha(opacity=0);" id="inputfile"/>
-            </div>
+          <div class="am-u-sm-8"> 
+              <div class="wx_type_img">
+                <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="previewImage(this)" class="upload-add">
+                  <!-- 图片实时预览 -->
+                <div id="preview"> <img style="border-radius: 50%;" src="skin/img/vip.png" alt="选择图片"> </div>
+              </div> 
+          </div>
           <?php else:?>
-             <div class="am-u-sm-8" id="feedback"> <!-- previewImage(this) -->
-             <!-- <div class="wx_type_img">
+             <div class="am-u-sm-8"> <!-- previewImage(this) -->
+             <div class="wx_type_img">
                 <input type="file" id="imgUpload" name="UserImage" onchange="previewImage(this)" class="upload-add">
-                 
+                  <!-- 图片实时预览 -->
                 <div id="preview"> 
-                <input type="hidden" name='UserImage' value="<?php echo $user[0]['userimage'];?>" />
                 <img style="border-radius: 50%;" src="<?php echo IP.$user[0]['userimage'];?>" alt="选择图片"> </div>
-              </div>  -->
-               <input type="hidden" name='UserImage' value="<?php echo $user[0]['userimage'];?>" />
-                <img src="<?php echo IP.$user[0]['userimage'];?>" onclick="getElementById('inputfile').click()" title="点击添加图片" alt="点击添加图片">
-                <input type="file" name="image" style="opacity:0;filter:alpha(opacity=0);" id="inputfile"/>
+              </div> 
             </div>
           <?php endif;?>
         </li>
@@ -127,32 +118,5 @@
 </body>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-    $("#inputfile").change(function(){
-        //创建FormData对象
-        var data = new FormData();
-        //为FormData对象添加数据
-        //
-        $.each($('#inputfile')[0].files, function(i, file) {
-            data.append('upload_file', file);
-            
-        });
-        $.ajax({
-            url:'submit_form_process.php',
-            type:'POST',
-            data:data,
-            cache: false,
-            contentType: false,    //不可缺
-            processData: false,    //不可缺
-            success:function(data){
-                console.log(data);
-                data = $(data).html();
-                if($("#feedback").children('img').length == 0) $("#feedback").append(data.replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
-                else $("#feedback").children('img').eq(0).before(data.replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
-            }
-        });
-    });
-});
-</script>
+<script src="skin/js/imgup.js"></script>
 </html>

@@ -1,26 +1,24 @@
-<body>
+<body class="am-shadow">
     <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
-        <a href="javascript:" onclick="javascript:history.go(-1);">
+        <a href="javascript:" onclick="<?php echo site_url('home/orderR')?>">
           <i class="am-header-icon am-icon-chevron-left"></i>
         </a>
       </div>
       <h1 class="am-header-title">
-      账号安全
+      分享
       </h1>
-     <!--  <div class="am-header-right am-header-nav">
-        <input type="submit" class="setf" value="确定">
-      </div> -->
-    </header>
-<div class="am-list-news-bd">
-  <ul class="am-list">
-
-      <li class="am-g am-padding-sm safe">手机号<input type="tel" class="am-fr tel gray" readonly value="15708434450" > 
-      </li>
-      <li class="am-g am-padding-sm safe">密码<a href="<?php echo site_url('home/pwdchange')?>" class="am-fr gray apn">修改</a>
-      </li>
-  </ul>
-</div> 
+    </header> 
+    <div class="shareto"><span class="am-icon-share"></span><!-- <img src="skin/img/shareto.jpg" alt=""> --></div>
+    <!-- content -->
+    <div class="shareimg"><img src="skin/img/article/it1.png" alt=""></div>
+    <div class="am-padding-sm am-text-sm">
+      <p class="sline">
+        感谢亲！当前积分累计<span class="red">300</span>分。<br>
+        每分享一次可以<span class="red">增加30积分</span>
+      </p>
+      <a href="javascript:;" class="share" id="share">分享</a>
+    </div>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
@@ -51,4 +49,16 @@
       </ul>
     </div>
 </body>
+<script src="skin/js/jquery.min.js"></script>
+<script>
+  $(function(){
+    $('#share').click(function(){
+      $('.shareto').fadeIn(400);
+    });
+     $('.shareto').click(function(){
+      $('.shareto').fadeOut(400);
+     })
+  })
+ 
+</script>
 </html>
