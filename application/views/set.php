@@ -29,6 +29,7 @@
            <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">头像</div>
           <?php if($user[0]['userimage'] == ''):?>
+<<<<<<< HEAD
           <div class="am-u-sm-8"> 
               <div class="wx_type_img">
                 <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="previewImage(this)" class="upload-add">
@@ -36,6 +37,17 @@
                 <div id="preview"> <img style="border-radius: 50%;" src="skin/img/vip.png" alt="选择图片"> </div>
               </div> 
           </div>
+=======
+            <div class="am-u-sm-8" id="feedback"> 
+                <!-- <div class="wx_type_img">
+                  <input type="file" id="imgUpload" name="UserImage" accept="image/jpeg,image/jpg,image/png,image/gif" onchange="previewImage(this)" class="upload-add">
+                  
+                  <div id="preview"> <img style="border-radius: 50%;" src="skin/img/vip.png" alt="选择图片"> </div>
+                </div>  -->
+                 <img src="skin/img/tx.gif" onclick="getElementById('inputfile').click()" title="点击添加图片" alt="点击添加图片">
+                <input type="file" name="image" style="opacity:0;filter:alpha(opacity=0);" id="inputfile"/>
+            </div>
+>>>>>>> 52b31f061146dd8997bb8685bc9b0bb153549b6b
           <?php else:?>
              <div class="am-u-sm-8"> <!-- previewImage(this) -->
              <div class="wx_type_img">

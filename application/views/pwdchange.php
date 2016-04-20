@@ -1,4 +1,5 @@
 <body>
+<form action="" method="" id="form">
     <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
         <a href="javascript:" onclick="javascript:history.go(-1);">
@@ -6,21 +7,21 @@
         </a>
       </div>
       <h1 class="am-header-title">
-      账号安全
+      修改密码
       </h1>
-     <!--  <div class="am-header-right am-header-nav">
+      <div class="am-header-right am-header-nav">
         <input type="submit" class="setf" value="确定">
-      </div> -->
+      </div>
     </header>
 <div class="am-list-news-bd">
   <ul class="am-list">
 
-      <li class="am-g am-padding-sm safe">手机号<input type="tel" class="am-fr tel gray" readonly value="15708434450" > 
-      </li>
-      <li class="am-g am-padding-sm safe">密码<a href="<?php echo site_url('home/pwdchange')?>" class="am-fr gray apn">修改</a>
-      </li>
+      <li class="am-g am-padding-sm cp">原密码<input type="password" class="tel gray am-fr opwd" value=""></li>
+      <li class="am-g am-padding-sm cp">新密码<input type="password" class="tel gray am-fr npwd" value=""></li>
+      <li class="am-g am-padding-sm cp">确认密码<input type="password" class="tel gray am-fr rnpwd" value=""></li>
   </ul>
-</div> 
+</div>
+ </form>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
       <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
@@ -51,4 +52,24 @@
       </ul>
     </div>
 </body>
+<script src="skin/js/jquery.min.js"></script>
+<script>
+  $(function(){
+    $('#form').submit(function() { 
+      var old = $('.opwd').val();
+      var newp = $('.npwd').val();
+      var rnew = $('.rnpwd').val(); 
+      if(old ==''||newp ==''||rnew ==''){
+        alert('请输入完整！');
+        return false;
+      }
+      if(newp !== rnew){
+        alert("密码确认错误！");
+        $('.rnpwd').focus();
+         return false;
+      }
+
+  })
+  })
+</script>
 </html>

@@ -84,6 +84,9 @@ body {
 	margin: 5px 15px;
     font-size: 15px;
 }
+.apn{
+	padding:0!important;
+}
 .apple{
 	margin-right: 10px;
     text-align: right;
@@ -148,6 +151,13 @@ body {
 .cc{
 	margin-right: 2px;
     font-size: 14px;
+}
+.cp input{
+    width: 80%;
+    background:none!important;
+	border:0!important;
+	outline:none!important;
+    text-align: left;
 }
 .safe input{
 	background:none!important;
@@ -959,6 +969,7 @@ body {
 .userhead img {
 	border: 5px solid rgba(255,255,255,0.5);
 	width: 10rem;
+	height:10rem;
 	border-radius: 50%!important;
 }
 .acm {

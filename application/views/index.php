@@ -6,8 +6,32 @@
             h2.tip{margin:20px;font-size: 18px}
         </style>
 <body>
+
+<?php 
+
+   if (empty($_GET["code"])) {
+     headerUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");
+   }
+  if ($_GET["code"] && $_SESSION['update_code'])
+  {
+    $access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$_GET["code"]."&grant_type=authorization_code";
+    $access_token_json = $this->indexwxapi->wxHttpsRequest($access_token_url);
+    $access_token_array = json_decode($access_token_json, true);
+    $_SESSION['openid'] = $access_token_array['openid'];
+    $userinfo_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$_SESSION['update_code']."&openid=".$_SESSION['openid'];
+    $userinfo_json = $this->indexwxapi->wxHttpsRequest($userinfo_url);
+    $_SESSION['userinfo'] = json_decode($userinfo_json, true);
+  }
+  if (isset($_SESSION['userinfo']['errcode']) && $_SESSION['userinfo']['errcode'] == 40001)
+  { 
+   $this->indexwxapi->wxAccessToken(APPID,APPSECRET);
+   headerUrl('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+  }
+ ?>
+
 <!-- 注册弹框 -->
-<?php if(!isset($_SESSION['phone'])):?>
+<?php if(!isset($_SESSION['phone']) && empty($_SESSION['userinfo']['openid']) ):?>
+
 <div class="tk">
   <div class="tkcontent">
     <span><img class="closetk" src="skin/img/closetk.png" alt="大厨到家"></span>
