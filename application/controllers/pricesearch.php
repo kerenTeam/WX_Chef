@@ -73,4 +73,67 @@ class pricesearch extends CI_Controller {
 	    $res = curl_exec($ch);
 	    echo randNms;
 		}
+
+
+
+	// 评论上传图片
+	public function commimg()
+	{
+		$f=&$_FILES['fileList'];
+		$dest_dir='./upload/image';//设定上传目录
+		$dest=$dest_dir.'/'.date("ymd")."_".$f['name'];//我这里设置文件名为日期加上文件名避免重复
+		$r=move_uploaded_file($f['tmp_name'],$dest);
+		echo $dest;
+	}
+
+
+
+		//评价成功 
+	public function comsuc(){
+		if($_POST){
+			$arr['UserPhone'] = $_SESSION['phone'];
+			$arr['FoodScore'] = $_POST['rating'];
+			$arr['CookScore'] = $_POST['taste'];
+			$arr['ConsumptionScore'] = $_POST['environment'];
+			$arr['CommentState'] = $_POST['ratfen'];
+			$arr["Comment"] = $_POST['comment'];
+			$arr['PoorderId'] = $_POST['oid'];
+			if(isset($_POST['routes'])){
+				if($_POST['routes'] != ''){
+				$imgarr = explode(',',$_POST['routes']);
+				foreach ($imgarr as $key => $value) {
+					$path[$key] = $value;
+
+					$type = pathinfo($path[$key], PATHINFO_EXTENSION);
+					$data = file_get_contents($path[$key]);
+					$base[$key] = base64_encode($data);
+				}
+				$userimg = array();
+				foreach ($base as $k => $v) {
+					$userimg[$k] = "{'imgs':"."'".$v."'"."}";
+				}
+				$arr['img'] = $userimg;
+			}else{
+				$arr['img'] = '[]';
+			}
+			}else{
+				$arr['img'] = '[]';
+			}
+			$jsonData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($arr))))));
+			$comment = curl_post(POSTAPI.'API_Evaluate?dis=pf',$jsonData);
+			if($comment == 1){
+				if(isset($path)){
+					if(count($path) > 1){
+						foreach ($path as $key => $value) {
+							@unlink ($value);
+						}
+					}else{
+						@unlink ($path);
+					}
+				}
+				
+				echo "评价成功";
+			}
+		}
+	}
 }

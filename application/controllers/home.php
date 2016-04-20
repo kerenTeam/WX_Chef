@@ -462,16 +462,13 @@ class home extends CI_Controller
 	//评价 
 	public function comment(){
 		if($_GET){
-			$POOrderId = $_GET['id'];
+			$POOrderId['id'] = $_GET['id'];
 			
-			$this->load->view('comment');
+			$this->load->view('comment',$POOrderId);
 		}
 	}
-	//评价成功 
-	public function comsuc(){
+	
 
-		$this->load->view('comsuc');
-	}
    //个人中心
 	public function ucent(){
 		if(isset($_SESSION['phone'])){
