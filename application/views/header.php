@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
         <title>大厨到家</title>
     <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no" />
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="icon" type="image/png" href="skin/img/logoico.png">
     <link rel="stylesheet" href="skin/css/amazeui.min.css">

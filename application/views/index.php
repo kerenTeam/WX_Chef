@@ -206,7 +206,7 @@ var i=1
                 i++;
             }
             function showEmpty() {
-               setTimeout(function(){  $(".nodata").show().html("别滚动了，已经到底了。。。");},50000);
+               setTimeout(function(){  $(".nodata").show().html("别滚动了，已经到底了。。。");},10000);
             }
 
 
