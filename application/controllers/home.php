@@ -34,10 +34,6 @@ class home extends CI_Controller
 	//
 	public function sharetosql()
 	{
-	  if (!empty($_COOKIE['share'])) {
-	  	alertBack('太频繁了！');
-	  }
-	  set_cookie('share',$_SESSION['phone'],7200);
 	  $postshare['UserPhone'] = $this->input->post('UserPhone');
 	  $sharedata = json_encode($postshare);
 	  $abc = curl_post(POSTAPI."API_Evaluate?dis=fx",$sharedata);
@@ -60,7 +56,7 @@ class home extends CI_Controller
 					echo "<script>alert('没有该用户！');window.location.href='login2';</script>";
 					break;
 				case '1':
-					$this->session->set_tempdata("phone",$_POST['UserPhone'],72000);
+					$this->session->set_tempdata("phone",$_POST['UserPhone'],3600);
 					echo "<script>window.location.href='ucent';</script>";
 					break;
 				case '2':
@@ -213,7 +209,6 @@ class home extends CI_Controller
 		// 菜品评价
 		$commen = file_get_contents(POSTAPI.'API_Food?dis=pl&foodid='.$id);
 	    $data['evaluate'] = json_decode(json_decode($commen),true);
-		
 		$this->load->view('food',$data);
 	}
 	//储值返现
@@ -507,49 +502,40 @@ class home extends CI_Controller
 	//更改用户资料
 	public function userdatum()
 	{   
-		echo "<pre>";
-		print_r($this->input->post());
-	    
-		if($_FILES){
-	    $photo = $_FILES['img']['name'];
-	    $tmp_addr = $_FILES['img']['tmp_name'];
-	    $path = base_url('upload').'/';
-	    $type=array("jpg","gif","jpeg","png");
-	    $tool = substr(strrchr($photo,'.'),1);
-	    if(!in_array(strtolower($tool),$type)){
-	    
-	    $filename = explode(".",$photo); //把上传的文件名以"."好为准做一个数组。
-	    $time = date("m-d-H-i-s"); //取当前上传的时间
-	    $filename[0] = $time; //取文件名
-	    $name = implode(".",$filename); //上传后的文件名
-	    $uploadfile = $path.$name;
-	    $_SESSION['upfile'] = $uploadfile;//上传后的文件名地址
-	    move_uploaded_file($tmp_addr,$uploadfile);
-
-        }
-	    }
-		$type = pathinfo($uploadfile, PATHINFO_EXTENSION);
-		print_r($uploadfile);
-		print_r($type);
-		// $data = file_get_contents($path);
-		// $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-		// if($_POST){
-		// 	// var_dump($_POST);
-		// 	$data['UserId'] = $_POST['UserId'];
+	
+		if($_POST){
+			$data['UserId'] = $_POST['UserId'];
+			$data['PersonalTaste'] = $_POST['PersonalTaste'];
+			if($_POST['LikeCuisine']){
+				$data['LikeCuisine'] = implode(',',$_POST['LikeCuisine']);
+			}
+			$data['UserName'] = $_POST['UserName'];
 		
-		// 	if(!empty($_FILES['UserImage']['tmp_name'])){
-		// 		$data['UserImage'] = $_FILES['UserImage'];
-		// 	}else{
-		// 		$data['UserImage'] = $_POST['UserImage'];
-		// 	}
-		// 	$data['UserName'] = $_POST['UserName'];
-		// 	$data['PersonalTaste'] = $_POST['PersonalTaste'];
-		// 	$data['LikeCuisine'] = $this->input->post('LikeCuisine') ? $this->input->post('LikeCuisine') : '';
-		// 	var_dump($data);
-		// 	$postdata = postData(POSTAPI.'API_User',$data);
-		// 	var_dumP($postdata);
+			if(!empty($_FILES['UserImage']['tmp_name'])){
 
-		// }
+				$f=&$_FILES['UserImage'];
+				$dest_dir='./upload/image';//设定上传目录
+				$hou = explode('.',$_FILES['UserImage']['name']);
+				$dest=$dest_dir.'/'.date("ymd")."_".date('His').'.'.$hou[1];//我这里设置文件名为日期加上文件名避免重复
+				$r=move_uploaded_file($f['tmp_name'],$dest);
+				
+				$type = pathinfo($dest, PATHINFO_EXTENSION);
+				$base = file_get_contents($dest);
+				$data['UserImage'] = base64_encode($base);
+
+			}else{
+				$data['UserImage'] = '';
+			}
+			$jsonuser = json_encode($data);
+			$user = curl_post(POSTAPI.'API_User?dis=update',$jsonuser);
+			if($user == 1){
+				if(isset($dest)){
+					@unlink ($dest);
+				}
+				echo "<script>alert('个人资料修改成功！');self.location=document.referrer;</script>";
+			}
+			
+		}
 	}
     //搜索
     public function search(){
