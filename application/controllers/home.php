@@ -23,6 +23,9 @@ class home extends CI_Controller
 
 		$this->load->view('login');
 	}
+	public function demo(){
+		$this->load->view('tofriends/index');
+	}
 	//老用户登录
 	public function login2(){ 
 		if($_POST){
