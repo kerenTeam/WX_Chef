@@ -17,6 +17,7 @@
     <a href="javascript:">待付款</a>
     <a href="javascript:">服务中</a>
     <a href="javascript:">待评价</a>
+    <a href="javascript:">已完成</a>
     <a href="javascript:">退款</a>
   </div>
   <!-- 所有订单 -->
@@ -49,6 +50,9 @@
               break;  
             case '6':
               echo "退款成功";
+              break;
+            case '8':
+              echo "已评价";
               break;
           }?></span>
         </div>
@@ -92,6 +96,10 @@
               break; 
             case '6':
               echo "<a href='javascript:' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款成功</a>";
+              break;
+            case '8':
+              echo "<a href='' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
+              echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
               break;
           }?>
         

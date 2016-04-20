@@ -480,19 +480,41 @@ class home extends CI_Controller
 	{
 		if($_POST){
 			// var_dump($_POST);
-			$data['UserId'] = $_POST['UserId'];
-		
-			if(!empty($_FILES['UserImage']['tmp_name'])){
-				$data['UserImage'] = $_FILES['UserImage'];
+			$arr['UserId'] = $_POST['UserId'];
+			$arr['UserName'] = $_POST['UserName'];
+			$arr['PersonalTaste'] = $_POST['PersonalTaste'];
+			if($_POST['LikeCuisine']){
+				$arr['LikeCuisine'] = implode(',',$_POST['LikeCuisine']);
 			}else{
-				$data['UserImage'] = $_POST['UserImage'];
+				$arr['LikeCuisine'] = '';
 			}
-			$data['UserName'] = $_POST['UserName'];
-			$data['PersonalTaste'] = $_POST['PersonalTaste'];
-			$data['LikeCuisine'] = $this->input->post('LikeCuisine') ? $this->input->post('LikeCuisine') : '';
-			var_dump($data);
-			$postdata = postData(POSTAPI.'API_User',$data);
-			var_dumP($postdata);
+			if(!empty($_FILES['UserImage']['tmp_name'])){
+				$config['upload_path'] =   './upload/image/'; 
+				$config['file_name'] =   date('Y-m-d_His');  
+		        $config['allowed_types'] = 'gif|jpg|png';
+		        $this->load->library('upload', $config);
+		        if ($this->upload->do_upload('UserImage'))
+		        {
+		           $path =  $this->upload->data('full_path');
+		           $type = pathinfo($path, PATHINFO_EXTENSION);
+				   $imgData = file_get_contents($path);
+				   $base64 = base64_encode($imgData);
+		          	
+		           $arr['UserImage'] = $base64;
+		        }
+			}else{
+				$arr['UserImage'] = $_POST['UserImage'];
+			}
+			$postData = json_encode($arr);
+			$upuser = curl_post(POSTAPI."API_User?dis=update",$postData);
+			if($upuser == 1){
+				if(isset($path)){
+					@unlink ($path);
+				}
+				echo "<script>alert('资料修改成功');self.location=document.referrer;</script>";
+			}else{
+				echo "<script>alert('资料修改失败');self.location=document.referrer;</script>";
+			}
 
 		}
 	}
