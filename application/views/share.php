@@ -9,6 +9,7 @@
       分享
       </h1>
     </header> 
+    <div class="shareto"><span class="am-icon-share"></span><!-- <img src="skin/img/shareto.jpg" alt=""> --></div>
     <!-- content -->
     <div class="shareimg"><img src="skin/img/article/it1.png" alt=""></div>
     <div class="am-padding-sm am-text-sm">
@@ -16,7 +17,7 @@
         感谢亲！当前积分累计<span class="red">300</span>分。<br>
         每分享一次可以<span class="red">增加30积分</span>
       </p>
-      <a href="" class="share">分享</a>
+      <a href="javascript:;" class="share" id="share">分享</a>
     </div>
     <!-- footer -->
     <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
@@ -48,4 +49,16 @@
       </ul>
     </div>
 </body>
+<script src="skin/js/jquery.min.js"></script>
+<script>
+  $(function(){
+    $('#share').click(function(){
+      $('.shareto').fadeIn(400);
+    });
+     $('.shareto').click(function(){
+      $('.shareto').fadeOut(400);
+     })
+  })
+ 
+</script>
 </html>

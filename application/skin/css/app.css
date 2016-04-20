@@ -11,8 +11,26 @@ body {
 	bottom: 9px;
 }
 .shareimg{
-	    height: 15rem;
+    height: 15rem;
     overflow: hidden;
+}
+.shareto{
+	display:none;
+       position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    background: rgba(0,0,0,0.3);
+    padding:0 2rem;
+
+}
+.shareto span{
+	    font-size: 4rem;
+    color: white;
+    transform: rotate(-23deg);
+    -webkit-transform: rotate(-23deg);
 }
 .sline{
 	line-height:30px;

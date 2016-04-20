@@ -19,7 +19,6 @@ function previewImage(file)
         shade('am-icon-meh-o','上传图片的宽或高不能超过500px');
        }else{
             document.getElementsByTagName('img')[0].src = window.URL.createObjectURL(file.files[0]);
-            
          }
         }
         function shade(icon,cue){
