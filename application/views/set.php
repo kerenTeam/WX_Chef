@@ -38,7 +38,7 @@
                   
                   <div id="preview"> <img style="border-radius: 50%;" src="skin/img/vip.png" alt="选择图片"> </div>
                 </div>  -->
-                 <img src="skin/img/vip.png" onclick="getElementById('inputfile').click()" title="点击添加图片" alt="点击添加图片">
+                 <img src="skin/img/tx.gif" onclick="getElementById('inputfile').click()" title="点击添加图片" alt="点击添加图片">
                 <input type="file" name="image" style="opacity:0;filter:alpha(opacity=0);" id="inputfile"/>
             </div>
           <?php else:?>
