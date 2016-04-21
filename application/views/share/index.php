@@ -74,13 +74,13 @@ wx.config({
       分享
       </h1>
     </header> 
-    <div class="shareto"><span class="am-icon-share"></span><!-- <img src="skin/img/shareto.jpg" alt=""> --></div>
+    <div class="shareto"><img src="skin/img/shareto.png" alt=""></div>
     <!-- content -->
-    <div class="shareimg"><img src="skin/img/article/it1.png" alt=""></div>
+    <div class="shareimg"><img src="skin/img/share.gif" alt=""></div>
     <div class="am-padding-sm am-text-sm">
       <p class="sline">
         感谢亲！当前积分累计<span class="red">300</span>分。<br>
-        每分享一次可以<span class="red">增加30积分</span>
+        每分享一次可以<span class="red">增加30积分 </span>  <span class="am-icon-smile-o"></span>
       </p>
       <a href="javascript:;" class="share" id="share">分享</a>
     </div>
@@ -128,9 +128,11 @@ wx.config({
   $(function(){
     $('#share').click(function(){
       $('.shareto').fadeIn(400);
+      $('body').css('overflow-y','hidden');
     });
      $('.shareto').click(function(){
       $('.shareto').fadeOut(400);
+      $('body').css('overflow-y','auto');
      })
   })
  
