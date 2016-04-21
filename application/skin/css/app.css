@@ -17,8 +17,8 @@ body {
 	bottom: 9px;
 }
 .shareimg{
-    height: 15rem;
-    overflow: hidden;
+    height: auto;
+    /* overflow: hidden; */
 }
 .shareto{
 	display:none;
@@ -28,12 +28,15 @@ body {
     bottom: 0;
     right: 0;
     text-align: right;
-    background: rgba(0,0,0,0.3);
-    padding:0 2rem;
+    background-color: rgba(0,0,0,0.7);
+    
 
 }
+.shareto img{
+   margin:1rem 2.8rem 0 0;
+}
 .shareto span{
-	    font-size: 4rem;
+	font-size: 4rem;
     color: white;
     transform: rotate(-23deg);
     -webkit-transform: rotate(-23deg);
@@ -43,6 +46,7 @@ body {
 }
 .shareimg img{
 	width:100%;
+	height:100%;
 }
 .share{
 	    display: block;
@@ -1144,7 +1148,7 @@ body {
 	color: #F85554!important;
 }
 .ana a {
-	width: 13%;
+	width: 15%;
 	text-align: center;
 	line-height: 43px!important;
 	display: inline-block;

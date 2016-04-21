@@ -1,4 +1,4 @@
-<body>
+<body class="am-padding-bottom-lg">
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
       <a href="javascript:" onclick="javascript:history.go(-1);">
@@ -63,12 +63,13 @@
         <p class="am-text-center am-text-sm">米饭</p>
  
     </div> 
-     
-     <div class="am-shadow am-padding-sm am-cf mob">
-        <span class="am-fl red">合计：108元</span>
-        <a href="javascript:" class="am-fr am-btn am-btn-primary bgreen am-btn-xs checkOrder"> 确定</a>
-        <a href="javascript:" class="am-fr am-btn am-btn-primary am-btn-xs bgray cancelO"> 取消
-        </a>     
+       <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
+         <div class="am-shadow am-padding-sm am-cf mob">
+            <span class="am-fl red" style="line-height: 26px;">合计：108元</span>
+            <a href="javascript:" class="am-fr am-btn am-btn-primary bgreen am-btn-xs checkOrder"> 确定</a>
+            <a href="javascript:" class="am-fr am-btn am-btn-primary am-btn-xs bgray cancelO"> 取消
+            </a>     
+         </div>
         </div>
   </form>
   
@@ -80,7 +81,7 @@
       if(confirm("确认接受订单吗？")){
          $(this).text('已接受');
          // $(this).next('.cancelO').css('display','');
-         $(this).unbind('click')
+         $(this).unbind('click');
       }
       else{
          return false;
@@ -92,6 +93,7 @@
      $('.cancelO').click(function() { 
       if(confirm("确认取消此订单吗？")){
          $(this).prev('.checkOrder').text('已取消');
+         $(this).prev('.checkOrder').unbind('click')
          $(this).css('display','none');
        }
       else{

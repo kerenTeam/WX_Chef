@@ -17,7 +17,6 @@
     <a href="javascript:">待付款</a>
     <a href="javascript:">服务中</a>
     <a href="javascript:">待评价</a>
-    <a href="javascript:">已完成</a>
     <a href="javascript:">退款</a>
   </div>
   <!-- 所有订单 -->
