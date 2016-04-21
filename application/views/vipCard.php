@@ -1,4 +1,4 @@
-<body>
+<body class="am-padding-bottom-lg">
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
       <a href="javascript:" onclick="javascript:history.go(-1);">

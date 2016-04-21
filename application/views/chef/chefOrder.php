@@ -1,4 +1,4 @@
-<body>
+<body class="am-padding-bottom-lg">
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
       <a href="javascript:" onclick="javascript:history.go(-1);">
@@ -81,7 +81,7 @@
       if(confirm("确认接受订单吗？")){
          $(this).text('已接受');
          // $(this).next('.cancelO').css('display','');
-         $(this).unbind('click')
+         $(this).unbind('click');
       }
       else{
          return false;
@@ -93,6 +93,7 @@
      $('.cancelO').click(function() { 
       if(confirm("确认取消此订单吗？")){
          $(this).prev('.checkOrder').text('已取消');
+         $(this).prev('.checkOrder').unbind('click')
          $(this).css('display','none');
        }
       else{

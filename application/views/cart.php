@@ -1,4 +1,4 @@
-<body>
+<body styel="padding-bottom:5rem;">
   <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
   <div class="am-header-left am-header-nav">
