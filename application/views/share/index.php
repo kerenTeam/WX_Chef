@@ -116,9 +116,9 @@ wx.config({
 
    <form action="<?php echo site_url('home/sharetosql'); ?>"  id="sharetosql" method="POST" accept-charset="utf-8">
    <?php if (!empty($_SESSION['phone'])): ?>
-     <input type="hidden" name="UserPhone" value="<?php echo $_SESSION['phone'] ?>">
+     <input type="hidden" name="UserPhone" value="<?php echo $_SESSION['phone']; ?>">
    <?php else: ?>
-     <input type="hidden" name="UserPhone" value="<?php echo $_SESSION['userinfo']['openid'] ?>">
+     <input type="hidden" name="UserPhone" value="<?php echo $_SESSION['userinfo']['openid']; ?>">
    <?php endif ?>
    </form>
 
