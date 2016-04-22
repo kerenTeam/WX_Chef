@@ -3,8 +3,8 @@ html{
 	overflow-y:visible;
 }
 body {
-	background: rgb(241, 241, 241);/*   opacity:0;
-  transition:all 1s ; */     
+ margin: 0px;background: rgb(241, 241, 241);/*   opacity:0;
+  transition:all 1s ; */
   overflow-y:visible;
 }
 #AddDP label{
@@ -19,6 +19,9 @@ body {
 .shareimg{
     height: auto;
     /* overflow: hidden; */
+}
+.bgray{
+	background-color:gray;
 }
 .shareto{
 	display:none;
@@ -183,7 +186,9 @@ body {
 	top:0;
 	bottom:0;
 }
-
+.pabo{
+	padding-bottom:7rem;
+}
 .fpc{
 	color: white;
     font-size: 10px;
@@ -629,7 +634,7 @@ body {
 	right: 0;
 }
 .amr {
-	top: 49px;
+	/*top: 49px;*/
 	position: relative;
 	left: 25%;
 }
@@ -648,9 +653,19 @@ body {
 .cmnb {
 	border-left: 1px solid rgba(0,0,0,0.1);
 }
-.cmn p {
-	margin: 5px;
-	margin-bottom: -15px;
+.cmn .cptit {
+	    margin-bottom: -19px;
+    
+}
+.cptit span{
+	padding: 7px!important;
+    display: inline-block;
+}
+.cptit:before{/*:not(:first-child)*/
+	content:'';
+	display:block;
+	height:49px;
+	background-color:white;
 }
 .gray {
 	color: gray;

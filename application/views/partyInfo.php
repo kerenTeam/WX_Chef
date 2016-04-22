@@ -181,7 +181,7 @@
 </div>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
-  <script src="skin/js/num.js"></script>
+  <script src="skin/js/num_cailan.js"></script>
   <script>
   $(function(){
       var inputs = $('.numTxt');
