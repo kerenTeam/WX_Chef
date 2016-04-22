@@ -55,7 +55,8 @@
           <div class="am-u-sm-4 am-text-center am-list-thumb"> <div class="vimg"> <img src="<?php echo IP.$val->thumbnail;?>" alt="<?=$val->foodname;?>"/> </div> </div>
           <div class=" am-u-sm-8 am-list-main">
             <h3 class="am-list-item-hd"><?=$val->foodname;?></h3>
-            <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">123</span>份</div>
+            <div class="am-text-sm">主料：鸡肉</div>
+            <div class="am-text-sm">辅料：洋葱，大蒜，干辣椒，香菇</div>
             <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$val->foodprice;?></span></div>
          </a>
         </li>
