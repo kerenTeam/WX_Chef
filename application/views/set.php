@@ -26,7 +26,32 @@
     </header>
     <div class="am-list-news-bd">
       <ul class="am-list userS">
-           <li class="am-g am-list-item-dated">
+
+      <?php if (isset($_SESSION['userinfo']['headimgurl']) && !empty($_SESSION['userinfo']['headimgurl'])): ?>
+        <li class="am-g am-list-item-dated" style="color:gray;">
+          <div class="am-u-sm-4">头像</div>
+         
+          <div class="am-u-sm-8"> 
+              <div class="wx_type_img">
+                  <!-- 图片实时预览 -->
+                <div id="preview"> <img style="border-radius: 50%; filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+    -moz-filter: grayscale(1);
+    -o-filter: grayscale(1);
+    -ms-filter: grayscale(1);" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"> </div>
+              </div> 
+          </div>
+
+        </li>
+        <li class="am-g am-list-item-dated">
+          <div class="am-u-sm-4">昵称</div>
+          <div class="am-u-sm-8">
+            <input type="text" value="<?=$_SESSION['userinfo']['nickname'];?>" placeholder="未填写" name='UserName'>
+          </div>
+        </li>
+
+      <?php else: ?>
+         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">头像</div>
           <?php if($user[0]['userimage'] == ''):?>
           <div class="am-u-sm-8"> 
@@ -53,6 +78,11 @@
             <input type="text" value="<?=$user[0]['username'];?>" placeholder="未填写" name='UserName'>
           </div>
         </li>
+
+      <?php endif ?>
+           
+
+
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">口味</div>
           <div class="am-u-sm-8">
