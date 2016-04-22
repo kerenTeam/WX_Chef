@@ -4,7 +4,7 @@ html{
 }
 body {
 	background: rgb(241, 241, 241);/*   opacity:0;
-  transition:all 1s ; */
+  transition:all 1s ; */     
   overflow-y:visible;
 }
 #AddDP label{
