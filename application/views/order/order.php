@@ -172,7 +172,12 @@
           <?php endif;?>
         </div> 
         </div>
-      <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
+      <?php if(!empty($address)):?>
+          <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
+      <?php else:?>
+          <button type="button" class="am-u-sm-12 am-btn bgray os" id="pay">去支付</button>
+      <?php endif;?>
+  
     </form>
  
   </body>
@@ -268,9 +273,7 @@ function getorders(){
                url: "<?=site_url('pricesearch/payOrder');?>",
                data: 'GoodsPhone='+phone+"&address="+address+"&name="+name,
                success: function(msg){
-                  console.log(msg);
-                 //window.location.reload();
-                  $("#mainContent").html(msg);
+                  location.reload(true); 
                }
             });
             $('.tk').fadeOut(400);
