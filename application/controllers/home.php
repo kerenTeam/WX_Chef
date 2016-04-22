@@ -9,7 +9,6 @@ class home extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('option_model');
 		$this->load->library('IndexWxApi');
 		$this->load->helper('post_helper');
 		$this->load->helper('tool_helper');
@@ -99,9 +98,7 @@ class home extends CI_Controller
 	
 	//首页
 	public function index(){
-		$banner = $this->option_model->banners();
-		$data['banners'] = unserialize($banner['banner']);
-
+	
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
 		$data['caijia'] = json_decode(json_decode($caijia));  
@@ -506,8 +503,12 @@ class home extends CI_Controller
 		if($_POST){
 			$data['UserId'] = $_POST['UserId'];
 			$data['PersonalTaste'] = $_POST['PersonalTaste'];
+			if(isset($_POST['LikeCuisine'])){
 			if($_POST['LikeCuisine']){
 				$data['LikeCuisine'] = implode(',',$_POST['LikeCuisine']);
+			}
+			}else{
+				$data['LikeCuisine'] = $_POST['like'];
 			}
 			$data['UserName'] = $_POST['UserName'];
 		
