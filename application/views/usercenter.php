@@ -9,8 +9,7 @@
         <?php if (empty($users[0]['userphone'])): ?>
           <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
         <?php else: ?>
-          <h3 class="am-header-title am-margin-sm">当前积分：<?=$users[0]['balance'];?></h3>
-
+          
         <?php endif ?>
      <?php else: ?>
        <img class="am-circle" src="<?php echo IP.$users[0]['userimage'];?>"/>
