@@ -6,27 +6,26 @@
             h2.tip{margin:20px;font-size: 18px}
         </style>
 <body>
-
+ 
 <?php 
 
-   if (empty($_GET["code"])) {
-     headerUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");
-   }
-  if ($_GET["code"] && $_SESSION['update_code'])
-  {
-    $access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$_GET["code"]."&grant_type=authorization_code";
-    $access_token_json = $this->indexwxapi->wxHttpsRequest($access_token_url);
-    $access_token_array = json_decode($access_token_json, true);
-    $_SESSION['openid'] = $access_token_array['openid'];
-    $userinfo_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$_SESSION['update_code']."&openid=".$_SESSION['openid'];
-    $userinfo_json = $this->indexwxapi->wxHttpsRequest($userinfo_url);
-    $_SESSION['userinfo'] = json_decode($userinfo_json, true);
-  }
-  if (isset($_SESSION['userinfo']['errcode']) && $_SESSION['userinfo']['errcode'] == 40001)
-  { 
-   $this->indexwxapi->wxAccessToken(APPID,APPSECRET);
-   headerUrl('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
-  }
+  if (empty($_GET["code"]))
+    {
+     header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");   
+    }
+
+    $code = $_GET['code'];
+    //获取access_token 用户令牌
+    $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code";
+    $res =json_decode(file_get_contents($url));
+    $openId= $res->openid;
+    $_SESSION['update_code'] = $res->access_token;
+    $_token = $res->access_token;
+
+    //获取用户数据
+    $url2='https://api.weixin.qq.com/sns/userinfo?access_token='.$_token.'&openid='.$openId.'&lang=zh_CN';
+    $_SESSION['userinfo'] = json_decode(file_get_contents($url2),TRUE);
+
  ?>
 
 <!-- 注册弹框 -->
@@ -47,12 +46,40 @@
 <!-- banner -->
 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">
+
+
+    <li class="clone" aria-hidden="true" style="width: 372px; float: left; display: block;">
+      <a href="http://www.krfer.com/WXTEST2/index.php/home/registgift"><img src="skin/img/banner1.png" class="am-img-responsive card" alt="3" draggable="false"></a>
+       
+    </li>
+        <li class="" style="width: 372px; float: left; display: block;">
+      <a href="http://www.krfer.com/WXTEST2/index.php/home/partyServ"><img src="skin/img/banner3.png" class="am-img-responsive card" alt="1" draggable="false"></a>
+       
+    </li>
+      <li style="width: 372px; float: left; display: block;" class="am-active-slide">
+      <a href="http://www.krfer.com/WXTEST2/index.php/home/backmoney"><img src="skin/img/banner2.png" class="am-img-responsive card" alt="2" draggable="false"></a>
+       
+    </li>
+      <li style="width: 372px; float: left; display: block;">
+      <a href="http://www.krfer.com/WXTEST2/index.php/home/registgift"><img src="skin/img/banner1.png" class="am-img-responsive card" alt="3" draggable="false"></a>
+       
+    </li>
+    <li class="clone" aria-hidden="true" style="width: 372px; float: left; display: block;">
+      <a href="http://www.krfer.com/WXTEST2/index.php/home/partyServ"><img src="skin/img/banner3.png" class="am-img-responsive card" alt="1" draggable="false"></a>
+       
+    </li>
+
+<?php 
+/*
     <?php foreach($banners as $val):?>
     <li>
       <a href="<?=site_url($val['url']);?>"><img src="<?=$val['thumb']?>" class="am-img-responsive card" alt="<?=$val['title']?>"></a>
-      
+       
     </li>
-  <?php endforeach;?>
+    <?php endforeach;?>
+    */
+
+ ?>
   </ul>
 </div>
 <!-- 菜品 -->

@@ -5,29 +5,55 @@
    <?php if(isset($_SESSION['userinfo'])): ?>
      <?php if ($_SESSION['userinfo']): ?>
        <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
-       <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
+       <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> 
+        <?php if (empty($users[0]['userphone'])): ?>
+          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
+        <?php else: ?>
+          
+        <?php endif ?>
      <?php else: ?>
        <img class="am-circle" src="<?php echo IP.$users[0]['userimage'];?>"/>
        <h3 class="am-header-title am-margin-sm"><?=$users[0]['userphone'];?></h3>
      <?php endif;?>
     <?php endif; ?>
-     
      <!-- <p class="am-margin-xs">&nbsp;&nbsp;&nbsp;川菜</p> -->
    </div>
+
   <?php else:?>
+    <?php if(isset($_SESSION['userinfo'])): ?>
+     <?php if ($_SESSION['userinfo']): ?>
+      <div class="userhead bred">
+       <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
+       <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> 
+        <?php if (!isset($users[0]['userphone'])): ?>
+          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
+        <?php else: ?>
+          
+        <?php endif ?>
+       
+
+       </div>
+     <?php else: ?>
     <div class="userhead bred">
        <img class="am-circle" src="skin/img/vip.png"/>
        <div class="am-header-title am-margin-sm"><a href="<?php echo site_url('home/login2')?>" class="white">登录</a> / <a href="<?php echo site_url('home/register')?>" class="white">注册</a></div>
        <!-- <p class="am-margin-xs">重口味 &nbsp;&nbsp;&nbsp;川菜</p> -->
      </div>
+   <?php endif;?>
+   <?php endif;?>
   <?php endif;?>
 
      <div class="am-list-news-bd asp">
   <ul class="am-list userl">
   <?php if(isset($_SESSION['phone'])):?>
+    <?php if (isset($users[0]['name'])): ?>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/vip?name=').$users[0]['name'].'&balance='.$users[0]['balance']?>" class="am-list-item-hd "><img src="skin/img/bc.png" alt=""> 会员卡</a>  
       </li>
+    <?php else: ?>
+      
+    <?php endif ?>
+      
     <?php endif;?>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/cart')?>" class="am-list-item-hd "><img src="skin/img/cl.png" alt=""> 购物车</a> 

@@ -7,7 +7,7 @@
   <!-- header -->
   <header data-am-widget="header" am-header-fixed class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
-      <a href="javascript:" onclick="javascript:history.go(-1);">
+      <a href='<?php echo site_url('home/cart'); ?>'>
         <i class="am-header-icon am-icon-chevron-left"></i>
       </a>
     </div>

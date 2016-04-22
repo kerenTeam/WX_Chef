@@ -4,7 +4,7 @@
 <body>
 <!-- header -->
 <header data-am-widget="header" class="am-header am-header-default topform">
-  <div class="am-header-left am-header-nav"> <a href="javascript:" onclick="javascript:history.go(-1);"> <i class="am-header-icon am-icon-chevron-left"></i> </a> </div>
+  <div class="am-header-left am-header-nav">  <a href="<?php echo site_url('home/catr');?>"> <i class="am-header-icon am-icon-chevron-left"></i> </a> </div>
   <h1 class="am-header-title"> 换一换 </h1>
 </header>
   <div class="cmn cmnb am-list-news am-list-news-default" >

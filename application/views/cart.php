@@ -17,7 +17,8 @@
     <br>
     <br>
     <br>
-    <center><div class="am-margin">购物车空空如也，老鼠都是含着泪离开的~~</div></center>
+    <center><div class="am-margin">菜篮子还是空的</div></center>
+    <center><div class="am-margin"><a href="<?=site_url('home/cailan');?>" class="am-u-sm-12 am-btn bgreen go">去点菜</a></div></center>
 <?php else:;?>
 
 <form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">

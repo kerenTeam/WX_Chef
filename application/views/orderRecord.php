@@ -2,7 +2,7 @@
   <style>ul,.am-list{margin-bottom:-0.8rem!important;}</style>
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
-      <a href="javascript:" onclick="javascript:history.go(-1);">
+      <a href="<?php echo site_url('home/ucent');?>">
         <i class="am-header-icon am-icon-chevron-left"></i>
       </a>
     </div>
@@ -97,7 +97,7 @@
               echo "<a href='javascript:' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款成功</a>";
               break;
             case '8':
-              echo "<a href='' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
+              echo "<a href='".site_url('home/share')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
               echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
               break;
           }?>

@@ -1,7 +1,7 @@
 <body>
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
-      <a href="javascript:" onclick="javascript:history.go(-1);">
+       <a href="<?php echo site_url('home/cailan');?>">
         <i class="am-header-icon am-icon-chevron-left"></i>
       </a>
     </div>

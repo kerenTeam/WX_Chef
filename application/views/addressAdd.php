@@ -29,7 +29,8 @@
 
 <!-- 网页公共的头部部分 -->
     <header id="header" class="header page-header top-form">
-    <a class="j-back-link back-wrap" href="javascript:" onclick="javascript:history.go(-1);">
+    
+    <a class="j-back-link back-wrap" href="javascript:" href="<?=site_url('home/ucent');?>">
         <i class="am-header-icon am-icon-chevron-left"></i>
     </a>
     <a class="addr-save j-addr-save" href="javascript:void(0);">保存</a>

@@ -66,7 +66,7 @@ wx.config({
 <body class="am-shadow">
     <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
-        <a href="javascript:" onclick="<?php echo site_url('home/orderR')?>">
+         <a href="<?php echo site_url('home/orderR');?>">
           <i class="am-header-icon am-icon-chevron-left"></i>
         </a>
       </div>

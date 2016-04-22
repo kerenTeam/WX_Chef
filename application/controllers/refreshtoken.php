@@ -1,24 +1,13 @@
 <?php
-        defined('APPID','wxa997c956cf6631b0');
-        defined('APPSECRET','ee3f2a43a6c508708780dba0c5bd7393');
-        $data = json_decode(file_get_contents("../access_token.json"));
-        $url= "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".APPID."&secret=".APP."";
+        $url= "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxa997c956cf6631b0&secret=ee3f2a43a6c508708780dba0c5bd7393";
         $result         = wxHttpsRequest($url);
-
-        //print_r($result);
         $jsoninfo       = json_decode($result, true);
         $access_token   = $jsoninfo["access_token"];
         $_SESSION['update_code']   = $jsoninfo["access_token"];
-        
-        // if ($access_token) {
-        //     $data->expire_time = time() + 7000;
-        //     $data->access_token = $access_token;
-        //     $fp = fopen("../access_token.json", "w");  
-        //     fwrite($fp, json_encode($data));
-        //     fclose($fp);
-        // }
 
-    
+        // var_dump($_SESSION['update_code']);
+        // var_dump($access_token); 
+
         function wxHttpsRequest($url,$data = null)
         {
             $curl = curl_init();
