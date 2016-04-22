@@ -15,7 +15,7 @@
 <div class="am-list-news-bd">
   <ul class="am-list">
 
-      <li class="am-g am-padding-sm safe">手机号<input type="tel" class="am-fr tel gray" readonly value="15708434450" > 
+      <li class="am-g am-padding-sm safe">手机号<input type="tel" class="am-fr tel gray" readonly value="<?=$_SESSION['phone'];?>" > 
       </li>
       <li class="am-g am-padding-sm safe">密码<a href="<?php echo site_url('home/pwdchange')?>" class="am-fr gray apn">修改</a>
       </li>

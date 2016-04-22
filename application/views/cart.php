@@ -1,4 +1,4 @@
-<body>
+<body styel="padding-bottom:5rem;">
   <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
   <div class="am-header-left am-header-nav">
@@ -24,7 +24,7 @@
 <form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">
   <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
     <div class="cmn cmnb am-list-news am-list-news-default" >
-      <div class="am-list-news-bd pabo">
+      <div class="am-list-news-bd">
        <?php if(!empty($carts)):?>
         <div class="am-text-center oln">点菜</div>
           <ul class="am-list cul">

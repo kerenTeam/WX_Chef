@@ -172,7 +172,12 @@
           <?php endif;?>
         </div> 
         </div>
-      <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
+      <?php if(!empty($address)):?>
+          <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
+      <?php else:?>
+          <button type="button" class="am-u-sm-12 am-btn bgray os" id="pay">去支付</button>
+      <?php endif;?>
+  
     </form>
  
   </body>
@@ -217,7 +222,7 @@
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
             discount = $('#youhui').text();
             payable = amount - discount - jifenmoney;
-            $('#pricetotal').text(payable.toFixed(2));
+            $('#pricetotal').text(payable);
             $('#yfje').val(payable.toFixed(2));
 
         });
@@ -227,12 +232,12 @@
            // alert(jifenmoney);
             jifenmoney = $('#jifenmoney').text();
             payable = amount - discount - jifenmoney;
-            $('#pricetotal').text(payable.toFixed(2));
+            $('#pricetotal').text(payable);
             $('#yfje').val(payable.toFixed(2));
     
         }else{
            payable = amount - discount;
-            $('#pricetotal').text(payable.toFixed(2));
+            $('#pricetotal').text(payable);
             $('#yfje').val(payable.toFixed(2));
         }
         })
@@ -268,9 +273,7 @@ function getorders(){
                url: "<?=site_url('pricesearch/payOrder');?>",
                data: 'GoodsPhone='+phone+"&address="+address+"&name="+name,
                success: function(msg){
-                  console.log(msg);
-                 //window.location.reload();
-                  $("#mainContent").html(msg);
+                  location.reload(true); 
                }
             });
             $('.tk').fadeOut(400);
