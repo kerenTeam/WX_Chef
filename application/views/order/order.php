@@ -217,7 +217,7 @@
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
             discount = $('#youhui').text();
             payable = amount - discount - jifenmoney;
-            $('#pricetotal').text(payable);
+            $('#pricetotal').text(payable.toFixed(2));
             $('#yfje').val(payable.toFixed(2));
 
         });
@@ -227,12 +227,12 @@
            // alert(jifenmoney);
             jifenmoney = $('#jifenmoney').text();
             payable = amount - discount - jifenmoney;
-            $('#pricetotal').text(payable);
+            $('#pricetotal').text(payable.toFixed(2));
             $('#yfje').val(payable.toFixed(2));
     
         }else{
            payable = amount - discount;
-            $('#pricetotal').text(payable);
+            $('#pricetotal').text(payable.toFixed(2));
             $('#yfje').val(payable.toFixed(2));
         }
         })

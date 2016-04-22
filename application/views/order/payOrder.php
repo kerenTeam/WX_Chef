@@ -126,7 +126,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
         $balance  =  $userdata[0]['balance'];
          ?>
          <?php if ($balance >= $_SESSION['rePayData'][0]['MoneyAll']): ?>
-            <a href="<?php echo base_url().'index.php/orderWXPay/postOrderData?MenberMoney=1'?>" class="am-list-item-hd">&nbsp;&nbsp;&nbsp;<img src="skin/img/vp.png" class="payimg" alt="">&nbsp;会员卡支付
+            <a href="javascript:;" class="am-list-item-hd" id="vippay">&nbsp;&nbsp;&nbsp;<img src="skin/img/vp.png" class="payimg" alt="">&nbsp;会员卡支付
             <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
           </a>
          <?php else: ?>
@@ -138,7 +138,22 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
         </li>
       </ul>
      </div>
+      <!-- 会员卡支付弹框 -->
+      <div class="tk" style="display: none;">
+         <div class="tkcontent bwhite tkvip" style="background: white;border-radius: 5px;">
+           <div class="tktxt2">
+              <div class="am-text-center am-text-lg am-margin-sm am-margin-bottom-xs">会员卡支付</div> 
+                <hr data-am-widget="divider" style="margin:0;" class="am-divider am-divider-default" /> 
+                <div class="acm am-text-center">
+                   <strong>至尊金卡</strong><br>当前余额<strong class="pink am-margin-left-sm am-icon-cny">300</strong>
+                </div> 
+            </div>
 
+          <button type='button' class="am-u-sm-6 bno gray closem" onclick="noorders();">取消</button>
+
+          <button type='button' id="sub" class="am-u-sm-6 bno green">提交</button>
+          </div>
+     </div>
 
      <div class="am-shadow fpa preduce">
       <p class="htit sad am-cf am-text-center"><span class="am-fl">其他支付方式</span> 
@@ -172,4 +187,20 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
       </div>
     </form>
   </body>
+<script src="skin/js/jquery.min.js"></script>
+<script>
+     $(function(){
+         // 弹出添加地址弹框
+         $('#vippay').click(function() { 
+          $('.tk').fadeIn(400);
+        });
+         $('.closem').click(function() { 
+          $('.tk').fadeOut(400); 
+        });n
+         $('#sub').click(function() {
+           $('.tk').fadeOut(400);
+           window.location.href="<?php echo base_url().'index.php/orderWXPay/postOrderData?MenberMoney=1'?>";
+         });
+        })
+</script>
 </html>
