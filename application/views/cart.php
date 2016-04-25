@@ -252,7 +252,7 @@ function doaction(obj) {
           sercheck.checked = false;
           cd.style.display="none";
         }
-         serinput.value = sernum;
+        serinput.value = sernum;
         servTotal.value = sernum*parseFloat(serprice.innerHTML); console.log(servTotal.value);
         allmoney.innerHTML = parseFloat(allmoney.innerHTML)-parseFloat(serprice.innerHTML);
  }

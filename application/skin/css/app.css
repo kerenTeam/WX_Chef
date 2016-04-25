@@ -23,6 +23,9 @@ body {
 .bgray{
 	background-color:gray;
 }
+.bwhite{
+	background-color:white;
+}
 .am-scimg{
      width: 5rem;
     height: 5rem;

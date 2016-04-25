@@ -1,102 +1,105 @@
-
-    <script>
-        var MT_WM = window.MT_WM || {};
-        MT_WM.TimeTracker = {rt: 1458019082311, st: Date.now()};
-        MT_WM.logFirstScreenTime = function () {
-            MT_WM.TimeTracker.fst = Date.now();
-        };
-        window.addEventListener('load', function () {
-            //保存性能时间
-            MT_WM.TimeTracker.lt = Date.now();
-        });
-        MT_WM.STATIC_ROOT = 'http://xs01.meituan.net/waimai_i/56e1569a';
-        function delayGo(u, t) {
-            setTimeout(function () {
-                if (typeof u == 'string') location = u;
-                else if (typeof u == 'function') u();
-            }, (t == null ? 300 : t));
-        }
-    </script>
- <script src="skin/js/ga.js"></script>
-
-    <link rel="stylesheet" href="skin/css/globe.css">
-
-    <link rel="stylesheet" href="http://xs01.meituan.net/waimai_i/css/page/address/address_list.583080e3.css">
-
-</head>
-<body class="i"> 
-
-	  <header data-am-widget="header" class="am-header am-header-default topform">
-      <div class="am-header-left am-header-nav">
-          <a href="<?=site_url('home/ucent');?>">
-
-                <i class="am-header-icon am-icon-chevron-left"></i>
-          </a>
-      </div>
-
-      <h1 class="am-header-title">
-          我的地址
-      </h1>
+<body>
+  <!-- header -->
+  <header data-am-widget="header" data-am-sticky class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
+  <div class="am-header-left am-header-nav">
+    <a href="<?php echo site_url('home/index')?>">
+      <i class="am-header-icon am-icon-chevron-left"></i>
+    </a>
+  </div>
+  <h1 class="am-header-title">
+  菜篮子
+  </h1>
+  
+</header>
+<form action="" method="" enctype="multipart/form-data">
  
-  </header>
+  <!-- 菜品选择 --> <!-- style="height: 100%;overflow-y:auto;padding-bottom: 8.5rem;" -->
+  <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
+    <div class="cmn cmnb am-list-news am-list-news-default" >
+      <div class="am-list-news-bd">
+        <p id="1">热菜</p>
+        <ul class="am-list">
+          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+            <div class="am-u-sm-4 am-list-thumb">
+              <a href="<?php echo site_url('home/food')?>" class="vimg">
+                <img src="skin/img/product/rjx.jpg" alt="蓉记姜葱香辣蟹168"/>
+              </a>
+            </div>
+            <div class=" am-u-sm-8 am-list-main">
+              <h3 class="am-list-item-hd"><a href="<?php echo site_url('home/food')?>" class="black">蓉记姜葱香辣蟹</a></h3>
+              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
+              <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg">100</span>份</div>
+              <div class="pr"><i class="am-icon-cny"></i><span class="price">168</span><span class="am-text-xs gray"> /份</span></div>
+              <input type="hidden" class="unit" value="2">
+              <div class="foodNum">
+                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
+                <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
+              </div>
+            </div>
+          </li>
+          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+            <div class="am-u-sm-4 am-list-thumb">
+              <a href="<?php echo site_url('home/food')?>" class="vimg">
+                <img src="skin/img/product/lrjd.jpg" alt="烂肉豇豆  28"/>
+              </a>
+            </div>
+            <div class=" am-u-sm-8 am-list-main">
+              <h3 class="am-list-item-hd"><a href="<?php echo site_url('home/food')?>" class="black">烂肉豇豆</a></h3>
+              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
+              <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="vimg">100</span>份</div>
+              <div class="pr"><i class="am-icon-cny"></i><span class="price">28</span><span class="am-text-xs gray"> /份</span></div>
+              <input type="hidden" class="unit" value="10">
+              <div class="foodNum">
+                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
+                <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
+              </div>
+            </div>
+          </li>
 
+      
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
+    <a href="<?php echo site_url('home/cart')?>">
+      <div class="am-u-sm-8 a">
+        <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney">总价</span>
+        <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
+      </div>
+      <div class="am-u-sm-4 b">
+        
+        <button type="submit" class="am-btn am-btn-success">确认</button>
+        
+      </div>
+    </a>
+  </div>
+</form>
+<script src="skin/js/jquery.min.js"></script>
+<script src="skin/js/amazeui.min.js"></script>
+<script src="skin/js/num_unit.js"></script>
+<script> 
 
-<a class="address-add asa" href="<?php echo site_url('home/addressAdd')?>">
-    <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-    <span>新增地址</span>
-</a>
+ $(function(){
+ 
+var inputs = $('.numTxt');
+inputs.each(function() {
+var numI=$(this).val();
+if(numI == 0){
+$(this).css('display','none');
+$(this).parent('.foodNum').find('.reduce').css('display','none');
+}
+else{
+$(this).css('display','inline-block');
+$(this).parent('.foodNum').find('.reduce').css('display','inline-block');
+}
+});
 
-    <ul id="address-list" class="address-list myaddress-list">
-            <li data-addr-id="8636455"> 
-                        <input data-node="addr-data" type="hidden" name="phone" value="15708434450"/>
-                        <input data-node="addr-data" type="hidden" name="gd_addr_type" value="餐饮服务;中餐厅;中餐厅"/>
-                        <input data-node="addr-data" type="hidden" name="bind_type" value="15"/>
-                        <input data-node="addr-data" type="hidden" name="id" value="8636455"/>
-                        <input data-node="addr-data" type="hidden" name="house_number" value="11-02"/>
-                        <input data-node="addr-data" type="hidden" name="address" value="大业美食城"/>
-                        <input data-node="addr-data" type="hidden" name="name" value="王菲"/>
-                        <input data-node="addr-data" type="hidden" name="gender" value="先生"/>
-                        <input data-node="addr-data" type="hidden" name="longitude" value="104069102"/>
-                        <input data-node="addr-data" type="hidden" name="latitude" value="30653777"/>
-                <div class="address-info">
-                    <p class="customer-info"><span class="contect-name">王菲</span><span class="contect-gender">先生</span><span class="contect-phone">15708434450</span></p>
-                    <p class="address-dtl"><span class="contect-address">大业美食城</span> <span class="contect-number">11-02</span></p>
-                </div>
-                <div class="contect-button">
-                    <a class="dele" href="javascript:;">删除</a>
-                    <a class="edit" href="<?php echo site_url('home/editAddress')?>">编辑</a>
-                </div>
-            </li>
-    </ul>
+})
 
-<script src="http://xs01.meituan.net/waimai_i/js/lib/wm_lib.578b6b32.js"></script>
-
-<script>require.config({
-    baseUrl: "http://xs01.meituan.net/waimai_i/56e1569a/js",
-    shim: {
-        'zepto': {
-            exports: 'Zepto'
-        },
-        'jquery': {
-            exports: 'Zepto'
-        }
-    },
-    paths: {
-        'zepto': 'fe_common/lib/zepto',
-        'jquery': 'fe_common/lib/zepto'
-    }
-});</script>
-
-<script>Raven.config('http://e284c96b17d24de69b3ac24cae61c5d0@sentry.sankuai.com/78').install();</script>  <script src="http://xs01.meituan.net/waimai_i/js/page/address/address_list.3fc591a1.js"></script>
-<script>
-    require(['page/address/address_list'], function(page) {
-        page.init({
-            _baseurl_ : '',
-            source : '1',
-            csrfToken: 'w73NQP9xMB70N4FOY/3kxGClIi6krxg428bnpRZPeHmNjaewYA1owrUJ1WNxLbrY' //anti-CSRF
-        });
-    });
 </script>
-
 </body>
 </html>
