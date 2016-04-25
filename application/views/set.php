@@ -16,9 +16,16 @@
           <i class="am-header-icon am-icon-chevron-left"></i>
         </a>
       </div>
+      <?php if (isset($_SESSION['userinfo']['nickname'])): ?>
+      <h1 class="am-header-title">
+      <?=$_SESSION['userinfo']['nickname'];?>
+      </h1>
+      <?php else: ?>
       <h1 class="am-header-title">
       <?=$user[0]['username'];?>
       </h1>
+      <?php endif ?>
+     
       <div class="am-header-right am-header-nav">
       <input type="hidden" name='UserId' value="<?=$user[0]['userid'];?>"/>
         <input type="submit" class="setf" value="确定">
@@ -43,10 +50,10 @@
           </div>
 
         </li>
-        <li class="am-g am-list-item-dated">
+        <li class="am-g am-list-item-dated" style="color:gray;">
           <div class="am-u-sm-4">昵称</div>
           <div class="am-u-sm-8">
-            <input type="text" value="<?=$_SESSION['userinfo']['nickname'];?>" placeholder="未填写" name='UserName'>
+            <?=$_SESSION['userinfo']['nickname'];?>
           </div>
         </li>
 
