@@ -1,39 +1,100 @@
+<link rel="stylesheet" type="text/css"  href="skin/css/style.css">
+<script src="skin/js/jquery.min.js"></script>
+<script src="skin/js/custom.js"></script>
+<script src="skin/js/ender.min.js"></script>
+<script src="skin/js/selectnav.js"></script>
+<script src="skin/js/twitter.js"></script>
+<script src="skin/js/effects.js"></script>
+<link href="skin/css/default_skin.css" type="text/css" rel="stylesheet" />
+<link href="skin/css/skeleton.css" type="text/css" rel="stylesheet" />
+<link href="skin/css/imagebox.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="skin/js/jquery.sky.carousel-1.0.min.js"></script>
+<!--  <script>
+    $(document).ready(function()
+        { 
+         
 
-<style>
-.am-slider-c3{
-  margin-top: 8%;
-  background:none;
-  height:100%;
-  box-shadow:none!important;
- }
- .am-direction-nav a{
-  display:block!important;
- }
-  .am-slider-c3 .am-slider-desc {
-       bottom: 10px;
-    right: 90px;
-    height: 30px;
-    left: 15%;
-    padding-top: 2px;
-    padding-right: 5px;
-    display: block;
-    padding-left: 10px;
-}
+        });
+ </script> -->
+<script type="text/javascript">
 
-.am-slider .am-slides img {
-    width: 75%;
-    display: block;
-    margin: auto; 
-}
-.am-slider-c3 img {
-   height:auto;
-}
-@media only screen and (max-width:320px) {
-	.am-slider-c3{
-  margin-top: 4.3%;
-	}
+
+
+  $(function() {
+     var width = $(window).width(); 
+          var height = $(window).height();
+         $(".sky-carousel").attr("height",height+'px');
+         if(width>320 && width<=375){
+           $('.sky-carousel').carousel({
+            itemWidth: 300,
+            itemHeight: 351,
+            distance: -10,
+            selectedItemDistance: 50,
+            selectedItemZoomFactor: 0.8,
+            unselectedItemZoomFactor: 0.6,
+            unselectedItemAlpha: 0.8,
+            motionStartDistance: 160,
+            topMargin: 10,
+            gradientStartPoint: 0.1, 
+            gradientOverlaySize: 190,
+            selectByClick: false
+          });
+         }
+          if(width>375 && width<=414){
+           $('.sky-carousel').carousel({
+            itemWidth: 350,
+            itemHeight: 351,
+            distance: -10,
+            selectedItemDistance: 50,
+            selectedItemZoomFactor: 0.8,
+            unselectedItemZoomFactor: 0.6,
+            unselectedItemAlpha: 0.8,
+            motionStartDistance: 160,
+            topMargin: 10,
+            gradientStartPoint: 0.1, 
+            gradientOverlaySize: 190,
+            selectByClick: false
+          });
+         }
+         if(width>414){
+           $('.sky-carousel').carousel({
+            itemWidth: 400,
+            itemHeight: 351,
+            distance: -10,
+            selectedItemDistance: 100,
+            selectedItemZoomFactor: 0.8,
+            unselectedItemZoomFactor: 0.6,
+            unselectedItemAlpha: 0.8,
+            motionStartDistance: 160,
+            topMargin: 10,
+            gradientStartPoint: 0.1, 
+            gradientOverlaySize: 190,
+            selectByClick: false
+          });
+         }
+    $('.sky-carousel').carousel({
+      itemWidth: 250,
+      itemHeight: 351,
+      distance: -10,
+      selectedItemDistance: 50,
+      selectedItemZoomFactor: 0.8,
+      unselectedItemZoomFactor: 0.6,
+      unselectedItemAlpha: 0.8,
+      motionStartDistance: 160,
+      topMargin: 10,
+      gradientStartPoint: 0.1, 
+      gradientOverlaySize: 190,
+      selectByClick: false
+    });
+  });
+</script>
+<style type="text/css">
+ 
+  @media only screen and (min-width: 960px) {#portfolio-wrapper img {min-height: 147px;}} 
+  @media only screen and (min-width: 768px) and (max-width: 959px) {#portfolio-wrapper img {min-height: 115px;}}
+
 </style>
-<body>
+<body class="bwhite">
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
        <a href="<?php echo site_url('home/index');?>">
@@ -46,45 +107,55 @@
     
   </header>
 
-  <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{"controlNav":false}' >
-  <ul class="am-slides">
-      <li>
-        <a href="<?php echo site_url('home/partyInfo')?>">
-         <img src="skin/img/party1.png" alt="">
-          <div class="am-slider-desc">聚会套餐 989系列</div>
-        </a> 
-      </li>
-       <li>
-        <a href="<?php echo site_url('home/partyInfo2')?>">
-         <img src="skin/img/party1.png" alt="">
-          <div class="am-slider-desc">商务套餐 599系列</div>
-        </a> 
-      </li>
-       <li>
-       <a href="<?php echo site_url('home/partyInfo3')?>">
-         <img src="skin/img/party1.png" alt="">
-          <div class="am-slider-desc">温馨家宴 1299系列</div>
-        </a> 
-      </li>
-       <li>
-       <a href="<?php echo site_url('home/partyInfo4')?>">
-         <img src="skin/img/party1.png" alt="">
-          <div class="am-slider-desc">喜宴套餐 989系列</div>
-        </a> 
-      </li>
-  </ul>
-</div> 
- <script src="skin/js/jquery.min.js"></script>
- <script src="skin/js/amazeui.min.js"></script>
- <script>
-    $(document).ready(function()
-        { 
-          var width = $(window).width();
-          var height = $(window).height();
-         $(".am-slides li img").attr("height",height+'px');
+  <!-- 960 Container -->
+  <div class="container"> 
+    <!-- Slider -->
+    <div class="sixteen columns">
+      <div class="project">
+        <div class="sky-carousel">
+          <div class="sky-carousel-wrapper">
+            <ul class="sky-carousel-container">
+         
+              <li>  <a href="<?php echo site_url('home/partyInfo')?>">
+                <img src="skin/img/party1.png" alt="" /> </a> 
+                <div class="sc-content">
+                  <h2> <a href="<?php echo site_url('home/partyInfo')?>">聚会套餐 989系列</a></h2>
+                </div>
+              </li>
+             
+             
+              <li><a href="<?php echo site_url('home/partyInfo2')?>">
+                <img src="skin/img/party1.png" alt="" /> </a>
+                <div class="sc-content">
+                 <h2> <a href="<?php echo site_url('home/partyInfo2')?>">商务套餐 599系列</a></h2> 
+                </div>
+              </li>
+             
+             
+              <li> <a href="<?php echo site_url('home/partyInfo3')?>">
+                <img src="skin/img/party1.png" alt="" /></a>
+                <div class="sc-content">
+                 <h2> <a href="<?php echo site_url('home/partyInfo3')?>">温馨家宴 1299系列</a></h2> 
+                </div>
+              </li>
+              
+              
+              <li> <a href="<?php echo site_url('home/partyInfo4')?>">
+                <img src="skin/img/party1.png" alt="" /></a>
+                <div class="sc-content">
+               <h2> <a href="<?php echo site_url('home/partyInfo4')?>">喜宴套餐 989系列</a></h2> 
+                </div>
+              </li>   
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        });
- </script> 
+  </div>
+  <!-- End 960 Container --> 
 
 </body>
+
 </html>

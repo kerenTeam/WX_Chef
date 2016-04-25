@@ -49,7 +49,7 @@
         <p class="orderbot am-cf">
 
            <a href="javascript:" class="am-fr am-btn am-btn-primary bgreen am-btn-xs checkOrder"> 确定</a>
-          <a href="javascript:" class="am-fr am-btn am-btn-primary am-btn-xs bgray cancelO"> 取消
+          <a href="javascript:" class="am-fr am-btn am-btn-primary am-btn-xs bgray cancelO"> 后台审核
           </a>
           <a href="<?php echo site_url('chef/chefOrder')?>" class="am-fr am-btn am-btn-primary bpurple am-btn-xs"> 详情</a>
          
@@ -126,7 +126,7 @@
         <p class="orderbot am-cf">
 
            <a href="javascript:" class="am-fr am-btn am-btn-primary bgreen am-btn-xs checkOrder"> 确定</a>
-          <a href="javascript:" class="am-fr am-btn am-btn-primary am-btn-xs bgray cancelO"> 取消
+          <a href="javascript:" class="am-fr am-btn am-btn-primary am-btn-xs bgray cancelO"> 后台审核
           </a>
           <a href="<?php echo site_url('chef/chefOrder')?>" class="am-fr am-btn am-btn-primary bpurple am-btn-xs"> 详情</a>
          
@@ -185,8 +185,8 @@
         return true; 
     });
      $('.cancelO').click(function() { 
-      if(confirm("确认取消此订单吗？")){
-         $(this).prev('.checkOrder').text('已取消');
+      if(confirm("订单有问题，确认提交后台审核吗？")){
+         $(this).prev('.checkOrder').text('审核中');
          $(this).css('display','none');
        }
       else{
