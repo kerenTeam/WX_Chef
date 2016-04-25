@@ -2,43 +2,17 @@
   <body>
   <?php if(!empty($users)):?>
    <div class="userhead bred">
-   <?php if(isset($_SESSION['userinfo'])): ?>
-     <?php if ($_SESSION['userinfo']): ?>
-       <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
-       <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> 
-        <?php if (empty($users[0]['userphone'])): ?>
-          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
-        <?php else: ?>
-          
-        <?php endif ?>
-     <?php else: ?>
+     
        <img class="am-circle" src="<?php echo IP.$users[0]['userimage'];?>"/>
-       <h3 class="am-header-title am-margin-sm"><?=$users[0]['userphone'];?></h3>
-     <?php endif;?>
-    <?php endif; ?>
-     <!-- <p class="am-margin-xs">&nbsp;&nbsp;&nbsp;川菜</p> -->
+       <h3 class="am-header-title am-margin-sm"><?=$users[0]['userphone'];?>&nbsp;&nbsp;&nbsp;&nbsp;当前积分:<?=$users[0]['integral']?></h3>
+  
    </div>
-
-  <?php else:?>
-    <?php if(isset($_SESSION['userinfo'])): ?>
-     <?php if ($_SESSION['userinfo']): ?>
-      <div class="userhead bred">
-       <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
-       <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> 
-       
-          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a> / <a href="<?php echo site_url('home/login2')?>" class="white">登录</a>
-
-       
-
-       </div>
-     <?php else: ?>
+  <?php else: ?>
     <div class="userhead bred">
        <img class="am-circle" src="skin/img/vip.png"/>
        <div class="am-header-title am-margin-sm"><a href="<?php echo site_url('home/login2')?>" class="white">登录</a> / <a href="<?php echo site_url('home/register')?>" class="white">注册</a></div>
        <!-- <p class="am-margin-xs">重口味 &nbsp;&nbsp;&nbsp;川菜</p> -->
      </div>
-   <?php endif;?>
-   <?php endif;?>
   <?php endif;?>
 
      <div class="am-list-news-bd asp">
