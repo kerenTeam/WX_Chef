@@ -250,7 +250,7 @@ class home extends CI_Controller
 		$fen = file_get_contents(POSTAPI.'API_Food?dis=number&foodid='.$id);
 		$data['fen'] = json_decode(json_decode($fen),true);
 		// 菜品评价
-		$commen = file_get_contents(POSTAPI.'API_Food?dis=pl&foodid='.$id);
+		$commen = file_get_contents(POSTAPI.'API_Food?dis=spl&foodid='.$id);
 	    $data['evaluate'] = json_decode(json_decode($commen),true);
 		$this->load->view('food',$data);
 	}
