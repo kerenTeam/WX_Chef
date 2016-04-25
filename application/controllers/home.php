@@ -46,7 +46,7 @@ class home extends CI_Controller
 		if($_POST){
 			$arr = array(
 				'UserPhone' => $this->input->post('UserPhone'),
-				'UserPwd' => $this->input->post('UserPwd'),
+				'UserPwd' => md5($this->input->post('UserPwd')),
 				);
 			$isok = json_encode($arr);
 			$a = curl_post(POSTAPI."API_User?dis=login",$isok);
@@ -70,11 +70,47 @@ class home extends CI_Controller
 	public function register(){
 		$this->load->view('register');
 	}
+	
 
 	//密码和手机号修改
 	public function safe(){
-		$this->load->view('safe');
+		if($_GET){
+			
+			$data['userid'] = $_GET['id'];
+			$data['pwd'] = $_GET['pwd'];
+			$this->load->view('safe',$data);
+		}
 	}
+	/* 修改密码 */
+	public function editpwd(){
+		if($_POST){
+			$arr['UserId'] = $_POST['userid'];
+			$pwd = $_POST['pwd'];
+			$password = $_POST['userpwd'];
+			$newpwd = $_POST['newpwd'];
+			$pwded = $_POST['pwded'];
+			
+			if(md5($password) != $pwd){
+				echo "<script>alert('你的原密码输入错误！');history.go(-1);</script>";
+				exit;
+			}
+			if($newpwd != $pwded){
+			    echo  "<script>alert('确认密码输入错误！');history.go(-1);</script>";
+				exit;
+			}
+			$arr['UserPwd'] = md5($newpwd);
+			$userjson = json_encode($arr);
+			$pwdok = curl_post(POSTAPI.'API_User?dis=pwd',$userjson);
+			if($pwdok == 1){
+				echo "<script>alert('密码修改成功！');window.location.href='login';</script>";
+			}else{
+				echo "<script>alert('密码修改失败！');history.go(-1);</script>";
+
+			}
+			
+		}
+	}
+	
 	public function registeradd(){
 
 		 $reigsterFrom = array('UserPwd' => md5($this->input->post('UserPwd')),'UserPhone' => $this->input->post('UserPhone'));
@@ -133,6 +169,7 @@ class home extends CI_Controller
 
 	//菜单 by wf
 	public function cailan(){
+		//var_Dump($_SESSION['shoping']);
 		$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
 		$data['cates'] = json_decode(json_decode($catejson),true);
 		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=d');
@@ -553,7 +590,7 @@ class home extends CI_Controller
     		$q = $_POST['search'];
     		$search = file_get_contents(POSTAPI."API_Food?dis=ss&foodid=".$q);
 
-    		$data['search'] = json_decode(json_decode($search));
+    		$data['search'] = json_decode(json_decode($search),true);
     		$this->load->view('search',$data);
     	}else{
     		// $data['sear'] = get_cookie('search');

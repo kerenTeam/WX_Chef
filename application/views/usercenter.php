@@ -25,11 +25,9 @@
       <div class="userhead bred">
        <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
        <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> 
-        <?php if (!isset($users[0]['userphone'])): ?>
-          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
-        <?php else: ?>
-          
-        <?php endif ?>
+       
+          <a href="<?php echo site_url('home/register')?>" >绑定手机号</a> / <a href="<?php echo site_url('home/login2')?>" class="white">登录</a>
+
        
 
        </div>
@@ -70,11 +68,11 @@
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/set')?>" class="am-list-item-hd "><img src="skin/img/set.png" alt=""> 个人设置</a> 
       </li>
-       <?php if(isset($_SESSION['phone'])):?>
+        <?php if(isset($_SESSION['phone'])):?>
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/safe')?>" class="am-list-item-hd "><span class="am-icon-lock lock"></span> 账号安全</a> 
+          <a href="<?php echo site_url('home/safe?id=').$users[0]['userid'].'&pwd='.$users[0]['userpwd'];?>" class="am-list-item-hd "><span class="am-icon-lock lock"></span> 账号安全</a> 
       </li>
-      <?php endif;?>
+	  <?php endif;?>
   </ul>
     <ul class="am-list userl">
     <?php if(isset($_SESSION['phone'])):?>
