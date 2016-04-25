@@ -476,6 +476,11 @@ class home extends CI_Controller
 		}
 	}
 	
+	//单个菜品评价
+	public function singleComment(){
+
+		$this->load->view('singleComment');
+	}
 
    //个人中心
 	public function ucent(){

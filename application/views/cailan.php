@@ -33,7 +33,7 @@
       <div class="am-list-news-bd">
   
       <?php foreach($cates as $val):?>
-        <p id="<?=$val['foodcategoryid']?>"><?=$val['name'];?></p>
+        <div class="cptit" id="<?=$val['foodcategoryid']?>"><span><?=$val['name'];?></span></div>
         <ul class="am-list">
         <?php foreach($foods as $v):?>
   

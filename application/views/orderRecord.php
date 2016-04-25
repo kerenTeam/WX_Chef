@@ -71,7 +71,7 @@
             <!-- 订单价格 -->
             <h3 class="am-list-item-hd"><span class="am-icon-cny"><?=$v['DiscountMoney'];?></span></h3>
             <!-- 订单数量 -->
-            <!-- <div class="am-list-item-text"></div> -->
+            <a href='<?php echo site_url('home/singleComment');?>"' class='sharecom'>晒单</a>
           </div>
         </li>
       <?php endforeach;?>
