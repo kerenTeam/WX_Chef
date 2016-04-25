@@ -515,8 +515,10 @@ class home extends CI_Controller
 	
 	//单个菜品评价
 	public function singleComment(){
-
-		$this->load->view('singleComment');
+		$data['foodid'] = $_GET['id'];
+		$data['foodpic'] = $_GET['foodpic'];
+		$data['POOrderId'] = $_GET['POOrderId'];
+		$this->load->view('singleComment',$data);
 	}
 
    //个人中心
@@ -617,10 +619,6 @@ class home extends CI_Controller
     			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone'].'&Phone=');
     			$data['record'] = json_decode(json_decode($jsonorder),true);
        		}
-    	}else if(isset($_SESSION['temporaryOrder'])){
-
-    		$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone=&Phone='.$_SESSION['temporaryOrder']);
-    			$data['record'] = json_decode(json_decode($jsonorder),true);
     	}else{
     		$data['record'] = '';
     	}

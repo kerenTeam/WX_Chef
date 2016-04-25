@@ -86,7 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 defined('randNms')             OR define('randNms', rand(100000,999999)); //长度为6位的随机数
 
 defined('IP')                  OR define('IP','http://211.149.195.183:88');
-defined('POSTAPI')             OR define('POSTAPI',"http://211.149.195.183:88/API/");
+defined('POSTAPI')             OR define('POSTAPI',"http://192.168.199.154/API/");
 
 //～～～～～～～～～～～～～～～～～～～～～微信配置～～～～～～～～～～～～～～～～～～～～～～～
 defined('APPID')               OR define('APPID', 'wxa997c956cf6631b0'); 

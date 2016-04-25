@@ -30,33 +30,6 @@
       <input type="radio" name="radiocomt" value="3" data-am-ucheck> 差评
     </label>
       <ul class="clist">
-        <li>菜品<span class="Select">
-        <a onMouseOver="javascript:setProfix('star_');showStars(1,'rating');"
-          onMouseOut="javascript:setProfix('star_');clearStars('rating');"
-          href="javascript:setProfix('star_');setStars(1,'rating');">
-        <img id="star_1" title="差(1)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('star_');showStars(2,'rating');"
-          onMouseOut="javascript:setProfix('star_');clearStars('rating');"
-          href="javascript:setProfix('star_');setStars(2,'rating');">
-        <img id="star_2" title="一般(2)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('star_');showStars(3,'rating');"
-          onMouseOut="javascript:setProfix('star_');clearStars('rating');"
-          href="javascript:setProfix('star_');setStars(3,'rating');">
-        <img id="star_3" title="好(3)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('star_');showStars(4,'rating');"
-          onMouseOut="javascript:setProfix('star_');clearStars('rating');"
-          href="javascript:setProfix('star_');setStars(4,'rating');">
-        <img id="star_4" title="很好(4)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('star_');showStars(5,'rating');"
-          onMouseOut="javascript:setProfix('star_');clearStars('rating');"
-          href="javascript:setProfix('star_');setStars(5,'rating');">
-        <img id="star_5" title="非常好(5)" src="skin/img/icon_star_1.gif"></a></span></li>
-        
-        
         
         <li>厨师<span class="Select">
         <a onMouseOver="javascript:setProfix('taste_');showStars(1,'taste');"
@@ -192,7 +165,6 @@ $(function(){
 
    $('.publish').click(function(){
      var ratfen = $('input[name="radiocomt"]:checked').val();
-     var rating=$('#rating').val();
      var taste=$('#taste').val();
      var environment=$('#environment').val();
      var imgrouts = document.getElementsByClassName('hiddenImg');
@@ -205,7 +177,7 @@ $(function(){
      $.ajax({
       type: "POST",
       url:'<?=site_url("pricesearch/comsuc")?>',
-      data:'ratfen='+ratfen+'&rating='+rating+'&taste='+taste+'&environment='+environment+'&routes='+routes+'&comment='+comment+'&oid='+oid,
+      data:'ratfen='+ratfen+'&taste='+taste+'&environment='+environment+'&routes='+routes+'&comment='+comment+'&oid='+oid,
       success: function(data) {
         alert(data);
        window.location.href='<?php echo site_url("home/share");?>';
