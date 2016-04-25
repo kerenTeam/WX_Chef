@@ -647,6 +647,10 @@ class home extends CI_Controller
 
 		$this->load->view('cardGet');
 	}
+	public function address(){
+
+		$this->load->view('address');
+	}
 	//地址管理
 	public function address2(){
 		if(isset($_SESSION['phone'])){
