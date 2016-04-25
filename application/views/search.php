@@ -92,7 +92,7 @@
         </li>
         <li>
           <a href="<?php echo site_url('home/ucent')?>">
-            <span class=""><img src="skin/img/gr2.png" alt=""></span>
+            <span class=""><img src="skin/img/gr.png" alt=""></span>
             <span class="am-navbar-label">我的</span>
           </a>
         </li>
