@@ -55,7 +55,8 @@
           <div class="am-u-sm-4 am-text-center am-list-thumb"> <div class="vimg"> <img src="<?php echo IP.$val->thumbnail;?>" alt="<?=$val->foodname;?>"/> </div> </div>
           <div class=" am-u-sm-8 am-list-main">
             <h3 class="am-list-item-hd"><?=$val->foodname;?></h3>
-            <div class="months"><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span class="">123</span>份</div>
+            <div class="am-text-sm">主料：鸡肉</div>
+            <div class="am-text-sm">辅料：洋葱，大蒜，干辣椒，香菇</div>
             <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$val->foodprice;?></span></div>
          </a>
         </li>
@@ -68,6 +69,35 @@
       </ul>
     </div>
   </div>
+   <!-- footer -->
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
+      <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
+        <li >
+          <a href="<?php echo site_url('home/index')?>">
+            <span class=""><img src="skin/img/home1.png" alt=""></span>
+            <span class="am-navbar-label">首页</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('home/cart')?>">
+            <span class=""><img src="skin/img/clz.png" alt=""></span>
+            <span class="am-navbar-label">菜篮子</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('home/search')?>" class="active">
+            <span class=""><img src="skin/img/ss2.png" alt=""></span>
+            <span class="am-navbar-label">搜索</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('home/ucent')?>">
+            <span class=""><img src="skin/img/gr.png" alt=""></span>
+            <span class="am-navbar-label">我的</span>
+          </a>
+        </li>
+      </ul>
+    </div> 
   </body>
   <script src="skin/js/jquery.min.js"></script>
   <script>

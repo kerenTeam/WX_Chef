@@ -55,7 +55,7 @@ class pricesearch extends CI_Controller {
                         </span></span>';
                 $htmlstr .= '<a href="'.site_url("home/address2").'" class="am-list-item-hd ">'.$value["address"];
               
-                  $htmlstr .= '<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'.$value["memberaddressid"].'" data-am-ucheck checked></label></a> </li>';
+                  $htmlstr .= '<label class="am-radio am-fr label" style="margin-top:5rem;"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'.$value["memberaddressid"].'" data-am-ucheck checked></label></a> </li>';
 			}
 			$htmlstr .= "</ul>";
 			echo $htmlstr;
