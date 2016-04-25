@@ -77,7 +77,7 @@ class home extends CI_Controller
 	}
 	public function registeradd(){
 
-		 $reigsterFrom = array('UserPwd' => $this->input->post('UserPwd'),'UserPhone' => $this->input->post('UserPhone'));
+		 $reigsterFrom = array('UserPwd' => md5($this->input->post('UserPwd')),'UserPhone' => $this->input->post('UserPhone'));
          $reigsterData = json_encode($reigsterFrom);
 
          $isok = curl_post(POSTAPI."API_User?dis=xzyh",$reigsterData);
@@ -154,6 +154,16 @@ class home extends CI_Controller
 		$data['foods'] = $foods;
 		$this->load->view('cailan',$data);
 	}
+///
+///  ajax 实现实时菜价缓存
+///
+    public function ajaxtocart()
+    {	echo "<pre>";
+        var_dump($this->input->post());
+        echo "</pre>";
+    }
+
+
 	//点菜
 	public function buy(){
 

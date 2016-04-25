@@ -12,11 +12,6 @@
   菜谱
   </h1>
 
-
-
-
-  
-
 </header>
 
 <form action="<?=site_url('home/addcart');?>" method='post'  id='question' enctype="multipart/form-data">
@@ -38,7 +33,7 @@
       <div class="am-list-news-bd">
   
       <?php foreach($cates as $val):?>
-        <div class="cptit" id="<?=$val['foodcategoryid']?>"><span><?=$val['name'];?></span></div>
+        <p id="<?=$val['foodcategoryid']?>"><?=$val['name'];?></p>
         <ul class="am-list">
         <?php foreach($foods as $v):?>
   

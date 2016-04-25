@@ -11,6 +11,21 @@
   </h1>
 
 </header>
+
+<script type="text/javascript">
+function doaction(obj) {
+        $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/addcart'); ?>',
+            data: $(obj.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode).serialize(),
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    }
+</script>
+
+
 <?php if($carts == NULL && $taocan == NULL):?>
     <br>
     <br>
@@ -56,11 +71,13 @@
                 <h3 class="am-list-item-hd cartb"><?=$food[0]['foodname'];?></h3>
                 <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
                 <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]['foodprice'];?></span></div>
+                <input type="hidden" name="code[]" value="0">
                 <div class="fNum">
-                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false)"></span>
+
+                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
                   <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" 
                   name="numbers[]" value="<?=$cart['number'];?>">
-                  <span class="add am-icon-plus-circle green" onClick="handle(this, true)"></span>
+                  <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>
                  <a href="<?php echo site_url('home/change?id=').$food[0]['foodid'].'&pid='.$food[0]['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red ats2"></i></a>
@@ -98,10 +115,11 @@
                 <h3 class="am-list-item-hd cartb"><?=$food[0]['foodname'];?></h3>
                 <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
                 <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food[0]['foodprice']?></span></div>
+                 <input type="hidden" name="code[]" value="1">
                 <div class="fNum">
-                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false)"></span>
+                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
                   <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
-                  <span class="add am-icon-plus-circle green" onClick="handle(this, true)"></span>
+                  <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
