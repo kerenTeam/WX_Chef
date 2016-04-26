@@ -897,7 +897,21 @@ class home extends CI_Controller
 			}
 		}
 	}
+	//庆典
+	public function ceremony(){
 
+		$this->load->view('ceremony');
+	}
+    //雅致
+    public function elegance(){
+
+		$this->load->view('elegance');
+	}
+	//雅致 详情
+    public function eleganceInfo(){
+
+		$this->load->view('eleganceInfo');
+	}
 
 
 

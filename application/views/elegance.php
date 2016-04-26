@@ -112,7 +112,7 @@
               <li>  <a href="<?php echo site_url('home/partyInfo')?>">
                 <img src="skin/img/party1.png" alt="" /> </a> 
                 <div class="sc-content">
-                  <h2> <a href="<?php echo site_url('home/partyInfo')?>">聚会套餐 989系列</a></h2>
+                  <h2> <a href="<?php echo site_url('home/partyInfo')?>">钢琴艺术家</a></h2>
                 </div>
               </li>
              
@@ -120,7 +120,7 @@
               <li><a href="<?php echo site_url('home/partyInfo2')?>">
                 <img src="skin/img/party1.png" alt="" /> </a>
                 <div class="sc-content">
-                 <h2> <a href="<?php echo site_url('home/partyInfo2')?>">商务套餐 599系列</a></h2> 
+                 <h2> <a href="<?php echo site_url('home/partyInfo2')?>">小提琴艺术家</a></h2> 
                 </div>
               </li>
              
@@ -128,7 +128,7 @@
               <li> <a href="<?php echo site_url('home/partyInfo3')?>">
                 <img src="skin/img/party1.png" alt="" /></a>
                 <div class="sc-content">
-                 <h2> <a href="<?php echo site_url('home/partyInfo3')?>">温馨家宴 1299系列</a></h2> 
+                 <h2> <a href="<?php echo site_url('home/partyInfo3')?>">大提琴艺术家</a></h2> 
                 </div>
               </li>
               
@@ -136,7 +136,7 @@
               <li> <a href="<?php echo site_url('home/partyInfo4')?>">
                 <img src="skin/img/party1.png" alt="" /></a>
                 <div class="sc-content">
-               <h2> <a href="<?php echo site_url('home/partyInfo4')?>">喜宴套餐 989系列</a></h2> 
+               <h2> <a href="<?php echo site_url('home/partyInfo4')?>">乐队</a></h2> 
                 </div>
               </li>   
               
