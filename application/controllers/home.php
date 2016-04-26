@@ -899,10 +899,20 @@ class home extends CI_Controller
 			}
 		}
 	}
-	//庆典
+	//庆典主题
+	public function ceremonyType(){
+
+		$this->load->view('ceremonyType');
+	}
+	//庆典介绍
 	public function ceremony(){
 
 		$this->load->view('ceremony');
+	}
+	//庆典详情选择
+	public function CeremonyChose(){
+
+		$this->load->view('CeremonyChose');
 	}
     //雅致
     public function elegance(){
