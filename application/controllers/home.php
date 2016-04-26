@@ -910,8 +910,21 @@ class home extends CI_Controller
 
 		$this->load->view('eleganceInfo');
 	}
+    //净菜 vegetable
+    public function vegetable(){
 
+		$this->load->view('vegetable');
+	}
+    //服务 service
+    public function service(){
 
+		$this->load->view('service');
+	}
+	//发现
+	public function find(){
+
+		$this->load->view('find');
+	}
 
 
 }
