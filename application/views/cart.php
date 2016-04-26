@@ -182,10 +182,10 @@ function doaction(obj) {
       </div>
  
   </div>
-  <!-- footer -->
-    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
-      <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
-        <li >
+<!-- footer -->
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
+  <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
+    <li >
       <a href="<?php echo site_url('home/index')?>">
         <span class=""><img src="skin/img/home1.png" alt=""></span>
         <span class="am-navbar-label">首页</span>
@@ -198,19 +198,24 @@ function doaction(obj) {
       </a>
     </li>
     <li>
-      <a href="<?php echo site_url('home/search')?>">
-        <span class=""><img src="skin/img/ss.png" alt=""></span>
-        <span class="am-navbar-label">搜索</span>
+      <a href="<?php echo site_url('home/find')?>"> 
+        <span class="find">发现</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/customServ')?>">
+        <span class=""><img src="skin/img/kf.png" alt=""></span>
+        <span class="am-navbar-label">客服</span>
       </a>
     </li>
     <li>
       <a href="<?php echo site_url('home/ucent')?>">
-        <span class=""><img src="skin/img/gr.png" alt=""></span>
+        <span class=""><img src="skin/img/gr1.png" alt=""></span>
         <span class="am-navbar-label">我的</span>
       </a>
     </li>
-      </ul>
-    </div>
+  </ul>
+</div>
 </form>
 <?php endif;?>
 <script src="skin/js/jquery.min.js"></script>

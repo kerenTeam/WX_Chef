@@ -138,7 +138,7 @@
   <div class="am-u-sm-3">
     <a href="<?php echo site_url('home/elegance')?>">
       <img class="am-circle" src="skin/img/yaz.png"/>
-      <p class="purred">雅致</p>
+      <p class="purred">伴餐</p>
     </a>
   </div>
   <div class="am-u-sm-3">

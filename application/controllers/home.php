@@ -285,6 +285,10 @@ class home extends CI_Controller
 		}
 
 	}
+	//图文详情
+	public function lifeInfo2(){
+		 $this->load->view('lifeInfo2');
+	}
 	//宴会定制详情
 	public function partyInfo(){
 

@@ -97,7 +97,7 @@
       <li>
         <div class="am-gallery-item">
             <a href="<?=IP.$val['address']?>" class="">
-              <img src="<?=IP.$val['address']?>"  alt="<?=IP.$val['address']?>"/>
+              <img src="<?=IP.$val['address']?>"/>
             </a>
         </div>
       </li>
