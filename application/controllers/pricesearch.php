@@ -75,19 +75,67 @@ class pricesearch extends CI_Controller {
 		$r=move_uploaded_file($f['tmp_name'],$dest);
 		echo $dest;
 	}
+	// 单个菜品评价
+	public function singleComsuc()
+	{
+		if($_POST){
+			$arr['UserPhone'] = $_SESSION['phone'];
+			$arr['FoodScore'] = $_POST['rating'];
+			$arr["comment"] = $_POST['comment'];
+			$arr['Foodid'] = $_POST['oid'];
+			$arr['POOrderId'] = $_POST['PoorderId'];
 
+			if(isset($_POST['routes'])){
+				if($_POST['routes'] != ''){
+				$imgarr = explode(',',$_POST['routes']);
+				foreach ($imgarr as $key => $value) {
+					$path[$key] = $value;
+
+					$type = pathinfo($path[$key], PATHINFO_EXTENSION);
+					$data = file_get_contents($path[$key]);
+					$base[$key] = base64_encode($data);
+				}
+				$userimg = array();
+				foreach ($base as $k => $v) {
+					$userimg[$k] = "{'img':"."'".$v."'"."}";
+				}
+				$arr['imgs'] = $userimg;
+			}else{
+				$arr['imgs'] = '[]';
+			}
+			}else{
+				$arr['imgs'] = '[]';
+			}
+		
+			$jsonData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($arr))))));
+			$comment = curl_post(POSTAPI.'API_SingleFoodEvaluate',$jsonData);
+			if($comment == 1){
+				if(isset($path)){
+					if(count($path) > 1){
+						foreach ($path as $key => $value) {
+							@unlink ($value);
+						}
+					}else{
+						@unlink ($path);
+					}
+				}
+				
+				echo "评价成功";
+			}
+		}
+	}
 
 
 		//评价成功 
 	public function comsuc(){
 		if($_POST){
 			$arr['UserPhone'] = $_SESSION['phone'];
-			$arr['FoodScore'] = $_POST['rating'];
 			$arr['CookScore'] = $_POST['taste'];
 			$arr['ConsumptionScore'] = $_POST['environment'];
 			$arr['CommentState'] = $_POST['ratfen'];
 			$arr["Comment"] = $_POST['comment'];
 			$arr['PoorderId'] = $_POST['oid'];
+
 			if(isset($_POST['routes'])){
 				if($_POST['routes'] != ''){
 				$imgarr = explode(',',$_POST['routes']);
@@ -109,8 +157,10 @@ class pricesearch extends CI_Controller {
 			}else{
 				$arr['img'] = '[]';
 			}
+
 			$jsonData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($arr))))));
 			$comment = curl_post(POSTAPI.'API_Evaluate?dis=pf',$jsonData);
+			
 			if($comment == 1){
 				if(isset($path)){
 					if(count($path) > 1){

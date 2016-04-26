@@ -71,7 +71,14 @@
             <!-- 订单价格 -->
             <h3 class="am-list-item-hd"><span class="am-icon-cny"><?=$v['DiscountMoney'];?></span></h3>
             <!-- 订单数量 -->
-            <a href='<?php echo site_url('home/singleComment');?>"' class='sharecom'>晒单</a>
+
+            <?php if($value['State'] == 4):?>
+              <?php if($v['State'] == 0):?>
+            <a href='<?php echo site_url('home/singleComment?id=').$v['FoodId'].'&foodpic='.$v['Thumbnail'].'&POOrderId='.$value['PoorderId'];?>' class='sharecom'>晒单</a>
+              <?php else:?>
+                <a href='javascript:;' class='sharecom'>已评价</a>
+              <?php endif;?>
+            <?php endif;?>
           </div>
         </li>
       <?php endforeach;?>

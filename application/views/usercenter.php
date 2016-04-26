@@ -5,7 +5,8 @@
    <?php if(isset($_SESSION['userinfo'])): ?>
      <?php if ($_SESSION['userinfo']): ?>
        <img class="am-circle" src="<?php echo $_SESSION['userinfo']['headimgurl']; ?>"/>
-       <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3> 
+       <h3 class="am-header-title am-margin-sm"><?=$_SESSION['userinfo']['nickname'];?></h3>
+       <h4 style="font-weight: 400;"> 当前积分:<?php echo $users[0]['integral'] ?> </h4>
         <?php if (empty($users[0]['userphone'])): ?>
           <a href="<?php echo site_url('home/register')?>" >绑定手机号</a>
         <?php else: ?>
@@ -68,7 +69,7 @@
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/set')?>" class="am-list-item-hd "><img src="skin/img/set.png" alt=""> 个人设置</a> 
       </li>
-        <?php if(isset($_SESSION['phone'])):?>
+      <?php if(isset($_SESSION['phone'])):?>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/safe?id=').$users[0]['userid'].'&pwd='.$users[0]['userpwd'];?>" class="am-list-item-hd "><span class="am-icon-lock lock"></span> 账号安全</a> 
       </li>

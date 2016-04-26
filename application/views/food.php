@@ -80,7 +80,7 @@
         <header class="am-comment-hd">
           <!--<h3 class="am-comment-title">评论标题</h3>-->
           <div class="am-comment-meta">
-            <a href="#link-to-user" class="am-comment-author"><img src="<?=IP.$v['userimage'];?>" class="am-circle comimg" alt=""><?=$v['username'];?></a>
+            <a href="#link-to-user" class="am-comment-author"><img src="<?=IP.$v['userimage'];?>" class="am-circle comimg" alt=""><?php if($v['username'] == ''){echo $v['userphone'];}else{echo $v['username'];}?></a>
             <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800"><?php echo substr($v['createtime'],0,10);?></time>
           </div>
         </header>
@@ -89,16 +89,15 @@
         </div>
         <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
         <?php 
-        // var_dumP($v);
-        $pinimg = file_get_contents(POSTAPI.'API_Food?dis=img&foodid='.$v['poorderid']);
+        $pinimg = file_get_contents(POSTAPI.'API_Food?dis=splimg&foodid='.$v['id']);
         $arrimg = json_decode(json_decode($pinimg),true);
         ?>
         <?php if(!empty($arrimg)):?>
           <?php foreach($arrimg as $val):?>
       <li>
         <div class="am-gallery-item">
-            <a href="<?=IP.$val['poorderimg']?>" class="">
-              <img src="<?=IP.$val['poorderimg']?>"  alt="<?=IP.$val['poorderimg']?>"/>
+            <a href="<?=IP.$val['address']?>" class="">
+              <img src="<?=IP.$val['address']?>"  alt="<?=IP.$val['address']?>"/>
             </a>
         </div>
       </li>

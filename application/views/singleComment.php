@@ -19,7 +19,7 @@
    
     <input id="rating" name="serving" value="0" hidden type="txt">
     <div id="AddDP" class="am-shadow am-cf">
-      <div class="am-fl am-scimg"><img src="skin/img/food1.png"></div>
+      <div class="am-fl am-scimg"><img src="<?=IP.$foodpic;?>"></div>
       <ul class="am-fl clist">
         <li>评分<span class="Select">
         <a onMouseOver="javascript:setProfix('star_');showStars(1,'rating');"
@@ -62,7 +62,8 @@
       <div class="am-u-sm-8 a">
       </div>
       <div class="am-u-sm-4 b">
-        <input type="hidden" id="oid" value="" name='POOrderId' />
+        <input type="hidden" id="oid" value="<?=$foodid;?>" name='foodid' />
+        <input type="hidden" id="PoorderId" value="<?=$POOrderId;?>" name='PoorderId' />
         <button type="button" class="am-btn am-btn-success publish">发表</button>
         
       </div>
@@ -130,13 +131,14 @@ $(function(){
      }
      var comment = $('#doc').val();
      var oid = $('#oid').val();
+     var PoorderId = $('#PoorderId').val();
      $.ajax({
       type: "POST",
-      url:'',
-      data:'rating='+rating+'&routes='+routes+'&comment='+comment+'&oid='+oid,
+      url:'<?=site_url("pricesearch/singleComsuc")?>',
+      data:'rating='+rating+'&routes='+routes+'&comment='+comment+'&oid='+oid+'&PoorderId='+PoorderId,
       success: function(data) {
         alert(data);
-       window.location.href='<?php echo site_url("home/share");?>';
+        window.location.href='<?php echo site_url("home/orderR");?>';
       }
      });
   
