@@ -95,7 +95,7 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    宴会定制
+    伴餐
     </h1>
     
   </header>
@@ -109,34 +109,34 @@
           <div class="sky-carousel-wrapper">
             <ul class="sky-carousel-container">
          
-              <li>  <a href="<?php echo site_url('home/partyInfo')?>">
+              <li>  <a href="<?php echo site_url('home/eleganceInfo')?>">
                 <img src="skin/img/party1.png" alt="" /> </a> 
                 <div class="sc-content">
-                  <h2> <a href="<?php echo site_url('home/partyInfo')?>">钢琴艺术家</a></h2>
+                  <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">钢琴艺术家</a></h2>
                 </div>
               </li>
              
              
-              <li><a href="<?php echo site_url('home/partyInfo2')?>">
+              <li><a href="<?php echo site_url('home/eleganceInfo')?>">
                 <img src="skin/img/party1.png" alt="" /> </a>
                 <div class="sc-content">
-                 <h2> <a href="<?php echo site_url('home/partyInfo2')?>">小提琴艺术家</a></h2> 
+                 <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">小提琴艺术家</a></h2> 
                 </div>
               </li>
              
              
-              <li> <a href="<?php echo site_url('home/partyInfo3')?>">
+              <li> <a href="<?php echo site_url('home/eleganceInfo')?>">
                 <img src="skin/img/party1.png" alt="" /></a>
                 <div class="sc-content">
-                 <h2> <a href="<?php echo site_url('home/partyInfo3')?>">大提琴艺术家</a></h2> 
+                 <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">大提琴艺术家</a></h2> 
                 </div>
               </li>
               
               
-              <li> <a href="<?php echo site_url('home/partyInfo4')?>">
+              <li> <a href="<?php echo site_url('home/eleganceInfo')?>">
                 <img src="skin/img/party1.png" alt="" /></a>
                 <div class="sc-content">
-               <h2> <a href="<?php echo site_url('home/partyInfo4')?>">乐队</a></h2> 
+               <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">乐队</a></h2> 
                 </div>
               </li>   
               

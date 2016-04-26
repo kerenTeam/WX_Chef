@@ -43,6 +43,15 @@
   </div>
 </div>
 <?php endif;?>
+
+<!-- 搜索 -->
+
+    <div class="am-g searchFix">
+      <span class="am-icon-search"></span>
+      <input type="text" class="am-form-field" name='search' placeholder="请输入食材或菜品">
+   
+    </div>
+
 <!-- banner -->
 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">
@@ -104,15 +113,15 @@
     <a href="<?php echo site_url('home/party')?>">
       <div class="am-gallery-item bgreen">
         <img src="skin/img/food.png" alt="大厨到家"/>
-        <h3 class="am-gallery-title">宴会定制</h3>
+        <h3 class="am-gallery-title">宴席</h3>
       </div>
     </a>
   </li>
   <li>
-    <a href="<?php echo site_url('home/cailan')?>#d4599ab9-5dbf-4faa-aa79-d8b46d61f887">
+    <a href="<?php echo site_url('home/vegetable')?>">
       <div class="am-gallery-item bblue">
-        <img src="skin/img/tea.png" alt="大厨到家"/>
-        <h3 class="am-gallery-title">燕鲍翅</h3>
+        <img src="skin/img/leaf.png" alt="大厨到家"/>
+        <h3 class="am-gallery-title">净菜</h3>
       </div>
     </a>
   </li>
@@ -120,22 +129,28 @@
 <!-- 热销 -->
 <div class="am-g am-shadow hot">
   <p class="htit"><img src="skin/img/fire.png" alt=""> 特色服务</p>
-  <div class="am-u-sm-4">
-    <a href="<?php echo site_url('home/vipCard')?>" class="am-thumbnail">
+  <div class="am-u-sm-3">
+    <a href="<?php echo site_url('home/service')?>">
       <img class="am-circle" src="skin/img/vip.png"/>
-      <p class="purple">会员</p>
+      <p class="purple">服务</p>
     </a>
   </div>
-  <div class="am-u-sm-4">
-    <a href="<?php echo site_url('home/custom')?>" class="am-thumbnail">
-      <img class="am-circle" src="skin/img/kf.png"/>
-      <p class="sc">客服</p>
+  <div class="am-u-sm-3">
+    <a href="<?php echo site_url('home/elegance')?>">
+      <img class="am-circle" src="skin/img/yaz.png"/>
+      <p class="purred">伴餐</p>
     </a>
   </div>
-  <div class="am-u-sm-4">
-    <a href="<?php echo site_url('home/priceSearch')?>" class="am-thumbnail">
+  <div class="am-u-sm-3">
+    <a href="<?php echo site_url('home/ceremony')?>">
+      <img class="am-circle" src="skin/img/cemo.png"/>
+      <p class="meired">庆典</p>
+    </a>
+  </div>
+  <div class="am-u-sm-3">
+    <a href="<?php echo site_url('home/priceSearch')?>">
       <img class="am-circle" src="skin/img/cj.png"/>
-      <p class="pink">菜价查询</p>
+      <p class="pink">菜价</p>
     </a>
   </div>
   
@@ -180,7 +195,7 @@
     </div>
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
-  <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
+  <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
     <li >
       <a href="<?php echo site_url('home/index')?>" class="active">
         <span class=""><img src="skin/img/home2.png" alt=""></span>
@@ -194,9 +209,14 @@
       </a>
     </li>
     <li>
-      <a href="<?php echo site_url('home/search')?>">
-        <span class=""><img src="skin/img/ss.png" alt=""></span>
-        <span class="am-navbar-label">搜索</span>
+      <a href="<?php echo site_url('home/find')?>"> 
+        <span class="find">发现</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/customServ')?>">
+        <span class=""><img src="skin/img/kf.png" alt=""></span>
+        <span class="am-navbar-label">客服</span>
       </a>
     </li>
     <li>
@@ -217,6 +237,11 @@ var i=1
        $('.tk').css('display','none');
       // $('.tk').fadeOut('400');
     })
+    //搜索跳转
+    $('.searchFix input').focus(function() {
+      window.location.href="<?php echo site_url('home/search')?>";
+    });
+
    //加载
      var totalpage = 6; //总页数，防止超过总页数继续滚动
                 var winH = $(window).height(); //页面可视区域高度 

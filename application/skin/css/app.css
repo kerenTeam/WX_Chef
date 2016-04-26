@@ -105,6 +105,37 @@ body {
 	-ms-filter: blur(1px);
 	filter: blur(1px);
 }
+.find{
+	display:inline-block; 
+	background-color:#ED3F59;
+	border-radius:50%;
+	color:white;
+	font-size:13px;
+	padding: 8px 5px;
+	box-shadow:0px 2px 11px rgb(237, 63, 89);
+}
+.searchFix{
+	position: fixed;
+    top: 15px;
+    z-index: 1;
+    width: 70%;
+    margin: 0 15%;
+}
+.searchFix span{
+	color: rgba(255, 255, 255, 0.65);
+    position: absolute;
+    right: 1rem;
+    top: 2px;
+}
+.searchFix input,.searchFix input:focus{
+	    height: 2.5rem;
+    background-color: rgba(0,0,0,0.3);
+    color: white!important;
+    border: 0;
+    border-radius: 100px;
+    font-size: 13px;
+    padding-left: 15px;
+}
 .label{
     position: absolute!important;
     top: -1.3em!important;
@@ -900,17 +931,29 @@ body {
 	margin-top:-10px;
 	font-size:14px;
 }
-.hot .am-u-sm-4 {
+.padbo{
+	padding-bottom: 4.4rem;
+}
+.combo{
+	padding-bottom:0;
+}
+.purred{
+	color:#DF75C5;
+}
+.meired{
+color:#EF4B85;
+}
+.hot .am-u-sm-3 {
 	padding: 0;
 	margin: 0;
 	text-align: center;
 }
-.hot .am-u-sm-4 img {
-	height: 5.5rem;
-	width: 5.5rem;
-	margin-top: 10px;
+.hot .am-u-sm-3 img {
+	    height: 60%;
+    width: 60%;
+    margin-top: 10px;
 }
-.hot .am-u-sm-4 p {
+.hot .am-u-sm-3 p {
 	margin: 10px;
 	font-size: 14px;
 }
@@ -921,6 +964,38 @@ body {
 }
 .htit img {
 	height: 1.5rem;
+}
+.promt{
+	margin-top:-10px;
+	margin-bottom: 5px;
+}
+.pagallery{
+	padding:5px 0 0 0;
+	text-align:center;
+}
+.pagallery li{
+	padding:0;
+	width:32%;
+}
+.pagallery li:nth-of-type(2){
+	margin:0 2%;
+}
+.pagallery a>div{
+    display: inline-block;
+    position:relative;
+}
+.pagallery a>div>img{
+	height:100%!important;
+}
+.pagallery a>div>h3{
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.3);
+    color: white!important;
+    font-size: 12px;
+    padding: 3px 0;
 }
 .am-thumbnail {
 	border: 1px solid rgba(0,0,0,.1);
@@ -1024,6 +1099,49 @@ body {
 	width: 90%;
 	margin: auto 5% 5%;
 	border-radius: 5px;
+}
+.prf{
+	    color: red;
+    display: inline-block;
+    margin-top: -0.5rem;
+    position:relative;
+}
+.oldPr{
+	 text-decoration:line-through;
+	 color:gray;
+	 font-size:12px;
+	 position:absolute;
+	 right:0.5rem;
+}
+.nowBuy{
+	    display: inline-block;
+    font-size: 12px;
+    color: white;
+    background: red;
+    padding: 1px 3px;
+    border-radius: 3px;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+.findSale .am-list-item-hd{
+	line-height:15px;
+}
+.findSale [class*=am-u-]{  
+	overflow:hidden;
+	padding:3px;
+	height:8.5rem;
+}
+.findSale .am-u-sm-6{
+	width: 49%;
+    margin: 0.5%;
+    margin-bottom: 1%;
+    padding-top:0.5rem;
+}
+.findSale .am-u-sm-7{
+   padding: 3px 0 0 3px;
+}
+.findSale a img{
+ height:6rem;
 }
 .pform {
 	margin-left: 10px;
@@ -1518,6 +1636,9 @@ figure a:hover figcaption {
 .topform button {
 	left: 90px;
 }
+.pagallery a>div{
+	height: 14rem; 
+	}
 .life figcaption {
 	padding-top: 16%;
 }
@@ -1525,7 +1646,18 @@ figure a:hover figcaption {
 	margin-right: -241px!important;
 	right: 50%!important;
 }
- 
+ .nowBuy{
+ 	    display: inline-block;
+    font-size: 12px;
+    color: white;
+    background: red;
+    padding: 1px 3px;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: 5rem;
+    position: relative;
+    top: 3rem;
+ }
 .life figure {
 	height: 25rem;
 	margin-bottom: 6px;
@@ -1575,6 +1707,9 @@ figure a:hover figcaption {
 .am-selected button {
 	font-size: 16px;
 }
+.pagallery a>div{
+	height: 11rem; 
+	}
 }
 
 @media only screen and (max-width:375px) {
@@ -1637,11 +1772,24 @@ figure a:hover figcaption {
 	margin: auto 1px;
 	margin-bottom: 5px;
 }
+.pagallery a>div{
+	height: 10rem; 
+	}
 }
-
+@media only screen and (max-width:360px) {
+	.findSale [class*=am-u-]{
+		height:9.5rem;
+	}
+}
 @media only screen and (max-width:320px) {
 .topform button {
 	left: 40px;
+}
+.findSale [class*=am-u-]{ 
+	height:9.5rem;
+	}
+.nowBuy{
+	margin-left:1rem;
 }
 .pflist h5 {
     margin: -3px auto 2px!important;
@@ -1650,6 +1798,9 @@ figure a:hover figcaption {
 .moa{
     margin-top: 2px;
 }
+.pagallery a>div{
+	height: 8rem; 
+	}
 .fpc {
     color: white;
     font-size: 8px;

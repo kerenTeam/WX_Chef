@@ -285,6 +285,10 @@ class home extends CI_Controller
 		}
 
 	}
+	//图文详情
+	public function lifeInfo2(){
+		 $this->load->view('lifeInfo2');
+	}
 	//宴会定制详情
 	public function partyInfo(){
 
@@ -910,8 +914,21 @@ class home extends CI_Controller
 
 		$this->load->view('eleganceInfo');
 	}
+    //净菜 vegetable
+    public function vegetable(){
 
+		$this->load->view('vegetable');
+	}
+    //服务 service
+    public function service(){
 
+		$this->load->view('service');
+	}
+	//发现
+	public function find(){
+
+		$this->load->view('find');
+	}
 
 
 }
