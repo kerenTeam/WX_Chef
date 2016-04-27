@@ -22,6 +22,11 @@ class home extends CI_Controller
 
 		$this->load->view('login');
 	}
+	//我的订单
+	public function myOrder(){
+
+		$this->load->view('myOrder');
+	}
 	//密码修改
 	public function pwdchange(){
 		$this->load->view('pwdchange');
