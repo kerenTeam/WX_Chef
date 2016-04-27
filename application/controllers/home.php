@@ -939,6 +939,11 @@ class home extends CI_Controller
 
 		$this->load->view('find');
 	}
+	//厨师管理
+	public function chefManage(){
+
+		$this->load->view('chefManage');
+	}
 
 
 }
