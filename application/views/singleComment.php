@@ -1,5 +1,6 @@
 <body>
   <script type="text/javascript" src="skin/js/star.js"></script>
+  <link rel="stylesheet" href="skin/css/globe.css">
   <link rel="stylesheet" href="skin/css/zyUpload.css" type="text/css">
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
@@ -20,7 +21,7 @@
     <input id="rating" name="serving" value="0" hidden type="txt">
     <div id="AddDP" class="am-shadow am-cf">
       <div class="am-fl am-scimg"><img src="<?=IP.$foodpic;?>"></div>
-      <ul class="am-fl clist">
+      <ul class="am-fl am-margin clist">
         <li>评分<span class="Select">
         <a onMouseOver="javascript:setProfix('star_');showStars(1,'rating');"
           onMouseOut="javascript:setProfix('star_');clearStars('rating');"
@@ -50,15 +51,27 @@
       </ul>
     </div>
 
-    <!-- 图片上传 -->
-    <div id="demo" class="demo">
-     <!--  <input type="hidden" class="hiddenImg" name="" value=""> -->
+        <!-- 图片上传 -->
+    <div class="comment_pic am-cf">
+        <textarea name='content'  rows="4" class="comment_pic_t" id="doc" placeholder="亲，输入你的评价吧！"></textarea>
+        <div id="demo" class="demo">
+          <!--  <input type="hidden" class="hiddenImg" name="" value=""> -->
+        </div>
+        <input type="hidden" id="oid" value="<?=$foodid;?>" name='foodid' />
+        <input type="hidden" id="PoorderId" value="<?=$POOrderId;?>" name='PoorderId' />
+        <input type="button" class="publish" value="发表评论">
     </div>
-<textarea name='content' class="am-u-sm-12 am-shadow cmt" rows="5" id="doc" placeholder="写下您对此道菜的感受和评价，为其他伙伴提供参考~"></textarea>
+   
+
+    
+    <!-- <div id="demo" class="demo"> -->
+     <!--  <input type="hidden" class="hiddenImg" name="" value=""> -->
+   <!--  </div>
+<textarea name='content' class="am-u-sm-12 am-shadow cmt" rows="5" id="doc" placeholder="写下您对此道菜的感受和评价，为其他伙伴提供参考~"></textarea> -->
 
 
     <!-- footer -->
-    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default amft" id="">
+    <!-- <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default amft" id="">
       <div class="am-u-sm-8 a">
       </div>
       <div class="am-u-sm-4 b">
@@ -67,7 +80,7 @@
         <button type="button" class="am-btn am-btn-success publish">发表</button>
         
       </div>
-    </div>
+    </div> -->
   </form>
 </body>
 <script src="skin/js/jquery.min.js"></script>

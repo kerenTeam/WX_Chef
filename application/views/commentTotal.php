@@ -22,7 +22,7 @@
 		</div>
 		<div class="share_right">
 			<p>景秀刺身拼盘，用颜色唤醒你的味蕾颜色拼满一整盘</p>
-			<a href="javascript:;">晒单评价</a>
+			<a href="<?php echo site_url('home/singleComment')?>">晒单评价</a>
 		</div>
 	</li>
 	<li>
@@ -31,7 +31,7 @@
 		</div>
 		<div class="share_right">
 			<p>景秀刺身拼盘，用颜色唤醒你的味蕾颜色拼满一整盘</p>
-			<a href="javascript:;">晒单评价</a>
+			<a href="<?php echo site_url('home/singleComment')?>">晒单评价</a>
 		</div>
 	</li>
 </ul>
@@ -130,7 +130,7 @@
       </ul>
     </div>
     
-    <div class="comment_pic">
+    <div class="comment_pic am-cf">
     	<textarea name='content'  rows="4" class="comment_pic_t" placeholder="亲，输入你的评价吧！"></textarea>
     	<div id="demo" class="demo"> </div>
     	<input type="button" class="publish" value="发表评论">
