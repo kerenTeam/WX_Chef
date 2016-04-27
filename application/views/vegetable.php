@@ -21,13 +21,9 @@
      <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: -48}" data-am-sticky="{top:49}">
     <div class="pink typec"><img src="skin/img/type.png" alt="">&nbsp;分类</div>
     <ul class="am-list typel">
-      <li><a href="#1"><img src="skin/img/t1.png" alt="">&nbsp;热菜</a></li>
-      <li><a href="#2"><img src="skin/img/t2.png" alt="">&nbsp;小吃</a></li>
-      <li><a href="#3"><img src="skin/img/t3.png" alt="">&nbsp;海河鲜</a></li>
-      <li><a href="#4"><img src="skin/img/t4.png" alt="">&nbsp;凉菜</a></li>
-      <li><a href="#5"><img src="skin/img/t5.png" alt="">&nbsp;汤</a></li>
-      <li><a href="#6"><img src="skin/img/t6.png" alt="">&nbsp;燕鲍翅</a></li>
-      <li><a href="#7"><img src="skin/img/t7.png" alt="">&nbsp;套餐</a></li>
+     <?php foreach($cates as $cate):?>
+        <li><a href="#<?=$cate['foodcategoryid'];?>"><img src="<?php echo IP.$cate['imgaddress'];?>" alt=""> <?=$cate['name'];?></a></li>
+      <?php endforeach;?>
     </ul>
     </nav>
   </div>
@@ -35,244 +31,40 @@
   <div data-am-widget="list_news" class="am-u-sm-9 asp cmn amr">
     <div class="cmn cmnb am-list-news am-list-news-default" >
       <div class="am-list-news-bd"> 
-        <div class="cptit" id="1"><span>热菜</span></div>
-        <ul class="am-list"> 
-           
+       <?php foreach($cates as $val):?>
+        <div class="cptit" id="<?=$val['foodcategoryid']?>"><span><?=$val['name'];?></span></div>
+        <ul class="am-list">
+        <?php foreach($foods as $v):?>
+  
+          <?php if($val['foodcategoryid'] == $v['foodpid']):?>
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
             <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
+              <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="vimg">
+                <img src="skin/img/exp.gif" data-original="<?php echo IP.$v['thumbnail'];?>" class="lazy" alt="<?=$v['foodname'];?>"/>
               </a>
             </div>
             <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
+             <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="gray">
+              <h3 class="am-list-item-hd black"><?=$v['foodname'];?></h3>
+              <input type="hidden" name="foodid[]" value="<?=$v['foodid'];?>">
+              <div class="am-list-item-text"><strong>特点：</strong><?=$v['foodtrait'];?>。</div>
               <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
              </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
+              <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['foodprice'];?></span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
             
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if(isset($v['number'])){echo $v['number'];}else{echo '0';}?>">
                 <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
               </div>
             </div>
-          </li> 
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
-             </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
-              <div class="foodNum">
-            
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
-              </div>
-            </div>
-          </li> 
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
-             </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
-              <div class="foodNum">
-            
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
-              </div>
-            </div>
-          </li> 
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
-             </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
-              <div class="foodNum">
-            
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
-              </div>
-            </div>
-          </li> 
+          </li>
+         <input type="hidden" name='code[]' value="2" />
+       <?php endif;?>
+        <?php endforeach;?>
         </ul>
-        <div class="cptit" id="2"><span>小吃</span></div>
-        <ul class="am-list"> 
-           
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
-             </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
-              <div class="foodNum">
-            
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
-              </div>
-            </div>
-          </li> 
-        </ul>
-        <div class="cptit" id="3"><span>河海鲜</span></div>
-        <ul class="am-list"> 
-           
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
-             </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
-              <div class="foodNum">
-            
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
-              </div>
-            </div>
-          </li> 
-        </ul>
-        <div class="cptit" id="4"><span>凉菜</span></div>
-        <ul class="am-list"> 
-           
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
-             </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
-              <div class="foodNum">
-            
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
-              </div>
-            </div>
-          </li> 
-        </ul>
-        <div class="cptit" id="5"><span>汤</span></div>
-        <ul class="am-list"> 
-           
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
-             </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
-              <div class="foodNum">
-            
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
-              </div>
-            </div>
-          </li> 
-        </ul>
-        <div class="cptit" id="6"><span>燕鲍翅</span></div>
-        <ul class="am-list"> 
-           
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
-             </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
-              <div class="foodNum">
-            
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
-              </div>
-            </div>
-          </li> 
-        </ul>
-        <div class="cptit" id="7"><span>套餐</span></div>
-        <ul class="am-list"> 
-           
-          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
-              <a href="<?php echo site_url('home/food')?>" class="vimg">
-                <img src="skin/img/exp.gif" data-original="skin/img/product/rjx.jpg" class="lazy" alt="蓉记姜葱香辣蟹168"/>
-              </a>
-            </div>
-            <div class=" am-u-sm-8 am-list-main">
-             <a href="<?php echo site_url('home/food')?>" class="gray">
-              <h3 class="am-list-item-hd black">蓉记姜葱香辣蟹</h3>
-              <div class="am-list-item-text"><strong>特点：</strong>肥而不腻，色泽鲜艳，味道巴适。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
-             </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price">126</span><span class="am-text-xs gray"> /份</span></div>
-              <div class="foodNum">
-            
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-                <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
-              </div>
-            </div>
-          </li> 
-        </ul>
+      <?php endforeach;?>
+       
       </div>
     </div>
   </div>
