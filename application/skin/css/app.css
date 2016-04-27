@@ -801,7 +801,7 @@ body {
 }
 .am-icon-refresh {
 	position: relative;
-	right: 10rem;
+	right: 12.5rem;
 	font-size: 1.6rem;
 	top: -0.2rem;
 }
@@ -1921,6 +1921,9 @@ margin-bottom:1.2rem;
 @media only screen and (max-width:320px) {
 .topform button {
 	left: 40px;
+}
+.am-icon-refresh {
+	right: 10rem;
 }
 .srNum{ 
     margin-left: 0rem;

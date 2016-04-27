@@ -58,7 +58,7 @@
           <a href="<?php echo site_url('home/cart')?>" class="am-list-item-hd "><img src="skin/img/cl.png" alt=""> 购物车</a> 
       </li>
       <li class="am-g am-list-item-dated">
-          <a href="<?php echo site_url('home/orderR')?>" class="am-list-item-hd "><img src="skin/img/d.png" alt=""> 订单管理</a> 
+          <a href="<?php echo site_url('home/orderRe')?>" class="am-list-item-hd "><img src="skin/img/d.png" alt=""> 订单管理</a> 
       </li>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/address2')?>" class="am-list-item-hd "><img src="skin/img/addr.png" alt=""> 地址管理</a> 

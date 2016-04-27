@@ -14,7 +14,7 @@
 <div class="contactCus">
   <img src="skin/img/contactBg.png">
 </div>
-  <a class="contactGo" href="<?php echo site_url('home/custom')?>">
+  <a class="contactGo" href="<?php echo site_url('home/customServ')?>">
     晕了吗？<br>联系客服
   </a>
 <form action="" method="" enctype="multipart/form-data">

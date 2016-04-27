@@ -762,7 +762,7 @@ class home extends CI_Controller
 		$this->load->view('party');
 	}
 	//客服
-	public function custom(){
+	public function customServ(){
 
 		$this->load->view('custom');
 	}

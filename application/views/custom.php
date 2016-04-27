@@ -15,29 +15,28 @@
   </div>
   <form class="am-form am-form-horizontal customForm">
     <div class="am-form-group">
-      <label class="am-u-sm-3 am-text-right">区域</label>
-      <div class="am-u-sm-9 customAdd">
+      <label class="am-u-sm-2 am-text-right">区域</label>
+      <div class="am-u-sm-10 customAdd">
         <select name="province" class="am-radius"></select>
         <select name="city" class="am-radius"></select>
         <select name="area" class="am-radius"></select>
       </div>
     </div>
     <div class="am-form-group">
-      <label class="am-u-sm-3 am-text-right">桌数</label>
-      <div class="am-u-sm-9">
+      <label class="am-u-sm-2 am-text-right">桌数</label>
+      <div class="am-u-sm-10">
         <select class="am-radius">
           <option>请选择您的用餐桌数</option>
           <option>10桌以下</option>
           <option>10~20桌</option>
           <option>20~30桌</option>
           <option>30桌以上</option>
-          <option>全部</option>
         </select>
       </div>
     </div>
     <div class="am-form-group">
-      <label class="am-u-sm-3 am-text-right">电话</label>
-      <div class="am-u-sm-9">
+      <label class="am-u-sm-2 am-text-right">电话</label>
+      <div class="am-u-sm-10">
         <input id="phone" class="am-radius" type="tel" placeholder="请输入你的联系电话">
         <p class="customP">输入电话，客服稍后会给您回电</p>
       </div>
@@ -65,7 +64,6 @@
 
 
 <script src="skin/js/jquery.min.js"></script>
-<script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/address.js"></script>
 <script type="text/javascript">
     new PCAS("province","city","area","四川省","成都市");

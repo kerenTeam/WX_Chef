@@ -102,18 +102,6 @@
         </p>
         
       </ul>
-      <!-- 删除按钮弹出框 -->
-      <div class="am-modal am-modal-confirm" tabindex="-1" id="my-alert">
-        <div class="am-modal-dialog">
-          <div class="am-modal-bd">
-            你，确定要删除这条记录吗？
-          </div>
-          <div class="am-modal-footer">
-            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
-            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
-          </div>
-        </div>
-      </div>
     </div>
   <?php endforeach;?>
   <?php else:?>
