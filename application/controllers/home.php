@@ -15,7 +15,6 @@ class home extends CI_Controller
 		$this->load->helper('wxuser_helper');
 		$this->load->library('session');
 		$this->load->view('header');
-		$_SESSION['openid'] = '871dd687-7e12-4457-b5fa-ff47d725739e';
 	}
 	//登录
 	public function login(){
@@ -137,11 +136,11 @@ class home extends CI_Controller
 	
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
-		$data['caijia'] = json_decode(json_decode($caijia));  
+		$data['caijia'] = json_decode(json_decode($caijia));
 
-        //public function wxAccessToken($appId = NULL , $appSecret = NULL)
-        //$data['wxAccessToken'] = $this->indexwxapi->wxAccessToken(APPID,APPSECRET);
-        
+		//获取banner
+		$banner = file_get_contents(POSTAPI.'API_Banner?number=1');
+		$data['banners'] = json_decode(json_decode($banner),true);
 
 		$this->load->view('index',$data);
 	}
@@ -243,6 +242,9 @@ class home extends CI_Controller
 		//产品详情
 		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=xq&foodid='.$id);
 		$data['foods'] = json_decode(json_decode($foodjson),true);
+		// echo "<pre>";
+		// var_Dump($data['foods']);
+		// exit;
 		// 产品图片
 		$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 		$data['foodspic'] = json_decode(json_decode($foodpic),true);
@@ -314,6 +316,7 @@ class home extends CI_Controller
 	// 加入购物车
 	public function addcart(){
 			if($_POST){
+
 				$foodid = $_POST['foodid'];
 				$numbers = $_POST['numbers'];
 				$code = $_POST['code'];
@@ -337,6 +340,7 @@ class home extends CI_Controller
 						$a['time']= date('Y-m-d H:i:s');
 						$c[] = $a;
 				}
+				
 				if(isset($_SESSION['shoping'])){
 						$shoping = $_SESSION['shoping'];
 					}else{
@@ -356,7 +360,6 @@ class home extends CI_Controller
 						$f = array_merge($shoping,$c);
 					 	$this->session->set_userdata('shoping',$f,0);
 					}
-					// var_dumP($_SESSION['shoping']);	
 				redirect('home/cart');
 				}
 			exit;
@@ -428,29 +431,51 @@ class home extends CI_Controller
 		if(isset($_SESSION['shoping'])){
 			if($_SESSION['shoping'] == NULL){
 				$data['carts'] = '';
-				$data['taocan'] = '';
+				$data['taocan'] = '';     
+				$data['jincai'] = '';     
 			}else{
 				$cart = $_SESSION['shoping'];
 				foreach($cart as $k=>$v){
 					// var_Dump($v);
-					if($v['code'] == 0){
-						$data['carts'][$k] = $v;
-					}else{
-						if(isset($data['carts'])){
-							if($data['carts'] == ''){
-								$data['carts']= '';
+					switch ($v['code']) {
+						case '0':
+							$data['carts'][$k] = $v;
+							break;
+						case '1':
+							if(isset($data['carts'])){
+								if($data['carts'] == ''){
+									$data['carts']= '';
+								}
+							}else{
+								$data['carts'] = '';
 							}
-						}else{
-							$data['carts'] = '';
-						}
-						$data['taocan'][$k] = $v;
+							$data['taocan'][$k] = $v;
+							break;
+						case '2':
+							if(isset($data['carts']) || isset($data['taocan'])){
+								if($data['carts'] == ''){
+									$data['carts']= '';
+								}
+								if($data['taocan'] == ''){
+									$data['taocan']= '';
+								}
+							}else{
+								$data['carts'] = '';
+								$data['taocan']= '';
+							}
+							$data['jincai'][$k] = $v;
+							break;
 					}
 				}
 			}
 		}else{
 			$data['carts'] = '';
 			$data['taocan'] = '';
+			$data['jincai'] = '';
 		}
+		// echo "<pre>";
+		// var_dumP($data['jincai']);
+		// exit;
 		$this->load->view('cart',$data);
 	}
 	// 删除购物车
@@ -926,8 +951,30 @@ class home extends CI_Controller
 	}
     //净菜 vegetable
     public function vegetable(){
+    	$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
+		$data['cates'] = json_decode(json_decode($catejson),true);
+		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=kind');
 
-		$this->load->view('vegetable');
+		$foods = json_decode(json_decode($foodjson),true);
+		if(isset($_SESSION['shoping'])){
+			if($_SESSION['shoping'] != ''){
+				$shop = $_SESSION['shoping'];
+				foreach($foods as $k=>$v){
+					$foods[$k]['number'] = '0';
+					foreach ($shop as $key => $value) {
+						if($v['foodid'] == $value['foodid']){
+							$foods[$k]['number'] = $value['number'];
+						}
+					}
+					
+				}
+			}
+		}
+		$data['foods'] = $foods;
+		// echo "<pre>";
+		// var_dump($data);
+		// exit;
+		$this->load->view('vegetable',$data);
 	}
     //服务 service
     public function service(){
