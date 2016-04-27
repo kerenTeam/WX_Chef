@@ -22,10 +22,15 @@ class home extends CI_Controller
 
 		$this->load->view('login');
 	}
-	//我的订单
-	public function myOrder(){
+	//订单总评价
+	public function commentTotal(){
 
-		$this->load->view('myOrder');
+		$this->load->view('commentTotal');
+	}
+	//订单总评价
+	public function meituan(){
+
+		$this->load->view('meituan');
 	}
 	//密码修改
 	public function pwdchange(){
