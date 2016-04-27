@@ -2,7 +2,7 @@
 <script src="skin/js/amazeui.min.js"></script>
 <body>
   <!-- header -->
-  <header data-am-widget="header"class="am-header am-header-default topform bheader" style="position:fixed!important;top:0px !important; width: 100%;height: 49px;z-index: 9999"> <!-- data-am-sticky  am-header-fixed header固定在顶部-->
+  <header data-am-widget="header"class="am-header am-header-default topform bheader" style="position:fixed!important;top:0px !important; width: 100%;height: 49px;z-index: 9999"> 
   <div class="am-header-left am-header-nav">
     <a href="<?php echo site_url('home/index')?>">
       <i class="am-header-icon am-icon-chevron-left"></i>
@@ -15,9 +15,8 @@
 </header>
 
 <form action="<?=site_url('home/addcart');?>" method='post'  id='question' enctype="multipart/form-data">
- <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
   <!-- 菜品栏目 -->
-  <div class="am-u-sm-3 cmn aml"><!--  style="height: 100%;overflow-y:auto; " -->
+  <div class="am-u-sm-3 cmn aml">
      <nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: -48}" data-am-sticky="{top:49}">
     <div class="pink typec"><img src="skin/img/type.png" alt="">&nbsp;分类</div>
     <ul class="am-list typel">
@@ -27,7 +26,7 @@
     </ul>
     </nav>
   </div>
-  <!-- 菜品选择 --> <!-- style="height: 100%;overflow-y:auto;padding-bottom: 8.5rem;" -->
+  <!-- 菜品选择 --> 
   <div data-am-widget="list_news" class="am-u-sm-9 asp cmn amr">
     <div class="cmn cmnb am-list-news am-list-news-default" >
       <div class="am-list-news-bd">
