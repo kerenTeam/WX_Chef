@@ -56,39 +56,13 @@
 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">
 
-
-    <li class="clone" aria-hidden="true" style="width: 372px; float: left; display: block;">
-      <a href="http://www.krfer.com/WXTEST2/index.php/home/registgift"><img src="skin/img/banner1.png" class="am-img-responsive card" alt="3" draggable="false"></a>
-       
-    </li>
-        <li class="" style="width: 372px; float: left; display: block;">
-      <a href="http://www.krfer.com/WXTEST2/index.php/home/partyServ"><img src="skin/img/banner3.png" class="am-img-responsive card" alt="1" draggable="false"></a>
-       
-    </li>
-      <li style="width: 372px; float: left; display: block;" class="am-active-slide">
-      <a href="http://www.krfer.com/WXTEST2/index.php/home/backmoney"><img src="skin/img/banner2.png" class="am-img-responsive card" alt="2" draggable="false"></a>
-       
-    </li>
-      <li style="width: 372px; float: left; display: block;">
-      <a href="http://www.krfer.com/WXTEST2/index.php/home/registgift"><img src="skin/img/banner1.png" class="am-img-responsive card" alt="3" draggable="false"></a>
-       
-    </li>
-    <li class="clone" aria-hidden="true" style="width: 372px; float: left; display: block;">
-      <a href="http://www.krfer.com/WXTEST2/index.php/home/partyServ"><img src="skin/img/banner3.png" class="am-img-responsive card" alt="1" draggable="false"></a>
-       
-    </li>
-
-<?php 
-/*
-    <?php foreach($banners as $val):?>
+<?php foreach($banners as $val):?>
     <li>
-      <a href="<?=site_url($val['url']);?>"><img src="<?=$val['thumb']?>" class="am-img-responsive card" alt="<?=$val['title']?>"></a>
+      <a href=""><img src="<?=IP.$val['img']?>" class="am-img-responsive card" alt="<?=$val['name']?>"></a>
        
     </li>
-    <?php endforeach;?>
-    */
+<?php endforeach;?>
 
- ?>
   </ul>
 </div>
 <!-- 菜品 -->

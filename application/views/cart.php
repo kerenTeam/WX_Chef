@@ -26,7 +26,8 @@ function doaction(obj) {
 </script>
 
 
-<?php if($carts == NULL && $taocan == NULL):?>
+<?php if(isset($shoping)):?>
+  <?php if($shoping == ''): ?>
     <br>
     <br>
     <br>
@@ -34,6 +35,7 @@ function doaction(obj) {
     <br>
     <center><div class="am-margin">菜篮子还是空的</div></center>
     <center><div class="am-margin"><a href="<?=site_url('home/cailan');?>" class="am-u-sm-12 am-btn bgreen go">去点菜</a></div></center>
+  <?php endif;?>
 <?php else:;?>
 
 <form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">
@@ -108,6 +110,47 @@ function doaction(obj) {
               <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
                 <a href="<?php echo site_url('home/dinner')?>" class="vimg">
+                  <img src="<?php echo IP.$food[0]['thumbnail']?>" alt="<?=$food[0]['foodname']?>"/>
+                </a>
+              </div>
+              <div class=" am-u-sm-9 am-list-main">
+                <h3 class="am-list-item-hd cartb"><?=$food[0]['foodname'];?></h3>
+                <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
+                <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food[0]['foodprice']?></span></div>
+                 <input type="hidden" name="code[]" value="1">
+                <div class="fNum">
+                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
+                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
+                  <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
+                </div>
+                <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
+              </div>
+            </li> 
+          <?php endforeach;?>
+           </ul>
+         <?php endif;?>  
+         <?php if(!empty($jincai)):?>
+         <div class="am-text-center oln">净菜</div>
+          <ul class="am-list cul">
+          <?php foreach($jincai as $k=>$v):?>
+           <?php 
+            $id = $v['foodid'];
+            $shopid = $v['shopid'];
+            $foods = file_get_contents(POSTAPI."API_Food?dis=xq&foodid=".$id);
+            $food = json_decode(json_decode($foods),true);
+            // var_dumP($food);
+            if(!isset($_SESSION['booking'])){
+             $this->session->set_userdata('booking',$food);
+            }else{
+              $booking = $_SESSION['booking'];
+
+              $book = array_merge($booking,$food);
+              $this->session->set_userdata('booking',$book);
+            }
+          ?>
+              <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+              <div class="am-u-sm-3 am-text-center am-list-thumb">
+                <a href="<?php echo site_url('home/food?id=').$food[0]['foodid'].'&number='.$v['number'].'&shopid='.$shopid;?>" class="vimg">
                   <img src="<?php echo IP.$food[0]['thumbnail']?>" alt="<?=$food[0]['foodname']?>"/>
                 </a>
               </div>
