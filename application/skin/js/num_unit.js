@@ -59,7 +59,7 @@ function ueserWrite(obj){
  	obj.value=num;
  	return false;
  }
- var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
+ var prices = obj.parentNode.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
     // alert(prices);
      console.log(fen);
     // fen +=(parseFloat(curCount) - num);
@@ -73,7 +73,7 @@ function handle(self, isAdd){
         curCount = parseFloat(countEl.value); 
     var unit = self.parentNode.parentNode.getElementsByClassName("unit")[0].value;
 	var reduce = self.parentNode.childNodes[1];
-	var price = self.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
+	var price = self.parentNode.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
 //	var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
 	var foodId = self.parentNode.parentNode.childNodes[1].value;
 

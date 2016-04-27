@@ -4,7 +4,7 @@
 
   <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
-           <a href="<?php echo site_url('home/index');?>">
+           <a href="<?php echo site_url('home/ceremonyType');?>">
 
                 <i class="am-header-icon am-icon-chevron-left"></i>
           </a>

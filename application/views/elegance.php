@@ -110,7 +110,7 @@
             <ul class="sky-carousel-container">
          
               <li>  <a href="<?php echo site_url('home/eleganceInfo')?>">
-                <img src="skin/img/party1.png" alt="" /> </a> 
+                <img src="skin/img/yazhi.png" alt="" /> </a> 
                 <div class="sc-content">
                   <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">钢琴艺术家</a></h2>
                 </div>
@@ -118,7 +118,7 @@
              
              
               <li><a href="<?php echo site_url('home/eleganceInfo')?>">
-                <img src="skin/img/party1.png" alt="" /> </a>
+                <img src="skin/img/yazhi.png" alt="" /> </a>
                 <div class="sc-content">
                  <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">小提琴艺术家</a></h2> 
                 </div>
@@ -126,7 +126,7 @@
              
              
               <li> <a href="<?php echo site_url('home/eleganceInfo')?>">
-                <img src="skin/img/party1.png" alt="" /></a>
+                <img src="skin/img/yazhi.png" alt="" /></a>
                 <div class="sc-content">
                  <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">大提琴艺术家</a></h2> 
                 </div>
@@ -134,7 +134,7 @@
               
               
               <li> <a href="<?php echo site_url('home/eleganceInfo')?>">
-                <img src="skin/img/party1.png" alt="" /></a>
+                <img src="skin/img/yazhi.png" alt="" /></a>
                 <div class="sc-content">
                <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">乐队</a></h2> 
                 </div>
@@ -148,7 +148,7 @@
 
   </div>
   <!-- End 960 Container --> 
-<!-- footer -->
+<!-- 
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
   <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
     <li >
@@ -181,7 +181,7 @@
       </a>
     </li>
   </ul>
-</div> 
+</div>  -->
 </body>
 
 </html>

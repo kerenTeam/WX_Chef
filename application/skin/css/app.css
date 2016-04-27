@@ -98,6 +98,10 @@ body {
 .gsf{
 	position: relative;
 }
+.gsf .price{
+	    position: absolute;
+    right: 9rem;
+}
 .gsf img{
 		-webkit-filter: blur(1px);
 	-moz-filter:blur(1px);
@@ -106,16 +110,20 @@ body {
 	filter: blur(1px);
 }
 .find{
-	display:inline-block; 
-	background-color:#ED3F59;
-	border-radius:50%;
-	color:white;
-	font-size:13px;
-	padding: 8px 5px;
-	box-shadow:0px 2px 11px rgb(237, 63, 89);
+	    display: inline-block;
+    background-color: #ED3F59;
+    border-radius: 50%;
+    color: white;
+    font-size: 13px;
+    width: 4rem;
+    box-shadow: 0px 2px 11px rgb(237, 63, 89);
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    margin-top: -2px;
 }
 .searchFix{
-	position: fixed;
+	position: absolute;
     top: 15px;
     z-index: 1;
     width: 70%;
@@ -128,7 +136,7 @@ body {
     top: 2px;
 }
 .searchFix input,.searchFix input:focus{
-	    height: 2.5rem;
+	    height: 3rem;
     background-color: rgba(0,0,0,0.3);
     color: white!important;
     border: 0;
@@ -793,7 +801,7 @@ body {
 }
 .am-icon-refresh {
 	position: relative;
-	right: 10rem;
+	right: 12.5rem;
 	font-size: 1.6rem;
 	top: -0.2rem;
 }
@@ -1238,6 +1246,9 @@ color:#EF4B85;
 	width: 90%;
 	margin: 5%;
 }
+.spba{
+	padding-bottom: 8rem!important;
+}
 .u {
 	top: 40px;
 	left: -2px;
@@ -1383,10 +1394,11 @@ color:#EF4B85;
 	margin-right: 10px;
 }
 .olib li {
-	padding: 10px 5px;
-	background: #F1F1F1;
-	margin-bottom: 5px;
-	border: none;
+	padding: 6px 0px!important;
+    background: #F1F1F1;
+    margin-bottom: 5px;
+    border: none;
+    font-size: 14px;
 }
 .acr li {
 	padding: 0 5px;
@@ -1404,6 +1416,7 @@ color:#EF4B85;
 .bpa {
 	padding-bottom: 10rem;
 }
+
 .b button {
 	margin-right: -25px;
 	margin-top: -5px;
@@ -1629,7 +1642,7 @@ figure a:hover figcaption {
 }
 .ceFixed .am-text-center{
 	position:absolute;
-	    bottom: 1.5rem;
+	    bottom: 1.1rem;
     left: 0;
     width: 100%;
 }
@@ -1667,7 +1680,7 @@ figure a:hover figcaption {
     border-radius:50%;
 	color:white;
 	font-size:13px;
-	padding: 9px 6px;
+	padding: 11px 9px;
 	box-shadow:0px 2px 11px rgba(8, 13, 14, 0.72);
 }
 .goChose a{
@@ -1679,14 +1692,75 @@ figure a:hover figcaption {
 .sec-margin dt,.sec-margin .am-active .am-accordion-title{
 	background:white;
 }
+.contactCus{
+	position:relative;
+	background-size:cover;
+	overflow-x: hidden;
+	height:12rem;
+}
+.contactCus img{
+  height:100%;
+}
+.CmNum{ 
+    position: relative!important; 
+    right: 0.5rem!important;
+    top:-0.3rem;
+}
+.contactGo{
+	background: #BF8CCA;
+    display: inline-block;
+    color: white;
+    width: 9rem;
+    height: 9rem;
+    text-align: center;
+    line-height: -0.5rem;
+    padding-top: 1.4rem;
+    border-radius: 50%;
+    box-sizing: ;
+    border: 4px solid white;
+    position: relative;
+    top: -6rem;
+    left: 50%;
+    margin-left: -4rem;
+    animation:goScale 1s infinite;
+    -webkit-animation:goScale 1s infinite;
+    -ms-animation:goScale 1s infinite;
+    -o-animation:goScale 1s infinite;
+    -moz-animation:goScale 1s infinite;
+}
+.sevTxt{
+	margin-left: 3rem;
+    line-height: 25px;
+    font-size: 14px;
+        margin-right: 2rem;
+}
+.srNum{
+	float: left;
+    margin-top: 2rem;
+    margin-left: 2rem;
+
+}
+.contactGo:hover,.contactGo:focus{
+	color:white!important;
+}
 .welCus img{
 	width: 100%;
-	height: 15rem;
+	max-height: 20rem; 
     margin-bottom: 1rem;
 }
 .bbi{
 	    border-radius: 2px;
     box-shadow: 0px 0px 1px rgba(255,255,255,.5) inset;
+}
+.area .am-cf{
+margin-bottom:1.2rem;
+}
+.area:first-child{
+		margin-top: -4rem;
+}
+.area{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 1.5rem 0 1rem;
 }
 @media only screen and (min-width:600px) {
 .tkcontent img {
@@ -1776,6 +1850,9 @@ figure a:hover figcaption {
 .moa{
     margin-top: 4px;
 }
+.srNum{ 
+    margin-left: 1rem;
+}
 .acr .am-u-sm-9{
 	margin-top:1rem;
 }
@@ -1844,6 +1921,12 @@ figure a:hover figcaption {
 @media only screen and (max-width:320px) {
 .topform button {
 	left: 40px;
+}
+.am-icon-refresh {
+	right: 10rem;
+}
+.srNum{ 
+    margin-left: 0rem;
 }
 .findSale [class*=am-u-]{ 
 	height:9.5rem;
@@ -1964,4 +2047,14 @@ figure a:hover figcaption {
    	0%{opacity: 0;z-index: -99;}
    	50%{opacity: 1;z-index: 1000;}
    	100%{opacity: 0;z-index: -99;}
+}
+@keyframes goScale{
+	0%{top:-6rem;}
+	50%{top:-6.2rem;}
+   	100%{top:-6rem;}
+}
+@-webkit-keyframes goScale{
+	0%{top:-6rem;}
+	50%{top:-6.2rem;}
+   	100%{top:-6rem;}
 }
