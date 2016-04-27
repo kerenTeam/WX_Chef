@@ -628,6 +628,11 @@ class home extends CI_Controller
     	}
 		$this->load->view('orderRecord',$data);
 	}
+	//订单 修改版
+    public function orderRe(){
+
+		$this->load->view('orderRecorde');
+	}
    //订单详情
     public function orderI(){
 
@@ -914,12 +919,12 @@ class home extends CI_Controller
 
 		$this->load->view('CeremonyChose');
 	}
-    //雅致
+    //伴餐
     public function elegance(){
 
 		$this->load->view('elegance');
 	}
-	//雅致 详情
+	//伴餐 详情
     public function eleganceInfo(){
 
 		$this->load->view('eleganceInfo');

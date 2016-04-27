@@ -48,7 +48,7 @@
 
     <div class="am-g searchFix">
       <span class="am-icon-search"></span>
-      <input type="text" class="am-form-field" name='search' placeholder="请输入食材或菜品">
+      <input type="text" class="am-form-field" name='search' value="请输入食材或菜品">
    
     </div>
 
@@ -142,7 +142,7 @@
     </a>
   </div>
   <div class="am-u-sm-3">
-    <a href="<?php echo site_url('home/ceremony')?>">
+    <a href="<?php echo site_url('home/ceremonyType')?>">
       <img class="am-circle" src="skin/img/cemo.png"/>
       <p class="meired">庆典</p>
     </a>

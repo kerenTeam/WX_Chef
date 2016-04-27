@@ -1,4 +1,4 @@
-<body class="padbo">
+<body class="pab2">
   <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform bheader">
   <div class="am-header-left am-header-nav">
@@ -181,14 +181,21 @@
       味道很不错,服务人员很耐心
     </div>
     <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
+      <li>
+        <div class="am-gallery-item">
+            <a href="skin/img/article/it1.png" class="">
+              <img src="skin/img/article/it1.png"/>
+            </a>
+        </div>
+      </li>
     </ul>
 </div>
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
   <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
     <li >
-      <a href="<?php echo site_url('home/index')?>" class="active">
-        <span class=""><img src="skin/img/home2.png" alt=""></span>
+      <a href="<?php echo site_url('home/index')?>">
+        <span class=""><img src="skin/img/home1.png" alt=""></span>
         <span class="am-navbar-label">首页</span>
       </a>
     </li>

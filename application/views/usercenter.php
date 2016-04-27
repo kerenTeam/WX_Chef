@@ -131,6 +131,6 @@
   </ul>
 </div> 
   </body>
-    <script src="skin/js/jquery.min.js"></script>
+  <script src="skin/js/jquery.min.js"></script>
   <script src="skin/js/amazeui.min.js"></script>
 </html>
