@@ -185,7 +185,7 @@ body {
   opacity: 0;
   filter: alpha(opacity=0);
 }
-.cd{
+.cd,.cd2{
 	    margin-top: 0.2rem;
     margin-right: 2.8rem;
 }
@@ -550,7 +550,7 @@ body {
 	display: inline-block;
     margin-top: 0.8rem;
 }
-.numTxt,.serinput {
+.numTxt,.serinput,.serinput2 {
 	/* display:none;*/
 	background: none;
 	width: 3.2rem;
