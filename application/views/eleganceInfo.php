@@ -31,14 +31,14 @@
     <div class="artImg"></div>
     <div class="am-margin"> — 擅长曲目</div>
     <div class="am-text-center">
-      <div class="am-margin-sm">《天空之城》</div>
-      <div class="am-margin-sm">《贝加尔湖畔》</div>
-      <div class="am-margin-sm">《森林狂想曲》</div>
-      <div class="am-margin-sm">《天空之城》</div>
+    <?php foreach($cont as $v):?>
+      <div class="am-margin-sm"><?=$v?></div>
+    <?php endforeach;?>
+     
     </div>
     <div class="am-margin"> — 价格</div>
     <div class="am-text-center">
-      <div class="am-margin-sm am-text-md red"><span class="am-icon-cny"> 80/次</span></div>
+      <div class="am-margin-sm am-text-md red"><span class="am-icon-cny"> <?=$money;?>/次</span></div>
     </div>
     
     <button type="button" id="sub" class="am-center am-btn am-text-sm am-margin-top am-btn-warning bbi">加入购物车</button>

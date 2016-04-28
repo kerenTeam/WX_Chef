@@ -99,7 +99,6 @@
     </h1>
     
   </header>
-
   <!-- 960 Container -->
   <div class="container"> 
     <!-- Slider -->
@@ -108,38 +107,15 @@
         <div class="sky-carousel">
           <div class="sky-carousel-wrapper">
             <ul class="sky-carousel-container">
-         
-              <li>  <a href="<?php echo site_url('home/eleganceInfo')?>">
-                <img src="skin/img/yazhi.png" alt="" /> </a> 
+  
+         <?php foreach($eleg as $v):?>
+              <li>  <a href="<?php echo site_url('home/eleganceInfo?con=').$v['specialty'].'&money='.$v['sprice'];?>">
+                <img src="<?=IP.$v['img']?>" alt="<?=$v['title'];?>" /> </a> 
                 <div class="sc-content">
-                  <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">钢琴艺术家</a></h2>
+                  <h2> <a href="<?php echo site_url('home/eleganceInfo?con=').$v['specialty'].'&money='.$v['sprice'];?>"><?=$v['title'];?></a></h2>
                 </div>
               </li>
-             
-             
-              <li><a href="<?php echo site_url('home/eleganceInfo')?>">
-                <img src="skin/img/yazhi.png" alt="" /> </a>
-                <div class="sc-content">
-                 <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">小提琴艺术家</a></h2> 
-                </div>
-              </li>
-             
-             
-              <li> <a href="<?php echo site_url('home/eleganceInfo')?>">
-                <img src="skin/img/yazhi.png" alt="" /></a>
-                <div class="sc-content">
-                 <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">大提琴艺术家</a></h2> 
-                </div>
-              </li>
-              
-              
-              <li> <a href="<?php echo site_url('home/eleganceInfo')?>">
-                <img src="skin/img/yazhi.png" alt="" /></a>
-                <div class="sc-content">
-               <h2> <a href="<?php echo site_url('home/eleganceInfo')?>">乐队</a></h2> 
-                </div>
-              </li>   
-              
+          <?php endforeach;?>  
             </ul>
           </div>
         </div>
