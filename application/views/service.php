@@ -29,7 +29,7 @@
     </div>
     <div class="am-text-center am-margin am-text-lg red"><strong><span class="am-icon-cny"></span> 80/位</strong></div>
     <div class="am-g am-text-sm am-padding">
-      <div class="am-u-sm-6">
+      <div class="am-u-sm-6 am-center sexSer">
         <img src="skin/img/boy.png" class="am-fl" alt="">
         <span class="price am-hide">80</span>
         <div class="srNum">
@@ -38,7 +38,7 @@
           <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
       </div>
-      <div class="am-u-sm-6 am-center">
+      <div class="am-u-sm-6 am-center sexSer">
         <img src="skin/img/girl.png" class="am-fl" alt="">
         <span class="price am-hide">80</span>
         <div class="srNum">

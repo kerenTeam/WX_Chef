@@ -107,6 +107,9 @@ body {
 	-ms-filter: blur(1px);
 	filter: blur(1px);
 }
+.sexSer img{
+	width:3rem;
+}
 .find{
 	display: inline-block;
     background-color: #ED3F59;
@@ -1744,7 +1747,7 @@ figure a:hover figcaption {
 }
 .srNum{
 	float: left;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-left: 2rem;
 
 }
@@ -1949,7 +1952,7 @@ margin-bottom:1.2rem;
     right: 6.5rem;
 }
 .srNum{ 
-    margin-left: 0rem;
+    margin-left: 0.5rem;
 }
 .findSale [class*=am-u-]{ 
 	height:9.5rem;
