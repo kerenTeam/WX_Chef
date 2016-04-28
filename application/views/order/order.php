@@ -172,6 +172,14 @@
           <?php endif;?>
         </div> 
         </div>
+
+        <!-- 用餐时间 -->
+        <div class="am-shadow am-margin-vertical-sm">
+            <p class="htit sad"><span class="am-icon-clock-o purple"></span> 用餐时间</p> 
+            <input type="text" class="am-form-field" placeholder="选择用餐时间" id="my-start-2"/> 
+        </div>
+
+
       <?php if(!empty($address)):?>
           <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
       <?php else:?>
@@ -257,6 +265,67 @@
             getorders();
           }
         });
+
+            var nowTemp = new Date();
+    var nowDay = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0).valueOf();
+    var nowMoth = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), 1, 0, 0, 0, 0).valueOf();
+    var nowYear = new Date(nowTemp.getFullYear(), 0, 1, 0, 0, 0, 0).valueOf();
+    var $myStart2 = $('#my-start-2');
+
+    var checkin = $myStart2.datepicker({
+      onRender: function(date, viewMode) {
+        // 默认 days 视图，与当前日期比较
+        var viewDate = nowDay;
+
+        switch (viewMode) {
+          // moths 视图，与当前月份比较
+          case 1:
+            viewDate = nowMoth;
+            break;
+          // years 视图，与当前年份比较
+          case 2:
+            viewDate = nowYear;
+            break;
+        }
+
+        return date.valueOf() < viewDate ? 'am-disabled' : '';
+      }
+    }).on('changeDate.datepicker.amui', function(ev) {
+        if (ev.date.valueOf() > checkout.date.valueOf()) {
+          var newDate = new Date(ev.date)
+          newDate.setDate(newDate.getDate() + 1);
+          checkout.setValue(newDate);
+        }
+        checkin.close();
+        $('#my-end-2')[0].focus();
+    }).data('amui.datepicker');
+
+    var checkout = $('#my-end-2').datepicker({
+      onRender: function(date, viewMode) {
+        var inTime = checkin.date;
+        var inDay = inTime.valueOf();
+        var inMoth = new Date(inTime.getFullYear(), inTime.getMonth(), 1, 0, 0, 0, 0).valueOf();
+        var inYear = new Date(inTime.getFullYear(), 0, 1, 0, 0, 0, 0).valueOf();
+
+        // 默认 days 视图，与当前日期比较
+        var viewDate = inDay;
+
+        switch (viewMode) {
+          // moths 视图，与当前月份比较
+          case 1:
+            viewDate = inMoth;
+            break;
+          // years 视图，与当前年份比较
+          case 2:
+            viewDate = inYear;
+            break;
+        }
+
+        return date.valueOf() <= viewDate ? 'am-disabled' : '';
+      }
+    }).on('changeDate.datepicker.amui', function(ev) {
+      checkout.close();
+    }).data('amui.datepicker');
      
       })
 
