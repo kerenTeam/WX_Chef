@@ -101,7 +101,7 @@
         <img id="taste_5" title="非常好(5)" src="skin/img/icon_star_1.gif"></a> </span></li>
 
 
-  		<li>菜品质量<span class="Select">
+  		<li>菜品<span class="Select">
         <a onMouseOver="javascript:setProfix('quality_');showStars(1,'quality');"
           onMouseOut="javascript:setProfix('quality_');clearStars('quality');"
           href="javascript:setProfix('quality_');setStars(1,'quality');">

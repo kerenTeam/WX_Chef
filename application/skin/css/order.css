@@ -20,7 +20,8 @@
 }
 .customForm .am-form-group label{
 	font-weight: normal;
-	font-size: 1.8rem;
+    font-size: 1.4rem;
+    margin-top: 0.4rem;
 }
 .am-form .customAdd select{
 	float: left;

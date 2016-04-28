@@ -56,8 +56,6 @@ body {
     right: 0;
     text-align: right;
     background-color: rgba(0,0,0,0.7);
-    
-
 }
 .shareto img{
    margin:1rem 2.8rem 0 0;
@@ -163,14 +161,14 @@ body {
 	align-content:space-around;
 	padding:5% 10%;
 }
-  .bno{
+.bno{
         background: none;
     border: none;
     padding: 10px;
     border-top: 1px solid rgba(0,0,0,0.1);
     outline:none;
   }
-  .bno:first-of-type{
+.bno:first-of-type{
     border-right: 1px solid rgba(0,0,0,0.1)!important;
   } 
 .wx_type_img{
@@ -1762,6 +1760,12 @@ margin-bottom:1.2rem;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     padding: 1.5rem 0 1rem;
 }
+.area strong{
+	font-weight:400;
+}
+.area .am-u-sm-9{
+	font-size: 14px;
+}
 @media only screen and (min-width:600px) {
 .tkcontent img {
 	width: auto;
@@ -1924,6 +1928,10 @@ margin-bottom:1.2rem;
 }
 .am-icon-refresh {
 	right: 10rem;
+}
+
+.gsf .price {
+    right: 6.5rem;
 }
 .srNum{ 
     margin-left: 0rem;
