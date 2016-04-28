@@ -1658,7 +1658,7 @@ figure a:hover figcaption {
     width: 100%;
 }
 .cefont{
-	font-size:22px;
+	font-size:20px;
 	margin-right:5px;
 }
 /* 庆典 */
@@ -1748,7 +1748,7 @@ figure a:hover figcaption {
 .srNum{
 	float: left;
     margin-top: 1rem;
-    margin-left: 2rem;
+    margin-left: 3rem;
 
 }
 .contactGo:hover,.contactGo:focus{
@@ -1868,7 +1868,7 @@ margin-bottom:1.2rem;
     margin-top: 4px;
 }
 .srNum{ 
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 .acr .am-u-sm-9{
 	margin-top:1rem;
@@ -1949,13 +1949,13 @@ margin-bottom:1.2rem;
     top: -0.8rem;
 }
 .gsf .price {
-    right: 6.5rem;
+    right: 7.4rem;
 }
 .srNum{ 
-    margin-left: 0.5rem;
+    margin-left: 1.5rem;
 }
 .findSale [class*=am-u-]{ 
-	height:9.5rem;
+	height:11.2rem;
 	}
 .nowBuy{
 	margin-left:1rem;

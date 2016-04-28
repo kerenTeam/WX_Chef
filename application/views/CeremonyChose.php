@@ -22,7 +22,7 @@
     <div class="am-u-sm-3"><strong>迎宾区</strong></div>
     <div class="am-u-sm-9">
       <div class="am-cf gsf">
-        <div class="am-fl">1、迎宾喷绘/<small>平米</small><span class="price red am-icon-cny">10</span></div>
+        <div class="am-fl">1、迎宾喷绘/<small>平米</small><span class="price red am-icon-cny">1000</span></div>
         <div class="am-fr">
           <input type="hidden" class="unit" value="1">
           <div class="CmNum">
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="am-cf gsf">
-        <div class="am-fl">2、签到背景/<small>平米</small><span class="price red am-icon-cny">10</span></div>
+        <div class="am-fl">2、签到背景/<small>平米</small><span class="price red am-icon-cny">1000</span></div>
         <div class="am-fr">
           <input type="hidden" class="unit" value="1">
           <div class="CmNum">
