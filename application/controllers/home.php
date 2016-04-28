@@ -957,13 +957,18 @@ class home extends CI_Controller
 	}
     //伴餐
     public function elegance(){
-
-		$this->load->view('elegance');
+    	$eleg = file_get_contents(POSTAPI.'API_Dinner');
+    	$data['eleg'] = json_decode(json_decode($eleg),true);
+		$this->load->view('elegance',$data);
 	}
 	//伴餐 详情
     public function eleganceInfo(){
-
-		$this->load->view('eleganceInfo');
+    	if($_GET){
+			$content = $_GET['con'];
+			$data['money'] = $_GET['money'];
+			$data['cont'] = explode('，',$content);
+			$this->load->view('eleganceInfo',$data);
+    	}
 	}
     //净菜 vegetable
     public function vegetable(){
@@ -994,9 +999,25 @@ class home extends CI_Controller
 	}
     //服务 service
     public function service(){
+    	// 获取banner
+    	$banner = file_get_contents(POSTAPI.'API_Banner?number=2');
+    	$data['banner'] = json_decode(json_decode($banner),true);
 
-		$this->load->view('service');
+    	$service = file_get_contents(POSTAPI.'API_Serviceidea');
+    	$data['serv'] = json_decode(json_decode($service),true);
+
+		$this->load->view('service',$data);
 	}
+	// 服务员加入购物车
+	public function servadd()
+	{
+		if($_POST){
+			var_dumP($_POST);
+		}
+	}
+
+
+
 	//发现
 	public function find(){
 
