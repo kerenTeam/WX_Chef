@@ -45,7 +45,7 @@
         
         <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]['foodprice'];?></span></div>
 
-          <input type="hidden" name='code' value="<?php if ($foods[0]['foodkind'] == 1){echo "0";}elseif($foods[0]['foodkind'] == 2){echo "2";}elseif($foods[0]['code'] == 1999){echo '1';}?>">
+          <input type="hidden" name='code' value="<?php if ($foods[0]['foodkind'] == 1){if($foods[0]['code'] == 1999){echo "1";}else{echo "0";}}elseif($foods[0]['foodkind'] == 2){echo "2";}?>">
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
           <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if($number){echo $number;}else{echo "0";}?>">

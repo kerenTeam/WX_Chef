@@ -321,6 +321,7 @@ class home extends CI_Controller
 	//套餐详情
 	public function dinner(){
 
+
 		$this->load->view('dinner');
 	}
 	// 加入购物车
