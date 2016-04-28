@@ -25,9 +25,7 @@ function doaction(obj) {
     }
 </script>
 
-
-<?php if(isset($shoping)):?>
-  <?php if($shoping == ''): ?>
+<?php if(!isset($_SESSION['shoping'])):?>
     <br>
     <br>
     <br>
@@ -35,7 +33,7 @@ function doaction(obj) {
     <br>
     <center><div class="am-margin">菜篮子还是空的</div></center>
     <center><div class="am-margin"><a href="<?=site_url('home/cailan');?>" class="am-u-sm-12 am-btn bgreen go">去点菜</a></div></center>
-  <?php endif;?>
+
 <?php else:;?>
 
 <form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">
@@ -100,7 +98,7 @@ function doaction(obj) {
             // var_dumP($food);
             if(!isset($_SESSION['booking'])){
              $this->session->set_userdata('booking',$food);
-            }else{
+                 }else{
               $booking = $_SESSION['booking'];
 
               $book = array_merge($booking,$food);
@@ -109,7 +107,7 @@ function doaction(obj) {
           ?>
               <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
-                 <a href="<?php echo site_url('home/food?id=').$food[0]['foodid'].'&number='.$v['number'].'&shopid='.$shopid;?>" class="vimg">
+                 <a href="<?php echo site_url('home/food?id=').$food[0]['foodid'].'&number='.$v   ['number'].'&shopid='.$shopid;?>" class="vimg">
                   <img src="<?php echo IP.$food[0]['thumbnail']?>" alt="<?=$food[0]['foodname']?>"/>
                 </a>
               </div>
@@ -180,11 +178,11 @@ function doaction(obj) {
               <li class="am-g am-padding-xs">
               <?php if (empty($_SESSION['Writes'])): ?>
                   <label class="am-checkbox am-success am-u-sm-4">
-                  服务员 <input type="checkbox" id="serpeople" ata-am-ucheck>
+                  服务员(男) <input type="checkbox" id="serpeople" ata-am-ucheck>
                   </label> 
                 <?php else: ?>
                    <label class="am-checkbox am-success am-u-sm-4">
-                  服务员 <input type="checkbox" id="serpeople" checked='checked'>
+                  服务员(男) <input type="checkbox" id="serpeople" checked='checked'>
                   </label> 
                 <?php endif ?>
                 <input type="hidden" id="servTotal" value="0">
@@ -203,6 +201,21 @@ function doaction(obj) {
                   <span class="add am-icon-plus-circle green" onClick="empladd()"></span>
 
 
+                </div>
+             </li>
+
+              <li class="am-g am-padding-xs"> 
+       
+                  <label class="am-checkbox am-success am-u-sm-4">
+                     服务员(女)<input type="checkbox" id="serpeople2" ata-am-ucheck>
+                  </label>  
+                <input type="hidden" id="servTotal2" value="0">
+               <div class="epr am-text-center am-text-sm"><span class="price" id="serprice2">80</span>元/位</div>
+ 
+               <div class="am-marign-top-sm am-fr cd2"style="display: none;">
+                  <span class="reduce am-icon-minus-circle red" onClick="empdel2()"></span>
+                  <input type="text" class="serinput2" readonly="" name="" value="0" >
+                  <span class="add am-icon-plus-circle green" onClick="empladd2()"></span>
                 </div>
              </li>
            </ul>
@@ -264,52 +277,6 @@ function doaction(obj) {
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/num.js"></script>
-
+<script src="skin/js/service.js"></script>
 </body>
-<script>
-  //是否选择服务员
-
-  var sercheck = document.getElementById('serpeople');
-  var cd = document.getElementsByClassName('cd')[0];
-  var serinput = document.getElementsByClassName('serinput')[0];
-  var serprice = document.getElementById('serprice');
-  var servTotal = document.getElementById('servTotal');
-  var allmoney = document.getElementById('allmoney');
-  var   keep = allmoney.innerHTML;
-  sercheck.onclick = function (){
-    
-    if(sercheck.checked){
-          cd.style.display="";
-          serinput.value=1;
-           allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(serprice.innerHTML);
-    }
-    else{
-      cd.style.display="none";
-       serinput.value=0;
-       allmoney.innerHTML = parseFloat(allmoney.innerHTML)-parseFloat(servTotal.value);
-     }
-      servTotal.value = (serinput.value)*parseInt(serprice.innerHTML);
-       //allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(servTotal.value);
-}
-//服务于数量加减
- function empdel(){
-  var sernum =serinput.value;
-        sernum--;
-        if(sernum<1){
-          sernum = 0;
-          sercheck.checked = false;
-          cd.style.display="none";
-        }
-        serinput.value = sernum;
-        servTotal.value = sernum*parseFloat(serprice.innerHTML); console.log(servTotal.value);
-        allmoney.innerHTML = parseFloat(allmoney.innerHTML)-parseFloat(serprice.innerHTML);
- }
- function empladd(){
-  var sernum =serinput.value;
-        sernum++; 
-        serinput.value =sernum;
-        servTotal.value = sernum*parseFloat(serprice.innerHTML);console.log(servTotal.value);
-         allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(serprice.innerHTML);
- }
-</script>
 </html>

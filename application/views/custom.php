@@ -45,7 +45,7 @@
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot customFooter">
     <div class="customBtn">
-      <button type="submit" class="btn am-btn am-btn-danger customSubmit">提 交</button>
+      <button type="button" class="btn am-btn am-btn-danger customSubmit">提 交</button>
     </div>
   </div>
   <!-- modal -->
@@ -55,8 +55,8 @@
         <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
       </div>
       <div class="am-modal-bd customBtn">
-        <p class="customModalP">客服已收到您的查询信息，正在处理。请留意我们给您的去电(400-820-1790)</p>
-        <a href="javascript:;" class="btn am-btn am-btn-danger am-radius">好</a>
+        <p class="customModalP">客服正在处理。<br>请留意我们给您的去电(400-820-1790)</p>
+        <a href="javascript:;" class="btn am-btn am-btn-sm am-btn-danger am-radius" data-am-modal-close>好</a>
       </div>
     </div>
   </div>
@@ -64,10 +64,11 @@
 
 
 <script src="skin/js/jquery.min.js"></script>
+<script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/address.js"></script>
 <script type="text/javascript">
     new PCAS("province","city","area","四川省","成都市");
-    $('.customForm').bind('submit',function(){
+    $('.customSubmit').bind('click',function(){
       var phone = $("#phone");
         if(phone.val() == ''){
           alert("请输入手机号");

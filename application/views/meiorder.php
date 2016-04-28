@@ -1,142 +1,313 @@
-<html><head>
-    <title>订单确认</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="X-UA-Compatible" content="edge">    <link href="//p0.meituan.net" rel="dns-prefetch">
-    <link href="//p1.meituan.net" rel="dns-prefetch">
-    <link href="//mc.meituan.net" rel="dns-prefetch">
-    <link href="//xs01.meituan.net" rel="dns-prefetch">
-    <script async="" src="//www.google-analytics.com/analytics.js"></script><script>
-    var MT_WM = window.MT_WM || {};
-    MT_WM.TimeTracker = {rt: 1457951522614, st: Date.now()};
-    MT_WM.logFirstScreenTime = function () {
-    MT_WM.TimeTracker.fst = Date.now();
-    };
-    window.addEventListener('load', function () {
-    //保存性能时间
-    MT_WM.TimeTracker.lt = Date.now();
-    });
-    MT_WM.STATIC_ROOT = 'http://xs01.meituan.net/waimai_i/56e1569a';
-    function delayGo(u, t) {
-    setTimeout(function () {
-    if (typeof u == 'string') location = u;
-    else if (typeof u == 'function') u();
-    }, (t == null ? 300 : t));
+<body>
+  <!-- header -->
+  <header data-am-widget="header" class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
+  <div class="am-header-left am-header-nav">
+    <a href="<?php echo site_url('home/cailan')?>">
+      <i class="am-header-icon am-icon-chevron-left"></i>
+    </a>
+  </div>
+  <h1 class="am-header-title">
+      菜篮子
+  </h1>
+
+</header>
+
+<script type="text/javascript">
+function doaction(obj) {
+        $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/addcart'); ?>',
+            data: $(obj.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode).serialize(),
+            success: function(data) {
+                console.log(data);
+            }
+        });
     }
-    </script>
-    <script type="text/javascript">
-    (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-    (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-    m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-45741865-3', 'i.waimai.meituan.com');
-    ga('send', 'pageview');
-    </script>
-    <link rel="stylesheet" href="http://xs01.meituan.net/waimai_i/css/global.d421112e.css">
-    
-    <link href="http://xs01.meituan.net/waimai_i/css/page/html/faq.72d4cd4f.css" rel="stylesheet">
-    <link href="http://xs01.meituan.net/waimai_i/css/page/order/order.37f04a97.css" rel="stylesheet">
-</head>
-<body class="i">
-    <header id="header" class="header page-header  ">
-        <a class="j-back-link back-wrap" href="javascript:;" onclick="">
-            <i class="icon i-back"></i>
-        </a>
-        <div class="header-right"></div>
-        <h1 class="j-page-name page-name">订单确认</h1>
-    </header>
-    <form action="post">
-        <div id="address-section"><a class="address-field address-choose j-address-chooose" href="javascript:"><i class="addr-add"></i><span>选择收货地址</span></a></div>
-        <div id="choose-pay-wrap" class="order-region">
-            <ul id="choose-pay" class="order-region-entries pay-online">
-                <li id="order-paytype-2" class="order-region-entry">在线支付<span class="j-order-payonline-discount order-payonline-discount borderradius-2" style="display: none;"></span><i class="i-circle icon-tickthick order-payonline-check"></i><i class="i-circle order-payonline-uncheck"></i></li>
-                <li id="order-paytype-1" class="order-region-entry" style="display: none;">货到付款<i class="i-circle icon-tickthick order-payoffline-check"></i><i class="i-circle order-payoffline-uncheck"></i></li>
-            </ul>
-        </div>
-        <div id="poi-coupon" class="order-region">
-            <ul class="order-region-entries">
-                <li>
-                    <a id="poi-coupon-link" class="order-region-entry" href="/order/poicoupons">
-                        <span>商家代金券</span><span class="order-coupon-num"><span id="poi-coupon-info" data-couponid="-1">无可用商家代金券</span><i class="icon-arrow-right-thin"></i></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="order-region">
-            <div id="order-timefield" class="order-timefield clearfix">
-                <label class="order-timefield-label">送达时间</label>
-                <span id="user_receive_time" class="order-timefield-span"><span class="order-timefield-txt" data-unixtime="0">立即送出(大约19:10送达)</span><i class="icon-arrow-right-thin"></i></span>
-            </div>
-            <div class="order-field clearfix">
-                <label class="order-label">备注：</label>
-                <input class="order-input" type="text" id="user_caution" placeholder="请填写备注">
-            </div>
-        </div>
-        <script type="text/template" id="template-food-item">
-        <li class="order-region-entry">
-            <% if (sendPrice!=null) { %><span class="order-entry-price">￥<%=sendPrice%></span><% } %>
-            <% if (totalPrice!=null) { %><span class="order-entry-price">￥<%=totalPrice%></span><% } %>
-            <% if (boxPrice!=null) { %><span class="order-entry-price">￥<%=boxPrice%></span><% } %>
-            <% if (num!=null) { %><span class="order-entry-num">￥<%=price%>&times;<%=num%></span><% } %>
-            <span class="order-entry-name text-overflow-ellipsis-2 food-name-width"><%=name%><% if (!!icon) { %><img
-            class="i-x15 order-entry-icon" src="<%=icon%>"><% } %></span>
-        </li>
-        </script>
-        <div id="order-foods-wrap" class="order-region">
-            <h1 class="order-region-title">菜品信息</h1>
-            <ul class="order-region-entries" id="food-items">         <li class="order-region-entry">             <span class="order-entry-price">￥26</span><span class="order-entry-num">￥13×2</span>             <span class="order-entry-name text-overflow-ellipsis-2 food-name-width">小碗（牛杂）</span>         </li>              <li class="order-region-entry">             <span class="order-entry-price">￥4</span>             <span class="order-entry-name text-overflow-ellipsis-2 food-name-width">配送费</span>         </li>              <li class="order-region-entry">             <span class="order-entry-price">￥2</span>             <span class="order-entry-name text-overflow-ellipsis-2 food-name-width">餐盒费</span>         </li>     </ul>
-        </div>
-        <div id="order-actv" class="order-region" style="display: none;">
-            <h1 class="order-region-title">商家活动</h1>
-        <ul id="order-actv-list" class="order-region-entries"></ul>
-    </div>
-    <div id="delivery-tip" class="order-tips-thirdpart">由美团专送提供高品质配送服务</div>
-</form>
-<div class="order-btn-field-placeholder"></div>
-<div class="order-btn-field">
-    <input id="order-submit" class="combtn order-btn" type="submit" value="立即下单">
-    <span class="order-total-field"><span id="order-total" class="order-total">￥32</span></span>
-</div>
-<style>
-    .loading-mask{
-        display:none!important;
-    }
-</style>
-<script>if (MT_WM.logFirstScreenTime) MT_WM.logFirstScreenTime();</script>
-<script src="http://xs01.meituan.net/waimai_i/js/lib/wm_lib.578b6b32.js"></script>
-<script>require.config({
-baseUrl: "http://xs01.meituan.net/waimai_i/56e1569a/js",
-shim: {
-'zepto': {
-exports: 'Zepto'
-},
-'jquery': {
-exports: 'Zepto'
-}
-},
-paths: {
-'zepto': 'fe_common/lib/zepto',
-'jquery': 'fe_common/lib/zepto'
-}
-});</script>
-<script>Raven.config('http://e284c96b17d24de69b3ac24cae61c5d0@sentry.sankuai.com/78').install();</script>  <script src="http://xs01.meituan.net/waimai_i/js/page/order/order.097051b9.js"></script>
-<script>
-require(['page/order/order'], function (orderPage) {
-orderPage.init({
-environment: 'production', // 支付区分测试和线上环境
-baseurl: '',
-csrfToken: 'xP8+IpN8BovlNMK8fhnTnCDxH7Ou4Tk5FgV4HaarnYvLDeov9M3dOkInCpHXo+Pm' //anti-CSRF
-});
-});
 </script>
-<div id="dialog1457951523803" class="tipdialog" style="top: 378.5px; left: 140.5px; opacity: 0; display: none;"><div class="tipdialog-content"><span>请输入收货地址</span></div></div></body></html>
+
+<?php if(!isset($_SESSION['shoping'])):?>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center><div class="am-margin">菜篮子还是空的</div></center>
+    <center><div class="am-margin"><a href="<?=site_url('home/cailan');?>" class="am-u-sm-12 am-btn bgreen go">去点菜</a></div></center>
+
+<?php else:;?>
+
+<form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">
+  <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
+    <div class="cmn cmnb am-list-news am-list-news-default" >
+      <div class="am-list-news-bd pabo">
+       <?php if(!empty($carts)):?>
+        <div class="am-text-center oln">点菜</div>
+          <ul class="am-list cul">
+         
+        <!-- <?php var_DumP($carts);?> -->
+          <?php unset($_SESSION['booking']); foreach($carts as $cart):?>
+            <?php 
+        $id = $cart['foodid'];
+        $shopid = $cart['shopid'];
+                $foods = file_get_contents(POSTAPI."API_Food?dis=xq&foodid=".$id);
+        $food = json_decode(json_decode($foods),true);
+     
+        if(!isset($_SESSION['booking'])){
+         $this->session->set_userdata('booking',$food);
+        }else{
+          $booking = $_SESSION['booking'];
+
+          $book = array_merge($booking,$food);
+          $this->session->set_userdata('booking',$book);
+        }
+            ?>
+            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+              <div class="am-u-sm-3 am-text-center am-list-thumb">
+                <a href="<?php echo site_url('home/food?id=').$food[0]['foodid'].'&number='.$cart['number'].'&shopid='.$shopid;?>" class="vimg">
+                  <img src="<?php echo IP.$food[0]['thumbnail'];?>" id="img" alt="<?=$food[0]['foodname'];?>"/>
+                </a>
+              </div>
+              <div class=" am-u-sm-9 am-list-main">
+                <h3 class="am-list-item-hd cartb"><?=$food[0]['foodname'];?></h3>
+                <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
+                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]['foodprice'];?></span></div>
+                <input type="hidden" name="code[]" value="0">
+                <div class="fNum">
+
+                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
+                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" 
+                  name="numbers[]" value="<?=$cart['number'];?>">
+                  <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
+                </div>
+                 <a href="<?php echo site_url('home/change?id=').$food[0]['foodid'].'&pid='.$food[0]['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
+                <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red ats2"></i></a>
+              </div>
+            </li>
+                <?php endforeach;?>
+          </ul>
+          <?php endif;?>
+          <?php if(!empty($taocan)):?>
+         <div class="am-text-center oln">套餐</div>
+          <ul class="am-list cul">
+          <?php foreach($taocan as $k=>$v):?>
+           <?php 
+            $id = $v['foodid'];
+            $shopid = $v['shopid'];
+            $foods = file_get_contents(POSTAPI."API_Food?dis=xq&foodid=".$id);
+            $food = json_decode(json_decode($foods),true);
+            // var_dumP($food);
+            if(!isset($_SESSION['booking'])){
+             $this->session->set_userdata('booking',$food);
+                 }else{
+              $booking = $_SESSION['booking'];
+
+              $book = array_merge($booking,$food);
+              $this->session->set_userdata('booking',$book);
+            }
+          ?>
+              <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+              <div class="am-u-sm-3 am-text-center am-list-thumb">
+                 <a href="<?php echo site_url('home/food?id=').$food[0]['foodid'].'&number='.$v   ['number'].'&shopid='.$shopid;?>" class="vimg">
+                  <img src="<?php echo IP.$food[0]['thumbnail']?>" alt="<?=$food[0]['foodname']?>"/>
+                </a>
+              </div>
+              <div class=" am-u-sm-9 am-list-main">
+                <h3 class="am-list-item-hd cartb"><?=$food[0]['foodname'];?></h3>
+                <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
+                <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food[0]['foodprice']?></span></div>
+                 <input type="hidden" name="code[]" value="1">
+                <div class="fNum">
+                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
+                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
+                  <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
+                </div>
+                <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
+              </div>
+            </li> 
+          <?php endforeach;?>
+           </ul>
+         <?php endif;?>  
+         <?php if(!empty($jincai)):?>
+         <div class="am-text-center oln">净菜</div>
+          <ul class="am-list cul">
+          <?php foreach($jincai as $k=>$v):?>
+           <?php 
+            $id = $v['foodid'];
+            $shopid = $v['shopid'];
+            $foods = file_get_contents(POSTAPI."API_Food?dis=xq&foodid=".$id);
+            $food = json_decode(json_decode($foods),true);
+            // var_dumP($food);
+            if(!isset($_SESSION['booking'])){
+             $this->session->set_userdata('booking',$food);
+            }else{
+              $booking = $_SESSION['booking'];
+
+              $book = array_merge($booking,$food);
+              $this->session->set_userdata('booking',$book);
+            }
+          ?>
+              <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+              <div class="am-u-sm-3 am-text-center am-list-thumb">
+                <a href="<?php echo site_url('home/food?id=').$food[0]['foodid'].'&number='.$v['number'].'&shopid='.$shopid;?>" class="vimg">
+                  <img src="<?php echo IP.$food[0]['thumbnail']?>" alt="<?=$food[0]['foodname']?>"/>
+                </a>
+              </div>
+              <div class=" am-u-sm-9 am-list-main">
+                <h3 class="am-list-item-hd cartb"><?=$food[0]['foodname'];?></h3>
+                <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
+                <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food[0]['foodprice']?></span></div>
+                 <input type="hidden" name="code[]" value="1">
+                <div class="fNum">
+                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
+                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
+                  <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
+                </div>
+                <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
+              </div>
+            </li> 
+          <?php endforeach;?>
+           </ul>
+         <?php endif;?>
+
+           <ul class="am-shadow am-list">
+             <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
+               服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
+               <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->
+               <input type="hidden" id="fee" name="servmoneydata" value="0">
+             </li>
+              <li class="am-g am-padding-xs">
+              <?php if (empty($_SESSION['Writes'])): ?>
+                  <label class="am-checkbox am-success am-u-sm-4">
+                  服务员 <input type="checkbox" id="serpeople" ata-am-ucheck>
+                  </label> 
+                <?php else: ?>
+                   <label class="am-checkbox am-success am-u-sm-4">
+                  服务员 <input type="checkbox" id="serpeople" checked='checked'>
+                  </label> 
+                <?php endif ?>
+                <input type="hidden" id="servTotal" value="0">
+               <div class="epr am-text-center am-text-sm"><span class="price" id="serprice">80</span>元/位</div>
+                <?php  if (!empty($_SESSION['Writes'][0]))
+                { $writernums = $_SESSION['Writes'][0];}else{ $writernums = 0; } ?>
+               <div class="am-marign-top-sm am-fr cd" 
+               <?php if ($writernums != 0): ?>
+                 style="display: block;"
+               <?php else: ?>
+                 style="display: none;"
+               <?php endif ?> >
+                  <span class="reduce am-icon-minus-circle red" onClick="empdel()"></span>
+                  <!-- <input type="text" class="serinput" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="Writes[]" value="<?php echo $writernums; ?>" > -->
+                  <input type="text" class="serinput" readonly="" name="Writes[]" value="<?php echo $writernums; ?>" >
+                  <span class="add am-icon-plus-circle green" onClick="empladd()"></span>
+
+
+                </div>
+             </li>
+           </ul>
+      </div>
+
+    </div>
+  </div>
+  
+  <!-- footer -->
+  <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="" style="bottom:49px;">
+   
+      <div class="am-u-sm-8 a">
+        <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney"></span>份</span>
+        <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red"></span>
+      </div>
+      <div class="am-u-sm-4 b">
+        
+        <button   type="submit" class="am-btn am-btn-success">确认</button>
+        
+      </div>
+ 
+  </div>
+<!-- footer -->
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
+  <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
+    <li >
+      <a href="<?php echo site_url('home/index')?>">
+        <span class=""><img src="skin/img/home1.png" alt=""></span>
+        <span class="am-navbar-label">首页</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/cart')?>" class="active">
+        <span class=""><img src="skin/img/clz2.png" alt=""></span>
+        <span class="am-navbar-label">菜篮子</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/find')?>"> 
+        <span class="find">发现</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/customServ')?>">
+        <span class=""><img src="skin/img/kf.png" alt=""></span>
+        <span class="am-navbar-label">客服</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/ucent')?>">
+        <span class=""><img src="skin/img/gr1.png" alt=""></span>
+        <span class="am-navbar-label">我的</span>
+      </a>
+    </li>
+  </ul>
+</div>
+</form>
+<?php endif;?>
+<script src="skin/js/jquery.min.js"></script>
+<script src="skin/js/amazeui.min.js"></script>
+<script src="skin/js/num.js"></script>
+
+</body>
+<script>
+  //是否选择服务员
+
+  var sercheck = document.getElementById('serpeople');
+  var cd = document.getElementsByClassName('cd')[0];
+  var serinput = document.getElementsByClassName('serinput')[0];
+  var serprice = document.getElementById('serprice');
+  var servTotal = document.getElementById('servTotal');
+  var allmoney = document.getElementById('allmoney');
+  var   keep = allmoney.innerHTML;
+  sercheck.onclick = function (){
+    
+    if(sercheck.checked){
+          cd.style.display="";
+          serinput.value=1;
+           allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(serprice.innerHTML);
+    }
+    else{
+      cd.style.display="none";
+       serinput.value=0;
+       allmoney.innerHTML = parseFloat(allmoney.innerHTML)-parseFloat(servTotal.value);
+     }
+      servTotal.value = (serinput.value)*parseInt(serprice.innerHTML);
+       //allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(servTotal.value);
+}
+//服务于数量加减
+ function empdel(){
+  var sernum =serinput.value;
+        sernum--;
+        if(sernum<1){
+          sernum = 0;
+          sercheck.checked = false;
+          cd.style.display="none";
+        }
+        serinput.value = sernum;
+        servTotal.value = sernum*parseFloat(serprice.innerHTML); console.log(servTotal.value);
+        allmoney.innerHTML = parseFloat(allmoney.innerHTML)-parseFloat(serprice.innerHTML);
+ }
+ function empladd(){
+  var sernum =serinput.value;
+        sernum++; 
+        serinput.value =sernum;
+        servTotal.value = sernum*parseFloat(serprice.innerHTML);console.log(servTotal.value);
+         allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(serprice.innerHTML);
+ }
+</script>
+</html>

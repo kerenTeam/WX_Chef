@@ -56,8 +56,6 @@ body {
     right: 0;
     text-align: right;
     background-color: rgba(0,0,0,0.7);
-    
-
 }
 .shareto img{
    margin:1rem 2.8rem 0 0;
@@ -109,18 +107,22 @@ body {
 	-ms-filter: blur(1px);
 	filter: blur(1px);
 }
+.sexSer img{
+	width:3rem;
+}
 .find{
-	    display: inline-block;
+	display: inline-block;
     background-color: #ED3F59;
     border-radius: 50%;
     color: white;
     font-size: 13px;
-    width: 4rem;
     box-shadow: 0px 2px 11px rgb(237, 63, 89);
-    height: 4rem;
-    line-height: 4rem;
     text-align: center;
-    margin-top: -2px;
+    position: relative;
+    width:4.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem; 
+    top: -1.2rem;
 }
 .searchFix{
 	position: absolute;
@@ -163,14 +165,14 @@ body {
 	align-content:space-around;
 	padding:5% 10%;
 }
-  .bno{
+.bno{
         background: none;
     border: none;
     padding: 10px;
     border-top: 1px solid rgba(0,0,0,0.1);
     outline:none;
   }
-  .bno:first-of-type{
+.bno:first-of-type{
     border-right: 1px solid rgba(0,0,0,0.1)!important;
   } 
 .wx_type_img{
@@ -187,11 +189,20 @@ body {
   opacity: 0;
   filter: alpha(opacity=0);
 }
-.cd{
+.cd,.cd2{
 	    margin-top: 0.2rem;
     margin-right: 2.8rem;
 }
- 
+.am-navbar .am-navbar-nav {
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    overflow: visible;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
 .cardimg{
 	width:5rem;
 } 
@@ -552,7 +563,7 @@ body {
 	display: inline-block;
     margin-top: 0.8rem;
 }
-.numTxt,.serinput {
+.numTxt,.serinput,.serinput2 {
 	/* display:none;*/
 	background: none;
 	width: 3.2rem;
@@ -1647,7 +1658,7 @@ figure a:hover figcaption {
     width: 100%;
 }
 .cefont{
-	font-size:22px;
+	font-size:20px;
 	margin-right:5px;
 }
 /* 庆典 */
@@ -1736,8 +1747,8 @@ figure a:hover figcaption {
 }
 .srNum{
 	float: left;
-    margin-top: 2rem;
-    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-left: 3rem;
 
 }
 .contactGo:hover,.contactGo:focus{
@@ -1761,6 +1772,12 @@ margin-bottom:1.2rem;
 .area{
     border-bottom: 1px solid rgba(0,0,0,0.1);
     padding: 1.5rem 0 1rem;
+}
+.area strong{
+	font-weight:400;
+}
+.area .am-u-sm-9{
+	font-size: 14px;
 }
 @media only screen and (min-width:600px) {
 .tkcontent img {
@@ -1851,7 +1868,7 @@ margin-bottom:1.2rem;
     margin-top: 4px;
 }
 .srNum{ 
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 .acr .am-u-sm-9{
 	margin-top:1rem;
@@ -1925,11 +1942,20 @@ margin-bottom:1.2rem;
 .am-icon-refresh {
 	right: 10rem;
 }
+.find{
+	width: 4rem;
+    height: 4rem;
+    line-height: 4rem; 
+    top: -0.8rem;
+}
+.gsf .price {
+    right: 7.4rem;
+}
 .srNum{ 
-    margin-left: 0rem;
+    margin-left: 1.5rem;
 }
 .findSale [class*=am-u-]{ 
-	height:9.5rem;
+	height:11.2rem;
 	}
 .nowBuy{
 	margin-left:1rem;
