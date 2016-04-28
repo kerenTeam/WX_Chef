@@ -20,6 +20,9 @@
     <li>
       <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f2.png" class="am-img-responsive card" alt="大厨到家"></a>
     </li>
+    <li>
+      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f3.png" class="am-img-responsive card" alt="大厨到家"></a>
+    </li>
   </ul>
 </div>
 <!-- 推荐 -->

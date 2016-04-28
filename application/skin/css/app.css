@@ -108,17 +108,18 @@ body {
 	filter: blur(1px);
 }
 .find{
-	    display: inline-block;
+	display: inline-block;
     background-color: #ED3F59;
     border-radius: 50%;
     color: white;
     font-size: 13px;
-    width: 4rem;
     box-shadow: 0px 2px 11px rgb(237, 63, 89);
-    height: 4rem;
-    line-height: 4rem;
     text-align: center;
-    margin-top: -2px;
+    position: relative;
+    width:4.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem; 
+    top: -1.2rem;
 }
 .searchFix{
 	position: absolute;
@@ -189,7 +190,16 @@ body {
 	    margin-top: 0.2rem;
     margin-right: 2.8rem;
 }
- 
+.am-navbar .am-navbar-nav {
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    overflow: visible;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
 .cardimg{
 	width:5rem;
 } 
@@ -1929,7 +1939,12 @@ margin-bottom:1.2rem;
 .am-icon-refresh {
 	right: 10rem;
 }
-
+.find{
+	width: 4rem;
+    height: 4rem;
+    line-height: 4rem; 
+    top: -0.8rem;
+}
 .gsf .price {
     right: 6.5rem;
 }

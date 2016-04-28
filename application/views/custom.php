@@ -55,7 +55,7 @@
         <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
       </div>
       <div class="am-modal-bd customBtn">
-        <p class="customModalP">客服已收到您的查询信息，正在处理。请留意我们给您的去电(400-820-1790)</p>
+        <p class="customModalP">客服正在处理。<br>请留意我们给您的去电(400-820-1790)</p>
         <a href="javascript:;" class="btn am-btn am-btn-sm am-btn-danger am-radius" data-am-modal-close>好</a>
       </div>
     </div>

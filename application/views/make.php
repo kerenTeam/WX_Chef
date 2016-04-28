@@ -82,7 +82,7 @@ function doaction(obj) {
                  <a href="<?php echo site_url('homeange?id=').$food[0]['foodid'].'&pid='.$food[0]['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red ats2"></i></a>
               </div>
-            <>
+            <li>
             <?php endforeach;?>
           </ul>
           <?php endif;?>
@@ -123,7 +123,7 @@ function doaction(obj) {
                 </div>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
-            <> 
+            <li> 
           <?php endforeach;?>
            </ul>
          <?php endif;?>  
@@ -164,7 +164,7 @@ function doaction(obj) {
                 </div>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
-            <> 
+            <li> 
           <?php endforeach;?>
            </ul>
          <?php endif;?>
@@ -174,7 +174,7 @@ function doaction(obj) {
                服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
                <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->
                <input type="hidden" id="fee" name="servmoneydata" value="0">
-             <>
+             <li>
               <li class="am-g am-padding-xs">
               <?php if (empty($_SESSION['Writes'])): ?>
                   <label class="am-checkbox am-success am-u-sm-4">
@@ -202,7 +202,7 @@ function doaction(obj) {
 
 
                 </div>
-             <>
+             <li>
            </ul>
       </div>
 
@@ -231,30 +231,30 @@ function doaction(obj) {
         <span class=""><img src="skin/img/home1.png" alt=""></span>
         <span class="am-navbar-label">首页</span>
       </a>
-    <>
+    <li>
     <li>
       <a href="<?php echo site_url('home/cart')?>" class="active">
         <span class=""><img src="skin/img/clz2.png" alt=""></span>
         <span class="am-navbar-label">菜篮子</span>
       </a>
-    <>
+    <li>
     <li>
       <a href="<?php echo site_url('home/find')?>"> 
         <span class="find">发现</span>
       </a>
-    <>
+    <li>
     <li>
       <a href="<?php echo site_url('home/customServ')?>">
         <span class=""><img src="skin/img.png" alt=""></span>
         <span class="am-navbar-label">客服</span>
       </a>
-    <>
+    <li>
     <li>
       <a href="<?php echo site_url('home/ucent')?>">
         <span class=""><img src="skin/img/gr1.png" alt=""></span>
         <span class="am-navbar-label">我的</span>
       </a>
-    <>
+    <li>
   </ul>
 </div>
 </form>
