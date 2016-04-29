@@ -175,36 +175,70 @@ function doaction(obj) {
                <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->
                <input type="hidden" id="fee" name="servmoneydata" value="0">
              </li>
-
+            
+          <?php if(!empty($witer)):?>
               <li class="am-g am-padding-xs">
+                    <label class="am-checkbox am-success am-u-sm-4">
+                  服务员(男) <input type="checkbox" id="serpeople" ata-am-ucheck <?php if($witer['boy'] != 0){echo "checked";}?>>
+                  </label> 
+                <input type="hidden" id="servTotal" value="0">
+               <div class="epr am-text-center am-text-sm"><span class="price" id="serprice">80</span>元/位</div>
+               <div class="am-marign-top-sm am-fr cd" style="
+               <?php if($witer['boy'] == 0):?>
+                display: none;
+              <?php else:?>
+                display: block;
+              <?php endif;?>
+               ">
+                  <span class="reduce am-icon-minus-circle red" onClick="empdel()"></span>
+                  <input type="text" class="serinput" readonly="" name="boy" value="<?=$witer['boy'];?>" >
+                  <span class="add am-icon-plus-circle green" onClick="empladd()"></span>
+                </div>
+             </li>
+              <li class="am-g am-padding-xs"> 
+       
+                  <label class="am-checkbox am-success am-u-sm-4">
+                     服务员(女)<input type="checkbox" id="serpeople2" ata-am-ucheck <?php if($witer['girl'] != 0){echo "checked";}?>>
+                  </label>  
+                <input type="hidden" id="servTotal2" value="0">
+               <div class="epr am-text-center am-text-sm"><span class="price" id="serprice2">80</span>元/位</div>
+ 
+               <div class="am-marign-top-sm am-fr cd2"style="
+               <?php if($witer['girl'] == 0):?>display: none;<?php else:?>display:block;<?php endif;?>">
+                  <span class="reduce am-icon-minus-circle red" onClick="empdel2()"></span>
+                  <input type="text" class="serinput2" readonly="" name="girl" value="<?=$witer['girl'];?>" >
+                  <span class="add am-icon-plus-circle green" onClick="empladd2()"></span>
+                </div>
+             </li>
+           <?php else:?>
+         <li class="am-g am-padding-xs">
                     <label class="am-checkbox am-success am-u-sm-4">
                   服务员(男) <input type="checkbox" id="serpeople" ata-am-ucheck>
                   </label> 
                 <input type="hidden" id="servTotal" value="0">
                <div class="epr am-text-center am-text-sm"><span class="price" id="serprice">80</span>元/位</div>
-               <div class="am-marign-top-sm am-fr cd" style="
-               display: none;
+               <div class="am-marign-top-sm am-fr cd" style=" display: none;
                ">
                   <span class="reduce am-icon-minus-circle red" onClick="empdel()"></span>
                   <input type="text" class="serinput" readonly="" name="boy" value="0" >
                   <span class="add am-icon-plus-circle green" onClick="empladd()"></span>
                 </div>
              </li>
-
               <li class="am-g am-padding-xs"> 
        
                   <label class="am-checkbox am-success am-u-sm-4">
-                     服务员(女)<input type="checkbox" id="serpeople2" ata-am-ucheck>
+                     服务员(女)<input type="checkbox" id="serpeople2" ata-am-ucheck >
                   </label>  
                 <input type="hidden" id="servTotal2" value="0">
                <div class="epr am-text-center am-text-sm"><span class="price" id="serprice2">80</span>元/位</div>
  
-               <div class="am-marign-top-sm am-fr cd2"style="display: none;">
+               <div class="am-marign-top-sm am-fr cd2" style=" display: none;">
                   <span class="reduce am-icon-minus-circle red" onClick="empdel2()"></span>
-                  <input type="text" class="serinput2" readonly="" name="" value="0" >
+                  <input type="text" class="serinput2" readonly="" name="girl" value="0" >
                   <span class="add am-icon-plus-circle green" onClick="empladd2()"></span>
                 </div>
              </li>
+           <?php endif;?>
            </ul>
       </div>
 

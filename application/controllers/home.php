@@ -438,7 +438,8 @@ class home extends CI_Controller
 		unset(
 		    $_SESSION['shoping'],
 		    $_SESSION['booking'],
-		    $_SESSION['phone']
+		    $_SESSION['phone'],
+		    $_SESSION['witer']
 		);	
 		redirect('home/index');
 	}
@@ -1028,8 +1029,8 @@ class home extends CI_Controller
 	{
 		if($_POST){
 			$arr = $_POST;
+
 			$_SESSION['witer'] = $arr;
-			// var_dump($_SESSION['witer']);
 			redirect('home/cart');
 
 		}
