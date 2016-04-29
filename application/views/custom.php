@@ -1,4 +1,6 @@
 <link rel="stylesheet" type="text/css" href="skin/css/order.css">
+<link href="skin/css/city.css" rel="stylesheet" type="text/css" />
+
 <body class="customBody">
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
@@ -17,9 +19,42 @@
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">区域</label>
       <div class="am-u-sm-10 customAdd">
-        <select name="province" class="am-radius"></select>
-        <select name="city" class="am-radius"></select>
-        <select name="area" class="am-radius"></select>
+        
+          <div class="demo">     
+              <div class="infolist"> 
+                <div class="liststyle">
+                  <span id="Province" style="display:none;">
+                    <i>请选择省份</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
+                    </ul>
+                    <input type="hidden" name="cho_Province" value="请选择省份">
+                  </span>
+                  <span id="City">
+                    <i>请选择城市</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+                    </ul>
+                    <input type="hidden" name="cho_City" value="请选择城市">
+                  </span>
+                  <span id="Area">
+                    <i>请选择地区</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
+
+                    </ul>
+                    <input type="hidden" name="cho_Area" value="请选择地区">
+                  </span>
+                  <span id="Insurer">
+                    <i>请选择乡镇街道</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择乡镇街道">请选择乡镇街道</a></li>
+                    </ul>
+                    <input type="hidden" name="cho_Insurer" value="请选择乡镇街道">
+                  </span>
+                </div>
+              </div> 
+          </div>
       </div>
     </div>
     <div class="am-form-group">
@@ -65,9 +100,10 @@
 
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
-<script src="skin/js/address.js"></script>
+<script type="text/javascript" src="skin/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="skin/js/city4.city.js"></script>
+<script type="text/javascript" src="skin/js/city4.js"></script>
 <script type="text/javascript">
-    new PCAS("province","city","area","四川省","成都市");
     $('.customSubmit').bind('click',function(){
       var phone = $("#phone");
         if(phone.val() == ''){

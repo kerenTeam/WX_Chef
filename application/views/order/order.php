@@ -4,6 +4,7 @@
   }
 </style>
 <body>
+  <link href="skin/css/common.css" rel="stylesheet" type="text/css" />
   <!-- header -->
   <header data-am-widget="header" am-header-fixed class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
@@ -127,7 +128,7 @@
                 <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required id='GoodsPhone'/>
                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required id='name'/>
                  <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required id='Address'/>
-        <!--         <label class="am-checkbox am-success am-u-sm-12">
+               <!-- <label class="am-checkbox am-success am-u-sm-12">
                     是否需要服务员?<input type="checkbox" class="green" name="waiter" value="1" data-am-ucheck>
                 </label> -->
                
@@ -174,11 +175,44 @@
         </div>
 
         <!-- 用餐时间 -->
-        <div class="am-shadow am-margin-vertical-sm">
-            <p class="htit sad"><span class="am-icon-clock-o purple"></span> 用餐时间</p> 
-            <input type="text" class="am-form-field" placeholder="选择用餐时间" id="my-start-2"/> 
-        </div>
-
+        <div class="am-shadow am-margin-vertical-sm">  
+         <p class="htit"><img src="skin/img/calendar.png" alt=""> 用餐时间</p>
+          <div class="demo am-margin-sm">
+            <div class="lie">日期:<input  id="beginTime" class="kbtn am-radius" placeholder="点击选择日期"/></div>
+          </div>
+          <div id="datePlugin"></div>
+          <div class="am-margin-sm am-cf">
+          <span class="am-fl">时间:</span>
+          <input type="hidden" id="timeEat" value="">
+          <table class="am-table am-table-bordered am-fl" style="width: 80%;margin-left:5px;">
+          <tr>
+            <td>10:00</td>
+            <td>11:00</td>
+            <td>11:30</td>
+            <td>12:00</td>
+        </tr>
+        <tr>
+            <td>12:30</td>
+            <td>13:00</td>
+            <td>14:30</td>
+            <td>15:00</td>
+        </tr>
+        <tr>
+            <td>16:00</td>
+            <td>17:00</td>
+            <td>17:30</td>
+            <td>18:00</td>
+        </tr>
+        <tr>
+            <td>18:30</td>
+            <td>19:00</td>
+            <td>19:30</td>
+            <td>20:00</td>
+        </tr>
+          </table>
+          </div>
+       
+      </div>
 
       <?php if(!empty($address)):?>
           <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
@@ -191,6 +225,8 @@
   </body>
  <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
+<script type="text/javascript" src="skin/js/date.js" ></script>
+<script type="text/javascript" src="skin/js/iscroll.js" ></script>
  <script>
         var payable = '';
         var jine = '';
@@ -266,66 +302,13 @@
           }
         });
 
-            var nowTemp = new Date();
-    var nowDay = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0).valueOf();
-    var nowMoth = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), 1, 0, 0, 0, 0).valueOf();
-    var nowYear = new Date(nowTemp.getFullYear(), 0, 1, 0, 0, 0, 0).valueOf();
-    var $myStart2 = $('#my-start-2');
-
-    var checkin = $myStart2.datepicker({
-      onRender: function(date, viewMode) {
-        // 默认 days 视图，与当前日期比较
-        var viewDate = nowDay;
-
-        switch (viewMode) {
-          // moths 视图，与当前月份比较
-          case 1:
-            viewDate = nowMoth;
-            break;
-          // years 视图，与当前年份比较
-          case 2:
-            viewDate = nowYear;
-            break;
-        }
-
-        return date.valueOf() < viewDate ? 'am-disabled' : '';
-      }
-    }).on('changeDate.datepicker.amui', function(ev) {
-        if (ev.date.valueOf() > checkout.date.valueOf()) {
-          var newDate = new Date(ev.date)
-          newDate.setDate(newDate.getDate() + 1);
-          checkout.setValue(newDate);
-        }
-        checkin.close();
-        $('#my-end-2')[0].focus();
-    }).data('amui.datepicker');
-
-    var checkout = $('#my-end-2').datepicker({
-      onRender: function(date, viewMode) {
-        var inTime = checkin.date;
-        var inDay = inTime.valueOf();
-        var inMoth = new Date(inTime.getFullYear(), inTime.getMonth(), 1, 0, 0, 0, 0).valueOf();
-        var inYear = new Date(inTime.getFullYear(), 0, 1, 0, 0, 0, 0).valueOf();
-
-        // 默认 days 视图，与当前日期比较
-        var viewDate = inDay;
-
-        switch (viewMode) {
-          // moths 视图，与当前月份比较
-          case 1:
-            viewDate = inMoth;
-            break;
-          // years 视图，与当前年份比较
-          case 2:
-            viewDate = inYear;
-            break;
-        }
-
-        return date.valueOf() <= viewDate ? 'am-disabled' : '';
-      }
-    }).on('changeDate.datepicker.amui', function(ev) {
-      checkout.close();
-    }).data('amui.datepicker');
+            $('#beginTime').date();
+            $('#endTime').date({theme:"datetime"});
+            $('td').click(function(event) { 
+              $('td').removeClass('am-danger');
+              $(this).addClass('am-danger');
+              $('#timeEat').val($(this).html());
+            });
      
       })
 

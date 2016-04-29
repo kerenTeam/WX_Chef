@@ -38,17 +38,17 @@
   
           <?php if($val['foodcategoryid'] == $v['foodpid']):?>
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-            <div class="am-u-sm-4 am-text-center am-list-thumb">
+            <div class="am-u-sm-5 am-text-center am-list-thumb">
               <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="vimg">
                 <img src="skin/img/exp.gif" data-original="<?php echo IP.$v['thumbnail'];?>" class="lazy" alt="<?=$v['foodname'];?>"/>
               </a>
             </div>
-            <div class=" am-u-sm-8 am-list-main">
+            <div class=" am-u-sm-7 am-list-main">
              <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="gray">
-              <h3 class="am-list-item-hd black"><?=$v['foodname'];?></h3>
+              <h3 class="am-list-item-hd black"><span class="am-text-xs onlyVege">净</span><?=$v['foodname'];?></h3>
               <input type="hidden" name="foodid[]" value="<?=$v['foodid'];?>">
-              <div class="am-list-item-text"><strong>特点：</strong><?=$v['foodtrait'];?>。</div>
-              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
+             <!--  <div class="am-list-item-text"><strong>特点：</strong><?=$v['foodtrait'];?>。</div>
+              <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div> -->
              </a>
               <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['foodprice'];?></span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
