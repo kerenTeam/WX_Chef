@@ -286,6 +286,11 @@ class home extends CI_Controller
 
 		$this->load->view('forgetPassword');
 	}
+	//精品生活 列表
+	public function life(){
+
+		$this->load->view('life');
+	}
 	//图文详情
 	public function lifeInfo(){
 		if($_GET){

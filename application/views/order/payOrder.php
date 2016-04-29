@@ -126,7 +126,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
         $balance  =  $userdata[0]['balance'];
          ?>
          <?php if ($balance >= $_SESSION['rePayData'][0]['MoneyAll']): ?>
-            <a href="<?php echo base_url().'index.php/orderWXPay/postOrderData?MenberMoney=1'?>" class="am-list-item-hd" id="vippay">&nbsp;&nbsp;&nbsp;<img src="skin/img/vp.png" class="payimg" alt="">&nbsp;会员卡支付
+            <a href="javascript:;" class="am-list-item-hd" id="vippay">&nbsp;&nbsp;&nbsp;<img src="skin/img/vp.png" class="payimg" alt="">&nbsp;会员卡支付
             <span class="am-list-date"><i class="am-icon-angle-right atf"></i></span>
           </a>
          <?php else: ?>
