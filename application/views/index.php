@@ -1,10 +1,10 @@
 <style type="text/css">
-            .per{padding: 20px; border-bottom: 1px dotted #d3d3d3;}
-            .title{font-weight:bold; color:#39f;}
-            .nodata{display:none; height:32px; line-height:32px; text-align:center; color:#999; font-size:14px;}
-            .nodata img{width:25px;}
-            h2.tip{margin:20px;font-size: 18px}
-        </style>
+  .per{padding: 20px; border-bottom: 1px dotted #d3d3d3;}
+  .title{font-weight:bold; color:#39f;}
+  .nodata{display:none; height:32px; line-height:32px; text-align:center; color:#999; font-size:14px;}
+  .nodata img{width:25px;}
+  h2.tip{margin:20px;font-size: 18px}
+</style>
 <body>
  
 <?php 
@@ -165,7 +165,8 @@
 
                 </div> 
                 <div class="nodata"></div>
-            </div>   </div> 
+            </div>  
+       </div> 
     </div>
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">

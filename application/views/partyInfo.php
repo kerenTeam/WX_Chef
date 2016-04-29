@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="skin/css/order.css">
 <body class="bpa">
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
@@ -13,16 +14,34 @@
   <!-- 详情 -->
   <form action="" method="" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
-      <div class=""><img src="skin/img/party1.png" class="am-img-responsive card" alt="大厨到家"></div>
+      <!-- <div class=""><img src="skin/img/party1.png" class="am-img-responsive card" alt="大厨到家"></div> -->
+             <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{"controlNav":false}' >
+          <ul class="am-slides">
+              <li>
+                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/rjx.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">1</span>/4</div>山地土豆烧甲鱼</div></a>
+                 
+              </li>
+              <li>
+                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/tscsx.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">2</span>/4</div>山地土豆烧甲鱼</div></a>
+                 
+              </li>
+              <li>
+                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/tqhtr.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">3</span>/4</div>山地土豆烧甲鱼</div></a>
+                 
+              </li>
+              <li>
+                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/qwhqb.jpg">
+                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">4</span>/4</div>山地土豆烧甲鱼</div></a>
+                 
+              </li>
+          </ul>
+        </div>
       <div class="am-g">
          <h2>聚会套餐套餐 989元系列</h2>
           <div class="tbref">海河鲜类较多，是喜欢吃这类菜品的人群首选，菜品口味多。即高大上又不贵。</div>
-        <div class="pr"><i class="am-icon-cny"></i><span class="price">898</span></div>
-        <div class="foodNum">
-          <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-          <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-          <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-        </div>
       </div>
       <p class="am-text-center menutit">宴会菜单</p>
 
@@ -62,36 +81,70 @@
 
       <p class="am-text-center am-text-sm  menuname">主食</p>
         <p class="am-text-center am-text-sm">米饭</p>
-     <!-- 菜品轮播 --> 
-      <p class="am-text-center menutit">菜品展示</p>
-       <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{"controlNav":false}' >
-          <ul class="am-slides">
-              <li>
-                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/rjx.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">1</span>/4</div>山地土豆烧甲鱼</div></a>
-                 
-              </li>
-              <li>
-                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/tscsx.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">2</span>/4</div>山地土豆烧甲鱼</div></a>
-                 
-              </li>
-              <li>
-                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/tqhtr.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">3</span>/4</div>山地土豆烧甲鱼</div></a>
-                 
-              </li>
-              <li>
-                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/qwhqb.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">4</span>/4</div>山地土豆烧甲鱼</div></a>
-                 
-              </li>
-          </ul>
+      
+      <div class="am-g">
+       
+        <div class="pr"><i class="am-icon-cny"></i><span class="price">898</span>/<small>桌</small></div>
+        <div class="foodNum">
+          <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
+          <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
+          <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
         </div>
+      </div>
 
     </div> 
+  <div class="customBanner">
+    <img src="skin/img/custom.png" alt="">
+  </div>
+   <div class="am-form am-form-horizontal customForm am-cf am-shadow">
+    <div class="am-form-group">
+      <label class="am-u-sm-2 am-text-right">区域</label>
+      <div class="am-u-sm-10 customAdd">
+        <select name="province" class="am-radius"></select>
+        <select name="city" class="am-radius"></select>
+        <select name="area" class="am-radius"></select>
+      </div>
+    </div>
+    <div class="am-form-group">
+      <label class="am-u-sm-2 am-text-right">桌数</label>
+      <div class="am-u-sm-10">
+        <select class="am-radius">
+          <option>请选择您的用餐桌数</option>
+          <option>10桌以下</option>
+          <option>10~20桌</option>
+          <option>20~30桌</option>
+          <option>30桌以上</option>
+        </select>
+      </div>
+    </div>
+    <div class="am-form-group">
+      <label class="am-u-sm-2 am-text-right">电话</label>
+      <div class="am-u-sm-10">
+        <input id="phone" class="am-radius" type="tel" placeholder="请输入你的联系电话">
+        <p class="customP">输入电话，客服稍后会给您回电</p>
+      </div>
+      <div class="am-u-sm-1"></div>
+    </div>
+  <!-- footer -->
+    <div class="customBtn am-margin-bottom-sm">
+      <button type="button" class="am-btn am-btn-danger customSubmit">提 交</button>
+    </div>
+  <!-- modal -->
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+    <div class="am-modal-dialog am-radius">
+      <div class="am-modal-hd am-text-danger">提 示
+        <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+      </div>
+      <div class="am-modal-bd customBtn">
+        <p class="customModalP">客服正在处理。<br>请留意我们给您的去电(400-820-1790)</p>
+        <a href="javascript:;" class="btn am-btn am-btn-sm am-btn-danger am-radius" data-am-modal-close>好</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
     <!-- 评价 -->
-    <div class="am-shadow am-margin-top">
+    <div class="am-shadow am-margin-top am-cf">
       <div data-am-widget="titlebar" class="am-titlebar am-titlebar-default" >
         <h2 class="am-titlebar-title ">
         消费评价
@@ -181,7 +234,8 @@
 </div>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
-  <script src="skin/js/num_cailan.js"></script>
+<script src="skin/js/num_cailan.js"></script>
+<script src="skin/js/address.js"></script>
   <script>
   $(function(){
       var inputs = $('.numTxt');
@@ -200,6 +254,21 @@
 
   
   })
-  </script>
+
+    new PCAS("province","city","area","四川省","成都市");
+    $('.customSubmit').bind('click',function(){
+      var phone = $("#phone");
+        if(phone.val() == ''){
+          alert("请输入手机号");
+        }else if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone.val()))){
+          alert("请输入正确的手机号");
+        }else{
+          
+          $('#doc-modal-1').modal('open')
+          return false;
+        }
+      return false;
+    })
+</script>
 </body>
 </html>
