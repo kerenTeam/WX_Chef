@@ -31,12 +31,22 @@
           <!-- 发送到order数据 END-->
         </li>
 <?php endforeach ?>
-
+  <?php if(!empty($writes)):?>
+    <?php if($writes['boy'] != 0):?>
         <li class="am-g am-list-item-dated">
-        <a href="javascript:" class="am-list-item-hd "> 服务员人数 <span class="am-fr gray">X <?php echo $writes[0]; ?></span></a>
-          <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php echo $writes[0]*80; ?></span>
-          <input type="hidden" name="Waiters" value="<?php echo $writes[0]; ?>">
+        <a href="javascript:" class="am-list-item-hd "> 男服务员人数 <span class="am-fr gray">X <?php echo $writes['boy']; ?></span></a>
+          <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php echo $writes['boy']*80; ?></span>
+          <input type="hidden" name="boy" value="<?php echo $writes['boy']; ?>">
         </li> 
+      <?php endif;?>
+      <?php if($writes['girl'] != 0):?>
+        <li class="am-g am-list-item-dated">
+        <a href="javascript:" class="am-list-item-hd "> 女服务员人数 <span class="am-fr gray">X <?php echo $writes['girl']; ?></span></a>
+          <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php echo $writes['girl']*80; ?></span>
+          <input type="hidden" name="girl" value="<?php echo $writes['girl']; ?>">
+        </li> 
+      <?php endif;?>
+      <?php endif;?>
         <?php if (empty($servmoneydata)): ?>
         <li class="am-g am-list-item-dated">
         <a href="javascript:" class="am-list-item-hd "> 菜品消费额满300元,不收取服务费 <span class="am-fr gray"></span></a>
