@@ -9,22 +9,22 @@
  
 <?php 
 
-  if (empty($_GET["code"]))
-    {
-     header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");   
-    }
+  // if (empty($_GET["code"]))
+  //   {
+  //    header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");   
+  //   }
 
-    $code = $_GET['code'];
-    //获取access_token 用户令牌
-    $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code";
-    $res =json_decode(file_get_contents($url));
-    $openId= $res->openid;
-    $_SESSION['update_code'] = $res->access_token;
-    $_token = $res->access_token;
+  //   $code = $_GET['code'];
+  //   //获取access_token 用户令牌
+  //   $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APPID."&secret=".APPSECRET."&code=".$code."&grant_type=authorization_code";
+  //   $res =json_decode(file_get_contents($url));
+  //   $openId= $res->openid;
+  //   $_SESSION['update_code'] = $res->access_token;
+  //   $_token = $res->access_token;
 
-    //获取用户数据
-    $url2='https://api.weixin.qq.com/sns/userinfo?access_token='.$_token.'&openid='.$openId.'&lang=zh_CN';
-    $_SESSION['userinfo'] = json_decode(file_get_contents($url2),TRUE);
+  //   //获取用户数据
+  //   $url2='https://api.weixin.qq.com/sns/userinfo?access_token='.$_token.'&openid='.$openId.'&lang=zh_CN';
+  //   $_SESSION['userinfo'] = json_decode(file_get_contents($url2),TRUE);
 
  ?>
 
@@ -146,16 +146,7 @@
 </div>
 <div class="am-g life">
   <p class="htit am-shadow"><img src="skin/img/heart.png" alt=""> 精品生活</p>
- <!--  <?php if(!empty($quality)):?>
-    <?php foreach($quality as $val):?>
-  <figure> 
-     <a href="<?php echo site_url('home/lifeInfo?id=').$val['boutiqueid'];?>">
-       <img src="<?php echo IP.$val['backgoungimg'];?>" alt="<?=$val['name']?>">
-       <figcaption><?=$val['name']?><br><span class="am-text-sm"><?=$val['abstract']?></span></figcaption>
-     </a>  
-  </figure>
-    <?php endforeach;?>
-<?php endif;?> -->
+
 </div>
 <!-- 图文加载 -->
     <div class="container am-shadow">
