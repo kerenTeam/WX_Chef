@@ -7,22 +7,19 @@
     </a>
   </div>
   <h1 class="am-header-title">
-  菜篮子
+  发现
   </h1>
   
 </header>
 <!-- banner -->
 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">
+  <?php foreach($banner as $val):?>
     <li>
-      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f1.png" class="am-img-responsive card" alt="大厨到家"></a>
+      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="<?=IP.$val['img']?>" class="am-img-responsive card" alt="<?=$val['name']?>"></a>
     </li>
-    <li>
-      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f2.png" class="am-img-responsive card" alt="大厨到家"></a>
-    </li>
-    <li>
-      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f3.png" class="am-img-responsive card" alt="大厨到家"></a>
-    </li>
+  <?php endforeach;?>
+  
   </ul>
 </div>
 <!-- 推荐 -->
