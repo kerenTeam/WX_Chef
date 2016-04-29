@@ -55,7 +55,7 @@ class home extends CI_Controller
 		if($_POST){
 			$arr = array(
 				'UserPhone' => $this->input->post('UserPhone'),
-				'UserPwd' => md5($this->input->post('UserPwd')),
+				'UserPwd' => $this->input->post('UserPwd'),
 				);
 			$isok = json_encode($arr);
 			$a = curl_post(POSTAPI."API_User?dis=login",$isok);
@@ -286,6 +286,11 @@ class home extends CI_Controller
 
 		$this->load->view('forgetPassword');
 	}
+	//精品生活 列表
+	public function life(){
+
+		$this->load->view('life');
+	}
 	//图文详情
 	public function lifeInfo(){
 		if($_GET){
@@ -484,6 +489,16 @@ class home extends CI_Controller
 			$data['taocan'] = '';
 			$data['jincai'] = '';
 		}
+		if(isset($_SESSION['witer'])){
+			if($_SESSION['witer'] == ''){
+				$data['witer'] = '';
+			}else{
+				$data['witer'] = $_SESSION['witer'];
+			}
+		}else{
+			$data['witer'] = '';
+		}
+
 		// echo "<pre>";
 		// var_dumP($data['jincai']);
 		// exit;
@@ -604,7 +619,7 @@ class home extends CI_Controller
 				$data['LikeCuisine'] = $_POST['like'];
 			}
 			$data['UserName'] = $_POST['UserName'];
-		
+			
 			if(!empty($_FILES['UserImage']['tmp_name'])){
 
 				$f=&$_FILES['UserImage'];
@@ -1012,7 +1027,11 @@ class home extends CI_Controller
 	public function servadd()
 	{
 		if($_POST){
-			var_dumP($_POST);
+			$arr = $_POST;
+			$_SESSION['witer'] = $arr;
+			// var_dump($_SESSION['witer']);
+			redirect('home/cart');
+
 		}
 	}
 
@@ -1020,8 +1039,10 @@ class home extends CI_Controller
 
 	//发现
 	public function find(){
-
-		$this->load->view('find');
+		// banner
+		$banner = file_get_contents(POSTAPI.'API_Banner?number=4');
+		$data['banner'] = json_decode(json_decode($banner),true);
+		$this->load->view('find',$data);
 	}
 	//厨师管理
 	public function chefManage(){

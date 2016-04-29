@@ -7,22 +7,19 @@
     </a>
   </div>
   <h1 class="am-header-title">
-  菜篮子
+  发现
   </h1>
   
 </header>
 <!-- banner -->
 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">
+  <?php foreach($banner as $val):?>
     <li>
-      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f1.png" class="am-img-responsive card" alt="大厨到家"></a>
+      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="<?=IP.$val['img']?>" class="am-img-responsive card" alt="<?=$val['name']?>"></a>
     </li>
-    <li>
-      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f2.png" class="am-img-responsive card" alt="大厨到家"></a>
-    </li>
-    <li>
-      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f3.png" class="am-img-responsive card" alt="大厨到家"></a>
-    </li>
+  <?php endforeach;?>
+  
   </ul>
 </div>
 <!-- 推荐 -->
@@ -140,8 +137,8 @@
       <!--<h3 class="am-comment-title">评论标题</h3>-->
       <div class="am-comment-meta">
         <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">157****4450</a>
-        <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time>
-        <span class="am-fr meired">好评</span>
+        
+        <span class="am-fr"><time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time></span>
       </div>
     </header>
     <div class="am-comment-bd am-text-xs combo">
@@ -176,8 +173,7 @@
       <!--<h3 class="am-comment-title">评论标题</h3>-->
       <div class="am-comment-meta">
         <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">157****4450</a>
-        <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time>
-        <span class="am-fr meired">好评</span>
+        <span class="am-fr"><time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time></span>
       </div>
     </header>
     <div class="am-comment-bd am-text-xs combo">

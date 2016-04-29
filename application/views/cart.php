@@ -175,32 +175,19 @@ function doaction(obj) {
                <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->
                <input type="hidden" id="fee" name="servmoneydata" value="0">
              </li>
+
               <li class="am-g am-padding-xs">
-              <?php if (empty($_SESSION['Writes'])): ?>
-                  <label class="am-checkbox am-success am-u-sm-4">
+                    <label class="am-checkbox am-success am-u-sm-4">
                   服务员(男) <input type="checkbox" id="serpeople" ata-am-ucheck>
                   </label> 
-                <?php else: ?>
-                   <label class="am-checkbox am-success am-u-sm-4">
-                  服务员(男) <input type="checkbox" id="serpeople" checked='checked'>
-                  </label> 
-                <?php endif ?>
                 <input type="hidden" id="servTotal" value="0">
                <div class="epr am-text-center am-text-sm"><span class="price" id="serprice">80</span>元/位</div>
-                <?php  if (!empty($_SESSION['Writes'][0]))
-                { $writernums = $_SESSION['Writes'][0];}else{ $writernums = 0; } ?>
-               <div class="am-marign-top-sm am-fr cd" 
-               <?php if ($writernums != 0): ?>
-                 style="display: block;"
-               <?php else: ?>
-                 style="display: none;"
-               <?php endif ?> >
+               <div class="am-marign-top-sm am-fr cd" style="
+               display: none;
+               ">
                   <span class="reduce am-icon-minus-circle red" onClick="empdel()"></span>
-                  <!-- <input type="text" class="serinput" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="Writes[]" value="<?php echo $writernums; ?>" > -->
-                  <input type="text" class="serinput" readonly="" name="Writes[]" value="<?php echo $writernums; ?>" >
+                  <input type="text" class="serinput" readonly="" name="boy" value="0" >
                   <span class="add am-icon-plus-circle green" onClick="empladd()"></span>
-
-
                 </div>
              </li>
 
