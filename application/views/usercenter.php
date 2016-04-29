@@ -45,14 +45,9 @@
      <div class="am-list-news-bd asp">
   <ul class="am-list userl">
   <?php if(isset($_SESSION['phone'])):?>
-    <?php if (isset($users[0]['name'])): ?>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/vip?name=').$users[0]['name'].'&balance='.$users[0]['balance']?>" class="am-list-item-hd "><img src="skin/img/bc.png" alt=""> 会员卡</a>  
       </li>
-    <?php else: ?>
-      
-    <?php endif ?>
-      
     <?php endif;?>
       <li class="am-g am-list-item-dated">
           <a href="<?php echo site_url('home/cart')?>" class="am-list-item-hd "><img src="skin/img/cl.png" alt=""> 购物车</a> 
