@@ -186,7 +186,7 @@
 
         <!-- 用餐时间 -->
         <div class="am-shadow am-margin-vertical-sm">  
-         <p class="htit"><img src="skin/img/calendar.png" alt=""> 用餐时间</p>
+         <p class="htit"><img src="skin/img/calendar.png" class="bpurple"> 用餐时间</p>
           <div class="demo am-margin-sm">
             <div class="lie">日期:<input  id="beginTime" class="kbtn am-radius" placeholder="点击选择日期"/></div>
           </div>
