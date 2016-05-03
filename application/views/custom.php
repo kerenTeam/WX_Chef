@@ -18,7 +18,7 @@
   <form class="am-form am-form-horizontal customForm">
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">区域</label>
-      <div class="am-u-sm-10 customAdd">
+      <div class="am-u-sm-10 customAdd" style="margin-top:-0.5rem;">
         
           <div class="demo">     
               <div class="infolist"> 
@@ -97,14 +97,10 @@
   </div>
   </form>
 
-
-<script src="skin/js/jquery.min.js"></script>
-<script src="skin/js/amazeui.min.js"></script>
 <script type="text/javascript" src="skin/js/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="skin/js/city4.city.js"></script>
-<script type="text/javascript" src="skin/js/city4.js"></script>
-<script type="text/javascript">
-    $('.customSubmit').bind('click',function(){
+<script src="skin/js/amazeui.min.js"></script>
+<script type="text/javascript"> 
+  $('.customSubmit').live('click',function(){
       var phone = $("#phone");
         if(phone.val() == ''){
           alert("请输入手机号");
@@ -112,11 +108,14 @@
           alert("请输入正确的手机号");
         }else{
           
-          $('#doc-modal-1').modal('open')
+          $('#doc-modal-1').modal('open');
           return false;
         }
       return false;
-    })
+    }) 
+    
 </script>
+<script type="text/javascript" src="skin/js/city4.city.js"></script>
+<script type="text/javascript" src="skin/js/city4.js"></script>
 </body>
 </html>

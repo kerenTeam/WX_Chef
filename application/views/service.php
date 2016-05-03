@@ -52,9 +52,8 @@
       <header class="am-comment-hd">
         <!--<h3 class="am-comment-title">评论标题</h3>-->
         <div class="am-comment-meta">
-          <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">157****4450</a>
-          <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time>
-          <span class="am-fr meired">好评</span>
+          <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">157****4450</a> 
+          <span class="am-fr"><time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time></span>
         </div>
       </header>
       <div class="am-comment-bd am-text-xs combo">
@@ -75,8 +74,7 @@
         <!--<h3 class="am-comment-title">评论标题</h3>-->
         <div class="am-comment-meta">
           <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">157****4450</a>
-          <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time>
-          <span class="am-fr meired">好评</span>
+           <span class="am-fr"><time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time></span>
         </div>
       </header>
       <div class="am-comment-bd am-text-xs combo">
