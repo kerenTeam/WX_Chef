@@ -55,7 +55,7 @@ class home extends CI_Controller
 		if($_POST){
 			$arr = array(
 				'UserPhone' => $this->input->post('UserPhone'),
-				'UserPwd' => $this->input->post('UserPwd'),
+				'UserPwd' => md5($this->input->post('UserPwd')),
 				);
 			$isok = json_encode($arr);
 			$a = curl_post(POSTAPI."API_User?dis=login",$isok);
@@ -964,7 +964,7 @@ class home extends CI_Controller
 	}
 	//庆典主题
 	public function ceremonyType(){
-
+		// $cere = file_get_contents(POSTAPI.'')
 		$this->load->view('ceremonyType');
 	}
 	//庆典介绍
@@ -1063,6 +1063,12 @@ class home extends CI_Controller
 		// banner
 		$banner = file_get_contents(POSTAPI.'API_Banner?number=4');
 		$data['banner'] = json_decode(json_decode($banner),true);
+		// 产品推荐
+		$foods = file_get_contents(POSTAPI.'API_Food?dis=tuijian');
+		$data['foods'] = json_decode(json_decode($foods),true);
+		// 促销信息
+		$cuxiao = file_get_contents(POSTAPI.'API_FoodDiscount?start=1&end=4');
+		
 		$this->load->view('find',$data);
 	}
 	//厨师管理
