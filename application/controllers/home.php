@@ -1050,6 +1050,11 @@ class home extends CI_Controller
 
 		$this->load->view('chefManage');
 	}
+	//服务地址
+	public function serve_address(){
+
+		$this->load->view('serve_address');
+	}
 
 
 }
