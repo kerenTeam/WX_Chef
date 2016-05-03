@@ -78,11 +78,11 @@
       <div class="am-u-sm-1"></div>
     </div>
   <!-- footer -->
-  <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot customFooter">
+  <!-- <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot"> -->
     <div class="customBtn">
       <button type="button" class="btn am-btn am-btn-danger customSubmit">提 交</button>
     </div>
-  </div>
+  <!-- </div> -->
   <!-- modal -->
     <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
     <div class="am-modal-dialog am-radius">
@@ -100,6 +100,8 @@
 <script type="text/javascript" src="skin/js/jquery-1.8.0.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script type="text/javascript"> 
+$(function(){
+  $('ul').css('overflow','scroll');
   $('.customSubmit').live('click',function(){
       var phone = $("#phone");
         if(phone.val() == ''){
@@ -113,6 +115,8 @@
         }
       return false;
     }) 
+})
+  
     
 </script>
 <script type="text/javascript" src="skin/js/city4.city.js"></script>
