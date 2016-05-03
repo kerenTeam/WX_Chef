@@ -18,12 +18,12 @@
   <!-- banner -->
 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}' >
   <ul class="am-slides">
+
+  <?php foreach($banner as $val):?>
     <li>
-      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f1.png" class="am-img-responsive card" alt="大厨到家"></a>
+      <a href="<?=$val['url']?>"><img src="<?=IP.$val['img']?>" class="am-img-responsive card" alt="<?=$val['name']?>"></a>
     </li>
-    <li>
-      <a href="<?php echo site_url('home/lifeInfo2')?>"><img src="skin/img/f2.png" class="am-img-responsive card" alt="大厨到家"></a>
-    </li>
+  <?php endforeach;?>
   </ul>
 </div>
   <!-- content -->
@@ -46,6 +46,7 @@
 <!--   </form> -->
   <!-- 加入成功提示  -->
    <div class="cart-success">
+
      <div class="cart-ok white"><span class="am-icon-check am-block green"></span>成功加入购物车</div>
    </div>
 <!-- footer -->
@@ -88,10 +89,26 @@
 <script>
   $(function(){
     $('#sub').click(function() {
-      console.log(12);
+      // console.log(12);
+
+      var title = "<?=$title?>";
+      var money = "<?=$money?>";
+      console.log(title);
+      $.ajax({
+        type: 'POST',
+        url: '<?=site_url("home/eleganceadd")?>',
+        data: "title="+title+"&money="+money,
+        success: function(data){
+          // console.log(data);
+        }
+        
+      });
+
       $('.cart-success').addClass('over');
       $('.cart-ok').css('marginTop','-4rem');
      setTimeout(function(){$('.cart-success').removeClass('cart-over');},1000);
+
+
  
     });
   })

@@ -166,10 +166,17 @@ function doaction(obj) {
               </div>
             </li> 
           <?php endforeach;?>
+           </ul> 
+         <?php endif;?>
+         <?php if(!empty($eleg)):?>
+           <ul class="am-list">
+             <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm">
+               <?=$eleg['title'];?> 
+               <div class="am-fr red"><i class="am-icon-cny"></i><span class="ban-price"> <?=$eleg['money'];?></span></div>
+             </li>
            </ul>
          <?php endif;?>
-
-           <ul class="am-shadow am-list">
+           <ul class="am-list">
              <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
                服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>
                <!-- <p>注：0-240元 服务费60元，大于300不收, 240-300 服务费+240=300</p> -->

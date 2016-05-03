@@ -499,10 +499,16 @@ class home extends CI_Controller
 		}else{
 			$data['witer'] = '';
 		}
+		if(isset($_SESSION['eleg'])){
+			if($_SESSION['eleg'] == ''){
+				$data['eleg'] = '';
+			}else{
+				$data['eleg'] = $_SESSION['eleg'];
+			}
+		}else{
+			$data['eleg'] = '';
+		}
 
-		// echo "<pre>";
-		// var_dumP($data['jincai']);
-		// exit;
 		$this->load->view('cart',$data);
 	}
 	// 删除购物车
@@ -980,11 +986,25 @@ class home extends CI_Controller
 	//伴餐 详情
     public function eleganceInfo(){
     	if($_GET){
+    		// 获取banner
+    		$banner = file_get_contents(POSTAPI.'API_Banner?number=3');
+    		$data['banner'] = json_decode(json_decode($banner),true);
 			$content = $_GET['con'];
 			$data['money'] = $_GET['money'];
+			$data['title'] = $_GET['title'];
 			$data['cont'] = explode('，',$content);
 			$this->load->view('eleganceInfo',$data);
     	}
+	}
+	// 伴餐加入购物车
+	public function eleganceadd()
+	{	
+		if($_POST){
+			$_SESSION['eleg']['title'] = $_POST['title'];
+			$_SESSION['eleg']['money'] = $_POST['money'];
+			// var_DUMP($_SESSION['eleg']);
+		}
+		
 	}
     //净菜 vegetable
     public function vegetable(){
