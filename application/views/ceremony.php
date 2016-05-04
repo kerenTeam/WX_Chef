@@ -18,7 +18,7 @@
   <!-- 顶部 -->
   <div class="welCus ceFixed">
     <img src="skin/img/cmTop.png" alt="">
-    <div class="am-text-center">
+    <div class="am-text-center backGround">
       紫色梦幻童话<br><span class="red am-icon-cny cefont">58888</span><!-- <span class="gray lineTrough am-icon-cny">88888</span> -->
     </div>
   </div>

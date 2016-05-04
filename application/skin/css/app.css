@@ -12,6 +12,12 @@ body {
     overflow-y: visible;
 }
 
+.backGround {
+    background: white;
+    padding: 12px 0 0;
+    border-radius: 80% 80% 0 0;
+}
+
 #AddDP label {
     display: inline-block;
     margin-top: 2rem;
@@ -287,7 +293,7 @@ body {
 
 
 /* .bgr{
-	background: none;
+    background: none;
     color: red;
     border: 1px solid red;
     border-radius: 3px;
@@ -1614,8 +1620,8 @@ body {
 
 
 /* #preview{
-	width:5rem;
-	height:5rem;
+    width:5rem;
+    height:5rem;
 } */
 
 .userS .am-u-sm-8 img {
