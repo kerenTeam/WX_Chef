@@ -10,6 +10,7 @@
   <div class="cmn cmnb am-list-news am-list-news-default" >
     <div class="am-list-news-bd">
       <ul class="am-list">
+      <?php if(!empty($foods)):?>
 	  <?php foreach($foods as $food):?>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
          <a href="<?=site_url('home/changup?foodid=').$food['changefoodid'].'&shopid='.$shopid.'&id='.$id;?>" class="black">
@@ -25,7 +26,7 @@
             </a>
         </li>
 		<?php endforeach;?>
-      
+      <?php endif;?>
       </ul>
     </div>
   </div>

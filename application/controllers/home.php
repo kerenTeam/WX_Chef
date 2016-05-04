@@ -224,9 +224,12 @@ class home extends CI_Controller
 		$data['shopid'] = $_GET['shopid'];
 		
 		$cates = file_get_contents(POSTAPI."API_Food?dis=change&foodid=".$_GET['id']);
-
-		$data['foods'] = json_decode(json_decode($cates),true);
-		// var_dump($data);
+		$foods = json_decode(json_decode($cates),true);
+		if($foods == " "){
+			$data['foods'] = '';
+		}else{
+			$data['foods'] = $foods;
+		}
 		$this->load->view('change',$data);
 		}
 	}
@@ -235,9 +238,7 @@ class home extends CI_Controller
 		$shopid = $_GET['shopid'];
 		$id = $_GET['id'];
 		$foodid = $_GET['foodid'];
-
 		$shoping =$_SESSION['shoping'];
-	
 		foreach($shoping as $k=>$value){
 			if($value['foodid'] == $id && $value['shopid'] == $shopid){
 				$shoping[$k]['foodid'] = $foodid;
