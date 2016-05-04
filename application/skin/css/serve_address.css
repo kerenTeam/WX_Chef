@@ -86,7 +86,7 @@ li{
 }
 .add_list li{
 	border-top: 1px solid #eee;
-	padding-left: 5%;
+	padding: 5% 0 0 5%;
 }
 .add_list li .name , .add_list li .sex{
 	width: 15%;

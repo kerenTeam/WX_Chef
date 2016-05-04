@@ -11,7 +11,7 @@
     服务地址
     </h1>
   </header>
-  <form class="address">
+  <form class="address" action="" method="">
     <input type="text" placeholder="请输入地址进行准确搜索" class="seach_a"/>
     <p class="now_add">当前位置：<span>天府二街蜀都中心2号楼1108</span></p>
     <p class="last_add"><img src="skin/img/serve (2).png">点击重新定位当前位置</p>
@@ -27,7 +27,7 @@
       </li>
     </ul>
     <div class="confirm">
-      <input type="button" value="确定" />
+      <input type="submit" value="确定" />
     </div>
   </form>
   <div class="history_add">
