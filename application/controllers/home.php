@@ -55,7 +55,7 @@ class home extends CI_Controller
 		if($_POST){
 			$arr = array(
 				'UserPhone' => $this->input->post('UserPhone'),
-				'UserPwd' => $this->input->post('UserPwd'),
+				'UserPwd' => md5($this->input->post('UserPwd')),
 				);
 			$isok = json_encode($arr);
 			$a = curl_post(POSTAPI."API_User?dis=login",$isok);
@@ -499,10 +499,16 @@ class home extends CI_Controller
 		}else{
 			$data['witer'] = '';
 		}
+		if(isset($_SESSION['eleg'])){
+			if($_SESSION['eleg'] == ''){
+				$data['eleg'] = '';
+			}else{
+				$data['eleg'] = $_SESSION['eleg'];
+			}
+		}else{
+			$data['eleg'] = '';
+		}
 
-		// echo "<pre>";
-		// var_dumP($data['jincai']);
-		// exit;
 		$this->load->view('cart',$data);
 	}
 	// 删除购物车
@@ -958,7 +964,7 @@ class home extends CI_Controller
 	}
 	//庆典主题
 	public function ceremonyType(){
-
+		// $cere = file_get_contents(POSTAPI.'')
 		$this->load->view('ceremonyType');
 	}
 	//庆典介绍
@@ -980,11 +986,25 @@ class home extends CI_Controller
 	//伴餐 详情
     public function eleganceInfo(){
     	if($_GET){
+    		// 获取banner
+    		$banner = file_get_contents(POSTAPI.'API_Banner?number=3');
+    		$data['banner'] = json_decode(json_decode($banner),true);
 			$content = $_GET['con'];
 			$data['money'] = $_GET['money'];
+			$data['title'] = $_GET['title'];
 			$data['cont'] = explode('，',$content);
 			$this->load->view('eleganceInfo',$data);
     	}
+	}
+	// 伴餐加入购物车
+	public function eleganceadd()
+	{	
+		if($_POST){
+			$_SESSION['eleg']['title'] = $_POST['title'];
+			$_SESSION['eleg']['money'] = $_POST['money'];
+			// var_DUMP($_SESSION['eleg']);
+		}
+		
 	}
     //净菜 vegetable
     public function vegetable(){
@@ -1043,6 +1063,12 @@ class home extends CI_Controller
 		// banner
 		$banner = file_get_contents(POSTAPI.'API_Banner?number=4');
 		$data['banner'] = json_decode(json_decode($banner),true);
+		// 产品推荐
+		$foods = file_get_contents(POSTAPI.'API_Food?dis=tuijian');
+		$data['foods'] = json_decode(json_decode($foods),true);
+		// 促销信息
+		$cuxiao = file_get_contents(POSTAPI.'API_FoodDiscount?start=1&end=4');
+		
 		$this->load->view('find',$data);
 	}
 	//厨师管理

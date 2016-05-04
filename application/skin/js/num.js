@@ -21,8 +21,13 @@ window.onload=function(){
     var servTotal = document.getElementById('servTotal');
 	var ordFen = document.getElementsByClassName('numTxt');
 	var ordPrice = document.getElementsByClassName('price');
+	var ban = document.getElementsByClassName('ban-price');
 	fen = 0;
 	paymoney = 0;
+	var banAll=0
+	for(var j=0;j<ban.length;j++){
+		banAll += parseFloat(ban[j].innerHTML);
+	}
 	for(var i = 0;i < ordFen.length;i++){
 		fen += parseInt(ordFen[i].value);
 		paymoney += parseFloat(parseInt(ordFen[i].value)*parseFloat(ordPrice[i].innerHTML));
@@ -50,7 +55,7 @@ window.onload=function(){
 	}
 	console.log(fee.value);
 	fens.innerHTML = fen;
-	allmoney.innerHTML = (paymoney+fwf+parseFloat(servTotal.value)).toFixed(2);
+	allmoney.innerHTML = (paymoney+fwf+banAll+parseFloat(servTotal.value)).toFixed(2);
 }
 
 function IsNum(e) {
