@@ -217,15 +217,18 @@ class home extends CI_Controller
 	}
 	//换一换
 	public function change(){
+		if($_GET){
 		$data['id'] = $_GET['id'];
 		// $data['shoppingid'] = $_GET['shopingid'];
 		$pid = $_GET['pid'];
 		$data['shopid'] = $_GET['shopid'];
 		
-		$cates = file_get_contents(POSTAPI."API_Food?dis=fl&foodid=".$pid);
+		$cates = file_get_contents(POSTAPI."API_Food?dis=change&foodid=".$_GET['id']);
+
 		$data['foods'] = json_decode(json_decode($cates),true);
 		// var_dump($data);
 		$this->load->view('change',$data);
+		}
 	}
 	// 换一换处理
 	public function changup(){
@@ -234,7 +237,7 @@ class home extends CI_Controller
 		$foodid = $_GET['foodid'];
 
 		$shoping =$_SESSION['shoping'];
-
+	
 		foreach($shoping as $k=>$value){
 			if($value['foodid'] == $id && $value['shopid'] == $shopid){
 				$shoping[$k]['foodid'] = $foodid;
@@ -964,17 +967,42 @@ class home extends CI_Controller
 	}
 	//庆典主题
 	public function ceremonyType(){
-		// $cere = file_get_contents(POSTAPI.'')
-		$this->load->view('ceremonyType');
+		$cere = file_get_contents(POSTAPI.'API_Celebration');
+		$data['cere'] = json_decode(json_decode($cere),true);
+		// var_dumP($data);
+		$this->load->view('ceremonyType',$data);
 	}
 	//庆典介绍
 	public function ceremony(){
-
-		$this->load->view('ceremony');
+		$id = $_GET['id'];
+		$cereinfo = file_get_contents(POSTAPI.'API_Celebration?id='.$id);
+		$data['cereinfo'] = json_decode(json_decode($cereinfo),true);
+		$img = file_get_contents(POSTAPI.'API_details?dis=img&celeid='.$id);
+		$imgs= json_decode(json_decode($img),true);
+		$care = array('1','2','3','4','5','6','7');
+		foreach ($imgs as $key => $value) {
+			foreach ($care as $k=>$v) {
+				$j = $k+1;
+				if($value['distinguish'] == $v){
+					$arr[$j]['img'][] = $value['detailsimg'];
+					$arr[$j]['key'] = $value['distinguish'];
+				}
+			}
+		}
+		// 排序
+		ksort($arr);
+		$data['imags'] = $arr; 
+		$data['id'] = $id; 
+		$this->load->view('ceremony',$data);
 	}
 	//庆典详情选择
 	public function CeremonyChose(){
 
+		$chose = file_get_contents(POSTAPI.'API_details?dis=details');
+		$ch = json_decode(json_decode($chose),true);
+		echo "<pre>";
+		var_dump($ch);
+		exit;
 		$this->load->view('CeremonyChose');
 	}
     //伴餐

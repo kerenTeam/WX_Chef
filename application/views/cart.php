@@ -153,7 +153,7 @@ function doaction(obj) {
                 </a>
               </div>
               <div class=" am-u-sm-9 am-list-main">
-                <h3 class="am-list-item-hd cartb"><?=$food[0]['foodname'];?></h3>
+                <h3 class="am-list-item-hd cartb"><span class="am-text-xs onlyVege">净</span><?=$food[0]['foodname'];?></h3>
                 <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
                 <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food[0]['foodprice']?></span></div>
                  <input type="hidden" name="code[]" value="1">
@@ -162,6 +162,7 @@ function doaction(obj) {
                   <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>
+                 <a href="<?php echo site_url('home/change?id=').$food[0]['foodid'].'&pid='.$food[0]['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
               </div>
             </li> 

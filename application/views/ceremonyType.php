@@ -16,24 +16,15 @@
  
   </header>
   <!-- 庆典主题 -->
+   <?php foreach($cere as $v):?>
   <figure class="CmType am-shadow"> 
-     <a href="<?php echo site_url('home/Ceremony');?>">
-       <img src="skin/img/cm1.png">
-       <figcaption>紫色梦幻童话<span class="red am-icon-cny fr">38.8</span></figcaption>
+     <a href="<?php echo site_url('home/Ceremony?id=').$v['id'];?>">
+       <img src="<?=IP.$v['logo'];?>">
+       <figcaption><?=$v['name'];?><span class="red am-icon-cny fr"><?=$v['price']?></span></figcaption>
      </a>  
   </figure>
- <figure class="CmType am-shadow"> 
-     <a href="<?php echo site_url('home/Ceremony');?>">
-       <img src="skin/img/cm2.png">
-       <figcaption>紫色梦幻童话<span class="red am-icon-cny fr">38.8</span></figcaption>
-     </a>  
-  </figure>
-   <figure class="CmType am-shadow"> 
-     <a href="<?php echo site_url('home/Ceremony');?>">
-       <img src="skin/img/cm3.png">
-       <figcaption>紫色梦幻童话<span class="red am-icon-cny fr">38.8</span></figcaption>
-     </a>  
-  </figure>
+<?php endforeach;?>
+
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
   <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
