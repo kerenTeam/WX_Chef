@@ -24,7 +24,9 @@
       <div class="am-cf gsf">
         <div class="am-fl">1、迎宾喷绘/<small>平米</small><span class="price red am-icon-cny">1000</span></div>
         <div class="am-fr">
+        <!-- 默认数量单位 -->
           <input type="hidden" class="unit" value="1">
+          <!-- 数量加减 -->
           <div class="CmNum">
             <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
             <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="1">
@@ -259,19 +261,33 @@
     </div>
   </div>
   <!-- footer -->
-  <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="">
-    <a href="<?php echo site_url('home/cart')?>">
+  <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id=""> 
       <div class="am-u-sm-8 a">
         <span class="green"><img src="skin/img/cart.png" alt=""><span id="fen" class="allmoney">总价</span>
         <i class="am-icon-cny red"></i><span id="allmoney" class="allmoney red">0</span>
       </div>
       <div class="am-u-sm-4 b">
         
-        <button type="submit" class="am-btn am-btn-success">确认</button>
+        <button type="button" class="am-btn am-btn-success makeCheck">确认</button>
         
-      </div>
-    </a>
+      </div> 
   </div>
+  <div class="tk" style="display: none;">
+         <div class="tkcontent tkvip bwhite" style="background: white;border-radius: 5px;">
+           <div class="tktxt2">
+
+              <div class="am-text-center am-text-lg am-margin-sm">订单确认</div>
+              <!-- <hr data-am-widget="divider" style="margin:0;" class="am-divider am-divider-default" /> -->
+              <div class="am-text-center am-margin am-text-sm">
+              线下支付该订单，确认提交订单？
+              </div>
+              </div>
+
+          <button type='button' class="am-u-sm-6 bno gray closem">取消</button>
+
+          <button type='submit' id="sub" class="am-u-sm-6 bno green">提交</button>
+          </div>
+     </div>
 </form>
 
 </body>
@@ -294,8 +310,13 @@ $(this).css('display','inline-block');
 $(this).parent('.CmNum').find('.reduce').css('display','inline-block');
 }
 });
-
-})
+$('.makeCheck').click(function(){
+ $('.tk').fadeIn(400);
+});
+ $('.closem').click(function() {  
+          $('.tk').fadeOut(400); 
+        });
+});
 
 </script>
 </html>
