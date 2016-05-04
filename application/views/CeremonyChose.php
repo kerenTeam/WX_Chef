@@ -294,10 +294,8 @@
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/num_unit.js"></script>
-<script> 
-
- $(function(){
- 
+<script>
+$(function(){
 var inputs = $('.numTxt');
 inputs.each(function() {
 var numI=$(this).val();
@@ -311,12 +309,11 @@ $(this).parent('.CmNum').find('.reduce').css('display','inline-block');
 }
 });
 $('.makeCheck').click(function(){
- $('.tk').fadeIn(400);
+$('.tk').fadeIn(400);
 });
- $('.closem').click(function() {  
-          $('.tk').fadeOut(400); 
-        });
+$('.closem').click(function() {
+$('.tk').fadeOut(400);
 });
-
+});
 </script>
 </html>
