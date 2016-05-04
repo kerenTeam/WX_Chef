@@ -17,9 +17,15 @@
   </header>
   <!-- 顶部 -->
   <div class="welCus ceFixed">
+<<<<<<< HEAD
     <img src="<?=IP.$cereinfo[0]['backgroundimg'];?>" alt="">
     <div class="am-text-center">
       <?=$cereinfo[0]['name'];?><br><span class="red am-icon-cny cefont"><?=$cereinfo[0]['price'];?></span><!-- <span class="gray lineTrough am-icon-cny">88888</span> -->
+=======
+    <img src="skin/img/cmTop.png" alt="">
+    <div class="am-text-center backGround">
+      紫色梦幻童话<br><span class="red am-icon-cny cefont">58888</span><!-- <span class="gray lineTrough am-icon-cny">88888</span> -->
+>>>>>>> fbd89e7948cb035a0967e3d8683fefe1a300f55b
     </div>
   </div>
   <!-- content -->

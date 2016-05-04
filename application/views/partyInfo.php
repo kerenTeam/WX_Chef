@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="skin/css/order.css">
+<link href="skin/css/city.css" rel="stylesheet" type="text/css" />
 <body class="bpa">
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
@@ -99,10 +100,43 @@
    <div class="am-form am-form-horizontal customForm am-cf am-shadow">
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">区域</label>
-      <div class="am-u-sm-10 customAdd">
-        <select name="province" class="am-radius"></select>
-        <select name="city" class="am-radius"></select>
-        <select name="area" class="am-radius"></select>
+      <div class="am-u-sm-10 customAdd" style="margin-top:-0.5rem;">
+        
+          <div class="demo">     
+              <div class="infolist"> 
+                <div class="liststyle">
+                  <span id="Province" style="display:none;">
+                    <i>请选择省份</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
+                    </ul>
+                    <input type="hidden" name="cho_Province" value="请选择省份">
+                  </span>
+                  <span id="City">
+                    <i>请选择城市</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+                    </ul>
+                    <input type="hidden" name="cho_City" value="请选择城市">
+                  </span>
+                  <span id="Area">
+                    <i>请选择地区</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
+
+                    </ul>
+                    <input type="hidden" name="cho_Area" value="请选择地区">
+                  </span>
+                  <span id="Insurer">
+                    <i>请选择乡镇街道</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择乡镇街道">请选择乡镇街道</a></li>
+                    </ul>
+                    <input type="hidden" name="cho_Insurer" value="请选择乡镇街道">
+                  </span>
+                </div>
+              </div> 
+          </div>
       </div>
     </div>
     <div class="am-form-group">
@@ -203,12 +237,12 @@
       </a>
     </div>
   </form>
-   <!-- footer -->
+ <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
-  <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
+  <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
     <li >
-      <a href="<?php echo site_url('home/index')?>" class="active">
-        <span class=""><img src="skin/img/home2.png" alt=""></span>
+      <a href="<?php echo site_url('home/index')?>">
+        <span class=""><img src="skin/img/home1.png" alt=""></span>
         <span class="am-navbar-label">首页</span>
       </a>
     </li>
@@ -219,9 +253,14 @@
       </a>
     </li>
     <li>
-      <a href="<?php echo site_url('home/search')?>">
-        <span class=""><img src="skin/img/ss.png" alt=""></span>
-        <span class="am-navbar-label">搜索</span>
+      <a href="<?php echo site_url('home/find')?>"> 
+        <span class="find">发现</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/customServ')?>">
+        <span class=""><img src="skin/img/kf.png" alt=""></span>
+        <span class="am-navbar-label">客服</span>
       </a>
     </li>
     <li>
@@ -232,10 +271,9 @@
     </li>
   </ul>
 </div>
-<script src="skin/js/jquery.min.js"></script>
+<script type="text/javascript" src="skin/js/jquery-1.8.0.min.js"></script> 
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/num_cailan.js"></script>
-<script src="skin/js/address.js"></script>
   <script>
   $(function(){
       var inputs = $('.numTxt');
@@ -254,9 +292,7 @@
 
   
   })
-
-    new PCAS("province","city","area","四川省","成都市");
-    $('.customSubmit').bind('click',function(){
+    $('.customSubmit').live('click',function(){
       var phone = $("#phone");
         if(phone.val() == ''){
           alert("请输入手机号");
@@ -270,5 +306,7 @@
       return false;
     })
 </script>
+<script type="text/javascript" src="skin/js/city4.city.js"></script>
+<script type="text/javascript" src="skin/js/city4.js"></script>
 </body>
 </html>
