@@ -1990,7 +1990,18 @@ figure a:hover figcaption {
     height: 7.5rem;
 }
 
+.vimg2 {
+    width: 12.5rem;
+    display: inline-block;
+    height: 10.5rem;
+}
+
 .vimg img {
+    height: 100%!important;
+    width: 100%!important;
+}
+
+.vimg2 img {
     height: 100%!important;
     width: 100%!important;
 }
@@ -2165,15 +2176,24 @@ figure a:hover figcaption {
 }
 
 .onlyVege {
+    position: relative;
+    left: 1rem;
+    width: 86%;
+}
+
+.onlyVege:before {
+    content: '净';
     border: 1px solid rgb(139, 139, 139);
     border-radius: 50%;
     text-align: center;
     color: gray;
-    margin-right: 2px;
     width: 16px;
     height: 16px;
     display: inline-block;
     line-height: 15px;
+    position: absolute;
+    left: -1.4rem;
+    top: 0.4rem;
 }
 
 .am-gallery-item img {
