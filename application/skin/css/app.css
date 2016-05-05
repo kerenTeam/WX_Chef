@@ -209,12 +209,12 @@ body {
     background: none;
     border: none;
     padding: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #eee;
     outline: none;
 }
 
 .bno:first-of-type {
-    border-right: 1px solid rgba(0, 0, 0, 0.1)!important;
+    border-right: 1px solid #eee!important;
 }
 
 .wx_type_img {
@@ -478,7 +478,7 @@ body {
 }
 
 .tktxt div {
-    margin-top: 50%;
+    margin-top: 80%;
 }
 
 .tktxt .rega {
@@ -507,7 +507,7 @@ body {
 
 .am-shadow {
     background: white;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 3px #eee;
 }
 
 .bgray {
@@ -644,7 +644,7 @@ body {
 
 .commimg .am-icon-camera {
     padding: 1.5rem;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    border: 2px solid #eee;
     color: gray;
     margin: 5px;
     margin-top: 0px;
@@ -680,7 +680,7 @@ body {
     background: none;
     width: 3.2rem;
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
     border-radius: 3px;
     font-size: 1.5rem;
     margin-top: -0.6rem;
@@ -915,7 +915,7 @@ body {
 }
 
 .cmnb {
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid #eee;
 }
 
 .cmn .cptit {
@@ -1059,13 +1059,13 @@ body {
 .fpa2 a {
     width: 97%;
     margin: auto 1.5%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #eee;
 }
 
 .fpa a {
     width: 97%;
     margin: auto 1.5%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #eee;
 }
 
 .fpa a:last-child {
@@ -1103,7 +1103,7 @@ body {
     color: black;
     display: inline-block;
     padding: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid #eee;
     margin: 10px 10px auto auto;
 }
 
@@ -1139,7 +1139,7 @@ body {
     float: left;
     border: none;
     padding: 10px;
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 1px #eee;
     margin-left: 1%;
     margin-top: 5px;
     background: rgba(230, 228, 228, 0.24);
@@ -1186,7 +1186,7 @@ body {
 
 .htit {
     padding: 5px 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid #eee;
     margin: 0;
 }
 
@@ -1234,7 +1234,7 @@ body {
 }
 
 .am-thumbnail {
-    border: 1px solid rgba(0, 0, 0, .1);
+    border: 1px solid #eee;
     margin-bottom: 0!important;
     border-right: 0!important;
     border-top: 0!important;
@@ -1928,7 +1928,7 @@ figure a:hover figcaption {
     position: absolute;
     width: 30%;
     left: 9%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.65);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 13px;
 }
 
@@ -1937,7 +1937,7 @@ figure a:hover figcaption {
     position: absolute;
     width: 30%;
     right: 9%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.65);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 13px;
 }
 
@@ -1946,7 +1946,7 @@ figure a:hover figcaption {
     position: absolute;
     width: 17%;
     left: 26%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.65);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 11px;
 }
 
@@ -1955,7 +1955,7 @@ figure a:hover figcaption {
     position: absolute;
     width: 17%;
     right: 26%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.65);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 11px;
 }
 
@@ -2163,7 +2163,7 @@ figure a:hover figcaption {
 }
 
 .area {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #eee;
     padding: 1.5rem 0 1rem;
 }
 
@@ -2196,10 +2196,12 @@ figure a:hover figcaption {
     top: 0.4rem;
 }
 
-.am-gallery-item img {
+
+/* .am-gallery-item img {
     max-height: 5rem;
     overflow: hidden;
 }
+ */
 
 #beginTime {
     margin-left: 5px;
@@ -2210,13 +2212,24 @@ figure a:hover figcaption {
     margin-top: -3px;
 }
 
-@media only screen and (min-width:600px) {
+.imgShow img {
+    max-height: 6rem;
+    overflow: hidden;
+}
+
+@media only screen and (min-width:599px) {
     .tkcontent img {
         width: auto;
         margin: auto;
     }
     .topform button {
         left: 90px;
+    }
+    .findSale [class*=am-u-] {
+        height: 10.5rem;
+    }
+    .findSale a img {
+        height: 9rem;
     }
     .pagallery a>div {
         height: 14rem;
@@ -2236,13 +2249,125 @@ figure a:hover figcaption {
         padding: 1px 3px;
         border-radius: 3px;
         margin-top: 10px;
-        margin-left: 5rem;
+        margin-left: 8rem;
         position: relative;
-        top: 3rem;
+        top: 2rem;
+    }
+    .CmType img {
+        height: 22rem;
+    }
+    .onlyVege:before {
+        left: -2rem;
     }
     .life figure {
         height: 25rem;
         margin-bottom: 6px;
+    }
+    .tc img {
+        max-height: 100%;
+    }
+    .tktxt p {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+    }
+    .tktxt div {
+        margin-top: 52%;
+        font-size: 18px;
+    }
+    .tktxt .rega {
+        padding: 12px 20px;
+        font-size: 18px;
+        margin-top: 17px;
+        display: inline-block;
+    }
+    .veg h3 {
+        font-size: 2.2rem;
+    }
+    .veg img {
+        max-height: 10rem;
+        width: 7rem!important;
+        height: 7rem!important;
+    }
+    .sexSer img {
+        width: 5rem;
+    }
+    .oo,
+    .add,
+    .reduce {
+        font-size: 2.2em;
+    }
+    .numTxt,
+    .serinput,
+    .serinput2 {
+        width: 4.2rem;
+        font-size: 2rem;
+        margin-top: -1.5rem;
+    }
+    .ats2,
+    .ff,
+    .pr,
+    .cartb {
+        font-size: 2rem;
+    }
+    .am-icon-refresh:after {
+        content: '换一换';
+        position: relative;
+        font-size: 14px;
+        left: -30px;
+        width: 100%;
+        top: 15px;
+    }
+    .serl {
+        font-size: 2rem;
+        margin-top: 21px;
+        margin-bottom: 18px;
+        line-height: 1.1;
+    }
+    .epr {
+        margin-top: 1.8rem;
+        font-size: 2rem;
+    }
+    .sexSer {
+        padding-left: 5rem;
+    }
+    .am-navbar {
+        height: 55px;
+        line-height: 55px;
+    }
+    .am-navbar-nav a img {
+        height: 24px;
+        margin: 8px auto 0;
+        width: 24px;
+    }
+    .am-icon-refresh {
+        position: relative;
+        right: 16.5rem;
+        font-size: 2.4rem;
+        top: -0.8rem;
+    }
+    .vimg {
+        width: 9.5rem;
+        height: 9.5rem;
+    }
+    .typel img {
+        height: 2.7rem;
+        width: 2.7rem;
+    }
+    .typec+ul>li a {
+        color: #A6A4A4;
+        text-align: left;
+        padding: 1.6rem 1.2rem;
+        font-size: 16px;
+        line-height: 2;
+    }
+    .fimg .am-slides li,
+    .am-slider-c3 img {
+        height: 28rem;
+    }
+    .vimg2 {
+        width: 15.5rem;
+        height: 12.5rem;
+        margin-left: -3rem;
     }
 }
 
@@ -2255,8 +2380,11 @@ figure a:hover figcaption {
         top: 21px;
         left: 100px;
     }
-    .tc img {
-        max-height: 100%;
+    .tktxt div {
+        margin-top: 42%;
+    }
+    .nowBuy {
+        top: 5rem;
     }
 }
 
@@ -2290,6 +2418,9 @@ figure a:hover figcaption {
     }
     .pagallery a>div {
         height: 11rem;
+    }
+    .tktxt div {
+        margin-top: 50%;
     }
 }
 

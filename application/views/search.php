@@ -81,6 +81,7 @@
   <script src="skin/js/jquery.min.js"></script>
   <script>
     $(function(){
+      $('input[name=search]').focus();
       $('.am-close').on('click',function(){
         $(this).parent('li').remove();
       })

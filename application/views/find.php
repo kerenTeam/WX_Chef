@@ -132,7 +132,7 @@
 </div>
 <!-- 评价 -->
 <div class="am-text-center am-text purred am-margin-sm">七嘴八舌</div>
-<div class="am-shadow">
+<div class="am-shadow imgShow">
     <header class="am-comment-hd">
       <!--<h3 class="am-comment-title">评论标题</h3>-->
       <div class="am-comment-meta">
@@ -168,7 +168,7 @@
       </li>
   </ul>
 </div>
-<div class="am-shadow">
+<div class="am-shadow imgShow">
     <header class="am-comment-hd">
       <!--<h3 class="am-comment-title">评论标题</h3>-->
       <div class="am-comment-meta">

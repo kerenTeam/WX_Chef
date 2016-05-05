@@ -97,11 +97,46 @@
   </div>
   </form>
 
+<!-- footer -->
+<div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
+  <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
+    <li >
+      <a href="<?php echo site_url('home/index')?>">
+        <span class=""><img src="skin/img/home1.png" alt=""></span>
+        <span class="am-navbar-label">首页</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/cart')?>">
+        <span class=""><img src="skin/img/clz.png" alt=""></span>
+        <span class="am-navbar-label">菜篮子</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/find')?>"> 
+        <span class="find">发现</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/customServ')?>">
+        <span class=""><img src="skin/img/kf.png" alt=""></span>
+        <span class="am-navbar-label">客服</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/ucent')?>">
+        <span class=""><img src="skin/img/gr1.png" alt=""></span>
+        <span class="am-navbar-label">我的</span>
+      </a>
+    </li>
+  </ul>
+</div>
+</body>
 <script type="text/javascript" src="skin/js/jquery-1.8.0.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script type="text/javascript"> 
 $(function(){
-  $('ul').css('overflow','scroll');
+  $('.liststyle ul').css('overflow','scroll');
   $('.customSubmit').live('click',function(){
       var phone = $("#phone");
         if(phone.val() == ''){
@@ -121,5 +156,4 @@ $(function(){
 </script>
 <script type="text/javascript" src="skin/js/city4.city.js"></script>
 <script type="text/javascript" src="skin/js/city4.js"></script>
-</body>
 </html>

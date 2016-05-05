@@ -83,7 +83,7 @@
           <!--<h3 class="am-comment-title">评论标题</h3>-->
           <div class="am-comment-meta">
             <a href="#link-to-user" class="am-comment-author"><img src="<?=IP.$v['userimage'];?>" class="am-circle comimg" alt=""><?php if($v['username'] == ''){echo $v['userphone'];}else{echo $v['username'];}?></a>
-            <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800"><?php echo substr($v['createtime'],0,10);?></time>
+            <time datetime="2013-07-27T04:54:29-07:00" class="am-fr"><?php echo substr($v['createtime'],0,10);?></time>
           </div>
         </header>
         <div class="am-comment-bd am-text-xs">
@@ -122,10 +122,10 @@
   </form>
   <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
-  <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
+  <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
     <li >
-      <a href="<?php echo site_url('home/index')?>" class="active">
-        <span class=""><img src="skin/img/home2.png" alt=""></span>
+      <a href="<?php echo site_url('home/index')?>">
+        <span class=""><img src="skin/img/home1.png" alt=""></span>
         <span class="am-navbar-label">首页</span>
       </a>
     </li>
@@ -136,9 +136,14 @@
       </a>
     </li>
     <li>
-      <a href="<?php echo site_url('home/search')?>">
-        <span class=""><img src="skin/img/ss.png" alt=""></span>
-        <span class="am-navbar-label">搜索</span>
+      <a href="<?php echo site_url('home/find')?>"> 
+        <span class="find">发现</span>
+      </a>
+    </li>
+    <li>
+      <a href="<?php echo site_url('home/customServ')?>">
+        <span class=""><img src="skin/img/kf.png" alt=""></span>
+        <span class="am-navbar-label">客服</span>
       </a>
     </li>
     <li>
@@ -148,7 +153,6 @@
       </a>
     </li>
   </ul>
-
 </div>
   <script src="skin/js/jquery.min.js"></script>
   <script src="skin/js/amazeui.min.js"></script>

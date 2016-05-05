@@ -186,7 +186,7 @@ function doaction(obj) {
             
           <?php if(!empty($witer)):?>
               <li class="am-g am-padding-xs">
-                    <label class="am-checkbox am-success am-u-sm-4">
+                    <label class="am-checkbox am-success am-u-sm-4 serl">
                   服务员(男) <input type="checkbox" id="serpeople" ata-am-ucheck <?php if($witer['boy'] != 0){echo "checked";}?>>
                   </label> 
                 <input type="hidden" id="servTotal" value="0">
@@ -205,7 +205,7 @@ function doaction(obj) {
              </li>
               <li class="am-g am-padding-xs"> 
        
-                  <label class="am-checkbox am-success am-u-sm-4">
+                  <label class="am-checkbox am-success am-u-sm-4 serl">
                      服务员(女)<input type="checkbox" id="serpeople2" ata-am-ucheck <?php if($witer['girl'] != 0){echo "checked";}?>>
                   </label>  
                 <input type="hidden" id="servTotal2" value="0">
@@ -220,7 +220,7 @@ function doaction(obj) {
              </li>
            <?php else:?>
          <li class="am-g am-padding-xs">
-                    <label class="am-checkbox am-success am-u-sm-4">
+                    <label class="am-checkbox am-success am-u-sm-4 serl">
                   服务员(男) <input type="checkbox" id="serpeople" ata-am-ucheck>
                   </label> 
                 <input type="hidden" id="servTotal" value="0">
@@ -234,7 +234,7 @@ function doaction(obj) {
              </li>
               <li class="am-g am-padding-xs"> 
        
-                  <label class="am-checkbox am-success am-u-sm-4">
+                  <label class="am-checkbox am-success am-u-sm-4 serl">
                      服务员(女)<input type="checkbox" id="serpeople2" ata-am-ucheck >
                   </label>  
                 <input type="hidden" id="servTotal2" value="0">
