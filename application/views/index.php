@@ -231,11 +231,12 @@ var i=1
 
             function getJson(page) {
                 $(".nodata").show().html("<img src='http://www.sucaihuo.com/Public/images/loading.gif'/>");
-                $.getJSON("<?=site_url('home/quality');?>", {page: i}, function(json) {
+                $.getJSON("<?=site_url('pricesearch/quality');?>", {page: i}, function(json) {
                   console.log(json);
                     if (json) {
                         var str = "";
                         $.each(json, function(index, array) {
+                          
                             var str = "<figure> <a href='<?php echo site_url('home/lifeInfo?id=');?>";
                             var str = str + array['boutiqueid']+"'><img src='<?php echo IP;?>" + array['backgoungimg'] + "'><figcaption>" + array['name'] + "<br><span class='am-text-sm'>"+ array['abstract'] + "</span></figcaption></a></figure>";
                             $("#lists").append(str);

@@ -18,248 +18,36 @@
     晕了吗？<br>联系客服
   </a>
 <form action="" method="" enctype="multipart/form-data">
+  <?php foreach($details as $val):?>
   <div class="am-g area">
-    <div class="am-u-sm-3"><strong>迎宾区</strong></div>
+    <div class="am-u-sm-3"><strong><?=$val['name'];?></strong></div>
     <div class="am-u-sm-9">
+    <?php 
+      $gj = file_get_contents(POSTAPI.'API_details?details='.$val['id'].'&dis=qy');
+      $dis = json_decode(json_decode($gj),true);
+   
+      foreach($dis as $k=>$v):
+    ?>
       <div class="am-cf gsf">
-        <div class="am-fl">1、迎宾喷绘/<small>平米</small><span class="price red am-icon-cny">1000</span></div>
+        <div class="am-fl"><?=$k+1?>、<?=$v['name']?>/<small><?=$v['unit'];?></small><span class="price red am-icon-cny"><?=$v['price'];?></span></div>
         <div class="am-fr">
         <!-- 默认数量单位 -->
           <input type="hidden" class="unit" value="1">
           <!-- 数量加减 -->
           <div class="CmNum">
             <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="1">
+            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?=$v['defaultnumber']?>">
             <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
           </div>
         </div>
       </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">2、签到背景/<small>平米</small><span class="price red am-icon-cny">1000</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">3、签到台/<small>平米</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">4、鲜花/<small>组</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">5、拱门/<small>个</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
+    <?php endforeach;?>
+    
       </div>
     </div>
   </div>
-  <div class="am-g area">
-    <div class="am-u-sm-3"><strong>仪式区</strong></div>
-    <div class="am-u-sm-9">
-      <div class="am-cf gsf">
-        <div class="am-fl">1、舞台/<small>平米</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="1">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">2、LED屏/<small>平米</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">3、干冰机/<small>台</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">4、泡泡机/<small>台</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">5、拱门/<small>个</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="am-g area">
-    <div class="am-u-sm-3"><strong>宴会区</strong></div>
-    <div class="am-u-sm-9">
-      <div class="am-cf gsf">
-        <div class="am-fl">1、迎宾喷绘/<small>平米</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="1">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">2、签到背景/<small>平米</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">3、签到台/<small>平米</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">4、鲜花/<small>组</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">5、拱门/<small>个</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="am-g area">
-    <div class="am-u-sm-3"><strong>局部装饰</strong></div>
-    <div class="am-u-sm-9">
-      <div class="am-cf gsf">
-        <div class="am-fl">1、迎宾喷绘/<small>平米</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="1">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">2、签到背景/<small>平米</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">3、签到台/<small>平米</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">4、鲜花/<small>组</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-      <div class="am-cf gsf">
-        <div class="am-fl">5、拱门/<small>个</small><span class="price red am-icon-cny">10</span></div>
-        <div class="am-fr">
-          <input type="hidden" class="unit" value="1">
-          <div class="CmNum">
-            <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-            <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<?php endforeach;?>
+
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id=""> 
       <div class="am-u-sm-8 a">
