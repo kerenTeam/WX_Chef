@@ -10,6 +10,10 @@ var allmoney = document.getElementById("allmoney");
 /** 总价格 */
 var paymoney;
 var curCount;
+//男
+var servTotal1;
+//女
+var servTotal2;
 // 总服务员费
 var servTotal;
 var num = 0;
@@ -25,7 +29,11 @@ window.onload = function() {
     // 服务员价格
     var serprice = document.getElementById('serprice');
     var serprice2 = document.getElementById('serprice2');
-    servTotal = parseInt(serinput2.value) * parseFloat(serprice.innerHTML) + parseInt(serinput.value) * parseFloat(serprice2.innerHTML);
+    servTotal1 = document.getElementById('servTotal');
+    servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
+    servTotal2 = document.getElementById('servTotal2');
+    servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
+    servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
     console.log(servTotal);
     var ordFen = document.getElementsByClassName('numTxt');
     var ordPrice = document.getElementsByClassName('price');

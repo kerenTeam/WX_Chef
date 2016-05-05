@@ -4,7 +4,7 @@
  var cd = document.getElementsByClassName('cd')[0];
  var serinput = document.getElementsByClassName('serinput')[0];
  var serprice = document.getElementById('serprice');
- var servTotal = document.getElementById('servTotal');
+ var servTotal1 = document.getElementById('servTotal');
  var allmoney = document.getElementById('allmoney');
  var keep = allmoney.innerHTML;
  sercheck.onclick = function() {
@@ -14,11 +14,12 @@
              serinput.value = 1;
              allmoney.innerHTML = parseFloat(allmoney.innerHTML) + parseFloat(serprice.innerHTML);
          } else {
+
              cd.style.display = "none";
              serinput.value = 0;
-             allmoney.innerHTML = parseFloat(allmoney.innerHTML) - parseFloat(servTotal.value);
+             allmoney.innerHTML = parseFloat(allmoney.innerHTML) - servTotal1.value;
          }
-         servTotal.value = (serinput.value) * parseInt(serprice.innerHTML);
+         servTotal1.value = parseInt(serinput.value) * parseInt(serprice.innerHTML);
          //allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(servTotal.value);
      }
      //服务于数量加减
@@ -31,7 +32,7 @@
          cd.style.display = "none";
      }
      serinput.value = sernum;
-     servTotal.value = sernum * parseFloat(serprice.innerHTML);
+     servTotal1.value = sernum * parseFloat(serprice.innerHTML);
      console.log(servTotal.value);
      allmoney.innerHTML = (parseFloat(allmoney.innerHTML) - parseFloat(serprice.innerHTML)).toFixed(2);
  }
@@ -40,7 +41,7 @@
      var sernum = serinput.value;
      sernum++;
      serinput.value = sernum;
-     servTotal.value = sernum * parseFloat(serprice.innerHTML);
+     servTotal1.value = sernum * parseFloat(serprice.innerHTML);
      console.log(servTotal.value);
      allmoney.innerHTML = (parseFloat(allmoney.innerHTML) + parseFloat(serprice.innerHTML)).toFixed(2);
  }
