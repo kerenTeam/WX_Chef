@@ -153,7 +153,7 @@ function doaction(obj) {
                 </a>
               </div>
               <div class=" am-u-sm-9 am-list-main">
-                <h3 class="am-list-item-hd cartb"><span class="am-text-xs onlyVege">净</span><?=$food[0]['foodname'];?></h3>
+                <h3 class="am-list-item-hd cartb onlyVege"><?=$food[0]['foodname'];?></h3>
                 <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
                 <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$food[0]['foodprice']?></span></div>
                  <input type="hidden" name="code[]" value="1">
