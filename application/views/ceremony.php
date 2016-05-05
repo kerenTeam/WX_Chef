@@ -16,10 +16,12 @@
  
   </header>
   <!-- 顶部 -->
-  <div class="welCus ceFixed">
+  <div class="welCus ceFixed">  
     <img src="<?=IP.$cereinfo[0]['backgroundimg'];?>" alt="">
     <div class="am-text-center backGround">
       <?=$cereinfo[0]['name'];?><br><span class="red am-icon-cny cefont"><?=$cereinfo[0]['price'];?></span><!-- <span class="gray lineTrough am-icon-cny">88888</span> -->
+ 
+    </div>
   </div>
   <!-- content -->
     <section data-am-widget="accordion" class="am-accordion am-accordion-gapped sec-margin" data-am-accordion='{  }'>
@@ -33,39 +35,21 @@
           </div>
         </dd>
       </dl>
-      <?php foreach($imags as $key=>$val):?>
+      <?php foreach($details as $key=>$val):?>
       <dl class="am-accordion-item">
         <dt class="am-accordion-title">
-         <span class="am-badge am-badge-danger am-round"><?=$key?></span> <?php switch ($val['key']) {
-           case '1':
-             echo "迎宾区";
-             break;
-           case '2':
-             echo "仪式区";
-             break;
-           case '3':
-             echo "宴会区";
-             break;
-           case '4':
-             echo "局部装饰";
-             break;
-           case '5':
-             echo "灯光设备";
-             break;
-           case '6':
-             echo "专业团队";
-             break;
-           case '7':
-             echo "演艺人员";
-             break;
-         }?>
+         <span class="am-badge am-badge-danger am-round"><?=$key+1?></span> <?=$val['name'];?>
         </dt>
+        <?php
+        // 获取区域展示图
+         $img = file_get_contents(POSTAPI.'API_details?celeid='.$id.'&categoryid='.$val['id'].'&dis=img');
+          $imgs = json_decode(json_decode($img),true);
+         ?>
         <dd class="am-accordion-bd am-collapse am-in"> 
           <div class="am-accordion-content welCus">
-          <?php foreach($val['img'] as $v):?>
-            <img src="<?=IP.$v;?>" alt="">
-          <?php endforeach;?>
-           
+          <?php foreach($imgs as $v):?>
+            <img src="<?=IP.$v['detailsimg'];?>" alt="">
+           <?php endforeach;?>
           </div>
         </dd>
       </dl>

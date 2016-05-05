@@ -193,6 +193,7 @@ h2.tip{margin:20px;font-size: 18px}
     $('.searchFix input').focus(function() {
         window.location.href = "<?php echo site_url('home/search')?>";
     });
+<<<<<<< HEAD
     //加载
     var totalpage = 6; //总页数，防止超过总页数继续滚动
     var winH = $(window).height(); //页面可视区域高度
@@ -202,38 +203,29 @@ h2.tip{margin:20px;font-size: 18px}
             var scrollT = $(window).scrollTop(); //滚动条top
             var aa = (pageH - winH - scrollT) / winH;
             if (aa < 0.01) {
-                getJson(i)
-            }
-        } else { //否则显示无数据
-            showEmpty();
-        }
-    });
-    getJson(0); //加载第一页
-});
-function getJson(page) {
-    $(".nodata").show().html("<img src='http://www.sucaihuo.com/Public/images/loading.gif'/>");
-    $.getJSON("<?=site_url('home/quality');?>", {
-        page: i
-    },
-    function(json) {
-        console.log(json);
-        if (json) {
-            var str = "";
-            $.each(json,
-            function(index, array) {
-                var str = "<figure> <a href='<?php echo site_url('home/lifeInfo?id=');?>";
-                var str = str + array['boutiqueid'] + "'><img src='<?php echo IP;?>" + array['backgoungimg'] + "'><figcaption>" + array['name'] + "<br><span class='am-text-sm'>" + array['abstract'] + "</span></figcaption></a></figure>";
-                $("#lists").append(str);
-            });
-            setTimeout(function() {
-                $(".nodata").hide();
-            },
-            50000);
-        } else {
-            showEmpty();
-        }
-    });
-    i++;
+                getJson(i); //加载第一页
+
+
+  });
+
+            function getJson(page) {
+                $(".nodata").show().html("<img src='http://www.sucaihuo.com/Public/images/loading.gif'/>");
+                $.getJSON("<?=site_url('pricesearch/quality');?>", {page: i}, function(json) {
+                  console.log(json);
+                    if (json) {
+                        var str = "";
+                        $.each(json, function(index, array) {
+                          
+                            var str = "<figure> <a href='<?php echo site_url('home/lifeInfo?id=');?>";
+                            var str = str + array['boutiqueid']+"'><img src='<?php echo IP;?>" + array['backgoungimg'] + "'><figcaption>" + array['name'] + "<br><span class='am-text-sm'>"+ array['abstract'] + "</span></figcaption></a></figure>";
+                            $("#lists").append(str);
+                        });
+                       setTimeout(function(){ $(".nodata").hide();},50000);
+                    } else {
+                       showEmpty();
+                    }
+                });
+                i++;
 }
 function showEmpty() {
     setTimeout(function() {

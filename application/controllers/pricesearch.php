@@ -176,4 +176,33 @@ class pricesearch extends CI_Controller {
 			}
 		}
 	}
+
+	// 首页精品生活
+	public function quality()
+	{
+		$page = intval($_GET['page']);  
+		// var_Dump($page);
+		$pagenum = 5; 
+		$start = ($page - 1) * $pagenum;
+		if($start == 0){
+			$start = 1;
+		}
+		$quality = file_get_contents(POSTAPI.'API_Boutique?dis=jpsh&star='.$start.'&end='.$pagenum);
+		$shops = json_decode(json_decode($quality),true);
+		$arr = array();
+		foreach($shops as $shop){
+			$arr[] = array(
+				'boutiqueid' =>$shop['boutiqueid'],
+				'name' =>$shop['name'],
+				'abstract' =>$shop['abstract'],
+				'backgoungimg' =>$shop['backgoungimg'],
+			);
+		}
+		echo json_encode($arr);exit;
+	}
+
+
+
+
+
 }

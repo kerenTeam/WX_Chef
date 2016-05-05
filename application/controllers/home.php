@@ -143,39 +143,14 @@ class home extends CI_Controller
 	
 	//首页
 	public function index(){
-	
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
 		$data['caijia'] = json_decode(json_decode($caijia));
-
 		//获取banner
 		$banner = file_get_contents(POSTAPI.'API_Banner?number=1');
 		$data['banners'] = json_decode(json_decode($banner),true);
-
 		$this->load->view('index',$data);
 	}
-	// 首页精品生活
-	public function quality()
-	{
-		$page = intval($_GET['page']);  
-	   //var_dump($page);
-		$pagenum = 5; 
-		$start = ($page - 1) * $pagenum;
-		$quality = file_get_contents(POSTAPI.'API_Boutique?dis=jpsh&star='.$start.'&end='.$pagenum);
-		$shops = json_decode(json_decode($quality),true);
-		$arr = array();
-		foreach($shops as $shop){
-			$arr[] = array(
-				'boutiqueid' =>$shop['boutiqueid'],
-				'name' =>$shop['name'],
-				'abstract' =>$shop['abstract'],
-				'backgoungimg' =>$shop['backgoungimg'],
-			);
-		}
-		echo json_encode($arr);exit;
-	}
-
-
 	//菜单 by wf
 	public function cailan(){
 		//var_Dump($_SESSION['shoping']);
@@ -456,8 +431,7 @@ class home extends CI_Controller
 				$data['jincai'] = '';     
 			}else{
 				$cart = $_SESSION['shoping'];
-				foreach($cart as $k=>$v){
-					// var_Dump($v);
+				foreach($cart as $k=>$v){ 
 					switch ($v['code']) {
 						case '0':
 							$data['carts'][$k] = $v;
@@ -473,11 +447,12 @@ class home extends CI_Controller
 							$data['taocan'][$k] = $v;
 							break;
 						case '2':
-							if(isset($data['carts']) || isset($data['taocan'])){
+							if(isset($data['carts']) || isset($data['taocan'])){    
 								if($data['carts'] == ''){
 									$data['carts']= '';
 								}
-								if($data['taocan'] == ''){
+								
+								if(@$data['taocan'] == ''){
 									$data['taocan']= '';
 								}
 							}else{
@@ -512,7 +487,6 @@ class home extends CI_Controller
 		}else{
 			$data['eleg'] = '';
 		}
-
 		$this->load->view('cart',$data);
 	}
 	// 删除购物车
@@ -976,35 +950,23 @@ class home extends CI_Controller
 	//庆典介绍
 	public function ceremony(){
 		$id = $_GET['id'];
+		// 获取主提简介
 		$cereinfo = file_get_contents(POSTAPI.'API_Celebration?id='.$id);
 		$data['cereinfo'] = json_decode(json_decode($cereinfo),true);
-		$img = file_get_contents(POSTAPI.'API_details?dis=img&celeid='.$id);
-		$imgs= json_decode(json_decode($img),true);
-		$care = array('1','2','3','4','5','6','7');
-		foreach ($imgs as $key => $value) {
-			foreach ($care as $k=>$v) {
-				$j = $k+1;
-				if($value['distinguish'] == $v){
-					$arr[$j]['img'][] = $value['detailsimg'];
-					$arr[$j]['key'] = $value['distinguish'];
-				}
-			}
-		}
-		// 排序
-		ksort($arr);
-		$data['imags'] = $arr; 
+		// 获取所有区域
+		$details = file_get_contents(POSTAPI.'API_details?dis=details');
+		$data['details'] = json_decode(json_decode($details),true); 
 		$data['id'] = $id; 
 		$this->load->view('ceremony',$data);
 	}
 	//庆典详情选择
 	public function CeremonyChose(){
 
-		$chose = file_get_contents(POSTAPI.'API_details?dis=details');
-		$ch = json_decode(json_decode($chose),true);
-		echo "<pre>";
-		var_dump($ch);
-		exit;
-		$this->load->view('CeremonyChose');
+		// 获取所有区域
+		$details = file_get_contents(POSTAPI.'API_details?dis=details');
+		$data['details'] = json_decode(json_decode($details),true); 
+	 
+		$this->load->view('CeremonyChose',$data);
 	}
     //伴餐
     public function elegance(){
