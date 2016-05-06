@@ -186,8 +186,7 @@ h2.tip{margin:20px;font-size: 18px}
    $(function() {
     $('.closetk').bind('click',
     function() {
-        $('.tk').css('display', 'none');
-        // $('.tk').fadeOut('400');
+        $('.tk').css('display', 'none'); 
     })
     //搜索跳转
     $('.searchFix input').focus(function() {

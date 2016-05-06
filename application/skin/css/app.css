@@ -478,7 +478,7 @@ body {
 }
 
 .tktxt div {
-    margin-top: 80%;
+    margin-top: 47%;
 }
 
 .tktxt .rega {
@@ -2404,6 +2404,12 @@ figure a:hover figcaption {
     }
     .nowBuy {
         top: 5rem;
+    }
+}
+
+@media only screen and (min-width:960px) {
+    .tktxt div {
+        margin-top: 24%;
     }
 }
 
