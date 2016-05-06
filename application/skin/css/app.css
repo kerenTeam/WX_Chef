@@ -2021,7 +2021,7 @@ figure a:hover figcaption {
 
 .ceFixed .am-text-center {
     position: absolute;
-    bottom: 1.1rem;
+    bottom: 0.9rem;
     left: 0;
     width: 100%;
 }
@@ -2094,6 +2094,7 @@ figure a:hover figcaption {
 
 .contactCus img {
     height: 100%;
+    width: 100%;
 }
 
 .CmNum {
@@ -2368,6 +2369,24 @@ figure a:hover figcaption {
         width: 15.5rem;
         height: 12.5rem;
         margin-left: -3rem;
+    }
+    .CmNum {
+        right: 5.5rem!important;
+        top: -1.3rem;
+    }
+    .gsf .price {
+        position: absolute;
+        right: 24rem;
+        font-size: 16px;
+    }
+    .welCus img {
+        max-height: 26rem;
+    }
+    .area strong {
+        font-size: 20px;
+    }
+    .area .am-u-sm-9 {
+        font-size: 16px;
     }
 }
 

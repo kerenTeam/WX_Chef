@@ -45,7 +45,7 @@
                 <img src="skin/img/exp.gif" data-original="<?php echo IP.$v['thumbnail'];?>" class="lazy" alt="<?=$v['foodname'];?>"/>
               </a>
             </div>
-            <div class=" am-u-sm-8 am-list-main">
+            <div class=" am-u-sm-8 am-list-main am-padding-right-xs">
              <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="gray">
               <h3 class="am-list-item-hd black"><?=$v['foodname'];?></h3>
               <input type="hidden" name="foodid[]" value="<?=$v['foodid'];?>">

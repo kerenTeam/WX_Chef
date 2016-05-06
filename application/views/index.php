@@ -193,7 +193,7 @@ h2.tip{margin:20px;font-size: 18px}
     $('.searchFix input').focus(function() {
         window.location.href = "<?php echo site_url('home/search')?>";
     });
-<<<<<<< HEAD
+ 
     //加载
     var totalpage = 6; //总页数，防止超过总页数继续滚动
     var winH = $(window).height(); //页面可视区域高度
@@ -204,8 +204,9 @@ h2.tip{margin:20px;font-size: 18px}
             var aa = (pageH - winH - scrollT) / winH;
             if (aa < 0.01) {
                 getJson(i); //加载第一页
-
-
+   }
+}
+})
   });
 
             function getJson(page) {

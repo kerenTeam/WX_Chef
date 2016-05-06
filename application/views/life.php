@@ -14,7 +14,7 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    宴会定制
+    精品生活
     </h1>
     
   </header>
