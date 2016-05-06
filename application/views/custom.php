@@ -24,9 +24,9 @@
               <div class="infolist"> 
                 <div class="liststyle">
                   <span>
-                    <i>成都</i>
+                    <i>成都市</i>
                     <ul>
-                      <li><a href="javascript:void(0)" alt="请选择城市">成都</a></li>
+                      <li><a href="javascript:void(0)" alt="请选择城市">成都市</a></li>
                     </ul>
                     <input type="hidden" name="cho_City" value="请选择城市">
                   </span>
