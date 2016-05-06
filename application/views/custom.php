@@ -23,17 +23,10 @@
           <div class="demo">     
               <div class="infolist"> 
                 <div class="liststyle">
-                  <span id="Province" style="display:none;">
-                    <i>请选择省份</i>
+                  <span>
+                    <i>成都</i>
                     <ul>
-                      <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
-                    </ul>
-                    <input type="hidden" name="cho_Province" value="请选择省份">
-                  </span>
-                  <span id="City">
-                    <i>请选择城市</i>
-                    <ul>
-                      <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+                      <li><a href="javascript:void(0)" alt="请选择城市">成都</a></li>
                     </ul>
                     <input type="hidden" name="cho_City" value="请选择城市">
                   </span>
