@@ -17,7 +17,7 @@
   <a class="contactGo" href="<?php echo site_url('home/customServ')?>">
     晕了吗？<br>联系客服
   </a>
-<form action="" method="" enctype="multipart/form-data">
+<form action="<?=site_url('home/cereOrder');?>" method="post" enctype="multipart/form-data">
   <?php foreach($details as $val):?>
   <div class="am-g area">
     <div class="am-u-sm-3"><strong><?=$val['name'];?></strong></div>
@@ -32,11 +32,12 @@
         <div class="am-fl"><?=$k+1?>、<?=$v['name']?>/<small><?=$v['unit'];?></small><span class="price red am-icon-cny"><?=$v['price'];?></span></div>
         <div class="am-fr">
         <!-- 默认数量单位 -->
-          <input type="hidden" class="unit" value="1">
+         <input type="hidden" name="unit" class="unit" value="1">
+          <input type="hidden" name="cereid[]" value="<?=$v['id']?>" />
           <!-- 数量加减 -->
           <div class="CmNum">
             <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?=$v['defaultnumber']?>">
+            <input type="text" class="numTxt" name="numbers[]"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?=$v['defaultnumber']?>">
             <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
           </div>
         </div>
@@ -47,6 +48,7 @@
     </div>
   </div>
 <?php endforeach;?>
+<input type="hidden" name='CelebrationId' value="<?=$id;?>" />
 
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id=""> 

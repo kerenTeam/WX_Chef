@@ -21,10 +21,10 @@ window.onload=function(){
 	for(var i = 0;i < ordFen.length;i++){
 		// fen += parseInt(ordFen[i].value);
 		paymoney += parseFloat(parseInt(ordFen[i].value)*parseFloat(ordPrice[i].innerHTML));
-		console.log(paymoney)
+		//console.log(paymoney)
 	}
  
-	console.log(paymoney)
+	//console.log(paymoney)
 	// fens.innerHTML = fen;
 	allmoney.innerHTML = paymoney.toFixed(2);
 }
@@ -49,7 +49,7 @@ function blurWrite(input){
 		num = input.value;
 	}
 	
-	console.log(num)
+	//console.log(num)
 }
 function ueserWrite(obj){
    curCount = obj.value;
@@ -61,7 +61,7 @@ function ueserWrite(obj){
  }
  var prices = obj.parentNode.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
     // alert(prices);
-     console.log(fen);
+    // console.log(fen);
     // fen +=(parseFloat(curCount) - num);
     // fens.innerHTML = fen;
     paymoney += (parseFloat(curCount) - num)*prices;
@@ -79,7 +79,7 @@ function handle(self, isAdd){
 
     if(isAdd){
 		curCount= curCount+parseInt(unit);
-		console.log(curCount);
+		//console.log(curCount);
 		// fen=fen+parseInt(unit);
 		reduce.style.display="inline-block";
 		countEl.style.display="inline-block";
@@ -87,7 +87,7 @@ function handle(self, isAdd){
 		// prabola();
 	}else{ 
 		curCount=curCount-parseInt(unit);
-		console.log(curCount);
+		//console.log(curCount);
 		// fen=fen-parseInt(unit);
 		if(curCount <1){
 			curCount = 0; 

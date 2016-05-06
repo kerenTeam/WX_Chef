@@ -15,7 +15,7 @@
   <div class="customBanner">
     <img src="skin/img/custom.png" alt="">
   </div>
-  <form class="am-form am-form-horizontal customForm">
+  <form class="am-form am-form-horizontal customForm" action="<?=site_url('home/customServ');?>" method="post">
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">区域</label>
       <div class="am-u-sm-10 customAdd" style="margin-top:-0.5rem;">
@@ -60,19 +60,19 @@
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">桌数</label>
       <div class="am-u-sm-10">
-        <select class="am-radius">
+        <select class="am-radius" name="number">
           <option>请选择您的用餐桌数</option>
-          <option>10桌以下</option>
-          <option>10~20桌</option>
-          <option>20~30桌</option>
-          <option>30桌以上</option>
+          <option value="10桌以下">10桌以下</option>
+          <option value="10~20桌">10~20桌</option>
+          <option value="20~30桌">20~30桌</option>
+          <option value="30桌以上">30桌以上</option>
         </select>
       </div>
     </div>
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">电话</label>
       <div class="am-u-sm-10">
-        <input id="phone" class="am-radius" type="tel" placeholder="请输入你的联系电话">
+        <input id="phone" class="am-radius" type="tel" placeholder="请输入你的联系电话" name="phone">
         <p class="customP">输入电话，客服稍后会给您回电</p>
       </div>
       <div class="am-u-sm-1"></div>
@@ -80,7 +80,7 @@
   <!-- footer -->
   <!-- <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot"> -->
     <div class="customBtn">
-      <button type="button" class="btn am-btn am-btn-danger customSubmit">提 交</button>
+      <button type="submit" class="btn am-btn am-btn-danger">提 交</button>
     </div>
   <!-- </div> -->
   <!-- modal -->
@@ -96,7 +96,6 @@
     </div>
   </div>
   </form>
-
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
   <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
@@ -137,19 +136,23 @@
 <script type="text/javascript"> 
 $(function(){
   $('.liststyle ul').css('overflow','scroll');
-  $('.customSubmit').live('click',function(){
+  $('.customForm').live('submit',function(){
       var phone = $("#phone");
         if(phone.val() == ''){
           alert("请输入手机号");
         }else if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone.val()))){
           alert("请输入正确的手机号");
-        }else{
-          
-          $('#doc-modal-1').modal('open');
-          return false;
         }
+     
       return false;
     }) 
+   var data = "<?=$id;?>";
+   if(data != ''){
+       $('#doc-modal-1').modal('open');
+          return false;
+   }
+
+
 })
   
     

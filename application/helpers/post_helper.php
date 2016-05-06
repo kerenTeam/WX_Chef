@@ -42,15 +42,26 @@ function postData($url, $data = array()){
 
 
 
-  
+  // 加入购物车
 function array_no_empty($arr) {
-            if (is_array($arr)) {
-                foreach ( $arr as $k => $v ) {
-                    if ($v['numbers'] == 0){
-                      unset($arr[$k]);
-                    }
+        if (is_array($arr)) {
+            foreach ( $arr as $k => $v ) {
+                if ($v['numbers'] == 0){
+                  unset($arr[$k]);
                 }
             }
-            return $arr;
         }
+        return $arr;
+    }
+// 庆典订单
+function array_no_cere($arr) {
+        if (is_array($arr)) {
+            foreach ( $arr as $k => $v ) {
+                if ($v['detailsNumber'] == 0){
+                  unset($arr[$k]);
+                }
+            }
+        }
+        return $arr;
+    }
 ?>

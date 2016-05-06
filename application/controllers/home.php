@@ -143,6 +143,7 @@ class home extends CI_Controller
 	
 	//首页
 	public function index(){
+		// 获取菜价
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 
 		$data['caijia'] = json_decode(json_decode($caijia));
@@ -799,8 +800,20 @@ class home extends CI_Controller
 	}
 	//客服
 	public function customServ(){
+		if($_POST){
+			$data['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'];
+			$data['Phone'] = $_POST['phone'];
+			$data['Number'] = $_POST['number'];
+			$p = json_encode($data);
+			$postok = curl_post(POSTAPI.'API_Consultation',$p);
 
-		$this->load->view('custom');
+			if($postok == 1){
+				$a['id'] = 1;
+				$this->load->view('custom',$a);    
+			}
+		}else{
+			$this->load->view('custom');
+		}
 	}
 	//会员
 	public function vip(){
@@ -963,11 +976,48 @@ class home extends CI_Controller
 	public function CeremonyChose(){
 
 		// 获取所有区域
-		$details = file_get_contents(POSTAPI.'API_details?dis=details');
-		$data['details'] = json_decode(json_decode($details),true); 
-	 
-		$this->load->view('CeremonyChose',$data);
+		if(isset($_SESSION['phone'])){
+			if($_SESSION['phone'] != ''){
+				$details = file_get_contents(POSTAPI.'API_details?dis=details');
+				$data['details'] = json_decode(json_decode($details),true); 
+			 	$data['id'] = $_GET['id'];
+				$this->load->view('CeremonyChose',$data);
+			}else{
+				echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
+			}
+		}else{
+			echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
+		}
+		
 	}
+	// 庆典订单
+	public function cereOrder()
+	{
+		if($_POST){
+				$cereid = $_POST['cereid'];
+				$numbers = $_POST['numbers'];
+				$data = array();
+				foreach($cereid as $k=>$v){
+					$data[$k]['detailsId'] = $cereid[$k];	
+					$data[$k]['detailsNumber'] = $numbers[$k];	
+				}
+				$arr = array_no_cere($data);
+				// $celeentry = json_encode($data);
+			
+				$ceredata['UserPhone'] =  $_SESSION['phone'];
+				$ceredata['Address'] = '';
+				$ceredata['CelebrationId'] = $_POST['CelebrationId'];
+				$ceredata['celeentry'] = $arr;
+				$cerejson =  str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($ceredata))))));
+				$cereok = curl_post(POSTAPI.'API_CelebrationOrder?dis=dd',$cerejson);
+				if($cereok == 1){
+					echo "<script>alert('提交成功，请保持手机畅通，服务人员会尽快与你来联系!');window.location.href='ceremonyType';</script>";
+				}
+		}
+		
+	}
+
+
     //伴餐
     public function elegance(){
     	$eleg = file_get_contents(POSTAPI.'API_Dinner');
