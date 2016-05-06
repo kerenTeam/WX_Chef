@@ -105,19 +105,20 @@ $.fn.citySelect = function(options) {
  				$_liC = $('li' , _setId[2]),
  				$_liD = $('li' , _setId[3]),
  				indA = 22,indB = 0,indC,indD;
- 			$('li' , _setId[0]).live('click' , function(){ //省点击事件
- 				indA = $('li' , _setId[0]).index(this) - 1;
- 				var   _valA = $('a' , this).attr('alt'), 
- 					_emeltA = $(_czemt , _setId[0]),
- 					_inputA = $(_inpnt , _setId[0]);
- 				_emeltA.text(_valA);
- 				_inputA.val(_valA);
- 				$(_setId[1]).removelist({thisindex : 1});
- 				$(_setId[1]).appendlist({theindex:'0_'+indA});
- 				$(_setId[2]).removelist({thisindex : 2});
- 				$(_setId[3]).removelist({thisindex : 3});
- 				return indA;
- 			});
+ 		 $('li', _setId[0]).live('click', function() { //省点击事件
+        indA = $('li', _setId[0]).index(this) - 1;
+        var _valA = $('a', this).attr('alt'),
+            _emeltA = $(_czemt, _setId[0]),
+            _inputA = $(_inpnt, _setId[0]);
+        _emeltA.text(_valA);
+        _inputA.val(_valA);
+        $(_setId[1]).removelist({ thisindex: 1 });
+        $(_setId[1]).appendlist({ theindex: '0_' + indA });
+        $(_setId[2]).removelist({ thisindex: 2 });
+        $(_setId[3]).removelist({ thisindex: 3 });
+        return indA;
+    });
+
  			$('li' , _setId[1]).live('click' , function(){ //市点击事件
  				indB = $('li' , _setId[1]).index(this) - 1;
  				var   _valB = $('a' , this).attr('alt'), 
