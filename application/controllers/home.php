@@ -158,8 +158,8 @@ class home extends CI_Controller
 	public function index(){
 		// 获取菜价
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
-
-		$data['caijia'] = json_decode(json_decode($caijia));
+		$data['caijia'] = json_decode(json_decode($caijia),true);
+		
 		//获取banner
 		$banner = file_get_contents(POSTAPI.'API_Banner?number=1');
 		$data['banners'] = json_decode(json_decode($banner),true);
@@ -874,9 +874,13 @@ class home extends CI_Controller
 	}
 	//菜价比较
 	public function priceSearch(){
-
-		$caiprice = file_get_contents(POSTAPI.'API_FoodMarket');
+		// 菜市场
+		$caiprice = file_get_contents(POSTAPI.'API_Vegetable?dis=FoodMarket');
 		$data['cai']= json_decode(json_decode($caiprice),true);
+		// 菜市场分类
+		$cate = file_get_contents(POSTAPI.'API_Vegetable?dis=MarketCategorie');
+		$data['cates'] = json_decode(json_decode($cate),true);
+		var_Dump($data['cates']);
 		$this->load->view('priceSearch',$data);
 	}
 	//根据菜市获取菜价
