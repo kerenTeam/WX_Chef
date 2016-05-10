@@ -22,13 +22,14 @@
 $(function(){
       var cai =  $("#caishi").val();
       var time =  $("#adate").val();
+      var cate =  $("#cates").val();
       if(!time){
         var time = show();
       }
       $.ajax({
         type:'POST',
         url:"<?=site_url('pricesearch/caiprice')?>",
-        data: "name="+cai+"&time="+time,
+        data: "name="+cai+"&time="+time+'&cates='+cate,
         success: function (data) {
             $('#group_one').html(data);
            }
@@ -44,11 +45,12 @@ $(function(){
   }
 function getoption(){
       var cai =  $("#caishi").val();
+      var cate =  $("#cates").val();
       var time =  $("#adate").val();
       $.ajax({
         type:'POST',
         url:"<?=site_url('pricesearch/caiprice')?>",
-        data: "name="+cai+"&time="+time,
+        data: "name="+cai+"&time="+time+'&cates='+cate,
         success: function (data) {
             $('#group_one').html(data);
            }
@@ -67,12 +69,11 @@ function getoption(){
       </select>
     </div>
     <div class="am-u-sm-4 sbnt">
-      <select data-am-selected="{maxHeight: 100}">
-        <option value="b">蔬菜</option>
-        <option value="o">肉类</option>
-        <option value="m">鱼类</option>
-        <option value="phone">家禽</option>
-        <option value="im">海鲜</option>
+      <select id='cates' data-am-selected="{maxHeight: 100}" name='cate' onchange="getoption();">
+      <?php foreach($cates as $v):?>
+        <option value="<?=$v['marketcategorie'];?>"><?=$v['marketcategorie'];?></option>\
+      <?php endforeach;?>
+       
       </select>
     </div>
     <div class="am-u-sm-4 sbnt">
