@@ -198,7 +198,8 @@ class pricesearch extends CI_Controller {
 				'backgoungimg' =>$shop['backgoungimg'],
 			);
 		}
-		echo json_encode($arr);exit;
+		echo json_encode($arr);
+		exit;
 	}
 
 

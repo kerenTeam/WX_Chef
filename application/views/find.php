@@ -25,92 +25,38 @@
 <!-- 推荐 -->
 <div class="am-text-center am-text red promt">产品推荐</div>
 <ul class="am-gallery am-avg-sm-3 am-avg-md-3 am-avg-lg-3 am-gallery-default pagallery" data-am-gallery="{ pureview: true }" >
+<?php foreach($foods as $v):?>
   <li>
     <a href="<?php echo site_url('home/cailan')?>">
       <div class="am-gallery-item">
-        <img src="skin/img/product/qwhqb.jpg" alt="大厨到家"/>
-        <h3 class="am-gallery-title">土豆烧甲鱼</h3>
+        <img src="<?=IP.$v['Thumbnail'];?>" alt="<?=$v['FoodName'];?>"/>
+        <h3 class="am-gallery-title"><?=$v['FoodName'];?></h3>
       </div>
     </a>
   </li>
-  <li>
-    <a href="<?php echo site_url('home/cailan')?>#fe7ad9a9-1bec-4929-b160-85f9a784f527">
-      <div class="am-gallery-item">
-        <img src="skin/img/product/shiguo.jpg" alt="大厨到家"/>
-        <h3 class="am-gallery-title">石锅肥牛</h3>
-      </div>
-    </a>
-  </li>
-  <li>
-    <a href="<?php echo site_url('home/party')?>">
-      <div class="am-gallery-item">
-        <img src="skin/img/product/qcs.jpg" alt="大厨到家"/>
-        <h3 class="am-gallery-title">巧脆酥</h3>
-      </div>
-    </a>
-  </li>
+<?php endforeach;?>
+  
 </ul>
 <!-- 促销 -->
 <div class="am-g findSale">
  <div class="am-text-center am-text purred am-margin-sm">促销信息</div>
 <!--  <p class="am-text-center am-shadow htit">促销信息</p> -->
+<?PHP foreach($promotion as $val):?>
   <div class="am-u-sm-6 am-shadow">
      <div class="am-u-sm-5 am-list-thumb">
         <a href="<?php echo site_url('home/food')?>">
-          <img src="skin/img/product/xjbgc.jpg" alt="蓉记姜葱香辣蟹168"/>
+          <img src="<?=IP.$val['thumbnail'];?>" alt="<?=$val['foodname'];?>"/>
         </a>
      </div>
     <div class=" am-u-sm-7 am-list-main">
      <a href="<?php echo site_url('home/food')?>" class="gray">
-      <div class="am-list-item-hd am-text-sm black">蓉记姜葱香辣蟹</div><!-- 
-      <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></div> -->
-        <div class="prf am-text-sm">特价 <i class="am-icon-cny"></i><span class="price am-text-lg">168</span> <span class="am-icon-cny oldPr">199</span></div>
+      <div class="am-list-item-hd am-text-sm black"><?=$val['foodname'];?></div>
+        <div class="prf am-text-sm">特价 <i class="am-icon-cny"></i><span class="price am-text-lg"><?=$val['tejia'];?></span> <span class="am-icon-cny oldPr"><?=$val['foodprice'];?></span></div>
      </a>
       <a href="<?php echo site_url('home/order')?>" class="am-center nowBuy">立即购买</a>    
     </div>
   </div>
-  <div class="am-u-sm-6 am-shadow">
-     <div class="am-u-sm-5 am-list-thumb">
-        <a href="<?php echo site_url('home/food')?>">
-          <img src="skin/img/product/rjx.jpg" alt="蓉记姜葱香辣蟹168"/>
-        </a>
-     </div>
-    <div class=" am-u-sm-7 am-list-main">
-     <a href="<?php echo site_url('home/food')?>" class="gray">
-      <div class="am-list-item-hd am-text-sm black">蓉记姜葱香辣蟹</div>
-        <div class="prf am-text-sm">特价 <i class="am-icon-cny"></i><span class="price am-text-lg">168</span> <span class="am-icon-cny oldPr">199</span></div>
-     </a>
-      <a href="<?php echo site_url('home/order')?>" class="am-center nowBuy">立即购买</a> 
-    </div>
-  </div>
-  <div class="am-u-sm-6 am-shadow">
-     <div class="am-u-sm-5 am-list-thumb">
-        <a href="<?php echo site_url('home/food')?>">
-          <img src="skin/img/product/xyts.jpg" alt="蓉记姜葱香辣蟹168"/>
-        </a>
-     </div>
-    <div class=" am-u-sm-7 am-list-main">
-     <a href="<?php echo site_url('home/food')?>" class="gray">
-      <div class="am-list-item-hd am-text-sm black">蓉记姜葱香辣蟹</div>
-       <div class="prf am-text-sm">特价 <i class="am-icon-cny"></i><span class="price am-text-lg">168</span> <span class="am-icon-cny oldPr">199</span></div>
-     </a>
-      <a href="<?php echo site_url('home/order')?>" class="am-center nowBuy">立即购买</a>  
-    </div>
-  </div>
-  <div class="am-u-sm-6 am-shadow">
-     <div class="am-u-sm-5 am-list-thumb">
-        <a href="<?php echo site_url('home/food')?>">
-          <img src="skin/img/product/xyb.jpg" alt="蓉记姜葱香辣蟹168"/>
-        </a>
-     </div>
-    <div class=" am-u-sm-7 am-list-main">
-     <a href="<?php echo site_url('home/food')?>" class="gray">
-      <div class="am-list-item-hd am-text-sm black">蓉记姜葱香辣蟹</div>
-      <div class="prf am-text-sm">特价 <i class="am-icon-cny"></i><span class="price am-text-lg">168</span> <span class="am-icon-cny oldPr">199</span></div>
-     </a>
-      <a href="<?php echo site_url('home/order')?>" class="am-center nowBuy">立即购买</a>  
-    </div>
-  </div>
+<?php endforeach;?>
   
 </div>
 <!-- 精品生活 -->
@@ -132,63 +78,32 @@
 </div>
 <!-- 评价 -->
 <div class="am-text-center am-text purred am-margin-sm">七嘴八舌</div>
+<?php foreach($qi as $value):?>
 <div class="am-shadow imgShow">
     <header class="am-comment-hd">
       <!--<h3 class="am-comment-title">评论标题</h3>-->
       <div class="am-comment-meta">
-        <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">157****4450</a>
+        <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt=""><?php echo substr_replace($value['UserPhone'],'****',3,4);?></a>
         
-        <span class="am-fr"><time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time></span>
+        <span class="am-fr"><time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800"><?=$value['CreateTime'];?></time></span>
       </div>
     </header>
     <div class="am-comment-bd am-text-xs combo">
-      味道很不错
+      <?=$value['Comment'];?>
     </div>
     <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
+    <?php foreach($value['Img'] as $v):?>
       <li>
         <div class="am-gallery-item">
-            <a href="skin/img/product/xjbgc.jpg" class="">
-              <img src="skin/img/product/xjbgc.jpg"/>
+            <a href="<?=IP.$v['PoorderImg'];?>" class="">
+              <img src="<?=IP.$v['PoorderImg'];?>"/>
             </a>
         </div>
       </li>
-       <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/product/qcs.jpg" class="">
-              <img src="skin/img/product/qcs.jpg"/>
-            </a>
-        </div>
-      </li>
-       <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/article/it1.png" class="">
-              <img src="skin/img/article/it1.png"/>
-            </a>
-        </div>
-      </li>
+    <?php endforeach;?>
   </ul>
 </div>
-<div class="am-shadow imgShow">
-    <header class="am-comment-hd">
-      <!--<h3 class="am-comment-title">评论标题</h3>-->
-      <div class="am-comment-meta">
-        <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">157****4450</a>
-        <span class="am-fr"><time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12</time></span>
-      </div>
-    </header>
-    <div class="am-comment-bd am-text-xs combo">
-      味道很不错,服务人员很耐心
-    </div>
-    <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
-      <li>
-        <div class="am-gallery-item">
-            <a href="skin/img/article/it1.png" class="">
-              <img src="skin/img/article/it1.png"/>
-            </a>
-        </div>
-      </li>
-    </ul>
-</div>
+<?php endforeach;?>
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
   <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
