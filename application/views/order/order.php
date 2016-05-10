@@ -163,7 +163,7 @@
    
                  <!-- 已添加过地址 -->
 
-                 <ul class="am-list">
+                 <ul class="am-list am-margin-top">
                  <?php foreach($address as $val):?>
                       <li class="am-g am-list-item-dated lpt2 mbtop">
                         <div class="am-margin-top-sm am-margin-left-sm">
@@ -188,7 +188,7 @@
         <div class="am-shadow am-margin-vertical-sm">  
          <p class="htit"><img src="skin/img/calendar.png" class="bpurple"> 用餐时间</p>
           <div class="demo am-margin-sm">
-            <div class="lie">日期:<input  id="beginTime" class="kbtn am-radius" placeholder="点击选择日期"/></div>
+            <div class="lie">日期:<input  id="beginTime" class="kbtn am-radius"/></div>
           </div>
           <div id="datePlugin"></div>
           <div class="am-margin-sm am-cf">
@@ -256,6 +256,14 @@
         
       
       $(function(){
+        var adate = $('#beginTime');
+     var html;
+      var date = new Date();
+      var month = date.getMonth() + 1;
+      var day = date.getDate();
+      var year = date.getFullYear(); 
+      html=year+'-'+month+'-'+day;
+     adate.attr('placeholder',html+" 默认");
          // 弹出添加地址弹框
          $('#model').click(function() {
           //$('.tkp').css('display','');
@@ -342,6 +350,5 @@ function getorders(){
 }
      
 
-    </script>
-
+    </script> 
 </html>

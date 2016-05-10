@@ -880,7 +880,7 @@ class home extends CI_Controller
 		// 菜市场分类
 		$cate = file_get_contents(POSTAPI.'API_Vegetable?dis=MarketCategorie');
 		$data['cates'] = json_decode(json_decode($cate),true);
-		var_Dump($data['cates']);
+		// var_Dump($data['cates']);
 		$this->load->view('priceSearch',$data);
 	}
 	//根据菜市获取菜价

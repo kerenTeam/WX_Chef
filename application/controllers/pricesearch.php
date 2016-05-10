@@ -11,14 +11,16 @@ class pricesearch extends CI_Controller {
 	public function caiprice(){
 		$name = $_POST['name'];
 		$time = $_POST['time'];
+		$cate = $_POST['cates'];
 		$arr = array(
-			'vegetableid' => $name,
+			'FoodMarket' => $name,
+			'MarketCategorie' => $cate,
 			'time' => $time,
 			);
 		$json = json_encode($arr);
 		$cai = curl_post(POSTAPI."API_Vegetable?dis=xc",$json);
 		$data = json_decode(json_decode($cai),true);
-		// var_dumP($data);
+		
 		if($data == NULL){
 			var_dumP("<th>没有最新菜价！换前一天试试。</th>");
 		}else{
