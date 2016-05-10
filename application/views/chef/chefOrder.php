@@ -12,13 +12,12 @@
   </header>
 
   <!-- 详情 -->
-  <form action="" method="" enctype="mutiltype/data">
-   
+
   <div class="am-shadow am-padding am-cf am-text-sm">
      <img src="skin/img/addr.png" style="width:auto" class="am-fl" alt="">
      <div class="am-fr moa">
-       服务人：张三&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:15708434450" class="black">15708434450</a><br> 
-       地  址：成都市高新区天府五街美年广场。
+       服务人：<?=$poorder[0]['name']?>&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:15708434450" class="black"><?=$poorder[0]['goodsphone'];?></a><br> 
+       地  址：<?=$poorder[0]['address'];?>
      </div>
   </div>
 <!--       <hr data-am-widget="divider" class="am-divider am-divider-dashed" />
@@ -64,10 +63,9 @@
  
     </div>  
          <div class="am-padding-sm am-cf mob">
-            <span class="am-fl red" style="line-height: 26px;">合计：108元</span>
-            <button type="submit" class="am-fr am-btn am-btn-primary bgreen am-btn-xs checkOrder"> 确定</button>
+            <span class="am-fl red" style="line-height: 26px;">合计：<?=$poorder[0]['discountmoney']?>元</span>
+            <a href='<?=site_url('chef/index');?>' class="am-fr am-btn am-btn-primary bgreen am-btn-xs checkOrder"> 确定</a>
          </div> 
-  </form>
 
 </body>
 </html>

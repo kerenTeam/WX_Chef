@@ -20,6 +20,7 @@ class home extends CI_Controller
 	public function login(){
 
 		$this->load->view('login');
+		
 	}
 	//订单总评价
 	public function commentTotal(){
@@ -53,19 +54,31 @@ class home extends CI_Controller
 	//老用户登录
 	public function login2(){ 
 		if($_POST){
+			$user = $this->input->post('UserPhone');
 			$arr = array(
-				'UserPhone' => $this->input->post('UserPhone'),
+				'UserPhone' => $user,
 				'UserPwd' => md5($this->input->post('UserPwd')),
 				);
 			$isok = json_encode($arr);
-			$a = curl_post(POSTAPI."API_User?dis=login",$isok);
+			if(strlen($user) != 11){
+				$a = curl_post(POSTAPI.'API_User?dis=htlogin',$isok);
+				
+			}else{
+				$a = curl_post(POSTAPI."API_User?dis=login",$isok);
+			}
 			switch ($a) {
 				case '0':
 					echo "<script>alert('没有该用户！');window.location.href='login2';</script>";
 					break;
 				case '1':
-					$this->session->set_tempdata("phone",$_POST['UserPhone'],3600);
-					echo "<script>window.location.href='ucent';</script>";
+					if (strlen($user) != 11) {
+						$this->session->set_tempdata("username",$_POST['UserPhone'],3600);
+						redirect('chef/index');
+					}else{
+						$this->session->set_tempdata("phone",$_POST['UserPhone'],3600);
+						echo "<script>window.location.href='ucent';</script>";
+					}
+					
 					break;
 				case '2':
 					echo "<script>alert('密码错误！');window.location.href='login2';</script>";
@@ -145,8 +158,8 @@ class home extends CI_Controller
 	public function index(){
 		// 获取菜价
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
-
-		$data['caijia'] = json_decode(json_decode($caijia));
+		$data['caijia'] = json_decode(json_decode($caijia),true);
+		
 		//获取banner
 		$banner = file_get_contents(POSTAPI.'API_Banner?number=1');
 		$data['banners'] = json_decode(json_decode($banner),true);
@@ -861,9 +874,13 @@ class home extends CI_Controller
 	}
 	//菜价比较
 	public function priceSearch(){
-
-		$caiprice = file_get_contents(POSTAPI.'API_FoodMarket');
+		// 菜市场
+		$caiprice = file_get_contents(POSTAPI.'API_Vegetable?dis=FoodMarket');
 		$data['cai']= json_decode(json_decode($caiprice),true);
+		// 菜市场分类
+		$cate = file_get_contents(POSTAPI.'API_Vegetable?dis=MarketCategorie');
+		$data['cates'] = json_decode(json_decode($cate),true);
+		var_Dump($data['cates']);
 		$this->load->view('priceSearch',$data);
 	}
 	//根据菜市获取菜价
@@ -1109,7 +1126,12 @@ class home extends CI_Controller
 		$data['foods'] = json_decode(json_decode($foods),true);
 		// 促销信息
 		$cuxiao = file_get_contents(POSTAPI.'API_FoodDiscount?start=1&end=4');
-		
+		$data['promotion'] = json_decode(json_decode($cuxiao),true);
+		// var_dump($data['foods']);
+		// 七嘴八舌
+		$qi = file_get_contents(POSTAPI.'API_Evaluate');
+		$data['qi'] = json_decode(json_decode($qi),true);
+
 		$this->load->view('find',$data);
 	}
 	//厨师管理
