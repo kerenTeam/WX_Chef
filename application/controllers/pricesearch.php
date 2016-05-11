@@ -86,6 +86,7 @@ class pricesearch extends CI_Controller {
 			$arr["comment"] = $_POST['comment'];
 			$arr['Foodid'] = $_POST['oid'];
 			$arr['POOrderId'] = $_POST['PoorderId'];
+			$arr['Identification'] = '1';
 
 			if(isset($_POST['routes'])){
 				if($_POST['routes'] != ''){
@@ -108,9 +109,10 @@ class pricesearch extends CI_Controller {
 			}else{
 				$arr['imgs'] = '[]';
 			}
-		
+
 			$jsonData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($arr))))));
 			$comment = curl_post(POSTAPI.'API_SingleFoodEvaluate',$jsonData);
+			
 			if($comment == 1){
 				if(isset($path)){
 					if(count($path) > 1){

@@ -41,16 +41,16 @@
             case '3':
               echo "服务中";
               break;
-            case '4':
+            case '11':
               echo "待评价";
               break;
-            case '5':
+            case '7':
               echo "退款中";
               break;  
-            case '6':
+            case '8':
               echo "退款成功";
               break;
-            case '8':
+            case '12':
               echo "已评价";
               break;
           }?></span>
@@ -83,17 +83,17 @@
               echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.$value['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>";
               echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
               break;
-            case '4':
-              echo "<a href='".site_url('home/comment?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
+            case '11':
+              echo "<a href='".site_url('home/commentTotal?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
               echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
               break;
-            case '5':
+            case '7':
               echo "<a href='javascript:' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款中</a>";
               break; 
-            case '6':
+            case '8':
               echo "<a href='javascript:' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款成功</a>";
               break;
-            case '8':
+            case '12':
               echo "<a href='".site_url('home/share')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
               echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
               break;

@@ -24,8 +24,14 @@ class home extends CI_Controller
 	}
 	//订单总评价
 	public function commentTotal(){
+		if($_GET){
+			$id = $_GET['id'];
+			$food = file_get_contents(POSTAPI.'API_Poorder?dis=ddxq&UserPhone='.$id);
+			$data['foods'] = json_decode(json_decode($food),true);
+	
+			$this->load->view('commentTotal',$data);
+		}
 
-		$this->load->view('commentTotal');
 	}
 	//订单总评价
 	public function meituan(){
@@ -161,7 +167,7 @@ class home extends CI_Controller
 		$data['caijia'] = json_decode(json_decode($caijia),true);
 		
 		//获取banner
-		$banner = file_get_contents(POSTAPI.'API_Banner?number=1');
+		$banner = file_get_contents(POSTAPI.'API_Banner?number=1&dis=number');
 		$data['banners'] = json_decode(json_decode($banner),true);
 		$this->load->view('index',$data);
 	}
@@ -259,16 +265,17 @@ class home extends CI_Controller
 	    $data['evaluate'] = json_decode(json_decode($commen),true);
 		$this->load->view('food',$data);
 	}
-	//储值返现
-	public function backmoney(){
-
-		$this->load->view('backmoney');
+	//banner详情
+	public function bannerinfo(){
+		if($_GET){
+			$id = $_GET['id'];
+			$bannercon = file_get_contents(POSTAPI.'API_Banner?number='.$id.'&dis=content');
+			$data['content'] = json_decode(json_decode($bannercon),true);
+			$data['name'] = $_GET['name'];
+			$this->load->view('bannerinfo',$data);
+		}
 	}
-	//注册即送
-	public function registgift(){
-
-		$this->load->view('registgift');
-	}
+	
 	//宴会服务
 	public function partyServ(){
 
@@ -664,8 +671,8 @@ class home extends CI_Controller
 
 		$this->load->view('searchPage');
 	}
-    //订单记录
-    public function orderR(){
+	//订单记录 修改版
+    public function orderRe(){
     	if(isset($_SESSION['phone'])){
     		if(empty($_SESSION['phone'])){
     			$data['record'] = '';
@@ -676,12 +683,7 @@ class home extends CI_Controller
     	}else{
     		$data['record'] = '';
     	}
-		$this->load->view('orderRecord',$data);
-	}
-	//订单 修改版
-    public function orderRe(){
-
-		$this->load->view('orderRecorde');
+		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
     public function orderI(){
@@ -830,16 +832,18 @@ class home extends CI_Controller
 	}
 	//会员
 	public function vip(){
-		if($_GET){
-			$balance = $_GET['balance'];
-			if(empty($_SESSION['phone'])){
-				echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+		if(!isset($_SESSION['phone'])){
+			echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
+		}else{
+			if($_SESSION['phone'] == ''){
+				echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
 			}else{
-				$arr['balance'] = $balance;
-				$arr['name'] = $_GET['name'];
+				
+				$this->load->view('vip');
 			}
-			$this->load->view('vip',$arr);
 		}
+
+		
 	}
 	//会员卡
 	public function vipCard(){
@@ -987,6 +991,8 @@ class home extends CI_Controller
 		$details = file_get_contents(POSTAPI.'API_details?dis=details');
 		$data['details'] = json_decode(json_decode($details),true); 
 		$data['id'] = $id; 
+		var_dump($data);
+		exit;
 		$this->load->view('ceremony',$data);
 	}
 	//庆典详情选择

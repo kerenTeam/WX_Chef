@@ -16,24 +16,22 @@
 </header>
 <div>
 	<ul class="share_order">
+  <?php foreach($foods as $val):?>
 	<li>
 		<div class="share_left">
-			<img src="skin/img/product/sllyt.JPG" alt="">
+			<img src="<?=IP.$val['thumbnail'];?>" alt="<?=$val['foodname']?>">
 		</div>
 		<div class="share_right">
-			<p>景秀刺身拼盘，用颜色唤醒你的味蕾颜色拼满一整盘</p>
-			<a href="<?php echo site_url('home/singleComment')?>">晒单评价</a>
+			<p><?=$val['foodname']?></p>
+      <?php if($val['state'] == 0):?>
+			<a href="<?php echo site_url('home/singleComment?id=').$val['foodid'].'&foodpic='.$val['thumbnail'].'&POOrderId='.$val['poorderid'];?>">晒单评价</a>
+    <?php else:?>
+        <a href="javascript:;">已评价</a>
+    <?php endif;?>
 		</div>
 	</li>
-	<li>
-		<div class="share_left">
-			<img src="skin/img/product/sllyt.JPG" alt="">
-		</div>
-		<div class="share_right">
-			<p>景秀刺身拼盘，用颜色唤醒你的味蕾颜色拼满一整盘</p>
-			<a href="<?php echo site_url('home/singleComment')?>">晒单评价</a>
-		</div>
-	</li>
+<?php endforeach;?>
+
 </ul>
 </div>
 
@@ -141,19 +139,19 @@
   		<ul>
   			<li>
   				<span class="infos_span1">订单编号：</span>
-  				<span class="infos_span2">12345678998765</span>
+  				<span class="infos_span2"><?=$foods[0]['billno'];?></span>
   			</li>
   			<li>
   				<span class="infos_span1">服务时间：</span>
-  				<span class="infos_span2">2016-4-36 18:30</span>
+  				<span class="infos_span2"><?=$foods[0]['appointmenttime'];?></span>
   			</li>
   			<li>
   				<span class="infos_span1">服务地点：</span>
-  				<span class="infos_span2">成都市武侯区大巷子街道</span>
+  				<span class="infos_span2"><?=$foods[0]['address'];?></span>
   			</li>
   			<li>
   				<span class="infos_span1">付款方式：</span>
-  				<span class="infos_span2">预约上门付款</span>
+  				<span class="infos_span2"><?=$foods[0]['consumptionpattern'];?></span>
   			</li>
   		</ul>
   </div>

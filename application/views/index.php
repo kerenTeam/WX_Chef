@@ -48,7 +48,7 @@ h2.tip{margin:20px;font-size: 18px}
     <ul class="am-slides">
       <?php foreach($banners as $val):?>
       <li>
-        <a href=""><img src="<?=IP.$val['img']?>" class="am-img-responsive card" alt="<?=$val['name']?>"></a>
+        <a href="<?=site_url('home/bannerinfo?id=').$val['id'].'&name='.$val['name'];?>"><img src="<?=IP.$val['img']?>" class="am-img-responsive card" alt="<?=$val['name']?>"></a>
         
       </li>
       <?php endforeach;?>

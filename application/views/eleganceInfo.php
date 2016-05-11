@@ -21,7 +21,7 @@
 
   <?php foreach($banner as $val):?>
     <li>
-      <a href="<?=$val['url']?>"><img src="<?=IP.$val['img']?>" class="am-img-responsive card" alt="<?=$val['name']?>"></a>
+      <a href="<?=site_url('home/bannerinfo?id=').$val['id'].'&name='.$val['name'];?>"><img src="<?=IP.$val['img']?>" class="am-img-responsive card" alt="<?=$val['name']?>"></a>
     </li>
   <?php endforeach;?>
   </ul>

@@ -138,7 +138,7 @@ $(function(){
      // var taste=$('#taste').val();
      // var environment=$('#environment').val();
      var imgrouts = document.getElementsByClassName('hiddenImg');
-    var routes = [];
+     var routes = [];
      for(var i=0;i<imgrouts.length;i++){
         routes[i] = imgrouts[i].value;
      }
@@ -150,8 +150,8 @@ $(function(){
       url:'<?=site_url("pricesearch/singleComsuc")?>',
       data:'rating='+rating+'&routes='+routes+'&comment='+comment+'&oid='+oid+'&PoorderId='+PoorderId,
       success: function(data) {
-        alert(data);
-        window.location.href='<?php echo site_url("home/orderR");?>';
+        console.log(data);
+        window.location.href='<?php echo site_url("home/orderRe");?>';
       }
      });
   
