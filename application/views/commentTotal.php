@@ -38,14 +38,23 @@
   <form  id="commentform" method="post">
     
   <!-- 保存打分内容 -->
-
+    <input type="hidden" name="PoorderId" id='oid' value="<?=$id;?>">
     <input id="taste" name="taste" value="0"  hidden type="txt">
     <input id="environment" name="environment"  hidden value="0" type="txt">
     <input id="quality" name="quality"  hidden value="0" type="txt">
     <div id="AddDP" class="am-shadow">
    	<h3>订单评分</h3>
-      <ul class="clist_ul">
 
+      <ul class="clist_ul">
+      <li> <label class="am-radio am-success haoping">
+            <input type="radio"  name="radiocomt" value="1" data-am-ucheck> 好评
+          </label>
+           <label class="am-radio am-success haoping">
+            <input type="radio" name="radiocomt" value="2" data-am-ucheck> 中评
+          </label>
+           <label class="am-radio am-success haoping">
+            <input type="radio" name="radiocomt" value="3" data-am-ucheck> 差评
+          </label></li>
       <li>服务<span class="Select">
         <a onMouseOver="javascript:setProfix('environment_');showStars(1,'environment');"
           onMouseOut="javascript:setProfix('environment_');clearStars('environment');"
@@ -99,37 +108,13 @@
         <img id="taste_5" title="非常好(5)" src="skin/img/icon_star_1.gif"></a> </span></li>
 
 
-  		<li>菜品<span class="Select">
-        <a onMouseOver="javascript:setProfix('quality_');showStars(1,'quality');"
-          onMouseOut="javascript:setProfix('quality_');clearStars('quality');"
-          href="javascript:setProfix('quality_');setStars(1,'quality');">
-        <img id="quality_1" title="差(1)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('quality_');showStars(2,'quality');"
-          onMouseOut="javascript:setProfix('quality_');clearStars('quality');"
-          href="javascript:setProfix('quality_');setStars(2,'quality');">
-        <img id="quality_2" title="一般(2)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('quality_');showStars(3,'quality');"
-          onMouseOut="javascript:setProfix('quality_');clearStars('quality');"
-          href="javascript:setProfix('quality_');setStars(3,'quality');">
-        <img id="quality_3" title="好(3)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('quality_');showStars(4,'quality');"
-          onMouseOut="javascript:setProfix('quality_');clearStars('quality');"
-          href="javascript:setProfix('quality_');setStars(4,'quality');">
-        <img id="quality_4" title="很好(4)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('quality_');showStars(5,'quality');"
-          onMouseOut="javascript:setProfix('quality_');clearStars('quality');"
-          href="javascript:setProfix('quality_');setStars(5,'quality');">
-        <img id="quality_5" title="非常好(5)" src="skin/img/icon_star_1.gif"></a> </span></li>
+  		
       
       </ul>
     </div>
     
     <div class="comment_pic am-cf">
-    	<textarea name='content'  rows="4" class="comment_pic_t" placeholder="亲，输入你的评价吧！"></textarea>
+    	<textarea name='content' id='doc'  rows="4" class="comment_pic_t" placeholder="亲，输入你的评价吧！"></textarea>
     	<div id="demo" class="demo"> </div>
     	<input type="button" class="publish" value="发表评论">
     </div>
@@ -223,7 +208,7 @@ $(function(){
       data:'ratfen='+ratfen+'&taste='+taste+'&environment='+environment+'&routes='+routes+'&comment='+comment+'&oid='+oid,
       success: function(data) {
         alert(data);
-       window.location.href='<?php echo site_url("home/share");?>';
+        window.location.href='<?php echo site_url("home/share");?>';
       }
      });
   

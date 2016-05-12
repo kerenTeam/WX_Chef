@@ -20,24 +20,19 @@
 <form action="<?=site_url('home/cereOrder');?>" method="post" enctype="multipart/form-data">
   <?php foreach($details as $val):?>
   <div class="am-g area">
-    <div class="am-u-sm-3"><strong><?=$val['name'];?></strong></div>
+    <div class="am-u-sm-3"><strong><?=$val['Name'];?></strong></div>
     <div class="am-u-sm-9">
-    <?php 
-      $gj = file_get_contents(POSTAPI.'API_details?details='.$val['id'].'&dis=qy');
-      $dis = json_decode(json_decode($gj),true);
-   
-      foreach($dis as $k=>$v):
-    ?>
+    <?php  foreach($val['xq'] as $k=>$v):?>
       <div class="am-cf gsf">
-        <div class="am-fl"><?=$k+1?>、<?=$v['name']?>/<small><?=$v['unit'];?></small><span class="price red am-icon-cny"><?=$v['price'];?></span></div>
+        <div class="am-fl"><?=$k+1?>、<?=$v['Name']?>/<small><?=$v['Unit'];?></small><span class="price red am-icon-cny"><?=$v['Price'];?></span></div>
         <div class="am-fr">
         <!-- 默认数量单位 -->
          <input type="hidden" name="unit" class="unit" value="1">
-          <input type="hidden" name="cereid[]" value="<?=$v['id']?>" />
+          <input type="hidden" name="cereid[]" value="<?=$v['Id']?>" />
           <!-- 数量加减 -->
           <div class="CmNum">
             <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers[]"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?=$v['defaultnumber']?>">
+            <input type="text" class="numTxt" name="numbers[]"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?=$v['DefaultNumber']?>">
             <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
           </div>
         </div>

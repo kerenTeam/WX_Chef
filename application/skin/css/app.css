@@ -24,7 +24,10 @@ body {
     margin-left: 1rem;
     margin-bottom: -1rem;
 }
-
+#AddDP .haoping{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 .am-slider-default .am-control-nav {
     bottom: 9px;
 }

@@ -31,24 +31,20 @@
         </dt>
         <dd class="am-accordion-bd am-collapse am-in"> 
           <div class="am-accordion-content">
-          <?=htmlspecialchars_decode($cereinfo[0]['describe']);?>
+          <?php  echo str_replace('&nbsp;', ' ',htmlspecialchars_decode($cereinfo[0]['describe'])) ;?>
+
           </div>
         </dd>
       </dl>
       <?php foreach($details as $key=>$val):?>
       <dl class="am-accordion-item">
         <dt class="am-accordion-title">
-         <span class="am-badge am-badge-danger am-round"><?=$key+1?></span> <?=$val['name'];?>
+         <span class="am-badge am-badge-danger am-round"><?=$key+1?></span> <?=$val['Name'];?>
         </dt>
-        <?php
-        // 获取区域展示图
-         $img = file_get_contents(POSTAPI.'API_details?celeid='.$id.'&categoryid='.$val['id'].'&dis=img');
-          $imgs = json_decode(json_decode($img),true);
-         ?>
         <dd class="am-accordion-bd am-collapse am-in"> 
           <div class="am-accordion-content welCus">
-          <?php foreach($imgs as $v):?>
-            <img src="<?=IP.$v['detailsimg'];?>" alt="">
+          <?php foreach($val['Img'] as $v):?>
+            <img src="<?=IP.$v['img'];?>" alt="">
            <?php endforeach;?>
           </div>
         </dd>

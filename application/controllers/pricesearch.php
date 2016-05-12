@@ -130,7 +130,7 @@ class pricesearch extends CI_Controller {
 	}
 
 
-		//评价成功 
+		//整单评价
 	public function comsuc(){
 		if($_POST){
 			$arr['UserPhone'] = $_SESSION['phone'];
@@ -161,7 +161,7 @@ class pricesearch extends CI_Controller {
 			}else{
 				$arr['img'] = '[]';
 			}
-
+			
 			$jsonData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($arr))))));
 			$comment = curl_post(POSTAPI.'API_Evaluate?dis=pf',$jsonData);
 			

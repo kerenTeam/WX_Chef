@@ -49,7 +49,7 @@
       </h1>
  
   </header>
-<?php echo html_entity_decode($life[0]['boucontent']);?>
+<?php  echo str_replace('&nbsp;', ' ',htmlspecialchars_decode($life[0]['boucontent'])) ;?>
 
 
 <a href="<?php echo site_url('home/cailan')?>" class="gocl">去点菜</a>
