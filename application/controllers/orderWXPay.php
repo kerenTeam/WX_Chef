@@ -33,7 +33,10 @@ class orderWXPay extends CI_Controller{
                   
                     $_SESSION['witer']['boy']=$_POST['boy'];
                     $_SESSION['witer']['girl']=$_POST['girl'];
+                    if($this->input->post('foodid')){
+
                     $_SESSION['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers')); 
+                    }
             	    if(isset($_SESSION['phone'])){
                 		// 获取积分
                 		$data['jifen'] =json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']));

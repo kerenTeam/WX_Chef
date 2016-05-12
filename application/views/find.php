@@ -25,9 +25,10 @@
 <!-- 推荐 -->
 <div class="am-text-center am-text red promt">产品推荐</div>
 <ul class="am-gallery am-avg-sm-3 am-avg-md-3 am-avg-lg-3 am-gallery-default pagallery" data-am-gallery="{ pureview: true }" >
+
 <?php foreach($foods as $v):?>
   <li>
-    <a href="<?php echo site_url('home/cailan')?>">
+    <a href="<?php echo site_url('home/food?id=').$v['FoodId'].'&number=&shopid=';?>">
       <div class="am-gallery-item">
         <img src="<?=IP.$v['Thumbnail'];?>" alt="<?=$v['FoodName'];?>"/>
         <h3 class="am-gallery-title"><?=$v['FoodName'];?></h3>
@@ -61,20 +62,16 @@
 </div>
 <!-- 精品生活 -->
 <div class="am-text-center am-text green am-margin-sm">精品生活<a href="<?php echo site_url('home/life')?>" class="am-fr gray am-text-sm">更多》</a></div>
-
 <div class="am-g life"> 
+<?php foreach($jinpin as $value):?>
   <figure> 
-     <a href="<?php echo site_url('home/lifeInfo2')?>">
-       <img src="skin/img/article/it1.png">
-       <figcaption> 大厨到家 <br><span class="am-text-sm">食色性也</span></figcaption>
+     <a href="<?php echo site_url('home/lifeInfo?id=').$value['boutiqueid'];?>">
+       <img src="<?=IP.$value['backgoungimg'];?>">
+       <figcaption> <?=$value['name'];?> <br><span class="am-text-sm"><?=$value['abstract'];?></span></figcaption>
      </a>  
   </figure>
-  <figure> 
-     <a href="<?php echo site_url('home/lifeInfo2')?>">
-       <img src="skin/img/article/it1.png">
-       <figcaption> 古语有云 <br><span class="am-text-sm">食色性也</span></figcaption>
-     </a>  
-  </figure>
+<?php endforeach;?>
+
 </div>
 <!-- 评价 -->
 <div class="am-text-center am-text purred am-margin-sm">七嘴八舌</div>

@@ -20,6 +20,7 @@
   <form action="<?php echo site_url('orderWXPay/payOrder');?>" method="post"> 
     <div class="am-list-news-bd">
       <ul class="am-list odl">
+      <?php if(!empty($booking)):?>
 <?php foreach ($booking as $k => $value): ?>
           <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd "><?php echo $value['foodname'];?> <span class="am-fr gray">X <?php echo $postBooking[$value['foodid']];?></span></a>
@@ -32,6 +33,7 @@
           <!-- 发送到order数据 END-->
         </li>
 <?php endforeach ?>
+<?php endif;?>
   <?php if(!empty($writes)):?>
     <?php if($writes['boy'] != 0):?>
         <li class="am-g am-list-item-dated">
@@ -58,11 +60,10 @@
           <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php echo $servmoneydata; ?></span>
         </li> 
         <?php endif ?>
-        
 
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd red">订单总计:</a>
-          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'><?php echo array_sum($pricetotal) + $writes[0]*80+$servmoneydata;?></i></span>
+          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'><?php if($pricetotal){$money = array_sum($pricetotal); }else{$money = 0;} echo $money + array_sum($writes)*80 + $servmoneydata;?></i></span>
         </li>  
 
       </ul>

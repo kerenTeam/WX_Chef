@@ -25,16 +25,7 @@ function doaction(obj) {
     }
 </script>
 
-<?php if(!isset($_SESSION['shoping'])):?>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <center><div class="am-margin">菜篮子还是空的</div></center>
-    <center><div class="am-margin"><a href="<?=site_url('home/cailan');?>" class="am-u-sm-12 am-btn bgreen go">去点菜</a></div></center>
 
-<?php else:;?>
 
 <form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">
   <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
@@ -302,7 +293,6 @@ function doaction(obj) {
   </ul>
 </div>
 </form>
-<?php endif;?>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script src="skin/js/num.js"></script>

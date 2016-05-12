@@ -1113,7 +1113,7 @@ class home extends CI_Controller
     //服务 service
     public function service(){
     	// 获取banner
-    	$banner = file_get_contents(POSTAPI.'API_Banner?number=2');
+    	$banner = file_get_contents(POSTAPI.'API_Banner?number=2&dis=number');
     	$data['banner'] = json_decode(json_decode($banner),true);
 
     	$service = file_get_contents(POSTAPI.'API_Serviceidea');
@@ -1146,7 +1146,9 @@ class home extends CI_Controller
 		// 促销信息
 		$cuxiao = file_get_contents(POSTAPI.'API_FoodDiscount?start=1&end=4');
 		$data['promotion'] = json_decode(json_decode($cuxiao),true);
-		// var_dump($data['foods']);
+		// 精品生活
+		$query = file_get_contents(POSTAPI.'API_Boutique?dis=jpsh&star=1&end=2');
+		$data['jinpin'] = json_decode(json_decode($query),true);
 		// 七嘴八舌
 		$qi = file_get_contents(POSTAPI.'API_Evaluate');
 		$data['qi'] = json_decode(json_decode($qi),true);
