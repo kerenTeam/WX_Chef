@@ -55,7 +55,7 @@
         <li class="am-g am-list-item-dated">
               <a href="javascript:" class="am-list-item-hd "><?=$eleginfo['title']?></a>
                 <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php $elegmoney=$eleginfo['money']; echo $eleginfo['money'];?></span>
-                <input type="hidden" name="girl" value="<?php echo $writes['girl']; ?>">
+                <input type="hidden" name="eleg" value="<?php echo $eleginfo['id']; ?>">
               </li> 
       <?php endif;?>
       <!-- 伴餐end -->
@@ -206,12 +206,12 @@
         <div class="am-shadow am-margin-vertical-sm">  
          <p class="htit"><img src="skin/img/calendar.png" class="bpurple"> 用餐时间</p>
           <div class="demo am-margin-sm">
-            <div class="lie">日期:<input  id="beginTime" class="kbtn am-radius"/></div>
+            <div class="lie">日期:<input  id="beginTime" class="kbtn am-radius" name='riqi'/></div>
           </div>
           <div id="datePlugin"></div>
           <div class="am-margin-sm am-cf">
           <span class="am-fl">时间:</span>
-          <input type="hidden" id="timeEat" value="">
+          <input type="hidden" id="timeEat" name='time' value="">
           <table class="am-table am-table-bordered am-fl" style="width: 80%;margin-left:5px;">
           <tr>
             <td>10:00</td>
