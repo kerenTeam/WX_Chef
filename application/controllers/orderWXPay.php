@@ -103,7 +103,7 @@ class orderWXPay extends CI_Controller{
         }
         // 用餐时间
         if( $this->input->post('time')){
-            $foodJsondata['AppointmentTime'] = $this->input->post('riqi').'&nbsp;'. $this->input->post('time');
+            $foodJsondata['AppointmentTime'] = $this->input->post('riqi').'    '. $this->input->post('time');
         }else{
             $foodJsondata['AppointmentTime'] = 0;
         }
@@ -116,12 +116,9 @@ class orderWXPay extends CI_Controller{
         //将order所有数据转为josn
         $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
         //得到支付金额     	
-     
-        $isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$OrderAllData);
-        // var_dump($data['OrderAllData']);
-        var_dump($isComedeOrder);  
-        exit;
 
+        $isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$OrderAllData);
+        
         $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isComedeOrder))),TRUE);
         $this->load->view('order/payOrder');
 	}
