@@ -16,7 +16,6 @@
     支付订单
     </h1>
   </header>
-
   <form action="<?php echo site_url('orderWXPay/payOrder');?>" method="post"> 
     <div class="am-list-news-bd">
       <ul class="am-list odl">
@@ -24,7 +23,7 @@
 <?php foreach ($booking as $k => $value): ?>
           <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd "><?php echo $value['foodname'];?> <span class="am-fr gray">X <?php echo $postBooking[$value['foodid']];?></span></a>
-          <span class="am-list-date ath"><i class="am-icon-cny cc"></i><?php echo $value['foodprice'] * $postBooking[$value['foodid']]; $pricetotal[] = $value['foodprice'] * $postBooking[$value['foodid']]; ?> </span>
+          <span class="am-list-date ath"><i class="am-icon-cny cc"></i><?php if($value['discountproportion']){$a = $value['foodprice']*$value['discountproportion'];}else{$a = $value['foodprice'];}  echo $a * $postBooking[$value['foodid']]; $pricetotal[] = $a * $postBooking[$value['foodid']]; ?> </span>
           <!-- 发送到order数据 -->
            <!--------------------这里是我的foodID ------------------------>
           <input type="hidden" name="foodid[]" value="<?php echo $value['foodid'];?> ">
@@ -34,6 +33,7 @@
         </li>
 <?php endforeach ?>
 <?php endif;?>
+<!-- 服务员 -->
   <?php if(!empty($writes)):?>
     <?php if($writes['boy'] != 0):?>
         <li class="am-g am-list-item-dated">
@@ -50,6 +50,18 @@
         </li> 
       <?php endif;?>
       <?php endif;?>
+      <!-- 伴餐 -->
+      <?php if(!empty($eleginfo)):?>
+        <li class="am-g am-list-item-dated">
+              <a href="javascript:" class="am-list-item-hd "><?=$eleginfo['title']?></a>
+                <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php $elegmoney=$eleginfo['money']; echo $eleginfo['money'];?></span>
+                <input type="hidden" name="girl" value="<?php echo $writes['girl']; ?>">
+              </li> 
+      <?php endif;?>
+      <!-- 伴餐end -->
+
+      <!-- 是否点菜满300 -->
+      <?php if($pricetotal):?>
         <?php if (empty($servmoneydata)): ?>
         <li class="am-g am-list-item-dated">
         <a href="javascript:" class="am-list-item-hd "> 菜品消费额满300元,不收取服务费 <span class="am-fr gray"></span></a>
@@ -60,29 +72,34 @@
           <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php echo $servmoneydata; ?></span>
         </li> 
         <?php endif ?>
+      <?php endif;?>
+        <!-- 是否点菜满300 end -->
 
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd red">订单总计:</a>
-          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'><?php if($pricetotal){$money = array_sum($pricetotal); }else{$money = 0;} echo $money + array_sum($writes)*80 + $servmoneydata;?></i></span>
+          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'><?php if($pricetotal){$money = array_sum($pricetotal); }else{$money = 0;}if($elegmoney){$eleg= $elegmoney; }else{$eleg = 0;} echo $money + array_sum($writes)*80 + $servmoneydata + $eleg;?></i></span>
         </li>  
 
       </ul>
      </div>
+
+  <?php if($pricetotal):?>
          <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
  <?php if(isset($_SESSION['phone'])){
         // 总金额
-        $money = array_sum($pricetotal);
-        // 优惠卷
-        $fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
-        $userphone = json_decode(json_decode($fan),true);
-        if(!empty($userphone)){
-          foreach ($userphone as $key => $value) {
-              if($money > $value['usethreshold']){
-                  $usercoupon[$key] = $value;
-              }
-          } 
-        }
-  }
+       $money = array_sum($pricetotal);
+        
+            // 优惠卷
+            $fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
+            $userphone = json_decode(json_decode($fan),true);
+            if(!empty($userphone)){
+              foreach ($userphone as $key => $value) {
+                  if($money > $value['usethreshold']){
+                      $usercoupon[$key] = $value;
+                  }
+              } 
+            }
+         }
   ?>
     <div class="am-shadow am-margin-vertical-sm fpa2">
        <?php if(empty($usercoupon)):?>
@@ -115,7 +132,7 @@
       <input type="hidden" name='yfje' value="0" id='yfje'>
 
     </div>
-    
+  <?php endif;?>
       <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
 
      <div class="am-shadow am-margin-vertical-sm">

@@ -45,16 +45,16 @@
 <?PHP foreach($promotion as $val):?>
   <div class="am-u-sm-6 am-shadow">
      <div class="am-u-sm-5 am-list-thumb">
-        <a href="<?php echo site_url('home/food')?>">
+        <a href="<?php echo site_url('home/food?id=').$val['foodid'].'&number=&shopid=';?>">
           <img src="<?=IP.$val['thumbnail'];?>" alt="<?=$val['foodname'];?>"/>
         </a>
      </div>
     <div class=" am-u-sm-7 am-list-main">
-     <a href="<?php echo site_url('home/food')?>" class="gray">
+     <a href="<?php echo site_url('home/food?id=').$val['foodid'].'&number=&shopid=';?>" class="gray">
       <div class="am-list-item-hd am-text-sm black"><?=$val['foodname'];?></div>
         <div class="prf am-text-sm">特价 <i class="am-icon-cny"></i><span class="price am-text-lg"><?=$val['tejia'];?></span> <span class="am-icon-cny oldPr"><?=$val['foodprice'];?></span></div>
      </a>
-      <a href="<?php echo site_url('home/order')?>" class="am-center nowBuy">立即购买</a>    
+      <a href="<?php echo site_url('home/food?id=').$val['foodid'].'&number=&shopid=';?>" class="am-center nowBuy">立即购买</a>    
     </div>
   </div>
 <?php endforeach;?>

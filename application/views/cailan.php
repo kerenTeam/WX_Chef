@@ -52,7 +52,20 @@
               <div class="am-list-item-text"><strong>特点：</strong><?=$v['foodtrait'];?>。</div>
               <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
              </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['foodprice'];?></span><span class="am-text-xs gray"> /份</span></div>
+             <?php if($v['discountproportion']):?>
+              <div class="pr">
+                <span class="price am-icon-cny"><?php echo $v['foodprice']*$v['discountproportion'];?></span>
+                <span class="am-text-xs gray"> /份</span>
+  
+                <span class="am-icon-cny old">
+                <?=$v['foodprice'];?></span>
+              </div>
+            <?php else:?>
+               <div class="pr">
+                <span class="price am-icon-cny"><?php echo $v['foodprice'];?></span>
+                <span class="am-text-xs gray"> /份</span>
+                </div>
+            <?php endif;?>
               <div class="foodNum">
             
                 <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>

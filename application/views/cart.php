@@ -34,15 +34,12 @@ function doaction(obj) {
        <?php if(!empty($carts)):?>
         <div class="am-text-center oln">点菜</div>
           <ul class="am-list cul">
-		 
-        <!-- <?php var_DumP($carts);?> -->
 		  <?php unset($_SESSION['booking']); foreach($carts as $cart):?>
 			<?php 
         $id = $cart['foodid'];
         $shopid = $cart['shopid'];
 				$foods = file_get_contents(POSTAPI."API_Food?dis=xq&foodid=".$id);
         $food = json_decode(json_decode($foods),true);
-     
         if(!isset($_SESSION['booking'])){
          $this->session->set_userdata('booking',$food);
         }else{
@@ -61,7 +58,11 @@ function doaction(obj) {
               <div class=" am-u-sm-9 am-list-main">
                 <h3 class="am-list-item-hd cartb"><?=$food[0]['foodname'];?></h3>
                 <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
-                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]['foodprice'];?></span></div>
+              <?php if($food[0]['discountproportion']):?>
+                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]['foodprice']*$food[0]['discountproportion'];?></span></div>
+              <?php else:?>
+                 <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]['foodprice'];?></span></div>
+              <?php endif;?>
                 <input type="hidden" name="code[]" value="0">
                 <div class="fNum">
 
@@ -71,7 +72,7 @@ function doaction(obj) {
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>
                  <a href="<?php echo site_url('home/change?id=').$food[0]['foodid'].'&pid='.$food[0]['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
-                <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red ats2"></i></a>
+                <a href="<?=site_url('home/delcart?id=').$id;?>" class="am-fl" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red ats2"></i></a>
               </div>
             </li>
 		      	<?php endforeach;?>
@@ -160,6 +161,7 @@ function doaction(obj) {
           <?php endforeach;?>
            </ul> 
          <?php endif;?>
+         <!-- 伴餐 -->
          <?php if(!empty($eleg)):?>
            <ul class="am-list">
              <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm">
@@ -168,6 +170,7 @@ function doaction(obj) {
              </li>
            </ul>
          <?php endif;?>
+         <!-- 伴餐end -->
            <ul class="am-list">
              <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm ff">
                服务费<span class="am-fr am-icon-cny red" id="servmoney"></span>

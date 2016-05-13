@@ -21,16 +21,11 @@
       <!-- banner -->
         <div data-am-widget="slider" class="am-slider am-slider-default fimg" data-am-slider='{}' >
           <ul class="am-slides">
-             
+             <?php foreach($foodspic as $val):?>
             <li>
-             <img src="skin/img/product/bzjwx.jpg" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>">
+             <img src="<?=IP.$val['imgaddress'];?>" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>">
             </li>
-            <li>
-             <img src="skin/img/product/cxjdg.jpg" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>">
-            </li>
-            <li>
-             <img src="skin/img/product/bzjwx.jpg" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>">
-            </li>
+          <?php endforeach;?>
           
           </ul>
         </div>
@@ -43,7 +38,7 @@
         <p class="am-text-sm"><strong>辅料：</strong><?=$foods[0]['accessories'];?></p>
         <p class="am-text-sm"><strong>简介：</strong><?=$foods[0]['blurb'];?></p>
         
-        <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]['foodprice'];?></span></div>
+        <div class="pr"><i class="am-icon-cny"></i><span class="price"><?php if($foods[0]['discountproportion']){echo $foods[0]['foodprice']*$foods[0]['discountproportion'];}else{echo $foods[0]['foodprice'];}?></span></div>
 
           <input type="hidden" name='code' value="<?php if ($foods[0]['foodkind'] == 1){if($foods[0]['code'] == 1999){echo "1";}else{echo "0";}}elseif($foods[0]['foodkind'] == 2){echo "2";}?>">
         <div class="foodNum">

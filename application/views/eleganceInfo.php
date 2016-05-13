@@ -93,13 +93,14 @@
 
       var title = "<?=$title?>";
       var money = "<?=$money?>";
+      var id = "<?=$id?>";
       console.log(title);
       $.ajax({
         type: 'POST',
         url: '<?=site_url("home/eleganceadd")?>',
-        data: "title="+title+"&money="+money,
+        data: "title="+title+"&money="+money+'&id='+id,
         success: function(data){
-          // console.log(data);
+          console.log(data);
         }
         
       });

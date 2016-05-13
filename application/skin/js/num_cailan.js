@@ -22,7 +22,7 @@ window.onload=function(){
 	for(var i = 0;i < ordFen.length;i++){
 		fen += parseInt(ordFen[i].value);
 		paymoney += parseFloat(parseInt(ordFen[i].value)*parseFloat(ordPrice[i].innerHTML));
-		console.log(paymoney)
+		console.log(parseFloat(ordPrice[i].innerHTML))
 	}
  
 	console.log(paymoney)

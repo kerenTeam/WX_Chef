@@ -1383,6 +1383,13 @@ body {
     position: absolute;
     right: 0.5rem;
 }
+.old {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 12px;
+    /*position: absolute;*/
+    right: 0.5rem;
+}
 
 .nowBuy {
     display: inline-block;

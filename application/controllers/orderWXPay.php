@@ -25,11 +25,12 @@ class orderWXPay extends CI_Controller{
                 if($_SESSION['phone'] == NULL){
                     echo "<script>alert('你还没有登陆！');window.location.href='".site_url('home/login')."';</script>";
                 }else{
+                   // var_dump($_POST);
                     if ($this->input->post('servmoneydata')) {
                        $_SESSION['servmoneydata'] = $this->input->post('servmoneydata');
                     }else{
                        $_SESSION['servmoneydata'] = 0;
-                    }
+                    } 
                   
                     $_SESSION['witer']['boy']=$_POST['boy'];
                     $_SESSION['witer']['girl']=$_POST['girl'];
@@ -39,7 +40,10 @@ class orderWXPay extends CI_Controller{
                     }
             	    if(isset($_SESSION['phone'])){
                 		// 获取积分
-                		$data['jifen'] =json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']));
+                        if($this->input->post('foodid')){
+                            $data['jifen'] =json_decode(file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']));
+                        }
+                		
                 		//获取用户默认地址、
                 		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
                 		$data['address'] = json_decode(json_decode($address),true);
@@ -49,6 +53,7 @@ class orderWXPay extends CI_Controller{
                     $data['booking'] = $_SESSION['booking'];
                 	$data['writes'] = $_SESSION['witer'];
                 	$data['postBooking'] = $_SESSION['postBooking'];
+                    $data['eleginfo'] = $_SESSION['eleg'];
              	    $this->load->view('order/order',$data);
                 }
             }

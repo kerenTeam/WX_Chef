@@ -263,6 +263,7 @@ class home extends CI_Controller
 		// 菜品评价
 		$commen = file_get_contents(POSTAPI.'API_Food?dis=spl&foodid='.$id);
 	    $data['evaluate'] = json_decode(json_decode($commen),true);
+
 		$this->load->view('food',$data);
 	}
 	//banner详情
@@ -490,6 +491,7 @@ class home extends CI_Controller
 			$data['taocan'] = '';
 			$data['jincai'] = '';
 		}
+		// 服务员
 		if(isset($_SESSION['witer'])){
 			if($_SESSION['witer'] == ''){
 				$data['witer'] = '';
@@ -499,6 +501,7 @@ class home extends CI_Controller
 		}else{
 			$data['witer'] = '';
 		}
+		// 伴餐
 		if(isset($_SESSION['eleg'])){
 			if($_SESSION['eleg'] == ''){
 				$data['eleg'] = '';
@@ -513,15 +516,23 @@ class home extends CI_Controller
 	// 删除购物车
 	function delcart(){
 		$id = $_GET['id'];
-		$shopid = $_GET['shopid'];
 		$shoping = $_SESSION['shoping'];
-			foreach ($shoping as $key => $value) {
-				if($shopid == $value['shopid'] && $value['foodid'] == $id){
-					unset($shoping[$key]);
-				}
+		$booking = $_SESSION['booking'];
+		foreach ($booking as $k => $v) {
+			if($v['foodid'] == $id){
+				unset($booking[$k]);
 			}
-			$shoping = array_merge($shoping);
-			$this->session->set_userdata('shoping',$shoping,0);
+		}
+		foreach ($shoping as $key => $value) {
+			if($value['foodid'] == $id){
+				unset($shoping[$key]);
+			}
+		}
+
+		$shoping = array_merge($shoping);
+		$booking = array_merge($booking);
+		$this->session->set_userdata('shoping',$shoping,0);
+		$this->session->set_userdata('booking',$booking,0);
 		redirect('home/cart');
 	}
 
@@ -832,18 +843,13 @@ class home extends CI_Controller
 	}
 	//会员
 	public function vip(){
-		if(!isset($_SESSION['phone'])){
-			echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
-		}else{
-			if($_SESSION['phone'] == ''){
-				echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
+		if($_GET){
+				$data['name'] = $_GET['name'];
+				$data['balance'] = $_GET['balance'];
+				$this->load->view('vip',$data);
 			}else{
-				
-				$this->load->view('vip');
+				echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
 			}
-		}
-
-		
 	}
 	//会员卡
 	public function vipCard(){
@@ -1069,6 +1075,7 @@ class home extends CI_Controller
 			$content = $_GET['con'];
 			$data['money'] = $_GET['money'];
 			$data['title'] = $_GET['title'];
+			$data['id'] = $_GET['id'];
 			$data['cont'] = explode('，',$content);
 			$this->load->view('eleganceInfo',$data);
     	}
@@ -1077,9 +1084,10 @@ class home extends CI_Controller
 	public function eleganceadd()
 	{	
 		if($_POST){
+			unset($_SESSION['eleg']);
 			$_SESSION['eleg']['title'] = $_POST['title'];
 			$_SESSION['eleg']['money'] = $_POST['money'];
-			// var_DUMP($_SESSION['eleg']);
+			$_SESSION['eleg']['id'] = $_POST['id'];
 		}
 		
 	}

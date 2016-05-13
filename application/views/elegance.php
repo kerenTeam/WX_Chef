@@ -107,12 +107,11 @@
         <div class="sky-carousel">
           <div class="sky-carousel-wrapper">
             <ul class="sky-carousel-container">
-  
          <?php foreach($eleg as $v):?>
-              <li>  <a href="<?php echo site_url('home/eleganceInfo?con=').$v['specialty'].'&money='.$v['sprice'].'&title='.$v['title'];?>">
+              <li>  <a href="<?php echo site_url('home/eleganceInfo?con=').$v['specialty'].'&money='.$v['sprice'].'&title='.$v['title'].'&id='.$v['id'];?>">
                 <img src="<?=IP.$v['img']?>" alt="<?=$v['title'];?>" /> </a> 
                 <div class="sc-content">
-                  <h2> <a href="<?php echo site_url('home/eleganceInfo?con=').$v['specialty'].'&money='.$v['sprice'].'&title='.$v['title'];?>"><?=$v['title'];?></a></h2>
+                  <h2> <a href="<?php echo site_url('home/eleganceInfo?con=').$v['specialty'].'&money='.$v['sprice'].'&title='.$v['title'].'&id='.$v['id'];?>"><?=$v['title'];?></a></h2>
                 </div>
               </li>
           <?php endforeach;?>  
