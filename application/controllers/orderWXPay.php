@@ -65,10 +65,14 @@ class orderWXPay extends CI_Controller{
 	{
         $foodid = $this->input->post('foodid');
     	$numbers = $this->input->post('numbers');
+        if($foodid){
     	$foodOrder = array_combine($foodid,$numbers);
     	$foodJson = array();
 		 foreach ($foodOrder as $fid => $fnums)
         { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
+        }else{
+            $foodJson = '[]';
+        }
         $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
         $foodJsondata['MoneyAll'] = $this->input->post('yfje');
         // 是否使用积分
@@ -116,9 +120,11 @@ class orderWXPay extends CI_Controller{
         //将order所有数据转为josn
         $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
         //得到支付金额     	
-
+        var_dump($OrderAllData);
         $isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$OrderAllData);
         
+        var_dump($isComedeOrder);
+        exit;
         $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isComedeOrder))),TRUE);
         $this->load->view('order/payOrder');
 	}

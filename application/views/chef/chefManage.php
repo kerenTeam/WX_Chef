@@ -10,7 +10,7 @@
     厨师管理
     </h1>
   </header> 
-  <?php if(empty($chef)):?>
+  <?php if(empty($chef[0]['goodsphone'])):?>
     <div class="am-padding-sm">您没有订单！</div>
 
   <?php else:?>
@@ -37,7 +37,7 @@
             echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$chef[0]["poorderid"].'&state=3'.'" class="btn am-btn am-btn-danger" title="">开始服务</a>';
             break;
           case '3':
-            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$chef[0]["poorderid"].'&state=10'.'" class="btn am-btn am-btn-danger" title="">完成服务</a>';
+            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$chef[0]["poorderid"].'&state=11'.'" class="btn am-btn am-btn-danger" title="">完成服务</a>';
             break;
           case '6':
             echo '<a href="javascript:;" id="submitBtn" class="btn am-btn am-btn-danger" title="" disabled>开始服务</a>';

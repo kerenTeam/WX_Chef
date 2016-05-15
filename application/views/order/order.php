@@ -129,10 +129,11 @@
     <?php endif;?>
 
       <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red" id='pricetotal'></span></a>
-      <input type="hidden" name='yfje' value="0" id='yfje'>
 
     </div>
   <?php endif;?>
+        <input type="hidden" name='yfje' value="0" id='yfje'>
+
       <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
 
      <div class="am-shadow am-margin-vertical-sm">

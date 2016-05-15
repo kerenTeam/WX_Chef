@@ -21,7 +21,6 @@ class chef extends CI_Controller
 		$data['gh'] = substr(strstr($chef,'+'),1,4);
 		$ch = substr($chef,0,-6);
 		$data['chef'] = json_decode(json_decode($ch.'"'),true);
-		
 		$this->load->view('chef/chefManage',$data);
 	}
 	//厨师订单详情
