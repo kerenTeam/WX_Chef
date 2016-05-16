@@ -66,12 +66,34 @@ class orderWXPay extends CI_Controller{
         $foodid = $this->input->post('foodid');
     	$numbers = $this->input->post('numbers');
         if($foodid){
-    	$foodOrder = array_combine($foodid,$numbers);
-    	$foodJson = array();
-		 foreach ($foodOrder as $fid => $fnums)
-        { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
+        	$foodOrder = array_combine($foodid,$numbers);
+        	$foodJson = array();
+    		 foreach ($foodOrder as $fid => $fnums)
+             { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
+            // 伴餐
+            if($this->input->post('eleg')){
+                $foodJsondata['DinnerId'] = $this->input->post('eleg');
+            }else{
+                $foodJsondata['DinnerId'] = '';
+            }
+            // 
+            $foodJsondata['POOrderId'] = '';
+
         }else{
             $foodJson = '[]';
+            // 伴餐
+            if($this->input->post('eleg')){
+                if($_SESSION['rePayData'][0]['DinnerState']){
+                    echo "<script>alert('你已经点过伴餐了。');window.location.href='gocart';</script>";
+                    exit;
+                }else{
+                $foodJsondata['DinnerId'] = $this->input->post('eleg');
+                }
+            }else{
+                $foodJsondata['DinnerId'] = '';
+            }
+            // 
+            $foodJsondata['POOrderId'] = $_SESSION[0]['POOrderId'];
         }
         $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
         $foodJsondata['MoneyAll'] = $this->input->post('yfje');
@@ -94,11 +116,8 @@ class orderWXPay extends CI_Controller{
             $foodJsondata['wumenWaiter'] = 0;
         }
         // 伴餐
-        if($this->input->post('eleg')){
-            $foodJsondata['DinnerId'] = $this->input->post('eleg');
-        }else{
-            $foodJsondata['DinnerId'] = '';
-        }
+       
+       
         // 优惠卷
         if( $this->input->post('couponid')){
             $foodJsondata['UserCouponId'] = $this->input->post('couponid');
@@ -114,18 +133,17 @@ class orderWXPay extends CI_Controller{
           
         $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
         $foodJsondata['PaymentMethod'] = '';
-        $foodJsondata['POOrderId'] = '';
         $foodJsondata['poorderentry'] = $foodJson;
        
         //将order所有数据转为josn
         $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
+
+     
         //得到支付金额     	
-        var_dump($OrderAllData);
         $isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$OrderAllData);
         
-        var_dump($isComedeOrder);
-        exit;
         $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isComedeOrder))),TRUE);
+   
         $this->load->view('order/payOrder');
 	}
 //跳转兼容
@@ -133,13 +151,21 @@ class orderWXPay extends CI_Controller{
     {
     	$this->load->view('order/payOrder');
     }	
+
+    function gocart(){
+        redirect('home/cart');
+    }
+    // 
     public function unshopdata()
     {
-        $_SESSION['shoping']       = '';
-        $_SESSION['booking']       = '';
-        $_SESSION['Writes']        = '';
-        $_SESSION['postBooking']   = ''; 
-        $_SESSION['rePayData']     = ''; 
+        unset(
+        $_SESSION['shoping'],      
+        $_SESSION['booking'],      
+        $_SESSION['Writes'],        
+        $_SESSION['postBooking'], 
+        $_SESSION['rePayData']
+        );
+      
         echo "清除完成";
     }
 //订单支付完成,数据提交向后台	
