@@ -33,6 +33,9 @@
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title=""><?=$value['BillDate']?></time>
           <span class="am-fr am-text-sm state"><?php switch ($value['State']) {
+            case '0':
+               echo "待厨师确认";
+              break;
             case '1':
               echo "待服务";
               break;
@@ -78,11 +81,11 @@
         <p class="orderbot am-cf">
         <?php switch ($value['State']) {
             case '1':
-              echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=5'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
+              echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
               break;
             case '2':
               echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.$value['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>";
-              echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
+              echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=9'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
               break;
             case '11':
               echo "<a href='".site_url('home/commentTotal?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";

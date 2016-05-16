@@ -178,14 +178,18 @@ class home extends CI_Controller
 		$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
 		$data['cates'] = json_decode(json_decode($catejson),true);
 		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=d');
-		$foods = json_decode(json_decode($foodjson),true);
+		// 去掉首尾引号
+		$food = ltrim(rtrim($foodjson,'"'),'"');
+		// 转换json
+		$a =   str_replace('\"','"',$food);
+		$foods = json_decode($a,true);
 		if(isset($_SESSION['shoping'])){
 			if($_SESSION['shoping'] != ''){
 				$shop = $_SESSION['shoping'];
 				foreach($foods as $k=>$v){
 					$foods[$k]['number'] = '0';
 					foreach ($shop as $key => $value) {
-						if($v['foodid'] == $value['foodid']){
+						if($v['FoodId'] == $value['foodid']){
 							$foods[$k]['number'] = $value['number'];
 						}
 					}
@@ -193,6 +197,7 @@ class home extends CI_Controller
 				}
 			}
 		}
+		
 		$data['foods'] = $foods;
 		$this->load->view('cailan',$data);
 	}
@@ -537,31 +542,7 @@ class home extends CI_Controller
 		redirect('home/cart');
 	}
 
-    //订单
-    public function order(){
-    	if ($_POST) {
-    		$data['postBooking'] = array_combine($this->input->post('foodid'),$this->input->post('numbers'));
-    		if(isset($_SESSION['phone'])){
-    				// 获取可用饭票
-    		$fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
-    		$data['usercoupon'] = json_decode(json_decode($fan),true);
-    		// 获取积分
 
-    		$data['jifen'] = file_get_contents(POSTAPI."API_User?dis=jf&UserPhone=".$_SESSION['phone']);
-    	
-    		//获取用户地址、
-    		$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
-    		var_dumP($address);
-    		exit;
-    		$data['address'] = json_decode(json_decode($address),true);
-
-    		}
-
-
-    		$data['booking'] = $_SESSION['booking'];
- 			$this->load->view('order/order',$data);
-    	}
-	}
 	 //支付订单
     public function payOrder(){
 
@@ -695,6 +676,8 @@ class home extends CI_Controller
     	}else{
     		$data['record'] = '';
     	}
+    	// echo "<pre>";
+    	// var_dump($data);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
