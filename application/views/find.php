@@ -61,7 +61,7 @@
   
 </div>
 <!-- 精品生活 -->
-<div class="am-text-center am-text green am-margin-sm">精品生活<a href="<?php echo site_url('home/life')?>" class="am-fr gray am-text-sm">更多》</a></div>
+<div class="am-text-center am-text green am-margin-sm gsf">精品生活<a href="<?php echo site_url('home/life')?>" class="gray am-text-sm par">更多》</a></div>
 <div class="am-g life"> 
 <?php foreach($jinpin as $value):?>
   <figure> 

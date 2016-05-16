@@ -30,8 +30,8 @@
     <?php endif;?>
 		</div>
 	</li>
-<?php endforeach;?>
-
+<?php endforeach;?> 
+  <li><div class="share_left">服务员</div> <div class="share_right2"><a href="<?php echo site_url('home/singleComment');?>">服务评价</a></div></li>
 </ul>
 </div>
 
@@ -55,7 +55,7 @@
            <label class="am-radio am-success haoping">
             <input type="radio" name="radiocomt" value="3" data-am-ucheck> 差评
           </label></li>
-      <li>服务<span class="Select">
+      <!-- <li>服务<span class="Select">
         <a onMouseOver="javascript:setProfix('environment_');showStars(1,'environment');"
           onMouseOut="javascript:setProfix('environment_');clearStars('environment');"
           href="javascript:setProfix('environment_');setStars(1,'environment');">
@@ -79,7 +79,7 @@
         <a onMouseOver="javascript:setProfix('environment_');showStars(5,'environment');"
           onMouseOut="javascript:setProfix('environment_');clearStars('environment');"
           href="javascript:setProfix('environment_');setStars(5,'environment');">
-        <img id="environment_5" title="非常好(5)" src="skin/img/icon_star_1.gif"></a> </span></li>
+        <img id="environment_5" title="非常好(5)" src="skin/img/icon_star_1.gif"></a> </span></li> -->
         
         <li>厨师<span class="Select">
         <a onMouseOver="javascript:setProfix('taste_');showStars(1,'taste');"
