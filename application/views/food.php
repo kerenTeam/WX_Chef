@@ -17,7 +17,7 @@
     <div class="foodinfo am-shadow">
  
      <!--  <img src="<?php echo IP.$foodspic[0]['imgaddress'];?>" class="am-img-responsive card" alt="<?=$foods[0]['foodname'];?>"> -->
-
+<style>ol{display:none;}</style>
       <!-- banner -->
         <div data-am-widget="slider" class="am-slider am-slider-default fimg" data-am-slider='{}' >
           <ul class="am-slides">
