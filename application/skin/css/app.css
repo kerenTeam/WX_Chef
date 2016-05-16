@@ -2647,6 +2647,9 @@ figure a:hover figcaption {
         margin-bottom: 5px;
         height: 14rem;
     }
+    .label {
+        left: 23rem!important;
+    }
     .am-selected {
         margin-left: -10px;
         width: 100px!important;
