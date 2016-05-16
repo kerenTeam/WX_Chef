@@ -29,6 +29,7 @@ class home extends CI_Controller
 			$food = file_get_contents(POSTAPI.'API_Poorder?dis=ddxq&UserPhone='.$id);
 			$data['foods'] = json_decode(json_decode($food),true);
 			$data['id'] = $id;
+			// var_dump($data);
 			$this->load->view('commentTotal',$data);
 		}
 
