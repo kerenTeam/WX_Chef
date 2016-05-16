@@ -31,7 +31,16 @@
 		</div>
 	</li>
 <?php endforeach;?> 
-  <li><div class="share_left">服务员</div> <div class="share_right2"><a href="<?php echo site_url('home/singleComment');?>">服务评价</a></div></li>
+<?php $witer = $foods[0]['manwaiter']+$foods[0]['wumenwaiter']; if($witer>0):?>
+  <li><div class="share_left">服务员</div> <div class="share_right2">
+  <?php if ($foods[0]['identification']): ?>
+      <a href="javascript:;">已评价</a>
+    <?php else: ?>
+       <a href="<?php echo site_url('home/singleComment?id=').'&foodpic='.'&POOrderId='.$val['poorderid'];?>">服务评价</a>
+  <?php endif ?>
+ </div>
+  </li>
+<?php endif;?>
 </ul>
 </div>
 

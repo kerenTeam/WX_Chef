@@ -9,7 +9,11 @@
       </a>
     </div>
     <h1 class="am-header-title">
+    <?php if($foodid):?>
     评价晒单
+    <?php else:?>
+    服务评价
+    <?php endif;?>
     </h1>
 
   </header>
@@ -20,7 +24,12 @@
    
     <input id="rating" name="serving" value="0" hidden type="txt">
     <div id="AddDP" class="am-shadow am-cf">
+    <?php if($foodid):?>
       <div class="am-fl am-scimg"><img src="<?=IP.$foodpic;?>"></div>
+      <input type="hidden" id="Identification" value="1" />
+    <?php else:?>
+      <input type="hidden" id="Identification" value="2" />
+    <?php endif;?>
       <ul class="am-fl am-margin clist">
         <li>评分<span class="Select">
         <a onMouseOver="javascript:setProfix('star_');showStars(1,'rating');"
@@ -145,12 +154,13 @@ $(function(){
      var comment = $('#doc').val();
      var oid = $('#oid').val();
      var PoorderId = $('#PoorderId').val();
+     var Identification = $('#Identification').val();
      $.ajax({
       type: "POST",
       url:'<?=site_url("pricesearch/singleComsuc")?>',
-      data:'rating='+rating+'&routes='+routes+'&comment='+comment+'&oid='+oid+'&PoorderId='+PoorderId,
+      data:'rating='+rating+'&routes='+routes+'&comment='+comment+'&oid='+oid+'&PoorderId='+PoorderId+'&Identification='+Identification,
       success: function(data) {
-        console.log(data);
+        alert(data);
         window.location.href='<?php echo site_url("home/orderRe");?>';
       }
      });
