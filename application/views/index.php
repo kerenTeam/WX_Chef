@@ -8,7 +8,7 @@ h2.tip{margin:20px;font-size: 18px}
 <body>
   
   <?php
-  if(!$_SESSION['userinfo']){
+  if(!$_SESSION['userinfo'] && !isset($_SESSION['userinfo'])){
   if (empty($_GET["code"]))
     {
      header("Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid=".APPID."&redirect_uri=".'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']."&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect");
