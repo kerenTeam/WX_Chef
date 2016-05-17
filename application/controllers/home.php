@@ -1144,7 +1144,12 @@ class home extends CI_Controller
 		$data['foods'] = json_decode(json_decode($foods),true);
 		// 促销信息
 		$cuxiao = file_get_contents(POSTAPI.'API_FoodDiscount?start=1&end=4');
-		$data['promotion'] = json_decode(json_decode($cuxiao),true);
+		// 去掉首尾引号
+		$cu = ltrim(rtrim($cuxiao,'"'),'"');
+		// 转换json
+		$cuxiao =   str_replace('\"','"',$cu);
+	
+		$data['promotion'] = json_decode($cuxiao,true);
 		// 精品生活
 		$query = file_get_contents(POSTAPI.'API_Boutique?dis=jpsh&star=1&end=2');
 		$data['jinpin'] = json_decode(json_decode($query),true);
