@@ -216,7 +216,7 @@ class orderWXPay extends CI_Controller{
         $_SESSION['postBooking']   = ''; 
         $_SESSION['rePayData']     = ''; 
         
-     	redirect('home/orderR');
+     	redirect('home/orderRe');
     }
 //购买｜充值会员卡  页面
     public function payCardPage()

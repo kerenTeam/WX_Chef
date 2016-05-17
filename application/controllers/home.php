@@ -794,7 +794,6 @@ class home extends CI_Controller
 			$data['Number'] = $_POST['number'];
 			$p = json_encode($data);
 			$postok = curl_post(POSTAPI.'API_Consultation',$p);
-
 			if($postok == 1){
 				$a['id'] = 1;
 				$this->load->view('custom',$a);    
