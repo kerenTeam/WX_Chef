@@ -207,7 +207,20 @@ class pricesearch extends CI_Controller {
 	}
 
 
+	// 客服提交
+	public function customSer(){
+		if($_POST){
+			$data['Address'] = $_POST['city'].$_POST['area'].$_POST['Insurer'];
+			$data['Phone'] = $_POST['phone'];
+			$data['Number'] = $_POST['tableNum'];
+			$p = json_encode($data);
+			$postok = curl_post(POSTAPI.'API_Consultation',$p);
 
+			if($postok == 1){
+				echo "1";   
+			}
+		}
+	}
 
 
 }
