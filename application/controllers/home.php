@@ -453,49 +453,29 @@ class home extends CI_Controller
 	//购物车 new
 	public function cart(){
 		if(isset($_SESSION['shoping'])){
-			if($_SESSION['shoping'] == NULL){
-				$data['carts'] = '';
-				$data['taocan'] = '';     
-				$data['jincai'] = '';     
-			}else{
-				$cart = $_SESSION['shoping'];
-				foreach($cart as $k=>$v){ 
-					switch ($v['code']) {
+			if($_SESSION['shoping'] != NULL){
+				$shoping = $_SESSION['shoping'];
+				foreach ($shoping as $key => $value) {
+					switch ($value['code']) {
+						// 点菜
 						case '0':
-							$data['carts'][$k] = $v;
+							$data['carts']['diancai'][$key] = $value;
 							break;
+						// 套餐
 						case '1':
-							if(isset($data['carts'])){
-								if($data['carts'] == ''){
-									$data['carts']= '';
-								}
-							}else{
-								$data['carts'] = '';
-							}
-							$data['taocan'][$k] = $v;
+							$data['carts']['taocan'][$key] = $value;
 							break;
+						// 净菜
 						case '2':
-							if(isset($data['carts']) || isset($data['taocan'])){    
-								if($data['carts'] == ''){
-									$data['carts']= '';
-								}
-								
-								if(@$data['taocan'] == ''){
-									$data['taocan']= '';
-								}
-							}else{
-								$data['carts'] = '';
-								$data['taocan']= '';
-							}
-							$data['jincai'][$k] = $v;
+							$data['carts']['jincai'][$key] = $value;
 							break;
 					}
 				}
+			}else{
+				$data['carts'] = '';
 			}
 		}else{
 			$data['carts'] = '';
-			$data['taocan'] = '';
-			$data['jincai'] = '';
 		}
 		// 服务员
 		if(isset($_SESSION['witer'])){
