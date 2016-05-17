@@ -207,7 +207,7 @@
         <div class="am-shadow am-margin-vertical-sm">  
          <p class="htit"><img src="skin/img/calendar.png" class="bpurple"> 用餐时间</p>
           <div class="demo am-margin-sm">
-            <div class="lie">日期:<input  id="beginTime" class="kbtn am-radius" name='riqi'/></div>
+            <div class="lie">日期:<input  id="beginTime" class="kbtn am-radius" name='riqi' required/></div>
           </div>
           <div id="datePlugin"></div>
           <div class="am-margin-sm am-cf">
@@ -283,6 +283,7 @@
       var year = date.getFullYear(); 
       html=year+'-'+month+'-'+day;
      adate.attr('placeholder',html+" 默认");
+     adate.val(html);
          // 弹出添加地址弹框
          $('#model').click(function() {
           //$('.tkp').css('display','');
@@ -302,9 +303,9 @@
           $('#fpc').slideUp(400);
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
             discount = $('#youhui').text();
-            payable = amount - discount - jifenmoney;
+            payable = (amount - discount - jifenmoney).toFixed(2);
             $('#pricetotal').text(payable);
-            $('#yfje').val(payable.toFixed(2));
+            $('#yfje').val(payable);
 
         });
 
@@ -312,14 +313,14 @@
            if($('#jifen').prop("checked")){
            // alert(jifenmoney);
             jifenmoney = $('#jifenmoney').text();
-            payable = amount - discount - jifenmoney;
+            payable = (amount - discount - jifenmoney).toFixed(2);
             $('#pricetotal').text(payable);
-            $('#yfje').val(payable.toFixed(2));
+            $('#yfje').val(payable);
     
         }else{
-           payable = amount - discount;
+           payable = (amount - discount).toFixed(2);
             $('#pricetotal').text(payable);
-            $('#yfje').val(payable.toFixed(2));
+            $('#yfje').val(payable);
         }
         })
         $('#sub').click(function() { 
@@ -341,7 +342,11 @@
 
             $('#beginTime').date();
             $('#endTime').date({theme:"datetime"});
+            if($('#timeEat').val()==''){
+              $('#pay').attr('disabled','disabled');
+            }
             $('td').click(function(event) { 
+               $('#pay').removeAttr('disabled');
               $('td').removeClass('am-danger');
               $(this).addClass('am-danger');
               $('#timeEat').val($(this).html());
