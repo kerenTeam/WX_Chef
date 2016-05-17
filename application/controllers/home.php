@@ -788,6 +788,7 @@ class home extends CI_Controller
 	}
 	//客服
 	public function customServ(){
+<<<<<<< HEAD
 		if($_POST){
 			$data['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'];
 			$data['Phone'] = $_POST['phone'];
@@ -799,8 +800,9 @@ class home extends CI_Controller
 				$this->load->view('custom',$a);    
 			}
 		}else{
+=======
+>>>>>>> 4d4805055680be89059ce82ddf734853d76fd03f
 			$this->load->view('custom');
-		}
 	}
 	//会员
 	public function vip(){

@@ -99,8 +99,7 @@ function ueserWrite(obj) {
     if (!/^[0-9]*[1-9][0-9]*$/.test(obj.value) || obj.value == '' || obj.value >= 200) {
         alert("请输入大于0小于200的整数哟！");
         obj.focus();
-        obj.value = onum
-;
+        obj.value = onum;
         return false;
     }
     var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;

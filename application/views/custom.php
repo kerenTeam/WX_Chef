@@ -15,7 +15,8 @@
   <div class="customBanner">
     <img src="skin/img/custom.png" alt="">
   </div>
-  <form class="am-form am-form-horizontal customForm" action="<?=site_url('home/customServ');?>" method="post">
+   <!-- action="<?=site_url('home/customServ');?>" method="post" -->
+  <div class="am-form am-form-horizontal">
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">区域</label>
       <div class="am-u-sm-10 customAdd" style="margin-top:-0.5rem;">
@@ -28,7 +29,7 @@
                     <ul>
                       <li><a href="javascript:void(0)" alt="请选择城市">成都市</a></li>
                     </ul>
-                    <input type="hidden" name="cho_City" value="请选择城市">
+                    <input type="hidden" name="cho_City" value="成都市">
                   </span>
                   <span id="Area">
                     <i>请选择地区</i>
@@ -36,14 +37,14 @@
                       <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
 
                     </ul>
-                    <input type="hidden" name="cho_Area" value="请选择地区">
+                    <input type="hidden" name="cho_Area" value="">
                   </span>
                   <span id="Insurer">
                     <i>请选择乡镇街道</i>
                     <ul>
                       <li><a href="javascript:void(0)" alt="请选择乡镇街道">请选择乡镇街道</a></li>
                     </ul>
-                    <input type="hidden" name="cho_Insurer" value="请选择乡镇街道">
+                    <input type="hidden" name="cho_Insurer" value="">
                   </span>
                 </div>
               </div> 
@@ -53,7 +54,7 @@
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">桌数</label>
       <div class="am-u-sm-10">
-        <select class="am-radius" name="number">
+        <select class="am-radius" id="select1" name="number">
           <option>请选择您的用餐桌数</option>
           <option value="10桌以下">10桌以下</option>
           <option value="10~20桌">10~20桌</option>
@@ -73,7 +74,7 @@
   <!-- footer -->
   <!-- <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot"> -->
     <div class="customBtn">
-      <button type="submit" class="btn am-btn am-btn-danger">提 交</button>
+      <button type="submit" class="btn am-btn am-btn-danger cusForm">提 交</button>
     </div>
   <!-- </div> -->
   <!-- modal -->
@@ -88,7 +89,7 @@
       </div>
     </div>
   </div>
-  </form>
+  </div>
 <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
   <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
@@ -129,22 +130,42 @@
 <script type="text/javascript"> 
 $(function(){
   $('.liststyle ul').css('overflow','scroll');
-  $('.customForm').live('submit',function(){
-      var phone = $("#phone");
-        if(phone.val() == ''){
-          alert("请输入手机号");
-        }else if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone.val()))){
-          alert("请输入正确的手机号");
-        }
-     
-      return false;
-    }) 
-   var data = "<?=$id;?>";
-   if(data != ''){
-       $('#doc-modal-1').modal('open');
-          return false;
-   }
+  $('.cusForm').live('click',function(){
+      var phone = $("#phone").val();
+      var city = $('input[name="cho_City"]').val();
+      var area = $('input[name="cho_Area"]').val();
+      var Insurer = $('input[name="cho_Insurer"]').val();
+      var tableNum = $("#select1 option:selected").text();
 
+      console.log(tableNum);
+      if(area =='' || Insurer =='请选择乡镇街道'){
+         alert("请输入详细区域");
+         return false;
+      }
+      if(tableNum == '请选择您的用餐桌数'){
+         alert("请选择您的用餐桌数");
+         return false;
+      }
+       if(phone == '' || !(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+          alert("请输入正确的手机号");
+          $('#phone').focus();
+          return false;
+        } 
+     
+            $.ajax({
+              type:"POST",
+              url:'<?=site_url('pricesearch/customSer');?>',
+              data:'phone='+phone+'&city='+city+'&area='+area+'&Insurer='+Insurer+'&tableNum='+tableNum,
+              success:function(data){
+               console.log(data);
+               if(data == 1){
+                 $('#doc-modal-1').modal('open');
+                 return false;
+               } 
+              }
+            })
+        
+    }) 
 
 })
   
