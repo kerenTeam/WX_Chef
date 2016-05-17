@@ -154,7 +154,7 @@ $(function(){
      
             $.ajax({
               type:"POST",
-              url:'<?=site_url('pricesearch/customSer');?>',
+              url:'<?=site_url("pricesearch/customSer");?>',
               data:'phone='+phone+'&city='+city+'&area='+area+'&Insurer='+Insurer+'&tableNum='+tableNum,
               success:function(data){
                console.log(data);
