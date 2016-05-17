@@ -670,7 +670,7 @@ class home extends CI_Controller
     		if(empty($_SESSION['phone'])){
     			$data['record'] = '';
     		}else{
-    			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone'].'&Phone=');
+    			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
     			$data['record'] = json_decode(json_decode($jsonorder),true);
        		}
     	}else{
