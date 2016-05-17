@@ -67,8 +67,7 @@ function doaction(obj) {
                 <div class="fNum">
 
                   <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
-                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" 
-                  name="numbers[]" value="<?=$cart['number'];?>">
+                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" oninput="ueserWrite(this)"  onkeydown="keydown(this)" name="numbers[]" value="<?=$cart['number'];?>">
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>
                  <a href="<?php echo site_url('home/change?id=').$food[0]['foodid'].'&pid='.$food[0]['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
@@ -110,7 +109,7 @@ function doaction(obj) {
                  <input type="hidden" name="code[]" value="1">
                 <div class="fNum">
                   <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
-                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
+                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" oninput="ueserWrite(this)"  onkeydown="keydown(this)" name="numbers[]" value="<?=$v['number'];?>">
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>
                 <a href="<?=site_url('home/delcart?id=').$id.'&shopid='.$shopid;?>" class="am-fl"><i class="am-icon-trash red ats2"></i></a>
@@ -151,7 +150,7 @@ function doaction(obj) {
                  <input type="hidden" name="code[]" value="1">
                 <div class="fNum">
                   <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
-                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" name="numbers[]" value="<?=$v['number'];?>">
+                  <input type="text" class="numTxt" onkeypress="return IsNum(event)" oninput="ueserWrite(this)"  onkeydown="keydown(this)" name="numbers[]" value="<?=$v['number'];?>">
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>
                  <a href="<?php echo site_url('home/change?id=').$food[0]['foodid'].'&pid='.$food[0]['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
@@ -203,7 +202,7 @@ function doaction(obj) {
        
                   <label class="am-checkbox am-success am-u-sm-4 serl">
                      服务员(女)<input type="checkbox" id="serpeople2" ata-am-ucheck <?php if($witer['girl'] != 0){echo "checked";}?>>
-                  </label>  
+                  </label> 
                 <input type="hidden" id="servTotal2" value="0">
                <div class="epr am-text-center am-text-sm"><span class="price" id="serprice2">80</span>元/位</div>
  

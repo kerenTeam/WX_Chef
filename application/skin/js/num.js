@@ -16,7 +16,7 @@ var servTotal1;
 var servTotal2;
 // 总服务员费
 var servTotal;
-var num = 0;
+var onum = 0;
 var fee = document.getElementById('fee');
 var ff = document.getElementsByClassName('ff')[0];
 var servmoeny = document.getElementById("servmoney");
@@ -85,31 +85,29 @@ function IsNum(e) {
     }
 }
 
-function blurWrite(input) {
-    if (input.value == '' || input.value == NaN || input.value == 0) {
-        input.value = num;
-    } else {
-        num = input.value;
-    }
-
-    console.log(num)
+//每次输入时获取当前的值
+function keydown(t) {
+    if (event.keyCode == 13)
+        event.keyCode = 9;
+    else
+        onum = t.value;
 }
 
 function ueserWrite(obj) {
+    console.log(obj.value);
     curCount = obj.value;
-    if (!/^[0-9]*[1-9][0-9]*$/.test(obj.value) || curCount == '' || curCount >= 200) {
-        alert("请输入大于0的整数哟！");
+    if (!/^[0-9]*[1-9][0-9]*$/.test(obj.value) || obj.value == '' || obj.value >= 200) {
+        alert("请输入大于0小于200的整数哟！");
         obj.focus();
-        obj.value = num;
+        obj.value = onum
+;
         return false;
     }
-
     var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
-    // alert(prices);
-    console.log(fen);
-    fen += (parseFloat(curCount) - num);
+    fen += obj.value - onum;
     fens.innerHTML = fen;
-    paymoney += (parseFloat(curCount) - num) * prices;
+    paymoney += (obj.value - onum) * prices;
+    allmoney.innerHTML = paymoney.toFixed(2);
     if (paymoney > 300 || paymoney <= 0) {
         fwf = 0;
         ff.style.display = 'none';
@@ -139,7 +137,7 @@ function handle(self, isAdd) {
 
     var reduce = self.parentNode.childNodes[1];
     var price = self.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
-    //	var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
+    //  var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
     var foodId = self.parentNode.parentNode.childNodes[1].value;
 
     if (isAdd) {
@@ -192,39 +190,39 @@ function handle(self, isAdd) {
 
 
 // function handleHidden(id,name, count,total, fid){
-// 	var hiddens = document.getElementById("hiddens");
-// 	for(var i = 0; i < ids.length; i++){
-// 		if(ids[i] == id){
-// 			var hiddenInput0 = hiddens.childNodes[i * 4 ];
-// 			var hiddenInput1 = hiddens.childNodes[i * 4 + 1];
-// 			var hiddenInput2 = hiddens.childNodes[i * 4 + 2];
-// 			var hiddenInput3 = hiddens.childNodes[i * 4 + 3];
-// 			if(count == 0){
-// 				hiddens.removeChild(hiddenInput0);
-// 				hiddens.removeChild(hiddenInput1); /** 移除该元素 */
-// 				hiddens.removeChild(hiddenInput2);
-// 				hiddens.removeChild(hiddenInput3);
-// 				ids.splice(i, 1); /** 从数组中移除ID */
-// 			}else
-// 				hiddenInput1.value = name;
-// 				hiddenInput2.value = count+"份";
-// 				hiddenInput3.value = "￥"+total;
-// 			return;
-// 		}	
-// 	}
+//  var hiddens = document.getElementById("hiddens");
+//  for(var i = 0; i < ids.length; i++){
+//      if(ids[i] == id){
+//          var hiddenInput0 = hiddens.childNodes[i * 4 ];
+//          var hiddenInput1 = hiddens.childNodes[i * 4 + 1];
+//          var hiddenInput2 = hiddens.childNodes[i * 4 + 2];
+//          var hiddenInput3 = hiddens.childNodes[i * 4 + 3];
+//          if(count == 0){
+//              hiddens.removeChild(hiddenInput0);
+//              hiddens.removeChild(hiddenInput1); /** 移除该元素 */
+//              hiddens.removeChild(hiddenInput2);
+//              hiddens.removeChild(hiddenInput3);
+//              ids.splice(i, 1); /** 从数组中移除ID */
+//          }else
+//              hiddenInput1.value = name;
+//              hiddenInput2.value = count+"份";
+//              hiddenInput3.value = "￥"+total;
+//          return;
+//      }   
+//  }
 
-// 	if(count > 0 ){
-// 		addHiddenChild(hiddens, id,name, count,total, fid);
-// 		ids.push(id); /** 向数组中添加ID */
-// 	}
+//  if(count > 0 ){
+//      addHiddenChild(hiddens, id,name, count,total, fid);
+//      ids.push(id); /** 向数组中添加ID */
+//  }
 // }
 
 // function addHiddenChild(hiddens, id,name, count,total, fid){
-// 	var hiId = document.createElement( "input");
-// 	var hiName = document.createElement( "input");
-// 	var hiNum = document.createElement( "input");
-// 	var hiTotal = document.createElement( "input");
-// 	hiId.setAttribute( "type", "hidden");
+//  var hiId = document.createElement( "input");
+//  var hiName = document.createElement( "input");
+//  var hiNum = document.createElement( "input");
+//  var hiTotal = document.createElement( "input");
+//  hiId.setAttribute( "type", "hidden");
 //     hiName.setAttribute( "type", "hidden");
 //     hiNum.setAttribute( "type", "hidden");
 //     hiTotal.setAttribute( "type", "hidden");
