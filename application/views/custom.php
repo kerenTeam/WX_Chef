@@ -152,18 +152,18 @@ $(function(){
           return false;
         } 
      
-            $.ajax({
-              type:"POST",
-              url:'<?=site_url("pricesearch/customSer");?>',
-              data:'phone='+phone+'&city='+city+'&area='+area+'&Insurer='+Insurer+'&tableNum='+tableNum,
-              success:function(data){
-               console.log(data);
-               if(data == 1){
-                 $('#doc-modal-1').modal('open');
-                 return false;
-               } 
-              }
-            })
+        $.ajax({
+          type:"POST",
+          url:'<?=site_url("pricesearch/customSer");?>',
+          data:'phone='+phone+'&city='+city+'&area='+area+'&Insurer='+Insurer+'&tableNum='+tableNum,
+          success:function(data){
+           console.log(data);
+           if(data == 1){
+             $('#doc-modal-1').modal('open');
+             return false;
+           } 
+          }
+        })
         
     }) 
 
