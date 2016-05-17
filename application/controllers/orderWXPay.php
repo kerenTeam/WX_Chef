@@ -79,6 +79,19 @@ class orderWXPay extends CI_Controller{
             // 
             $foodJsondata['POOrderId'] = '';
 
+            // 服务员男
+            if($this->input->post('boy')){
+                $foodJsondata['manWaiter'] = $this->input->post('boy');
+            }else{
+                $foodJsondata['manWaiter'] = 0;
+            }
+            // 服务员女
+            if($this->input->post('girl')){
+                $foodJsondata['wumenWaiter'] = $this->input->post('girl');
+            }else{
+                $foodJsondata['wumenWaiter'] = 0;
+            }
+
         }else{
             $foodJson = '[]';
             // 伴餐
@@ -92,7 +105,23 @@ class orderWXPay extends CI_Controller{
             }else{
                 $foodJsondata['DinnerId'] = '';
             }
-            // 
+            // 服务员
+            if($_SESSION[0]['POOrderId']){
+                // 男
+                if($this->input->post('boy')){
+                    $foodJsondata['manWaiter'] = $this->input->post('boy');
+                }else{
+                    $foodJsondata['manWaiter'] = 0;
+                }
+                // 服务员女
+                if($this->input->post('girl')){
+                    $foodJsondata['wumenWaiter'] = $this->input->post('girl');
+                }else{
+                    $foodJsondata['wumenWaiter'] = 0;
+                }
+            }else{
+                echo "<script>alert('你还没有点菜呢！');window.location.href='gocart';</script>";exit;
+            }
             $foodJsondata['POOrderId'] = $_SESSION[0]['POOrderId'];
         }
         $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
@@ -103,20 +132,7 @@ class orderWXPay extends CI_Controller{
         }else{
             $foodJsondata['Integral'] = 0;
         }
-        // 服务员男
-        if($this->input->post('boy')){
-            $foodJsondata['manWaiter'] = $this->input->post('boy');
-        }else{
-            $foodJsondata['manWaiter'] = 0;
-        }
-        // 服务员女
-        if($this->input->post('girl')){
-            $foodJsondata['wumenWaiter'] = $this->input->post('girl');
-        }else{
-            $foodJsondata['wumenWaiter'] = 0;
-        }
-        // 伴餐
-       
+        
        
         // 优惠卷
         if( $this->input->post('couponid')){
@@ -138,7 +154,6 @@ class orderWXPay extends CI_Controller{
         //将order所有数据转为josn
         $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
 
-     
         //得到支付金额     	
         $isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$OrderAllData);
         
