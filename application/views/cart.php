@@ -167,7 +167,7 @@ function doaction(obj) {
              <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm">
                <?=$eleg['title'];?> 
                <div class="am-inline am-margin-left red"><i class="am-icon-cny"></i><span class="ban-price"> <?=$eleg['money'];?></span>
-                   <a href="" class="am-fr" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red"></i></a>
+                   <a href="<?=site_url('home/elegdel?id=1');?>" class="am-fr" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red"></i></a>
                </div>
              </li>
            </ul>

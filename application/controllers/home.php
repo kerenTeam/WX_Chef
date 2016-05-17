@@ -670,14 +670,12 @@ class home extends CI_Controller
     		if(empty($_SESSION['phone'])){
     			$data['record'] = '';
     		}else{
-    			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone'].'&Phone=');
+    			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
     			$data['record'] = json_decode(json_decode($jsonorder),true);
        		}
     	}else{
     		$data['record'] = '';
     	}
-    	// echo "<pre>";
-    	// var_dump($data);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
@@ -1075,20 +1073,31 @@ class home extends CI_Controller
 		}
 		
 	}
+	// 伴餐删除
+	public function elegdel(){
+		if($_GET){
+			unset($_SESSION['eleg']);
+			redirect('home/cart');
+		}
+	}
     //净菜 vegetable
     public function vegetable(){
     	$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
 		$data['cates'] = json_decode(json_decode($catejson),true);
 		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=kind');
-
-		$foods = json_decode(json_decode($foodjson),true);
+		// 去掉首尾引号
+		$food = ltrim(rtrim($foodjson,'"'),'"');
+		// 转换json
+		$a =   str_replace('\"','"',$food);
+		$foods = json_decode($a,true);
+	
 		if(isset($_SESSION['shoping'])){
 			if($_SESSION['shoping'] != ''){
 				$shop = $_SESSION['shoping'];
 				foreach($foods as $k=>$v){
 					$foods[$k]['number'] = '0';
 					foreach ($shop as $key => $value) {
-						if($v['foodid'] == $value['foodid']){
+						if($v['FoodId'] == $value['foodid']){
 							$foods[$k]['number'] = $value['number'];
 						}
 					}
@@ -1097,9 +1106,7 @@ class home extends CI_Controller
 			}
 		}
 		$data['foods'] = $foods;
-		// echo "<pre>";
-		// var_dump($data);
-		// exit;
+	
 		$this->load->view('vegetable',$data);
 	}
     //服务 service
@@ -1137,7 +1144,12 @@ class home extends CI_Controller
 		$data['foods'] = json_decode(json_decode($foods),true);
 		// 促销信息
 		$cuxiao = file_get_contents(POSTAPI.'API_FoodDiscount?start=1&end=4');
-		$data['promotion'] = json_decode(json_decode($cuxiao),true);
+		// 去掉首尾引号
+		$cu = ltrim(rtrim($cuxiao,'"'),'"');
+		// 转换json
+		$cuxiao =   str_replace('\"','"',$cu);
+	
+		$data['promotion'] = json_decode($cuxiao,true);
 		// 精品生活
 		$query = file_get_contents(POSTAPI.'API_Boutique?dis=jpsh&star=1&end=2');
 		$data['jinpin'] = json_decode(json_decode($query),true);
