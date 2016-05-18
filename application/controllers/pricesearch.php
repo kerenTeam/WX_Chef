@@ -215,7 +215,6 @@ class pricesearch extends CI_Controller {
 			$data['Number'] = $_POST['tableNum'];
 			$p = json_encode($data);
 			$postok = curl_post(POSTAPI.'API_Consultation',$p);
-
 			if($postok == 1){
 				echo "1";   
 			}

@@ -318,18 +318,15 @@ class home extends CI_Controller
 
 		$this->load->view('partyInfo');
 	}
-	public function partyInfo2(){
+	public function backmoney(){
 
-		$this->load->view('partyInfo2');
+		$this->load->view('backmoney');
 	}
-	public function partyInfo3(){
+	public function registgift(){
 
-		$this->load->view('partyInfo3');
+		$this->load->view('registgift');
 	}
-	public function partyInfo4(){
-
-		$this->load->view('partyInfo4');
-	}
+ 
 	//套餐详情
 	public function dinner(){
 
@@ -789,6 +786,7 @@ class home extends CI_Controller
 	//客服
 	public function customServ(){
 			$this->load->view('custom');
+			
 	}
 	//会员
 	public function vip(){

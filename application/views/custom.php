@@ -151,7 +151,6 @@ $(function(){
           $('#phone').focus();
           return false;
         } 
-     
             $.ajax({
               type:"POST",
               url:'<?=site_url('pricesearch/customSer');?>',
@@ -168,7 +167,6 @@ $(function(){
     }) 
 
 })
-  
     
 </script>
 <script type="text/javascript" src="skin/js/city4.city.js"></script>

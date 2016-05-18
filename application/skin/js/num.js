@@ -60,12 +60,12 @@ window.onload = function() {
     if (paymoney > 0 && paymoney <= 240) {
         fwf = 60;
         ff.style.display = '';
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
+        servmoeny.innerHTML = fwf.toFixed(2);
+        fee.value = fwf.toFixed(2);
     }
     if (paymoney > 240 && paymoney <= 300) {
         ff.style.display = '';
-        fwf = 300 - paymoney;
+        fwf = (300 - paymoney).toFixed(2);
         servmoeny.innerHTML = fwf;
         fee.value = fwf;
     }
@@ -116,14 +116,14 @@ function ueserWrite(obj) {
     }
 
     if (paymoney > 0 && paymoney <= 240) {
-        fwf = 60;
+        fwf = 60.00;
         ff.style.display = '';
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
+        servmoeny.innerHTML = fwf.toFixed(2);
+        fee.value = fwf.toFixed(2);
     }
     if (paymoney > 240 && paymoney <= 300) {
         ff.style.display = '';
-        fwf = 300 - paymoney;
+        fwf = (300 - paymoney).toFixed(2);
         servmoeny.innerHTML = fwf;
         fee.value = fwf;
     }
@@ -168,13 +168,13 @@ function handle(self, isAdd) {
     }
 
     if (paymoney > 0 && paymoney <= 240) {
-        fwf = 60;
+        fwf = 60.00;
         ff.style.display = '';
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
+        servmoeny.innerHTML = fwf.toFixed(2);
+        fee.value = fwf.toFixed(2);
     }
     if (paymoney > 240 && paymoney <= 300) {
-        fwf = 300 - paymoney;
+        fwf = (300 - paymoney).toFixed(2);
         ff.style.display = '';
         servmoeny.innerHTML = fwf;
         fee.value = fwf;
