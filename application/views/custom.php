@@ -151,6 +151,7 @@ $(function(){
           $('#phone').focus();
           return false;
         } 
+
             $.ajax({
               type:"POST",
               url:'<?=site_url('pricesearch/customSer');?>',
@@ -163,6 +164,7 @@ $(function(){
                } 
               }
             })
+
         
     }) 
 

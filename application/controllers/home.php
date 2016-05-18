@@ -785,8 +785,9 @@ class home extends CI_Controller
 	}
 	//客服
 	public function customServ(){
+		
 			$this->load->view('custom');
-			
+ 
 	}
 	//会员
 	public function vip(){

@@ -117,7 +117,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
       <ul class="am-list odl">
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd">订单金额</a>
-          <span class="am-list-date red"><i class="am-icon-cny atf"><?php echo $_SESSION['rePayData'][0]['MoneyAll']; ?></i></span>
+          <span class="am-list-date red"><i class="am-icon-cny atf"><?php  echo round($_SESSION['rePayData'][0]['MoneyAll'],2); ?></i></span>
         </li> 
         <li class="am-g am-list-item-dated preduce">
         <?php 

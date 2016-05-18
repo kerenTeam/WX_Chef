@@ -59,7 +59,7 @@
         </h2>
       </div>
       <div class="am-u-sm-5 am-text-center">
-        <span class="red am-text-xxl"><?php $zong=$foods[0]['foodstar'] + $fen['cookscore'] + $fen['consumptionscore']; $pin = $zong/3*2;echo $pin;?></span>分<br>
+        <span class="red am-text-xxl"><?php $zong=$foods[0]['foodstar'] + $fen['cookscore'] + $fen['consumptionscore']; $pin = $zong/3*2;echo round($pin);?></span>分<br>
         <span class="am-text-xs red"><i class="am-icon-star "></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i></span><br>
         <span class="am-text-xs"> 共<?php echo count($evaluate);?>人评价</span>
         

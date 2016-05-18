@@ -54,6 +54,8 @@
           <div class="am-u-sm-4">昵称</div>
           <div class="am-u-sm-8">
             <?=$_SESSION['userinfo']['nickname'];?>
+			<input type="hidden" value="<?=$_SESSION['userinfo']['nickname'];?>" name='UserName' />
+
           </div>
         </li>
 
@@ -87,9 +89,6 @@
         </li>
 
       <?php endif ?>
-           
-
-
         <li class="am-g am-list-item-dated">
           <div class="am-u-sm-4">口味</div>
           <div class="am-u-sm-8">
