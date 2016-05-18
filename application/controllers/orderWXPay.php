@@ -148,7 +148,7 @@ class orderWXPay extends CI_Controller{
         }else{
             $foodJsondata['AppointmentTime'] = 0;
         }
-          
+        
         $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
         $foodJsondata['PaymentMethod'] = '';
         $foodJsondata['poorderentry'] = $foodJson;
@@ -156,7 +156,7 @@ class orderWXPay extends CI_Controller{
         //将order所有数据转为josn
         $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
 
-     
+       
         //得到支付金额     	
         $isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$OrderAllData);
         
