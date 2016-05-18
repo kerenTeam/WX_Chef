@@ -65,9 +65,9 @@ window.onload = function() {
     }
     if (paymoney > 240 && paymoney <= 300) {
         ff.style.display = '';
-        fwf = (300 - paymoney).toFixed(2);
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
+        fwf = 300 - paymoney;
+        servmoeny.innerHTML = fwf.toFixed(2);;
+        fee.value = fwf.toFixed(2);;
     }
     console.log(fee.value);
     fens.innerHTML = fen;
@@ -123,9 +123,9 @@ function ueserWrite(obj) {
     }
     if (paymoney > 240 && paymoney <= 300) {
         ff.style.display = '';
-        fwf = (300 - paymoney).toFixed(2);
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
+        fwf = 300 - paymoney;
+        servmoeny.innerHTML = fwf.toFixed(2);
+        fee.value = fwf.toFixed(2);
     }
     allmoney.innerHTML = (paymoney + fwf + servTotal).toFixed(2);
 }
@@ -174,10 +174,10 @@ function handle(self, isAdd) {
         fee.value = fwf.toFixed(2);
     }
     if (paymoney > 240 && paymoney <= 300) {
-        fwf = (300 - paymoney).toFixed(2);
+        fwf = 300 - paymoney;
         ff.style.display = '';
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
+        servmoeny.innerHTML = fwf.toFixed(2);
+        fee.value = fwf.toFixed(2);
     }
     console.log(fee.value);
     fens.innerHTML = fen;
