@@ -1,1 +1,0 @@
-D:\SOFT_PHP_PACKAGE\php\php.exe -q D:\wwwroot\chef\wwwroot\WXTEST2\application\controllers\refreshtoken.php
