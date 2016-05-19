@@ -12,12 +12,12 @@
          if (sercheck.checked) {
              cd.style.display = "";
              serinput.value = 1;
-             allmoney.innerHTML = parseFloat(allmoney.innerHTML) + parseFloat(serprice.innerHTML);
+             allmoney.innerHTML = (parseFloat(allmoney.innerHTML) + parseFloat(serprice.innerHTML)).toFixed(2);
          } else {
 
              cd.style.display = "none";
              serinput.value = 0;
-             allmoney.innerHTML = parseFloat(allmoney.innerHTML) - servTotal1.value;
+             allmoney.innerHTML = (parseFloat(allmoney.innerHTML) - parseFloat(servTotal1.value)).toFixed(2);
          }
          servTotal1.value = parseInt(serinput.value) * parseInt(serprice.innerHTML);
          //allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(servTotal.value);
