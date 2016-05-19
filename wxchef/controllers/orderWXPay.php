@@ -81,7 +81,6 @@ class orderWXPay extends CI_Controller{
             }else{
                 $foodJson = '[]';
             }
-
             // 伴餐
             if($this->input->post('eleg')){
                 $foodJsondata['DinnerId'] = $this->input->post('eleg');
@@ -100,7 +99,6 @@ class orderWXPay extends CI_Controller{
             }else{
                 $foodJsondata['wumenWaiter'] = 0;
             }
-
             // 所有菜品、
             $foodJsondata['poorderentry'] = $foodJson;
             echo "<pre>";
@@ -128,11 +126,9 @@ class orderWXPay extends CI_Controller{
             }else{
                  $foodJsondata['celeentry'] = '[]';
             }
-            // var_dump($foodJsondata['celeentry']);
-
             // 手机
             $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-            // 应付jine
+            // 应付金额
             $foodJsondata['MoneyAll'] = $this->input->post('yfje');
             // 是否使用积分
             if($this->input->post('jifen')){
@@ -163,7 +159,6 @@ class orderWXPay extends CI_Controller{
              $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isComedeOrder))),TRUE);
    
              $this->load->view('order/payOrder');
-       
         }
     }
 //跳转兼容
