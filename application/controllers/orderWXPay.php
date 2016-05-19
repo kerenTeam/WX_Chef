@@ -99,16 +99,24 @@ class orderWXPay extends CI_Controller{
                 // 订单ID
                 $foodJsondata['POOrderId'] = '';
             }else{
-                $foodJson = '';
+                $foodJson = '[]';
                 // 判断是否已经下过订单
+                $eleg = $this->input->post('eleg');
+                $boy = $this->input->post('boy');
+                $girl = $this->input->post('girl');
+
                 if(isset($_SESSION['rePayData'])){
-                    echo "123";
+                    // 有订单id
+                    if($_SESSION['rePayData'][0]['DinnerState']){
+                        echo "<script>alert('你已经点过伴餐了。');window.location.href='gocart';</script>";
+                    }else{
+                        $foodJsondata['DinnerId'] = $eleg;
+                    }
+                    $foodJsondata['manWaiter'] = $boy;
+                    $foodJsondata['wumenWaiter'] = $girl;
+                    $foodJsondata['POOrderId'] = $_SESSION['rePayData'][0]['POOrderId'];
                 }else{
                     // 没有下过订单
-                    $eleg = $this->input->post('eleg');
-                    $boy = $this->input->post('boy');
-                    $girl = $this->input->post('girl');
-       
                     if(empty($eleg) && empty($boy) && empty($girl)){
                         $foodJsondata['DinnerId'] = '';
                         $foodJsondata['manWaiter'] = '';
@@ -116,131 +124,54 @@ class orderWXPay extends CI_Controller{
                     }else{
                         echo "<script>alert('你还没有点菜呢！');window.location.href='gocart';</script>";
                     }
-
+                    $foodJsondata['POOrderId'] = '';
                 }
 
             }
-            
-           
-            var_dump($foodJson);
+            // 所有菜品、
+            $foodJsondata['poorderentry'] = $foodJson;
+            echo "<pre>";
+            //庆典
+            if(isset($_SESSION['ceremoney'])){
+                 $foodJsondata['cereentry'] = $_SESSION['ceremoney']['celeentry'];
+            }else{
+                 $foodJsondata['cereentry'] = '[]';
+            }
+            // 手机
+            $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
+            // 应付jine
+            $foodJsondata['MoneyAll'] = $this->input->post('yfje');
+            // 是否使用积分
+            if($this->input->post('jifen')){
+                 $foodJsondata['Integral'] = '1';
+            }else{
+                $foodJsondata['Integral'] = 0;
+            }
+            // 优惠卷
+            if( $this->input->post('couponid')){
+                $foodJsondata['UserCouponId'] = $this->input->post('couponid');
+            }else{
+                $foodJsondata['UserCouponId'] = '';
+            }
+            // 用餐时间
+            if( $this->input->post('time')){
+                $foodJsondata['AppointmentTime'] = $this->input->post('riqi').'    '. $this->input->post('time');
+            }else{
+                $foodJsondata['AppointmentTime'] = 0;
+            }
+            // 地址
+            $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
+            // 支付方式
+            $foodJsondata['PaymentMethod'] = '';
 
+
+
+            $a = json_encode($foodJsondata);
+            $b = json_decode($a,true);
+            var_dump($a);
+            var_dump($b);
         }
     }
-
-
-	public function payOrders()
-	{
-        
-        $foodid = $this->input->post('foodid');
-    	$numbers = $this->input->post('numbers');
-        if($foodid){
-        	$foodOrder = array_combine($foodid,$numbers);
-        	$foodJson = array();
-    		 foreach ($foodOrder as $fid => $fnums)
-             { $foodJson[] = "{'FoodId':"."'".$fid."'".","."'FoodNumber':"."'".$fnums."'"."}"; }
-            // 伴餐
-            if($this->input->post('eleg')){
-                $foodJsondata['DinnerId'] = $this->input->post('eleg');
-            }else{
-                $foodJsondata['DinnerId'] = '';
-            }
-            // 订单ID
-            $foodJsondata['POOrderId'] = '';
-			
-			// 服务男
-			if($this->input->post('boy')){
-				$foodJsondata['manWaiter'] = $this->input->post('boy');
-			}else{
-				$foodJsondata['manWaiter'] = 0;
-			}
-			// 服务员女
-			if($this->input->post('girl')){
-				$foodJsondata['wumenWaiter'] = $this->input->post('girl');
-			}else{
-				$foodJsondata['wumenWaiter'] = 0;
-			}
-
-        }else{
-            $foodJson = '[]';
-
-            // 伴餐
-            if($this->input->post('eleg')){
-                if($_SESSION['rePayData'][0]['DinnerState']){
-                    echo "<script>alert('你已经点过伴餐了。');window.location.href='gocart';</script>";
-                    exit;
-                }else{
-					$foodJsondata['DinnerId'] = $this->input->post('eleg');
-                }
-            }else{
-                $foodJsondata['DinnerId'] = '';
-            }
-			
-			  // 服务员
-            if($_SESSION[0]['POOrderId']){
-                // 男
-                if($this->input->post('boy')){
-                    $foodJsondata['manWaiter'] = $this->input->post('boy');
-                }else{
-                    $foodJsondata['manWaiter'] = 0;
-                }
-                // 服务员女
-                if($this->input->post('girl')){
-                    $foodJsondata['wumenWaiter'] = $this->input->post('girl');
-                }else{
-                    $foodJsondata['wumenWaiter'] = 0;
-                }
-            }else{
-                echo "<script>alert('你还没有点菜呢！');window.location.href='gocart';</script>";exit;
-            }
-            // 
-            $foodJsondata['POOrderId'] = $_SESSION[0]['POOrderId'];
-        }
-        // 所有菜品、
-        $foodJsondata['poorderentry'] = $foodJson;
-        // 庆典
-        echo "<pre>";
-        var_dump($_POST);
-        var_dump($foodJsondata);
-        exit;
-
-        // 
-        $foodJsondata['UserPhone'] = $this->input->post('UserPhone');
-        $foodJsondata['MoneyAll'] = $this->input->post('yfje');
-        // 是否使用积分
-        if($this->input->post('jifen')){
-             $foodJsondata['Integral'] = '1';
-        }else{
-            $foodJsondata['Integral'] = 0;
-        }
-   
-        // 优惠卷
-        if( $this->input->post('couponid')){
-            $foodJsondata['UserCouponId'] = $this->input->post('couponid');
-        }else{
-            $foodJsondata['UserCouponId'] = '';
-        }
-        // 用餐时间
-        if( $this->input->post('time')){
-            $foodJsondata['AppointmentTime'] = $this->input->post('riqi').'    '. $this->input->post('time');
-        }else{
-            $foodJsondata['AppointmentTime'] = 0;
-        }
-        
-        $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-        $foodJsondata['PaymentMethod'] = '';
-      
-       
-        //将order所有数据转为josn
-        $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
-
-       
-        //得到支付金额     	
-        // $isComedeOrder = curl_post(POSTAPI."API_Poorder?dis=dd",$OrderAllData);
-        
-        // $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isComedeOrder))),TRUE);
-   
-        // $this->load->view('order/payOrder');
-	}
 //跳转兼容
     public function jumpLink()
     {
