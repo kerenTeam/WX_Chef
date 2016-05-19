@@ -96,7 +96,7 @@ function doaction(obj) {
               <div class="am-text-center oln">庆典</div>
            <ul class="am-list">
              <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm">
-               <a href="<?=site_url('home/editcere?id=').$cerearr['celebrationid'].'&name='.$cerearr['name'];?>" class=""><?=$cerearr['name'];?></a>
+               <a href="<?=site_url('home/editcere?id=').$cerearr['celebrationid'].'&name='.$cerearr['name'];?>" class="black am-inline"><?=$cerearr['name'];?></a>
                <div class="am-inline am-margin-left red"><i class="am-icon-cny"></i><span class="ban-price"> <?=$cerearr['moneyall'];?></span>
                    <a href="<?=site_url('home/elegdel?id=2');?>" class="am-fr" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red"></i></a>
                </div>
