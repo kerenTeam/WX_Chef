@@ -8,45 +8,35 @@
       </a>
     </div>
     <h1 class="am-header-title">
-    宴会定制
+    <?=$foods[0]['foodname'];?>
     </h1>
     
   </header>
   <!-- 详情 -->
-  <form action="" method="" enctype="mutiltype/data">
+  <form action="<?=site_url('home/foodaddcart');?>" method="post" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
       <!-- <div class=""><img src="skin/img/party1.png" class="am-img-responsive card" alt="大厨到家"></div> -->
              <div data-am-widget="slider" class="am-slider am-slider-c3" data-am-slider='{"controlNav":false}' >
           <ul class="am-slides">
+          <?php foreach($foodspic as $val):?>
               <li>
-                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/rjx.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">1</span>/4</div>山地土豆烧甲鱼</div></a>
+                  <a href="javascript:;"><img src="<?=IP.$val['imgaddress'];?>" />
+                  </a>
                  
               </li>
-              <li>
-                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/tscsx.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">2</span>/4</div>山地土豆烧甲鱼</div></a>
-                 
-              </li>
-              <li>
-                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/tqhtr.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">3</span>/4</div>山地土豆烧甲鱼</div></a>
-                 
-              </li>
-              <li>
-                  <a href="<?php echo site_url('home/food')?>"><img src="skin/img/product/qwhqb.jpg">
-                  <div class="am-slider-desc"><div class="am-slider-counter"><span class="am-active">4</span>/4</div>山地土豆烧甲鱼</div></a>
-                 
-              </li>
+            <?php endforeach;?>
+            
           </ul>
         </div>
       <div class="am-g">
-         <h2>聚会套餐套餐 989元系列</h2>
-          <div class="tbref">海河鲜类较多，是喜欢吃这类菜品的人群首选，菜品口味多。即高大上又不贵。</div>
+         <h2><?=$foods[0]['foodname'];?></h2>
+          <div class="tbref"><?=$foods[0]['foodtrait'];?></div>
       </div>
-      <p class="am-text-center menutit">宴会菜单</p>
-
-      <p class="am-text-center am-text-sm  menuname">凉菜</p>
+      <!-- <p class="am-text-center menutit">宴会菜单</p> -->
+      <?php  echo str_replace('&nbsp;', ' ',htmlspecialchars_decode($foods[0]['packagedetails'])) ;?>
+  
+  
+     <!--  <p class="am-text-center am-text-sm  menuname">凉菜</p>
 
         <p class="am-text-center am-text-sm">老成都拌土鸡元</p>
         <p class="am-text-center am-text-sm">辣鲜手剥笋</p>
@@ -81,11 +71,13 @@
         <p class="am-text-center am-text-sm">冰糖银耳羹</p>
 
       <p class="am-text-center am-text-sm  menuname">主食</p>
-        <p class="am-text-center am-text-sm">米饭</p>
+        <p class="am-text-center am-text-sm">米饭</p> -->
       
       <div class="am-g">
-       
-        <div class="pr"><i class="am-icon-cny"></i><span class="price">898</span>/<small>桌</small></div>
+        <input type="hidden" name='foodid' value="<?=$foods[0]['foodid']?>" />
+        <input type="hidden" name='shopid' value="" />
+        <input type="hidden" name='code' value="1" />
+        <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]['foodprice'];?></span>/<small>桌</small></div>
         <div class="foodNum">
           <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
           <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
@@ -95,9 +87,9 @@
 
     </div> 
   <div class="customBanner">
-    <img src="skin/img/custom.png" alt="">
+    <a href="<?=site_url('home/customServ');?>"><img src="skin/img/custom.png" alt=""></a>
   </div>
-   <div class="am-form am-form-horizontal customForm am-cf am-shadow">
+<!--    <div class="am-form am-form-horizontal customForm am-cf am-shadow">
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">区域</label>
       <div class="am-u-sm-10 customAdd" style="margin-top:-0.5rem;">
@@ -151,13 +143,13 @@
         <p class="customP">输入电话，客服稍后会给您回电</p>
       </div>
       <div class="am-u-sm-1"></div>
-    </div>
+    </div>-->
   <!-- footer -->
-    <div class="customBtn am-margin-bottom-sm">
+<!--    <div class="customBtn am-margin-bottom-sm">
       <button type="button" class="am-btn am-btn-danger customSubmit">提 交</button>
-    </div>
+    </div> -->
   <!-- modal -->
-    <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+  <!--   <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
     <div class="am-modal-dialog am-radius">
       <div class="am-modal-hd am-text-danger">提 示
         <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
@@ -168,7 +160,7 @@
       </div>
     </div>
   </div>
-  </div>
+  </div>  -->
 
     <!-- 评价 -->
     <div class="am-shadow am-margin-top am-cf">
@@ -178,42 +170,55 @@
         </h2>
       </div>
       <div class="am-u-sm-5 am-text-center">
-        <span class="red am-text-xxl">9.8</span>分<br>
+        <span class="red am-text-xxl">10</span>分<br>
         <span class="am-text-xs red"><i class="am-icon-star "></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i><i class="am-icon-star"></i></span><br>
-        <span class="am-text-xs"> 共20人评价</span>
+        <span class="am-text-xs"> 共0人评价</span>
         
       </div>
       <div class="am-u-sm-7 stars">
-        <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 4.9分</p>
-        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 4.9分</p>
-        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 4.9分</p>
+        <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 5分</p>
+        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 5分</p>
+        <p class="am-text-xs"><span class="am-text-right">服务员</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> 5分</p>
       </div>
       <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
       <!-- 文字评论 -->
-      <div class="am-shadow">
-        <header class="am-comment-hd">
-          <!--<h3 class="am-comment-title">评论标题</h3>-->
-          <div class="am-comment-meta">
-            <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">某人</a>
-            <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
+      <?php if(!empty($evaluate)):?>
+            <?php foreach($evaluate as $v):?>
+          <div class="am-shadow">
+            <header class="am-comment-hd">
+              <!--<h3 class="am-comment-title">评论标题</h3>-->
+              <div class="am-comment-meta">
+                <a href="#link-to-user" class="am-comment-author"><img src="<?=IP.$v['userimage'];?>" class="am-circle comimg" alt=""><?php if($v['username'] == ''){echo $v['userphone'];}else{echo $v['username'];}?></a>
+                <time datetime="2013-07-27T04:54:29-07:00" class="am-fr"><?php echo substr($v['createtime'],0,10);?></time>
+              </div>
+            </header>
+            <div class="am-comment-bd am-text-xs">
+              <?=$v['comment'];?>
+            </div>
+            <ul data-am-widget="gallery" class="am-gallery am-avg-sm-4 am-gallery-default" data-am-gallery="{ pureview: true }" >
+            <?php 
+            $pinimg = file_get_contents(POSTAPI.'API_Food?dis=splimg&foodid='.$v['id']);
+            $arrimg = json_decode(json_decode($pinimg),true);
+            ?>
+            <?php if(!empty($arrimg)):?>
+              <?php foreach($arrimg as $val):?>
+          <li>
+            <div class="am-gallery-item">
+                <a href="<?=IP.$val['address']?>" class="">
+                  <img src="<?=IP.$val['address']?>"/>
+                </a>
+            </div>
+          </li>
+        <?php endforeach;?>
+        <?php endif;?>
+      </ul>
           </div>
-        </header>
-        <div class="am-comment-bd am-text-xs">
-          味道很不错
-        </div>
-      </div>
-      <div class="am-shadow">
-        <header class="am-comment-hd">
-          <!--<h3 class="am-comment-title">评论标题</h3>-->
-          <div class="am-comment-meta">
-            <a href="#link-to-user" class="am-comment-author"><img src="skin/img/user.jpg" class="am-circle comimg" alt="">某人</a>
-            <time datetime="2013-07-27T04:54:29-07:00" title="2013年7月27日 下午7:54 格林尼治标准时间+0800">2014-7-12 15:30</time>
+        <?php endforeach;?>
+      <?php else:?>
+         <div class="am-comment-bd am-text-xs">
+             暂无评论！
           </div>
-        </header>
-        <div class="am-comment-bd am-text-xs">
-          味道很不错
-        </div>
-      </div>
+        <?php endif;?>
     </div>
 
     <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" style="bottom:48px;" id="">

@@ -28,6 +28,7 @@ class home extends CI_Controller {
 	// 点菜
 	function add(){
 		// 获取所有分类
+		// unset($_SESSION['shoping']);
 		$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
 		$data['cates'] = json_decode(json_decode($catejson),true);
 
@@ -60,7 +61,36 @@ class home extends CI_Controller {
 	function addcart()
 	{
 		if($_POST){
+			$shopid = rand(1,100);
 			$foodid = $_POST['id'];
+			$code = $_POST['code'];
+			$a['foodid']= $foodid;
+			$a['number']= '1';
+			$a['code']= $code;
+			$a['shopid']= $shopid;
+			$a['time']= date('Y-m-d H:i:s');
+			$arr[] = $a;
+			
+			if(!isset($_SESSION['shoping'])){
+				$this->session->set_userdata('shoping',$arr,0);
+			}else{
+				$shoping = $_SESSION['shoping'];
+				foreach($shoping as $key=>$value){
+					foreach($arr as $k=>$v){
+						if($value['foodid'] == $v['foodid']){
+							unset($shoping[$key]);
+						}
+					}
+				}
+				$f = array_merge($shoping,$arr);
+				$this->session->set_userdata('shoping',$f,0);
+
+			}
+			// 成功返回1
+			if(isset($_SESSION['shoping'])){
+				echo "1";
+			}
+			
 		}
 	}
 	// 菜品详情

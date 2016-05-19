@@ -313,8 +313,21 @@ class home extends CI_Controller
 	}
 	//宴会定制详情
 	public function partyInfo(){
-
-		$this->load->view('partyInfo');
+		if($_GET){
+			$id = $_GET['id'];
+			$foods = file_get_contents(POSTAPI.'API_Food?dis=taocanxq&foodid='.$id);
+	        $data['foods'] = json_decode(json_decode($foods),true);
+			// 产品图片
+			$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
+			$data['foodspic'] = json_decode(json_decode($foodpic),true);
+			// 菜品评分
+			$fen = file_get_contents(POSTAPI.'API_Food?dis=number&foodid='.$id);
+			$data['fen'] = json_decode(json_decode($fen),true);
+			// 菜品评价
+			$commen = file_get_contents(POSTAPI.'API_Food?dis=spl&foodid='.$id);
+		    $data['evaluate'] = json_decode(json_decode($commen),true);
+			$this->load->view('partyInfo',$data);
+		}
 	}
 	public function backmoney(){
 
@@ -359,7 +372,7 @@ class home extends CI_Controller
 						$c[] = $a;
 				}
 				
-				if(isset($_SESSION['shoping'])){
+					if(isset($_SESSION['shoping'])){
 						$shoping = $_SESSION['shoping'];
 					}else{
 						$shoping = '';
@@ -792,14 +805,13 @@ class home extends CI_Controller
 	}
 	//宴会定制选餐
 	public function party(){
-
-		$this->load->view('party');
+		$party = file_get_contents(POSTAPI.'API_Food?dis=taocan');
+		$data['party'] = json_decode(json_decode($party),true);
+		$this->load->view('party',$data);
 	}
 	//客服
 	public function customServ(){
-		
 			$this->load->view('custom');
- 
 	}
 	//会员
 	public function vip(){

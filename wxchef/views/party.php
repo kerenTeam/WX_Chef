@@ -108,38 +108,14 @@
         <div class="sky-carousel">
           <div class="sky-carousel-wrapper">
             <ul class="sky-carousel-container">
-         
-              <li>  <a href="<?php echo site_url('home/partyInfo')?>">
-                <img src="skin/img/party1.png" alt="" /> </a> 
+            <?php foreach($party as $val):?>
+              <li>  <a href="<?php echo site_url('home/partyInfo?id=').$val['foodid'];?>">
+                <img src="<?=IP.$val['packagelogo'];?>" alt="" /> </a> 
                 <div class="sc-content">
-                  <h2> <a href="<?php echo site_url('home/partyInfo')?>">聚会套餐 989系列</a></h2>
+                  <h2> <a href="<?php echo site_url('home/partyInfo')?>"><?=$val['foodname'];?></a></h2>
                 </div>
               </li>
-             
-             
-              <li><a href="<?php echo site_url('home/partyInfo')?>">
-                <img src="skin/img/party1.png" alt="" /> </a>
-                <div class="sc-content">
-                 <h2> <a href="<?php echo site_url('home/partyInfo')?>">商务套餐 599系列</a></h2> 
-                </div>
-              </li>
-             
-             
-              <li> <a href="<?php echo site_url('home/partyInfo')?>">
-                <img src="skin/img/party1.png" alt="" /></a>
-                <div class="sc-content">
-                 <h2> <a href="<?php echo site_url('home/partyInfo')?>">温馨家宴 1299系列</a></h2> 
-                </div>
-              </li>
-              
-              
-              <li> <a href="<?php echo site_url('home/partyInfo')?>">
-                <img src="skin/img/party1.png" alt="" /></a>
-                <div class="sc-content">
-               <h2> <a href="<?php echo site_url('home/partyInfo')?>">喜宴套餐 989系列</a></h2> 
-                </div>
-              </li>   
-              
+             <?php endforeach;?>
             </ul>
           </div>
         </div>

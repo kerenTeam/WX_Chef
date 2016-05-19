@@ -99,7 +99,7 @@
 										<!-- 已加入购物车样式 -->
 										 <?php if($value['Code'] == 1999){$a = 1;}else{$a = 0;}?>
 										 <input type="hidden" value="<?=$a?>" />
-										<a id='<?=$value['FoodId'];?>' href="javascript:;" <?php if($value['number'] != 0){echo 'class="joined"';}else{echo ' class="joinCar"';}?>><i class="am-icon-opencart"></i></a>
+										<a id='<?=$value['FoodId'];?>' href="javascript:;" <?php if(isset($value['number'])){if($value['number'] != 0){echo 'class="joined"';}else{echo 'class="joinCar"';}}else{echo 'class="joinCar"';}?>><i class="am-icon-opencart"></i></a>
 									</div>
 								</div>
 							</div>
@@ -125,7 +125,10 @@
 		         url: "<?=site_url('home/addcart');?>",
 		         data: 'id='+foodid+'&code='+code,
 		         success: function(data){
-	                   console.log(data);
+		         	console.log(data);
+	                  if(data == 1){
+	                  		 location.reload();
+	                  }
 	         	 }
 	         });
     	})
