@@ -76,7 +76,8 @@ function doaction(obj) {
               <?php else:?>
                  <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food['foodprice'];?></span></div>
               <?php endif;?>
-                <input type="hidden" name="code[]" value="0">
+                <?php if($food['code'] == 1999){$a = 1;}else{$a=0;}?>
+                <input type="hidden" name="code[]" value="<?=$a;?>" />
                 <div class="fNum">
 
                   <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>

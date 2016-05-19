@@ -347,7 +347,6 @@ class home extends CI_Controller
 	// 加入购物车
 	public function addcart(){
 			if($_POST){
-
 				$foodid = $_POST['foodid'];
 				$numbers = $_POST['numbers'];
 				$code = $_POST['code'];
@@ -391,6 +390,8 @@ class home extends CI_Controller
 						$f = array_merge($shoping,$c);
 					 	$this->session->set_userdata('shoping',$f,0);
 					}
+
+
 				redirect('home/cart');
 				}
 			exit;
