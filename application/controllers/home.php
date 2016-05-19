@@ -29,7 +29,6 @@ class home extends CI_Controller
 			$food = file_get_contents(POSTAPI.'API_Poorder?dis=ddxq&UserPhone='.$id);
 			$data['foods'] = json_decode(json_decode($food),true);
 			$data['id'] = $id;
-			// var_dump($data);
 			$this->load->view('commentTotal',$data);
 		}
 
@@ -255,11 +254,10 @@ class home extends CI_Controller
 		isset($number) ? $data['number'] = $number : $data['number'] = '0';
 		isset($_GET['shopid']) ? $data['shopid'] = $_GET['shopid'] : NULL;
 		//产品详情
-		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=xq&foodid='.$id);
-		$data['foods'] = json_decode(json_decode($foodjson),true);
-		// echo "<pre>";
-		// var_Dump($data['foods']);
-		// exit;
+		$foods = file_get_contents(POSTAPI.'API_Food?dis=xq&foodid='.$id);
+		$foodjson = ltrim(rtrim($foods,'"'),'"');
+      	$a =   str_replace('\"','"',$foodjson);
+        $data['foods'] = json_decode($a,true);
 		// 产品图片
 		$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 		$data['foodspic'] = json_decode(json_decode($foodpic),true);
@@ -474,6 +472,7 @@ class home extends CI_Controller
 		}else{
 			$data['carts'] = '';
 		}
+
 		// 服务员
 		if(isset($_SESSION['witer'])){
 			if($_SESSION['witer'] == ''){
@@ -494,6 +493,17 @@ class home extends CI_Controller
 		}else{
 			$data['eleg'] = '';
 		}
+		// 庆典
+		if(isset($_SESSION['ceremoney'])){
+			if($_SESSION['ceremoney'] == ''){
+				$data['cerearr'] = '';
+			}else{
+				$data['cerearr'] = $_SESSION['ceremoney'];
+			}
+		}else{
+			$data['cerearr'] = '';
+		}
+
 		$this->load->view('cart',$data);
 	}
 	// 删除购物车
@@ -653,6 +663,8 @@ class home extends CI_Controller
     	}else{
     		$data['record'] = '';
     	}
+    	// var_dump($data);
+    	// exit;
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
@@ -954,57 +966,61 @@ class home extends CI_Controller
 	public function CeremonyChose(){
 
 		// 获取所有区域
-		if(isset($_SESSION['phone'])){
-			if($_SESSION['phone'] != ''){
-				if($_GET){
-					$id = $_GET['id'];
-					$details = file_get_contents(POSTAPI.'API_details?dis=qy');
-					// var_dump($details);
-					$data['details'] = json_decode(json_decode($details),true); 
-				 	$data['id'] = $id;
-					$this->load->view('CeremonyChose',$data);
-				}
-			
-			}else{
-				echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
-			}
-		}else{
-			echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
+		if($_GET){
+			$id = $_GET['id'];
+			$details = file_get_contents(POSTAPI.'API_details?dis=qy');
+			// var_dump($details);
+			$data['details'] = json_decode(json_decode($details),true); 
+		 	$data['id'] = $id;
+		 	$data['name'] = $_GET['name'];
+		 	// var_dump($data['name']);
+			$this->load->view('CeremonyChose',$data);
 		}
 		
 	}
-	// 庆典订单
+	// 庆典加入购物车
 	public function cereOrder()
 	{
 		if($_POST){
-				$cereid = $_POST['cereid'];
-				$numbers = $_POST['numbers'];
-
-				$data = array();
-				foreach($cereid as $k=>$v){
-					$data[$k]['detailsId'] = $cereid[$k];	
-					$data[$k]['detailsNumber'] = $numbers[$k];	
+				$cere['moneyall'] = 340000;
+				$cere['name'] = $_POST['detailsname'];
+				$cere['celebrationid'] = $_POST['CelebrationId'];
+				$zu  =$_POST['zu'];
+				$a = array();
+				// 获取所有的产品id
+				foreach ($zu as $key => $value) {
+					$a['id'][$key] = $_POST['cereid'.$value];
+					$a['nub'][$key] = $_POST['numbers'.$value];
 				}
-
-				$arr = array_no_cere($data);
-				$cerearr = array();
-				foreach ($arr as $key => $value) {
-					$cerearr[] = $value;
+				// 组合id和数量
+				foreach ($a['id'] as $key => $value) {
+					foreach ($value as $k => $v) {
+						$data[$key+1][$k]['detailsId'] = $a['id'][$key][$k];
+						$data[$key+1][$k]['detailsNumber'] = $a['nub'][$key][$k];
+					}
 				}
 			
-				$ceredata['UserPhone'] =  $_SESSION['phone'];
-				$ceredata['Address'] = '';
-				$ceredata['CelebrationId'] = $_POST['CelebrationId'];
-				$ceredata['celeentry'] = $cerearr;
-				$cerejson =  str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($ceredata))))));
+				$cere['celeentry'] = $data;
+				$_SESSION['ceremoney'] = $cere;
+				redirect('home/cart');
 
-				 $cereok = curl_post(POSTAPI.'API_CelebrationOrder?dis=dd',$cerejson);
-				
-				if($cereok == 1){
-					echo "<script>alert('提交成功，请保持手机畅通，服务人员会尽快与你来联系!');window.location.href='ceremonyType';</script>";
-				}
 		}
 		
+	}
+	// 庆典购物车修改
+	public function editcere()
+	{
+		if($_GET){
+			$id = $_GET['id'];
+			$details = file_get_contents(POSTAPI.'API_details?dis=qy');
+			// var_dump($details);
+			$data['details'] = json_decode(json_decode($details),true); 
+		 	$data['id'] = $id;
+		 	$data['name'] = $_GET['name'];
+		 	$data['cerearr'] = $_SESSION['ceremoney']['celeentry'];
+		 	
+			$this->load->view('CeremonyEdit',$data);
+		}
 	}
 
 
@@ -1042,8 +1058,14 @@ class home extends CI_Controller
 	// 伴餐删除
 	public function elegdel(){
 		if($_GET){
-			unset($_SESSION['eleg']);
-			redirect('home/cart');
+			$id= $_GET['id'];
+			if($id == 1){
+				unset($_SESSION['eleg']);
+				redirect('home/cart');
+			}else{
+				unset($_SESSION['ceremoney']);
+				redirect('home/cart');
+			}
 		}
 	}
     //净菜 vegetable

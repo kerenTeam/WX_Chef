@@ -11,7 +11,7 @@
       </div>
 
       <h1 class="am-header-title">
-          庆典
+          <?=$cereinfo[0]['name'];?>
       </h1>
  
   </header>
@@ -54,7 +54,7 @@
   </section>
 <!-- 悬浮按钮 -->
 <div class="goChose">
-  <a href="<?php echo site_url('home/CeremonyChose?id=').$id;?>">选择</a>
+  <a href="<?php echo site_url('home/CeremonyChose?id=').$id.'&name='.$cereinfo[0]['name'];?>">选择</a>
 </div>
  <!-- footer -->
 <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">

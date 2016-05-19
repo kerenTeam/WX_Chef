@@ -115,7 +115,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = 'ios';
+	$application_folder = 'webchef';
 
 /*
  *---------------------------------------------------------------

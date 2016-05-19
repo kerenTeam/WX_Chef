@@ -25,7 +25,7 @@ class orderWXPay extends CI_Controller{
                 if($_SESSION['phone'] == NULL){
                     echo "<script>alert('你还没有登陆！');window.location.href='".site_url('home/login')."';</script>";
                 }else{
-                   // var_dump($_POST);
+
                     if ($this->input->post('servmoneydata')) {
                        $_SESSION['servmoneydata'] = $this->input->post('servmoneydata');
                     }else{
@@ -54,6 +54,7 @@ class orderWXPay extends CI_Controller{
                 	$data['writes'] = $_SESSION['witer'];
                 	$data['postBooking'] = $_SESSION['postBooking'];
                     $data['eleginfo'] = $_SESSION['eleg'];
+                   
              	    $this->load->view('order/order',$data);
                 }
             }

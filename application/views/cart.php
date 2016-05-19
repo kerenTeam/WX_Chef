@@ -1,3 +1,4 @@
+
 <body>
   <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform bheader"> <!-- am-header-fixed header固定在顶部-->
@@ -45,32 +46,35 @@ function doaction(obj) {
           <ul class="am-list cul">
       <?php foreach($val as $cart):?>
       <?php 
+
         $id = $cart['foodid'];
         $shopid = $cart['shopid'];
         $foods = file_get_contents(POSTAPI."API_Food?dis=xq&foodid=".$id);
-        $food = json_decode(json_decode($foods),true);
+        $foodjson = ltrim(rtrim($foods,'"'),'"');
+        $a =   str_replace('\"','"',$foodjson);
+        $food= json_decode($a,true);
+        // 缓存
+        $f[] = $food;
         if(!isset($_SESSION['booking'])){
-         $this->session->set_userdata('booking',$food);
+           $this->session->set_userdata('booking',$f);
         }else{
-          $booking = $_SESSION['booking'];
-          $book = array_merge($booking,$food);
-          $this->session->set_userdata('booking',$book);
+            $this->session->set_userdata('booking',$f);
         }
-
+   
       ?>
-            <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+             <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
               <div class="am-u-sm-3 am-text-center am-list-thumb">
-                <a href="<?php echo site_url('home/food?id=').$food[0]['foodid'].'&number='.$cart['number'].'&shopid='.$shopid;?>" class="vimg">
-                  <img src="<?php echo IP.$food[0]['thumbnail'];?>" id="img" alt="<?=$food[0]['foodname'];?>"/>
+                <a href="<?php echo site_url('home/food?id=').$food['foodid'].'&number='.$cart['number'].'&shopid='.$shopid;?>" class="vimg">
+                  <img src="<?php echo IP.$food['thumbnail'];?>" id="img" alt="<?=$food['foodname'];?>"/>
                 </a>
               </div>
               <div class=" am-u-sm-9 am-list-main">
-                <h3 class="am-list-item-hd cartb"><?=$food[0]['foodname'];?></h3>
-                <input type="hidden" name="foodid[]" value="<?=$food[0]['foodid'];?>">
-              <?php if($food[0]['discountproportion']):?>
-                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]['foodprice']*$food[0]['discountproportion'];?></span></div>
+                <h3 class="am-list-item-hd cartb"><?=$food['foodname'];?></h3>
+                <input type="hidden" name="foodid[]" value="<?=$food['foodid'];?>">
+              <?php if($food['discountproportion']):?>
+                <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food['foodprice']*$food['discountproportion'];?></span></div>
               <?php else:?>
-                 <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food[0]['foodprice'];?></span></div>
+                 <div class="pr"><i class="am-icon-cny"></i><span class="price" id="price"><?=$food['foodprice'];?></span></div>
               <?php endif;?>
                 <input type="hidden" name="code[]" value="0">
                 <div class="fNum">
@@ -79,17 +83,27 @@ function doaction(obj) {
                   <input type="text" class="numTxt" onkeypress="return IsNum(event)" oninput="ueserWrite(this)"  onkeydown="keydown(this)" name="numbers[]" value="<?=$cart['number'];?>">
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>
-                 <a href="<?php echo site_url('home/change?id=').$food[0]['foodid'].'&pid='.$food[0]['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
+                 <a href="<?php echo site_url('home/change?id=').$food['foodid'].'&pid='.$food['foodpid'].'&shopid='.$shopid;?>"><span class="am-icon-refresh am-fr green"></span></a>
                 <a href="<?=site_url('home/delcart?id=').$id;?>" class="am-fl" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red ats2"></i></a>
               </div>
-            </li>
+            </li>  
             <?php endforeach;?>
           </ul>
-
-
           <?php endforeach;?>
           <?php endif;?>
-
+          <!-- 庆典 -->
+             <?php if(!empty($cerearr)):?>
+              <div class="am-text-center oln">庆典</div>
+           <ul class="am-list">
+             <li class="am-g am-padding-horizontal-sm am-padding-vertical-sm">
+               <a href="<?=site_url('home/editcere?id=').$cerearr['celebrationid'].'&name='.$cerearr['name'];?>" class=""><?=$cerearr['name'];?></a>
+               <div class="am-inline am-margin-left red"><i class="am-icon-cny"></i><span class="ban-price"> <?=$cerearr['moneyall'];?></span>
+                   <a href="<?=site_url('home/elegdel?id=2');?>" class="am-fr" onclick="return confirm('你确定要删除吗?')"><i class="am-icon-trash red"></i></a>
+               </div>
+             </li>
+           </ul>
+         <?php endif;?>
+          <!-- 庆典end -->
          <!-- 伴餐 -->
          <?php if(!empty($eleg)):?>
            <ul class="am-list">
@@ -177,7 +191,6 @@ function doaction(obj) {
 
     </div>
   </div>
-  
   <!-- footer -->
   <div data-am-widget="navbar" class="am-navbar am-shadow am-cf am-navbar-default amft" id="" style="bottom:49px;">
    

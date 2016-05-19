@@ -26,22 +26,26 @@
     <input type="hidden" name="zu[]" value="<?=$val['Sort'];?>"/>
      <input type="hidden" name="detailsname" value="<?=$name;?>"/>
     <div class="am-u-sm-9">
+    <?php foreach($cerearr as $key=>$value):?>
+      <?php if($val['Sort'] == $key):?>
     <?php  foreach($val['xq'] as $k=>$v):?>
-      <div class="am-cf gsf">
+    	<div class="am-cf gsf">
         <div class="am-fl"><?=$k+1?>、<?=$v['Name']?>/<small><?=$v['Unit'];?></small><span class="price red am-icon-cny"><?=$v['Price'];?></span></div>
         <div class="am-fr">
         <!-- 默认数量单位 -->
-         <input type="hidden" name="unit" class="unit" value="1" />
-          
+         <input type="hidden" name="unit" class="unit" value="1">
           <input type="hidden" name="cereid<?=$val['Sort'];?>[]" value="<?=$v['Id']?>" />
           <!-- 数量加减 -->
           <div class="CmNum">
             <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-            <input type="text" class="numTxt" name="numbers<?=$val['Sort'];?>[]"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?=$v['DefaultNumber']?>">
+            <input type="text" class="numTxt" name="numbers<?=$val['Sort'];?>[]"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?=$value[$k]['detailsNumber'];?>">
             <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
           </div>
         </div>
       </div>
+    		
+    <?php endforeach;?>
+  <?php endif;?>
     <?php endforeach;?>
     
       </div>
