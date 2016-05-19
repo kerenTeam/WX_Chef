@@ -50,6 +50,15 @@
         </li> 
       <?php endif;?>
       <?php endif;?>
+      <!-- 庆典 -->
+      <?php if(!empty($ceremony)):?>
+        <li class="am-g am-list-item-dated">
+              <a href="javascript:" class="am-list-item-hd "><?=$ceremony['name']?></a>
+                <span class="am-list-date ath"><i class="am-icon-cny cc"></i> <?php $ceremoney=$ceremony['moneyall']; echo $ceremony['moneyall'];?></span>
+                <input type="hidden" name="cereid" value="<?php echo $ceremony['celebrationid']; ?>">
+              </li> 
+      <?php endif;?>
+      <!-- 庆典end -->
       <!-- 伴餐 -->
       <?php if(!empty($eleginfo)):?>
         <li class="am-g am-list-item-dated">
@@ -77,7 +86,7 @@
 
         <li class="am-g am-list-item-dated">
           <a href="javascript:" class="am-list-item-hd red">订单总计:</a>
-          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'><?php if($pricetotal){$money = array_sum($pricetotal); }else{$money = 0;}if($elegmoney){$eleg= $elegmoney; }else{$eleg = 0;} echo $money + array_sum($writes)*80 + $servmoneydata + $eleg;?></i></span>
+          <span class="am-list-date ath"><i class="am-icon-cny red" id='money'><?php if($pricetotal){$money = array_sum($pricetotal); }else{$money = 0;}if($elegmoney){$eleg= $elegmoney; }else{$eleg = 0;}if($ceremoney){$cere = $ceremoney;}else{$cere = 0;} echo $money + array_sum($writes)*80 + $servmoneydata + $eleg + $cere;?></i></span>
         </li>  
 
       </ul>
