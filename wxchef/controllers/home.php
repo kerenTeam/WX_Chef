@@ -982,7 +982,7 @@ class home extends CI_Controller
 	public function cereOrder()
 	{
 		if($_POST){
-				$cere['moneyall'] = 340000;
+				$cere['moneyall'] = $_POST['moneyall'];
 				$cere['name'] = $_POST['detailsname'];
 				$cere['celebrationid'] = $_POST['CelebrationId'];
 				$zu  =$_POST['zu'];
