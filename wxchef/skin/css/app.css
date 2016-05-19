@@ -2558,6 +2558,9 @@ figure a:hover figcaption {
     .am-icon-refresh {
         right: 10rem;
     }
+    .foodNum {
+        right: 1rem!important;
+    }
     .find {
         width: 4rem;
         height: 4rem;

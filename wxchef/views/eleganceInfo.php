@@ -100,14 +100,15 @@
         url: '<?=site_url("home/eleganceadd")?>',
         data: "title="+title+"&money="+money+'&id='+id,
         success: function(data){
-          console.log(data);
+          console.log(data); 
+            $('.cart-success').addClass('over');
+      $('.cart-ok').css('marginTop','-4rem');
+     setTimeout(function(){$('.cart-success').removeClass('cart-over');},1000);
         }
         
       });
 
-      $('.cart-success').addClass('over');
-      $('.cart-ok').css('marginTop','-4rem');
-     setTimeout(function(){$('.cart-success').removeClass('cart-over');},1000);
+   
 
 
  
