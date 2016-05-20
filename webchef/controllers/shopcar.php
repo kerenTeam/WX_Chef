@@ -18,8 +18,34 @@ class Shopcar extends CI_Controller
 
 	// 购物篮
 	function car(){
-
-		$this->load->view('shopcar/shopcar');
+		// 菜品
+		if(isset($_SESSION['shoping'])){
+			if($_SESSION['shoping'] == ''){
+				$data['carts'] = '';
+			}else{
+				$shoping = $_SESSION['shoping'];
+				foreach ($shoping as $key => $value) {
+					switch ($value['code']) {
+						// 点菜
+						case '0':
+							$data['carts']['diancai'][$key] = $value;
+							break;
+						// 套餐
+						case '1':
+							$data['carts']['taocan'][$key] = $value;
+							break;
+						// 净菜
+						case '2':
+							$data['carts']['jincai'][$key] = $value;
+							break;
+					}
+				}
+			}
+		}else{
+			$data['carts'] = '';
+		}
+		// 服务员
+		$this->load->view('shopcar/shopcar',$data);
 		$this->load->view('footer');
 	}
 
