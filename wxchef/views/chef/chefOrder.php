@@ -26,7 +26,7 @@
  
       <p class="am-text-center red">菜品查看</p>
 
-      <p class="am-text-center am-text-sm  menuname red">所有菜品</p>
+      <p class="am-text-center am-text-sm  menuname2 red">所有菜品</p>
       <?php foreach($poorder['Fooddetail'] as $v):?>
         <p class="am-text-center am-text-sm"><?=$v['FoodName']?><span class="red"> x<?=$v['FoodNumber'];?></span></p>
       <?php endforeach;?>

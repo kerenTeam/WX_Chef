@@ -1946,34 +1946,34 @@ figure a:hover figcaption {
 }
 
 .menutit,
-.menuname {
+.menuname2 {
     position: relative;
     top: 15px;
-    /* margin-bottom: 2rem!important; */
+     margin-bottom: 2rem!important; 
 }
 
 
-/* .menutit:before {
+ .menutit2:before {
     content: '';
     position: absolute;
     width: 30%;
     left: 9%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 13px;
-} */
+} 
 
 
-/* .menutit:after {
+ .menutit2:after {
     content: '';
     position: absolute;
     width: 30%;
     right: 9%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 13px;
-} */
+} 
 
 
-/* .menuname:before {
+ .menuname2:before {
     content: '';
     position: absolute;
     width: 17%;
@@ -1982,7 +1982,7 @@ figure a:hover figcaption {
     top: 11px;
 }
 
-.menuname:after {
+.menuname2:after {
     content: '';
     position: absolute;
     width: 17%;
@@ -1990,7 +1990,7 @@ figure a:hover figcaption {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 11px;
 }
- */
+ 
 
 .am-slider-c3 .am-slider-counter {
     background-color: #F85554;

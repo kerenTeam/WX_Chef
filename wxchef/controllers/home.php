@@ -692,8 +692,6 @@ class home extends CI_Controller
     	}else{
     		$data['record'] = '';
     	}
-	    	echo "<pre>";
-	    	var_dump($data);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
