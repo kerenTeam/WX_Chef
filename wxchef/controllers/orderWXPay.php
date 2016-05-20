@@ -156,7 +156,7 @@ class orderWXPay extends CI_Controller{
             //得到金额
             $isOrderOk=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);
             
-             $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isComedeOrder))),TRUE);
+             $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isOrderOk))),TRUE);
    
              $this->load->view('order/payOrder');
         }

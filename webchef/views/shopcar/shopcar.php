@@ -6,8 +6,8 @@
 	<div class="main">
           <!-- 指引 -->
           <!-- <ol class="am-breadcrumb am-margin-bottom-0">
-          <li><a href="<?=site_url('welcome/home');?>">首页</a></li>
-          <li><a href="<?=site_url('welcome/add');?>">点菜</a></li>
+          <li><a href="<?=site_url('order/home');?>">首页</a></li>
+          <li><a href="<?=site_url('order/add');?>">点菜</a></li>
           <li class="am-active">购物车</li>
         </ol> -->
 		<!-- biaoti -->
@@ -32,71 +32,68 @@
 		<!-- 商品详情 -->
 		<div class="shangpinlist">
 			<ul id="youul">
-				<li><h4 class="am-text-primary">点菜</h4></li>
-				<li>
-					<label class="am-checkbox am-danger cheall">
-						<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
-					</label>
-					<a href="<?=site_url('welcome/info');?>">
-						<img src="skin/img/caipintu.jpg" alt="">
-					</a>
-					<span>
-						<a href="<?=site_url('welcome/info');?>"><b>回锅肉，</b>口味独特,色泽红亮,肥而不腻入口浓香.简单搞定<br/> 身体必备营养物质</a>
-					</span>
-					<p class="p1">￥<span class="p1span">30.45</span></p>
-					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
-					</div>
-					<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
-					<a href="<?=site_url('welcome/exchange');?>">换一换</a>
-					<a href="javascript:;" class="you_a">删除</a>
-				</li>
-				<li>
-					<label class="am-checkbox am-danger cheall">
-						<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
-					</label>
-					<a href="<?=site_url('welcome/info');?>">
-						<img src="skin/img/caipintu.jpg" alt="">
-					</a>
-					<span>
-						<a href="<?=site_url('welcome/info');?>"><b>回锅肉，</b>口味独特,色泽红亮,肥而不腻入口浓香.简单搞定<br/> 身体必备营养物质</a>
-					</span>
-					<p class="p1">￥<span class="p1span">30.45</span></p>
-					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
-					</div>
-					<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
-					<a href="<?=site_url('welcome/exchange');?>">换一换</a>
-					<a href="javascript:;" class="you_a">删除</a>
-				</li>
-				<li>
-					<label class="am-checkbox am-danger cheall">
-						<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
-					</label>
-					<a href="<?=site_url('welcome/info');?>">
-						<img src="skin/img/caipintu.jpg" alt="">
-					</a>
-					<span>
-						<a href="<?=site_url('welcome/info');?>"><b>回锅肉，</b>口味独特,色泽红亮,肥而不腻入口浓香.简单搞定<br/> 身体必备营养物质</a>
-					</span>
-					<p class="p1">￥<span class="p1span">30.45</span></p>
-					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
-					</div>
-					<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
-					<a href="<?=site_url('welcome/exchange');?>">换一换</a>
-					<a href="javascript:;" class="you_a">删除</a>
-				</li>
+			<?php unset($_SESSION['booking']); foreach($carts as $k=>$v):?>
+
+				<li><h4 class="am-text-primary"><?php switch ($k) {
+					case 'diancai':
+						echo "点菜";
+						break;
+					case 'taocan':
+						echo "套餐";
+						break;
+					case 'jincai':
+						echo "点菜";
+						break;
+				}?></h4></li>
+				
+				  <?php foreach($v as $cart):?>
+			      <?php 
+
+			        $id = $cart['foodid'];
+			        $shopid = $cart['shopid'];
+			        $foods = file_get_contents(POSTAPI."API_Food?dis=xq&foodid=".$id);
+			        $foodjson = ltrim(rtrim($foods,'"'),'"');
+			        $a =   str_replace('\"','"',$foodjson);
+			        $food= json_decode($a,true);
+			        // 缓存
+			        $f[] = $food;
+			        if(!isset($_SESSION['booking'])){
+			           $this->session->set_userdata('booking',$f);
+			        }else{
+			            $this->session->set_userdata('booking',$f);
+			        
+			        }
+			      ?>
+						<li>
+							<label class="am-checkbox am-danger cheall">
+								<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
+							</label>
+							<a href="<?=site_url('order/info?id=').$food['foodid'].'&number='.$cart['number'].'&shopid='.$shopid;?>">
+								<img src="<?=IP.$food['thumbnail'];?>" alt="<?=$food['foodname'];?>" />
+							</a>
+							<span>
+								<a href="<?=site_url('order/info?id=').$food['foodid'].'&number='.$cart['number'].'&shopid='.$shopid;?>"><b><?=$food['foodname'];?>，</b><?php echo mb_strimwidth($food['foodtrait'], 0, 70,'...', 'UTF-8'); ?></a>
+							</span>
+							<p class="p1">￥<span class="p1span"><?=$food['foodprice'];?></span></p>
+							<div class="jiajian">
+								<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
+							</div>
+							<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
+							<a href="<?=site_url('order/exchange');?>">换一换</a>
+							<a href="javascript:;" class="you_a">删除</a>
+						</li>
+					<?php endforeach;?>
+				<?php endforeach;?>
 				<li><h4 class="am-text-primary">套餐</h4></li>
 				<li>
 					<label class="am-checkbox am-danger cheall">
 						<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
 					</label>
-					<a href="<?=site_url('welcome/info');?>">
+					<a href="<?=site_url('order/info');?>">
 						<img src="skin/img/caipintu.jpg" alt="">
 					</a>
 					<span>
-						<a href="<?=site_url('welcome/info');?>"><b>回锅肉，</b>口味独特,色泽红亮,肥而不腻入口浓香.简单搞定<br/> 身体必备营养物质</a>
+						<a href="<?=site_url('order/info');?>"><b>回锅肉，</b>口味独特,色泽红亮,肥而不腻入口浓香.简单搞定<br/> 身体必备营养物质</a>
 					</span>
 					<p class="p1">￥<span class="p1span">30.45</span></p>
 					<div class="jiajian">
@@ -105,6 +102,7 @@
 					<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
 					<a href="javascript:;" class="you_a">删除</a>
 				</li>
+
 				<li><h4 class="am-text-primary">服务</h4></li>
 				<li>
 					<label class="am-checkbox am-danger cheall">

@@ -83,7 +83,7 @@
 					<?php if($val['foodcategoryid'] == $value['FoodPid']): ?>
 					<li>
 						<div class="order-goods">
-							<a href="<?=site_url('order/info');?>"><img src="<?=IP.$value['Thumbnail'];?>"></a>
+							<a href="<?=site_url('order/info?id=').$value['FoodId'].'&&number=&shopid=';?>"><img src="<?=IP.$value['Thumbnail'];?>"></a>
 							<div class="goods-info" >
 								<h1><?=$value['FoodName']?></h1>
 								<!-- <input type="hidden"> -->
