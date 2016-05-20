@@ -75,7 +75,7 @@
   { 
          window.location.reload(); 
   } 
-setTimeout('myrefresh()',5000);
+setTimeout('myrefresh()',1000*60*2);
 </script>
 </body>
 </html>

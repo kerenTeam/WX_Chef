@@ -7,15 +7,15 @@ html {
 </style>
 </head>
 <body class="register">
-<form action="<?=site_url('login/regadd')?>" method="post" class="form_test">
+<form action="<?=site_url('home/regadd')?>" method="post" class="form_test">
   	<div class="first">
     <div class="reg_input flex">
       <label>手机号认证</label>
-      <input type="tel" placeholder="请输入手机号码" name="phone" />
+      <input type="tel" placeholder="请输入手机号码" name="phone" id="userphone"/>
     </div>
     <div class="reg_test">
       <input type="text" placeholder="请输入验证码"/>
-      <input type="button" onclick="time(this)" value="获取验证码" />
+      <input type="button" onclick="yzm(this)" value="获取验证码" />
     </div>
     </div>
      <div class="seconde" style="display:none;">
@@ -39,16 +39,29 @@ html {
 <!--<![endif]--> 
 <script src="skin/js/amazeui.min.js"></script> 
 <script type="text/javascript">
-	$(function(){
+ 
+		 var code;
 		// 验证是否同意协议
-		var checkbox = $(".user_agreement input[type='checkbox']");
-		checkbox.bind('change',function(){
-			if(checkbox.is(':checked')){
-				$('.reg_btn button').removeAttr('disabled').removeClass('am-btn-default').addClass('am-btn-success');
-			}else{
-				$('.reg_btn button').attr('disabled','disabled').addClass('am-btn-default').removeClass('am-btn-success');
-			}
-		});
+			function yzm(input){
+		 	var phone = $("#userphone").val();
+		 	if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+		 		shade('am-icon-meh-o','请输入正确的手机号码');
+		 	}else{
+		 		time(input);
+		 		$.ajax({
+		 			type: "post",
+		 			url: "<?=site_url('pricesearch/send');?>",
+		 			data: {"UserPhone":+phone},
+		 			success: function(data){
+		 				console.log(data);
+		 				code = data;
+		 			}
+		 		});
+                // code = "123456";
+		 	}
+
+		}
+		
 		   
 		// 绑定提交按钮
 		$('.reg_btn button').bind('click',function(){
@@ -66,7 +79,13 @@ html {
 			if(test == ''){
 				shade('am-icon-meh-o','请输入验证码');
 				return false;
-			}else{
+			}
+			if(test !== code.toString()){
+				shade('am-icon-meh-o','验证码输入错误');
+				return false;
+			}
+			else{
+
 				$('.first').css('display','none');
 			    $('.seconde').css('display','block');
 				$(this).addClass('submit');
@@ -77,6 +96,7 @@ html {
 			var passcheck=$('.passcheck');
 		  if(pass.val() != ''){
 			  $(this).prop('type','submit');
+			  console.log($(this).prop('type'));
 			  }
 		});
 		
@@ -95,8 +115,7 @@ html {
 				$('.shade div').remove();
 				$('.shade').append('<div><span class="'+icon+'"></span><p>'+cue+'</p></div>');
 		}
-		
-	});
+	 
 		var wait = 60;
 		function time(o) {  
         if (wait == 0) {  

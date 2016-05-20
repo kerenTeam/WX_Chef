@@ -291,6 +291,15 @@ class home extends CI_Controller
 
 		$this->load->view('forgetPassword');
 	}
+	// 忘记密码修改
+	public function regadd()
+	{
+		if($_POST){
+
+		}
+	}
+
+
 	//精品生活 列表
 	public function life(){
 
@@ -334,7 +343,6 @@ class home extends CI_Controller
 		$this->load->view('backmoney');
 	}
 	public function registgift(){
-
 		$this->load->view('registgift');
 	}
  
@@ -677,6 +685,7 @@ class home extends CI_Controller
     	}else{
     		$data['record'] = '';
     	}
+    	// echo "<pre>";
     	// var_dump($data);
     	// exit;
 		$this->load->view('orderRecorde',$data);
