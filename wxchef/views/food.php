@@ -66,7 +66,7 @@
       </div>
       <div class="am-u-sm-7 stars">
         <p class="am-text-xs"><span class="am-text-right">菜品</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=round($foods['foodstar']);?></p>
-        <p class="am-text-xs"><span class="am-text-right">厨师</span><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=round($fen['cookscore']);?></p>
+        <p class="am-text-xs"><span class="am-text-right">厨师</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=round($fen['cookscore']);?></p>
         <p class="am-text-xs"><span class="am-text-right">服务分</span> <i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i> <?=round($fen['consumptionscore']);?></p>
       </div>
       <hr data-am-widget="divider" style="" class="am-divider am-divider-dashed" />
@@ -77,7 +77,7 @@
         <header class="am-comment-hd">
           <!--<h3 class="am-comment-title">评论标题</h3>-->
           <div class="am-comment-meta">
-            <a href="#link-to-user" class="am-comment-author"><img src="<?=IP.$v['userimage'];?>" class="am-circle comimg" alt=""><?php if($v['username'] == ''){echo $v['userphone'];}else{echo $v['username'];}?></a>
+            <a href="javascript:;" class="am-comment-author"><img src="<?=IP.$v['userimage'];?>" class="am-circle comimg" alt=""><?php if($v['username'] == ''){echo $v['userphone'];}else{echo $v['username'];}?></a>
             <time datetime="2013-07-27T04:54:29-07:00" class="am-fr"><?php echo substr($v['createtime'],0,10);?></time>
           </div>
         </header>
