@@ -22,6 +22,8 @@ var ff = document.getElementsByClassName('ff')[0];
 var servmoeny = document.getElementById("servmoney");
 //服务费
 var fwf = parseFloat(servmoeny.innerHTML);
+var ban = document.getElementsByClassName('ban-price');
+var banAll = 0;
 window.onload = function() {
     // 服务员数量
     var serinput2 = document.getElementsByClassName('serinput2')[0];
@@ -37,10 +39,8 @@ window.onload = function() {
     console.log(servTotal);
     var ordFen = document.getElementsByClassName('numTxt');
     var ordPrice = document.getElementsByClassName('price');
-    var ban = document.getElementsByClassName('ban-price');
     fen = 0;
     paymoney = 0;
-    var banAll = 0
     for (var j = 0; j < ban.length; j++) {
         banAll += parseFloat(ban[j].innerHTML);
     }
@@ -127,7 +127,7 @@ function ueserWrite(obj) {
         servmoeny.innerHTML = fwf.toFixed(2);
         fee.value = fwf.toFixed(2);
     }
-    allmoney.innerHTML = (paymoney + fwf + servTotal).toFixed(2);
+    allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }
 
 function handle(self, isAdd) {
@@ -182,7 +182,7 @@ function handle(self, isAdd) {
     console.log(fee.value);
     fens.innerHTML = fen;
     countEl.value = curCount;
-    allmoney.innerHTML = (paymoney + fwf + servTotal).toFixed(2);
+    allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }
 
 

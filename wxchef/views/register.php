@@ -111,8 +111,10 @@ html {
 			var passcheck=$('.passcheck');
 		  if(pass.val() != ''){
 			  $(this).prop('type','submit');
-			  }else if(pass.val()!==passcheck.val()){
+			  }
+			  if(pass.val()!==passcheck.val()){
 				  shade('am-icon-meh-o','密码输入不一致，请重输！！');
+				  return false;
 				  }
 		});
 		
