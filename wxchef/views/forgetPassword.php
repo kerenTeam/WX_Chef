@@ -77,7 +77,7 @@ html {
 				return false;
 			}
 			if(test == ''){
-				shade('am-icon-meh-o','请输入验证码');
+				shade('am-icon-meh-o','输入验证码');
 				return false;
 			}
 			if(test !== code.toString()){
