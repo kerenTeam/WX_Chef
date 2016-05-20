@@ -8,7 +8,7 @@ html {
 </head>
 
 <body class="register">
-<form method="post" action="<?=site_url('home/registeradd');?>" class="form_test">
+<form method="post" action="<?=site_url('home/registeradd');?>" class="form_test" id="regForm">
   <div class="first">
     <div class="reg_input flex">
       <label>中国 +86</label>
@@ -20,18 +20,18 @@ html {
     </div>
     <div class="user_agreement">
       <label class="am-radio am-success">
-        <input type="checkbox" data-am-ucheck />
+        <input type="checkbox" data-am-ucheck/>
         <span class="user">我已阅读并同意<a href="<?php echo site_url('home/protocol')?>">《大厨到家》</a>用户手册.</span> </label>
     </div>
   </div>
   <div class="seconde" style="display:none;">
      <div class="reg_input flex">
 		<label class="am-text-sm">设置密码</label>
-		<input type="password" placeholder="请输入密码" class="pass" name="UserPwd" id="UserPwd" required/>
+		<input type="password" placeholder="请输入密码" class="pass" name="UserPwd" id="UserPwd"/>
 	</div>
      <div class="reg_input flex">
 		<label class="am-text-sm">确认密码</label>
-		<input type="password"  placeholder="确认密码" class="passcheck" required/>
+		<input type="password"  placeholder="确认密码" class="passcheck"/>
 	</div>
   </div>
   <div class="reg_btn">
@@ -80,7 +80,7 @@ html {
 		});
 		   
 		// 绑定提交按钮
-		$('.reg_btn button').bind('click',function(){
+		$('.reg_btn button[type=button]').bind('click',function(){
 			var tell = $(".reg_input input[type='tel']").val();
 			var test = $(".reg_test input[type='text']").val();
 			if(tell == ''){
@@ -105,19 +105,29 @@ html {
 			    $('.seconde').css('display','block');
 				$(this).addClass('submit');
 			    $(this).html('确认');
+			    $('.reg_btn button[type=button]').unbind('click')
 			}
 			
+		
+		});
 			var pass=$('.pass');
 			var passcheck=$('.passcheck');
-		  if(pass.val() != ''){
-			  $(this).prop('type','submit');
-			  }
-			  if(pass.val()!==passcheck.val()){
-				  shade('am-icon-meh-o','密码输入不一致，请重输！！');
-				  return false;
-				  }
-		});
-		
+		 
+            pass.focus(function(){ 
+				  $('.reg_btn button').attr('type','submit'); 
+				  console.log( $('.reg_btn button').prop('type'));
+				 // alert($('.reg_btn button').prop('type'))
+            });
+           $('#regForm').bind('submit',function(){
+           	if(pass.val()==''){
+           		shade('am-icon-meh-o','请输入密码');
+           		return false;
+           	}
+           	 if(pass.val()!==passcheck.val()){
+				shade('am-icon-meh-o','密码输入不一致，请重输！！');
+				 return false;
+			}
+           });
 		// 表单验证
 		/*$('.form_test.submit').bind('click',function(){
             var pass=$('.pass');
