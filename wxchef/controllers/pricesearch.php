@@ -44,13 +44,12 @@ class pricesearch extends CI_Controller {
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
 			$a['SparePhone'] = '';
 			$a['IsDefault'] = 0;
-		
-			$c[] = $a;
-			$b = json_encode($c);
+	
+			$b = json_encode($a);
 			$postadd = curl_post(POSTAPI."API_MenberAddress?dis=xz&phone=".$_SESSION['phone'],$b);
 			$add = json_decode(json_decode($postadd),true);
 			if($add != ''){
-				echo "成功";
+				echo $add;
 			}
 	}
 

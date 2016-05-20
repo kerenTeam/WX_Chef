@@ -76,20 +76,21 @@
 
         </li>
       <?php endforeach;?>
-      <?php ?>
-         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+      <?php if(!empty($value['CeleId'])):?>
+        <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <a href="<?php echo site_url('home/food')?>" class="black">
           <div class="am-u-sm-6 am-list-main">
-            <h3 class="am-list-item-hd am-padding-left"><?=$v['FoodName'];?></h3>
+            <h3 class="am-list-item-hd am-padding-left"><?=$value['CeleName'];?></h3>
           </div>   <!-- 订单数量 -->
-          <div class="am-u-sm-3 am-text-center am-list-item-text">X <?=$v['FoodNumber'];?></div>
+          <div class="am-u-sm-3 am-text-center am-list-item-text">X 1</div>
           <div class=" am-u-sm-3 am-text-center am-list-main">
             <!-- 订单价格 -->
-            <h3 class="am-list-item-hd"><span class="am-icon-cny"><?=$v['DiscountMoney'];?></span></h3>
-            
+            <h3 class="am-list-item-hd"><span class="am-icon-cny"><?=$value['CelePrice'];?></span></h3>
           </div>
           </a> 
         </li>
+
+      <?php endif;?>
         <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md"><?=$value['Amount'];?></span></div>
         <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
         <p class="orderbot am-cf">
