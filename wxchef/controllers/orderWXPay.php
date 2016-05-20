@@ -150,6 +150,7 @@ class orderWXPay extends CI_Controller{
             }
             // 地址
             $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
+         
             // 支付方式
             $foodJsondata['PaymentMethod'] = '';
             $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));

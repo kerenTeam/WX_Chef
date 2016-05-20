@@ -377,7 +377,7 @@ function getorders(){
                data: 'GoodsPhone='+phone+"&address="+address+"&name="+name,
                success: function(msg){ 
                   console.log(msg);
-                  $('#mainContent').html('<ul class="am-list am-margin-top" style="margin-bottom:0;"><li class="am-g am-list-item-datedlpt2 mbtop"><div class="am-margin-top-sm am-margin-left-sm">'+name+'&nbsp;&nbsp;'+phone+'<br></div><a href="javascript:;" class="am-list-item-hd black adda">'+address+'<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'+1+'" data-am-ucheck checked></label></a></li></ul><a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>'); 
+                  $('#mainContent').html('<ul class="am-list am-margin-top" style="margin-bottom:0;"><li class="am-g am-list-item-datedlpt2 mbtop"><div class="am-margin-top-sm am-margin-left-sm">'+name+'&nbsp;&nbsp;'+phone+'<br></div><a href="javascript:;" class="am-list-item-hd black adda">'+address+'<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'+msg+'" data-am-ucheck checked></label></a></li></ul><a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>'); 
                 $('#pay[type=button]').attr('type','submit');
                }
             });
