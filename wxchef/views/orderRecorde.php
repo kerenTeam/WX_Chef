@@ -45,16 +45,16 @@
             case '3':
               echo "服务中";
               break;
-            case '11'://原来的数据是 11
+            case '8'://原来的数据是 11
               echo "待评价";
               break;
             case '7':
               echo "退款中";
               break;  
-            case '8':
+            case '10':
               echo "退款成功";
               break;
-            case '12':
+            case '9':
               echo "已评价";
               break;
           }?></span>
@@ -85,7 +85,7 @@
           <div class="am-u-sm-3 am-text-center am-list-item-text">X 1</div>
           <div class=" am-u-sm-3 am-text-center am-list-main">
             <!-- 订单价格 -->
-            <h3 class="am-list-item-hd"><span class="am-icon-cny"><?=$value['CelePrice'];?></span></h3>
+            <h3 class="am-list-item-hd"><span class="am-icon-cny"><?=$value['CeleMoney'];?></span></h3>
           </div>
           </a> 
         </li>

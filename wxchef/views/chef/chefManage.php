@@ -10,34 +10,36 @@
     厨师管理
     </h1>
   </header> 
-  <?php if(empty($chef[0]['goodsphone'])):?>
+  <?php if(empty($chef)):?>
     <div class="am-padding-sm">您没有订单！</div>
 
   <?php else:?>
 
   <div class="am-padding-sm">您有订单啦！</div>
 
-  <div class="manage am-shadow am-padding-sm">
+
+  <?php foreach($chef as $val):?>
+      <div class="manage am-shadow am-padding-sm am-margin-bottom-sm">
     <div class="manageOrder">
-      <p><?=$chef[0]['name'];?></p> 
-      <p><?=$chef[0]['goodsphone'];?> &nbsp;&nbsp;&nbsp;&nbsp;<a id="tell" href="tel:<?=$chef[0]['goodsphone'];?>"><img src="skin/img/phone.png" alt=""></a></p>
-      <p>服务地址: <?=$chef[0]['address'];?></p>
-      <p>服务时间: <?=$chef[0]['appointmenttime'];?></p>
+      <p><?=$val['name'];?></p> 
+      <p><?=$val['goodsphone'];?> &nbsp;&nbsp;&nbsp;&nbsp;<a id="tell" href="tel:<?=$val['goodsphone'];?>"><img src="skin/img/phone.png" alt=""></a></p>
+      <p>服务地址: <?=$val['address'];?></p>
+      <p>服务时间: <?=str_replace('T',' ',$val['appointmenttime']);?></p>
       <p class="am-cf manageBor">
-        <span class="am-fl">订单号: <?=$chef[0]['billno'];?></span>
+        <span class="am-fl">订单号: <?=$val['billno'];?></span>
         <span class="am-fr">工号: <?=$gh;?></span>
       </p>
       <p class="manageBtn am-text-right">
-        <a href="<?php echo site_url('chef/chefOrder?id=').$chef[0]['poorderid'];?>" class="btn am-btn am-btn-warning" title="">查看详情</a>
-        <?php  switch ($chef[0]['state']) {
+        <a href="<?php echo site_url('chef/chefOrder?id=').$val['poorderid'];?>" class="btn am-btn am-btn-warning" title="">查看详情</a>
+        <?php  switch ($val['state']) {
           case '0':
-            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$chef[0]["poorderid"].'&state=6'.'" id="submitBtn" class="btn am-btn am-btn-danger" title="" disabled>确认</a>';
+            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$val["poorderid"].'&state=6'.'" id="submitBtn" class="btn am-btn am-btn-danger" title="" disabled>确认</a>';
             break;
           case '1':
-            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$chef[0]["poorderid"].'&state=3'.'" class="btn am-btn am-btn-danger" title="">开始服务</a>';
+            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$val["poorderid"].'&state=3'.'" class="btn am-btn am-btn-danger" title="">开始服务</a>';
             break;
           case '3':
-            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$chef[0]["poorderid"].'&state=11'.'" class="btn am-btn am-btn-danger" title="">完成服务</a>';
+            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$val["poorderid"].'&state=8'.'" class="btn am-btn am-btn-danger" title="">完成服务</a>';
             break;
           case '6':
             echo '<a href="javascript:;" id="submitBtn" class="btn am-btn am-btn-danger" title="" disabled>开始服务</a>';
@@ -46,7 +48,7 @@
         
       </p>
      
-      <div class="manageOrderStatus"> <?php switch ($chef[0]['state']) {
+      <div class="manageOrderStatus"> <?php switch ($val['state']) {
         case '0':
           echo "待接单";
           break;
@@ -61,8 +63,8 @@
           break;
       }?></div>
     </div>
-  </div>
-
+      </div>
+    <?php endforeach;?>
   <?php endif;?>
 
 <script type="text/javascript">

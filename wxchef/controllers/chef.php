@@ -29,9 +29,7 @@ class chef extends CI_Controller
 		if($_GET){
 			$id = $_GET['id'];
 			$poorder = file_get_contents(POSTAPI.'API_Poorder?dis=xq&UserPhone='.$id);
-			var_dump($poorder);
 			$data['poorder'] = json_decode(json_decode($poorder),true);
-
 			$this->load->view('chef/chefOrder',$data);
 		}
 
