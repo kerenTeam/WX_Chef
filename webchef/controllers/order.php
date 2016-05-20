@@ -58,10 +58,10 @@ class Order extends CI_Controller
 			// 菜品评价
 			$commen = file_get_contents(POSTAPI.'API_Food?dis=spl&foodid='.$id);
 		    $data['evaluate'] = json_decode(json_decode($commen),true);
-		    echo "<pre>";
-		    var_dumP($data);
-		    exit;
-		    $this->load->view('order/foodInfo');
+		    // echo "<pre>";
+		    // var_dumP($data);
+		    // exit;
+		    $this->load->view('order/foodInfo',$data);
 			$this->load->view('footer');
 		}
 	}

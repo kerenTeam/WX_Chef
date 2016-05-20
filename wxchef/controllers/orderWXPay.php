@@ -225,12 +225,14 @@ class orderWXPay extends CI_Controller{
         //  }else{
         //      echo "<script>alert('支付失败，请联系028-1234567！')</script>";
         //  } 
-        $_SESSION['shoping']       = '';
-        $_SESSION['booking']       = '';
-        $_SESSION['Writes']        = '';
-        $_SESSION['postBooking']   = ''; 
-        $_SESSION['rePayData']     = ''; 
-        
+        unset(
+        $_SESSION['shoping'], 
+        $_SESSION['booking'],
+        $_SESSION['Writes'],
+        $_SESSION['postBooking'], 
+        $_SESSION['rePayData'], 
+        $_SESSION['ceremoney']
+        );
      	redirect('home/orderRe');
     }
 //购买｜充值会员卡  页面

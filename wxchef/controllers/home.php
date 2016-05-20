@@ -295,7 +295,13 @@ class home extends CI_Controller
 	public function regadd()
 	{
 		if($_POST){
-
+			$data['UserPhone'] = $_POST['phone'];
+			$data['UserPwd'] = md5($_POST['password']);
+			$passjson = json_encode($data);
+			$passok = curl_post(POSTAPI.'API_User?dis=newPWD',$passjson);
+			if($passok == 1){
+				echo "<script>alert('修改密码成功');window.location.href='login2';</script>";
+			}
 		}
 	}
 
@@ -680,14 +686,12 @@ class home extends CI_Controller
     			$data['record'] = '';
     		}else{
     			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
+
     			$data['record'] = json_decode(json_decode($jsonorder),true);
        		}
     	}else{
     		$data['record'] = '';
     	}
-    	// echo "<pre>";
-    	// var_dump($data);
-    	// exit;
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
@@ -734,6 +738,7 @@ class home extends CI_Controller
 		}
 		if($_POST)
 		{
+
 			$a['Name'] = $_POST['name'];
 			$a['Address'] = $_POST['Address'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
@@ -743,10 +748,9 @@ class home extends CI_Controller
 			}else{
 				$a['IsDefault'] = $_POST['IsDefault'];
 			}
-			$c[] = $a;
-			$b = json_encode($c);
+			$b = json_encode($a);
 			$postadd = curl_post(POSTAPI."API_MenberAddress?dis=xz",$b);
-			if($postadd == 1){
+			if($postadd != ''){
 				echo "<script>alert('新增地址成功！');window.location.href='address2';</script>";
 			}else{
 				echo "<script>alert('新增地址失败！');</script>";
@@ -771,7 +775,6 @@ class home extends CI_Controller
 	public function editAddress(){
 		if($_GET){
 			$id = $_GET['id'];
-
 			$isok = file_get_contents(POSTAPI."API_MenberAddress?dis=dzxq&value=".$id);
 			$data['address'] = json_decode(json_decode($isok),true);
 		
@@ -797,9 +800,9 @@ class home extends CI_Controller
 				$arr['IsDefault'] = $_POST['IsDefault'];
 			}
 			
-			$jsonval = '['.json_encode($arr).']';
+			$jsonval = json_encode($arr);
 			$isok = curl_post(POSTAPI."API_MenberAddress?dis=xg",$jsonval);
-			if($isok = 1){
+			if($isok != ''){
 				echo "<script>alert('编辑地址成功！');window.location.href='address2';</script>";
 			}else{
 				echo "<script>alert('编辑地址失败！');window.location.href='address2?id='".$_POST['id'].";</script>";

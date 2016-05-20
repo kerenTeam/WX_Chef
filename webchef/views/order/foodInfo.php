@@ -10,8 +10,8 @@
         <!-- info -->
         <div class="food-info">
           <div class="info-tit">
-              <h1>尖椒回锅肉</h1>
-              <p>特点:<span>口味独特，色泽红亮，肥而不腻入口浓香.</span></p>
+              <h1><?=$foods['foodname'];?></h1>
+              <p>特点:<span><?=$foods['foodtrait'];?></span></p>
           </div>
           <ul class="am-g foodBanner">
               <li class="am-u-sm-8">
@@ -19,20 +19,10 @@
                     class="am-slider am-slider-default info-pics"
                     data-am-flexslider="{controlNav: 'thumbnails', directionNav: false, slideshow: false, animationSpeed: 400}">
                     <ul class="am-slides">
-                      <li data-thumb="skin/img/food_info_03.png">
-                        <img src="skin/img/food_info_03.png" /></li>
-                      <li data-thumb="skin/img/food_info_03.png">
-                        <img src="skin/img/food_info_03.png" /></li>
-                      <li data-thumb="skin/img/food_info_03.png">
-                        <img src="skin/img/food_info_03.png" /></li>
-                      <li data-thumb="skin/img/food_info_03.png">
-                        <img src="skin/img/food_info_03.png" /></li>
-                      <li data-thumb="skin/img/food_info_03.png">
-                        <img src="skin/img/food_info_03.png" /></li>
-                      <li data-thumb="skin/img/food_info_03.png">
-                        <img src="skin/img/food_info_03.png" /></li>
-                      <li data-thumb="skin/img/food_info_03.png">
-                        <img src="skin/img/food_info_03.png" /></li>
+                    <?php foreach($foodspic as $val):?>
+                      <li data-thumb="<?=IP.$val['imgaddress'];?>">
+                        <img src="<?=IP.$val['imgaddress'];?>" /></li>
+                    <?php endforeach;?>
                     </ul>
                   <div class="viewMenu" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 1, width: 400, height: 600}">
                     <i class="am-icon-leanpub"></i> 查看菜单
@@ -44,22 +34,9 @@
                           <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
                         </div>
                         <div class="am-modal-bd infoMadel" style="max-height: 380px;">
-                          <h2>主料</h2>
-                          <p>五花肉；尖椒。</p>
-                          <h2>辅料</h2>
-                          <p>白糖；豆瓣酱；洋葱；芹菜；酱油；鸡精；花生油。</p>
-                          <h2>主料</h2>
-                          <p>五花肉；尖椒。</p>
-                          <h2>辅料</h2>
-                          <p>白糖；豆瓣酱；洋葱；芹菜；酱油；鸡精；花生油。</p>
-                          <h2>主料</h2>
-                          <p>五花肉；尖椒。</p>
-                          <h2>辅料</h2>
-                          <p>白糖；豆瓣酱；洋葱；芹菜；酱油；鸡精；花生油。</p>
-                          <h2>主料</h2>
-                          <p>五花肉；尖椒。</p>
-                          <h2>辅料</h2>
-                          <p>白糖；豆瓣酱；洋葱；芹菜；酱油；鸡精；花生油。</p>
+                          <h2><?=$foods['ingredients'];?></h2>
+                          <p><?=$foods['accessories'];?></p>
+                         
                         </div>
                       </div>
                     </div>
@@ -67,11 +44,11 @@
               </li>
               <li class="am-u-sm-4">
                   <div class="info-handle clear">
-                        <h1>价格 <span>￥30.00</span></h1>
+                        <h1>价格 <span>￥<?php if($foods['discountproportion']){echo $foods['foodprice']*$foods['discountproportion'];}else{echo $foods['foodprice'];}?></span></h1>
                         <ul class="am-avg-sm-3 food-assess">
-                            <li>已售 <span>35412</span></li>
-                            <li><span>5</span> 分</li>
-                            <li><span>32412</span> 人评价</li>
+                            <li>已售 <span>100</span></li>
+                            <li><span><?php $zong=$foods['foodstar'] + $fen['cookscore'] + $fen['consumptionscore']; $pin = $zong/3*2;echo round($pin);?></span> 分</li>
+                            <li><span><?php echo count($evaluate);?></span> 人评价</li>
                         </ul>
                         <div class="food-num clear">
                             <div>数量</div>
@@ -115,18 +92,13 @@
               </li>
           </ul>
           <div class="food-brief">
-              <p>主料：<span>五花肉；尖椒。</span></p>
-              <p>辅料：<span>白糖；豆瓣酱；洋葱；芹菜；酱油；鸡精；花生油。<span></p>
+              <p>主料：<span><?=$foods['ingredients'];?></span></p>
+              <p>辅料：<span><?=$foods['accessories'];?><span></p>
           </div>
           <div class="food-image-text">
               <h1>简介：<span>快炒家常菜。</span></h1>
               <p>
-                属于优质蛋白质.回锅肉的营养非常全面，除了蛋白质、脂肪等主要营养成分。含有钙
-                铁、锌等人体必备元素。方便快捷，家常菜。便利好操作。属于优质蛋白质.回锅肉的营养非常全面，除了蛋白质、脂肪等主要营养成分。含有钙铁、锌等人体必备元素。方便快捷，家常菜。便利好操作。
-            </p>
-            <p>
-                属于优质蛋白质.回锅肉的营养非常全面，除了蛋白质、脂肪等主要营养成分。含有钙
-                铁、锌等人体必备元素。方便快捷，家常菜。便利好操作。属于优质蛋白质.回锅肉的营养非常全面，除了蛋白质、脂肪等主要营养成分。含有钙铁、锌等人体必备元素。方便快捷，家常菜。便利好操作。
+               <?=$foods['blurb'];?>
             </p>
             <img src="skin/img/food_info_03.png">
             <img src="skin/img/food_info_03.png">
