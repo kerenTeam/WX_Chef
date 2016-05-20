@@ -64,7 +64,7 @@ html {
 				return false;
 			}
 			if(test == ''){
-				shade('am-icon-meh-o','请输入验证码');
+				shade('am-icon-meh-o','输入验证码');
 				return false;
 			}else{
 				$('.first').css('display','none');
