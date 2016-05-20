@@ -90,15 +90,29 @@ html {
 			    $('.seconde').css('display','block');
 				$(this).addClass('submit');
 			    $(this).html('确认');
+			      $('.reg_btn button[type=button]').unbind('click');
 			}
 			
-			   var pass=$('.pass');
-			var passcheck=$('.passcheck');
-		  if(pass.val() != ''){
-			  $(this).prop('type','submit');
-			  console.log($(this).prop('type'));
-			  }
+		
 		});
+			var pass=$('.pass');
+			var passcheck=$('.passcheck');
+		 
+            pass.focus(function(){ 
+				  $('.reg_btn button').attr('type','submit'); 
+				  console.log( $('.reg_btn button').prop('type'));
+				 // alert($('.reg_btn button').prop('type'))
+            });
+           $('#regForm').bind('submit',function(){
+           	if(pass.val()==''){
+           		shade('am-icon-meh-o','请输入密码');
+           		return false;
+           	}
+           	 if(pass.val()!==passcheck.val()){
+				shade('am-icon-meh-o','密码输入不一致，请重输！！');
+				 return false;
+			}
+           });
 		
 		// 表单验证
 		/*$('.form_test.submit').bind('click',function(){

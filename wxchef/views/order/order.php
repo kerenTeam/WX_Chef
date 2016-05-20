@@ -255,7 +255,7 @@
       <?php if(!empty($address)):?>
           <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
       <?php else:?>
-          <button type="button" class="am-u-sm-12 am-btn bgray os" id="pay">去支付</button>
+          <button type="button" class="am-u-sm-12 am-btn bgreen os firstPay" id="pay" disabled>去支付</button>
       <?php endif;?>
   
     </form>
@@ -360,28 +360,30 @@
               $(this).addClass('am-danger');
               $('#timeEat').val($(this).html());
             });
-     
+            $('.firstPay').click(function(){
+              if(!$('#mainContent').has('li').length){
+                alert('请添加服务地址');
+              }
+            })
       })
-
-     
-
 
 function getorders(){
             var name=$('#name').val();
             var address=$('#Address').val();
-            var phone=$('#GoodsPhone').val();
-           
+            var phone=$('#GoodsPhone').val(); 
             $.ajax({
                type: "POST",
                url: "<?=site_url('pricesearch/payOrder');?>",
                data: 'GoodsPhone='+phone+"&address="+address+"&name="+name,
-               success: function(msg){
-                  location.reload(true); 
+               success: function(msg){ 
+                  console.log(msg);
+                  $('#mainContent').html('<ul class="am-list am-margin-top" style="margin-bottom:0;"><li class="am-g am-list-item-datedlpt2 mbtop"><div class="am-margin-top-sm am-margin-left-sm">'+name+'&nbsp;&nbsp;'+phone+'<br></div><a href="javascript:;" class="am-list-item-hd black adda">'+address+'<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'+1+'" data-am-ucheck checked></label></a></li></ul><a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>'); 
+                $('#pay[type=button]').attr('type','submit');
                }
             });
             $('.tk').fadeOut(400);
 }
-     
+ 
 
     </script> 
 </html>
