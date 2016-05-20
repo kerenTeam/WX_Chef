@@ -76,6 +76,7 @@
 
         </li>
       <?php endforeach;?>
+      <?php ?>
          <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <a href="<?php echo site_url('home/food')?>" class="black">
           <div class="am-u-sm-6 am-list-main">
@@ -88,7 +89,6 @@
             
           </div>
           </a> 
-
         </li>
         <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md"><?=$value['Amount'];?></span></div>
         <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />

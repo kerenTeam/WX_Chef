@@ -295,7 +295,13 @@ class home extends CI_Controller
 	public function regadd()
 	{
 		if($_POST){
-
+			$data['UserPhone'] = $_POST['phone'];
+			$data['UserPwd'] = md5($_POST['password']);
+			$passjson = json_encode($data);
+			$passok = curl_post(POSTAPI.'API_User?dis=newPWD',$passjson);
+			if($passok == 1){
+				echo "<script>alert('修改密码成功');window.location.href='login2';</script>";
+			}
 		}
 	}
 
@@ -680,14 +686,15 @@ class home extends CI_Controller
     			$data['record'] = '';
     		}else{
     			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
+
     			$data['record'] = json_decode(json_decode($jsonorder),true);
        		}
     	}else{
     		$data['record'] = '';
     	}
-    	// echo "<pre>";
-    	// var_dump($data);
-    	// exit;
+    	echo "<pre>";
+    	var_dump($data);
+    	exit;
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
