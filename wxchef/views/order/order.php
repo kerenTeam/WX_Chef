@@ -332,21 +332,21 @@
        adate.attr('placeholder',html+" 默认");
      // adate.val(html);
          // 弹出添加地址弹框
-         $('#model').click(function() {
+         $('#model').live('click',function() {
           //$('.tkp').css('display','');
           // $('body').css('overflow-y','hidden');
           $('.tk').fadeIn(400);
         });
-         $('.closem').click(function() { 
+         $('.closem').live('click',(function() { 
           // $('body').css('overflow-y','auto');
           $('.tk').fadeOut(400); 
         });
 
-        $('.fclick').click(function() {
+        $('.fclick').live('click',function() {
           console.log('.fclick');
            $('#fpc').slideToggle(400);          
         });
-        $('#fpc li').click(function() {
+        $('#fpc li').live('click',function() {
           $('#fpc').slideUp(400);
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
             discount = $('#youhui').text();
@@ -359,7 +359,7 @@
 
         });
 
-         $('#jifen').click(function(){
+         $('#jifen').live('click',function(){
            if($('#jifen').prop("checked")){
            // alert(jifenmoney);
             jifenmoney = $('#jifenmoney').text();
@@ -373,7 +373,7 @@
             $('#yfje').val(payable);
         }
         })
-        $('#sub').click(function() { 
+        $('#sub').live('click',function() { 
             var phone = $('input[type="tel"]').val();
             var area = $('input[name="cho_Area"]').val();
             var Insurer = $('input[name="cho_Insurer"]').val();
@@ -422,7 +422,7 @@
                $(this).addClass('am-danger');
                $('#timeEat').val($(this).html());
               }); 
-            $('.firstPay').click(function(){
+            $('.firstPay').live('click',function(){
               if(!$('#mainContent').has('li').length){
                 alert('请添加服务地址');
               }
