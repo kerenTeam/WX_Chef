@@ -19,10 +19,10 @@
 <div class="header">
     <div class="center">
       <ul class="clear">
-        <li><a href="<?=site_url('welcome/home');?>">首页</a></li>
+        <li><a href="<?=site_url('home/index');?>">首页</a></li>
         <li><a href="<?=site_url('usercenter/personal');?>">我的订单</a></li>
-        <!-- <li><a href="<?=site_url('welcome/recommend');?>">我的大厨</a></li> -->
-        <li><a href="<?=site_url('welcome/help');?>">联系我们</a></li>
+        <!-- <li><a href="<?=site_url('home/recommend');?>">我的大厨</a></li> -->
+        <li><a href="<?=site_url('home/help');?>">联系我们</a></li>
         <li><a href="<?=site_url('shopcar/car');?>">购物篮</a></li>
         <li><a href="<?=site_url('login/index');?>">登录</a>/<a href="<?=site_url('login/register');?>">注册</a></li>
       </ul>
@@ -33,11 +33,11 @@
           <!-- 指引 -->
         <div class="center">
           <ol class="am-breadcrumb am-margin-bottom-0">
-          <li><a href="<?=site_url('welcome/home');?>">首页</a></li>
+          <li><a href="<?=site_url('home/home');?>">首页</a></li>
           <li class="am-active">个人中心</li>
         </ol>
         <ul class="clear">
-                <li><a href="<?=site_url('welcome/add');?>">点菜</a></li>
+                <li><a href="<?=site_url('home/add');?>">点菜</a></li>
                 <li><a href="<?=site_url('order/custom');?>">宴席</a></li>
                 <li><a href="<?=site_url('order/vegetable');?>">净菜</a></li>
                 <li><a href="javascript:;">特色服务 <i class="am-icon-sort-desc"></i></a>
@@ -45,7 +45,7 @@
                     <a href="<?=site_url('service/service');?>" title="">服务</a>
                     <a href="<?=site_url('service/elegance');?>" title="">伴餐</a>
                     <a href="<?=site_url('service/ceremonyType');?>" title="">庆典</a>
-                    <a href="<?=site_url('welcome/price');?>" title="">菜价</a>
+                    <a href="<?=site_url('home/price');?>" title="">菜价</a>
                   </div>
                 </li>
         </ul>

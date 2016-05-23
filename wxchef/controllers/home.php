@@ -769,10 +769,7 @@ class home extends CI_Controller
 
 		$this->load->view('cardGet');
 	}
-	public function address(){
 
-		$this->load->view('address');
-	}
 	//地址管理
 	public function address2(){
 		if(isset($_SESSION['phone'])){
@@ -792,7 +789,8 @@ class home extends CI_Controller
 		}
 		if($_POST)
 		{
-
+			var_dump($_POST);
+			exit;
 			$a['Name'] = $_POST['name'];
 			$a['Address'] = $_POST['Address'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
@@ -1014,9 +1012,9 @@ class home extends CI_Controller
 			$id = $_GET['id']; 
 			$del = file_get_contents(POSTAPI.'API_Poorder?dis=IsDisplay&UserPhone='.$id);
 			if($del == '"1"'){
-				    echo "<script>alert('删除订单记录成功！');window.location.href='orderR';</script>";
+				    echo "<script>alert('删除订单记录成功！');window.location.href='orderRe';</script>";
 			}else{
-					echo "<script>alert('删除订单记录失败！');window.location.href='orderR';</script>";
+					echo "<script>alert('删除订单记录失败！');window.location.href='orderRe';</script>";
 			}
 		}
 	}

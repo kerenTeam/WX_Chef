@@ -80,6 +80,7 @@
         </li>
       <?php endforeach;?>
       <?php if(!empty($value['CeleId'])):?>
+
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
           <a href="<?php echo site_url('home/ceremony?id=').$value['CeleId'];?>" class="black">
           <div class="am-u-sm-6 am-list-main">
@@ -94,7 +95,7 @@
         </li>
 
       <?php endif;?>
-        <span class="am-margin-left-sm pink am-text-sm">预约时间：2016-06-01</span><div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md"><?=$value['Amount'];?></span></div>
+        <span class="am-margin-left-sm pink am-text-sm">预约时间：<?php echo str_replace('T',' ',$value['AppointmentTime']);?></span><div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md"><?=$value['Amount'];?></span></div>
         <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
         <p class="orderbot am-cf">
 
