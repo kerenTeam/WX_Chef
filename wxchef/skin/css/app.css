@@ -2579,6 +2579,13 @@ figure a:hover figcaption {
     .topform button {
         left: 40px;
     }
+    .orderNum {
+        width: 158px;
+        overflow: hidden;
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
     .am-icon-refresh {
         right: 10rem;
     }

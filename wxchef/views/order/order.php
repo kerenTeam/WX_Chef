@@ -317,16 +317,20 @@
         var html;
         var date = new Date();
         var month = date.getMonth() + 1;
+        var m =(month <10) ? '0'+month : month;
+            month = m;
         var day = date.getDate();
+        var d =(day <10) ? '0'+day : day;
+            day=d;
         var year = date.getFullYear(); 
         var hour = date.getHours();
         var minutes = date.getMinutes();
-         var b =(minutes <10) ? '0'+minutes : minutes;
-         minutes =b;
-        var curTime = hour+":"+minutes;  
-      html=year+'-'+month+'-'+day;
-     adate.attr('placeholder',html+" 默认");
-     adate.val(html);
+        var b =(minutes <10) ? '0'+minutes : minutes;
+            minutes =b;
+        var curTime = hour+":"+minutes;
+         html=year+'-'+month+'-'+day;
+       adate.attr('placeholder',html+" 默认");
+     // adate.val(html);
          // 弹出添加地址弹框
          $('#model').click(function() {
           //$('.tkp').css('display','');
@@ -393,23 +397,31 @@
             $('#endTime').date({theme:"datetime"});
             if($('#timeEat').val()==''){
               $('#pay').attr('disabled','disabled');
-            } 
-            $('td').each(function(){ 
-              if($(this).html()>curTime){
-                $(this).addClass('can');
-              }else{
-                $(this).attr({
-                  disabled: 'disabled'
-                });
-                $(this).css('color','#eee')
-              }
-            })
-            $('td.can').click(function(event) { 
+            }  
+              console.log($('#beginTime').val());
+
+              $('td').each(function(){ 
+                if($(this).html()>curTime){
+                  $(this).addClass('can');
+                }else{
+                  $(this).attr({
+                    disabled: 'disabled'
+                  });
+                  $(this).css('color','#eee')
+                }
+              })
+               $('#dateconfirm').live('click',function(){  
+              if(html!=$('#beginTime').val()){ 
+                 $("td").css('color','')
+                 $('td').removeAttr('disabled').addClass('can'); 
+             }    
+             }) 
+              $('td.can').live('click',function(event) { 
                $('#pay').removeAttr('disabled');
-              $('td').removeClass('am-danger');
-              $(this).addClass('am-danger');
-              $('#timeEat').val($(this).html());
-            });
+               $('td').removeClass('am-danger');
+               $(this).addClass('am-danger');
+               $('#timeEat').val($(this).html());
+              }); 
             $('.firstPay').click(function(){
               if(!$('#mainContent').has('li').length){
                 alert('请添加服务地址');
