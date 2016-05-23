@@ -789,10 +789,9 @@ class home extends CI_Controller
 		}
 		if($_POST)
 		{
-			var_dump($_POST);
-			exit;
+			
 			$a['Name'] = $_POST['name'];
-			$a['Address'] = $_POST['Address'];
+			$a['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
 			$a['SparePhone'] = $_POST['SparePhone'];
 			if(!isset($_POST['IsDefault'])){
@@ -840,12 +839,13 @@ class home extends CI_Controller
 			// var_dump($_POST);
 			$arr = array(
 				'Name'=>$_POST['name'],
-				'Address'=>$_POST['address'],
+				'Address'=> $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'],
 				'MemberAddressId'=>$_POST['id'],
-				'GoodsPhone'=>$_POST['goodsphone'],
-				'SparePhone'=>$_POST['sparephone'],
+				'GoodsPhone'=>$_POST['GoodsPhone'],
+				'SparePhone'=>$_POST['SparePhone'],
 				'UserPhone'=>$_SESSION['phone'],
 				);
+		
 			if(empty($_POST['IsDefault'])){
 				$arr['IsDefault'] = 0;
 			}else{
