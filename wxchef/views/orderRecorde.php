@@ -66,7 +66,7 @@
 
       <?php  $food = $value['FoodDetails']; foreach($food  as $k=>$v):?>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-          <a href="<?php echo site_url('home/food')?>" class="black">
+          <a href="<?php echo site_url('home/food?id='.$v['FoodId'].'&number=&shopid=');?>" class="black">
           <div class="am-u-sm-6 am-list-main">
             <h3 class="am-list-item-hd am-padding-left"><?=$v['FoodName'];?></h3>
           </div>   <!-- 订单数量 -->
@@ -82,7 +82,7 @@
       <?php endforeach;?>
       <?php if(!empty($value['CeleId'])):?>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-          <a href="<?php echo site_url('home/food')?>" class="black">
+          <a href="<?php echo site_url('home/ceremony?id=').$value['CeleId'];?>" class="black">
           <div class="am-u-sm-6 am-list-main">
             <h3 class="am-list-item-hd am-padding-left"><?=$value['CeleName'];?></h3>
           </div>   <!-- 订单数量 -->
@@ -102,7 +102,7 @@
             case '0':
               if($value['PaymentMethod'] == ''){
                 echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.$value['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>"; 
-                echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
+                echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
               }else{
                   echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
               }

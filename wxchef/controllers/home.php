@@ -3,6 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
 *      首页+cate+菜品
 */
+
+if (DeBug == 1) {
+	//报告所有错误
+    error_reporting(E_ALL);
+} else if (DeBug == 0) {
+	//禁用错误报告
+    error_reporting(0);
+} else {
+	//报告运行时错误
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+}
+
 class home extends CI_Controller
 {
 	 
@@ -308,7 +320,7 @@ class home extends CI_Controller
 
 	//精品生活 列表
 	public function life(){
-
+		
 		$this->load->view('life');
 	}
 	//图文详情
@@ -570,7 +582,14 @@ class home extends CI_Controller
 	}
 	//付款成功
     public function paySuccess(){
-    	$this->session->set_userdata('shoping','',0);
+		unset(
+			$_SESSION['shoping'],      
+			$_SESSION['booking'],      
+			$_SESSION['witer'],        
+			$_SESSION['postBooking'], 
+			$_SESSION['rePayData'],
+			$_SESSION['ceremoney']
+		);
 		$this->load->view('paySuccess');
 	}
 	//评价 
@@ -922,14 +941,15 @@ class home extends CI_Controller
 		//var_dump($data);
 		$jsonorder = json_encode($data);
 		$state = curl_post(POSTAPI.'API_Poorder?dis=state',$jsonorder);
+		
 		if($state == '"1"'){
-			if($_GET['state'] == 5){
-				echo "<script>alert('你的退款信息已经提交！');window.location.href='orderR';</script>";
+			if($_GET['state'] == 7){
+				echo "<script>alert('你的退款信息已经提交！');window.location.href='orderRe';</script>";
 			}else{
-				echo "<script>alert('你的订单已经取消！');window.location.href='orderR';</script>";
+				echo "<script>alert('你的订单已经取消！');window.location.href='orderRe';</script>";
 			}
 		}else{
-			if($_GET['state'] == 5){
+			if($_GET['state'] == 7){
 				echo "<script>alert('你的退款信息提交失败！')；window.location.href='orderR';</script>";
 			}else{
 				echo "<script>alert('你的订单取消失败！')；window.location.href='orderR';</script>";
