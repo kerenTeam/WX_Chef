@@ -1038,6 +1038,10 @@ body {
     margin-left: 15px;
 }
 
+.afiel .am-u-sm-2 {
+    padding-left: 0;
+}
+
 .afiel input {
     margin-bottom: 10px;
     border-radius: 3p;
@@ -1949,31 +1953,28 @@ figure a:hover figcaption {
 .menuname2 {
     position: relative;
     top: 15px;
-     margin-bottom: 2rem!important; 
+    margin-bottom: 2rem!important;
 }
 
-
- .menutit2:before {
+.menutit2:before {
     content: '';
     position: absolute;
     width: 30%;
     left: 9%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 13px;
-} 
+}
 
-
- .menutit2:after {
+.menutit2:after {
     content: '';
     position: absolute;
     width: 30%;
     right: 9%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 13px;
-} 
+}
 
-
- .menuname2:before {
+.menuname2:before {
     content: '';
     position: absolute;
     width: 17%;
@@ -1990,7 +1991,6 @@ figure a:hover figcaption {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     top: 11px;
 }
- 
 
 .am-slider-c3 .am-slider-counter {
     background-color: #F85554;
@@ -2251,7 +2251,14 @@ figure a:hover figcaption {
     overflow: hidden;
 }
 
+.afiel>.am-u-sm-12>label {
+    margin-left: 5rem;
+}
+
 @media only screen and (min-width:599px) {
+    .afiel>.am-u-sm-12>label {
+        margin-left: 8rem;
+    }
     .tkcontent img {
         width: auto;
         margin: auto;

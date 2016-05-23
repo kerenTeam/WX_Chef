@@ -1,3 +1,4 @@
+<link href="skin/css/city.css" rel="stylesheet" type="text/css" />
 <body>
   <header data-am-widget="header" class="am-header am-header-default topform">
     <div class="am-header-left am-header-nav">
@@ -12,40 +13,94 @@
   </header>
   <br>
   <div class="am-g ammake">
-    <div class="am-u-md-8 am-u-sm-centered">
+    <div class="">
       <form class="am-form afcheck" action="<?=site_url('home/addressAdd2');?>" method="post">
         <fieldset class="am-form-set afiel">
-          <input type="text" placeholder="请填写您的姓名" class="uname" name='name' required>
-          <input type="text" placeholder="请输入详细送餐地址" class="uaddress" name='Address' required>
-          <input type="text" placeholder="请填写能够联系到您的电话号码" name='GoodsPhone' class="uphone">
-          <input type="text" placeholder="备用联系电话（选填）" name='SparePhone'> 
-         <label class="am-checkbox am-success am-u-sm-6">
-            设为默认 <input type="checkbox" name="IsDefault" value="1" data-am-ucheck>
-            </label>
+        <div class="am-u-sm-2 am-text-right">地址</div>
+        <div class="am-u-sm-10">
+          <div class="demo" style="margin-top:-0.5rem;">     
+              <div class="infolist"> 
+                <div class="liststyle">
+                  <span>
+                    <i>成都市</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择城市">成都市</a></li>
+                    </ul>
+                    <input type="hidden" name="cho_City" value="成都市">
+                  </span>
+                  <span id="Area">
+                    <i>请选择地区</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
 
+                    </ul>
+                    <input type="hidden" name="cho_Area" value="">
+                  </span>
+                  <span id="Insurer">
+                    <i>请选择乡镇街道</i>
+                    <ul>
+                      <li><a href="javascript:void(0)" alt="请选择乡镇街道">请选择乡镇街道</a></li>
+                    </ul>
+                    <input type="hidden" name="cho_Insurer" value="">
+                  </span>
+                </div>
+              </div> 
+          </div>
+        </div>
+        <div class="am-cf"></div>
+        <div class="am-u-sm-2 am-text-right">姓名</div>
+        <div class="am-u-sm-10">
+          <input type="text" placeholder="请填写您的姓名" class="uname" name='name' required>
+        </div>
+        <div class="am-cf"></div>
+        <div class="am-u-sm-2 am-text-right">电话</div>
+        <div class="am-u-sm-10">
+          <input type="text" placeholder="请填写能够联系到您的电话号码" name='GoodsPhone' class="uphone">
+        </div>
+        <div class="am-cf"></div>
+        <div class="am-u-sm-2 am-text-right">备用</div>
+        <div class="am-u-sm-10">
+          <input type="text" placeholder="备用联系电话（选填）" name='SparePhone'> 
+        </div>
+        <div class="am-cf"></div>
+        <div class="am-u-sm-12">
+         <label class="am-checkbox am-success am-margin-left">
+            设为默认 <input type="checkbox" name="IsDefault" value="1" data-am-ucheck>
+         </label>
+        </div>
         </fieldset>
         <button type="submit" class="am-btn am-btn-block bred" disabled>保存</button>
       </form>
     </div>
   </div>
 </body>
- <script src="skin/js/jquery.min.js"></script>
+<!--  <script src="skin/js/jquery.min.js"></script> -->
+<script type="text/javascript" src="skin/js/jquery-1.8.0.min.js"></script>
  <script src="skin/js/amazeui.min.js"></script>
  <script>
    $(function(){
       
       $('input[type="text"]').keyup(function() { 
         var name = $('.uname').val();
-        var address = $('.uaddress').val();
+        // var address = $('.uaddress').val();
         var phone = $('.uphone').val();
-         if(name!='' && address!='' && phone!=''){
-            $('.bred').removeAttr('disabled')
+        var city = $('input[name="cho_City"]').val();
+        var area = $('input[name="cho_Area"]').val();
+        var Insurer = $('input[name="cho_Insurer"]').val();
+        if(name!='' && area!='' && phone!='' && Insurer!='请选择乡镇街道'){
+            $('.bred').removeAttr('disabled');
       }else{
            $('.bred').attr('disabled','disable');
       } 
       });
-  
-      $('.afcheck').bind('submit',function() { 
+      $('.liststyle span').live('click',function(){
+        if(name!='' && area!='' && phone!='' && Insurer!='请选择乡镇街道'){
+           $('.bred').removeAttr('disabled');
+         }else{
+           $('.bred').attr('disabled','disable');
+      }
+      })
+      $('.afcheck').live('submit',function() { 
         
         if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test($('.uphone').val()))){
           alert("请输入正确电话号码");
@@ -55,4 +110,6 @@
       });
    })
  </script>
+<script type="text/javascript" src="skin/js/city4.city.js"></script>
+<script type="text/javascript" src="skin/js/city4.js"></script>
 </html>
