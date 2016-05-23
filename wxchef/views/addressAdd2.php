@@ -69,7 +69,7 @@
          </label>
         </div>
         </fieldset>
-        <button type="submit" class="am-btn am-btn-block bred" disabled>保存</button>
+        <button type="submit" class="am-btn am-center am-btn-block bred" style="width: 90%" disabled>保存</button>
       </form>
     </div>
   </div>
