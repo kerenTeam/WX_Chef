@@ -24,7 +24,6 @@
   <div data-am-widget="list_news" class="am-list-news am-list-news-default admt" >
     <!-- 待评价 -->
     <?php if(!empty($record)):?>
-      
       <?php foreach($record as $key=>$value):?>
          <div class="am-list-news-bd am-shadow">
       
@@ -99,7 +98,7 @@
         <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
         <p class="orderbot am-cf">
 
-        <span class="am-margin-left-sm gray am-text-sm">订单号：20160010504</span>
+        <span class="am-margin-left-sm gray am-text-sm">订单号：<?=$value['BillNo'];?></span>
         <?php switch ($value['State']) {
             case '0':
               if($value['PaymentMethod'] == ''){

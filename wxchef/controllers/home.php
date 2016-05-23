@@ -376,6 +376,7 @@ class home extends CI_Controller
 				$foodid = $_POST['foodid'];
 				$numbers = $_POST['numbers'];
 				$code = $_POST['code'];
+
 				$data = array();
 				foreach($foodid as $k=>$v){
 					$data[$k]['foodid'] = $foodid[$k];	
@@ -415,9 +416,9 @@ class home extends CI_Controller
 						}
 						$f = array_merge($shoping,$c);
 					 	$this->session->set_userdata('shoping',$f,0);
+
+					 	
 					}
-
-
 				redirect('home/cart');
 				}
 			exit;
@@ -569,6 +570,40 @@ class home extends CI_Controller
 		redirect('home/cart');
 	}
 
+
+	// 减去菜品数量
+	public function deletecart()
+	{
+		if($_POST){
+			$foodid = $_POST['foodid'];
+			$numbers = $_POST['numbers'];
+			$code = $_POST['code'];
+			$data = array();
+			foreach($foodid as $k=>$v){
+				$data[$k]['foodid'] = $foodid[$k];	
+				$data[$k]['numbers'] = $numbers[$k];	
+				$data[$k]['code'] = $code[$k];	
+			}
+			if(isset($_SESSION['shoping'])){
+				$shoping = $_SESSION['shoping'];
+				foreach($shoping as $key=>$value){
+					foreach($data as $k=>$v){
+						if($value['foodid'] == $v['foodid']){
+							$shoping[$key]['number'] = $v['numbers'];
+						}
+					}
+				}
+				// 如果数量为0就删除该数组
+				foreach ($shoping as $key => $val) {
+					if($val['number'] == '0'){
+						unset($shoping[$key]);
+					}
+				}
+			 	$this->session->set_userdata('shoping',$shoping);
+			}
+			exit;
+		}
+	}
 
 	 //支付订单
     public function payOrder(){
