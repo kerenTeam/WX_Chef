@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="skin/css/city.css">
 <body>
   <style>ul,.am-list{margin-bottom:-0.8rem!important;}</style>
   <header data-am-widget="header" class="am-header am-header-default topform">
@@ -99,7 +100,7 @@
         <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
         <p class="orderbot am-cf">
 
-        <span class="am-margin-left-sm gray am-text-sm">订单号：<?=$value['BillNo'];?></span>
+        <span class="am-margin-left-sm gray am-text-sm orderNum">订单号：<?=$value['BillNo'];?></span>
         <?php switch ($value['State']) {
             case '0':
               if($value['PaymentMethod'] == ''){

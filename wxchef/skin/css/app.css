@@ -471,8 +471,8 @@ body {
 .tkcontent {
     position: absolute;
     top: 13%;
-    left: 13%;
-    right: 13%;
+    left: 8%;
+    right: 8%;
 }
 
 .tkcontent img {
@@ -2487,11 +2487,23 @@ figure a:hover figcaption {
     .tktxt div {
         margin-top: 50%;
     }
+    #Insurer {
+        min-width: 105px;
+    }
 }
 
 @media only screen and (max-width:375px) {
     .moa {
         margin-top: 4px;
+    }
+    #city {
+        min-width: 60px;
+    }
+    #Area {
+        min-width: 80px;
+    }
+    #Insurer {
+        min-width: 90px;
     }
     .srNum {
         margin-left: 2rem;
@@ -2566,6 +2578,13 @@ figure a:hover figcaption {
 @media only screen and (max-width:320px) {
     .topform button {
         left: 40px;
+    }
+    .orderNum {
+        width: 158px;
+        overflow: hidden;
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
     .am-icon-refresh {
         right: 10rem;
