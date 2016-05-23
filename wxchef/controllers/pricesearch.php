@@ -53,10 +53,10 @@ class pricesearch extends CI_Controller {
 	{
 			$a['Name'] = $_POST['name'];
 			$a['UserPhone'] = $_SESSION['phone'];
-			$a['Address'] = $_POST['address'];
+			$a['Address'] = $_POST['city'].$_POST['area'].$_POST['Insurer'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
 			$a['SparePhone'] = '';
-			$a['IsDefault'] = 0;
+			$a['IsDefault'] = 1;
 		
 			$b = '['.json_encode($a).']';
 			$postadd = curl_post(POSTAPI."API_MenberAddress?dis=xz&phone=".$_SESSION['phone'],$b);

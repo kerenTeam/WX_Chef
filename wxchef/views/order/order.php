@@ -215,7 +215,6 @@
 
          <?php else:?>
             <!--------------    UserPhone   -------------->
-            <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
    
                  <!-- 已添加过地址 -->
 
@@ -279,6 +278,7 @@
           </div>
        
       </div>
+      <input type="hidden" name="UserPhone" value="<?=$_SESSION['phone'];?>"/>
 
       <?php if(!empty($address)):?>
           <button type="submit" class="am-u-sm-12 am-btn bgreen os" id="pay">去支付</button>
@@ -330,23 +330,23 @@
         var curTime = hour+":"+minutes;
          html=year+'-'+month+'-'+day;
        adate.attr('placeholder',html+" 默认");
-       adate.val(html+" 默认");
+       adate.val(html);
          // 弹出添加地址弹框
-         $('#model').click(function() {
+         $('#model').live('click',function() {
           //$('.tkp').css('display','');
           // $('body').css('overflow-y','hidden');
           $('.tk').fadeIn(400);
         });
-         $('.closem').click(function() { 
+         $('.closem').live('click',function() { 
           // $('body').css('overflow-y','auto');
           $('.tk').fadeOut(400); 
         });
 
-        $('.fclick').click(function() {
+        $('.fclick').live('click',function() {
           console.log('.fclick');
            $('#fpc').slideToggle(400);          
         });
-        $('#fpc li').click(function() {
+        $('#fpc li').live('click',function() {
           $('#fpc').slideUp(400);
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
             discount = $('#youhui').text();
@@ -359,11 +359,16 @@
 
         });
 
-         $('#jifen').click(function(){
+         $('#jifen').live('click',function(){
+
            if($('#jifen').prop("checked")){
+
            // alert(jifenmoney);
             jifenmoney = $('#jifenmoney').text();
             payable = (amount - discount - jifenmoney).toFixed(2);
+            if(payable<0){
+               payable = 0;
+            }
             $('#pricetotal').text(payable);
             $('#yfje').val(payable);
     
@@ -373,7 +378,7 @@
             $('#yfje').val(payable);
         }
         })
-        $('#sub').click(function() { 
+        $('#sub').live('click',function() { 
             var phone = $('input[type="tel"]').val();
             var area = $('input[name="cho_Area"]').val();
             var Insurer = $('input[name="cho_Insurer"]').val();
@@ -433,7 +438,7 @@
                $(this).addClass('am-danger');
                $('#timeEat').val($(this).html());
               }); 
-            $('.firstPay').click(function(){
+            $('.firstPay').live('click',function(){
               if(!$('#mainContent').has('li').length){
                 alert('请添加服务地址');
               }
@@ -453,7 +458,7 @@ function getorders(){
                success: function(msg){ 
                   console.log(msg);
                   $('#mainContent').html('<ul class="am-list am-margin-top" style="margin-bottom:0;"><li class="am-g am-list-item-datedlpt2 mbtop"><div class="am-margin-top-sm am-margin-left-sm">'+name+'&nbsp;&nbsp;'+phone+'<br></div><a href="javascript:;" class="am-list-item-hd black adda">'+city+area+Insurer+'<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'+msg+'" data-am-ucheck checked></label></a></li></ul><a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>'); 
-                $('#pay[type=button]').attr('type','submit');
+                $('#pay[type=button]').prop('type','submit');
                }
             });
             $('.tk').fadeOut(400);

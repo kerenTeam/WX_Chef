@@ -164,14 +164,12 @@ class orderWXPay extends CI_Controller{
             }
             // 地址
             $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-         
             // 支付方式
             $foodJsondata['PaymentMethod'] = '';
             $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
             //得到金额
             $isOrderOk=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);
-            
-             $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isOrderOk))),TRUE);
+            $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isOrderOk))),TRUE);
    
              $this->load->view('order/payOrder');
         }
