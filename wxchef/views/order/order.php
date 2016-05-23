@@ -2,8 +2,12 @@
   .adda:hover,.adda:focus{
     color:black!important;
   }
+  .liststyle i,.liststyle input{
+    color:#333!important;
+  }
 </style>
 <body>
+  <link href="skin/css/city.css" rel="stylesheet" type="text/css" />
   <link href="skin/css/common.css" rel="stylesheet" type="text/css" />
   <!-- header -->
   <header data-am-widget="header" am-header-fixed class="am-header am-header-default topform">
@@ -163,14 +167,38 @@
            <div class="tktxt2">
               <div class="am-text-center am-text-lg am-margin-top">地址添加</div>
               <div class="am-g ammake am-padding-sm">
+               <div class="demo">     
+                  <div class="infolist"> 
+                    <div class="liststyle">
+                      <span id="city">
+                        <i>成都市</i>
+                        <ul>
+                          <li><a href="javascript:void(0)" alt="请选择城市">成都市</a></li>
+                        </ul>
+                        <input type="hidden" name="cho_City" value="成都市">
+                      </span>
+                      <span id="Area">
+                        <i>请选择地区</i>
+                        <ul>
+                          <li><a href="javascript:void(0)" alt="请选择地区">请选择地区</a></li>
+
+                        </ul>
+                        <input type="hidden" name="cho_Area" value="">
+                      </span>
+                      <span id="Insurer">
+                        <i>请选择街道</i>
+                        <ul>
+                          <li><a href="javascript:void(0)" alt="请选择乡镇街道">请选择街道</a></li>
+                        </ul>
+                        <input type="hidden" name="cho_Insurer" value="">
+                      </span>
+                    </div>
+                  </div> 
+          </div>
                 <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required id='GoodsPhone'/>
                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required id='name'/>
-                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required id='Address'/>
-               <!-- <label class="am-checkbox am-success am-u-sm-12">
-                    是否需要服务员?<input type="checkbox" class="green" name="waiter" value="1" data-am-ucheck>
-                </label> -->
-               
-
+                 <!-- <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required id='Address'/> --> 
+              
               </div> 
             </div>
 
@@ -261,7 +289,8 @@
     </form>
  
   </body>
- <script src="skin/js/jquery.min.js"></script>
+<!--  <script src="skin/js/jquery.min.js"></script> -->
+<script type="text/javascript" src="skin/js/jquery-1.8.0.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
 <script type="text/javascript" src="skin/js/date.js" ></script>
 <script type="text/javascript" src="skin/js/iscroll.js" ></script>
@@ -285,11 +314,15 @@
       
       $(function(){
         var adate = $('#beginTime');
-     var html;
-      var date = new Date();
-      var month = date.getMonth() + 1;
-      var day = date.getDate();
-      var year = date.getFullYear(); 
+        var html;
+        var date = new Date();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var year = date.getFullYear(); 
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var curTime = hour+":"+minutes;
+        console.log(curTime)
       html=year+'-'+month+'-'+day;
      adate.attr('placeholder',html+" 默认");
      adate.val(html);
@@ -334,16 +367,19 @@
         })
         $('#sub').click(function() { 
             var phone = $('input[type="tel"]').val();
-            if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
-            alert('请输入正确的电话号码');
-            $('.ofp').focus();
-              return false;
-          }
-          if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''){
+            var area = $('input[name="cho_Area"]').val();
+            var Insurer = $('input[name="cho_Insurer"]').val();
+     
+          if( $('.ofp').val()==''||$('.ofa').val()==''||$('.ofn').val()==''||area==''||Insurer=='请选择乡镇街道'){
               alert('还有信息未输入');
               $(this).focus();
               return false;
             }
+          if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+            alert('请输入正确的电话号码');
+            $('.ofp').focus();
+              return false;
+          }
           else{
             getorders();
           }
@@ -354,6 +390,7 @@
             if($('#timeEat').val()==''){
               $('#pay').attr('disabled','disabled');
             }
+
             $('td').click(function(event) { 
                $('#pay').removeAttr('disabled');
               $('td').removeClass('am-danger');
@@ -369,15 +406,17 @@
 
 function getorders(){
             var name=$('#name').val();
-            var address=$('#Address').val();
+            var city = $('input[name="cho_City"]').val();
+            var area = $('input[name="cho_Area"]').val();
+            var Insurer = $('input[name="cho_Insurer"]').val();
             var phone=$('#GoodsPhone').val(); 
             $.ajax({
                type: "POST",
                url: "<?=site_url('pricesearch/payOrder');?>",
-               data: 'GoodsPhone='+phone+"&address="+address+"&name="+name,
+               data: 'GoodsPhone='+phone+"&city="+city+"&area="+area+"&Insurer="+Insurer+"&name="+name,
                success: function(msg){ 
                   console.log(msg);
-                  $('#mainContent').html('<ul class="am-list am-margin-top" style="margin-bottom:0;"><li class="am-g am-list-item-datedlpt2 mbtop"><div class="am-margin-top-sm am-margin-left-sm">'+name+'&nbsp;&nbsp;'+phone+'<br></div><a href="javascript:;" class="am-list-item-hd black adda">'+address+'<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'+msg+'" data-am-ucheck checked></label></a></li></ul><a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>'); 
+                  $('#mainContent').html('<ul class="am-list am-margin-top" style="margin-bottom:0;"><li class="am-g am-list-item-datedlpt2 mbtop"><div class="am-margin-top-sm am-margin-left-sm">'+name+'&nbsp;&nbsp;'+phone+'<br></div><a href="javascript:;" class="am-list-item-hd black adda">'+city+area+Insurer+'<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'+msg+'" data-am-ucheck checked></label></a></li></ul><a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>'); 
                 $('#pay[type=button]').attr('type','submit');
                }
             });
@@ -386,4 +425,6 @@ function getorders(){
  
 
     </script> 
+<script type="text/javascript" src="skin/js/city4.city.js"></script>
+<script type="text/javascript" src="skin/js/city4.js"></script>
 </html>

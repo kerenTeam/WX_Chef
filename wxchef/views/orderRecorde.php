@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="skin/css/city.css">
 <body>
   <style>ul,.am-list{margin-bottom:-0.8rem!important;}</style>
   <header data-am-widget="header" class="am-header am-header-default topform">
@@ -190,4 +191,6 @@
   })
   </script>
 </body>
+<script type="text/javascript" src="skin/js/city4.city.js"></script>
+<script type="text/javascript" src="skin/js/city4.js"></script>
 </html>
