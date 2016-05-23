@@ -321,8 +321,9 @@
         var year = date.getFullYear(); 
         var hour = date.getHours();
         var minutes = date.getMinutes();
-        var curTime = hour+":"+minutes;
-        console.log(curTime)
+         var b =(minutes <10) ? '0'+minutes : minutes;
+         minutes =b;
+        var curTime = hour+":"+minutes;  
       html=year+'-'+month+'-'+day;
      adate.attr('placeholder',html+" 默认");
      adate.val(html);
@@ -346,6 +347,9 @@
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
             discount = $('#youhui').text();
             payable = (amount - discount - jifenmoney).toFixed(2);
+            if(payable<0){
+               payable = 0;
+            }
             $('#pricetotal').text(payable);
             $('#yfje').val(payable);
 
@@ -389,9 +393,18 @@
             $('#endTime').date({theme:"datetime"});
             if($('#timeEat').val()==''){
               $('#pay').attr('disabled','disabled');
-            }
-
-            $('td').click(function(event) { 
+            } 
+            $('td').each(function(){ 
+              if($(this).html()>curTime){
+                $(this).addClass('can');
+              }else{
+                $(this).attr({
+                  disabled: 'disabled'
+                });
+                $(this).css('color','#eee')
+              }
+            })
+            $('td.can').click(function(event) { 
                $('#pay').removeAttr('disabled');
               $('td').removeClass('am-danger');
               $(this).addClass('am-danger');
