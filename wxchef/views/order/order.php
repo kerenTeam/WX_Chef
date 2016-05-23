@@ -415,7 +415,9 @@
                  $("td").css('color','')
                  $('td').removeAttr('disabled').addClass('can'); 
              }else{
+              $('td').removeClass('can am-danger');
               $('td').each(function(){ 
+
                 if($(this).html()>curTime){
                   $(this).addClass('can');
                 }else{
