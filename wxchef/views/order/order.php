@@ -330,23 +330,23 @@
         var curTime = hour+":"+minutes;
          html=year+'-'+month+'-'+day;
        adate.attr('placeholder',html+" 默认");
-     // adate.val(html);
+       adate.val(html+" 默认");
          // 弹出添加地址弹框
-         $('#model').live('click',function() {
+         $('#model').click(function() {
           //$('.tkp').css('display','');
           // $('body').css('overflow-y','hidden');
           $('.tk').fadeIn(400);
         });
-         $('.closem').live('click',(function() { 
+         $('.closem').click(function() { 
           // $('body').css('overflow-y','auto');
           $('.tk').fadeOut(400); 
         });
 
-        $('.fclick').live('click',function() {
+        $('.fclick').click(function() {
           console.log('.fclick');
            $('#fpc').slideToggle(400);          
         });
-        $('#fpc li').live('click',function() {
+        $('#fpc li').click(function() {
           $('#fpc').slideUp(400);
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
             discount = $('#youhui').text();
@@ -359,7 +359,7 @@
 
         });
 
-         $('#jifen').live('click',function(){
+         $('#jifen').click(function(){
            if($('#jifen').prop("checked")){
            // alert(jifenmoney);
             jifenmoney = $('#jifenmoney').text();
@@ -373,7 +373,7 @@
             $('#yfje').val(payable);
         }
         })
-        $('#sub').live('click',function() { 
+        $('#sub').click(function() { 
             var phone = $('input[type="tel"]').val();
             var area = $('input[name="cho_Area"]').val();
             var Insurer = $('input[name="cho_Insurer"]').val();
@@ -414,7 +414,18 @@
               if(html!=$('#beginTime').val()){ 
                  $("td").css('color','')
                  $('td').removeAttr('disabled').addClass('can'); 
-             }    
+             }else{
+              $('td').each(function(){ 
+                if($(this).html()>curTime){
+                  $(this).addClass('can');
+                }else{
+                  $(this).attr({
+                    disabled: 'disabled'
+                  });
+                  $(this).css('color','#eee')
+                }
+              })
+             }   
              }) 
               $('td.can').live('click',function(event) { 
                $('#pay').removeAttr('disabled');
@@ -422,7 +433,7 @@
                $(this).addClass('am-danger');
                $('#timeEat').val($(this).html());
               }); 
-            $('.firstPay').live('click',function(){
+            $('.firstPay').click(function(){
               if(!$('#mainContent').has('li').length){
                 alert('请添加服务地址');
               }
