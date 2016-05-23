@@ -18,8 +18,10 @@ class Order extends CI_Controller
 
 	// 宴席
 	function custom(){
+		$cus = file_get_contents(POSTAPI.'API_Food?dis=taocan');
+		$data['cus'] = json_decode(json_decode($cus),true);
 
-		$this->load->view('order/custom');
+		$this->load->view('order/custom',$data);
 		$this->load->view('footer');
 	}
 
