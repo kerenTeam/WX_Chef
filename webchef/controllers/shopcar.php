@@ -45,6 +45,37 @@ class Shopcar extends CI_Controller
 			$data['carts'] = '';
 		}
 		// 服务员
+		if(isset($_SESSION['witer'])){
+			if($_SESSION['witer'] == ''){
+				$data['witer'] = '';
+			}else{
+				$data['witer'] = $_SESSION['witer'];
+			}
+		}else{
+			$data['witer'] = '';
+		}
+		// 伴餐
+		if(isset($_SESSION['eleg'])){
+			if($_SESSION['eleg'] == ''){
+				$data['eleg'] = '';
+			}else{
+				$data['eleg'] = $_SESSION['eleg'];
+			}
+		}else{
+			$data['eleg'] = '';
+		}
+		// 庆典
+		if(isset($_SESSION['ceremoney'])){
+			if($_SESSION['ceremoney'] == ''){
+				$data['cerearr'] = '';
+			}else{
+				$data['cerearr'] = $_SESSION['ceremoney'];
+			}
+		}else{
+			$data['cerearr'] = '';
+		}
+		// echo "<pre>";
+		// var_dump($data);
 		$this->load->view('shopcar/shopcar',$data);
 		$this->load->view('footer');
 	}

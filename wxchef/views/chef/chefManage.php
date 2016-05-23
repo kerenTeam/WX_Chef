@@ -11,11 +11,14 @@
     </h1>
   </header> 
   <?php if(empty($chef)):?>
-    <div class="am-padding-sm">您没有订单！</div>
-
+    <div class="am-padding-sm manageOrder">您没有订单！ <div class="manageOrderStatus"><a  href="javacript:;" onclick='myrefresh();' class="btn am-btn am-btn-warning" title="">刷新</a></div>
+</div>
+	
+	
   <?php else:?>
 
-  <div class="am-padding-sm">您有订单啦！</div>
+  <div class="am-padding-sm manageOrder">您有订单啦！  <div class="manageOrderStatus"><a  href="javacript:;" onclick='myrefresh();' class="btn am-btn am-btn-warning" title="">刷新</a></div>
+</div>
 
 
   <?php foreach($chef as $val):?>

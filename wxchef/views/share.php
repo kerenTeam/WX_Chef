@@ -1,7 +1,7 @@
 <body class="am-shadow">
     <header data-am-widget="header" class="am-header am-header-default topform">
       <div class="am-header-left am-header-nav">
-        <a href="javascript:" onclick="<?php echo site_url('home/orderR')?>">
+        <a href="javascript:" onclick="<?php echo site_url('home/orderRe')?>">
           <i class="am-header-icon am-icon-chevron-left"></i>
         </a>
       </div>
@@ -20,32 +20,37 @@
       <a href="javascript:;" class="share" id="share">分享</a>
     </div>
     <!-- footer -->
-    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
-      <ul class="am-navbar-nav am-cf am-avg-sm-4 am-shadow">
+ <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default nav-bot">
+      <ul class="am-navbar-nav am-cf am-avg-sm-5 am-shadow">
         <li >
-      <a href="<?php echo site_url('home/index')?>">
-        <span class=""><img src="skin/img/home1.png" alt=""></span>
-        <span class="am-navbar-label">首页</span>
-      </a>
-    </li>
-    <li>
-      <a href="<?php echo site_url('home/cart')?>">
-        <span class=""><img src="skin/img/clz.png" alt=""></span>
-        <span class="am-navbar-label">菜篮子</span>
-      </a>
-    </li>
-    <li>
-      <a href="<?php echo site_url('home/search')?>">
-        <span class=""><img src="skin/img/ss.png" alt=""></span>
-        <span class="am-navbar-label">搜索</span>
-      </a>
-    </li>
-    <li>
-      <a href="<?php echo site_url('home/ucent')?>" class="active">
-        <span class=""><img src="skin/img/gr2.png" alt=""></span>
-        <span class="am-navbar-label">我的</span>
-      </a>
-    </li>
+          <a href="<?php echo site_url('home/index')?>" class="active">
+            <span class=""><img src="skin/img/home2.png" alt=""></span>
+            <span class="am-navbar-label">首页</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('home/cart')?>">
+            <span class=""><img src="skin/img/clz.png" alt=""></span>
+            <span class="am-navbar-label">菜篮子</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('home/find')?>">
+            <span class="find">发现</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('home/customServ')?>">
+            <span class=""><img src="skin/img/kf.png" alt=""></span>
+            <span class="am-navbar-label">客服</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('home/ucent')?>">
+            <span class=""><img src="skin/img/gr1.png" alt=""></span>
+            <span class="am-navbar-label">我的</span>
+          </a>
+        </li>
       </ul>
     </div>
 </body>

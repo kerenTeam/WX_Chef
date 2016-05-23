@@ -84,6 +84,7 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 defined('randNms')             OR define('randNms', rand(100000,999999)); //长度为6位的随机数
+defined('DeBug')             OR define('DeBug', 0); //1 开启Debug   0关闭
 
 defined('IP')                  OR define('IP','http://192.168.199.154'); //211.149.195.183:88
 defined('POSTAPI')             OR define('POSTAPI',"http://192.168.199.154/API/");

@@ -1,6 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+if (DeBug == 1) {
+	//报告所有错误
+    error_reporting(E_ALL);
+} else if (DeBug == 0) {
+	//禁用错误报告
+    error_reporting(0);
+} else {
+	//报告运行时错误
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+}
+
+
 class pricesearch extends CI_Controller {
 
 	function __construct()
@@ -114,6 +127,7 @@ class pricesearch extends CI_Controller {
 
 			$jsonData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($arr))))));
 			$comment = curl_post(POSTAPI.'API_SingleFoodEvaluate',$jsonData);
+
 			if($comment == 1){
 				if(isset($path)){
 					if(count($path) > 1){
@@ -140,7 +154,7 @@ class pricesearch extends CI_Controller {
 			$arr['CommentState'] = $_POST['ratfen'];
 			$arr["Comment"] = $_POST['comment'];
 			$arr['PoorderId'] = $_POST['oid'];
-
+			// var_dump($_POST['routes']);
 			if(isset($_POST['routes'])){
 				if($_POST['routes'] != ''){
 				$imgarr = explode(',',$_POST['routes']);
@@ -165,6 +179,7 @@ class pricesearch extends CI_Controller {
 			
 			$jsonData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($arr))))));
 			$comment = curl_post(POSTAPI.'API_Evaluate?dis=pf',$jsonData);
+		
 			if($comment == 1){
 				if(isset($path)){
 					if(count($path) > 1){

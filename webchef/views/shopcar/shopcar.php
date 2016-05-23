@@ -42,7 +42,7 @@
 						echo "套餐";
 						break;
 					case 'jincai':
-						echo "点菜";
+						echo "净菜";
 						break;
 				}?></h4></li>
 				
@@ -84,66 +84,56 @@
 						</li>
 					<?php endforeach;?>
 				<?php endforeach;?>
-				<li><h4 class="am-text-primary">套餐</h4></li>
+				<!-- 服务 -->
+			<?php if(!empty($witer) || !empty($eleg) || !empty($cerearr)):?> 
+				<li><h4 class="am-text-primary">服务</h4></li>
+				<!-- 伴餐 -->
+				<?php if(!empty($eleg)):?>
 				<li>
 					<label class="am-checkbox am-danger cheall">
 						<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
 					</label>
-					<a href="<?=site_url('order/info');?>">
-						<img src="skin/img/caipintu.jpg" alt="">
-					</a>
-					<span>
-						<a href="<?=site_url('order/info');?>"><b>回锅肉，</b>口味独特,色泽红亮,肥而不腻入口浓香.简单搞定<br/> 身体必备营养物质</a>
-					</span>
-					<p class="p1">￥<span class="p1span">30.45</span></p>
-					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
-					</div>
-					<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
-					<a href="javascript:;" class="you_a">删除</a>
-				</li>
-
-				<li><h4 class="am-text-primary">服务</h4></li>
-				<li>
-					<label class="am-checkbox am-danger cheall">
-						<input class="fuwuyuan cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
-					</label>
 					<span class="serTit">
-						钢琴艺术家
+						<?=$eleg['title'];?>
 					</span>
-					<p class="serPrice p1 am-hide"><span class="p1span">80</span></p>
+					<p class="serPrice p1 am-hide"><span class="p1span"><?=$eleg['money'];?></span></p>
 					<div class="jiajian am-hide">
 						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
 					</div>
-					<p class="bancan p2">￥ <span class="p2span">80.00</span> </p>
+					<p class="bancan p2">￥ <span class="p2span"><?=$eleg['money'];?></span> </p>
 					<a href="javascript:;" class="you_a">删除</a>
 				</li>
+				<?php endif;?>
+				<!-- 伴餐end -->
+				<!-- 服务员 -->
 				<li>
 					<label class="am-checkbox am-danger cheall">
-						<input class="fuwuyuan cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
+						<input class="<?php if(!$witer['boy']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
 					</label>
 					<span class="serTit">
 						服务员（男）
 					</span>
 					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
 					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['boy'];?>"><img class="jia"  src="skin/img/jia.jpg">
 					</div>
 					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
 				</li>
 				<li>
 					<label class="am-checkbox am-danger cheall">
-						<input class="fuwuyuan cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
+						<input class="<?php if(!$witer['girl']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
 					</label>
 					<span class="serTit">
 						服务员（女）
 					</span>
 					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
 					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['girl'];?>"><img class="jia"  src="skin/img/jia.jpg">
 					</div>
 					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
 				</li>
+				<!-- 服务员end -->
+			<?php endif;?>
 			</ul>
 			<!-- 结算 -->
 			<div class="jiesuan">

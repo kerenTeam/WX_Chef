@@ -3,6 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
 * 
 */
+
+if (DeBug == 1) {
+	//报告所有错误
+    error_reporting(E_ALL);
+} else if (DeBug == 0) {
+	//禁用错误报告
+    error_reporting(0);
+} else {
+	//报告运行时错误
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+}
+
+
+
 class chef extends CI_Controller
 {
 	

@@ -13,6 +13,33 @@
   </h1>
 
 </header>
+<script>
+// 增加菜品数量
+  function addcart(){
+       $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/addcart'); ?>',
+            data: $('#question').serialize(),
+            success: function(data) {
+               // console.log(data);
+            }
+        });
+         
+  }
+  // 减少菜品数量
+ function delcart(){
+        $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/deletecart'); ?>',
+            data: $('#question').serialize(),
+            success: function(data) {
+               // console.log(data);
+            }
+        });
+  }
+
+
+</script>
 
 <form action="<?=site_url('home/addcart');?>" method='post'  id='question' enctype="multipart/form-data">
   <!-- 菜品栏目 -->
@@ -49,6 +76,7 @@
             <div class=" am-u-sm-8 am-list-main am-padding-right-xs">
              <a href="<?php echo site_url('home/food?id=').$v['FoodId'].'&number=&shopid=';?>" class="gray">
               <h3 class="am-list-item-hd black"><?=$v['FoodName'];?></h3>
+
               <input type="hidden" name="foodid[]" value="<?=$v['FoodId'];?>">
               <div class="am-list-item-text"><strong>特点：</strong><?=$v['FoodTrait'];?>。</div>
               <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div>
@@ -69,9 +97,11 @@
             <?php endif;?>
               <div class="foodNum">
             
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
+                <span class="reduce am-icon-minus-circle" onClick="handle(this, false),delcart();"></span>
+                
                 <input type="text" class="numTxt" name="numbers[]" onkeydown="keydown(this)" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" value="<?php if(isset($v['number'])){echo $v['number'];}else{echo '0';}?>">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
+                
+                <span class="add am-icon-plus-circle"  onClick="handle(this, true)"></span><!--  onClick="handle(this, true)" -->
               </div>
             </div>
           </li>
@@ -99,6 +129,7 @@
       </div>
   </div>
 </form>
+
 
 <script src="skin/js/num_cailan.js"></script>
 <script src="skin/js/jqueryLazyload.js"></script>

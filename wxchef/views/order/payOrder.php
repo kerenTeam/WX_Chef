@@ -149,11 +149,11 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 
               <div class="am-text-center am-text-lg am-margin-sm">会员卡支付</div>
               <!-- <hr data-am-widget="divider" style="margin:0;" class="am-divider am-divider-default" /> -->
-              <div class="am-text-center am-margin">
+             <!--  <div class="am-text-center am-margin">
 
                 <strong>至尊金卡</strong><br>
                 当前余额<strong class="am-margin-right am-icon-cny pink">300</strong>
-              </div>
+              </div> -->
               </div>
 
           <button type='button' class="am-u-sm-6 bno gray closem">取消</button>
@@ -181,9 +181,9 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
  
             </div>
       <?php else: ?>
-            <a href="" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <a href="javascript:;" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt="">&nbsp;微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
-            <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">&nbsp;支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <a href="javascript:;" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">&nbsp;支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             
       <?php endif ?>
       <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/op.png" class="payimg" alt="">&nbsp;线下支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
