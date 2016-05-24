@@ -62,6 +62,9 @@ $('#canjifen').click(function(){
 	}else{
 		jifenNum = (parseFloat(totalPrice) - coupon).toFixed(2);
 	}
+	if(jifenNum <= 0){
+		jifenNum = 0;
+	}
 	sum.html(jifenNum);
 });
 // 优惠券
@@ -71,6 +74,9 @@ $('.conponList').each(function(){
 		var couponList = parseFloat($(this).parent().find('.fanPrice').html());
 		coupon = couponList;
 		jifenNum = (parseFloat(totalPrice) - coupon - jifen).toFixed(2);
+		if(jifenNum <= 0){
+			jifenNum = 0;
+		}
 		sum.html(jifenNum);
 	});
 });

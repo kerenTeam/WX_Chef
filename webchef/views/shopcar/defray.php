@@ -253,7 +253,7 @@
 									<div class="am-panel-bd">
 										<label class="am-checkbox am-danger">
 											<input id="canjifen" type="checkbox" name="conpon" value="" data-am-ucheck>
-											<span class="am-text-danger">使用200积分可抵￥<span class="jifen">30</span></span>
+											<span class="am-text-danger">使用200积分可抵￥<span class="jifen">3000</span></span>
 										</label>
 									</div>
 								</div>
