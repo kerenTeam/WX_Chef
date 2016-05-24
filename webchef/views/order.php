@@ -66,7 +66,7 @@
 		<div class="center">
 			
 			<div class="content-nav">
-				<nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: 45}" data-am-sticky>
+				<nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: 0}" data-am-sticky>
 				<ul class="clear">
 				<?php foreach($cates as $v):?>
 					<li><a class="active" href="#<?=$v['foodcategoryid'];?>"><?=$v['name'];?></a></li>

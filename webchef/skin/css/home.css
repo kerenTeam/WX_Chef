@@ -58,6 +58,9 @@ body{
     border-radius: 5px;
 
 }
+a.am-btn{
+	color: #fff;
+}
 .unit{
 	margin-left:12%;
 }
@@ -463,7 +466,7 @@ body{
 .viewMenu{
 	position: absolute;
 	right: 20px;
-	bottom: 160px;
+	bottom: 100px;
 	background-color: rgba(0,0,0,.5);
 	padding: .5rem 1.5rem;
 	color: #fff;
@@ -485,6 +488,9 @@ body{
 .per-table{
 	color: #999999;
 }
+.per-table>td:first-child{
+	max-width: 35%;
+}
 .per-table h2{
 	margin: 0;
 	font-size: 18px;
@@ -493,10 +499,7 @@ body{
 	font-size: 16px;
 }
 .per-table a{
-	font-size: 16px;
-}
-table.middle>tbody>tr>td{
-	vertical-align: middle;
+	font-size: 14px;
 }
 /*详情*/
 .food-info{
@@ -1052,24 +1055,43 @@ table.middle>tbody>tr>td{
 }
 .ops_form{
 	margin-bottom: 30px;
+	background: #fff;
 }
 .orderaps{
 	min-height: 350px;
 	border: 1px solid #e5e5e5;
 	padding: 60px 100px;
 }
+.ops_ord{
+	position: relative;
+
+	color: #fff;
+	margin-bottom: 10px;
+}
 .ops_ord a{
 	display: block;
 }
 .ops_ord a:hover{
-	color: #ed3d3d;
+	/* color: #ed3d3d; */
+}
+.ops_ord .am-cf{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: rgba(0,0,0,.5);
+	z-index: 99;
 }
 .ops_ord a img{
 	max-width: 100%;
 }
-.ops_ord a p{
+.ops_ord p{
 	margin: 5px 0 0;
-	font-size: 18px;
+	font-size: 15px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 130px;
 }
 .ops_app{
 	padding-left: 30px;
@@ -1080,7 +1102,7 @@ table.middle>tbody>tr>td{
 .ops_star li img{
 	width: 20px;
 }
-.ops_star li .number{
+.ops_star li .number,.ops_app .number{
 	font-size: 18px;
 	display: inline-block;
 	width: 50px;
@@ -1690,4 +1712,10 @@ a.arrow{
 }
 .borBtm{
 	border-bottom: 1px solid #e5e5e5;
+}
+.deTime{
+	margin-top: 15px;
+}
+.deTime td.can{
+	cursor: pointer;
 }

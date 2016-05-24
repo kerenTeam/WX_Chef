@@ -35,61 +35,34 @@
               
               <!--  评价 -->
               <div class="appraise">
-                  <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1">
-                      <ul class="am-tabs-nav am-nav am-nav-tabs">
-                        <li class="am-active"><a href="javascript: void(0)">我的评价</a></li>
-                        <li><a href="javascript: void(0)">待评价</a></li>
-                      </ul>
-
-                      <div class="am-tabs-bd">
-                        <div class="am-tab-panel am-active">
-                            <table class="am-table am-table-striped am-table-hover">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 40%;">评价</th>
-                                        <th style="width: 40%;">评价人</th>
-                                        <th style="width: 20%;">菜品信息</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>好评</td>
-                                        <td><a href="javascript:;">某某商家人</a></td>
-                                        <td><a href="<?=site_url('order/info');?>" class="lcolor">尖椒回锅肉</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>好评</td>
-                                        <td><a href="javascript:;">某某商家人</a></td>
-                                        <td><a href="<?=site_url('order/info');?>" class="lcolor">尖椒回锅肉</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="am-tab-panel">
-                            <table class="am-table am-table-striped am-table-hover">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 50%;">菜品信息</th>
-                                        <th style="width: 30%;">金额</th>
-                                        <th style="width: 20%;">操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><a href="<?=site_url('order/info');?>" class="lcolor">尖椒回锅肉</a></td>
-                                        <td class="hcolor">￥30</td>
-                                        <td class="wcolor"><a href="<?=site_url('home/orderaps');?>" class="am-btn am-btn-warning am-btn-xs am-radius">去评价</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="<?=site_url('order/info');?>" class="lcolor">尖椒回锅肉</a></td>
-                                        <td class="hcolor">￥30</td>
-                                        <td class="wcolor"><a href="<?=site_url('home/orderaps');?>" class="am-btn am-btn-warning am-btn-xs am-radius">去评价</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                      </div>
+                  <div class="crr-tit clear">
+                    <ul>
+                        <li class="active">我的评价</li>
+                    </ul>
                   </div>
+                  <div class="per-basket">
+                      <!-- 没有订单的时候 -->
+                          <!-- <p><img src="skin/img/clz.png"> 您的菜篮子空空的哦，现在就去 <a href="javascript:;">订餐</a> 吧~</p> -->
+                        <table class="am-table am-table-striped am-table-hover middle">
+                        <tbody>
+                            <tr class="per-table">
+                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
+                                <td>
+                                    <p>订单号:25644448557</p>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
+                                </td>
+                                <td>
+                                    <p>提交时间:2016-05-23</p>
+                                    <p>预约时间:2016-05-23</p>
+                                </td>
+                                <td><span class="grey">好评</span></td>
+                                <td><a href="<?=site_url('order/info');?>" class="am-btn am-btn-danger am-radius">再来一单</a>
+                                <a href="javascript:;" class="am-btn am-btn-warning am-radius">删除</a></td>
+                            </tr>
+                          </tbody>
+                          </table>
               </div>
               <!-- 足迹 -->
               <div class="per-ctt">

@@ -50,87 +50,87 @@
                         <table class="am-table am-table-striped am-table-hover middle">
                         <tbody>
                             <tr class="per-table">
-                                <td class="old-food"><img src="skin/img/orderimg_03.png"></td>
+                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
                                 <td>
-                                    <h2>尖椒回锅肉</h2>
                                     <p>订单号:25644448557</p>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
                                 </td>
                                 <td>
-                                    <p>厨师:王大厨</p>
-                                    <p>服务员:张三</p>
+                                    <p>提交时间:2016-05-23</p>
+                                    <p>预约时间:2016-05-23</p>
                                 </td>
                                 <td><span class="grey">已评价</span></td>
-                                <td><a href="<?=site_url('order/info');?>" class="am-btn am-btn-danger am-radius">再来一单</a></td>
+                                <td><a href="<?=site_url('order/info');?>" class="am-btn am-btn-danger am-radius">再来一单</a>
+                                <a href="javascript:;" class="am-btn am-btn-warning am-radius">删除</a></td>
                             </tr>
 
                             <!-- 待付款 -->
                             
                             <tr class="per-table">
-                                <td class="old-food"><img src="skin/img/orderimg_03.png"></td>
+                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
                                 <td>
-                                    <h2>尖椒回锅肉</h2>
                                     <p>订单号:25644448557</p>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
                                 </td>
                                 <td>
-                                    <span class="hcolor am-text-xl">￥ 32</span>
+                                    <p>提交时间:2016-05-23</p>
+                                    <p>预约时间:2016-05-23</p>
                                 </td>
-                                <td>
+                                <td><span class="grey">代付款</span></td>
+                                <!-- <td>
                                     <a href="javascript:;" class="am-text-sm am-link-muted">取消订单</a>
-                                </td>
-                                <td><a href="<?=site_url('shopcar/defray');?>" class="am-btn am-btn-danger am-radius">去付款</a></td>
+                                </td> -->
+                                <td><a href="<?=site_url('shopcar/defray');?>" class="am-btn am-btn-danger am-btn-sm am-radius">去付款</a>
+                                <a href="javascript:;" class="am-btn am-btn-warning am-radius">取消订单</a></td>
                             </tr>
 
                             <!-- 待评价 -->
 
                             <tr class="per-table">
-                                <td class="old-food"><img src="skin/img/orderimg_03.png"></td>
+                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
                                 <td>
-                                    <h2>尖椒回锅肉</h2>
                                     <p>订单号:25644448557</p>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
                                 </td>
                                 <td>
-                                    <p>厨师:王大厨</p>
-                                    <p>服务员:张三</p>
+                                    <p>提交时间:2016-05-23</p>
+                                    <p>预约时间:2016-05-23</p>
                                 </td>
-                                <td>
-                                    <span class="hcolor am-text-xl">￥ 32</span>
-                                </td>
+                                <td><span class="grey">待评价</span></td>
                                 <td><a href="<?=site_url('home/orderaps');?>" class="am-btn am-btn-success am-radius">评价</a></td>
                             </tr>
 
                             <!-- 服务中 -->
 
                             <tr class="per-table">
-                                <td class="old-food"><img src="skin/img/orderimg_03.png"></td>
+                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
                                 <td>
-                                    <h2>尖椒回锅肉</h2>
                                     <p>订单号:25644448557</p>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
                                 </td>
                                 <td>
-                                    <p>厨师:王大厨</p>
-                                    <p>服务员:张三</p>
-                                </td>
-                                <td>
-                                    <span class="hcolor am-text-xl">￥ 32</span>
+                                    <p>提交时间:2016-05-23</p>
+                                    <p>预约时间:2016-05-23</p>
                                 </td>
                                 <td><span class="grey">服务中</span></td>
+                                <td></td>
                             </tr>
 
                             <!-- 待服务 -->
 
                             <tr class="per-table">
-                                <td class="old-food"><img src="skin/img/orderimg_03.png"></td>
+                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
                                 <td>
-                                    <h2>尖椒回锅肉</h2>
                                     <p>订单号:25644448557</p>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
                                 </td>
                                 <td>
-                                    <p>厨师:王大厨</p>
-                                    <p>服务员:张三</p>
+                                    <p>提交时间:2016-05-23</p>
+                                    <p>预约时间:2016-05-23</p>
                                 </td>
-                                <td>
-                                    <span class="hcolor am-text-xl">￥ 32</span>
-                                </td>
+                                <td><span class="grey">待服务</span></td>
                                 <td><a href="javascript:;" class="am-btn am-btn-default am-radius">退款</a></td>
                             </tr>
 
