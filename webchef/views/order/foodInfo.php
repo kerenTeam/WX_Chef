@@ -3,6 +3,12 @@
       .am-slider-default .am-control-thumbs li{
         width: 16.66%;
       }
+      .am-slider .am-slides img{
+        height: 400px;
+      }
+      .am-slider-default .am-control-thumbs img{
+        height: 70px;
+      }
     </style>
 
         

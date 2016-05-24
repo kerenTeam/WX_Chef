@@ -12,7 +12,7 @@
 <div class="center">
 				<div class="defray">
 					<h1>订单支付</h1>
-					<form class="am-form am-form-horizontal pay">
+					<form class="am-form am-form-horizontal pay" id="defrayForm">
 						<table class="am-table defr_tab middle">
 							<thead>
 								<tr>
@@ -150,26 +150,39 @@
 						<div class="am-g">
 						  <div class="am-u-sm-3">
 						    选择日期<br/>
-						    <p><input type="text" class="am-form-field" placeholder="选择要服务日期" id="my-start-2" required/></p>
+						    <p><input type="text" class="am-form-field deData" placeholder="选择要服务日期" id="my-start-2" required readonly/></p>
 						  </div>
-						  <div class="am-u-sm-3">
+						  <div class="am-u-sm-3 deTime am-hide">
 						    选择时间<br/>
-						    <p><select style="width: 100px;" required>
-						    	<option>10:00</option>
-						    	<option>11:00</option>
-						    	<option>11:30</option>
-						    	<option>12:00</option>
-						    	<option>12:30</option>
-						    	<option>14:30</option>
-						    	<option>15:00</option>
-						    	<option>16:00</option>
-						    	<option>17:00</option>
-						    	<option>18:00</option>
-						    	<option>18:30</option>
-						    	<option>19:00</option>
-						    	<option>19:30</option>
-						    	<option>20:00</option>
-						    </select></p>
+						    <input type="hidden" id="timeEat" name="time" value="">
+						    <div>
+						    	<table class="am-table am-table-bordered am-fl" style="width: 80%;margin-left:5px;">
+						          <tbody><tr>
+						            <td>10:00</td>
+						            <td>11:00</td>
+						            <td>11:30</td>
+						            <td>12:00</td>
+						        </tr>
+						        <tr>
+						            <td>12:30</td>
+						            <td>13:00</td>
+						            <td>14:30</td>
+						            <td>15:00</td>
+						        </tr>
+						        <tr>
+						            <td>16:00</td>
+						            <td>17:00</td>
+						            <td>17:30</td>
+						            <td>18:00</td>
+						        </tr>
+						        <tr>
+						            <td>18:30</td>
+						            <td>19:00</td>
+						            <td>19:30</td>
+						            <td>20:00</td>
+						        </tr>
+						          </tbody></table>
+						    </div>
 						  </div>
 						  <div class="am-u-sm-1"></div>
 						</div>
@@ -279,8 +292,8 @@
 				</div>
 				<p class="defr_he">应付金额: <span>￥<i id="sum">60.59</i></span></p>
 				<p class="txt-r ord_buy">
-					<!-- <input type="submit" value="付款" class="am-btn am-btn-danger am-radius big-btn" /> -->
-					<a href="<?=site_url('shopcar/succeed');?>" class="am-btn am-btn-danger am-radius big-btn">付款</a>
+					<input type="submit" id="pay" value="付款" class="am-btn am-btn-danger am-radius big-btn" disabled/>
+					<!-- <a href="<?=site_url('shopcar/succeed');?>" class="am-btn am-btn-danger am-radius big-btn">付款</a> -->
 					<br/>
 					<a href="<?=site_url('shopcar/car');?>">返回修改订单</a>
 				</p>
@@ -437,7 +450,18 @@
 		</div>
 	</div>
 </div>
-
+<!-- 提交提示 -->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">提示</div>
+    <div class="am-modal-bd">
+      您还没有添加服务地址地址
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
 <script src="skin/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="skin/js/defray.js"></script>
 <script type="text/javascript" src="skin/js/city4.city.js"></script>
@@ -448,6 +472,20 @@ $(function(){
 })
 </script>
 <script>
+
+// Form提交
+$('#defrayForm').bind('submit',function(){
+	console.log($('.adr_cz').length == 0)
+	if($('.adr_cz').length == 0){
+		$('#my-alert').modal();
+		return false;
+	}
+	else{
+		return true;
+	}
+	return false;
+})
+
   $(function() {
     var nowTemp = new Date();
     var nowDay = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0).valueOf();
@@ -470,44 +508,73 @@ $(function(){
             viewDate = nowYear;
             break;
         }
-
+        
         return date.valueOf() < viewDate ? 'am-disabled' : '';
       }
-    }).on('changeDate.datepicker.amui', function(ev) {
+    }).live('changeDate.datepicker.amui', function(ev) {
         if (ev.date.valueOf() > checkout.date.valueOf()) {
           var newDate = new Date(ev.date)
           newDate.setDate(newDate.getDate() + 1);
           checkout.setValue(newDate);
         }
         checkin.close();
-        $('#my-end-2')[0].focus();
     }).data('amui.datepicker');
-
-    var checkout = $('#my-end-2').datepicker({
-      onRender: function(date, viewMode) {
-        var inTime = checkin.date;
-        var inDay = inTime.valueOf();
-        var inMoth = new Date(inTime.getFullYear(), inTime.getMonth(), 1, 0, 0, 0, 0).valueOf();
-        var inYear = new Date(inTime.getFullYear(), 0, 1, 0, 0, 0, 0).valueOf();
-
-        // 默认 days 视图，与当前日期比较
-        var viewDate = inDay;
-
-        switch (viewMode) {
-          // moths 视图，与当前月份比较
-          case 1:
-            viewDate = inMoth;
-            break;
-          // years 视图，与当前年份比较
-          case 2:
-            viewDate = inYear;
-            break;
-        }
-
-        return date.valueOf() <= viewDate ? 'am-disabled' : '';
-      }
-    }).on('changeDate.datepicker.amui', function(ev) {
-      checkout.close();
-    }).data('amui.datepicker');
+    
   });
+  	var html;
+	var date = new Date();
+	var month = date.getMonth() + 1;
+	var m =(month <10) ? '0'+month : month;
+    month = m;
+	var day = date.getDate();        
+	var d =(day <10) ? '0'+day : day;
+    day=d;
+	var year = date.getFullYear(); 
+	var hour = date.getHours();
+	var minutes = date.getMinutes();
+	var b =(minutes <10) ? '0'+minutes : minutes;
+	minutes =b;
+	var curTime = hour+":"+minutes;  
+	html=year+'-'+month+'-'+day;
+	$('.deTime td').each(function(){ 
+      if($(this).html()>curTime){
+        $(this).addClass('can');
+      }else{
+        $(this).attr({
+          disabled: 'disabled'
+        });
+        $(this).css('color','#eee')
+      }
+    });
+	$('.deTime td.can').live('click',function(event) { 
+               $('#pay').removeAttr('disabled');
+              $('td').removeClass('am-danger');
+              $(this).addClass('am-danger');
+              $('#timeEat').val($(this).html());
+            });
+
+  $('.deData').change(function(){
+  	if($(this).val() == ''){
+  		$('.deTime').addClass('am-hide');
+  	}else{
+  		$('.deTime').removeClass('am-hide');
+  		if($(this).val() == html){
+  			$('.deTime td').removeClass('can am-danger');
+  			$('#pay').attr('disabled','disabled');
+  			$('.deTime td').each(function(){ 
+		      if($(this).html()>curTime){
+		        $(this).addClass('can');
+		      }else{
+		        $(this).attr({
+		          disabled: 'disabled'
+		        });
+		        $(this).css('color','#eee');
+		      }
+		    });
+  		}else{
+  			$('.deTime td').css('color','').removeAttr('disabled').addClass('can');
+  		}
+  	}
+  	
+  })
 </script>

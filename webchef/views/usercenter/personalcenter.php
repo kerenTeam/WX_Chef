@@ -72,53 +72,45 @@
                           <!-- <p><img src="skin/img/clz.png"> 您的菜篮子空空的哦，现在就去 <a href="javascript:;">订餐</a> 吧~</p> -->
                         <table class="am-table am-table-striped am-table-hover middle">
                         <tbody>
+
                             <tr class="per-table">
-                                <td class="old-food"><img src="skin/img/orderimg_03.png"></td>
+                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
                                 <td>
-                                    <h2>尖椒回锅肉</h2>
                                     <p>订单号:25644448557</p>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
                                 </td>
                                 <td>
-                                    <p>厨师:王大厨</p>
-                                    <p>服务员:张三</p>
+                                    <p>提交时间:2016-05-23</p>
+                                    <p>预约时间:2016-05-23</p>
                                 </td>
-                                <td><a href="<?=site_url('order/info');?>" class="am-btn am-btn-danger am-radius">再来一单</a></td>
+                                <td><span class="grey">待评价</span></td>
+                                <td><a href="<?=site_url('home/orderaps');?>" class="am-btn am-btn-success am-radius">评价</a></td>
                             </tr>
                             <tr class="per-table">
-                                <td class="old-food"><img src="skin/img/orderimg_03.png"></td>
+                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
                                 <td>
-                                    <h2>尖椒回锅肉</h2>
                                     <p>订单号:25644448557</p>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
                                 </td>
                                 <td>
-                                    <p>厨师:王大厨</p>
-                                    <p>服务员:张三</p>
+                                    <p>提交时间:2016-05-23</p>
+                                    <p>预约时间:2016-05-23</p>
                                 </td>
-                                <td><a href="<?=site_url('order/info');?>" class="am-btn am-btn-danger am-radius">再来一单</a></td>
+                                <td><span class="grey">待评价</span></td>
+                                <td><a href="<?=site_url('home/orderaps');?>" class="am-btn am-btn-success am-radius">评价</a></td>
                             </tr>
                             <tr class="per-table">
-                                <td class="old-food"><img src="skin/img/orderimg_03.png"></td>
+                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
                                 <td>
-                                    <h2>尖椒回锅肉</h2>
                                     <p>订单号:25644448557</p>
+                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
                                 </td>
                                 <td>
-                                    <p>厨师:王大厨</p>
-                                    <p>服务员:张三</p>
+                                    <p>提交时间:2016-05-23</p>
+                                    <p>预约时间:2016-05-23</p>
                                 </td>
-                                <td><a href="<?=site_url('order/info');?>" class="am-btn am-btn-danger am-radius">再来一单</a></td>
-                            </tr>
-                            <tr class="per-table">
-                                <td class="old-food"><img src="skin/img/orderimg_03.png"></td>
-                                <td>
-                                    <h2>尖椒回锅肉</h2>
-                                    <p>订单号:25644448557</p>
-                                </td>
-                                <td>
-                                    <p>厨师:王大厨</p>
-                                    <p>服务员:张三</p>
-                                </td>
-                                <td><a href="<?=site_url('order/info');?>" class="am-btn am-btn-danger am-radius">再来一单</a></td>
+                                <td><span class="grey">待评价</span></td>
+                                <td><a href="<?=site_url('home/orderaps');?>" class="am-btn am-btn-success am-radius">评价</a></td>
                             </tr>
                         </tbody>
                         </table>

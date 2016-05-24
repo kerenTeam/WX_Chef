@@ -127,6 +127,10 @@ class home extends CI_Controller {
 	function orderaps(){
 		$this->load->view('orderaps');
 	}
+	// 单品评价
+	function oneorderaps(){
+		$this->load->view('orderaps2');
+	}
 	
 	// 大厨推荐
 	function recommend(){

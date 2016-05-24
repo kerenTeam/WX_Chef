@@ -44,91 +44,17 @@
                 <div class="am-g">
                     <div class="am-u-sm-3">
                         <div class="ops_ord">
-                            <a href="<?=site_url('order/info');?>">
+                            <a href="<?=site_url('home/info');?>">
                                 <img src="skin/img/lc (1).jpg">
+                                <p>鲜椒拌贡菜</p>
                             </a>
-                            <div class="am-cf">
-                                <p class="am-fl">鲜椒拌贡菜</p>
-                                <a href="<?=site_url('home/oneorderaps');?>" title="" class="am-fr am-btn-xs am-btn am-btn-danger">单品评价</a>
-                            </div>
-                        </div>
-                        <div class="ops_ord">
-                            <a href="<?=site_url('order/info');?>">
-                                <img src="skin/img/lc (1).jpg">
-                            </a>
-                            <div class="am-cf">
-                                <p class="am-fl">鲜椒拌贡菜</p>
-                                <a href="<?=site_url('home/oneorderaps');?>" title="" class="am-fr am-btn-xs am-btn am-btn-danger">单品评价</a>
-                            </div>
+                            <a href="" title=""></a>
                         </div>
                     </div>
                     <div class="am-u-sm-9" id="AddDP">
-                        <input id="rating" name="serving" value="0" type="txt" hidden>
-                        <input id="taste" name="taste" value="0" type="txt" hidden>
                         <input id="environment" name="environment" value="0" type="txt" hidden>
                         <div class="ops_app">
-                            <p>
-                              <span class="number">评价</span>
-                              <br>
-                              <label class="am-checkbox-inline am-success"><input type="radio" name="pingjia" value="" data-am-ucheck> 好评</label>
-                              <label class="am-checkbox-inline am-warning"><input type="radio" name="pingjia" value="" data-am-ucheck> 中评</label>
-                              <label class="am-checkbox-inline am-danger"><input type="radio" name="pingjia" value="" data-am-ucheck> 差评</label>
-                            </p>
                             <ul class="ops_star Star">
-                                <li>
-                                    <span class="number">厨师</span><span class="Select"> 
-                                    <a onMouseOver="javascript:setProfix('star_');showStars(1,'rating');"
-                                     onMouseOut="javascript:setProfix('star_');clearStars('rating');" 
-                                     href="javascript:setProfix('star_');setStars(1,'rating');">
-                                     <img id="star_1" title="差(1)" src="skin/img/icon_star_1.gif"></a>
-                                     
-                                      <a onMouseOver="javascript:setProfix('star_');showStars(2,'rating');"
-                                      onMouseOut="javascript:setProfix('star_');clearStars('rating');"
-                                       href="javascript:setProfix('star_');setStars(2,'rating');">
-                                       <img id="star_2" title="一般(2)" src="skin/img/icon_star_1.gif"></a>
-                                       
-                                       <a onMouseOver="javascript:setProfix('star_');showStars(3,'rating');" 
-                                       onMouseOut="javascript:setProfix('star_');clearStars('rating');"
-                                        href="javascript:setProfix('star_');setStars(3,'rating');">
-                                        <img id="star_3" title="好(3)" src="skin/img/icon_star_1.gif"></a>
-                                        
-                                        <a onMouseOver="javascript:setProfix('star_');showStars(4,'rating');" 
-                                        onMouseOut="javascript:setProfix('star_');clearStars('rating');" 
-                                        href="javascript:setProfix('star_');setStars(4,'rating');">
-                                        <img id="star_4" title="很好(4)" src="skin/img/icon_star_1.gif"></a>
-                                        
-                                        <a onMouseOver="javascript:setProfix('star_');showStars(5,'rating');"
-                                         onMouseOut="javascript:setProfix('star_');clearStars('rating');" 
-                                         href="javascript:setProfix('star_');setStars(5,'rating');">
-                                         <img id="star_5" title="非常好(5)" src="skin/img/icon_star_1.gif"></a></span>
-                                </li>
-                                <li>
-                                    <span class="number">服务</span><span class="Select"> 
-                                    <a onMouseOver="javascript:setProfix('taste_');showStars(1,'taste');" 
-                                    onMouseOut="javascript:setProfix('taste_');clearStars('taste');"
-                                     href="javascript:setProfix('taste_');setStars(1,'taste');">
-                                     <img id="taste_1" title="差(1)" src="skin/img/icon_star_1.gif"></a>
-                                     
-                                    <a onMouseOver="javascript:setProfix('taste_');showStars(2,'taste');"
-                                     onMouseOut="javascript:setProfix('taste_');clearStars('taste');" 
-                                     href="javascript:setProfix('taste_');setStars(2,'taste');">
-                                     <img id="taste_2" title="一般(2)" src="skin/img/icon_star_1.gif"></a>
-                                     
-                                    <a onMouseOver="javascript:setProfix('taste_');showStars(3,'taste');" 
-                                    onMouseOut="javascript:setProfix('taste_');clearStars('taste');" 
-                                    href="javascript:setProfix('taste_');setStars(3,'taste');">
-                                    <img id="taste_3" title="好(3)" src="skin/img/icon_star_1.gif"></a>
-                                    
-                                    <a onMouseOver="javascript:setProfix('taste_');showStars(4,'taste');" 
-                                    onMouseOut="javascript:setProfix('taste_');clearStars('taste');" 
-                                    href="javascript:setProfix('taste_');setStars(4,'taste');">
-                                    <img id="taste_4" title="很好(4)" src="skin/img/icon_star_1.gif"></a>
-                                    
-                                    <a onMouseOver="javascript:setProfix('taste_');showStars(5,'taste');" 
-                                    onMouseOut="javascript:setProfix('taste_');clearStars('taste');" 
-                                    href="javascript:setProfix('taste_');setStars(5,'taste');">
-                                    <img id="taste_5" title="非常好(5)" src="skin/img/icon_star_1.gif"></a> </span>
-                                </li>
                                 <li>
                                     <span class="number">菜品</span><span class="Select"> 
                                     <a onMouseOver="javascript:setProfix('environment_');showStars(1,'environment');" 
