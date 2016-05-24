@@ -8,8 +8,8 @@
   <!-- info -->
   <div class="food-info">
     <div class="info-tit">
-      <h1>聚会套餐套餐 989元系列</h1>
-      <p><span>海河鲜类较多，是喜欢吃这类菜品的人群首选，菜品口味多。即高大上又不贵。</span></p>
+      <h1><?=$foods[0]['foodname'];?></h1>
+      <p><span><?=$foods[0]['foodtrait'];?></span></p>
     </div>
     <ul class="am-g foodBanner">
       <li class="am-u-sm-8">
@@ -17,14 +17,11 @@
           class="am-slider am-slider-default info-pics"
           data-am-flexslider="{controlNav: 'thumbnails', directionNav: false, slideshow: false, animationSpeed: 400}">
           <ul class="am-slides">
-            <li data-thumb="skin/img/lc (1).jpg">
-            <img src="skin/img/lc (1).jpg" /></li>
-            <li data-thumb="skin/img/lc (2).jpg">
-            <img src="skin/img/lc (2).jpg" /></li>
-            <li data-thumb="skin/img/lc (3).jpg">
-            <img src="skin/img/lc (3).jpg" /></li>
-            <li data-thumb="skin/img/lc (4).jpg">
-            <img src="skin/img/lc (4).jpg" /></li>
+          <?php foreach ($foodspic as $key => $value):?>
+            <li data-thumb="<?=IP.$value['imgaddress']?>">
+            <img src="<?=IP.$value['imgaddress']?>" /></li>
+          <?php endforeach;?>
+           
           </ul>
           <div class="viewMenu" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 1, width: 400, height: 600}">
             <i class="am-icon-leanpub"></i> 查看菜单
@@ -37,34 +34,7 @@
               </div>
               <div class="am-modal-bd infoMadel" style="max-height: 380px;">
                 <h2>菜单</h2>
-                <h3>凉菜</h3>
-                <p class="am-text-xs">老成都拌土鸡元</p>
-                <p class="am-text-xs">辣鲜手剥笋</p>
-                <p class="am-text-xs">捞汁珊瑚蜇头</p>
-                <p class="am-text-xs">田七伴桃仁</p>
-                <p class="am-text-xs">客家卤汁九香鸭</p>
-                <p class="am-text-xs">酸辣汁黑木耳</p>
-                <p class="am-text-xs">巴蜀豆花</p>
-                <h3>热菜</h3>
-                <p class="am-text-xs">白灼基围虾</p>
-                <p class="am-text-xs">百年全家福</p>
-                <p class="am-text-xs">双椒蒸江团</p>
-                <p class="am-text-xs">山地土豆烧甲鱼</p>
-                <p class="am-text-xs">馋嘴呱呱叫</p>
-                <p class="am-text-xs">石锅酱仔排</p>
-                <p class="am-text-xs">香辣仔兔</p>
-                <p class="am-text-xs">川味小炒肉</p>
-                <p class="am-text-xs">豆豉鲮鱼油麦菜</p>
-                <p class="am-text-xs">百合苡仁老南瓜</p>
-                <p class="am-text-xs">腊味荷兰豆</p>
-                <p class="am-text-xs">清炒时蔬</p>
-                <h3>汤</h3>
-                <p class="am-text-xs">酸萝卜老鸭汤</p>
-                <h3>小吃</h3>
-                <p class="am-text-xs">波记小丝煎饺</p>
-                <p class="am-text-xs">冰糖银耳羹</p>
-                <h3>主食</h3>
-                <p class="am-text-xs">米饭</p>
+               <?=$foods[0]['packagedetails'];?>
               </div>
             </div>
           </div>
@@ -72,7 +42,7 @@
       </li>
       <li class="am-u-sm-4">
         <div class="info-handle clear">
-          <h1>价格 <span>￥30.00</span></h1>
+          <h1>价格 <span>￥ <?=$foods[0]['foodprice'];?></span></h1>
           <ul class="am-avg-sm-3 food-assess">
             <li>已售 <span>35412</span></li>
             <li><span>5</span> 分</li>
