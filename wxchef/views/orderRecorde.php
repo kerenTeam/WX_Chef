@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="skin/css/city.css">
 <body>
   <style>ul,.am-list{margin-bottom:-0.8rem!important;}</style>
   <header data-am-widget="header" class="am-header am-header-default topform">
@@ -24,7 +25,6 @@
   <div data-am-widget="list_news" class="am-list-news am-list-news-default admt" >
     <!-- 待评价 -->
     <?php if(!empty($record)):?>
-      
       <?php foreach($record as $key=>$value):?>
          <div class="am-list-news-bd am-shadow">
       
@@ -66,7 +66,7 @@
 
       <?php  $food = $value['FoodDetails']; foreach($food  as $k=>$v):?>
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-          <a href="<?php echo site_url('home/food')?>" class="black">
+          <a href="<?php echo site_url('home/food?id='.$v['FoodId'].'&number=&shopid=');?>" class="black">
           <div class="am-u-sm-6 am-list-main">
             <h3 class="am-list-item-hd am-padding-left"><?=$v['FoodName'];?></h3>
           </div>   <!-- 订单数量 -->
@@ -81,8 +81,9 @@
         </li>
       <?php endforeach;?>
       <?php if(!empty($value['CeleId'])):?>
+
         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-          <a href="<?php echo site_url('home/food')?>" class="black">
+          <a href="<?php echo site_url('home/ceremony?id=').$value['CeleId'];?>" class="black">
           <div class="am-u-sm-6 am-list-main">
             <h3 class="am-list-item-hd am-padding-left"><?=$value['CeleName'];?></h3>
           </div>   <!-- 订单数量 -->
@@ -95,14 +96,16 @@
         </li>
 
       <?php endif;?>
-        <div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md"><?=$value['Amount'];?></span></div>
+        <span class="am-margin-left-sm pink am-text-sm">预约时间：<?php echo str_replace('T',' ',$value['AppointmentTime']);?></span><div class="oall am-text-sm am-fr am-margin-right-sm">合计：<span class="am-icon-cny am-text-md"><?=$value['Amount'];?></span></div>
         <hr data-am-widget="divider" class="am-divider am-divider-default ahr" />
         <p class="orderbot am-cf">
+
+        <span class="am-margin-left-sm gray am-text-sm orderNum">订单号：<?=$value['BillNo'];?></span>
         <?php switch ($value['State']) {
             case '0':
               if($value['PaymentMethod'] == ''){
                 echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.$value['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>"; 
-                echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
+                echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
               }else{
                   echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
               }

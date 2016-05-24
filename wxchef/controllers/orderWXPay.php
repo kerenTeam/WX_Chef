@@ -1,5 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+
+if (DeBug == 1) {
+    //报告所有错误
+    error_reporting(E_ALL);
+} else if (DeBug == 0) {
+    //禁用错误报告
+    error_reporting(0);
+} else {
+    //报告运行时错误
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+}
+
+
 class orderWXPay extends CI_Controller{
 	function __construct()
 	{
@@ -150,14 +164,12 @@ class orderWXPay extends CI_Controller{
             }
             // 地址
             $foodJsondata['MenberAddressId'] = $this->input->post('memberaddressid');
-         
             // 支付方式
             $foodJsondata['PaymentMethod'] = '';
             $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
             //得到金额
             $isOrderOk=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);
-            
-             $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isOrderOk))),TRUE);
+            $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isOrderOk))),TRUE);
    
              $this->load->view('order/payOrder');
         }
@@ -177,9 +189,10 @@ class orderWXPay extends CI_Controller{
         unset(
         $_SESSION['shoping'],      
         $_SESSION['booking'],      
-        $_SESSION['Writes'],        
+        $_SESSION['witer'],        
         $_SESSION['postBooking'], 
-        $_SESSION['rePayData']
+        $_SESSION['rePayData'],
+        $_SESSION['ceremoney']
         );
       
         echo "清除完成";
@@ -229,11 +242,12 @@ class orderWXPay extends CI_Controller{
         unset(
         $_SESSION['shoping'], 
         $_SESSION['booking'],
-        $_SESSION['Writes'],
+        $_SESSION['witer'],
         $_SESSION['postBooking'], 
         $_SESSION['rePayData'], 
         $_SESSION['ceremoney']
         );
+		
      	redirect('home/orderRe');
     }
 //购买｜充值会员卡  页面

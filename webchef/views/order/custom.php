@@ -14,15 +14,18 @@
                 
                 <div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{&quot;animation&quot;:&quot;slide&quot;,&quot;animationLoop&quot;:false,&quot;itemWidth&quot;:350,&quot;itemMargin&quot;:5, slideshow: false}' >
                   <ul class="am-slides">
+                  <?php foreach($cus as $val):?>
+                    <!-- <?php var_dump($val); ?> -->
                     <li>
                       <div class="cus_img">
-                        <img src="skin/img/party1.png">
-                        <a href="<?=site_url('order/partyInfo');?>" class="cus_zc">
-                          <p>聚会套餐989系列</p>
+                        <img src="<?=IP.$val['packagelogo'];?>">
+                        <a href="<?=site_url('order/partyInfo?id=').$val['foodid'];?>" class="cus_zc">
+                          <p><?=$val['foodname'];?></p>
                         </a>
                       </div>
                     </li>
-                    <li>
+                  <?php endforeach;?>
+                  <!--   <li>
                       <div class="cus_img">
                         <img src="skin/img/party1.png">
                         <a href="<?=site_url('order/partyInfo');?>" class="cus_zc">
@@ -45,7 +48,7 @@
                           <p>喜宴套餐989系列</p>
                         </a>
                       </div>
-                    </li>
+                    </li> -->
                   </ul>
                 </div>
               </div>

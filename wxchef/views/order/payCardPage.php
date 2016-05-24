@@ -134,7 +134,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
               <div class="gs"></div>
             </div>
       <?php else: ?>
-            <a href="" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
+            <a href="javascript:;" class="am-cf adc"><span class="am-icon-apple apple"></span>Apple Pay <span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a onclick="callpay()" href="javascript:;" class="am-cf adc"><img src="skin/img/wp.png" class="payimg" alt=""> 微信支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
             <a href="<?php echo site_url('home/paySuccess')?>" class="am-cf adc"><img src="skin/img/zp.png" class="payimg" alt="">支付宝支付<span class="am-icon-angle-right am-fr  am-icon-xs"></span></a>
       <?php endif ?>

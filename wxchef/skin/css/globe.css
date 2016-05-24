@@ -152,6 +152,10 @@ li {
 .single_main .btns .upload_btn {
     background: none;
     color: #000;
+    background: none;
+    color: #000;
+    margin-top: 6px;
+    text-shadow: 1px 1px #ccc;
 }
 
 .status_bar {

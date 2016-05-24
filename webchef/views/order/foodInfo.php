@@ -106,8 +106,8 @@
               <p>
                <?=$foods['blurb'];?>
             </p>
-            <img src="skin/img/food_info_03.png">
-            <img src="skin/img/food_info_03.png">
+        <!--     <img src="skin/img/food_info_03.png">
+            <img src="skin/img/food_info_03.png"> -->
           </div>
           <!-- 消费评论 -->
           <div class="food-appraise">

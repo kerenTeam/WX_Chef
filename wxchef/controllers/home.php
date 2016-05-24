@@ -3,6 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
 *      首页+cate+菜品
 */
+
+if (DeBug == 1) {
+	//报告所有错误
+    error_reporting(E_ALL);
+} else if (DeBug == 0) {
+	//禁用错误报告
+    error_reporting(0);
+} else {
+	//报告运行时错误
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+}
+
 class home extends CI_Controller
 {
 	 
@@ -308,7 +320,7 @@ class home extends CI_Controller
 
 	//精品生活 列表
 	public function life(){
-
+		
 		$this->load->view('life');
 	}
 	//图文详情
@@ -364,6 +376,7 @@ class home extends CI_Controller
 				$foodid = $_POST['foodid'];
 				$numbers = $_POST['numbers'];
 				$code = $_POST['code'];
+
 				$data = array();
 				foreach($foodid as $k=>$v){
 					$data[$k]['foodid'] = $foodid[$k];	
@@ -403,9 +416,9 @@ class home extends CI_Controller
 						}
 						$f = array_merge($shoping,$c);
 					 	$this->session->set_userdata('shoping',$f,0);
+
+					 	
 					}
-
-
 				redirect('home/cart');
 				}
 			exit;
@@ -558,6 +571,40 @@ class home extends CI_Controller
 	}
 
 
+	// 减去菜品数量
+	public function deletecart()
+	{
+		if($_POST){
+			$foodid = $_POST['foodid'];
+			$numbers = $_POST['numbers'];
+			$code = $_POST['code'];
+			$data = array();
+			foreach($foodid as $k=>$v){
+				$data[$k]['foodid'] = $foodid[$k];	
+				$data[$k]['numbers'] = $numbers[$k];	
+				$data[$k]['code'] = $code[$k];	
+			}
+			if(isset($_SESSION['shoping'])){
+				$shoping = $_SESSION['shoping'];
+				foreach($shoping as $key=>$value){
+					foreach($data as $k=>$v){
+						if($value['foodid'] == $v['foodid']){
+							$shoping[$key]['number'] = $v['numbers'];
+						}
+					}
+				}
+				// 如果数量为0就删除该数组
+				foreach ($shoping as $key => $val) {
+					if($val['number'] == '0'){
+						unset($shoping[$key]);
+					}
+				}
+			 	$this->session->set_userdata('shoping',$shoping);
+			}
+			exit;
+		}
+	}
+
 	 //支付订单
     public function payOrder(){
 
@@ -570,7 +617,14 @@ class home extends CI_Controller
 	}
 	//付款成功
     public function paySuccess(){
-    	$this->session->set_userdata('shoping','',0);
+		unset(
+			$_SESSION['shoping'],      
+			$_SESSION['booking'],      
+			$_SESSION['witer'],        
+			$_SESSION['postBooking'], 
+			$_SESSION['rePayData'],
+			$_SESSION['ceremoney']
+		);
 		$this->load->view('paySuccess');
 	}
 	//评价 
@@ -715,10 +769,7 @@ class home extends CI_Controller
 
 		$this->load->view('cardGet');
 	}
-	public function address(){
 
-		$this->load->view('address');
-	}
 	//地址管理
 	public function address2(){
 		if(isset($_SESSION['phone'])){
@@ -738,9 +789,9 @@ class home extends CI_Controller
 		}
 		if($_POST)
 		{
-
+			
 			$a['Name'] = $_POST['name'];
-			$a['Address'] = $_POST['Address'];
+			$a['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
 			$a['SparePhone'] = $_POST['SparePhone'];
 			if(!isset($_POST['IsDefault'])){
@@ -788,12 +839,13 @@ class home extends CI_Controller
 			// var_dump($_POST);
 			$arr = array(
 				'Name'=>$_POST['name'],
-				'Address'=>$_POST['address'],
+				'Address'=> $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'],
 				'MemberAddressId'=>$_POST['id'],
-				'GoodsPhone'=>$_POST['goodsphone'],
-				'SparePhone'=>$_POST['sparephone'],
+				'GoodsPhone'=>$_POST['GoodsPhone'],
+				'SparePhone'=>$_POST['SparePhone'],
 				'UserPhone'=>$_SESSION['phone'],
 				);
+		
 			if(empty($_POST['IsDefault'])){
 				$arr['IsDefault'] = 0;
 			}else{
@@ -922,14 +974,15 @@ class home extends CI_Controller
 		//var_dump($data);
 		$jsonorder = json_encode($data);
 		$state = curl_post(POSTAPI.'API_Poorder?dis=state',$jsonorder);
+		
 		if($state == '"1"'){
-			if($_GET['state'] == 5){
-				echo "<script>alert('你的退款信息已经提交！');window.location.href='orderR';</script>";
+			if($_GET['state'] == 7){
+				echo "<script>alert('你的退款信息已经提交！');window.location.href='orderRe';</script>";
 			}else{
-				echo "<script>alert('你的订单已经取消！');window.location.href='orderR';</script>";
+				echo "<script>alert('你的订单已经取消！');window.location.href='orderRe';</script>";
 			}
 		}else{
-			if($_GET['state'] == 5){
+			if($_GET['state'] == 7){
 				echo "<script>alert('你的退款信息提交失败！')；window.location.href='orderR';</script>";
 			}else{
 				echo "<script>alert('你的订单取消失败！')；window.location.href='orderR';</script>";
@@ -959,9 +1012,9 @@ class home extends CI_Controller
 			$id = $_GET['id']; 
 			$del = file_get_contents(POSTAPI.'API_Poorder?dis=IsDisplay&UserPhone='.$id);
 			if($del == '"1"'){
-				    echo "<script>alert('删除订单记录成功！');window.location.href='orderR';</script>";
+				    echo "<script>alert('删除订单记录成功！');window.location.href='orderRe';</script>";
 			}else{
-					echo "<script>alert('删除订单记录失败！');window.location.href='orderR';</script>";
+					echo "<script>alert('删除订单记录失败！');window.location.href='orderRe';</script>";
 			}
 		}
 	}

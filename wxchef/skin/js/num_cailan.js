@@ -76,6 +76,12 @@ function handle(self, isAdd) {
         reduce.style.display = "inline-block";
         countEl.style.display = "inline-block";
         paymoney += parseFloat(price);
+
+    fens.innerHTML = fen;
+    countEl.value = curCount;
+    allmoney.innerHTML = paymoney.toFixed(2);
+        
+        addcart()
         // prabola();
     } else {
         curCount--;
@@ -87,11 +93,13 @@ function handle(self, isAdd) {
             reduce.style.display = "none";
             countEl.style.display = "none";
 
-        } else
+        } else{
             paymoney -= parseFloat(price);
-    }
+        }
 
-    fens.innerHTML = fen;
-    countEl.value = curCount;
-    allmoney.innerHTML = paymoney.toFixed(2);
+        
+        fens.innerHTML = fen;
+        countEl.value = curCount;
+        allmoney.innerHTML = paymoney.toFixed(2);
+    }
 }

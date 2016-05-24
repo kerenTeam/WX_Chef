@@ -64,31 +64,7 @@
            <label class="am-radio am-success haoping">
             <input type="radio" name="radiocomt" value="3" data-am-ucheck> 差评
           </label></li>
-      <!-- <li>服务<span class="Select">
-        <a onMouseOver="javascript:setProfix('environment_');showStars(1,'environment');"
-          onMouseOut="javascript:setProfix('environment_');clearStars('environment');"
-          href="javascript:setProfix('environment_');setStars(1,'environment');">
-        <img id="environment_1" title="差(1)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('environment_');showStars(2,'environment');"
-          onMouseOut="javascript:setProfix('environment_');clearStars('environment');"
-          href="javascript:setProfix('environment_');setStars(2,'environment');">
-        <img id="environment_2" title="一般(2)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('environment_');showStars(3,'environment');"
-          onMouseOut="javascript:setProfix('environment_');clearStars('environment');"
-          href="javascript:setProfix('environment_');setStars(3,'environment');">
-        <img id="environment_3" title="好(3)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('environment_');showStars(4,'environment');"
-          onMouseOut="javascript:setProfix('environment_');clearStars('environment');"
-          href="javascript:setProfix('environment_');setStars(4,'environment');">
-        <img id="environment_4" title="很好(4)" src="skin/img/icon_star_1.gif"></a>
-        
-        <a onMouseOver="javascript:setProfix('environment_');showStars(5,'environment');"
-          onMouseOut="javascript:setProfix('environment_');clearStars('environment');"
-          href="javascript:setProfix('environment_');setStars(5,'environment');">
-        <img id="environment_5" title="非常好(5)" src="skin/img/icon_star_1.gif"></a> </span></li> -->
+      
         
         <li>厨师<span class="Select">
         <a onMouseOver="javascript:setProfix('taste_');showStars(1,'taste');"

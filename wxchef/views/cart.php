@@ -20,10 +20,22 @@ function doaction(obj) {
             url: '<?php echo site_url('home/addcart'); ?>',
             data: $(obj.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode).serialize(),
             success: function(data) {
-                console.log(data);
+              //  console.log(data);
             }
         });
     }
+// 减少菜品数量
+ function delcart(obj){
+  // alert(123);
+        $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/deletecart'); ?>',
+            data: $(obj.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode).serialize(),
+            success: function(data) {
+               console.log(data);
+            }
+        });
+  }
 </script>
 <form action="<?=site_url('orderWXPay/order');?>" method="post" enctype="multipart/form-data">
   <div data-am-widget="list_news" class="am-u-sm-12 asp cmn">
@@ -80,7 +92,7 @@ function doaction(obj) {
                 <input type="hidden" name="code[]" value="<?=$a;?>" />
                 <div class="fNum">
 
-                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),doaction(this)"></span>
+                  <span class="reduce am-icon-minus-circle red" onClick="handle(this, false),delcart(this)"></span>
                   <input type="text" class="numTxt" onkeypress="return IsNum(event)" oninput="ueserWrite(this)"  onkeydown="keydown(this)" name="numbers[]" value="<?=$cart['number'];?>">
                   <span class="add am-icon-plus-circle green" onClick="handle(this, true),doaction(this)"></span>
                 </div>

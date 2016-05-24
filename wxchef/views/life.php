@@ -19,18 +19,7 @@
     
   </header>
   <div class="am-g life"> 
-    <figure> 
-       <a href="<?php echo site_url('home/lifeInfo2')?>">
-         <img src="skin/img/article/it1.png">
-         <figcaption> 大厨到家 <br><span class="am-text-sm">食色性也</span></figcaption>
-       </a>  
-    </figure>
-    <figure> 
-       <a href="<?php echo site_url('home/lifeInfo2')?>">
-         <img src="skin/img/article/it1.png">
-         <figcaption> 古语有云 <br><span class="am-text-sm">食色性也</span></figcaption>
-       </a>  
-    </figure>
+  
   </div>
 
 <!-- 图文加载 -->
@@ -106,11 +95,12 @@ $(function(){
 
             function getJson(page) {
                 $(".nodata").show().html("<img src='http://www.sucaihuo.com/Public/images/loading.gif'/>");
-                $.getJSON("<?=site_url('home/quality');?>", {page: i}, function(json) {
+                $.getJSON("<?=site_url('pricesearch/quality');?>", {page: i}, function(json) {
                   console.log(json);
                     if (json) {
                         var str = "";
                         $.each(json, function(index, array) {
+                          
                             var str = "<figure> <a href='<?php echo site_url('home/lifeInfo?id=');?>";
                             var str = str + array['boutiqueid']+"'><img src='<?php echo IP;?>" + array['backgoungimg'] + "'><figcaption>" + array['name'] + "<br><span class='am-text-sm'>"+ array['abstract'] + "</span></figcaption></a></figure>";
                             $("#lists").append(str);
@@ -121,7 +111,7 @@ $(function(){
                     }
                 });
                 i++;
-            }
+}
             function showEmpty() {
                setTimeout(function(){  $(".nodata").show().html("别滚动了，已经到底了。。。");},10000);
             }
