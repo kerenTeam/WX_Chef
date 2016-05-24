@@ -1,4 +1,15 @@
 <?php 
+if(!isset($_SESSION['rePayData'])){
+	echo "<script>window.location.href='gohome';</script>";
+	exit;
+}else{
+	if($_SESSION['rePayData'] == ''){
+		echo "<script>window.location.href='gohome';</script>";
+		exit;
+	}
+}
+
+
 ini_set('date.timezone','Asia/Shanghai');
 //打印输出数组信息
 function printf_info($data)
@@ -19,7 +30,7 @@ $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
 //$input->SetTotal_fee(str_replace(".0000","00",$_SESSION['rePayData'][0]['MoneyAll']));
 $input->SetTotal_fee('1');
 $input->SetTime_start(date("YmdHis"));
-$input->SetTime_expire(date("YmdHis", time() + 600));
+$input->SetTime_expire(date("YmdHis", time() + 36000));
 $input->SetGoods_tag("大厨到家－微信支付");
 $input->SetNotify_url("http://www.baidu.com");
 $input->SetTrade_type("JSAPI");

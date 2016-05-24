@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
@@ -479,12 +480,19 @@ class home extends CI_Controller
 	// 注销
 	public function zhuxiao(){
 		unset(
+			$_SESSION['userinfo'],
 		    $_SESSION['shoping'],
 		    $_SESSION['booking'],
 		    $_SESSION['phone'],
-		    $_SESSION['witer']
+		    $_SESSION['witer'],
+		    $_SESSION['eleg'],
+		    $_SESSION['cerearr'],
+			$_SESSION['postBooking'], 
+			$_SESSION['rePayData'],
+			$_SESSION['ceremoney']
+			
 		);	
-		redirect('home/index');
+		echo "<script>alert('注销成功;');window.location.href='index';</script>";
 	}
 	//购物车 new
 	public function cart(){
@@ -525,6 +533,7 @@ class home extends CI_Controller
 			$data['witer'] = '';
 		}
 		// 伴餐
+		//var_Dump($_SESSION['eleg']);
 		if(isset($_SESSION['eleg'])){
 			if($_SESSION['eleg'] == ''){
 				$data['eleg'] = '';
@@ -623,7 +632,8 @@ class home extends CI_Controller
 			$_SESSION['witer'],        
 			$_SESSION['postBooking'], 
 			$_SESSION['rePayData'],
-			$_SESSION['ceremoney']
+			$_SESSION['ceremoney'],
+			$_SESSION['eleg']
 		);
 		$this->load->view('paySuccess');
 	}

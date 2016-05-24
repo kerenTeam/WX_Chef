@@ -53,13 +53,27 @@ class Order extends CI_Controller
 		$data['cates'] = json_decode(json_decode($cates),true);
 		// 获取所有净菜
 		$jing = file_get_contents(POSTAPI.'API_Food?dis=kind');
-		$data['foods'] = json_decode(json_decode($jing),true);
-		
+		$foods = json_decode(json_decode($jing),true);
+		if(isset($_SESSION['shoping'])){
+			if($_SESSION['shoping'] != ''){
+				$shop = $_SESSION['shoping'];
+				foreach($foods as $k=>$v){
+					$foods[$k]['number'] = '0';
+					foreach ($shop as $key => $value) {
+						if($v['foodid'] == $value['foodid']){
+							$foods[$k]['number'] = $value['number'];
+						}
+					}
+					
+				}
+			}
+		}
+		$data['foods'] = $foods;
 		$this->load->view('order/vegetable',$data);
 		$this->load->view('footer');
 	}
 
-	// 点菜详情
+	// 菜品详情
 	function info(){
 		if($_GET){
 			$id = $_GET['id'];

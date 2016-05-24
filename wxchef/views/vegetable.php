@@ -13,7 +13,33 @@
   </h1>
 
 </header>
+<script>
+// 增加菜品数量
+  function addcart(){
+       $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/addcart'); ?>',
+            data: $('#question').serialize(),
+            success: function(data) {
+               // console.log(data);
+            }
+        });
+         
+  }
+  // 减少菜品数量
+ function delcart(){
+        $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/deletecart'); ?>',
+            data: $('#question').serialize(),
+            success: function(data) {
+               // console.log(data);
+            }
+        });
+  }
 
+
+</script>
 <form action="<?=site_url('home/addcart');?>" method='post'  id='question' enctype="multipart/form-data">
  <!-- style="position: fixed;top:49px;left:0;width:100%;height:100%;" -->
   <!-- 菜品栏目 -->
@@ -36,27 +62,27 @@
         <ul class="am-list">
         <?php foreach($foods as $v):?>
   
-          <?php if($val['foodcategoryid'] == $v['FoodPid']):?>
+          <?php if($val['foodcategoryid'] == $v['foodpid']):?>
           <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
             <div class="am-u-sm-7 am-text-center">
-              <a href="<?php echo site_url('home/food?id=').$v['FoodId'].'&number=&shopid=';?>" class="vimg2">
-                <img src="skin/img/exp.gif" data-original="<?php echo IP.$v['Thumbnail'];?>" class="lazy" alt="<?=$v['FoodName'];?>"/>
+              <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="vimg2">
+                <img src="skin/img/exp.gif" data-original="<?php echo IP.$v['thumbnail'];?>" class="lazy" alt="<?=$v['foodname'];?>"/>
               </a>
             </div>
             <div class=" am-u-sm-5 am-list-main">
-             <a href="<?php echo site_url('home/food?id=').$v['FoodId'].'&number=&shopid=';?>" class="gray">
-              <h3 class="am-list-item-hd black onlyVege"><?=$v['FoodName'];?></h3>
+             <a href="<?php echo site_url('home/food?id=').$v['foodid'].'&number=&shopid=';?>" class="gray">
+              <h3 class="am-list-item-hd black onlyVege"><?=$v['foodname'];?></h3>
              <div class="months am-margin-vertical">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i></div>
-              <input type="hidden" name="foodid[]" value="<?=$v['FoodId'];?>">
+              <input type="hidden" name="foodid[]" value="<?=$v['foodid'];?>">
              <!--  <div class="am-list-item-text"><strong>特点：</strong><?=$v['foodtrait'];?>。</div>
               <div class="months">推荐指数：<i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i><i class="am-icon-star red"></i>月销<span>123</span>份</div> -->
              </a>
-              <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['FoodPrice'];?></span><span class="am-text-xs gray"> /份</span></div>
+              <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$v['foodprice'];?></span><span class="am-text-xs gray"> /份</span></div>
               <div class="foodNum">
             
-                <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
+                <span class="reduce am-icon-minus-circle" onClick="handle(this, false),delcart();"></span>
                 <input type="text" class="numTxt" name="numbers[]" onkeydown="if(event.keyCode==13)event.keyCode=9" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if(isset($v['number'])){echo $v['number'];}else{echo '0';}?>">
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
+                <span class="add am-icon-plus-circle"  onClick="handle(this, true)"></span><!--  onClick="handle(this, true)" -->
               </div>
             </div>
           </li>
