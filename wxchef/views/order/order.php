@@ -328,7 +328,7 @@
         var minutes = date.getMinutes();
         var b =(minutes <10) ? '0'+minutes : minutes;
             minutes =b;
-        var curTime = hour+":"+minutes;
+        var curTime = hour+2+":"+minutes;
          html=year+'-'+month+'-'+day;
        adate.attr('placeholder',html+" 默认");
        adate.val(html);

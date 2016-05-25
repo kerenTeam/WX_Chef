@@ -25,7 +25,7 @@
       <div class="manage am-shadow am-padding-sm am-margin-bottom-sm">
     <div class="manageOrder">
       <p><?=$val['name'];?></p> 
-      <p><?=$val['goodsphone'];?> &nbsp;&nbsp;&nbsp;&nbsp;<a id="tell" href="tel:<?=$val['goodsphone'];?>"><img src="skin/img/phone.png" alt=""></a></p>
+      <p><?=$val['goodsphone'];?> &nbsp;&nbsp;&nbsp;&nbsp;<a class="tell" href="tel:<?=$val['goodsphone'];?>"><img src="skin/img/phone.png" alt=""></a></p>
       <p>服务地址: <?=$val['address'];?></p>
       <p>服务时间: <?=str_replace('T',' ',$val['appointmenttime']);?></p>
       <p class="am-cf manageBor">
@@ -36,7 +36,7 @@
         <a href="<?php echo site_url('chef/chefOrder?id=').$val['poorderid'];?>" class="btn am-btn am-btn-warning" title="">查看详情</a>
         <?php  switch ($val['state']) {
           case '0':
-            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$val["poorderid"].'&state=6'.'" id="submitBtn" class="btn am-btn am-btn-danger" title="" disabled>确认</a>';
+            echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$val["poorderid"].'&state=6'.'" class="btn am-btn am-btn-danger submitBtn" title="" disabled>确认</a>';
             break;
           case '1':
             echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$val["poorderid"].'&state=3'.'" class="btn am-btn am-btn-danger" title="">开始服务</a>';
@@ -45,7 +45,7 @@
             echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$val["poorderid"].'&state=8'.'" class="btn am-btn am-btn-danger" title="">完成服务</a>';
             break;
           case '6':
-            echo '<a href="javascript:;" id="submitBtn" class="btn am-btn am-btn-danger" title="" disabled>开始服务</a>';
+            echo '<a href="javascript:;" class="btn am-btn am-btn-danger" title="" disabled>开始服务</a>';
             break;
         } ?>
         
@@ -71,11 +71,17 @@
   <?php endif;?>
 
 <script type="text/javascript">
-  document.getElementById('tell').onclick = function(){
-    document.getElementById('submitBtn').removeAttribute('disabled')
+ var tels = document.getElementsByClassName('tell');
+ var subs = document.getElementsByClassName('submitBtn');
+ for(var i =0;i<tels.length;i++){
+  tels[i].onclick = function(){
+    if(this.parentNode.parentNode.getElementsByClassName('submitBtn').length==0){
+        return;
+    }
+    this.parentNode.parentNode.getElementsByClassName('submitBtn')[0].removeAttribute('disabled');
   }
-
-
+ }
+   
   function myrefresh() 
   { 
          window.location.reload(); 
