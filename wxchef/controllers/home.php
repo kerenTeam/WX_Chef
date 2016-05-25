@@ -344,7 +344,20 @@ class home extends CI_Controller
 		if($_GET){
 			$id = $_GET['id'];
 			$foods = file_get_contents(POSTAPI.'API_Food?dis=taocanxq&foodid='.$id);
-	        $data['foods'] = json_decode(json_decode($foods),true);
+	        $foods = json_decode(json_decode($foods),true);
+	        if(isset($_SESSION['shoping'])){
+	        	if($_SESSION['shoping'] != ''){
+	        		$shoping = $_SESSION['shoping'];
+	        		foreach ($shoping as $key => $value) {
+        				if($value['foodid'] == $foods[0]['foodid']){
+        					//var_dump(123);
+        					$foods[0]['number'] = $value['number'];
+        				}
+	        		}
+	        	}
+	        }
+
+	        $data['foods'] = $foods;
 			// 产品图片
 			$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 			$data['foodspic'] = json_decode(json_decode($foodpic),true);
@@ -470,6 +483,7 @@ class home extends CI_Controller
 							$shoping[$k]['number'] = $number;
 						}
 					}
+
 					$this->session->set_userdata('shoping',$shoping,0);
 				}
 				redirect('home/cart');

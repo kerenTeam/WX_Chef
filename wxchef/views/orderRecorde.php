@@ -33,25 +33,18 @@
         <!--缩略图在标题左边-->
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title=""><?=$value['BillDate']?></time>
-          <span class="am-fr am-text-sm state">
-          <?php switch ($value['State']) {
+          <span class="am-fr am-text-sm state"><?php switch ($value['State']) {
               case '0':
                echo "待付款";
                 break;
               case '1':
-                  echo "待服务";
-                break;
               case '2':
+              case '4':
+              case '6':
                   echo "待服务";
                 break;
               case '3':
                   echo "服务中";
-                break;
-              case '4':
-                  echo "待服务";
-                break;
-              case '6':
-                  echo "待服务";
                 break;
               case '8':
                   echo "待评价";
@@ -108,8 +101,24 @@
               echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
               break;
             case '1':
-                
+            case '2':
+            case '6':
+                echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
               break;
+            case '7':
+              echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款中</a>";
+              break;
+            case '8':
+              echo "<a href='".site_url('home/commentTotal?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
+              echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
+              break;
+            case '9':
+              echo "<a href='".site_url('home/share')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
+              echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
+              break;
+            case '10':
+                 echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款成功</a>";
+                break;
           }?>
         
         </p>
