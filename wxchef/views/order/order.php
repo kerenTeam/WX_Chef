@@ -138,7 +138,7 @@
       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red">你还没有积分!</span></a>
       <input type="hidden" name='jifen' id="jifen" value="0" checked>
     <?php else:?>
-       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red"><span id='diyong'><?=$jifen;?></span>积分已抵用  <span class="am-icon-cny" id='jifenmoney'></span> <input type="checkbox" name='jifen' id="jifen" value="1"></span></a>
+       <a href="javascript:;" class="am-cf adc">积分<span class="am-fr am-icon-xs red"><span id='diyong'><?=abs($jifen);?></span>积分已抵用  <span class="am-icon-cny" id='jifenmoney'></span> <input type="checkbox" name='jifen' id="jifen" value="1"></span></a>
     <?php endif;?>
 
       <a href="javascript:;" class="am-cf adc">应付金额<span class="am-fr am-icon-xs am-icon-cny red" id='pricetotal'></span></a>
@@ -195,7 +195,8 @@
                     </div>
                   </div> 
           </div>
-                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required id='GoodsPhone'/>
+		   <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入详细地址" required id='address'/>
+                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required id='GoodsPhone' value='<?=$_SESSION['phone'];?>'/>
                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required id='name'/>
                  <!-- <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required id='Address'/> --> 
               
@@ -327,7 +328,7 @@
         var minutes = date.getMinutes();
         var b =(minutes <10) ? '0'+minutes : minutes;
             minutes =b;
-        var curTime = hour+":"+minutes;
+        var curTime = hour+2+":"+minutes;
          html=year+'-'+month+'-'+day;
        adate.attr('placeholder',html+" 默认");
        adate.val(html);
@@ -342,11 +343,11 @@
           $('.tk').fadeOut(400); 
         });
 
-        $('.fclick').live('click',function() {
+        $('.fclick').click(function() {
           console.log('.fclick');
            $('#fpc').slideToggle(400);          
         });
-        $('#fpc li').live('click',function() {
+        $('#fpc li').click(function() {
           $('#fpc').slideUp(400);
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
             discount = $('#youhui').text();
@@ -415,7 +416,7 @@
                   $(this).css('color','#eee')
                 }
               })
-               $('#dateconfirm').live('click',function(){  
+               $('#dateconfirm').click(function(){  
               if(html!=$('#beginTime').val()){ 
                  $("td").css('color','')
                  $('td').removeAttr('disabled').addClass('can'); 
@@ -437,7 +438,7 @@
               })
              }   
              }) 
-              $('td.can').live('click',function(event) { 
+              $('td.can').click(function(event) { 
                $('#pay').removeAttr('disabled');
                $('td').removeClass('am-danger');
                $(this).addClass('am-danger');
@@ -456,13 +457,14 @@ function getorders(){
             var area = $('input[name="cho_Area"]').val();
             var Insurer = $('input[name="cho_Insurer"]').val();
             var phone=$('#GoodsPhone').val(); 
+            var address=$('#address').val(); 
             $.ajax({
                type: "POST",
                url: "<?=site_url('pricesearch/payOrder');?>",
-               data: 'GoodsPhone='+phone+"&city="+city+"&area="+area+"&Insurer="+Insurer+"&name="+name,
+               data: 'GoodsPhone='+phone+"&city="+city+"&area="+area+"&Insurer="+Insurer+"&name="+name+'&address='+address,
                success: function(msg){ 
                   console.log(msg);
-                  $('#mainContent').html('<ul class="am-list am-margin-top" style="margin-bottom:0;"><li class="am-g am-list-item-datedlpt2 mbtop"><div class="am-margin-top-sm am-margin-left-sm">'+name+'&nbsp;&nbsp;'+phone+'<br></div><a href="javascript:;" class="am-list-item-hd black adda">'+city+area+Insurer+'<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'+msg+'" data-am-ucheck checked></label></a></li></ul><a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>'); 
+                  $('#mainContent').html('<ul class="am-list am-margin-top" style="margin-bottom:0;"><li class="am-g am-list-item-datedlpt2 mbtop"><div class="am-margin-top-sm am-margin-left-sm">'+name+'&nbsp;&nbsp;'+phone+'<br></div><a href="javascript:;" class="am-list-item-hd black adda">'+city+area+Insurer+address+'<label class="am-radio am-fr label"><input type="radio" class="am-margin-left green" name="memberaddressid" value="'+msg+'" data-am-ucheck checked></label></a></li></ul><a href="<?php echo site_url('home/address2')?>" class="am-cf adc">添加服务地址 <span class="am-icon-angle-right am-fr  am-icon-sm"></span></a>'); 
                 $('#pay[type=button]').prop('type','submit');
                }
             });

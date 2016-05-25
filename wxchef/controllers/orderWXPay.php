@@ -85,6 +85,7 @@ class orderWXPay extends CI_Controller{
     public function payOrder()
     {
         if($_POST){
+			//var_dump($_POST);
             $foodid = $this->input->post('foodid');
             $numbers = $this->input->post('numbers');
             if($foodid){
@@ -170,8 +171,9 @@ class orderWXPay extends CI_Controller{
             //得到金额
             $isOrderOk=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);
             $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isOrderOk))),TRUE);
-   
-             $this->load->view('order/payOrder');
+			
+			
+            $this->load->view('order/payOrder');
         }
     }
 //跳转兼容
@@ -179,9 +181,13 @@ class orderWXPay extends CI_Controller{
     {
     	$this->load->view('order/payOrder');
     }	
-
+	// 返回购物车
     function gocart(){
         redirect('home/cart');
+    } 
+	// 返回首页
+	function gohome(){
+        redirect('home/index');
     }
     // 
     public function unshopdata()
@@ -192,7 +198,8 @@ class orderWXPay extends CI_Controller{
         $_SESSION['witer'],        
         $_SESSION['postBooking'], 
         $_SESSION['rePayData'],
-        $_SESSION['ceremoney']
+        $_SESSION['ceremoney'],
+        $_SESSION['eleg']
         );
       
         echo "清除完成";
@@ -225,7 +232,7 @@ class orderWXPay extends CI_Controller{
         // }else{
         // $postOrderData['PaymentMethod'] = 1;
         // }
-
+		
         $postOrderData['POOrderId'] = $_SESSION['rePayData'][0]['POOrderId'];
         $postOrderData['PaymentMethod'] = 1;   
         $postOrderData['UserPhone'] = $_SESSION['phone'];
@@ -239,13 +246,15 @@ class orderWXPay extends CI_Controller{
         //  }else{
         //      echo "<script>alert('支付失败，请联系028-1234567！')</script>";
         //  } 
+		
         unset(
-        $_SESSION['shoping'], 
-        $_SESSION['booking'],
-        $_SESSION['witer'],
-        $_SESSION['postBooking'], 
-        $_SESSION['rePayData'], 
-        $_SESSION['ceremoney']
+			$_SESSION['shoping'], 
+			$_SESSION['booking'],
+			$_SESSION['witer'],
+			$_SESSION['postBooking'], 
+			$_SESSION['rePayData'], 
+			$_SESSION['ceremoney'],
+			$_SESSION['eleg']
         );
 		
      	redirect('home/orderRe');

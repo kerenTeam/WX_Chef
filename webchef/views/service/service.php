@@ -5,15 +5,16 @@
           				<div class="am-u-sm-8">
           					<div class="am-slider am-slider-default" data-am-flexslider id="demo-slider-0">
 							  <ul class="am-slides">
-							    <li><a href="<?=site_url('service/lifeInfo2');?>" title=""><img src="skin/img/banner1.png" /></a></li>
-							    <li><a href="<?=site_url('service/lifeInfo2');?>" title=""><img src="skin/img/banner2.png" /></a></li>
-							    <li><a href="<?=site_url('service/lifeInfo2');?>" title=""><img src="skin/img/banner3.png" /></a></li>
+                  <?php foreach($banner as $val):?>
+							    <li><a href="<?=site_url('service/lifeInfo2');?>" title=""><img src="<?=IP.$val['img'];?>" /></a></li>
+                  <?php endforeach;?>
+							   
 							  </ul>
 							</div>
           				</div>
           				<div class="am-u-sm-4">
           					<div class="serviceForm">
-	          					<form class="am-form">
+	          					<form class="am-form" action="<?=site_url('service/addwiter');?>" method="post">
 	          						<h3>服务员<span class="red am-icon-cny fr">80<span class="gray"> /位</span></span></h3>
 	          						<p>微笑、速度、诚信、技巧、专业</p>
 	          						<div class="am-g am-text-center">
@@ -21,7 +22,7 @@
 											<img src="skin/img/boy.png">
 											<div class="num-btn">
 												<span class="subtract"><img src="skin/img/jian.png"></span>
-												<input value="0">
+												<input value="0" name="boy">
 												<span class="plus"><img src="skin/img/jia.jpg"></span>
 											</div>
 										</div>
@@ -29,28 +30,19 @@
 	          								<img src="skin/img/girl.png">
 											<div class="num-btn">
 												<span class="subtract"><img src="skin/img/jian.png"></span>
-												<input value="0">
+												<input value="0" name="girl">
 												<span class="plus"><img src="skin/img/jia.jpg"></span>
 											</div>
 	          							</div>
 	          						</div>
-	          						<button type="button" class="am-btn am-btn-danger">加入购物车</button>
+	          						<button type="submit" class="am-btn am-btn-danger">加入购物车</button>
 	          					</form>
           					</div>
           				</div>
           			</div>
           			<!-- content -->
           			<div class="serviceCtt">
-          				<h2>服务标准</h2>
-          				<p>1. 接到跟单安排时，跟单人员积极热情</p>
-          				<p>2．客户进入展厅，跟单人员立即微笑迎上去 </p>
-          				<p>3．跟单人员应主动与客户交流，了解客户需求 </p>
-          				<p>4．在跟单过程中，应做到热情、周到、大方</p>
-          				<h2>服务流程</h2>
-          				<p>1．迎客—服务员应微笑点头问好</p>
-          				<p>2．点菜—详细仔细服务 </p>
-          				<p>3．餐桌服务—详细服务顾客的饮食习惯 </p>
-          				<p>4．餐后整理—顾客用餐后，服务员善后</p>
+                  <?php echo str_replace('&nbsp;', ' ',htmlspecialchars_decode($witer[0]['ideacontent'])); ?>
           			</div>
 
           		<!-- 评价 -->

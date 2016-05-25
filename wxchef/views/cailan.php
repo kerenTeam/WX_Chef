@@ -107,7 +107,7 @@
               </div>
             </div>
           </li>
-              <?php if($v['Code'] == 1999){$a = 1;}else{$a = 0;}?>
+              <?php if($v['code'] == 1999){$a = 1;}else{$a = 0;}?>
               <input type="hidden" name='code[]' value="<?=$a;?>">
            <?php endif;?>
         <?php endforeach;?>

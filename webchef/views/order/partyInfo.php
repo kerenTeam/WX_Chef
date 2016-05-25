@@ -63,7 +63,7 @@
             <div>数量</div>
             <div class="num-btn">
               <span id="subtract"><img src="skin/img/jian.png"></span>
-              <input id="foodNum" value="1"></input>
+              <input id="foodNum" value="1" name="number" />
               <span id="plus"><img src="skin/img/jia.jpg"></span>
             </div>
           </div>
@@ -95,10 +95,10 @@
         </div>
       </li>
     </ul>
-    <div class="food-brief">
+<!--     <div class="food-brief">
       <p>主料：<span>五花肉；尖椒。</span></p>
       <p>辅料：<span>白糖；豆瓣酱；洋葱；芹菜；酱油；鸡精；花生油。<span></p>
-    </div>
+    </div> -->
     <form class="custom am-form am-form-horizontal">
       <div class="am-g">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />

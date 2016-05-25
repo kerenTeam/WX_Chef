@@ -66,7 +66,7 @@
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">电话</label>
       <div class="am-u-sm-10">
-        <input id="phone" class="am-radius" type="tel" placeholder="请输入你的联系电话" name="phone">
+        <input id="phone" class="am-radius" type="tel" placeholder="请输入你的联系电话" name="phone" value="<?php if(isset($_SESSION['phone'])){echo $_SESSION['phone'];}?>">
         <p class="customP">输入电话，客服稍后会给您回电</p>
       </div>
       <div class="am-u-sm-1"></div>

@@ -12,7 +12,43 @@
    
   </header>
   <!-- 详情 -->
+<script>
+// 增加菜品数量
+  function addcart(){
+      var id = "<?=$foods['foodid'];?>";
+      var number = $('.numTxt').val();
+      var code = $('input[name=code]').val();
+      var shopid = "<?=$shopid?>";
+      // alert(number);
+       $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/foodaddcart'); ?>',
+            data: 'foodid='+id+'&numbers='+number+'&code='+code+'&shopid='+shopid,
+            success: function(data) {
+               // console.log(data);
+            }
+        });
+         
+  }
+  // 减少菜品数量
+ function delcart(){
+        var id = "<?=$foods['foodid'];?>";
+        var number = $('.numTxt').val();
+        var code = $('input[name=code]').val();
+        var shopid = "<?=$shopid?>";
+      
+        $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/foodaddcart'); ?>',
+            data: 'foodid='+id+'&numbers='+number+'&code='+code+'&shopid='+shopid,
+            success: function(data) {
+               // console.log(data);
+            }
+        });
+  }
 
+
+</script>
   <form action="<?=site_url('home/foodaddcart');?>" method="post" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
  
@@ -41,12 +77,12 @@
         <div class="pr"><i class="am-icon-cny"></i><span class="price"><?php if($foods['discountproportion']){echo $foods['foodprice']*$foods['discountproportion'];}else{echo $foods['foodprice'];}?></span></div>
 
           <input type="hidden" name='code' value="<?php if ($foods['foodkind'] == 1){if($foods['code'] == 1999){echo "1";}else{echo "0";}}elseif($foods['foodkind'] == 2){echo "2";}?>">
-        <div class="foodNum">
-          <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
+       <div class="foodNum">
+          <span class="reduce am-icon-minus-circle" onClick="handle(this, false),addcart()"></span>
           <input type="text" class="numTxt" name="numbers"  onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if($number){echo $number;}else{echo "0";}?>">
           <input type="hidden" value="<?=$foods['foodid'];?> " name='foodid'/> 
           <input type="hidden" value="<?=$shopid;?>" name='shopid'/>
-          <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
+          <span class="add am-icon-plus-circle" onClick="handle(this, true),delcart()"></span>
         </div>
         
       </div>

@@ -26,6 +26,8 @@
             </a>
         </li>
 		<?php endforeach;?>
+		<?php else:?>
+		<li>该菜品暂时没有可换菜品！</li>
       <?php endif;?>
       </ul>
     </div>

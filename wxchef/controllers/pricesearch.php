@@ -53,7 +53,7 @@ class pricesearch extends CI_Controller {
 	{
 			$a['Name'] = $_POST['name'];
 			$a['UserPhone'] = $_SESSION['phone'];
-			$a['Address'] = $_POST['city'].$_POST['area'].$_POST['Insurer'];
+			$a['Address'] = $_POST['city'].$_POST['area'].$_POST['Insurer'].$_POST['address'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
 			$a['SparePhone'] = '';
 			$a['IsDefault'] = 1;

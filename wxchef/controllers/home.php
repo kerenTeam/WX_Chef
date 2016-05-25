@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
@@ -200,7 +201,7 @@ class home extends CI_Controller
 				foreach($foods as $k=>$v){
 					$foods[$k]['number'] = '0';
 					foreach ($shop as $key => $value) {
-						if($v['FoodId'] == $value['foodid']){
+						if($v['foodid'] == $value['foodid']){
 							$foods[$k]['number'] = $value['number'];
 						}
 					}
@@ -479,12 +480,19 @@ class home extends CI_Controller
 	// 注销
 	public function zhuxiao(){
 		unset(
+			$_SESSION['userinfo'],
 		    $_SESSION['shoping'],
 		    $_SESSION['booking'],
 		    $_SESSION['phone'],
-		    $_SESSION['witer']
+		    $_SESSION['witer'],
+		    $_SESSION['eleg'],
+		    $_SESSION['cerearr'],
+			$_SESSION['postBooking'], 
+			$_SESSION['rePayData'],
+			$_SESSION['ceremoney']
+			
 		);	
-		redirect('home/index');
+		echo "<script>alert('注销成功;');window.location.href='index';</script>";
 	}
 	//购物车 new
 	public function cart(){
@@ -525,6 +533,7 @@ class home extends CI_Controller
 			$data['witer'] = '';
 		}
 		// 伴餐
+		//var_Dump($_SESSION['eleg']);
 		if(isset($_SESSION['eleg'])){
 			if($_SESSION['eleg'] == ''){
 				$data['eleg'] = '';
@@ -623,7 +632,8 @@ class home extends CI_Controller
 			$_SESSION['witer'],        
 			$_SESSION['postBooking'], 
 			$_SESSION['rePayData'],
-			$_SESSION['ceremoney']
+			$_SESSION['ceremoney'],
+			$_SESSION['eleg']
 		);
 		$this->load->view('paySuccess');
 	}
@@ -740,12 +750,17 @@ class home extends CI_Controller
     			$data['record'] = '';
     		}else{
     			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
-
+				 //var_dump($jsonorder);
+				// $food = ltrim(rtrim($jsonorder,'"'),'"');
+				// 转换json
+				// $a =   str_replace('\"','"',$food);
+				//var_Dump($a);
     			$data['record'] = json_decode(json_decode($jsonorder),true);
        		}
     	}else{
     		$data['record'] = '';
     	}
+		//var_Dump($data);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
@@ -791,7 +806,7 @@ class home extends CI_Controller
 		{
 			
 			$a['Name'] = $_POST['name'];
-			$a['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'];
+			$a['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'].$_POST['address'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
 			$a['SparePhone'] = $_POST['SparePhone'];
 			if(!isset($_POST['IsDefault'])){
@@ -839,7 +854,7 @@ class home extends CI_Controller
 			// var_dump($_POST);
 			$arr = array(
 				'Name'=>$_POST['name'],
-				'Address'=> $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'],
+				'Address'=> $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'].$_POST['address'],
 				'MemberAddressId'=>$_POST['id'],
 				'GoodsPhone'=>$_POST['GoodsPhone'],
 				'SparePhone'=>$_POST['SparePhone'],
@@ -1163,7 +1178,7 @@ class home extends CI_Controller
 				foreach($foods as $k=>$v){
 					$foods[$k]['number'] = '0';
 					foreach ($shop as $key => $value) {
-						if($v['FoodId'] == $value['foodid']){
+						if($v['foodid'] == $value['foodid']){
 							$foods[$k]['number'] = $value['number'];
 						}
 					}
@@ -1221,7 +1236,10 @@ class home extends CI_Controller
 		$data['jinpin'] = json_decode(json_decode($query),true);
 		// 七嘴八舌
 		$qi = file_get_contents(POSTAPI.'API_Evaluate');
-		$data['qi'] = json_decode(json_decode($qi),true);
+		$food = ltrim(rtrim($qi,'"'),'"');
+		// 转换json
+		$a =   str_replace('\"','"',$food);
+		$data['qi'] = json_decode($a,true);
 
 		$this->load->view('find',$data);
 	}

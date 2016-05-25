@@ -47,6 +47,11 @@
               </div> 
           </div>
         </div>
+		<div class="am-cf"></div>
+        <div class="am-u-sm-2 am-text-right">详细地址</div>
+        <div class="am-u-sm-10">
+          <input type="text" placeholder="请填写您的详细地址" class="uname" name='address' required>
+        </div>
         <div class="am-cf"></div>
         <div class="am-u-sm-2 am-text-right">姓名</div>
         <div class="am-u-sm-10">
@@ -55,7 +60,7 @@
         <div class="am-cf"></div>
         <div class="am-u-sm-2 am-text-right">电话</div>
         <div class="am-u-sm-10">
-          <input type="text" placeholder="请填写能够联系到您的电话号码" name='GoodsPhone' class="uphone">
+          <input type="text" placeholder="请填写能够联系到您的电话号码" name='GoodsPhone' class="uphone" value='<?=$_SESSION['phone'];?>'>
         </div>
         <div class="am-cf"></div>
         <div class="am-u-sm-2 am-text-right">备用</div>
