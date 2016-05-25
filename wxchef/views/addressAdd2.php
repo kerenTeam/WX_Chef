@@ -48,7 +48,7 @@
           </div>
         </div>
 		<div class="am-cf"></div>
-        <div class="am-u-sm-2 am-text-right">详细地址</div>
+        <div class="am-u-sm-2 am-text-right">详址</div>
         <div class="am-u-sm-10">
           <input type="text" placeholder="请填写您的详细地址" class="uname" name='address' required>
         </div>

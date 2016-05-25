@@ -81,9 +81,7 @@
     this.parentNode.parentNode.getElementsByClassName('submitBtn')[0].removeAttribute('disabled');
   }
  }
-  
-
-
+   
   function myrefresh() 
   { 
          window.location.reload(); 
