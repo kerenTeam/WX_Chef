@@ -85,6 +85,7 @@ class orderWXPay extends CI_Controller{
     public function payOrder()
     {
         if($_POST){
+			//var_dump($_POST);
             $foodid = $this->input->post('foodid');
             $numbers = $this->input->post('numbers');
             if($foodid){

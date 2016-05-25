@@ -201,7 +201,7 @@ class home extends CI_Controller
 				foreach($foods as $k=>$v){
 					$foods[$k]['number'] = '0';
 					foreach ($shop as $key => $value) {
-						if($v['FoodId'] == $value['foodid']){
+						if($v['foodid'] == $value['foodid']){
 							$foods[$k]['number'] = $value['number'];
 						}
 					}
@@ -801,7 +801,7 @@ class home extends CI_Controller
 		{
 			
 			$a['Name'] = $_POST['name'];
-			$a['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'];
+			$a['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'].$_POST['address'];
 			$a['GoodsPhone'] = $_POST['GoodsPhone'];
 			$a['SparePhone'] = $_POST['SparePhone'];
 			if(!isset($_POST['IsDefault'])){
@@ -849,7 +849,7 @@ class home extends CI_Controller
 			// var_dump($_POST);
 			$arr = array(
 				'Name'=>$_POST['name'],
-				'Address'=> $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'],
+				'Address'=> $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'].$_POST['address'],
 				'MemberAddressId'=>$_POST['id'],
 				'GoodsPhone'=>$_POST['GoodsPhone'],
 				'SparePhone'=>$_POST['SparePhone'],
