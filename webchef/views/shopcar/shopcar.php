@@ -106,6 +106,7 @@
 				<?php endif;?>
 				<!-- 伴餐end -->
 				<!-- 服务员 -->
+				<?php if(!empty($witer)):?>
 				<li>
 					<label class="am-checkbox am-danger cheall">
 						<input class="<?php if(!$witer['boy']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
@@ -119,6 +120,7 @@
 					</div>
 					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
 				</li>
+
 				<li>
 					<label class="am-checkbox am-danger cheall">
 						<input class="<?php if(!$witer['girl']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
@@ -132,6 +134,7 @@
 					</div>
 					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
 				</li>
+				<?php endif;?>
 				<!-- 服务员end -->
 			<?php endif;?>
 			</ul>

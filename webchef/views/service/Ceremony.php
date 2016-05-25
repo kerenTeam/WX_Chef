@@ -7,10 +7,10 @@
 					</div>
 					<div class="am-u-sm-5 cereForm">
 						<form class="am-cf">
-							<h2 class="am-cf">紫色梦幻<a href="<?=site_url('service/customServ');?>" title="" class="am-fr am-text-sm">晕了么？联系客服</a></h2>
+							<h2 class="am-cf"><?=$cereinfo[0]['name'];?><a href="<?=site_url('service/customServ');?>" title="" class="am-fr am-text-sm">晕了么？联系客服</a></h2>
 
 							<div class="am-cf am-padding-sm qgray" id="my-sticky" data-am-sticky>
-								<span class="red am-icon-cny am-text-xl" id="allmoney">34800.00</span>
+								<span class="red am-icon-cny am-text-xl" id="allmoney"><?=$cereinfo[0]['price'];?></span>
 								<button type="button" class="am-btn am-btn-danger am-fr makeCheck">确认</button>
 								<div class="tk" style="display: none;">
 									<div class="tkcontent tkvip bwhite am-cf" style="background: white;border-radius: 5px;">
@@ -688,17 +688,7 @@
 				</div>
 				<div class="am-text-center ceremonyCtt">
 					<h2>套餐描述</h2>
-					<p>一个童话般的婚礼，希望能在浪漫、神圣、热烈、祥和的
-						气氛中完成自己人生中最重要的时刻。于是帮助美丽公主
-						完成她的愿望成了sunny喜铺策划师的工作重心。精致浪
-						漫的城堡，童话般的婚礼殿堂……，当美丽的公主一步步
-						驶向她幸福的宫殿，来到王子的面前时，当婚礼所有的光
-						辉都撒在公主与王子的身上时，当来宾被婚礼仪式的神圣
-						浪漫所感染时，所有的幸福与感动溢于言表。
-						以紫色、白色为主调的花艺装饰与浪漫的童话城堡风格统
-						一、色调协调，充分体现了浪漫典雅的婚礼主题风格。
-						以紫色、白色为主调的花艺装饰与浪漫的童话城堡风格统
-					一、色调协调，充分体现了浪漫典雅的婚礼主题风格。</p>
+					<p>    <?php echo str_replace('&nbsp;', ' ',htmlspecialchars_decode($cereinfo[0]['describe'])); ?></p>
 					<h2>1. 迎宾场地</h2>
 					<img src="skin/img/cm1.png">
 					<h2>2. 婚礼现场</h2>

@@ -196,7 +196,7 @@
                   </div> 
           </div>
 		   <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入详细地址" required id='address'/>
-                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required id='GoodsPhone'/>
+                <input type="tel" class="am-form-field am-radius am-margin-bottom-sm ofp" placeholder="请输入联系 电话" required id='GoodsPhone' value='<?=$_SESSION['phone'];?>'/>
                 <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofn" placeholder="请输入联系人姓名" required id='name'/>
                  <!-- <input type="text" class="am-form-field am-radius am-margin-bottom-sm ofa" placeholder="请输入用餐 地址" required id='Address'/> --> 
               
@@ -343,11 +343,11 @@
           $('.tk').fadeOut(400); 
         });
 
-        $('.fclick').live('click',function() {
+        $('.fclick').click(function() {
           console.log('.fclick');
            $('#fpc').slideToggle(400);          
         });
-        $('#fpc li').live('click',function() {
+        $('#fpc li').click(function() {
           $('#fpc').slideUp(400);
           $('.fclick').html('饭票<span class="am-fr am-icon-xs red">'+$(this).find('.am-list-item-hd').text()+'<input type="hidden" name="couponid" value="'+$(this).find('#couponid').val()+'" /><span class="am-icon-cny" id="youhui" >'+$(this).find('.am-icon-cny').html()+'</span></span>');
             discount = $('#youhui').text();
@@ -416,7 +416,7 @@
                   $(this).css('color','#eee')
                 }
               })
-               $('#dateconfirm').live('click',function(){  
+               $('#dateconfirm').click(function(){  
               if(html!=$('#beginTime').val()){ 
                  $("td").css('color','')
                  $('td').removeAttr('disabled').addClass('can'); 
@@ -438,7 +438,7 @@
               })
              }   
              }) 
-              $('td.can').live('click',function(event) { 
+              $('td.can').click(function(event) { 
                $('#pay').removeAttr('disabled');
                $('td').removeClass('am-danger');
                $(this).addClass('am-danger');

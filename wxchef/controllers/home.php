@@ -750,12 +750,17 @@ class home extends CI_Controller
     			$data['record'] = '';
     		}else{
     			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
-
+				 //var_dump($jsonorder);
+				// $food = ltrim(rtrim($jsonorder,'"'),'"');
+				// 转换json
+				// $a =   str_replace('\"','"',$food);
+				//var_Dump($a);
     			$data['record'] = json_decode(json_decode($jsonorder),true);
        		}
     	}else{
     		$data['record'] = '';
     	}
+		//var_Dump($data);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
@@ -1231,7 +1236,10 @@ class home extends CI_Controller
 		$data['jinpin'] = json_decode(json_decode($query),true);
 		// 七嘴八舌
 		$qi = file_get_contents(POSTAPI.'API_Evaluate');
-		$data['qi'] = json_decode(json_decode($qi),true);
+		$food = ltrim(rtrim($qi,'"'),'"');
+		// 转换json
+		$a =   str_replace('\"','"',$food);
+		$data['qi'] = json_decode($a,true);
 
 		$this->load->view('find',$data);
 	}

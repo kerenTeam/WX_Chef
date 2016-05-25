@@ -35,10 +35,10 @@
       <p class="manageBtn am-text-right">
         <a href="<?php echo site_url('chef/chefOrder?id=').$val['poorderid'];?>" class="btn am-btn am-btn-warning" title="">查看详情</a>
         <?php  switch ($val['state']) {
-          case '0':
+          case '2':
             echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$val["poorderid"].'&state=6'.'" class="btn am-btn am-btn-danger submitBtn" title="" disabled>确认</a>';
             break;
-          case '1':
+          case '4':
             echo '<a href="'.site_url("chef/chefConfirm?poorderid=").$val["poorderid"].'&state=3'.'" class="btn am-btn am-btn-danger" title="">开始服务</a>';
             break;
           case '3':
@@ -52,13 +52,13 @@
       </p>
      
       <div class="manageOrderStatus"> <?php switch ($val['state']) {
-        case '0':
+        case '2':
           echo "待接单";
           break;
         case '6':
           echo "待出库";
           break;
-        case '1':
+        case '4':
           echo "已出库";
           break;
         case '3':
