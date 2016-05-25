@@ -33,8 +33,35 @@
         <!--缩略图在标题左边-->
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title=""><?=$value['BillDate']?></time>
-          <span class="am-fr am-text-sm state"><?php switch ($value['State']) {
-            
+          <span class="am-fr am-text-sm state">
+          <?php switch ($value['State']) {
+              case '0':
+               echo "待付款";
+                break;
+              case '1':
+                  echo "待服务";
+                break;
+              case '2':
+                  echo "待服务";
+                break;
+              case '3':
+                  echo "服务中";
+                break;
+              case '4':
+                  echo "待服务";
+                break;
+              case '6':
+                  echo "待服务";
+                break;
+              case '8':
+                  echo "待评价";
+                break;
+              case '7':
+                  echo "退款";
+                break;
+              case '10':
+                  echo "退款";
+                break;
           }?></span>
         </div>
 
@@ -76,7 +103,13 @@
 
         <span class="am-margin-left-sm gray am-text-sm orderNum">订单号：<?=$value['BillNo'];?></span>
         <?php switch ($value['State']) {
-            
+            case '0':
+              echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.$value['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>"; 
+              echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
+              break;
+            case '1':
+                
+              break;
           }?>
         
         </p>
