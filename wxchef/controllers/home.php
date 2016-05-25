@@ -1173,7 +1173,7 @@ class home extends CI_Controller
 				foreach($foods as $k=>$v){
 					$foods[$k]['number'] = '0';
 					foreach ($shop as $key => $value) {
-						if($v['FoodId'] == $value['foodid']){
+						if($v['foodid'] == $value['foodid']){
 							$foods[$k]['number'] = $value['number'];
 						}
 					}
