@@ -150,12 +150,12 @@
 						<div class="am-g">
 						  <div class="am-u-sm-3">
 						    选择日期<br/>
-						    <p><input type="text" class="am-form-field deData" placeholder="选择要服务日期" id="my-start-2" required readonly/></p>
+						    <p><input type="text" class="am-form-field deData" placeholder="点击选择要服务日期" id="my-start-2" required readonly/></p>
 						  </div>
-						  <div class="am-u-sm-3 deTime am-hide">
+						  <div class="am-u-sm-3">
 						    选择时间<br/>
 						    <input type="hidden" id="timeEat" name="time" value="">
-						    <div>
+						    <div class="deTime">
 						    	<table class="am-table am-table-bordered am-fl" style="width: 80%;margin-left:5px;">
 						          <tbody><tr>
 						            <td>10:00</td>
@@ -530,12 +530,13 @@ $('#defrayForm').bind('submit',function(){
 	var d =(day <10) ? '0'+day : day;
     day=d;
 	var year = date.getFullYear(); 
-	var hour = date.getHours();
+	var hour = date.getHours()+2;
 	var minutes = date.getMinutes();
 	var b =(minutes <10) ? '0'+minutes : minutes;
 	minutes =b;
 	var curTime = hour+":"+minutes;  
 	html=year+'-'+month+'-'+day;
+	$('.deData').val(html);
 	$('.deTime td').each(function(){ 
       if($(this).html()>curTime){
         $(this).addClass('can');
@@ -547,17 +548,15 @@ $('#defrayForm').bind('submit',function(){
       }
     });
 	$('.deTime td.can').live('click',function(event) { 
-               $('#pay').removeAttr('disabled');
-              $('td').removeClass('am-danger');
-              $(this).addClass('am-danger');
-              $('#timeEat').val($(this).html());
-            });
+		$('#pay').removeAttr('disabled');
+		$('td').removeClass('am-danger');
+		$(this).addClass('am-danger');
+		$('#timeEat').val($(this).html());
+    });
 
   $('.deData').change(function(){
   	if($(this).val() == ''){
-  		$('.deTime').addClass('am-hide');
   	}else{
-  		$('.deTime').removeClass('am-hide');
   		if($(this).val() == html){
   			$('.deTime td').removeClass('can am-danger');
   			$('#pay').attr('disabled','disabled');
