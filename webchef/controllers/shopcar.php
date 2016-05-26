@@ -82,9 +82,13 @@ class Shopcar extends CI_Controller
 
 	// 订单确认
 	function defray(){
-		var_dump($_POST);
-		$this->load->view('shopcar/defray');
-		$this->load->view('footer');
+		if($_POST){
+			
+
+			var_dump($_POST);
+			$this->load->view('shopcar/defray');
+			$this->load->view('footer');
+		}
 	}
 
 	// 支付成功
