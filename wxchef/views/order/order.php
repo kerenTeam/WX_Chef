@@ -440,7 +440,7 @@
               })
              }   
              });
-              $('td.can').click(function() { 
+              $('td.can').live('click',function() { 
                $('#pay').removeAttr('disabled');
                $('td').removeClass('am-danger');
                $(this).addClass('am-danger');
