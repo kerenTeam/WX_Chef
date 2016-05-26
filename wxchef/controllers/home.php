@@ -356,7 +356,6 @@ class home extends CI_Controller
 	        		}
 	        	}
 	        }
-
 	        $data['foods'] = $foods;
 			// 产品图片
 			$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
@@ -483,7 +482,6 @@ class home extends CI_Controller
 							$shoping[$k]['number'] = $number;
 						}
 					}
-
 					$this->session->set_userdata('shoping',$shoping,0);
 				}
 				redirect('home/cart');

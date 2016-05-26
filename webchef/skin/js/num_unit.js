@@ -8,6 +8,7 @@ var tempId = 0;
 //var fen = parseFloat(fens.value); 
 // var fen = parseFloat(fens.innerHTML);
 var allmoney = document.getElementById("allmoney"); 
+var moneyall = document.getElementById("moneyall"); 
 /** 总价格 */
 var paymoney = parseFloat(allmoney.innerHTML);
 var curCount;
@@ -27,6 +28,7 @@ window.onload=function(){
 	console.log(paymoney)
 	// fens.innerHTML = fen;
 	allmoney.innerHTML = paymoney.toFixed(2);
+	moneyall.value = paymoney.toFixed(2);
 }
 
 function IsNum(e) {
@@ -66,6 +68,7 @@ function ueserWrite(obj){
     // fens.innerHTML = fen;
     paymoney += (parseFloat(curCount) - num)*prices;
     allmoney.innerHTML= paymoney.toFixed(2);
+	moneyall.value = paymoney.toFixed(2);
 }
 
 function handle(self, isAdd){
@@ -102,6 +105,7 @@ function handle(self, isAdd){
 	// fens.innerHTML=fen;
     countEl.value=curCount;
 	allmoney.innerHTML= paymoney.toFixed(2);
+	moneyall.value = paymoney.toFixed(2);
 }
 
 
