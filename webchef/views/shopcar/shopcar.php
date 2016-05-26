@@ -15,7 +15,7 @@
 			<a class="quanbu" href="javascript:;"><span>全部商品</span></a>
 			<!-- <a href="javascript:;" style="color: #999">优惠商品</a> -->
 		</div>
-		<form id="youform">
+		<form id="youform" action="<?=site_url('');?>" method="post">
 		<!-- xuanze -->
 		<div class="xuanze">
 			<span class="xunze_left">
