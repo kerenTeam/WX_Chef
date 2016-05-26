@@ -332,6 +332,7 @@
          html=year+'-'+month+'-'+day;
        adate.attr('placeholder',html+" 默认");
        adate.val(html);
+       console.log(html);
          // 弹出添加地址弹框
          $('#model').live('click',function() {
           //$('.tkp').css('display','');
@@ -344,7 +345,7 @@
         });
 
         $('.fclick').click(function() {
-          console.log('.fclick');
+          
            $('#fpc').slideToggle(400);          
         });
         $('#fpc li').click(function() {
@@ -416,29 +417,30 @@
                   $(this).css('color','#eee')
                 }
               })
-               $('#dateconfirm').click(function(){  
-              if(html!=$('#beginTime').val()){ 
-                 $("td").css('color','')
-                 $('td').removeAttr('disabled').addClass('can'); 
-             }else{
-              $('td').removeClass('can am-danger');
-               $('#pay').attr({
+               $('#dateconfirm').live('click',function(){  
+                 console.log($('#beginTime').val()); 
+                 $('td').removeClass('can am-danger');
+                 $('#pay').attr({
                     disabled: 'disabled'
                   });
+              if(html!=$('#beginTime').val()){ 
+                 console.log($('#beginTime').val()); 
+                 $("td").css('color','')
+                 $('td').removeAttr('disabled').addClass('can'); 
+             }else{ 
+                
               $('td').each(function(){ 
 
                 if($(this).html()>curTime){
                   $(this).addClass('can');
                 }else{
-                  $(this).attr({
-                    disabled: 'disabled'
-                  });
+                  $(this).attr({disabled: 'disabled'});
                   $(this).css('color','#eee')
                 }
               })
              }   
-             }) 
-              $('td.can').click(function(event) { 
+             });
+              $('td.can').live('click',function() { 
                $('#pay').removeAttr('disabled');
                $('td').removeClass('am-danger');
                $(this).addClass('am-danger');

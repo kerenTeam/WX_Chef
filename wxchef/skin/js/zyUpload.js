@@ -49,9 +49,9 @@
                  var multiple = ""; // 设置多选的参数
                  para.multiple ? multiple = "multiple" : multiple = "";
                  var html = '';
+
                  if (para.dragDrop == 999) {
                      // 创建带有拖动的html
-                     response = '';
                      html += '<form id="uploadForm" action="' + para.url + '" method="post" enctype="multipart/form-data">';
                      html += '<div class="upload_box">';
                      html += '		<div class="upload_main">';
@@ -187,7 +187,6 @@
                  response = '';
                  $("#fileSubmit").click();
 
-
                  // 图片上传的是图片还是其他类型文件
                  if (file.type.indexOf("image") == 0) {
                      html += '<div id="uploadList_' + file.index + '" class="upload_append_list">';
@@ -283,7 +282,6 @@
                              funBindHoverEvent();
                          };
 
-
                          // 绑定删除按钮事件
                          var funBindDelEvent = function() {
                              if ($(".file_del").length > 0) {
@@ -323,8 +321,7 @@
                          $("#uploadList_" + file.index).fadeOut();
                          // 重新设置统计栏信息
                          self.funSetStatusInfo(files);
-                         // console
-                         .info("剩下的文件");
+                         // console.info("剩下的文件");
                          // console.info(files);
                      },
                      onProgress: function(file, loaded, total) {
@@ -392,7 +389,7 @@
                      $("#fileImage").click();
                  });
 
-                 // 绑定上传点击事件
+                 // // 绑定上传点击事件
                  // $(".upload_btn").bind("click", function(e){
                  // 	// 判断当前是否有文件需要上传
                  // 	if(ZYFILE.funReturnNeedFiles().length > 0){
@@ -407,7 +404,6 @@
                      // 绑定添加点击事件
                      $("#rapidAddImg").bind("click", function(e) {
                          $("#fileImage").click();
-                         //  $("#fileSubmit").click();
                      });
                  }
              };
