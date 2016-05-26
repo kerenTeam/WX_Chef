@@ -25,14 +25,20 @@ class Service extends CI_Controller
 			//f返回庆典介绍
 			$cere = file_get_contents(POSTAPI.'API_Celebration?id='.$id);
 			$data['cereinfo'] = json_decode(json_decode($cere),true);
-			// 返回所有区域
+			// 返回所有区域展示图
 			$arr['id'] = $id;
 			$josndata = json_encode($arr);
 			$details = curl_post(POSTAPI.'API_details',$josndata);
 			$data['details'] = json_decode(json_decode($details),true); 
 			$data['id'] = $id;
+			// 返回所有区域器械
 
-			var_dump($data['cereinfo']);
+			$cere = file_get_contents(POSTAPI.'API_details?dis=qy');
+			$data['ceredetails'] = json_decode(json_decode($cere),true);
+
+			// echo "<pre>";
+			// var_dump($ce);
+			// var_dump($data['cereinfo']);
 			$this->load->view('service/Ceremony',$data);
 			$this->load->view('footer');
 		}
@@ -47,6 +53,35 @@ class Service extends CI_Controller
 		$this->load->view('service/ceremonyType',$data);
 		$this->load->view('footer');
 	}
+
+	// 庆典加入购物车
+	public function cereOrder()
+	{
+		if($_POST){
+				$cere['moneyall'] = $_POST['moneyall'];
+				$cere['name'] = $_POST['detailsname'];
+				$cere['celebrationid'] = $_POST['CelebrationId'];
+				$zu  =$_POST['zu'];
+				$a = array();
+				// 获取所有的产品id
+				foreach ($zu as $key => $value) {
+					$a['id'][$key] = $_POST['cereid'.$value];
+					$a['nub'][$key] = $_POST['numbers'.$value];
+				}
+				// 组合id和数量
+				foreach ($a['id'] as $key => $value) {
+					foreach ($value as $k => $v) {
+						$data[$key+1][$k]['detailsId'] = $a['id'][$key][$k];
+						$data[$key+1][$k]['detailsNumber'] = $a['nub'][$key][$k];
+					}
+				}
+				$cere['celeentry'] = $data;
+				$_SESSION['ceremoney'] = $cere;
+				redirect('shopcar/car');
+		}
+	}
+
+
 
 	// 伴餐
     public function elegance()

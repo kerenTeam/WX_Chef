@@ -12,6 +12,43 @@
     </h1>
     
   </header>
+  <script>
+// 增加菜品数量
+  function addcart(){
+      var id = "<?=$foods[0]['foodid'];?>";
+      var number = $('.numTxt').val();
+      var code = '1';
+      var shopid = "";
+      // alert(number);
+       $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/foodaddcart'); ?>',
+            data: 'foodid='+id+'&numbers='+number+'&code='+code+'&shopid='+shopid,
+            success: function(data) {
+               // console.log(data);
+            }
+        });
+         
+  }
+  // 减少菜品数量
+ function delcart(){
+        var id = "<?=$foods[0]['foodid'];?>";
+        var number = $('.numTxt').val();
+        var code = '1';
+        var shopid = "";
+      
+        $.ajax({
+            type: "POST",
+            url: '<?php echo site_url('home/foodaddcart'); ?>',
+            data: 'foodid='+id+'&numbers='+number+'&code='+code+'&shopid='+shopid,
+            success: function(data) {
+               // console.log(data);
+            }
+        });
+  }
+
+
+</script>
   <!-- 详情 -->
   <form action="<?=site_url('home/foodaddcart');?>" method="post" enctype="mutiltype/data">
     <div class="foodinfo am-shadow">
@@ -79,9 +116,10 @@
         <input type="hidden" name='code' value="1" />
         <div class="pr"><i class="am-icon-cny"></i><span class="price"><?=$foods[0]['foodprice'];?></span>/<small>桌</small></div>
         <div class="foodNum">
-          <span class="reduce am-icon-minus-circle" onClick="handle(this, false)"></span>
-          <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="0">
-          <span class="add am-icon-plus-circle" onClick="handle(this, true)"></span>
+
+          <span class="reduce am-icon-minus-circle" onClick="handle(this, false),addcart()"></span>
+          <input type="text" class="numTxt" name="numbers" onkeypress="return IsNum(event)" onchange="ueserWrite(this)" onfocus="blurWrite(this)" value="<?php if(isset($foods[0]['number'])){echo $foods[0]['number'];}else{echo '0';}?>">
+          <span class="add am-icon-plus-circle" onClick="handle(this, true),delcart()"></span>
         </div>
       </div>
 
