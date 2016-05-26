@@ -137,6 +137,23 @@
 				<?php endif;?>
 				<!-- 服务员end -->
 			<?php endif;?>
+			<?php if(!empty($cerearr)): ?>
+				<li><h4 class="am-text-primary">庆典</h4></li>
+				<li>
+					<label class="am-checkbox am-danger cheall">
+						<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
+					</label>
+					<span class="serTit">
+						<?=$cerearr['name'];?>
+					</span>
+					<p class="serPrice p1 am-hide"><span class="p1span"><?=$cerearr['moneyall'];?></span></p>
+					<div class="jiajian am-hide">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
+					</div>
+					<p class="bancan p2">￥ <span class="p2span"><?=$cerearr['moneyall'];?></span> </p>
+					<a href="javascript:;" class="you_a">删除</a>
+				</li>
+			<?php endif;?>
 			</ul>
 			<!-- 结算 -->
 			<div class="jiesuan">
