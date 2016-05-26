@@ -186,7 +186,8 @@ $(function(){
         routes[i] = imgrouts[i].value;
      }
      var comment = $('#doc').val();
-     var oid = $('#oid').val();
+     var oid = $('#oid').val(); 
+     // if(ratfen==0||taste==0||environment)
      $.ajax({
       type: "POST",
       url:'<?=site_url("pricesearch/comsuc")?>',
