@@ -15,7 +15,7 @@
 			<a class="quanbu" href="javascript:;"><span>全部商品</span></a>
 			<!-- <a href="javascript:;" style="color: #999">优惠商品</a> -->
 		</div>
-		<form id="youform" action="<?=site_url('');?>" method="post">
+		<form id="youform" action="<?=site_url('orderWxPay/orderpay');?>" method="post">
 		<!-- xuanze -->
 		<div class="xuanze">
 			<span class="xunze_left">
@@ -116,7 +116,7 @@
 					</span>
 					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
 					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['boy'];?>"><img class="jia"  src="skin/img/jia.jpg">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['boy'];?>" name='boy'><img class="jia"  src="skin/img/jia.jpg">
 					</div>
 					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
 				</li>
@@ -130,7 +130,7 @@
 					</span>
 					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
 					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['girl'];?>"><img class="jia"  src="skin/img/jia.jpg">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['girl'];?>" name="girl"><img class="jia"  src="skin/img/jia.jpg">
 					</div>
 					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
 				</li>
@@ -157,7 +157,7 @@
 			</ul>
 			<!-- 结算 -->
 			<div class="jiesuan">
-				<p class="p3 service"><span style="color: #999">服务费 :</span> ￥<span id="service">60.00</span></p>
+				<p class="p3 service"><span style="color: #999">服务费 :</span> ￥<span id="service">60.00</span><input type="hidden" id="fee" name="servmoneydata" value="0"></p>
 				<p class="p3"><span style="color: #000">合计：</span>￥<span id="p3span">0.00</span></p>
 				<p>
 				<!-- <input type="submit" value="去付款" class="am-btn am-btn-danger am-radius" /> -->
