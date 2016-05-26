@@ -20,9 +20,9 @@
 
       <li class="am-g am-padding-sm safe">手机号<input type="tel" class="am-fr tel gray" readonly value="<?=$_SESSION['phone'];?>" > 
       </li>
-	   <li class="am-g am-padding-sm cp">原密码<input type="password" class="tel gray am-fr am-text-right opwd" name='userpwd'></li>
-      <li class="am-g am-padding-sm cp">新密码<input type="password" class="tel gray am-fr am-text-right npwd" name='newpwd'></li>
-      <li class="am-g am-padding-sm cp">确认密码<input type="password" class="tel gray am-fr am-text-right rnpwd" name='pwded'></li>
+	   <li class="am-g am-padding-sm cp">原密码<input type="password" class="tel gray am-fr opwd" name='userpwd'></li>
+      <li class="am-g am-padding-sm cp">新密码<input type="password" class="tel gray am-fr npwd" name='newpwd'></li>
+      <li class="am-g am-padding-sm cp">确认密码<input type="password" class="tel gray am-fr rnpwd" name='pwded'></li>
 
      
   </ul>

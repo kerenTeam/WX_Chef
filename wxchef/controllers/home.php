@@ -344,7 +344,20 @@ class home extends CI_Controller
 		if($_GET){
 			$id = $_GET['id'];
 			$foods = file_get_contents(POSTAPI.'API_Food?dis=taocanxq&foodid='.$id);
-	        $data['foods'] = json_decode(json_decode($foods),true);
+	        $foods = json_decode(json_decode($foods),true);
+	        if(isset($_SESSION['shoping'])){
+	        	if($_SESSION['shoping'] != ''){
+	        		$shoping = $_SESSION['shoping'];
+	        		foreach ($shoping as $key => $value) {
+        				if($value['foodid'] == $foods[0]['foodid']){
+        					//var_dump(123);
+        					$foods[0]['number'] = $value['number'];
+        				}
+	        		}
+	        	}
+	        }
+
+	        $data['foods'] = $foods;
 			// 产品图片
 			$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 			$data['foodspic'] = json_decode(json_decode($foodpic),true);
@@ -470,6 +483,7 @@ class home extends CI_Controller
 							$shoping[$k]['number'] = $number;
 						}
 					}
+
 					$this->session->set_userdata('shoping',$shoping,0);
 				}
 				redirect('home/cart');
@@ -750,12 +764,17 @@ class home extends CI_Controller
     			$data['record'] = '';
     		}else{
     			$jsonorder = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
-
+				 //var_dump($jsonorder);
+				// $food = ltrim(rtrim($jsonorder,'"'),'"');
+				// 转换json
+				// $a =   str_replace('\"','"',$food);
+				//var_Dump($a);
     			$data['record'] = json_decode(json_decode($jsonorder),true);
        		}
     	}else{
     		$data['record'] = '';
     	}
+		//var_Dump($data);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
@@ -1173,7 +1192,7 @@ class home extends CI_Controller
 				foreach($foods as $k=>$v){
 					$foods[$k]['number'] = '0';
 					foreach ($shop as $key => $value) {
-						if($v['FoodId'] == $value['foodid']){
+						if($v['foodid'] == $value['foodid']){
 							$foods[$k]['number'] = $value['number'];
 						}
 					}
@@ -1231,7 +1250,10 @@ class home extends CI_Controller
 		$data['jinpin'] = json_decode(json_decode($query),true);
 		// 七嘴八舌
 		$qi = file_get_contents(POSTAPI.'API_Evaluate');
-		$data['qi'] = json_decode(json_decode($qi),true);
+		$food = ltrim(rtrim($qi,'"'),'"');
+		// 转换json
+		$a =   str_replace('\"','"',$food);
+		$data['qi'] = json_decode($a,true);
 
 		$this->load->view('find',$data);
 	}

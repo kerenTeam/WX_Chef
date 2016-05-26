@@ -50,7 +50,7 @@
               </li>
               <li class="am-u-sm-4">
                   <div class="info-handle clear">
-                        <h1>价格 <span>￥<?php if($foods['discountproportion']){echo $foods['foodprice']*$foods['discountproportion'];}else{echo $foods['foodprice'];}?></span></h1>
+                        <h1>价格 <span>￥<span id="foodPrice"><?php if($foods['discountproportion']){echo $foods['foodprice']*$foods['discountproportion'];}else{echo $foods['foodprice'];}?></span></span></h1>
                         <ul class="am-avg-sm-3 food-assess">
                             <li>已售 <span>100</span></li>
                             <li><span><?php $zong=$foods['foodstar'] + $fen['cookscore'] + $fen['consumptionscore']; $pin = $zong/3*2;echo round($pin);?></span> 分</li>
@@ -60,20 +60,21 @@
                             <div>数量</div>
                             <div class="num-btn">
                                 <span id="subtract"><img src="skin/img/jian.png"></span>
-                                <input value="1"></input>
+                                <input id="foodNum" value="1"></input>
                                 <span id="plus"><img src="skin/img/jia.jpg"></span>
                             </div>
                         </div>
                         <ul class="buy-food">
                             <li>
-                                <!-- <button class="am-btn am-btn-danger am-radius buy-sbm">立即购买</button> -->
-                                <a href="<?=site_url('shopcar/car');?>" class="am-btn am-btn-danger am-radius buy-sbm">立即购买</a>
+                                <!-- <button href="<?=site_url('shopcar/car');?>" class="am-btn am-btn-danger am-radius buy-sbm">立即购买</button> -->
+                                <input type="hidden" value="1" />
+                                <a id='foodsid' href="javascript:;" class="joinCar am-btn am-btn-danger am-radius buy-sbm">加入购物车</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a class="am-btn am-btn-default am-radius join-car" href="javascript:;">
                                   <img src="skin/img/shop-car_03.png">
                                 </a>
-                            </li>
+                            </li> -->
                             <!-- <li>
                                 <a href="javascript:;" class="food-collect" id="food-collect">
                                   <span class="am-icon-star"></span>
@@ -245,6 +246,19 @@
   </div>
 <script src="skin/js/jquery.min.js"></script>
 <script type="text/javascript">
+// 加入购物车
+$('.joinCar').bind('click',function(){
+  var id = $(this).attr('id');
+  var price = $('#foodPrice').html();
+  var numbers = $('#foodNum').val();
+  var code = $(this).prev().val();
+  alert('id:'+id +'\n'+'code:'+code+'\n'+'price:'+price+'\n'+'number:'+numbers);
+})
+
+
+
+
+
     $(function(){
 $('body').addClass('min-center');
         var remove = $("#subtract");

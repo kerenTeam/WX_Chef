@@ -2,22 +2,18 @@
 		<div class="center">
 			<div class="elegance">
 				<div class="am-g">
+				<?php foreach($cere as $val):?>
 					<div class="am-u-sm-6">
 						<figure class="CmType am-shadow">
-							<a href="<?=site_url('service/Ceremony');?>">
-								<img src="skin/img/cm1.png">
-								<figcaption>紫色梦幻<span class="red am-icon-cny fr">5888</span></figcaption>
+							<a href="<?=site_url('service/Ceremony?id=').$val['id'];?>">
+								<img src="<?=IP.$val['logo'];?>">
+								<figcaption><?=$val['name'];?><span class="red am-icon-cny fr">
+								<?=$val['price'];?></span></figcaption>
 							</a>
 						</figure>
 					</div>
-					<div class="am-u-sm-6">
-						<figure class="CmType am-shadow">
-							<a href="<?=site_url('service/Ceremony');?>">
-								<img src="skin/img/cm2.png">
-								<figcaption>紫色梦幻<span class="red am-icon-cny fr">5888</span></figcaption>
-							</a>
-						</figure>
-					</div>
+				<?php endforeach;?>
+					
 				</div>
 			</div>
 		</div>

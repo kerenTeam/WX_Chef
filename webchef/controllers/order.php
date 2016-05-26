@@ -45,7 +45,12 @@ class Order extends CI_Controller
 			$this->load->view('footer');
 		}
 	}
-
+	// 宴席加入购物车
+	function partyadd(){
+		if($_POST){
+			var_dump($_POST);
+		}
+	}
 	// 净菜
 	function vegetable(){
 		// 获取所有菜品分类

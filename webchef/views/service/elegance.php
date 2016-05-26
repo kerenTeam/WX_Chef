@@ -24,7 +24,7 @@
 									</div>
 									<div class="goods-pr">
 										<!-- 已加入购物车样式 joined-->
-										<a id="<?=$value['id']?>" href="javascript:;" <?php if($value['num'] == 1){echo "class='joined'";}else{echo "class='joinCar'";}?> class="joinCar"><i class="am-icon-opencart"></i></a>
+										<a id="<?=$value['id']?>" href="javascript:;" <?php if(isset($value['num'])){ if($value['num'] == 1){echo "class='joined'";}else{echo "class='joinCar'";}}?> class="joinCar"><i class="am-icon-opencart"></i></a>
 									</div>
 								</div>
 							</div>

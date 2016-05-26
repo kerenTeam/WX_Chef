@@ -75,6 +75,7 @@
 </div>
 <!-- 评价 -->
 <div class="am-text-center am-text purred am-margin-sm">七嘴八舌</div>
+
 <?php foreach($qi as $value):?>
 <div class="am-shadow imgShow">
     <header class="am-comment-hd">

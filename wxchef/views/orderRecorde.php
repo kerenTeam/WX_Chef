@@ -11,6 +11,7 @@
     我的订单
     </h1>
   </header>
+  <?php // var_dump($record);?>
   <!-- 订单分类 -->
   <div data-am-widget="titlebar" class="am-titlebar am-titlebar-cols ana am-shadow" >
     <a href="javascript:" class="current">全部</a>
@@ -33,34 +34,27 @@
         <div class="am-cf otop">
           <time datetime="2015-03-22T04:54:29-07:00" title=""><?=$value['BillDate']?></time>
           <span class="am-fr am-text-sm state"><?php switch ($value['State']) {
-            case '0':
-              if($value['PaymentMethod'] == ''){
-                echo "待付款";
-              }else{
-                echo "待厨师接单";
-              }
-              break;
-            case '1':
-              echo "待服务";
-              break;
-            case '6':
-              echo "待服务";
-              break;
-            case '3':
-              echo "服务中";
-              break;
-            case '8'://原来的数据是 11
-              echo "待评价";
-              break;
-            case '7':
-              echo "退款中";
-              break;  
-            case '10':
-              echo "退款成功";
-              break;
-            case '9':
-              echo "已评价";
-              break;
+              case '0':
+               echo "待付款";
+                break;
+              case '1':
+              case '2':
+              case '4':
+              case '6':
+                  echo "待服务";
+                break;
+              case '3':
+                  echo "服务中";
+                break;
+              case '8':
+                  echo "待评价";
+                break;
+              case '7':
+                  echo "退款";
+                break;
+              case '10':
+                  echo "退款";
+                break;
           }?></span>
         </div>
 
@@ -103,16 +97,17 @@
         <span class="am-margin-left-sm gray am-text-sm orderNum">订单号：<?=$value['BillNo'];?></span>
         <?php switch ($value['State']) {
             case '0':
-              if($value['PaymentMethod'] == ''){
-                echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.$value['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>"; 
-                echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
-              }else{
-                  echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
-              }
+              echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.$value['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>"; 
+              echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
+              break;
+            case '1':
+            case '2':
+            case '6':
+                echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
               break;
             case '7':
-              echo "<a href='javascript:' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款中</a>";
-              break; 
+              echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款中</a>";
+              break;
             case '8':
               echo "<a href='".site_url('home/commentTotal?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
               echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
@@ -121,6 +116,9 @@
               echo "<a href='".site_url('home/share')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
               echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
               break;
+            case '10':
+                 echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款成功</a>";
+                break;
           }?>
         
         </p>

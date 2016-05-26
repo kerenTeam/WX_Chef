@@ -1,4 +1,15 @@
         <link href="skin/css/city.css" rel="stylesheet" type="text/css" />
+            <style type="text/css">
+      .am-slider-default .am-control-thumbs li{
+        width: 16.66%;
+      }
+      .am-slider .am-slides img{
+        height: 400px;
+      }
+      .am-slider-default .am-control-thumbs img{
+        height: 70px;
+      }
+    </style>
     <style type="text/css">
       .am-slider-default .am-control-thumbs li{
         width: 16.66%;
@@ -42,7 +53,7 @@
       </li>
       <li class="am-u-sm-4">
         <div class="info-handle clear">
-          <h1>价格 <span>￥ <?=$foods[0]['foodprice'];?></span></h1>
+          <h1>价格 <span>￥ <span id="foodPrice"><?=$foods[0]['foodprice'];?></span></span></h1>
           <ul class="am-avg-sm-3 food-assess">
             <li>已售 <span>35412</span></li>
             <li><span>5</span> 分</li>
@@ -52,20 +63,21 @@
             <div>数量</div>
             <div class="num-btn">
               <span id="subtract"><img src="skin/img/jian.png"></span>
-              <input value="1"></input>
+              <input id="foodNum" value="1" name="number" />
               <span id="plus"><img src="skin/img/jia.jpg"></span>
             </div>
           </div>
           <ul class="buy-food">
             <li>
-              <!-- <button class="am-btn am-btn-danger am-radius buy-sbm">立即购买</button> -->
-              <a href="<?=site_url('shopcar/car');?>" class="am-btn am-btn-danger am-radius buy-sbm">立即购买</a>
+              <!-- <button href="<?=site_url('shopcar/car');?>" class="am-btn am-btn-danger am-radius buy-sbm">立即购买</button> -->
+              <input type="hidden" value="1" />
+              <a id='foodsid' href="javascript:;" class="joinCar am-btn am-btn-danger am-radius buy-sbm">加入购物车</a>
             </li>
-            <li>
+            <!-- <li>
               <a class="am-btn am-btn-default am-radius join-car" href="javascript:;">
                 <img src="skin/img/shop-car_03.png">
               </a>
-            </li>
+            </li> -->
             <li>
               <div class="food-collect food-share">
                 <div class="bdsharebuttonbox">
@@ -83,10 +95,10 @@
         </div>
       </li>
     </ul>
-    <div class="food-brief">
+<!--     <div class="food-brief">
       <p>主料：<span>五花肉；尖椒。</span></p>
       <p>辅料：<span>白糖；豆瓣酱；洋葱；芹菜；酱油；鸡精；花生油。<span></p>
-    </div>
+    </div> -->
     <form class="custom am-form am-form-horizontal">
       <div class="am-g">
         <hr data-am-widget="divider" style="" class="am-divider am-divider-dotted" />
@@ -362,6 +374,19 @@
 <script type="text/javascript" src="skin/js/city4.city.js"></script>
 <script type="text/javascript" src="skin/js/city4.js"></script>
 <script type="text/javascript">
+
+// 加入购物车
+$('.joinCar').bind('click',function(){
+  var id = $(this).attr('id');
+  var price = $('#foodPrice').html();
+  var numbers = $('#foodNum').val();
+  var code = $(this).prev().val();
+  alert('id:'+id +'\n'+'code:'+code+'\n'+'price:'+price+'\n'+'number:'+numbers);
+})
+
+
+
+
 $(function(){
 $('body').addClass('min-center');
 $('.liststyle ul').css('overflow','scroll');

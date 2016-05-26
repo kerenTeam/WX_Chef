@@ -12,22 +12,39 @@ class Service extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->view('header');
+		$this->load->helper('post_helper');
+
 	}
 
 	// 庆典详情
     public function Ceremony()
 	{
-		
-		$this->load->view('service/Ceremony');
-		$this->load->view('footer');
+		if($_GET){
+			// 根据庆典id返回庆典详情
+			$id = $_GET['id'];
+			//f返回庆典介绍
+			$cere = file_get_contents(POSTAPI.'API_Celebration?id='.$id);
+			$data['cereinfo'] = json_decode(json_decode($cere),true);
+			// 返回所有区域
+			$arr['id'] = $id;
+			$josndata = json_encode($arr);
+			$details = curl_post(POSTAPI.'API_details',$josndata);
+			$data['details'] = json_decode(json_decode($details),true); 
+			$data['id'] = $id;
+
+			var_dump($data['cereinfo']);
+			$this->load->view('service/Ceremony',$data);
+			$this->load->view('footer');
+		}
 	}
 
 	// 庆典列表
     public function ceremonyType()
 	{
 		// 获取所有庆典
-		// $cere = file_get_contents(POSTAPI.'');
-		$this->load->view('service/ceremonyType');
+		$cere = file_get_contents(POSTAPI.'API_Celebration');
+		$data['cere'] = json_decode(json_decode($cere),true);
+		$this->load->view('service/ceremonyType',$data);
 		$this->load->view('footer');
 	}
 
