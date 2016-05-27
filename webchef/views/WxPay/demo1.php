@@ -3,20 +3,20 @@
  * @Author: Harris-Aaron
  * @Date:   2016-05-27 16:16:16
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-27 16:54:03
+ * @Last Modified time: 2016-05-27 17:38:30
  */
 
 ini_set('date.timezone','Asia/Shanghai');
 
 $notify = new NativePay();
 $input = new WxPayUnifiedOrder();
-$input->SetBody("TOM TAILOR 男式 山姆帅气双肩包");
-$input->SetAttach("SAM 黑色 均码");
+$input->SetBody("大厨到家订餐支付");
+$input->SetAttach("大厨到家－微信支付");
 $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
 $input->SetTotal_fee("1");
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 36000));
-$input->SetGoods_tag("山姆帅气双肩包");
+$input->SetGoods_tag("大厨到家－微信支付");
 $bc = "http://" . $_SERVER['SERVER_NAME'] . "/WXTEST2/webchef/views/WxPay/notify.php";
 $input->SetNotify_url($bc);
 $input->SetTrade_type("NATIVE");
