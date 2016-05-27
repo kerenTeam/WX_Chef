@@ -49,27 +49,7 @@ window.onload = function() {
         paymoney += parseFloat(parseInt(ordFen[i].value) * parseFloat(ordPrice[i].innerHTML));
         console.log(paymoney)
     }
-    if (paymoney > 300 || paymoney <= 0) {
-        fwf = 0;
-        ff.style.display = 'none';
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
-
-    }
-
-    if (paymoney > 0 && paymoney <= 240) {
-        fwf = 60;
-        ff.style.display = '';
-        servmoeny.innerHTML = fwf.toFixed(2);
-        fee.value = fwf.toFixed(2);
-    }
-    if (paymoney > 240 && paymoney <= 300) {
-        ff.style.display = '';
-        fwf = 300 - paymoney;
-        servmoeny.innerHTML = fwf.toFixed(2);;
-        fee.value = fwf.toFixed(2);;
-    }
-    console.log(fee.value);
+    servFee(paymoney);
     fens.innerHTML = fen;
     allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }
@@ -107,26 +87,7 @@ function ueserWrite(obj) {
     fens.innerHTML = fen;
     paymoney += (obj.value - onum) * prices;
     allmoney.innerHTML = paymoney.toFixed(2);
-    if (paymoney > 300 || paymoney <= 0) {
-        fwf = 0;
-        ff.style.display = 'none';
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
-
-    }
-
-    if (paymoney > 0 && paymoney <= 240) {
-        fwf = 60.00;
-        ff.style.display = '';
-        servmoeny.innerHTML = fwf.toFixed(2);
-        fee.value = fwf.toFixed(2);
-    }
-    if (paymoney > 240 && paymoney <= 300) {
-        ff.style.display = '';
-        fwf = 300 - paymoney;
-        servmoeny.innerHTML = fwf.toFixed(2);
-        fee.value = fwf.toFixed(2);
-    }
+    servFee(paymoney);
     allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }
 
@@ -160,27 +121,33 @@ function handle(self, isAdd) {
         } else
             paymoney -= parseFloat(price);
     }
-    if (paymoney > 300 || paymoney <= 0) {
+    servFee(paymoney);
+    fens.innerHTML = fen;
+    countEl.value = curCount;
+    allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
+}
+
+//计算服务费
+function servFee(feeT) {
+    if (feeT > 300 || feeT <= 0) {
         fwf = 0;
         ff.style.display = 'none';
         servmoeny.innerHTML = fwf;
         fee.value = fwf;
     }
 
-    if (paymoney > 0 && paymoney <= 240) {
+    if (feeT > 0 && feeT <= 240) {
         fwf = 60.00;
         ff.style.display = '';
         servmoeny.innerHTML = fwf.toFixed(2);
         fee.value = fwf.toFixed(2);
     }
-    if (paymoney > 240 && paymoney <= 300) {
-        fwf = 300 - paymoney;
+    if (feeT > 240 && feeT <= 300) {
+        fwf = 300 - feeT;
         ff.style.display = '';
         servmoeny.innerHTML = fwf.toFixed(2);
         fee.value = fwf.toFixed(2);
     }
+
     console.log(fee.value);
-    fens.innerHTML = fen;
-    countEl.value = curCount;
-    allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }
