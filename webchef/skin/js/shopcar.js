@@ -63,6 +63,7 @@
 		}
 		console.log(fuwu.length);
 		total += parseFloat(serviceNum);
+		document.getElementById('fee').value = parseFloat(serviceNum);
 		oP3span.innerHTML = total.toFixed(2);
 	}
 	// 小计
@@ -79,8 +80,8 @@
 		oJia[i].onclick = function(){
 			var oNumbernode = this.parentNode.parentNode.getElementsByClassName("shuzhi")[0];
 			var oNumber = ++oNumbernode.value;
-				if (oNumber >= 1000) {
-					oNumbernode.value = 1000;
+				if (oNumber >= 99) {
+					oNumbernode.value = 99;
 				}
 			// 调用小计
 			subtotal(this);
@@ -114,8 +115,8 @@
  		 	if (oNumbernode.value != oNumber) {
                 oNumbernode.value = oNumber;
             }
-			if (oNumber >= 1000) {
-				oNumbernode.value = 1000;
+			if (oNumber >= 99) {
+				oNumbernode.value = 99;
 			}
 
  		// 调用小计
@@ -128,6 +129,9 @@
 	// 遍历输入框,不包括全选按钮
 	var n=0;
 	for (var i = 0; i < ochecklist.length; i++) {
+		if(ochecklist[i].checked == true){
+			n++;
+		}
 		ochecklist[i].onclick = function(){
 			if (this.checked == false) {
 				for (var i = 0; i < oCheyouall.length; i++) {
@@ -135,9 +139,24 @@
 				}
 				n--;
 			}
+			// 服务员
+			if(this.className.indexOf('fuwuyuan') > -1){
+				if(this.checked == true){
+					this.parentNode.parentNode.getElementsByClassName("shuzhi")[0].value = 1;
+					subtotal(this);
+					n++;
+				}else{
+
+					this.parentNode.parentNode.getElementsByClassName("shuzhi")[0].value = 0;
+					subtotal(this);
+					n--;
+				}
+				
+			}
 
 			if(this.checked == true){
 				n++;
+
 			}
 			if (n == ochecklist.length) {
 				for (var k = 0; k < oCheyouall.length; k++) {
@@ -151,8 +170,22 @@
 	var oCheyouall = document.getElementsByClassName("cheyouall");
 	for (var i = 0; i < oCheyouall.length; i++) {
 		oCheyouall[i].onclick = function(){
-				for (var k = 0; k < ochecklist.length; k++) {
+			for (var k = 0; k < ochecklist.length; k++) {
 					ochecklist[k].checked = this.checked;
+					// 服务员
+			if(ochecklist[k].className.indexOf('fuwuyuan') > -1){
+				if(ochecklist[k].checked == true){
+					ochecklist[k].parentNode.parentNode.getElementsByClassName("shuzhi")[0].value = 1;
+					subtotal(ochecklist[k]);
+					n++;
+				}else{
+
+					ochecklist[k].parentNode.parentNode.getElementsByClassName("shuzhi")[0].value = 0;
+					subtotal(ochecklist[k]);
+					n--;
+				}
+				
+			}
 				}
 			
 			if (this.checked == false) {
@@ -160,6 +193,7 @@
 			}else if(this.checked == true){
 				n = ochecklist.length;
 			}
+
 		count();
 		}
 	}
@@ -168,12 +202,12 @@
  	for (var i = 0; i < oP2span.length; i++) {
  		oP2span[i].innerHTML = parseFloat(oValue[i].value*oP1span[i].innerHTML).toFixed(2);
  	}
-	oCheyouall[0].checked = true;
- 	oCheyouall[0].onclick();
- 	var fuwu = document.getElementsByClassName('fuwuyuan');
- 	for(var i = 0;i < fuwu.length;i++){
- 		fuwu[i].checked = false;
- 	}
+	// oCheyouall[0].checked = true;
+ 	// oCheyouall[0].onclick();
+ 	// var fuwu = document.getElementsByClassName('fuwuyuan');
+ 	// for(var i = 0;i < fuwu.length;i++){
+ 	// 	fuwu[i].checked = false;
+ 	// }
  	count();
 } 
 

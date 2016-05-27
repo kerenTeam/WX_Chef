@@ -1,21 +1,24 @@
 
 
 <link href="skin/css/shopcar.css" rel="stylesheet">
+<script>
+function addshopcar(){
+	alert(123);
 
+
+}
+
+
+</script>
 	<!-- main -->
 	<div class="main">
           <!-- 指引 -->
-          <!-- <ol class="am-breadcrumb am-margin-bottom-0">
-          <li><a href="<?=site_url('order/home');?>">首页</a></li>
-          <li><a href="<?=site_url('order/add');?>">点菜</a></li>
-          <li class="am-active">购物车</li>
-        </ol> -->
-		<!-- biaoti -->
+        		<!-- biaoti -->
 		<div class="biaoti">
 			<a class="quanbu" href="javascript:;"><span>全部商品</span></a>
 			<!-- <a href="javascript:;" style="color: #999">优惠商品</a> -->
 		</div>
-		<form id="youform">
+		<form id="youform" action="<?=site_url('shopcar/defray');?>" method="post">
 		<!-- xuanze -->
 		<div class="xuanze">
 			<span class="xunze_left">
@@ -66,8 +69,11 @@
 			      ?>
 						<li>
 							<label class="am-checkbox am-danger cheall">
-								<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
+								<input class="cheyou" type ="checkbox" name ="checkid[]" value ="<?=$food['foodid'];?>" data-am-ucheck  checked />
 							</label>
+							<!-- foodid -->
+							<input type="hidden" value="<?=$food['foodid']?>" name='foodid[]' />
+							<!--  -->
 							<a href="<?=site_url('order/info?id=').$food['foodid'].'&number='.$cart['number'].'&shopid='.$shopid;?>">
 								<img src="<?=IP.$food['thumbnail'];?>" alt="<?=$food['foodname'];?>" />
 							</a>
@@ -76,7 +82,7 @@
 							</span>
 							<p class="p1">￥<span class="p1span"><?=$food['foodprice'];?></span></p>
 							<div class="jiajian">
-								<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
+								<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1" name="numbers[]"><img class="jia"  src="skin/img/jia.jpg">
 							</div>
 							<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
 							<a href="<?=site_url('order/exchange');?>">换一换</a>
@@ -85,13 +91,72 @@
 					<?php endforeach;?>
 				<?php endforeach;?>
 				<!-- 服务 -->
-			<?php if(!empty($witer) || !empty($eleg) || !empty($cerearr)):?> 
 				<li><h4 class="am-text-primary">服务</h4></li>
+				<!-- 服务员 -->
+				<?php if(!empty($witer)):?>
+				<li>
+					<label class="am-checkbox am-danger cheall">
+						<input class="<?php if(!$witer['boy']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="boyid" value ="1" data-am-ucheck  />
+					</label>
+					<span class="serTit">
+						服务员（男）
+					</span>
+					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
+					<div class="jiajian">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['boy'];?>" name='boy'><img class="jia"  src="skin/img/jia.jpg">
+					</div>
+					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
+				</li>
+
+				<li>
+					<label class="am-checkbox am-danger cheall">
+						<input class="<?php if(!$witer['girl']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="girlid" value ="1" data-am-ucheck  />
+					</label>
+					<span class="serTit">
+						服务员（女）
+					</span>
+					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
+					<div class="jiajian">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['girl'];?>" name="girl"><img class="jia"  src="skin/img/jia.jpg">
+					</div>
+					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
+				</li>
+				<?php else:?>
+					<li>
+					<label class="am-checkbox am-danger cheall">
+						<input class="cheyou" type ="checkbox" name ="boyid" value ="1" data-am-ucheck  />
+					</label>
+					<span class="serTit">
+						服务员（男）
+					</span>
+					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
+					<div class="jiajian">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1" name='boy'><img class="jia"  src="skin/img/jia.jpg">
+					</div>
+					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
+				</li>
+
+				<li>
+					<label class="am-checkbox am-danger cheall">
+						<input class="cheyou" type ="checkbox" name ="girlid" value ="1" data-am-ucheck  />
+					</label>
+					<span class="serTit">
+						服务员（女）
+					</span>
+					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
+					<div class="jiajian">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1" name="girl"><img class="jia"  src="skin/img/jia.jpg">
+					</div>
+					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
+				</li>
+				<?php endif;?>
+				<!-- 服务员end -->
+				<?php if(!empty($eleg) || !empty($cerearr)):?> 
 				<!-- 伴餐 -->
 				<?php if(!empty($eleg)):?>
 				<li>
 					<label class="am-checkbox am-danger cheall">
-						<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
+						<input class="cheyou" type ="checkbox" name ="eleg" value ="<?=$eleg['id'];?>" data-am-ucheck checked />
 					</label>
 					<span class="serTit">
 						<?=$eleg['title'];?>
@@ -103,45 +168,12 @@
 					<p class="bancan p2">￥ <span class="p2span"><?=$eleg['money'];?></span> </p>
 					<a href="javascript:;" class="you_a">删除</a>
 				</li>
-				<?php endif;?>
-				<!-- 伴餐end -->
-				<!-- 服务员 -->
-				<?php if(!empty($witer)):?>
-				<li>
-					<label class="am-checkbox am-danger cheall">
-						<input class="<?php if(!$witer['boy']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
-					</label>
-					<span class="serTit">
-						服务员（男）
-					</span>
-					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
-					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['boy'];?>"><img class="jia"  src="skin/img/jia.jpg">
-					</div>
-					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
-				</li>
-
-				<li>
-					<label class="am-checkbox am-danger cheall">
-						<input class="<?php if(!$witer['girl']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
-					</label>
-					<span class="serTit">
-						服务员（女）
-					</span>
-					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
-					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['girl'];?>"><img class="jia"  src="skin/img/jia.jpg">
-					</div>
-					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
-				</li>
-				<?php endif;?>
-				<!-- 服务员end -->
-			<?php endif;?>
+				<!-- 庆典 -->
 			<?php if(!empty($cerearr)): ?>
 				<li><h4 class="am-text-primary">庆典</h4></li>
 				<li>
 					<label class="am-checkbox am-danger cheall">
-						<input class="cheyou" type ="checkbox" name ="selected" value ="" data-am-ucheck  />
+						<input class="cheyou" type ="checkbox" name ="cereid" value ="<?=$cerearr['celebrationid'];?>" data-am-ucheck checked />
 					</label>
 					<span class="serTit">
 						<?=$cerearr['name'];?>
@@ -153,38 +185,22 @@
 					<p class="bancan p2">￥ <span class="p2span"><?=$cerearr['moneyall'];?></span> </p>
 					<a href="javascript:;" class="you_a">删除</a>
 				</li>
+				<?php endif;?>
+			<?php endif;?>
+				<!-- 伴餐end -->
 			<?php endif;?>
 			</ul>
 			<!-- 结算 -->
 			<div class="jiesuan">
-				<p class="p3 service"><span style="color: #999">服务费 :</span> ￥<span id="service">60.00</span></p>
+				<p class="p3 service"><span style="color: #999">服务费 :</span> ￥<span id="service">60.00</span><input type="hidden" id="fee" name="servmoneydata" value="0"></p>
 				<p class="p3"><span style="color: #000">合计：</span>￥<span id="p3span">0.00</span></p>
 				<p>
 				<!-- <input type="submit" value="去付款" class="am-btn am-btn-danger am-radius" /> -->
-				<a href="<?=site_url('shopcar/defray');?>" class="am-btn am-btn-danger am-radius">去付款</a>
+				<button type='submit' class="am-btn am-btn-danger am-radius">去付款</button>
 				</p>
 			</div>
 		</div>
 		</form>
-		<!-- 购买人信息 -->
-		<!-- <div class="peoplexinxi">
-			<form class="am-form">
-				<p>
-					<span class="xinxi_span">收货人姓名</span><input type="text" name="shname" />
-				</p>
-				<p>
-					<span class="xinxi_span">手机号码</span><input type="text" name="sjname" />
-				</p>
-				<p>
-					<span class="xinxi_span">详细地址</span><textarea></textarea> 
-				</p>
-				<div>
-					<label class="am-checkbox am-danger"><input type="checkbox"  data-am-ucheck> 设置为默认地址</label>
-					<input type="submit" value="保存" class="am-btn am-btn-danger am-radius" />
-				</div>
-			</form>
-		</div> -->
-
 	</div>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/shopcar.js"></script>

@@ -36,20 +36,20 @@
                     <div class="am-form-group">
                       <label class="am-u-sm-3 am-form-label">手机号码</label>
                       <div class="am-u-sm-9">
-                        <input type="text" id="phone" placeholder="请输入你的手机号">
+                        <input type="text" id="phone" placeholder="请输入你的手机号" name="phone">
                       </div>
                     </div>
                     <div class="am-form-group">
                       <label class="am-u-sm-3 am-form-label">手机验证码</label>
                       <div class="am-u-sm-9">
-                        <input type="text" placeholder="输入验证码" id="phone" class="reg_yz reg_yz_tex" style="width: 60%;float: left;">
+                        <input type="text" placeholder="输入验证码" id="phone" class="reg_yz reg_yz_tex" style="width: 60%;float: left;" name="code">
                         <input type="button" id="yzm_bt" class="am-btn am-btn-default reg_yz reg_yz_btn" value="获取验证码" style="width: 38%;margin-left: 2%" />
                       </div>
                     </div>
                     <div class="am-form-group">
                       <label class="am-u-sm-3 am-form-label">设置密码</label>
                       <div class="am-u-sm-9">
-                        <input type="password" id="password" placeholder="密码长度6~20个字符">
+                        <input type="password" id="password" placeholder="密码长度6~20个字符" name="password">
                       </div>
                     </div>
 
