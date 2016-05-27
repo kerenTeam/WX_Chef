@@ -87,8 +87,6 @@ class Order extends CI_Controller
 					 	$this->session->set_userdata('shoping',$f,0);
 					}
 			}
-
-
 		}
 	}
 	// 净菜
@@ -127,7 +125,18 @@ class Order extends CI_Controller
 			$foods = file_get_contents(POSTAPI.'API_Food?dis=xq&foodid='.$id);
 			$foodjson = ltrim(rtrim($foods,'"'),'"');
 	      	$a =   str_replace('\"','"',$foodjson);
-	        $data['foods'] = json_decode($a,true);
+	        $foodInfo = json_decode($a,true);
+	        if(isset($_SESSION['shoping'])){
+	        	if($_SESSION['shoping'] != ''){
+	        		foreach ($_SESSION['shoping'] as $key => $value) {
+	        			if($id == $value['foodid']){
+	        				$foodInfo['number'] = '1';
+	        			}
+	        		}
+	        	}
+	        }
+	        $data['foods'] = $foodInfo;
+
 			// 产品图片
 			$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 			$data['foodspic'] = json_decode(json_decode($foodpic),true);

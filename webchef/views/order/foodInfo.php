@@ -11,7 +11,6 @@
       }
     </style>
 
-        
       <div class="center">
         <!-- info -->
         <div class="food-info">
@@ -67,20 +66,18 @@
                         <ul class="buy-food">
                             <li>
                                 <!-- <button href="<?=site_url('shopcar/car');?>" class="am-btn am-btn-danger am-radius buy-sbm">立即购买</button> -->
-                                <input type="hidden" value="1" />
-                                <a id='foodsid' href="javascript:;" class="joinCar am-btn am-btn-danger am-radius buy-sbm">加入购物车</a>
+                              <?php if($foods['foodkind'] ==1):?>
+                                <input type="hidden" value="0" />
+                              <?php else:?>
+                                <input type="hidden" value="2" />
+                              <?php endif;?>
+                                <?php if(isset($foods['number'])):?>
+                                <a href="javascript:;" class="am-btn am-btn-danger am-radius buy-sbm">已加入购物车</a>
+                               <?php else:?>
+                                <a id='<?=$foods['foodid'];?>' href="javascript:;" class="joinCar am-btn am-btn-danger am-radius buy-sbm">加入购物车</a>
+                               <?php endif;?>
                             </li>
-                            <!-- <li>
-                                <a class="am-btn am-btn-default am-radius join-car" href="javascript:;">
-                                  <img src="skin/img/shop-car_03.png">
-                                </a>
-                            </li> -->
-                            <!-- <li>
-                                <a href="javascript:;" class="food-collect" id="food-collect">
-                                  <span class="am-icon-star"></span>
-                                  <span> 收藏</span>
-                                </a>
-                            </li> -->
+                           
                             <li>
                             <div class="food-collect food-share">
                               <div class="bdsharebuttonbox">
@@ -249,10 +246,16 @@
 // 加入购物车
 $('.joinCar').bind('click',function(){
   var id = $(this).attr('id');
-  var price = $('#foodPrice').html();
   var numbers = $('#foodNum').val();
   var code = $(this).prev().val();
-  alert('id:'+id +'\n'+'code:'+code+'\n'+'price:'+price+'\n'+'number:'+numbers);
+  $.ajax({
+    type:'post',
+    url:'<?=site_url("order/partyadd");?>',
+    data:'id='+id+'&numbers='+numbers+'&code='+code,
+    success:function(data){
+       location.reload();
+    }
+  });
 })
 
 
