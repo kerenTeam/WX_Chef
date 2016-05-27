@@ -28,25 +28,25 @@
           <p>手机应用</p>
       </div>
       <div class="logForm">
-          <form class="am-form log_form">
+          <form class="am-form log_form" action="" method="post">
               <h1>登录</h1>
               <div class="yz_ts"></div>
               <div class="am-form-group am-form-icon">
                   <i class="am-icon-user"></i>
-                  <input type="text" class="am-form-field name" placeholder="手机号/邮箱登录">
+                  <input type="text" class="am-form-field name" placeholder="手机号/邮箱登录" name="UserPhone">
               </div>
               <div class="am-form-group am-form-icon">
                   <i class="am-icon-lock password"></i>
-                  <input type="password" class="am-form-field log_psw" placeholder="密码">
+                  <input type="password" class="am-form-field log_psw" placeholder="密码" name="UserPwd">
               </div>
               <div class="validate">
-                  <input type="text" id="inputCode" class="am-form-field log_code" placeholder="验证码">
+                  <input type="text" id="inputCode" class="am-form-field log_code" placeholder="验证码" name="code">
                   <span id="code"></span>
                   <span id="hyz">看不清<br/>换一张</span>
               </div>
               <div class="group">
                   <label class="am-checkbox am-danger">
-                      <input type="checkbox" data-am-ucheck/>
+                      <input type="checkbox" data-am-ucheck name="check" />
                       记住密码
                   </label>
               </div>

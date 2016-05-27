@@ -93,7 +93,7 @@
 										<p><span><?php if($value['foodstar'] == 0.0){
 											echo "5.0";
 											}else{echo $value['foodstar'];}?></span> 评分</p>
-										<div>价格：￥<span><?=$value['foodprice']?>.00</span> <i>/ 1份</i></div>
+										<div>价格：￥<span><?=$value['foodprice']?></span> <i>/ 1份</i></div>
 									</div>
 									<div class="goods-pr">
 										<!-- 已加入购物车样式 -->

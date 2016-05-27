@@ -44,6 +44,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 //获取共享收货地址js函数参数
 //$editAddress = $tools->GetEditAddressParameters();
 
+
 ?>
     <script type="text/javascript">
   //调用微信JS api 支付
@@ -161,20 +162,27 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 
     <div class="tk" style="display: none;">
          <div class="tkcontent tkvip bwhite" style="background: white;border-radius: 5px;">
-           <div class="tktxt2">
-
+     <?php if($balance > $_SESSION['rePayData'][0]['MoneyAll']):?>
+       <div class="tktxt2">
               <div class="am-text-center am-text-lg am-margin-sm">会员卡支付</div>
-              <!-- <hr data-am-widget="divider" style="margin:0;" class="am-divider am-divider-default" /> -->
-             <!--  <div class="am-text-center am-margin">
-
-                <strong>至尊金卡</strong><br>
-                当前余额<strong class="am-margin-right am-icon-cny pink">300</strong>
-              </div> -->
-              </div>
-
+       <!-- <hr data-am-widget="divider" style="margin:0;" class="am-divider am-divider-default" /> -->
+               <div class="am-text-center am-margin">
+                当前余额<strong class="am-margin-right am-icon-cny pink"><?=$balance?></strong>
+        </div> 
+             </div>
           <button type='button' class="am-u-sm-6 bno gray closem">取消</button>
-
           <button type='button' id="sub" class="am-u-sm-6 bno green">提交</button>
+    <?php else:?>
+      <div class="tktxt2">
+              <div class="am-text-center am-text-lg am-margin-sm">会员卡余额不足</div>
+       <!-- <hr data-am-widget="divider" style="margin:0;" class="am-divider am-divider-default" /> -->
+               <div class="am-text-center am-margin">
+                当前余额<strong class="am-margin-right am-icon-cny pink"><?=$balance?></strong>
+        </div> 
+             </div>
+       <button type='button' class="am-u-sm-6 bno gray closem">取消</button>
+       <a href='<?=site_url('home/vipCard');?>' class="am-u-sm-6 bno green">去充值</a>
+    <?php endif;?>
           </div>
      </div>
 
