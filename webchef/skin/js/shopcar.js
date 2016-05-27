@@ -24,13 +24,13 @@
 		oLi_a[i].onclick = function(){
 			 var conf = confirm('确定要删除吗？');
 			 if (conf) {
-			 oUl.removeChild(this.parentNode);
-			 if (oLi_a.length == 0) {
-			 	oCheyouall[0].setAttribute("disabled","disabled");
-			 	oCheyouall[0].checked = false;
-			 }
-			 count();
-			 n--;
+				 oUl.removeChild(this.parentNode);
+				 if (oLi_a.length == 0) {
+				 	oCheyouall[0].setAttribute("disabled","disabled");
+				 	oCheyouall[0].checked = false;
+				 }
+				 count();
+				 n--;
 			}
 		}
 	}
