@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @Author: Harris-Aaron
  * @Date:   2016-05-25 11:28:01
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-25 11:50:59
+ * @Last Modified time: 2016-05-26 13:32:04
  */
 
 if (DeBug == 1) {
@@ -36,8 +36,8 @@ class WxPay extends CI_Controller{
 	}
 
     function nativePay(){
-    	$data = "abc";
-		$this->load->view('login/forgetpsw',$data);
+    	var_dump($_POST); exit;
+		//$this->load->view('login/forgetpsw',$data);
 	}
 
 
