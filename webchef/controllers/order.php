@@ -1,11 +1,7 @@
 <?php  
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
-
 // 点菜
-
-
 class Order extends CI_Controller 
 
 {

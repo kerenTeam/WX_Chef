@@ -5,20 +5,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @Author: Harris-Aaron
  * @Date:   2016-05-25 11:28:01
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-25 11:50:59
+ * @Last Modified time: 2016-05-27 16:54:18
  */
 
-if (DeBug == 1) {
-    //报告所有错误
-    error_reporting(E_ALL);
-} else if (DeBug == 0) {
-    //禁用错误报告
-    error_reporting(0);
-} else {
-    //报告运行时错误
-    error_reporting(E_ERROR | E_WARNING | E_PARSE);
-}
-
+// if (DeBug == 1) {
+//     //报告所有错误
+//     error_reporting(E_ALL);
+// } else if (DeBug == 0) {
+//     //禁用错误报告
+//     error_reporting(0);
+// } else {
+//     //报告运行时错误
+//     error_reporting(E_ERROR | E_WARNING | E_PARSE);
+// }
 
 class WxPay extends CI_Controller{
 	function __construct()
@@ -30,14 +29,16 @@ class WxPay extends CI_Controller{
         // $options['logcallback'] = 'logdebug';
         // * 引入自定义lib
         $this->load->library('WxPayApi');
-        $this->load->library('JsApiPay'); 
+        $this->load->library('NativePay'); 
+        $this->load->library('WXLog'); 
         // $this->load->helper('post_helper');
         $this->load->view('header'); 
+
 	}
 
-    function nativePay(){
-    	$data = "abc";
-		$this->load->view('login/forgetpsw',$data);
+    function nativePay()
+    {
+		$this->load->view('WxPay/demo1');
 	}
 
 

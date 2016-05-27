@@ -33,8 +33,10 @@ function addshopcar(){
 			</span>
 		</div>
 		<!-- 商品详情 -->
+
 		<div class="shangpinlist">
 			<ul id="youul">
+			<?php if(!empty($carts)):?>
 			<?php unset($_SESSION['booking']); foreach($carts as $k=>$v):?>
 
 				<li><h4 class="am-text-primary"><?php switch ($k) {
@@ -90,6 +92,7 @@ function addshopcar(){
 						</li>
 					<?php endforeach;?>
 				<?php endforeach;?>
+			<?php endif;?>
 				<!-- 服务 -->
 				<li><h4 class="am-text-primary">服务</h4></li>
 				<!-- 服务员 -->
