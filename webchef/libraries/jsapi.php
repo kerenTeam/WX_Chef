@@ -6,16 +6,16 @@ ini_set('date.timezone','Asia/Shanghai');
 // require_once 'log.php';
 
 //初始化日志
-$logHandler= new CLogFileHandler("../logs/".date('Y-m-d').'.log');
-$log = WXLog::Init($logHandler, 15);
+// $logHandler= new CLogFileHandler("../logs/".date('Y-m-d').'.log');
+// $log = WXLog::Init($logHandler, 15);
 
-//打印输出数组信息
-function printf_info($data)
-{
-    foreach($data as $key=>$value){
-        echo "<font color='#00ff55;'>$key</font> : $value <br/>";
-    }
-}
+// //打印输出数组信息
+// function printf_info($data)
+// {
+//     foreach($data as $key=>$value){
+//         echo "<font color='#00ff55;'>$key</font> : $value <br/>";
+//     }
+// }
 
 //①、获取用户openid
 $tools = new JsApiPay();
