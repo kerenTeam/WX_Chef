@@ -151,6 +151,14 @@ class Service extends CI_Controller
 			redirect('shopcar/car');
 		}
 	}
+	// 庆典编辑
+    public function ceremonyInfo()
+	{
+		
+		$this->load->view('service/ceremonyInfo');
+		$this->load->view('footer');
+	}
+
 	// 服务详情
     public function lifeInfo2()
 	{

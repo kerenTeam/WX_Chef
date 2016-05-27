@@ -1619,6 +1619,38 @@ a.arrow{
 .ceremonyCtt{
 	padding: 50px 200px;
 }
+.ceremonyCtt strong{
+	font-size: 2rem;
+	padding: 1.5rem 0;
+	display: block;
+	font-weight: normal;
+	position: relative;
+	color: grey;
+	margin-top: 20px;
+}
+.ceremonyCtt strong:before{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 3%;
+	height:	1px;
+	width: 35%;
+	background: #e5e5e5;
+}
+.ceremonyCtt strong:after{
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 3%;
+	height:	1px;
+	width: 35%;
+	background: #e5e5e5;
+}
+.priceR .gsf .price{
+	right: 20rem;
+	text-align: left;
+	width: 3rem;
+}
 .cereForm{
 	max-height: 300px;
 }
