@@ -24,16 +24,18 @@ var servmoeny = document.getElementById("servmoney");
 var fwf = parseFloat(servmoeny.innerHTML);
 var ban = document.getElementsByClassName('ban-price');
 var banAll = 0;
+// 服务员数量
+var serinput2 = document.getElementsByClassName('serinput2')[0];
+var serinput = document.getElementsByClassName('serinput')[0];
+// 服务员价格
+var serprice = document.getElementById('serprice');
+var serprice2 = document.getElementById('serprice2');
+servTotal1 = document.getElementById('servTotal');
+servTotal2 = document.getElementById('servTotal2');
 window.onload = function() {
-    // 服务员数量
-    var serinput2 = document.getElementsByClassName('serinput2')[0];
-    var serinput = document.getElementsByClassName('serinput')[0];
-    // 服务员价格
-    var serprice = document.getElementById('serprice');
-    var serprice2 = document.getElementById('serprice2');
-    servTotal1 = document.getElementById('servTotal');
+
     servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
-    servTotal2 = document.getElementById('servTotal2');
+
     servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
     servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
     console.log(servTotal);
@@ -83,6 +85,9 @@ function ueserWrite(obj) {
         return false;
     }
     var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
+    servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
+    servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
+    servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
     fen += obj.value - onum;
     fens.innerHTML = fen;
     paymoney += (obj.value - onum) * prices;
@@ -99,6 +104,9 @@ function handle(self, isAdd) {
     var price = self.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
     //  var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
     var foodId = self.parentNode.parentNode.childNodes[1].value;
+    servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
+    servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
+    servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
 
     if (isAdd) {
         curCount++;
