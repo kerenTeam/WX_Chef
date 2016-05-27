@@ -103,7 +103,7 @@
                 
                 <input type="text" class="numTxt" name="numbers[]" onkeydown="keydown(this)" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" value="<?php if(isset($v['number'])){echo $v['number'];}else{echo '0';}?>">
                 
-                <span class="add am-icon-plus-circle"  onClick="handle(this, true)"></span><!--  onClick="handle(this, true)" -->
+                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
               </div>
             </div>
           </li>
@@ -182,25 +182,11 @@ $(this).parent('.foodNum').find('.reduce').css('display','inline-block');
             div.setAttribute("class","add am-icon-plus-circle oo");
             document.documentElement.appendChild(div);
              handle(this, true);
-             var par = setTimeout(function(){
-          // var divX = parseInt(div.style.left);
-         //  var divY = parseInt(div.style.top);
-         div.style.zIndex=99999;
-                    div.style.left=car_x + "px";
-                    div.style.top=car_y + "px";//加单位很重要，不然不会动
-        // var speedX = (car_x-divX)/10;
-        // var speedY = (car_y-divY)/30;
-        // speedX=speedX>0?Math.ceil(speedX):Math.floor(speedX);
-        // // speedY=speedY>0?Math.ceil(speedY):Math.floor(speedY);
-        // div.style.left = divX + speedX + "px";
-        // div.style.top = divY + speedY + "px";
-        // if(divY == car_y && divX == car_x){
-        //  clearInterval(par);
-        //  div.parentNode.removeChild(div);
-        // }
-        // // console.log(divX)
-        // console.log(divX,divY +'======'+ car_x,car_y); 
-        var remove=setTimeout(function(){
+             var par = setTimeout(function(){ 
+                 div.style.zIndex=99999;
+                 div.style.left=car_x + "px";
+                 div.style.top=car_y + "px";//加单位很重要，不然不会动 
+           var remove=setTimeout(function(){
                div.parentNode.removeChild(div);
       },550)
       },1)
