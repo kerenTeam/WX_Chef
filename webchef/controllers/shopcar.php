@@ -184,7 +184,12 @@ class Shopcar extends CI_Controller
 		$this->load->view('shopcar/succeed');
 	}
 
-	
+	// 支付页面
+	function pay(){
+
+		$this->load->view('shopcar/pay');
+		$this->load->view('footer');
+	}
 
 
 }

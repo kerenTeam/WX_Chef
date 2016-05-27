@@ -64,9 +64,15 @@ a.am-btn{
 .unit{
 	margin-left:12%;
 }
+.header{
+	min-width: 1170px;
+}
 .center{
 	width: 1170px;
 	margin: 0 auto;
+}
+.min-center .header{
+	min-width: 960px;
 }
 .min-center .center{
 	width: 960px;
@@ -89,9 +95,13 @@ a.am-btn{
 	line-height: 40px;
 	font-size: 16px;
 }
+.min-center .content-tit{
+	min-width: 960px;
+}
 .content-tit{
 	background-color: #fff;
 	margin-bottom: 25px;
+	min-width: 1170px;
 }
 .content-tit ul{
 	/* float: left; */
@@ -1719,4 +1729,61 @@ a.arrow{
 }
 .deTime td.can{
 	cursor: pointer;
+}
+.payCtt{
+	min-height: 600px;
+	width: 960px;
+	margin: 30px auto;
+	border: 1px solid #e5e5e5;
+	padding: 15px;
+	background-color: #fff;
+}
+.payCtt h1{
+	font-weight: normal;
+}
+.payCtt h1 img{
+	width: 2.5rem;
+	margin-right: 15px;
+}
+.payInfo{
+	background: #f5f2f2;
+	margin: 0 -15px;
+	padding: 20px 0;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 30px;
+}
+.payInfo p{
+	margin: 0;
+	line-height: 2.5rem;
+}
+.payInfo span{
+	line-height: 5rem;
+	margin-right: 4rem;
+}
+.payInfo span strong{
+	font-size: 2rem;
+}
+.payCanCtt{
+	padding: 15px;
+	min-height: 300px;
+}
+.payCanCtt .wxPayLogo{
+	width: 150px;
+}
+.wxErweima img{
+	width: 180px;
+	margin-top: 30px;
+	display: block;
+	margin: 0 auto;
+}
+.payHot{
+	position: absolute;
+	top: -18px;
+	left: 41%;
+}
+.huiyuanka strong{
+	font-size: 2.3rem;
+	color: red;
+	margin-left: 1.5rem;
 }
