@@ -12,7 +12,7 @@
 <div class="center">
 				<div class="defray">
 					<h1>订单支付</h1>
-					<form class="am-form am-form-horizontal pay" id="defrayForm">
+					<form class="am-form am-form-horizontal pay" id="defrayForm" action="<?=site_url('orderWxPay/orderpay');?>" method="post">
 						<table class="am-table defr_tab middle">
 							<thead>
 								<tr>
@@ -23,139 +23,134 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><div class="defr_tit">尖椒回锅肉，营养最佳搭配</div></td>
-									<td>￥ <span class="price">30.25</span></td>
-									<td><div class="jiajian">
-										<!-- <img class="jian" src="skin/img/jian.png"> -->
-										<input class="shuzhi" value="3" readonly>
-										<!-- <img class="jia" src="skin/img/jia.jpg"> -->
-									</div>
-								</td>
-								<td class="defr_sum">￥ <span class="total">30.25</span></td>
-							</tr>
+							<?php if(!empty($booking)):?>
+								<?php foreach($booking as $val):?>
+									<tr>
+										<td><div class="defr_tit"><?=$val['foodname'];?></div></td>
+										<td>￥ <span class="price"><?=$val['foodprice'];?></span></td>
+										<td><div class="jiajian">
+											<!-- <img class="jian" src="skin/img/jian.png"> -->
+											<input class="shuzhi" value="<?=$postBooking[$val['foodid']];?>" readonly>
+											<!-- <img class="jia" src="skin/img/jia.jpg"> -->
+										</div>
+										</td>
+										<!-- foodid -->
+										<input type="hidden" value="<?=$val['foodid'];?>" name='foodid[]'/>
+										<!-- number -->
+										<input type="hidden" value="<?=$postBooking[$val['foodid']];?>" name='numbers[]'/>
+
+										<td class="defr_sum">￥ <span class="total"><?php if($val['discountproportion']){$a = $val['foodprice']*$val['discountproportion'];}else{$a = $val['foodprice'];}  echo $a * $postBooking[$val['foodid']]; $pricetotal[] = $a * $postBooking[$val['foodid']]; ?></span></td>
+									</tr>
+								<?php endforeach;?>
+							<?php endif;?>
+							<!-- 伴餐 -->
+							<?php if(!empty($eleginfo)):?>
 							<tr>
-								<td><div class="defr_tit">尖椒回锅肉，营养最佳搭配</div></td>
-								<td>￥ <span class="price">30.34</span></td>
-								<td><div class="jiajian">
-									<!-- <img class="jian" src="skin/img/jian.png"> -->
-									<input class="shuzhi" value="5" readonly>
-									<!-- <img class="jia" src="skin/img/jia.jpg"> -->
-								</div>
-							</td>
-							<td class="defr_sum">￥ <span class="total">30.34</span></td>
-						</tr>
+								<td><div class="defr_tit"><?=$eleginfo['name'];?></div></td>
+								<td></td>
+								<td></td>
+								 <input type="hidden" name="eleg" value="<?php echo $eleginfo['id']; ?>">
+							<td class="defr_sum">￥ <span class="total"><?php $elegmoney=$eleginfo['money']; echo $elegmoney;?></span></td>
+							</tr>
+							<?php endif;?>
+							<!-- 伴餐 end-->
+							<!-- 庆典 -->
+							<?php if(!empty($cerearr)):?>
+							<tr>
+								<td><div class="defr_tit"><?=$cerearr['name'];?></div></td>
+								<td></td>
+								<td>1</td>
+								<input type="hidden" name="cereid" value="<?php echo $cerearr['celebrationid']; ?>">
+							<td class="defr_sum">￥ <span class="total"><?php $ceremoney=$cerearr['moneyall']; echo $ceremoney;?></span></td>
+							
+							</tr>
+							<?php endif;?>
+							<!-- 庆典 end-->
+							<!-- 服务员 -->
+							<?php if(!empty($writes['boy'])):?>
+							<tr>
+								<td><div class="defr_tit">男服务员</div></td>
+								<td></td>
+								<td><?=$writes['boy']?></td>
+								<input type="hidden" value="<?=$writes['boy']?>" name='boy' />
+							<td class="defr_sum">￥ <span class="total"><?=$writes['boy']*80;?></span></td>
+							</tr>
+							<?php endif;?>
+
+							<?php if(!empty($writes['girl'])):?>
+							<tr>
+								<td><div class="defr_tit">女服务员</div></td>
+								<td></td>
+								<td><?=$writes['girl']?></td>
+								<input type="hidden" value="<?=$writes['girl']?>" name='girl' />
+
+							<td class="defr_sum">￥ <span class="total"><?=$writes['girl']*80;?></span></td>
+							</tr>
+							<?php endif;?>
+							<!-- 服务员 end-->
+							<!-- 服务费 -->
+							<?php if(!empty($servmoneydata)):?>
 							<tr>
 								<td><div class="defr_tit">服务费</div></td>
-								<td>￥ <span class="price">30.34</span></td>
-								<td><div class="jiajian">
-									<!-- <img class="jian" src="skin/img/jian.png"> -->
-									<input class="shuzhi" value="1" readonly>
-									<!-- <img class="jia" src="skin/img/jia.jpg"> -->
-								</div>
-							</td>
-							<td class="defr_sum">￥ <span class="total">30.34</span></td>
-						</tr>
+								<td></td>
+								<td></td>
+								
+							<td class="defr_sum">￥ <span class="total"><?=$servmoneydata;?></span></td>
+							</tr>
+							<?php endif;?>
+							<!-- 服务费 end-->
 					</tbody>
 				</table>
-				<!-- <div class="defr_info clear">
-						<p>您的手机</p>
-						<div class="defr_shouji">
-								<p>收单请先验证手机号</p>
-								<div class="am-form-group">
-								<label class="am-u-sm-2 am-form-label">手机号：</label>
-								<div class="am-u-sm-10">
-									<input type="text" placeholder="手机号" id="phone" required>
-									<div class="prompt"></div>
-								</div>
-							</div>
-							<div class="am-form-group">
-								<div class="am-u-sm-offset-2 am-u-sm-10">
-									<div class="checkbox">
-												<input type="button" class="am-btn am-btn-default" id="yzm_bt" value="获取手机动态码" />
-									</div>
-								</div>
-							</div>
-							<div class="am-form-group">
-								<label class="am-u-sm-2 am-form-label">验证码：</label>
-								<div class="am-u-sm-10">
-									<input type="text" placeholder="验证码">
-								</div>
-							</div>
-						</div>
-				</div> -->
-				<div class="defr_info clear">
-						<p>选择支付方式</p>
-						<div class="payment">
-								<label class="am-radio am-danger">
-										<input type="radio" name="price" value="" data-am-ucheck> Apple Pay
-								</label> 
-								<label class="am-radio am-danger">
-										<input type="radio" name="price" value="" data-am-ucheck checked> 微信支付
-								</label>
-								<label class="am-radio am-danger">
-										<input type="radio" name="price" value="" data-am-ucheck> 支付宝支付
-								</label>
-								<label class="am-radio am-danger">
-										<input type="radio" name="price" value="" data-am-ucheck> 线下支付
-								</label>
-						</div>
-				</div>
+			
+				<!-- 服务地址 -->
 				<div class="defr_info clear">
 					<p>服务地址 <a href="javascript:;" class="fr" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 800}">添加地址</a></p>
+					<?php if(!empty($address)):?>
 					<div class="payment">
 						<table class="am-table am-table-striped am-table-hover myback">
 							<thead>
 								<tr>
 									<th> </th>
 									<th>收货人</th>
-									<th>所在地区</th>
+								<!-- 	<th>所在地区</th> -->
 									<th>详细地址</th>
 									<th>手机</th>
 									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
+								<?php foreach($address as $val):?>
 								<tr>
 									<td>
 										<label class="am-radio am-danger">
-											<input type="radio" name="radio3" value="" data-am-ucheck checked>
+											<input type="radio" name="memberaddressid" value="<?=$val['memberaddressid'];?>" data-am-ucheck <?php if($val['isdefault'] == 1){echo "checked";}?>>
 										</label>
 									</td>
-									<td>张某某</td>
-									<td>成都金牛区</td>
-									<td>西安路街道20街道某某巷子</td>
-									<td>15608097597</td>
+									<td><?=$val['name'];?></td>
+									<!-- <td>成都金牛区</td> -->
+									<td><?=$val['address'];?></td>
+									<td><?=$val['goodsphone'];?></td>
 									<td class="adr_cz"><a href="javascript:;" data-am-modal="{target: '#doc-modal-2', closeViaDimmer: 0, width: 800}">修改</a>/<a href="javascript:;">删除</a></td>
 								</tr>
-								<tr>
-									<td>
-										<label class="am-radio am-danger">
-											<input type="radio" name="radio3" value="" data-am-ucheck>
-										</label>
-									</td>
-									<td>张某某</td>
-									<td>成都金牛区</td>
-									<td>西安路街道20街道某某巷子</td>
-									<td>15608097597</td>
-									<td class="adr_cz"><a href="javascript:;" data-am-modal="{target: '#doc-modal-2', closeViaDimmer: 0, width: 800}">修改</a>/<a href="javascript:;">删除</a></td>
-								</tr>
+								<?php endforeach;?>
 							</tbody>
 						</table>
 					</div>
+				<?php endif;?>
 				</div>
+				<!-- 服务地址 -->
 				<div class="defr_info clear">
 					<p>服务时间</p>
 					<div class="payment">
 						<div class="am-g">
 						  <div class="am-u-sm-3">
 						    选择日期<br/>
-						    <p><input type="text" class="am-form-field deData" placeholder="选择要服务日期" id="my-start-2" required readonly/></p>
+						    <p><input type="text" class="am-form-field deData" placeholder="点击选择要服务日期" id="my-start-2" name="riqi" required readonly/></p>
 						  </div>
-						  <div class="am-u-sm-3 deTime am-hide">
+						  <div class="am-u-sm-3">
 						    选择时间<br/>
 						    <input type="hidden" id="timeEat" name="time" value="">
-						    <div>
+						    <div class="deTime">
 						    	<table class="am-table am-table-bordered am-fl" style="width: 80%;margin-left:5px;">
 						          <tbody><tr>
 						            <td>10:00</td>
@@ -193,56 +188,57 @@
 					<!-- <label class="am-checkbox am-danger xz_yhj">
 						<input type="checkbox" value="" data-am-ucheck> <p><img src="skin/img/xzzf_03.png">您有三张饭票可用</p>
 					</label> -->
+<?php 
+ 	// 总金额
+	if($pricetotal){$money = array_sum($pricetotal); }else{$money = 0;} 
+	if(isset($elegmoney)){$eleg = $elegmoney;}else{$eleg = '0';}
+	if(isset($ceremoney)){$cere = $ceremoney;}else{$cere = '0';}
+	$moneyall =  $money + array_sum($writes)*80 + $servmoneydata + $cere + $eleg;
+    // 优惠卷
+    $fan = file_get_contents(POSTAPI."API_UserCoupon?UserPhone=".$_SESSION['phone']);
+    $userphone = json_decode(json_decode($fan),true);
+    if(!empty($userphone)){
+      foreach ($userphone as $key => $value) {
+          if($moneyall > $value['usethreshold']){
+              $usercoupon[$key] = $value;
+          }
+      } 
+    }
+  ?>
+					
 					<div class="payment">
 						<div class="am-panel-group" id="accordion">
+						<?php if(!empty($usercoupon)):?>
 							<div class="am-panel am-panel-default">
 								<div class="am-panel-hd">
 									<h4 class="am-panel-title" data-am-collapse="{target: '#do-not-say-1'}">
-									使用饭票
+									使用饭票(可用饭票<?=count($usercoupon);?>张)
 									</h4>
 								</div>
 								<div id="do-not-say-1" class="am-panel-collapse am-collapse">
 									<div class="am-panel-bd">
 										<ul class="am-avg-sm-4 defray_cart">
+											<?php foreach($usercoupon as $v):?>
 											<li>
 												<label class="am-checkbox am-danger">
-													<input class="conponList" type="radio" name="conpon" value="" data-am-ucheck>
+													<input class="conponList" type="radio" name="couponid" value="<?=$v['usercouponid'];?>" data-am-ucheck>
 													<div class="coupon_bg coupon_pic1">
-														<h1>￥<span class="fanPrice">5</span></h1>
-														<p>菜品: 套餐系列</p>
-														<p>使用条件: 满30.00</p>
-														<p>有效时间: 2016.3.21-2016.3.24</p>
-													</div>
-												</label>
-												
-											</li>
-											<li>
-												<label class="am-checkbox am-danger">
-													<input class="conponList" type="radio" name="conpon" value="" data-am-ucheck>
-													<div class="coupon_bg coupon_pic1">
-														<h1>￥<span class="fanPrice">10</span></h1>
-														<p>菜品: 套餐系列</p>
-														<p>使用条件: 满30.00</p>
-														<p>有效时间: 2016.3.21-2016.3.24</p>
+														<h1>￥<span class="fanPrice"><?=$v['coupponmoney'];?></span></h1>
+														<p>优惠卷名称: <?=$v['coupponname'];?></p>
+														<p>使用条件: 满<?=$v['usethreshold'];?></p>
+														<p>有效时间: <?=str_replace('-', '.', substr($v['begintime'], 0,10));?>~<?=str_replace('-', '.', substr($v['endtime'], 0,10));?></p>
 													</div>
 												</label>
 											</li>
-											<li>
-												<label class="am-checkbox am-danger">
-													<input class="conponList" type="radio" name="conpon" value="" data-am-ucheck>
-													<div class="coupon_bg coupon_pic1">
-														<h1>￥<span class="fanPrice">20</span></h1>
-														<p>菜品: 套餐系列</p>
-														<p>使用条件: 满30.00</p>
-														<p>有效时间: 2016.3.21-2016.3.24</p>
-													</div>
-												</label>
-											</li>
+
+											<?php endforeach;?>
+										
 										</ul>
 										
 									</div>
 								</div>
 							</div>
+						<?php endif;?>
 							<div class="am-panel am-panel-default">
 								<div class="am-panel-hd">
 									<h4 class="am-panel-title" data-am-collapse="{target: '#do-not-say-2'}">
@@ -252,45 +248,33 @@
 								<div id="do-not-say-2" class="am-panel-collapse am-collapse">
 									<div class="am-panel-bd">
 										<label class="am-checkbox am-danger">
-											<input id="canjifen" type="checkbox" name="conpon" value="" data-am-ucheck>
-											<span class="am-text-danger">使用200积分可抵￥<span class="jifen">3000</span></span>
+											<input id="canjifen" type="checkbox" name="jifen" value="1" data-am-ucheck>
+											<span class="am-text-danger">使用<?=$jifen;?>积分可抵￥<span class="jifen"><?=$jifen/100;?></span></span>
 										</label>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!-- <ul class="am-avg-sm-5">
-							<li>
-								<div class="coupon_bg coupon_pic1">
-									<h1>￥<span>5</span></h1>
-									<p>菜品: 套餐系列</p>
-									<p>使用条件: 满30.00</p>
-									<p>有效时间: 2016.3.21-2016.3.24</p>
-								</div>
-								
-							</li>
-							<li>
-								<div class="coupon_bg coupon_pic1">
-									<h1>￥<span>5</span></h1>
-									<p>菜品: 套餐系列</p>
-									<p>使用条件: 满30.00</p>
-									<p>有效时间: 2016.3.21-2016.3.24</p>
-								</div>
-								
-							</li>
-							<li>
-								<div class="coupon_bg coupon_pic1">
-									<h1>￥<span>5</span></h1>
-									<p>菜品: 套餐系列</p>
-									<p>使用条件: 满30.00</p>
-									<p>有效时间: 2016.3.21-2016.3.24</p>
-								</div>
-								
-							</li>
-						</ul> -->
 					</div>
+					<div class="defr_info clear">
+						<p>选择支付方式</p>
+						<div class="payment">
+								<label class="am-radio am-danger">
+										<input type="radio" name="PaymentMethod" value="1" data-am-ucheck> Apple Pay
+								</label> 
+								<label class="am-radio am-danger">
+										<input type="radio" name="PaymentMethod" value="2" data-am-ucheck checked> 微信支付
+								</label>
+								<label class="am-radio am-danger">
+										<input type="radio" name="PaymentMethod" value="3" data-am-ucheck> 支付宝支付
+								</label>
+								<label class="am-radio am-danger">
+										<input type="radio" name="PaymentMethod" value="4" data-am-ucheck> 线下支付
+								</label>
+						</div>
 				</div>
-				<p class="defr_he">应付金额: <span>￥<i id="sum">60.59</i></span></p>
+				</div>
+				<p class="defr_he">应付金额: <span>￥<i id="sum">00.00</i></span><input type="hidden" id="yfje" value="" name="yfje" /></p>
 				<p class="txt-r ord_buy">
 					<input type="submit" id="pay" value="付款" class="am-btn am-btn-danger am-radius big-btn" disabled/>
 					<!-- <a href="<?=site_url('shopcar/succeed');?>" class="am-btn am-btn-danger am-radius big-btn">付款</a> -->
@@ -311,7 +295,7 @@
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 姓名</label>
 					<div class="am-u-sm-9 txt-l sm-input">
-						<input type="text" required />
+						<input type="text" class="addName" required />
 					</div>
 				</div>
 				<div class="am-form-group clear">
@@ -320,19 +304,13 @@
 						<div class="demo">
                             <div class="infolist">
                               <div class="liststyle">
-                                <span id="Province" style="display:none;">
-                                  <i>请选择省份</i>
+                                
+                                <span>
+                                  <i>成都</i>
                                   <ul>
-                                    <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
+                                    <li><a href="javascript:void(0)" alt="成都">成都</a></li>
                                   </ul>
-                                  <input type="hidden" name="cho_Province" value="请选择省份">
-                                </span>
-                                <span id="City">
-                                  <i>请选择城市</i>
-                                  <ul>
-                                    <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
-                                  </ul>
-                                  <input type="hidden" name="cho_City" value="请选择城市">
+                                  <input type="hidden" name="cho_City" value="成都">
                                 </span>
                                 <span id="Area">
                                   <i>请选择地区</i>
@@ -356,19 +334,19 @@
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 详细地址</label>
 					<div class="am-u-sm-9 txt-l">
-						<textarea rows="5" required></textarea>
+						<textarea class="addressInfo" rows="5" required></textarea>
 					</div>
 				</div>
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 手机号</label>
 					<div class="am-u-sm-9 txt-l sm-input">
-						<input type="tel" required class="phone" />
+						<input type="tel" value="<?=$_SESSION['phone'];?>" required class="phone" />
 						<span></span>
 					</div>
 				</div>
 				<div class="am-form-group">
 					<div class="am-u-sm-9 am-u-sm-offset-3 txt-l">
-						<button type="submit" class="am-btn am-btn-secondary">保存</button>
+						<button id="addDz" type="button" class="am-btn am-btn-secondary">保存</button>
 					</div>
 				</div>
 			</form>
@@ -386,7 +364,7 @@
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 姓名</label>
 					<div class="am-u-sm-9 txt-l sm-input">
-						<input type="text" required value="张某某" />
+						<input type="text" required value="张某某" name="username" />
 					</div>
 				</div>
 				<div class="am-form-group clear">
@@ -437,7 +415,7 @@
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 手机号</label>
 					<div class="am-u-sm-9 txt-l sm-input">
-						<input type="tel" required value="15608097597" class="phone" />
+						<input type="tel" required value="<?=$_SESSION['phone'];?>" class="phone" name="goodsphone" />
 						<span></span>
 					</div>
 				</div>
@@ -472,7 +450,36 @@ $(function(){
 })
 </script>
 <script>
-
+// 添加地址
+	$('#addDz').bind('click',function(){
+		var form = $(this).parentsUntil('.am-modal-bd');
+		var name = form.find('.addName').val();
+		var address = form.find('input[name=cho_City]').val() + form.find('input[name=cho_Area]').val() + form.find('input[name=cho_Insurer]').val() + form.find('textarea').val();
+		var phone = form.find('.phone').val();
+		if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+			form.find('.phone').next('span').html("请输入正确的手机号");
+		}else if(name == ''){
+			form.find('.phone').next('span').html('请输入姓名');
+		}else if(form.find('input[name=cho_Area]').val() == '请选择地区' && form.find('input[name=cho_Insurer]').val() == '请选择乡镇街道') {
+			form.find('.phone').next('span').html('请选择服务地址');
+		}else if(form.find('textarea').val() == ''){
+			form.find('.phone').next('span').html('请输入服务地址');
+		}
+		else{
+			form.find('.phone').next('span').html('');
+			$.ajax({
+				type: 'post',
+				url: '<?=site_url("postsend/address");?>',
+				data: 'name='+name+'&address='+address+'&phone='+phone,
+				success: function(data){
+					console.log(data);
+					if(data){
+						location.reload();
+					}
+				}
+			})
+		}
+	})
 // Form提交
 $('#defrayForm').bind('submit',function(){
 	console.log($('.adr_cz').length == 0)
@@ -530,12 +537,13 @@ $('#defrayForm').bind('submit',function(){
 	var d =(day <10) ? '0'+day : day;
     day=d;
 	var year = date.getFullYear(); 
-	var hour = date.getHours();
+	var hour = date.getHours()+2;
 	var minutes = date.getMinutes();
 	var b =(minutes <10) ? '0'+minutes : minutes;
 	minutes =b;
 	var curTime = hour+":"+minutes;  
 	html=year+'-'+month+'-'+day;
+	$('.deData').val(html);
 	$('.deTime td').each(function(){ 
       if($(this).html()>curTime){
         $(this).addClass('can');
@@ -547,17 +555,15 @@ $('#defrayForm').bind('submit',function(){
       }
     });
 	$('.deTime td.can').live('click',function(event) { 
-               $('#pay').removeAttr('disabled');
-              $('td').removeClass('am-danger');
-              $(this).addClass('am-danger');
-              $('#timeEat').val($(this).html());
-            });
+		$('#pay').removeAttr('disabled');
+		$('td').removeClass('am-danger');
+		$(this).addClass('am-danger');
+		$('#timeEat').val($(this).html());
+    });
 
   $('.deData').change(function(){
   	if($(this).val() == ''){
-  		$('.deTime').addClass('am-hide');
   	}else{
-  		$('.deTime').removeClass('am-hide');
   		if($(this).val() == html){
   			$('.deTime td').removeClass('can am-danger');
   			$('#pay').attr('disabled','disabled');

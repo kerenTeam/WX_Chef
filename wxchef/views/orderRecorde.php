@@ -39,11 +39,12 @@
                 break;
               case '1':
               case '2':
-              case '4':
+              
               case '6':
                   echo "待服务";
                 break;
               case '3':
+			  case '4':
                   echo "服务中";
                 break;
               case '8':

@@ -310,12 +310,7 @@
         $('#yfje').val(payable);
         var jifenmoney = 0;
         // 积分
-     
-        
-      
-      $(function(){
-        var adate = $('#beginTime');
-        var html;
+       var html;
         var date = new Date();
         var month = date.getMonth() + 1;
         var m =(month <10) ? '0'+month : month;
@@ -330,6 +325,11 @@
             minutes =b;
         var curTime = hour+2+":"+minutes;
          html=year+'-'+month+'-'+day;
+      
+        
+      
+      $(function(){
+        var adate = $('#beginTime');
        adate.attr('placeholder',html+" 默认");
        adate.val(html);
        console.log(html);
@@ -414,10 +414,11 @@
                   $(this).attr({
                     disabled: 'disabled'
                   });
-                  $(this).css('color','#eee')
+                  $(this).css('color','#eee');
                 }
-              })
-               $('#dateconfirm').live('click',function(){  
+              }) 
+      }) 
+        $('#dateconfirm').live('click',function(){  
                  console.log($('#beginTime').val()); 
                  $('td').removeClass('can am-danger');
                  $('#pay').attr({
@@ -440,7 +441,7 @@
               })
              }   
              });
-              $('td.can').live('click',function() { 
+  $('td.can').live('click',function() { 
                $('#pay').removeAttr('disabled');
                $('td').removeClass('am-danger');
                $(this).addClass('am-danger');
@@ -451,8 +452,6 @@
                 alert('请添加服务地址');
               }
             })
-      })
-
 function getorders(){
             var name=$('#name').val();
             var city = $('input[name="cho_City"]').val();
