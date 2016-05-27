@@ -12,7 +12,7 @@
 <div class="center">
 				<div class="defray">
 					<h1>订单支付</h1>
-					<form class="am-form am-form-horizontal pay" id="defrayForm">
+					<form class="am-form am-form-horizontal pay" id="defrayForm" action="<?=site_url('orderWxPay/orderpay');?>" method="post">
 						<table class="am-table defr_tab middle">
 							<thead>
 								<tr>
@@ -34,6 +34,11 @@
 											<!-- <img class="jia" src="skin/img/jia.jpg"> -->
 										</div>
 										</td>
+										<!-- foodid -->
+										<input type="hidden" value="<?=$val['foodid'];?>" name='foodid[]'/>
+										<!-- number -->
+										<input type="hidden" value="<?=$postBooking[$val['foodid']];?>" name='numbers[]'/>
+
 										<td class="defr_sum">￥ <span class="total"><?php if($val['discountproportion']){$a = $val['foodprice']*$val['discountproportion'];}else{$a = $val['foodprice'];}  echo $a * $postBooking[$val['foodid']]; $pricetotal[] = $a * $postBooking[$val['foodid']]; ?></span></td>
 									</tr>
 								<?php endforeach;?>
@@ -67,16 +72,18 @@
 								<td><div class="defr_tit">男服务员</div></td>
 								<td></td>
 								<td><?=$writes['boy']?></td>
-								
+								<input type="hidden" value="<?=$writes['boy']?>" name='boy' />
 							<td class="defr_sum">￥ <span class="total"><?=$writes['boy']*80;?></span></td>
 							</tr>
 							<?php endif;?>
+
 							<?php if(!empty($writes['girl'])):?>
 							<tr>
 								<td><div class="defr_tit">女服务员</div></td>
 								<td></td>
 								<td><?=$writes['girl']?></td>
-								
+								<input type="hidden" value="<?=$writes['girl']?>" name='girl' />
+
 							<td class="defr_sum">￥ <span class="total"><?=$writes['girl']*80;?></span></td>
 							</tr>
 							<?php endif;?>
@@ -116,7 +123,7 @@
 								<tr>
 									<td>
 										<label class="am-radio am-danger">
-											<input type="radio" name="radio3" value="<?=$val['memberaddressid'];?>" data-am-ucheck <?php if($val['isdefault'] == 1){echo "checked";}?>>
+											<input type="radio" name="memberaddressid" value="<?=$val['memberaddressid'];?>" data-am-ucheck <?php if($val['isdefault'] == 1){echo "checked";}?>>
 										</label>
 									</td>
 									<td><?=$val['name'];?></td>
@@ -138,7 +145,7 @@
 						<div class="am-g">
 						  <div class="am-u-sm-3">
 						    选择日期<br/>
-						    <p><input type="text" class="am-form-field deData" placeholder="点击选择要服务日期" id="my-start-2" required readonly/></p>
+						    <p><input type="text" class="am-form-field deData" placeholder="点击选择要服务日期" id="my-start-2" name="riqi" required readonly/></p>
 						  </div>
 						  <div class="am-u-sm-3">
 						    选择时间<br/>
@@ -214,7 +221,7 @@
 											<?php foreach($usercoupon as $v):?>
 											<li>
 												<label class="am-checkbox am-danger">
-													<input class="conponList" type="radio" name="conpon" value="<?=$v['usercouponid'];?>" data-am-ucheck>
+													<input class="conponList" type="radio" name="couponid" value="<?=$v['usercouponid'];?>" data-am-ucheck>
 													<div class="coupon_bg coupon_pic1">
 														<h1>￥<span class="fanPrice"><?=$v['coupponmoney'];?></span></h1>
 														<p>优惠卷名称: <?=$v['coupponname'];?></p>
@@ -232,7 +239,6 @@
 								</div>
 							</div>
 						<?php endif;?>
-						<?php var_dump($jifen); ?>
 							<div class="am-panel am-panel-default">
 								<div class="am-panel-hd">
 									<h4 class="am-panel-title" data-am-collapse="{target: '#do-not-say-2'}">
@@ -242,8 +248,8 @@
 								<div id="do-not-say-2" class="am-panel-collapse am-collapse">
 									<div class="am-panel-bd">
 										<label class="am-checkbox am-danger">
-											<input id="canjifen" type="checkbox" name="conpon" value="" data-am-ucheck>
-											<span class="am-text-danger">使用<?=$jifen;?>积分可抵￥<span class="jifen">3000</span></span>
+											<input id="canjifen" type="checkbox" name="jifen" value="1" data-am-ucheck>
+											<span class="am-text-danger">使用<?=$jifen;?>积分可抵￥<span class="jifen"><?=$jifen/100;?></span></span>
 										</label>
 									</div>
 								</div>
@@ -254,21 +260,21 @@
 						<p>选择支付方式</p>
 						<div class="payment">
 								<label class="am-radio am-danger">
-										<input type="radio" name="price" value="" data-am-ucheck> Apple Pay
+										<input type="radio" name="PaymentMethod" value="1" data-am-ucheck> Apple Pay
 								</label> 
 								<label class="am-radio am-danger">
-										<input type="radio" name="price" value="" data-am-ucheck checked> 微信支付
+										<input type="radio" name="PaymentMethod" value="2" data-am-ucheck checked> 微信支付
 								</label>
 								<label class="am-radio am-danger">
-										<input type="radio" name="price" value="" data-am-ucheck> 支付宝支付
+										<input type="radio" name="PaymentMethod" value="3" data-am-ucheck> 支付宝支付
 								</label>
 								<label class="am-radio am-danger">
-										<input type="radio" name="price" value="" data-am-ucheck> 线下支付
+										<input type="radio" name="PaymentMethod" value="4" data-am-ucheck> 线下支付
 								</label>
 						</div>
 				</div>
 				</div>
-				<p class="defr_he">应付金额: <span>￥<i id="sum">60.59</i></span></p>
+				<p class="defr_he">应付金额: <span>￥<i id="sum">00.00</i></span><input type="hidden" id="yfje" value="" name="yfje" /></p>
 				<p class="txt-r ord_buy">
 					<input type="submit" id="pay" value="付款" class="am-btn am-btn-danger am-radius big-btn" disabled/>
 					<!-- <a href="<?=site_url('shopcar/succeed');?>" class="am-btn am-btn-danger am-radius big-btn">付款</a> -->
@@ -289,7 +295,7 @@
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 姓名</label>
 					<div class="am-u-sm-9 txt-l sm-input">
-						<input type="text" required />
+						<input type="text" class="addName" required />
 					</div>
 				</div>
 				<div class="am-form-group clear">
@@ -298,19 +304,13 @@
 						<div class="demo">
                             <div class="infolist">
                               <div class="liststyle">
-                                <span id="Province" style="display:none;">
-                                  <i>请选择省份</i>
+                                
+                                <span>
+                                  <i>成都</i>
                                   <ul>
-                                    <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
+                                    <li><a href="javascript:void(0)" alt="成都">成都</a></li>
                                   </ul>
-                                  <input type="hidden" name="cho_Province" value="请选择省份">
-                                </span>
-                                <span id="City">
-                                  <i>请选择城市</i>
-                                  <ul>
-                                    <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
-                                  </ul>
-                                  <input type="hidden" name="cho_City" value="请选择城市">
+                                  <input type="hidden" name="cho_City" value="成都">
                                 </span>
                                 <span id="Area">
                                   <i>请选择地区</i>
@@ -334,19 +334,19 @@
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 详细地址</label>
 					<div class="am-u-sm-9 txt-l">
-						<textarea rows="5" required></textarea>
+						<textarea class="addressInfo" rows="5" required></textarea>
 					</div>
 				</div>
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 手机号</label>
 					<div class="am-u-sm-9 txt-l sm-input">
-						<input type="tel" required class="phone" />
+						<input type="tel" value="<?=$_SESSION['phone'];?>" required class="phone" />
 						<span></span>
 					</div>
 				</div>
 				<div class="am-form-group">
 					<div class="am-u-sm-9 am-u-sm-offset-3 txt-l">
-						<button type="submit" class="am-btn am-btn-secondary">保存</button>
+						<button id="addDz" type="button" class="am-btn am-btn-secondary">保存</button>
 					</div>
 				</div>
 			</form>
@@ -364,7 +364,7 @@
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 姓名</label>
 					<div class="am-u-sm-9 txt-l sm-input">
-						<input type="text" required value="张某某" />
+						<input type="text" required value="张某某" name="username" />
 					</div>
 				</div>
 				<div class="am-form-group clear">
@@ -415,7 +415,7 @@
 				<div class="am-form-group clear">
 					<label class="am-u-sm-3 am-form-label txt-r"> 手机号</label>
 					<div class="am-u-sm-9 txt-l sm-input">
-						<input type="tel" required value="15608097597" class="phone" />
+						<input type="tel" required value="<?=$_SESSION['phone'];?>" class="phone" name="goodsphone" />
 						<span></span>
 					</div>
 				</div>
@@ -450,7 +450,36 @@ $(function(){
 })
 </script>
 <script>
-
+// 添加地址
+	$('#addDz').bind('click',function(){
+		var form = $(this).parentsUntil('.am-modal-bd');
+		var name = form.find('.addName').val();
+		var address = form.find('input[name=cho_City]').val() + form.find('input[name=cho_Area]').val() + form.find('input[name=cho_Insurer]').val() + form.find('textarea').val();
+		var phone = form.find('.phone').val();
+		if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
+			form.find('.phone').next('span').html("请输入正确的手机号");
+		}else if(name == ''){
+			form.find('.phone').next('span').html('请输入姓名');
+		}else if(form.find('input[name=cho_Area]').val() == '请选择地区' && form.find('input[name=cho_Insurer]').val() == '请选择乡镇街道') {
+			form.find('.phone').next('span').html('请选择服务地址');
+		}else if(form.find('textarea').val() == ''){
+			form.find('.phone').next('span').html('请输入服务地址');
+		}
+		else{
+			form.find('.phone').next('span').html('');
+			$.ajax({
+				type: 'post',
+				url: '<?=site_url("postsend/address");?>',
+				data: 'name='+name+'&address='+address+'&phone='+phone,
+				success: function(data){
+					console.log(data);
+					if(data){
+						location.reload();
+					}
+				}
+			})
+		}
+	})
 // Form提交
 $('#defrayForm').bind('submit',function(){
 	console.log($('.adr_cz').length == 0)

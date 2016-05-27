@@ -145,7 +145,7 @@ class Shopcar extends CI_Controller
                 	//获取用户默认地址、
                 	$address = file_get_contents(POSTAPI."API_MenberAddress?dis=all&value=".$_SESSION['phone']);
                 	$data['address'] = json_decode(json_decode($address),true);
-
+                	// var_dump($data['address']);
 
                 	$data['servmoneydata'] = $_SESSION['servmoneydata'];
                 	
@@ -184,7 +184,7 @@ class Shopcar extends CI_Controller
 		$this->load->view('shopcar/succeed');
 	}
 
-
+	
 
 
 }
