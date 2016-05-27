@@ -75,9 +75,92 @@ class Shopcar extends CI_Controller
 			$data['cerearr'] = '';
 		}
 		// echo "<pre>";
-		// var_dump($data);
 		$this->load->view('shopcar/shopcar',$data);
 		$this->load->view('footer');
+	}
+
+	// 换一换
+	function exchange(){
+		if($_GET){
+			$data['id'] = $_GET['id'];
+			$pid = $_GET['pid'];
+			$data['shopid'] = $_GET['shopid'];
+
+			$cates = file_get_contents(POSTAPI."API_Food?dis=change&foodid=".$_GET['id']);
+			$foods = json_decode(json_decode($cates),true);
+			if($foods == " "){
+				$data['foods'] = '';
+			}else{
+				$data['foods'] = $foods;
+			}
+			$this->load->view('shopcar/exchange',$data);
+		}else{
+			redirect('shopcar/car');
+		}
+	}
+
+	// 换一换处理
+	public function changup(){
+		if($_GET){
+			$shopid = $_GET['shopid'];
+			$id = $_GET['id'];
+			$foodid = $_GET['foodid'];
+			$shoping =$_SESSION['shoping'];
+			foreach($shoping as $k=>$value){
+				if($value['foodid'] == $foodid && $value['shopid'] == $shopid){
+					$shoping[$k]['foodid'] = $id;
+				}
+			}
+			$this->session->set_userdata('shoping',$shoping,0);
+			redirect('shopcar/car');
+		}
+	}
+
+
+	// 删除购物车菜品
+	public function delshopcar()
+	{
+		if($_GET){
+			$id = $_GET['id'];
+			$shoping = $_SESSION['shoping'];
+			foreach ($shoping as $key => $value) {
+				if($value['foodid'] == $id){
+					unset($shoping[$key]);
+				}
+			}
+			$booking = $_SESSION['booking'];
+			foreach ($booking as $k => $v) {
+				if($v['foodid'] == $id){
+					unset($booking[$k]);
+				}
+			}
+			$shoping = array_merge($shoping);
+			$booking = array_merge($booking);
+			$this->session->set_userdata('shoping',$shoping,0);
+			$this->session->set_userdata('booking',$booking,0);
+			redirect('shopcar/car');
+		}else{
+			redirect('shopcar/car');
+		}
+	}
+
+	// 删除购物车庆典或者伴餐
+	public function delcere()
+	{	
+		if($_GET){
+			$action = $_GET['action'];
+			switch ($action) {
+				// 删除伴餐
+				case '1':
+					unset($_SESSION['eleg']);
+					break;
+				// 删除庆典
+				case '2':
+					unset($_SESSION['ceremoney']);
+					break;
+			}
+			redirect('shopcar/car');
+		}
 	}
 
 	// 订单确认

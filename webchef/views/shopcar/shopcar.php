@@ -75,20 +75,37 @@ function addshopcar(){
 							</label>
 							<!-- foodid -->
 							<input type="hidden" value="<?=$food['foodid']?>" name='foodid[]' />
-							<!--  -->
-							<a href="<?=site_url('order/info?id=').$food['foodid'].'&number='.$cart['number'].'&shopid='.$shopid;?>">
+							<!-- 判断是套餐还是点菜 -->
+							<?php if($food['code'] != 1999):?>
+							<a href="<?=site_url('order/info?id=').$food['foodid'];?>">
 								<img src="<?=IP.$food['thumbnail'];?>" alt="<?=$food['foodname'];?>" />
 							</a>
 							<span>
-								<a href="<?=site_url('order/info?id=').$food['foodid'].'&number='.$cart['number'].'&shopid='.$shopid;?>"><b><?=$food['foodname'];?>，</b><?php echo mb_strimwidth($food['foodtrait'], 0, 70,'...', 'UTF-8'); ?></a>
+								<a href="<?=site_url('order/info?id=').$food['foodid'];?>"><b><?=$food['foodname'];?>，</b><?php echo mb_strimwidth($food['foodtrait'], 0, 70,'...', 'UTF-8'); ?></a>
 							</span>
-							<p class="p1">￥<span class="p1span"><?=$food['foodprice'];?></span></p>
+							<?php else:?>
+								<a href="<?=site_url('order/partyInfo?id=').$food['foodid'];?>">
+									<img src="<?=IP.$food['thumbnail'];?>" alt="<?=$food['foodname'];?>" />
+								</a>
+								<span>
+									<a href="<?=site_url('order/partyInfo?id=').$food['foodid'];?>"><b><?=$food['foodname'];?>，</b><?php echo mb_strimwidth($food['foodtrait'], 0, 70,'...', 'UTF-8'); ?></a>
+								</span>
+							<?php endif;?>
+							<!-- end -->
+							<?php if($food['discountproportion']):?>
+								<p class="p1">￥<span class="p1span"><?=$food['foodprice']*$food['discountproportion'];?></span></p>
+							<?php else:?>
+								<p class="p1">￥<span class="p1span"><?=$food['foodprice'];?></span></p>
+							<?php endif;?>
 							<div class="jiajian">
-								<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1" name="numbers[]"><img class="jia"  src="skin/img/jia.jpg">
+								<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$cart['number'];?>" name="numbers[]"><img class="jia"  src="skin/img/jia.jpg">
 							</div>
 							<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
-							<a href="<?=site_url('order/exchange');?>">换一换</a>
-							<a href="javascript:;" class="you_a">删除</a>
+							<?php if($food['code'] == 1999):?>
+							<?php else:?>
+							<a href="<?=site_url('shopcar/exchange?id=').$id.'&pid='.$food['foodpid'].'&shopid='.$shopid;?>">换一换</a>
+							<?php endif;?>
+							<a href="<?=site_url('shopcar/delshopcar?id=').$id;?>" onclick="return confirm('你确定要删除吗?')">删除</a>
 						</li>
 					<?php endforeach;?>
 				<?php endforeach;?>
@@ -154,7 +171,7 @@ function addshopcar(){
 				</li>
 				<?php endif;?>
 				<!-- 服务员end -->
-				<?php if(!empty($eleg) || !empty($cerearr)):?> 
+				<?php if(!empty($cerearr) || !empty($eleg)):?> 
 				<!-- 伴餐 -->
 				<?php if(!empty($eleg)):?>
 				<li>
@@ -169,28 +186,29 @@ function addshopcar(){
 						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
 					</div>
 					<p class="bancan p2">￥ <span class="p2span"><?=$eleg['money'];?></span> </p>
-					<a href="javascript:;" class="you_a">删除</a>
+					<a href="<?=site_url('shopcar/delcere?action=1');?>" onclick="return confirm('你确定要删除吗?')">删除</a>
 				</li>
+				<?php endif;?>
+				<!-- 伴餐end -->
 				<!-- 庆典 -->
-			<?php if(!empty($cerearr)): ?>
+				<?php if(!empty($cerearr)): ?>
 				<li><h4 class="am-text-primary">庆典</h4></li>
 				<li>
 					<label class="am-checkbox am-danger cheall">
 						<input class="cheyou" type ="checkbox" name ="cereid" value ="<?=$cerearr['celebrationid'];?>" data-am-ucheck checked />
 					</label>
 					<span class="serTit">
-						<?=$cerearr['name'];?>
+						<a href="" title=""><?=$cerearr['name'];?></a>
 					</span>
 					<p class="serPrice p1 am-hide"><span class="p1span"><?=$cerearr['moneyall'];?></span></p>
 					<div class="jiajian am-hide">
 						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="1"><img class="jia"  src="skin/img/jia.jpg">
 					</div>
 					<p class="bancan p2">￥ <span class="p2span"><?=$cerearr['moneyall'];?></span> </p>
-					<a href="javascript:;" class="you_a">删除</a>
+					<a href="<?=site_url('shopcar/delcere?action=2');?>" onclick="return confirm('你确定要删除吗?')">删除</a>
 				</li>
 				<?php endif;?>
-			<?php endif;?>
-				<!-- 伴餐end -->
+				<!-- 庆典end -->
 			<?php endif;?>
 			</ul>
 			<!-- 结算 -->

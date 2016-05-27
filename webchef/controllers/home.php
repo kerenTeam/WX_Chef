@@ -141,10 +141,7 @@ class home extends CI_Controller {
 		$this->load->view('activity');
 		$this->load->view('footer');
 	}
-	// 换一换
-	function exchange(){
-		$this->load->view('exchange');
-	}
+
 	// 搜索
 	function search(){
 		$this->load->view('search');

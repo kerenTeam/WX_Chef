@@ -29,8 +29,19 @@ class Order extends CI_Controller
 	function partyInfo(){
 		if($_GET){
 			$id = $_GET['id'];
+
 			$foods = file_get_contents(POSTAPI.'API_Food?dis=taocanxq&foodid='.$id);
-	        $data['foods'] = json_decode(json_decode($foods),true);
+	        $foodinfo = json_decode(json_decode($foods),true);
+	        if(isset($_SESSION['shoping'])){
+				if($_SESSION['shoping'] != ''){
+					foreach ($_SESSION['shoping'] as $key => $value) {
+						if($id == $value['foodid']){
+							$foodinfo[0]['number'] = '1';
+						}
+					}
+				}
+			}
+			$data['foods'] = $foodinfo;
 			// 产品图片
 			$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 			$data['foodspic'] = json_decode(json_decode($foodpic),true);
@@ -45,10 +56,43 @@ class Order extends CI_Controller
 			$this->load->view('footer');
 		}
 	}
-	// 宴席加入购物车
+	// 加入购物车
 	function partyadd(){
 		if($_POST){
-			var_dump($_POST);
+			$foodid = $_POST['id'];
+			$numbers = $_POST['numbers'];
+			$code = $_POST['code'];
+			if(empty($numbers)){
+				echo "<script>alert('你还没有可提交的菜品。');history.go(-1);</script>";
+			}else{
+					$shopid = rand(1,100);
+					$data['foodid'] = $foodid;
+					$data['number'] = $numbers;
+					$data['shopid'] = $shopid;
+					$data['code'] = $code;
+					$data['time'] = date('Y-m-d H:i:s');
+					$c[] = $data;
+					if(isset($_SESSION['shoping'])){
+						$shoping = $_SESSION['shoping'];
+					}else{
+						$shoping = '';
+					}
+					if($shoping == ''){
+					 	$this->session->set_userdata('shoping',$c,0);
+					}else{
+						foreach($shoping as $key=>$value){
+							foreach($c as $k=>$v){
+								if($value['foodid'] == $v['foodid']){
+									unset($shoping[$key]);
+								}
+							}
+						}
+						$f = array_merge($shoping,$c);
+					 	$this->session->set_userdata('shoping',$f,0);
+					}
+			}
+
+
 		}
 	}
 	// 净菜
@@ -82,9 +126,7 @@ class Order extends CI_Controller
 	function info(){
 		if($_GET){
 			$id = $_GET['id'];
-			$number = $_GET['number'];
-			isset($number) ? $data['number'] = $number : $data['number'] = '0';
-			isset($_GET['shopid']) ? $data['shopid'] = $_GET['shopid'] : NULL;
+			
 			//产品详情
 			$foods = file_get_contents(POSTAPI.'API_Food?dis=xq&foodid='.$id);
 			$foodjson = ltrim(rtrim($foods,'"'),'"');

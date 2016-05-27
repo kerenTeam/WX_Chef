@@ -71,7 +71,11 @@
             <li>
               <!-- <button href="<?=site_url('shopcar/car');?>" class="am-btn am-btn-danger am-radius buy-sbm">立即购买</button> -->
               <input type="hidden" value="1" />
-              <a id='foodsid' href="javascript:;" class="joinCar am-btn am-btn-danger am-radius buy-sbm">加入购物车</a>
+              <?php if(isset($foods[0]['number'])):?>
+              <a href="javascript:;" class="am-btn am-btn-danger am-radius buy-sbm">已加入购物车</a>
+              <?php else:?>
+               <a id='<?=$foods[0]['foodid'];?>' href="javascript:;" class="joinCar am-btn am-btn-danger am-radius buy-sbm">加入购物车</a>
+              <?php endif;?>
             </li>
             <!-- <li>
               <a class="am-btn am-btn-default am-radius join-car" href="javascript:;">
@@ -380,8 +384,16 @@ $('.joinCar').bind('click',function(){
   var id = $(this).attr('id');
   var price = $('#foodPrice').html();
   var numbers = $('#foodNum').val();
-  var code = $(this).prev().val();
-  alert('id:'+id +'\n'+'code:'+code+'\n'+'price:'+price+'\n'+'number:'+numbers);
+  var code = '1';
+  $.ajax({
+      type:'post',
+      url:'<?=site_url("order/partyadd");?>',
+      data:'id='+id+'&numbers='+numbers+'&code='+code,
+      success:function(data){
+          location.reload();
+      }
+  });
+  //alert('id:'+id +'\n'+'code:'+code+'\n'+'price:'+price+'\n'+'number:'+numbers);
 })
 
 
