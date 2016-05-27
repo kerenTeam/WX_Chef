@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @Author: Harris-Aaron
  * @Date:   2016-05-25 11:28:01
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-25 11:50:59
+ * @Last Modified time: 2016-05-27 18:51:03
  */
 
 
@@ -15,14 +15,16 @@ class orderWxPay extends CI_Controller{
     function __construct()
 	{
         parent::__construct();
+        $this->load->library('WxPayApi');
+        $this->load->library('NativePay'); 
         $this->load->helper('post_helper');
+        $this->load->view('header'); 
     
 	}
 
-    public function orderpay($value='')
+    public function orderpay()
     {
         if($_POST){
-            echo "<pre>";
             //var_dump($_POST);
             $foodid = $this->input->post('foodid');
             $numbers = $this->input->post('numbers');
@@ -114,19 +116,28 @@ class orderWxPay extends CI_Controller{
 
             $OrderAllData = str_replace('"{"','{"',str_replace('"}"','"}',str_replace('}"]','}]',str_replace('["{','[{',str_replace("'",'"',json_encode($foodJsondata))))));
 
-            var_dump($OrderAllData);
-            exit;
             //得到金额
             $isOrderOk=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);
-            // $_SESSION['rePayData'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isOrderOk))),TRUE);
-            
-              var_dump($isOrderOk);
-            exit;
-            $this->load->view('order/payOrder');
-           
+            $data['isOrderOk'] = json_decode(str_replace(']"',']',str_replace('"[','[',str_replace('\"','"',$isOrderOk))),TRUE);
+
+           $this->load->view('shopcar/pay',$data);
 
         }
-    }
+    }   
+
+    // function nativePay()
+    // {   
+    //     //$data['ceredetails']=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);//返回总价
+    //     //$this->load->view('shopcar/pay',$data);
+        
+    // }
+
+    // function isOk()
+    // {   
+    //     //$data['ceredetails']=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);//返回总价
+    //     //$this->load->view('shopcar/pay',$data);
+    //     $this->load->view('shopcar/isOk');
+    // }
 
 
 }
