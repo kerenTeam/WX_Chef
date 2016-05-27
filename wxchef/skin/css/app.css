@@ -1,5 +1,9 @@
 /* Write your styles*/
 
+::-webkit-scrollbar {
+    width: 0px;
+}
+
 html {
     overflow-y: visible;
 }

@@ -20,6 +20,7 @@
              allmoney.innerHTML = (parseFloat(allmoney.innerHTML) - parseFloat(servTotal1.value)).toFixed(2);
          }
          servTotal1.value = parseInt(serinput.value) * parseInt(serprice.innerHTML);
+         console.log(servTotal1.value);
          //allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(servTotal.value);
      }
      //服务于数量加减
@@ -64,6 +65,7 @@
          }
          servTotal2.value = (serinput2.value) * parseInt(serprice2.innerHTML);
          //allmoney.innerHTML = parseFloat(allmoney.innerHTML)+parseFloat(servTotal.value);
+         console.log(servTotal2.value);
      }
      //服务于数量加减
  function empdel2() {
