@@ -255,7 +255,7 @@ function doaction(obj) {
 </form>
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
-<script src="skin/js/num.js"></script>
 <script src="skin/js/service.js"></script>
+<script src="skin/js/num.js"></script>
 </body>
 </html>

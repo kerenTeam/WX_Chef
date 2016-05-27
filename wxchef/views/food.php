@@ -128,7 +128,7 @@
         <?php if(!empty($arrimg)):?>
           <?php foreach($arrimg as $val):?>
       <li>
-        <div class="am-gallery-item">
+        <div class="am-gallery-item cmax">
             <a href="<?=IP.$val['address']?>" class="">
               <img src="<?=IP.$val['address']?>"/>
             </a>

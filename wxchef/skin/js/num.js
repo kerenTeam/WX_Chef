@@ -24,16 +24,18 @@ var servmoeny = document.getElementById("servmoney");
 var fwf = parseFloat(servmoeny.innerHTML);
 var ban = document.getElementsByClassName('ban-price');
 var banAll = 0;
+// 服务员数量
+var serinput2 = document.getElementsByClassName('serinput2')[0];
+var serinput = document.getElementsByClassName('serinput')[0];
+// 服务员价格
+var serprice = document.getElementById('serprice');
+var serprice2 = document.getElementById('serprice2');
+servTotal1 = document.getElementById('servTotal');
+servTotal2 = document.getElementById('servTotal2');
 window.onload = function() {
-    // 服务员数量
-    var serinput2 = document.getElementsByClassName('serinput2')[0];
-    var serinput = document.getElementsByClassName('serinput')[0];
-    // 服务员价格
-    var serprice = document.getElementById('serprice');
-    var serprice2 = document.getElementById('serprice2');
-    servTotal1 = document.getElementById('servTotal');
+
     servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
-    servTotal2 = document.getElementById('servTotal2');
+
     servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
     servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
     console.log(servTotal);
@@ -49,27 +51,7 @@ window.onload = function() {
         paymoney += parseFloat(parseInt(ordFen[i].value) * parseFloat(ordPrice[i].innerHTML));
         console.log(paymoney)
     }
-    if (paymoney > 300 || paymoney <= 0) {
-        fwf = 0;
-        ff.style.display = 'none';
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
-
-    }
-
-    if (paymoney > 0 && paymoney <= 240) {
-        fwf = 60;
-        ff.style.display = '';
-        servmoeny.innerHTML = fwf.toFixed(2);
-        fee.value = fwf.toFixed(2);
-    }
-    if (paymoney > 240 && paymoney <= 300) {
-        ff.style.display = '';
-        fwf = 300 - paymoney;
-        servmoeny.innerHTML = fwf.toFixed(2);;
-        fee.value = fwf.toFixed(2);;
-    }
-    console.log(fee.value);
+    servFee(paymoney);
     fens.innerHTML = fen;
     allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }
@@ -103,30 +85,14 @@ function ueserWrite(obj) {
         return false;
     }
     var prices = obj.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML;
+    servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
+    servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
+    servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
     fen += obj.value - onum;
     fens.innerHTML = fen;
     paymoney += (obj.value - onum) * prices;
     allmoney.innerHTML = paymoney.toFixed(2);
-    if (paymoney > 300 || paymoney <= 0) {
-        fwf = 0;
-        ff.style.display = 'none';
-        servmoeny.innerHTML = fwf;
-        fee.value = fwf;
-
-    }
-
-    if (paymoney > 0 && paymoney <= 240) {
-        fwf = 60.00;
-        ff.style.display = '';
-        servmoeny.innerHTML = fwf.toFixed(2);
-        fee.value = fwf.toFixed(2);
-    }
-    if (paymoney > 240 && paymoney <= 300) {
-        ff.style.display = '';
-        fwf = 300 - paymoney;
-        servmoeny.innerHTML = fwf.toFixed(2);
-        fee.value = fwf.toFixed(2);
-    }
+    servFee(paymoney);
     allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }
 
@@ -138,6 +104,9 @@ function handle(self, isAdd) {
     var price = self.parentNode.parentNode.getElementsByClassName("price")[0].innerHTML; /* 获取价格 */
     //  var foodname = self.parentNode.parentNode.getElementsByClassName("foodname")[0].innerHTML; /* 获取食物名 */
     var foodId = self.parentNode.parentNode.childNodes[1].value;
+    servTotal1.value = parseInt(serinput.value) * parseFloat(serprice.innerHTML);
+    servTotal2.value = parseInt(serinput2.value) * parseFloat(serprice2.innerHTML)
+    servTotal = parseInt(serinput.value) * parseFloat(serprice.innerHTML) + parseInt(serinput2.value) * parseFloat(serprice2.innerHTML);
 
     if (isAdd) {
         curCount++;
@@ -160,81 +129,33 @@ function handle(self, isAdd) {
         } else
             paymoney -= parseFloat(price);
     }
-    if (paymoney > 300 || paymoney <= 0) {
+    servFee(paymoney);
+    fens.innerHTML = fen;
+    countEl.value = curCount;
+    allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
+}
+
+//计算服务费
+function servFee(feeT) {
+    if (feeT > 300 || feeT <= 0) {
         fwf = 0;
         ff.style.display = 'none';
         servmoeny.innerHTML = fwf;
         fee.value = fwf;
     }
 
-    if (paymoney > 0 && paymoney <= 240) {
+    if (feeT > 0 && feeT <= 240) {
         fwf = 60.00;
         ff.style.display = '';
         servmoeny.innerHTML = fwf.toFixed(2);
         fee.value = fwf.toFixed(2);
     }
-    if (paymoney > 240 && paymoney <= 300) {
-        fwf = 300 - paymoney;
+    if (feeT > 240 && feeT <= 300) {
+        fwf = 300 - feeT;
         ff.style.display = '';
         servmoeny.innerHTML = fwf.toFixed(2);
         fee.value = fwf.toFixed(2);
     }
+
     console.log(fee.value);
-    fens.innerHTML = fen;
-    countEl.value = curCount;
-    allmoney.innerHTML = (paymoney + fwf + banAll + servTotal).toFixed(2);
 }
-
-
-
-
-// function handleHidden(id,name, count,total, fid){
-//  var hiddens = document.getElementById("hiddens");
-//  for(var i = 0; i < ids.length; i++){
-//      if(ids[i] == id){
-//          var hiddenInput0 = hiddens.childNodes[i * 4 ];
-//          var hiddenInput1 = hiddens.childNodes[i * 4 + 1];
-//          var hiddenInput2 = hiddens.childNodes[i * 4 + 2];
-//          var hiddenInput3 = hiddens.childNodes[i * 4 + 3];
-//          if(count == 0){
-//              hiddens.removeChild(hiddenInput0);
-//              hiddens.removeChild(hiddenInput1); /** 移除该元素 */
-//              hiddens.removeChild(hiddenInput2);
-//              hiddens.removeChild(hiddenInput3);
-//              ids.splice(i, 1); /** 从数组中移除ID */
-//          }else
-//              hiddenInput1.value = name;
-//              hiddenInput2.value = count+"份";
-//              hiddenInput3.value = "￥"+total;
-//          return;
-//      }   
-//  }
-
-//  if(count > 0 ){
-//      addHiddenChild(hiddens, id,name, count,total, fid);
-//      ids.push(id); /** 向数组中添加ID */
-//  }
-// }
-
-// function addHiddenChild(hiddens, id,name, count,total, fid){
-//  var hiId = document.createElement( "input");
-//  var hiName = document.createElement( "input");
-//  var hiNum = document.createElement( "input");
-//  var hiTotal = document.createElement( "input");
-//  hiId.setAttribute( "type", "hidden");
-//     hiName.setAttribute( "type", "hidden");
-//     hiNum.setAttribute( "type", "hidden");
-//     hiTotal.setAttribute( "type", "hidden");
-//     hiId.name = "foodIds[]";
-//     hiName.name = "foodlist[]";
-//     hiNum.name = "foodNum[]";
-//     hiTotal.name = "foodTotal[]";
-//     hiId.value = fid;
-//     hiName.value = name;
-//     hiNum.value = count+"份"; 
-//     hiTotal.value = "￥"+total; 
-//     hiddens.appendChild(hiId); 
-//     hiddens.appendChild(hiName);
-//     hiddens.appendChild(hiNum);
-//     hiddens.appendChild(hiTotal); 
-// }

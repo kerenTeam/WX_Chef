@@ -117,7 +117,6 @@ lable {
 .infolist .liststyle span ul li {
     width: 100%;
     float: left;
-    overflow: scroll;
     border-top: 1px solid #E8E8E8;
 }
 
