@@ -87,7 +87,8 @@ $url2 = $result["code_url"];
 	</div>
 </div>
 
-
+<script type="text/javascript" src="skin/js/jquery.min.js"></script>
+<script type="text/javascript" src="skin/js/amazeui.min.js"></script>
 <script>
   $(function() {
     $('#doc-my-tabs').tabs();
