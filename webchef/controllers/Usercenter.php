@@ -19,17 +19,44 @@ class Usercenter extends CI_Controller
 	// 个人中心
     public function personal()
 	{
-		
-		$this->load->view('usercenter/personalcenter');
+		if(isset($_SESSION['phone'])){
+			// 获取用户信息
+			$users = file_get_contents(POSTAPI.'API_User?dis=ckxx&UserPhone='.$_SESSION['phone']);	
+			$data['users'] = json_decode(json_decode($users),true);
+			// 获取用户订单
+			$order = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
+			$data['record'] = json_decode(json_decode($order),true);
+			// var_dump($data['record']);
+			
+		}else{
+			$data['users'] = '';
+			$data['record']='';
+		}
+		$this->load->view('usercenter/personalcenter',$data);
 		$this->load->view('footer');
 	}
 
 	// 我的订单
     public function myorder()
 	{
-		
-		$this->load->view('usercenter/myOrder');
+
+		if(isset($_SESSION['phone'])){
+			if($_SESSION['phone'] != ''){
+				// 获取用户订单
+				$order = file_get_contents(POSTAPI.'API_Poorder?dis=all&UserPhone='.$_SESSION['phone']);
+				$data['record'] = json_decode(json_decode($order),true);
+				// var_dump($data)
+				$this->load->view('usercenter/myOrder',$data);
 				$this->load->view('footer');
+			}else{
+				echo "<script>alert('你还没有登陆！');window.location.href='".site_url('login/index')."'</script>";
+				exit;
+			}
+			
+		}else{
+			echo "<script>alert('你还没有登陆！');window.location.href='".site_url('login/index')."'</script>";exit;
+		}
+		
 
 	}
 

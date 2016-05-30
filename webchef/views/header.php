@@ -24,7 +24,11 @@
         <!-- <li><a href="<?=site_url('home/recommend');?>">我的大厨</a></li> -->
         <li><a href="<?=site_url('home/help');?>">联系我们</a></li>
         <li><a href="<?=site_url('shopcar/car');?>">购物篮</a></li>
+        <?php if(!isset($_SESSION['phone'])):?>
         <li><a href="<?=site_url('login/index');?>">登录</a>/<a href="<?=site_url('login/register');?>">注册</a></li>
+        <?php else:?>
+        <li><a href="javascript:;"><?=$_SESSION['phone'];?></a></li>
+      <?php endif;?>
       </ul>
     </div>
   </div>

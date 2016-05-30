@@ -49,90 +49,75 @@
                           <!-- <p><img src="skin/img/clz.png"> 您的菜篮子空空的哦，现在就去 <a href="javascript:;">订餐</a> 吧~</p> -->
                         <table class="am-table am-table-striped am-table-hover middle">
                         <tbody>
+                        <?php foreach($record as $k=>$value):?>
                             <tr class="per-table">
                                 <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
                                 <td>
-                                    <p>订单号:25644448557</p>
-                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
-                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
-                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
+                                    <p>订单号:<?=$value['BillNo']?></p>
+                                    <?php foreach($value['FoodDetails'] as $v):?>
+                                    <h2><?=$v['FoodName'];?> (X<?=$v['FoodNumber'];?>) <span class="hcolor">￥<?=$v['DiscountMoney'];?></span></h2>
+                                    <?php endforeach;?>
                                 </td>
                                 <td>
-                                    <p>提交时间:2016-05-23</p>
-                                    <p>预约时间:2016-05-23</p>
+                                    <p>提交时间:<?=substr($value['BillDate'], 0,10);?></p>
+                                    <p>预约时间:<?=substr($value['AppointmentTime'], 0,10);?></p>
                                 </td>
-                                <td><span class="grey">已评价</span></td>
-                                <td><a href="<?=site_url('order/info');?>" class="am-btn am-btn-danger am-radius">再来一单</a>
-                                <a href="javascript:;" class="am-btn am-btn-warning am-radius">删除</a></td>
-                            </tr>
+                                <td><span class="grey"><?php switch ($value['State']) {
+                                      case '0':
+                                       echo "待付款";
+                                        break;
+                                      case '1':
+                                      case '2':
+                                      
+                                      case '6':
+                                          echo "待服务";
+                                        break;
+                                      case '3':
+                                      case '4':
+                                          echo "服务中";
+                                        break;
+                                      case '8':
+                                          echo "待评价";
+                                        break;
+                                      case '7':
+                                          echo "退款";
+                                        break;
+                                      case '10':
+                                          echo "退款";
+                                        break;
+                                  }?></span></td>
+                                <td>
+                                 <?php switch ($value['State']) {
+                                  case '0':
+                                    echo "<a href='".site_url('home/payment?id=').$value['PoorderId'].'&money='.$value['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>"; 
+                                    echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
+                                    break;
+                                  case '1':
+                                  case '2':
+                                  case '6':
+                                      echo "<a href='".site_url('home/orderState?id=').$value['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
+                                    break;
+                                  case '7':
+                                    echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款中</a>";
+                                    break;
+                                  case '8':
+                                    echo "<a href='".site_url('home/commentTotal?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
+                                    echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
+                                    break;
+                                  case '9':
+                                    echo "<a href='".site_url('home/share')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
+                                    echo "<a href='".site_url('home/delorder?id=').$value['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
+                                    break;
+                                  case '10':
+                                       echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款成功</a>";
+                                      break;
+                                }?>
 
+
+                              </td>
+                            </tr>
+                            <?php endforeach;?>
                             <!-- 待付款 -->
-                            
-                            <tr class="per-table">
-                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
-                                <td>
-                                    <p>订单号:25644448557</p>
-                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
-                                </td>
-                                <td>
-                                    <p>提交时间:2016-05-23</p>
-                                    <p>预约时间:2016-05-23</p>
-                                </td>
-                                <td><span class="grey">代付款</span></td>
-                                <!-- <td>
-                                    <a href="javascript:;" class="am-text-sm am-link-muted">取消订单</a>
-                                </td> -->
-                                <td><a href="<?=site_url('shopcar/defray');?>" class="am-btn am-btn-danger am-btn-sm am-radius">去付款</a>
-                                <a href="javascript:;" class="am-btn am-btn-warning am-radius">取消订单</a></td>
-                            </tr>
-
-                            <!-- 待评价 -->
-
-                            <tr class="per-table">
-                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
-                                <td>
-                                    <p>订单号:25644448557</p>
-                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
-                                </td>
-                                <td>
-                                    <p>提交时间:2016-05-23</p>
-                                    <p>预约时间:2016-05-23</p>
-                                </td>
-                                <td><span class="grey">待评价</span></td>
-                                <td><a href="<?=site_url('home/orderaps');?>" class="am-btn am-btn-success am-radius">评价</a></td>
-                            </tr>
-
-                            <!-- 服务中 -->
-
-                            <tr class="per-table">
-                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
-                                <td>
-                                    <p>订单号:25644448557</p>
-                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
-                                </td>
-                                <td>
-                                    <p>提交时间:2016-05-23</p>
-                                    <p>预约时间:2016-05-23</p>
-                                </td>
-                                <td><span class="grey">服务中</span></td>
-                                <td></td>
-                            </tr>
-
-                            <!-- 待服务 -->
-
-                            <tr class="per-table">
-                                <!-- <td class="old-food"><img src="skin/img/orderimg_03.png"></td> -->
-                                <td>
-                                    <p>订单号:25644448557</p>
-                                    <h2>尖椒回锅肉 (X1) <span class="hcolor">￥32</span></h2>
-                                </td>
-                                <td>
-                                    <p>提交时间:2016-05-23</p>
-                                    <p>预约时间:2016-05-23</p>
-                                </td>
-                                <td><span class="grey">待服务</span></td>
-                                <td><a href="javascript:;" class="am-btn am-btn-default am-radius">退款</a></td>
-                            </tr>
 
                         </tbody>
                         </table>
