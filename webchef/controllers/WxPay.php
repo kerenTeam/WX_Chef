@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @Author: Harris-Aaron
  * @Date:   2016-05-25 11:28:01
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-27 18:28:52
+ * @Last Modified time: 2016-05-30 14:26:45
  */
 
 // if (DeBug == 1) {
@@ -36,8 +36,8 @@ class WxPay extends CI_Controller{
 
     function nativePay()
     {   
-        //$data['ceredetails']=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);//返回总价
-        //$this->load->view('shopcar/pay',$data);
+        // $data['ceredetails']=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);//返回总价
+        // $this->load->view('shopcar/pay',$data);
 		$this->load->view('shopcar/pay');
 	}
 
