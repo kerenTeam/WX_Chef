@@ -3,7 +3,7 @@
  * @Author: Harris-Aaron
  * @Date:   2016-05-27 16:16:16
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-27 18:22:35
+ * @Last Modified time: 2016-05-30 14:58:05
  */
 
 ini_set('date.timezone','Asia/Shanghai');
@@ -13,7 +13,8 @@ $input = new WxPayUnifiedOrder();
 $input->SetBody("大厨到家订餐支付");
 $input->SetAttach("大厨到家－微信支付");
 $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-$input->SetTotal_fee("1");
+$monyAll = sprintf("%.2f",substr(sprintf("%.3f", $isOrderOk['0']['MoneyAll']), 0, -2));
+$input->SetTotal_fee($monyAll * 100);
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 36000));
 $input->SetGoods_tag("大厨到家－微信支付");
@@ -23,21 +24,22 @@ $input->SetNotify_url($bc);
 $input->SetTrade_type("NATIVE");
 $input->SetProduct_id("123456789"); 
 $result = $notify->GetPayUrl($input);
-echo " <pre>";
-var_dump($input);
-var_dump($result);
-echo "</pre>";
+// echo " <pre>";
+// var_dump($input);
+// var_dump($result);
+// var_dump($isOrderOk);
+// echo "</pre>";
 $url2 = $result["code_url"];
 ?>
 <div class="payCtt">
 	<h1><img src="skin/img/LOGO-ug_03.png">收银台</h1>
 	<div class="am-cf payInfo">
 		<div class="am-fl am-padding-sm">
-			<p>订单编号: 13246546879878</p>
+			<p>订单编号: <?php echo  $isOrderOk['0']['POOrderId']; ?></p>
 			<p>订单类型: 在线支付</p>
 		</div>
 		<div class="am-fr am-padding-sm">
-			<span>应付金额 : <strong>￥ 78.00</strong></span>
+			<span>应付金额 : <strong>￥ <?php echo sprintf("%.2f",substr(sprintf("%.3f", $isOrderOk['0']['MoneyAll']), 0, -2));  ?></strong></span>
 		</div>
 	</div>
 	<div class="payCan">
@@ -94,3 +96,5 @@ $url2 = $result["code_url"];
     $('#doc-my-tabs').tabs();
   })
 </script>
+
+
