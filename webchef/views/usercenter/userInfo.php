@@ -39,11 +39,10 @@
                         <li class="active">个人信息</li>
                     </ul> 
                   </div>
-                  <div class="per-center">
-                     <p class="am-margin-top-sm am-margin-left-sm">亲爱的<span class="username">XXX</span>,填写你的信息，增加你的魅力值吧！</p> 
-
+                  <div class="per-center"> 
+        
                     <!-- 信息修改表单 -->
-                     <form action="" method="" class="am-form am-u-lg-9" data-am-validator>
+                     <form action="<?=site_url('usercenter/editusers');?>" method="post" class="am-form am-u-lg-9" data-am-validator enctype='multipart/form-data'>
                         <fieldset>
 
                           <div class="am-form-group">
@@ -68,60 +67,47 @@
                                 .am-checkbox-inline,.am-radio-inline{
                                   margin-top: 0;
                                 }
-
+                                #preview img{
+                                  width: 100px;
+                                  height: 100px;
+                                }
                             </style>
                             <div class="wx_type_img">
-                              <input type="file" id="imgUpload" name="img[]" onchange="previewImage(this)" class="upload-add">
+                              <input type="file" id="imgUpload" name="UserImage" onchange="previewImage(this)" class="upload-add">
                               <!-- 图片实时预览 -->
-                              <div id="preview"> <img style="border-radius: 3px;" src="skin/img/user.jpg" alt="选择图片"> 
+                              <div id="preview"> <img style="border-radius: 3px;" src="<?=IP.$user[0]['userimage'];?>" alt="选择图片"> 
                                </div>
                             </div>
                           </div>
 
                           <div class="am-form-group">
                             <label for="doc-vld-name-2">* 昵称</label>
-                            <input type="text" id="doc-vld-name-2" minlength="3" placeholder="输入用户名（至少 3 个字符）" required/>
-                          </div>
-
+                            <input type="text" id="doc-vld-name-2" minlength="3" placeholder="输入用户名（至少 3 个字符）" value="<?=$user[0]['username'];?>" name='UserName' required/>
+                          </div>  
                           <div class="am-form-group">
-                            <label for="doc-vld-email-2">真实姓名：</label>
-                            <input type="text" id="doc-vld-email-2" placeholder="真实姓名"/>
+                            <label for="doc-vld-name-2">* 口味</label>
+                            <input type="text" id="doc-vld-name-2" minlength="3" placeholder="输入用户名（至少 3 个字符）" value="<?=$user[0]['personaltaste'];?>" name='PersonalTaste' required/>
                           </div>
-
                           <div class="am-form-group">
                             <label class="am-form-label">菜品爱好：</label>
                             <label class="am-checkbox-inline am-checkbox">
-                              <input type="checkbox" value="川菜" name="docVlCb" data-am-ucheck> 川菜
+                              <input type="checkbox" value="川菜" name="LikeCuisine[]" data-am-ucheck > 川菜
                             </label>
                             <label class="am-checkbox-inline am-checkbox">
-                              <input type="checkbox" value="湘菜" name="docVlCb" data-am-ucheck> 湘菜
+                              <input type="checkbox" value="湘菜" name="LikeCuisine[]" data-am-ucheck> 湘菜
                             </label>
                             <label class="am-checkbox-inline am-checkbox">
-                              <input type="checkbox" value="豫菜" name="docVlCb" data-am-ucheck> 豫菜
+                              <input type="checkbox" value="豫菜" name="LikeCuisine[]" data-am-ucheck> 豫菜
                             </label>
                             <label class="am-checkbox-inline am-checkbox">
-                              <input type="checkbox" value="粤菜" name="docVlCb" data-am-ucheck> 粤菜
+                              <input type="checkbox" value="粤菜" name="LikeCuisine[]" data-am-ucheck> 粤菜
                             </label>
                             <label class="am-checkbox-inline am-checkbox">
-                              <input type="checkbox" value="鲁菜" name="docVlCb" data-am-ucheck> 鲁菜
+                              <input type="checkbox" value="鲁菜" name="LikeCuisine[]" data-am-ucheck> 鲁菜
                             </label>
                           </div>
 
-                          <div class="am-form-group">
-                            <label>* 性别： </label>
-                            <label class="am-radio-inline am-radio">
-                              <input type="radio"  value="" name="docVlGender" data-am-ucheck checked required> 男
-                            </label>
-                            <label class="am-radio-inline am-radio">
-                              <input type="radio" name="docVlGender" data-am-ucheck> 女
-                            </label>
-                          </div>
-
-                          <div class="am-form-group">
-                            <label for="doc-select-1">生日</label>
-                            <p><input type="text" class="am-form-field" placeholder="日期选择" data-am-datepicker="{theme: 'success'}" readonly/></p>
-                            <span class="am-form-caret"></span>
-                          </div>  
+                          <input type="hidden" value="<?=$user[0]['userid'];?>" name='UserId' />
                           <button class="am-btn am-btn-secondary save" type="submit">提交</button>
                         </fieldset>
                       </form>

@@ -35,7 +35,7 @@
               <!--  最近订单 -->
               <div class="per-ctt">
                   <div class="order-tit clear">
-                    <ul class="clear">
+                    <ul class="clear orderZt">
                         <li class="active"><a href="javascript:;">所有订单</a></li>
                         <li><a href="javascript:;">待付款</a></li>
                         <li><a href="javascript:;">待服务</a></li>
@@ -62,7 +62,8 @@
                                     <p>提交时间:<?=substr($value['BillDate'], 0,10);?></p>
                                     <p>预约时间:<?=substr($value['AppointmentTime'], 0,10);?></p>
                                 </td>
-                                <td><span class="grey"><?php switch ($value['State']) {
+                                <td><h2 class="hcolor">￥ 123</h2></td>
+                                <td><span class="grey zhuangtai"><?php switch ($value['State']) {
                                       case '0':
                                        echo "待付款";
                                         break;
@@ -188,3 +189,23 @@
 
 
 <script src="skin/js/jquery.min.js"></script>
+<script>
+  $(function  () {
+    $('.orderZt li').click(function(){
+      $(this).addClass('active').siblings().removeClass('active');
+      var title = $(this).find('a').html();
+      // var order = $('.zhuangtai').html();
+      $('.zhuangtai').each(function(){
+        var tr = $(this).parent().parent();
+        if ($(this).html() == title) {
+          tr.removeClass('am-hide');
+        }else if(title == '所有订单'){
+          tr.removeClass('am-hide');
+        }
+        else{
+          tr.addClass('am-hide');
+        }
+      })
+    })
+  })
+</script>

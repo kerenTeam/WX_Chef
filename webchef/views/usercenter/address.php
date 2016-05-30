@@ -49,26 +49,19 @@
               <div class="address">
                   <h1>收货地址</h1>
                   <p>新增收货地址</p>
-                  <form class="am-form am-form-horizontal address_form">
+                  <form class="am-form am-form-horizontal phone_yz address_form" action="<?=site_url('Usercenter/addressAdd');?>" method="post">
                       <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label"><i>*</i> 所在地区</label>
                         <div class="am-u-sm-9">
                           <div class="demo">
                             <div class="infolist">
                               <div class="liststyle">
-                                <span id="Province" style="display:none;">
-                                  <i>请选择省份</i>
+                                <span>
+                                  <i>成都市</i>
                                   <ul>
-                                    <li><a href="javascript:void(0)" alt="请选择省份">请选择省份</a></li>
+                                    <li><a href="javascript:void(0)" alt="成都市">成都市</a></li>
                                   </ul>
-                                  <input type="hidden" name="cho_Province" value="请选择省份">
-                                </span>
-                                <span id="City">
-                                  <i>请选择城市</i>
-                                  <ul>
-                                    <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
-                                  </ul>
-                                  <input type="hidden" name="cho_City" value="请选择城市">
+                                  <input type="hidden" name="cho_City" value="成都市">
                                 </span>
                                 <span id="Area">
                                   <i>请选择地区</i>
@@ -93,21 +86,22 @@
                       <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label"><i>*</i> 详细地址</label>
                         <div class="am-u-sm-9">
-                          <textarea rows="5"></textarea>
+                          <textarea rows="5" name="address" placeholder="请输入详细地址" required></textarea>
                         </div>
                       </div>
 
                       <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label"><i>*</i> 收货人姓名</label>
                         <div class="am-u-sm-9">
-                            <input type="text" style="width: 50%" />
+                            <input type="text" style="width: 50%" name="username" placeholder="请输入您的姓名" required/>
                         </div>
                       </div>
 
                       <div class="am-form-group">
                         <label class="am-u-sm-3 am-form-label"><i>*</i> 手机号码</label>
                         <div class="am-u-sm-9">
-                            <input type="text" style="width: 60%" />
+                            <input type="text" style="width: 60%" class="phone" name="GoodsPhone" placeholder="请输入您的电话" required/>
+                            <span></span>
                         </div>
                       </div>
 
@@ -115,7 +109,7 @@
                         <div class="am-u-sm-offset-3 am-u-sm-9">
                           <div class="checkbox">
                             <label class="am-checkbox am-danger" style="padding-top: 0">
-                              <input type="checkbox" data-am-ucheck /> 设置为默认收货地址
+                              <input type="checkbox" data-am-ucheck name="IsDefault" value="1" /> 设置为默认收货地址
                             </label>
                           </div>
                         </div>
@@ -128,33 +122,30 @@
                       </div>
                   </form>
                   <p>已保存收货地址</p>
+                  <?php if(!empty($address)):?>
                   <table class="am-table am-table-striped am-table-hover myback">
                         <thead>
                             <tr>
                                 <th>收货人</th>
-                                <th>所在地区</th>
                                 <th>详细地址</th>
                                 <th>手机</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
+                          <?php foreach($address as $k=>$v):?>
                             <tr>
-                                <td>张某某</td>
-                                <td>成都金牛区</td>
-                                <td>西安路街道20街道某某巷子</td>
-                                <td>15608097597</td>
-                                <td class="adr_cz"><a href="javascript:;" data-am-modal="{target: '#doc-modal-2', closeViaDimmer: 0, width: 800}">修改</a>/<a href="javascript:;">删除</a></td>
+                                <td class="userName"><?=$v['name'];?></td>
+                                <td class="address"><?=$v['address'];?></td>
+                                <td class="userPhone"><?=$v['goodsphone'];?></td>
+                                <td class="adr_cz"><a id="<?=$v['memberaddressid'];?>" class="adrchange" href="javasctipt:;" data-am-modal="{target: '#doc-modal-2', closeViaDimmer: 0, width: 800}">修改</a>/<a href="<?=site_url('usercenter/deladdress?id=').$v['memberaddressid'];?>">删除</a></td>
                             </tr>
-                            <tr>
-                                <td>张某某</td>
-                                <td>成都金牛区</td>
-                                <td>西安路街道20街道某某巷子</td>
-                                <td>15608097597</td>
-                                <td class="adr_cz"><a href="javascript:;" data-am-modal="{target: '#doc-modal-2', closeViaDimmer: 0, width: 800}">修改</a>/<a href="javascript:;">删除</a></td>
-                            </tr>
+                          <?php endforeach;?>
                         </tbody>
                         </table>
+                        <?php else:?>
+                          你还没有添加收货地址！
+                        <?php endif;?>
               </div>
               
           </div>
@@ -165,15 +156,16 @@
 <!-- 修改地址弹出框 -->
 <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-2">
   <div class="am-modal-dialog">
-    <div class="am-modal-hd txt-l"> <b>添加地址</b>
+    <div class="am-modal-hd txt-l"> <b>修改地址</b>
       <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
     </div>
     <div class="am-modal-bd">
-      <form class=" am-form clear phone_yz">
+      <form class=" am-form clear phone_yz" action="<?=site_url('usercenter/editaddress');?>" method="post">
+        <input type="hidden" name="adrId" value="">
         <div class="am-form-group clear">
           <label class="am-u-sm-3 am-form-label txt-r"> 姓名</label>
           <div class="am-u-sm-9 txt-l sm-input">
-            <input type="text" required value="张某某" />
+            <input type="text" class="changeName" placeholder="请输入您的姓名" required value="张某某" name='name' />
           </div>
         </div>
         <div class="am-form-group clear">
@@ -189,12 +181,12 @@
                     </ul>
                     <input type="hidden" name="cho_Province" value="请选择省份">
                   </span>
-                  <span id="City1">
-                    <i>请选择城市</i>
+                  <span>
+                    <i>成都市</i>
                     <ul>
-                      <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+                      <li><a href="javascript:void(0)" alt="成都市">成都市</a></li>
                     </ul>
-                    <input type="hidden" name="cho_City" value="请选择城市">
+                    <input type="hidden" name="cho_City" value="成都市">
                   </span>
                   <span id="Area1">
                     <i>请选择地区</i>
@@ -218,13 +210,13 @@
         <div class="am-form-group clear">
           <label class="am-u-sm-3 am-form-label txt-r"> 详细地址</label>
           <div class="am-u-sm-9 txt-l">
-            <textarea rows="5" required>西安路街道20街道某某巷子</textarea>
+            <textarea rows="5" placeholder="请输入详细地址" required name="address"></textarea>
           </div>
         </div>
         <div class="am-form-group clear">
           <label class="am-u-sm-3 am-form-label txt-r"> 手机号</label>
           <div class="am-u-sm-9 txt-l sm-input">
-            <input type="tel" required value="15608097597" class="phone" />
+            <input type="tel" required value="15608097597" class="phone" placeholder="请输入您的手机号" name="GoodsPhone" />
             <span></span>
           </div>
         </div>
@@ -243,7 +235,34 @@
 <script type="text/javascript" src="skin/js/city4.js"></script>
 <script type="text/javascript">
 $(function(){
-  $.fn.citySelect({setId:['#Province1' , '#City1' , '#Area1','#Insurer1']})
+  $.fn.citySelect({setId:['#Province1' , '#City1' , '#Area1','#Insurer1']});
+  $('.adrchange').click(function(){
+    var name = $(this).parent().parent().find('.userName').html();
+    var address = $(this).parent().parent().find('.address').html();
+    var phone = $(this).parent().parent().find('.userPhone').html();
+    var id = $(this).attr('id');
+    $('.phone_yz').find('.changeName').val(name);
+    $('.phone_yz').find('.phone').val(phone);
+    $('.phone_yz').find('input[name=adrId]').val(id);
+  });
+
+
+  $('.phone_yz').on('submit',function(){
+    var area = $(this).find('input[name=cho_Area]').val();
+    var insurer = $(this).find('input[name=cho_Insurer]').val();
+    var phone = $(this).find('.phone').val();
+    if(area != '请选择地区' && insurer != '请选择街道'){
+      if((/^1[3|4|5|6|7|8|9][0-9]\d{4,8}$/.test(phone))){
+        return true;
+      }else{
+        $(this).find('.phone').next('span').html('请输入正确的手机号');
+      }
+      
+    }else{
+      $(this).find('.phone').next('span').html('请选择地址');
+    }
+    return false;
+  })
 }) 
 </script>
 
