@@ -10,8 +10,8 @@
               <ul>
                   <li><a href="<?=site_url('usercenter/myorder');?>">我的订单</a></li>
                   <!-- <li><a href="<?=site_url('usercenter/collection');?>">我的收藏</a></li> -->
-                  <li><a href="<?=site_url('usercenter/appraise');?>">我的评价</a></li>
-                  <li><a href="<?=site_url('usercenter/back');?>">我的退款</a></li>
+              <!--     <li><a href="<?=site_url('usercenter/appraise');?>">我的评价</a></li>
+                  <li><a href="<?=site_url('usercenter/back');?>">我的退款</a></li> -->
               </ul>
             </div>
             <div class="per-nav">
@@ -45,41 +45,24 @@
                           <!-- 没有优惠劵 -->
                               <!-- <p class="crr_not">无可用优惠劵</p> -->
                               <ul class="am-avg-sm-4">
+                              <?php if(!empty($cards)):?>
+                                <?php foreach($cards as $v):?>
                                   <li>
                                       <div class="coupon_bg coupon_pic1">
-                                          <h1>￥<span>5</span></h1>
-                                          <p>菜品: 套餐系列</p>
-                                          <p>使用条件: 满30.00</p>
-                                          <p>有效时间: 2016.3.21-2016.3.24</p>
+                                          <h1>￥<span><?=$v['coupponmoney'];?></span></h1>
+                                          <p>菜品: <?=$v['coupponname'];?></p>
+                                          <p>使用条件: 满<?=$v['usethreshold'];?></p>
+                                          <p>有效时间: <?=substr($v['begintime'], 0,10);?>~<?=substr($v['endtime'], 0,10);?></p>
                                       </div>
                                   </li>
-                                  <li>
-                                      <div class="coupon_bg coupon_pic2">
-                                          <h1>￥<span>5</span></h1>
-                                          <p>菜品: 套餐系列</p>
-                                          <p>使用条件: 满30.00</p>
-                                          <p>有效时间: 2016.12.21-2016.12.24</p>
-                                      </div>
-                                  </li>
-                                  <li>
-                                      <div class="coupon_bg coupon_pic3">
-                                          <h1>￥<span>5</span></h1>
-                                          <p>菜品: 套餐系列</p>
-                                          <p>使用条件: 满30.00</p>
-                                          <p>有效时间: 2016.3.21-2016.3.24</p>
-                                      </div>
-                                  </li>
-                                  <li>
-                                      <div class="coupon_bg coupon_pic4">
-                                          <h1>￥<span>5</span></h1>
-                                          <p>菜品: 套餐系列</p>
-                                          <p>使用条件: 满30.00</p>
-                                          <p>有效时间: 2016.3.21-2016.3.24</p>
-                                      </div>
-                                  </li>
+                                <?php endforeach;?>
+                                <?php else:?>
+                                    <li>
+                                      你还没有优惠卷！
+                                    </li>
+                                <?php endif; ?>
                               </ul>
                           </div>
-                       
                       </div>
                   </div>
               </div>

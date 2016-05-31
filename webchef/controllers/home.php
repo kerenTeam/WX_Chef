@@ -93,14 +93,15 @@ class home extends CI_Controller {
 			
 		}
 	}
-	// 菜品详情
-	function info(){
 
-		$this->load->view('foodInfo');
-	}
 	// 实时菜价
-	function price(){
-
+	function price(){	
+		// 获取所有菜市场
+		$caiprice = file_get_contents(POSTAPI.'API_Vegetable?dis=FoodMarket');
+		$data['cai']= json_decode(json_decode($caiprice),true);
+		// 菜市场分类
+		$cate = file_get_contents(POSTAPI.'API_Vegetable?dis=MarketCategorie');
+		$data['cates'] = json_decode(json_decode($cate),true);
 		$this->load->view('price');
 	}
 	// 我的收藏
@@ -108,16 +109,8 @@ class home extends CI_Controller {
 
 		$this->load->view('collection');
 	}
-	// 我的余额
-	function balance(){
 
-		$this->load->view('balance');
-	}
-	//	点菜
-	function order(){
 
-		$this->load->view('order');
-	}
 	// 实时菜价
 	function priceChart(){
 		$this->load->view('priceChart');
@@ -132,15 +125,15 @@ class home extends CI_Controller {
 		$this->load->view('orderaps2');
 	}
 	
-	// 大厨推荐
-	function recommend(){
-		$this->load->view('recommend');
-	}
-	// 活动页面
-	function activity(){
-		$this->load->view('activity');
-		$this->load->view('footer');
-	}
+	// // 大厨推荐
+	// function recommend(){
+	// 	$this->load->view('recommend');
+	// }
+	// // 活动页面
+	// function activity(){
+	// 	$this->load->view('activity');
+	// 	$this->load->view('footer');
+	// }
 
 	// 搜索
 	function search(){

@@ -10,8 +10,8 @@
               <ul>
                   <li><a href="<?=site_url('usercenter/myorder');?>">我的订单</a></li>
                   <!-- <li><a href="<?=site_url('home/collection');?>">我的收藏</a></li> -->
-                  <li><a href="<?=site_url('usercenter/appraise');?>">我的评价</a></li>
-                  <li><a href="<?=site_url('usercenter/back');?>">我的退款</a></li>
+                  <!-- <li><a href="<?=site_url('usercenter/appraise');?>">我的评价</a></li>
+                  <li><a href="<?=site_url('usercenter/back');?>">我的退款</a></li> -->
               </ul>
             </div>
             <div class="per-nav">
@@ -118,24 +118,24 @@
           }?></span></td>
                                 <td> <?php switch ($v['State']) {
             case '0':
-              echo "<a href='".site_url('home/payment?id=').$v['PoorderId'].'&money='.$v['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>"; 
-              echo "<a href='".site_url('home/orderState?id=').$v['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
+              echo "<a href='".site_url('usercenter/payment?id=').$v['PoorderId'].'&money='.$v['Amount']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>付款</a>"; 
+              echo "<a href='".site_url('usercenter/orderState?id=').$v['PoorderId'].'&state=11'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>取消订单</a>";
               break;
             case '1':
             case '2':
             case '6':
-                echo "<a href='".site_url('home/orderState?id=').$v['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
+                echo "<a href='".site_url('usercenter/orderState?id=').$v['PoorderId'].'&state=7'."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款</a>";
               break;
             case '7':
               echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款中</a>";
               break;
             case '8':
-              echo "<a href='".site_url('home/commentTotal?id=').$v['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
-              echo "<a href='".site_url('home/delorder?id=').$v['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
+              echo "<a href='".site_url('usercenter/commentTotal?id=').$v['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>评价</a>";
+              echo "<a href='".site_url('usercenter/delorder?id=').$v['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
               break;
             case '9':
-              echo "<a href='".site_url('home/share')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
-              echo "<a href='".site_url('home/delorder?id=').$v['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
+              echo "<a href='".site_url('usercenter/share')."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>分享</a>";
+              echo "<a href='".site_url('usercenter/delorder?id=').$v['PoorderId']."' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>删除</a>";
               break;
             case '10':
                  echo "<a href='javascript:;' class='am-fr am-btn am-btn-primary bgreen am-btn-xs'>退款成功</a>";
