@@ -3,7 +3,7 @@
  * @Author: Harris-Aaron
  * @Date:   2016-05-27 16:16:16
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-30 14:58:05
+ * @Last Modified time: 2016-05-31 14:37:27
  */
 
 ini_set('date.timezone','Asia/Shanghai');
@@ -13,29 +13,60 @@ $input = new WxPayUnifiedOrder();
 $input->SetBody("大厨到家订餐支付");
 $input->SetAttach("大厨到家－微信支付");
 $input->SetOut_trade_no(WxPayConfig::MCHID.date("YmdHis"));
-$monyAll = sprintf("%.2f",substr(sprintf("%.3f", $isOrderOk['0']['MoneyAll']), 0, -2));
-$input->SetTotal_fee($monyAll * 100);
+$monyAll = sprintf("%.2f",substr(sprintf("%.3f", $isOrderOk['0']['MoneyAll']), 0, -2)) * 100;
+$input->SetTotal_fee('1');
 $input->SetTime_start(date("YmdHis"));
 $input->SetTime_expire(date("YmdHis", time() + 36000));
 $input->SetGoods_tag("大厨到家－微信支付");
-$bc = "http://" . $_SERVER['SERVER_NAME'] . "/WXTEST2/webchef/libraries/notify.php";
-
-$input->SetNotify_url($bc);
+$bcUrl = "http://" . $_SERVER['SERVER_NAME'] . "/WXTEST2/web.php/orderWxPay/notify";
+$input->SetNotify_url($bcUrl);  
 $input->SetTrade_type("NATIVE");
-$input->SetProduct_id("123456789"); 
+$input->SetProduct_id($isOrderOk['0']['POOrderId']); 
 $result = $notify->GetPayUrl($input);
-// echo " <pre>";
-// var_dump($input);
-// var_dump($result);
-// var_dump($isOrderOk);
-// echo "</pre>";
+echo " <pre>";
+var_dump($input);
+var_dump($result);
+var_dump($isOrderOk);
+echo "</pre>";
 $url2 = $result["code_url"];
+
+
+
 ?>
+
+<script type=”text/javascript”> 
+	//循环执行，每隔3秒钟执行一次showalert（） 
+	window.setInterval(showalert, 3000); 
+	function showalert() 
+	{ 
+	   jQuery.ajaxSetup({
+	     url: '/path/to/file',
+	     type: 'POST',
+	     dataType: 'xml/html/script/json/jsonp',
+	     data: {param1: 'value1'},
+	     complete: function(xhr, textStatus) {
+	       //called when complete
+	     },
+	     success: function(data, textStatus, xhr) {
+	       //called when successful
+	     },
+	     error: function(xhr, textStatus, errorThrown) {
+	       //called when there is an error
+	     }
+	   });
+	   
+	} 
+</script> 
+
+
+
+
 <div class="payCtt">
 	<h1><img src="skin/img/LOGO-ug_03.png">收银台</h1>
 	<div class="am-cf payInfo">
 		<div class="am-fl am-padding-sm">
-			<p>订单编号: <?php echo  $isOrderOk['0']['POOrderId']; ?></p>
+			<p>订单编号: <?php $_SESSION['thisPOOrderId'] = $isOrderOk['0']['POOrderId']; echo  $isOrderOk['0']['POOrderId']; ?></p>
+			<?php var_dump($_SESSION['thisPOOrderId']); ?>
 			<p>订单类型: 在线支付</p>
 		</div>
 		<div class="am-fr am-padding-sm">

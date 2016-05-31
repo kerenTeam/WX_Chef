@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @Author: Harris-Aaron
  * @Date:   2016-05-25 11:28:01
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-27 18:51:03
+ * @Last Modified time: 2016-05-30 17:56:59
  */
 
 
@@ -17,6 +17,7 @@ class orderWxPay extends CI_Controller{
         parent::__construct();
         $this->load->library('WxPayApi');
         $this->load->library('NativePay'); 
+        $this->load->library('WxPayNotify'); 
         $this->load->helper('post_helper');
         $this->load->view('header'); 
     
@@ -124,13 +125,16 @@ class orderWxPay extends CI_Controller{
 
         }
     }   
-
-    // function nativePay()
-    // {   
-    //     //$data['ceredetails']=curl_post(POSTAPI.'API_Poorder?dis=dd',$OrderAllData);//返回总价
-    //     //$this->load->view('shopcar/pay',$data);
-        
-    // }
+    //支付回调
+    function notify()
+    {   
+        $this->load->view('shopcar/notify');  
+    }
+    //打印支付回调
+    function isOk()
+    {   
+        $this->load->view('shopcar/isOk');  
+    }
 
     // function isOk()
     // {   
