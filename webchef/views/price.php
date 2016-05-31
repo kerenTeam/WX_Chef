@@ -38,7 +38,7 @@
 		<div class="content-tit price_tit clear">
           <!-- 指引 -->
           <ol class="am-breadcrumb am-margin-bottom-0">
-          <li><a href="<?=site_url('home/home');?>">首页</a></li>
+          <li><a href="<?=site_url('home/index');?>">首页</a></li>
           <li class="am-active">实时菜价</li>
         </ol>
         <ul class="clear">
@@ -58,50 +58,50 @@
         <!-- 中间部分 -->
         <div class="c_middle"> 
         	<!-- <p class="market">菜市场</p> -->
-
         	<table id="market_list">
-        	<tr class="market_list_first">
+        	<thead class="market_list_first">
 	        	<td>
-	        		<select data-am-selected>
-	        		  <option value="a">Apple</option>
-	        		  <option value="b" selected>百变菜市场</option>
-	        		  <option value="o">Orange</option>
-	        		  <option value="m">Mango</option>
+	        		<select data-am-selected class="caijia" id="caishi">
+              <?php foreach($cai as $v):?>
+	        		  <option value="<?=$v['foodmarket'];?>"><?=$v['foodmarket']?></option>
+              <?php endforeach;?>
 	        		</select>
 	        	</td>
 	        	<td>
-	        		<select data-am-selected>
-	        		  <option value="a">Apple</option>
-	        		  <option value="b" selected>蔬菜</option>
-	        		  <option value="o">Orange</option>
-	        		  <option value="m">Mango</option>
+	        		<select data-am-selected class="caijia" id="cates">
+                <?php foreach($cates as $v):?>
+	        		  <option value="<?=$v['marketcategorie']?>"><?=$v['marketcategorie']?></option>
+                <?php endforeach;?>
+	        		
 	        		</select>
 	        	</td>
 	        	<td>
-	        		<select data-am-selected id="adate">
+	        		<select data-am-selected id="adate" class="caijia">
 	        		</select>
 	        	</td>        	
-        	</tr>
-        	<tr>
-	        	<td>菜名</td>
-	        	<td>重量</td>
-	        	<td>价格</td>
-        	</tr>
-        	<tr>
-	        	<td><a href="<?=site_url('home/priceChart');?>">西兰花</a></td>
-	        	<td>1Kg</td>
-	        	<td class="price">￥5.5</td>
-        	</tr>
-        	<tr>
-	        	<td><a href="<?=site_url('home/priceChart');?>">小青菜</a></td>
-	        	<td>1Kg</td>
-	        	<td class="price">￥5.5</td>
-        	</tr>
-        	<tr>
-	        	<td><a href="<?=site_url('home/priceChart');?>">瘦肉(全瘦)</a></td>
-	        	<td>1Kg</td>
-	        	<td>￥5.5</td>
-	        	</tr>
+        	</thead>
+          <tbody id="group_one">
+          	<tr>
+  	        	<td>菜名</td>
+  	        	<td>重量</td>
+  	        	<td>价格</td>
+          	</tr>
+          	<tr>
+  	        	<td><a href="<?=site_url('home/priceChart');?>">西兰花</a></td>
+  	        	<td>1Kg</td>
+  	        	<td class="price">￥5.5</td>
+          	</tr>
+          	<tr>
+  	        	<td><a href="<?=site_url('home/priceChart');?>">小青菜</a></td>
+  	        	<td>1Kg</td>
+  	        	<td class="price">￥5.5</td>
+          	</tr>
+          	<tr>
+  	        	<td><a href="<?=site_url('home/priceChart');?>">瘦肉(全瘦)</a></td>
+  	        	<td>1Kg</td>
+  	        	<td>￥5.5</td>
+  	        	</tr>
+            </tbody>
         	</table>
         </div>
         <!-- 中间部分结束 -->
@@ -126,7 +126,30 @@
       html+= '<option value="'+year+'-'+month+'-'+day+'">'+year+'-'+month+'-'+day+'</option>';
      adate.html(html);
   }
+
+    // var cai =  $("#caishi").val();
+    //   var cate =  $("#cates").val();
+    //   var time =  $("#adate").val();
+  $('.caijia').on('change',function(){
+    // 菜市场
+    var cai =  $("#caishi").val();
+    // 分类
+    var cate =  $("#cates").val();
+    // 时间
+    var time =  $("#adate").val();
+    $('#group_one').html('<tr><td></td><td>加载中。。。</td><td></td></tr>')
+    $.ajax({
+        type:'post',
+        url:'<?=site_url("postsend/caiprice");?>',
+        data: 'name='+cai+'&time='+time+'&cates='+cate,
+        success:function(data){
+          $('#group_one').html(data);
+        }
+    })
+  })
+
  })
+
 </script>
 </body>
 </html>

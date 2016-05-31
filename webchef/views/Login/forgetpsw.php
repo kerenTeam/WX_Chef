@@ -4,7 +4,7 @@
 	<title>大厨到家-忘记密码</title>
     <meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <base href="<?php echo base_url();?>cwebchef/" />
+    <base href="<?php echo base_url();?>webchef/" />
   	<meta name="description" content="">
   	<meta name="keywords" content="">
   	<!-- Set render engine for 360 browser -->
@@ -30,7 +30,7 @@
       </div>
       <div class="forget_step"><img src="skin/img/forget-step1_03.png"></div>
       <div class="forget_form">
-          <form class="am-form am-form-horizontal">
+          <form class="am-form am-form-horizontal" action='<?=site_url('login/editpwd');?>' method="post">
               <div class="for_step1">
                   <div class="am-form-group">
                       <div class="am-u-sm-9 am-u-sm-offset-3">
@@ -40,7 +40,7 @@
                   <div class="am-form-group">
                       <label class="am-u-sm-3 am-form-label">账户名 :</label>
                       <div class="am-u-sm-9">
-                          <input type="text" class="uname" placeholder="手机号/用户名">
+                          <input type="text" id="phone" name="phone" class="uname" placeholder="手机号">
                       </div>
                   </div>
                   <div class="am-form-group">
@@ -66,16 +66,15 @@
                       </div>
                   </div>
                   <div class="am-form-group">
-                      <label class="am-u-sm-3 am-form-label">手机号 :</label>
+                      <label class="am-u-sm-3 am-form-label"></label>
                       <div class="am-u-sm-9">
-                          <input type="text" id="phone" placeholder="请输入你的手机号">
+                          验证码已发送至您的手机
                       </div>
                   </div>
                   <div class="am-form-group">
                       <label class="am-u-sm-3 am-form-label">验证码 :</label>
                       <div class="am-u-sm-9">
                             <input type="text" placeholder="输入验证码" id="phoneCode" class="reg_yz reg_yz_tex" style="width: 60%;float: left;">
-                            <input type="button" id="yzm_bt" class="am-btn am-btn-default reg_yz reg_yz_btn" value="获取验证码" style="width: 38%;margin-left: 2%" />
                       </div>
                   </div>
                   <div class="am-form-group">
@@ -93,7 +92,7 @@
                   <div class="am-form-group">
                       <label class="am-u-sm-3 am-form-label">输入新密码 :</label>
                       <div class="am-u-sm-9">
-                          <input type="password" placeholder="输入新密码" class="psw1">
+                          <input type="password" name="password" placeholder="输入新密码" class="psw1">
                       </div>
                   </div>
                   <div class="am-form-group">
@@ -125,17 +124,28 @@
 
 <script src="skin/js/jquery.min.js"></script>
 <script src="skin/js/amazeui.min.js"></script>
-<script type="text/javascript" src="skin/js/register.js"></script>
 <script src="skin/js/js.KinerCode.js"></script>
 <!-- <script type="text/javascript" src="skin/js/login.js"></script> -->
 <script type="text/javascript">
-
+      var code;
       $("#sub").bind("click",function(){
             var ts = $(".for_step1").find(".yz_ts");
-            if($(".uname").val() == ''){
-                ts.html("<div>用户名不能为空</div>");
+            var phone = $("#phone").val();
+            if(phone == ''){
+                ts.html("<div>手机号不能为空</div>");
+            }else if(!(/^1[3|4|5|6|7|8|9][0-9]\d{4,8}$/.test(phone))){
+                ts.html("<div>请输入正确的手机号</div>");
             } else{
-                if(c.validate()){
+              if(c.validate()){
+                  $.ajax({
+                    type: 'post',
+                    url: '<?=site_url("postsend/send")?>',
+                    data: 'phone='+ phone,
+                    success: function(data){
+                      console.log(data);
+                      code = parseInt(data);
+                    }
+                  })
                     ts.children().remove();
                     $(".for_step2").css("display","block").siblings().css("display","none");
                     $(".forget_step img").prop("src","skin/img/forget-step2_03.png");
@@ -151,12 +161,10 @@
 
     function step2(){
       var ts = $(".for_step2").find(".yz_ts");
-      if($("#phone").val() == ''){
-          ts.html("<div>手机号不能为空</div>");
-      }else if(!(/^1[3|4|5|6|7|8|9][0-9]\d{4,8}$/.test($("#phone").val()))){
-            ts.html("<div>请输入正确的手机号</div>");
-      }else if($("#phoneCode").val() == ''){
+      if($("#phoneCode").val() == ''){
           ts.html("<div>验证码不能为空</div>");
+      }else if($("#phoneCode").val() != code){
+          ts.html("<div>验证码错误</div>");
       }
       else{
           ts.children().remove();
@@ -172,9 +180,10 @@
       var psw2 = $(".psw2");
       if(psw1.val() == ''){
           ts.html("<div>密码不能为空</div>");
-      }else if(psw2 !== psw1){
+      }else if(psw2.val() != psw1.val()){
           ts.html("<div>两次密码不一致</div>");
       }else{
+        ts.children().remove();
         return true;
       }
       return false;

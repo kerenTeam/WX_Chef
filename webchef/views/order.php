@@ -87,7 +87,7 @@
 					<?php if($val['foodcategoryid'] == $value['foodpid']): ?>
 					<li>
 						<div class="order-goods">
-							<a href="<?=site_url('order/info?id=').$value['foodid'];?>"><img src="<?=IP.$value['thumbnail'];?>"></a>
+							<a href="<?=site_url('order/info?id=').$value['foodid'];?>"><img src="skin/img/exp.gif" data-original="<?=IP.$value['thumbnail'];?>" class="lazy"/></a>
 							<div class="goods-info" >
 								<h1><?=$value['foodname']?></h1>
 								<!-- <input type="hidden"> -->
@@ -119,8 +119,13 @@
 	</div>
 
     <script src="skin/js/jquery.min.js"></script>
+	<script src="skin/js/jqueryLazyload.js"></script>
     <script>
+    $(function(){
+    	 $("img.lazy").lazyload();
+
     	$('.joinCar').click(function(){
+    		 var joinBtn = $(this);
     		 var foodid = $(this).attr('id');
     		 var code = $(this).prev().val();
     		 console.log(code);
@@ -131,9 +136,10 @@
 		         success: function(data){
 		         	console.log(data);
 	                  if(data == 1){
-	                  		 location.reload();
+	                  	joinBtn.addClass('joined');
 	                  }
 	         	 }
 	         });
     	})
+    })
     </script>
