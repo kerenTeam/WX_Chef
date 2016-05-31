@@ -10,8 +10,8 @@
               <ul>
                   <li><a href="<?=site_url('usercenter/myorder');?>" class="active">我的订单</a></li>
                   <!-- <li><a href="<?=site_url('home/collection');?>">我的收藏</a></li> -->
-                  <li><a href="<?=site_url('usercenter/appraise');?>">我的评价</a></li>
-                  <li><a href="<?=site_url('usercenter/back');?>">我的退款</a></li>
+                  <!-- <li><a href="<?=site_url('usercenter/appraise');?>">我的评价</a></li>
+                  <li><a href="<?=site_url('usercenter/back');?>">我的退款</a></li> -->
               </ul>
             </div>
             <div class="per-nav">
@@ -41,6 +41,8 @@
                         <li><a href="javascript:;">待服务</a></li>
                         <li><a href="javascript:;">服务中</a></li>
                         <li><a href="javascript:;">待评价</a></li>
+                        <li><a href="javascript:;">退款</a></li>
+                        <li><a href="javascript:;">已评价</a></li>
                     </ul>
                   </div>
                   <div class="per-center">

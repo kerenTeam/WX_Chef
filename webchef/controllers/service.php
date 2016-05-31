@@ -175,7 +175,21 @@ class Service extends CI_Controller
 		$this->load->view('footer');
 	}
 
-
+	// 提交客服
+	public function addcustom(){
+		if($_POST){
+		
+			$data['Address'] = $_POST['cho_City'].$_POST['cho_Area'].$_POST['cho_Insurer'];
+			$data['Phone'] = $_POST['phone'];
+			$data['Number'] = $_POST['zuo'];
+		
+			$p = json_encode($data);
+			$postok = curl_post(POSTAPI.'API_Consultation',$p);
+			if($postok == 1){
+				echo "<script>alert('提交成功');window.location.href='customServ'</script>";   
+			}
+		}
+	}
 
 
 

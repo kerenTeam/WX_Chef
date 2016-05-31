@@ -6,7 +6,7 @@
                     <div class="customBanner">
     <img src="skin/img/custom.png" alt="">
   </div>
-  <form class="am-form am-form-horizontal customForm">
+  <form class="am-form am-form-horizontal customForm" action="<?=site_url('service/addcustom');?>" method="post">
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">区域</label>
       <div class="am-u-sm-10 customAdd" style="margin-top:-0.5rem;">
@@ -51,20 +51,21 @@
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">桌数</label>
       <div class="am-u-sm-10">
-        <select class="am-radius" style="width: 400px">
-          <option>请选择您的用餐桌数</option>
-          <option>10桌以下</option>
-          <option>10~20桌</option>
-          <option>20~30桌</option>
-          <option>30桌以上</option>
+        <select class="am-radius" style="width: 400px" name="zuo">
+          <option value="0">请选择您的用餐桌数</option>
+          <option value="10桌以下">10桌以下</option>
+          <option value="10~20桌">10~20桌</option>
+          <option value="20~30桌">20~30桌</option>
+          <option value="30桌以上">30桌以上</option>
         </select>
       </div>
     </div>
     <div class="am-form-group">
       <label class="am-u-sm-2 am-text-right">电话</label>
       <div class="am-u-sm-10">
-        <input id="phone" style="width: 400px" class="am-radius" type="tel" placeholder="请输入你的联系电话">
+        <input id="phone" style="width: 400px" class="am-radius" type="tel" placeholder="请输入你的联系电话" value="<?php if(isset($_SESSION['phone'])){echo $_SESSION['phone'];}else{echo '';}?>" name='phone'/>
         <p class="customP">输入电话，客服稍后会给您回电</p>
+        <span class="hcolor"></span>
       </div>
       <div class="am-u-sm-1"></div>
     </div>
@@ -84,13 +85,13 @@
       </div>
       <div class="am-modal-bd customBtn">
         <p class="customModalP">客服正在处理。<br>请留意我们给您的去电(400-820-1790)</p>
-        <a href="javascript:;" class="btn am-btn am-btn-sm am-btn-danger am-radius" data-am-modal-close>好</a>
+        <button type="submit" class="btn am-btn am-btn-sm am-btn-danger am-radius">好</button>
       </div>
     </div>
   </div>
   </form>
 
-                </div>
+  </div>
 
 </div>
         </div>
@@ -102,18 +103,33 @@
 <script type="text/javascript"> 
 $(function(){
   $('.liststyle ul').css('overflow','scroll');
-  $('.customSubmit').live('click',function(){
+  $('.customSubmit').on('click',function(){
+      var form = $('.customForm');
       var phone = $("#phone");
-        if(phone.val() == ''){
-          alert("请输入手机号");
-        }else if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone.val()))){
-          alert("请输入正确的手机号");
-        }else{
-          
-          $('#doc-modal-1').modal('open');
-          return false;
-        }
-      return false;
+      var area = form.find('input[name=cho_Area]').val();
+      var insurer = form.find('input[name=cho_Insurer]').val();
+      if(area == '请选择地区' || insurer == '请选择街道'){
+        phone.next().next('span').html("请选择地址");
+        return false;
+      }
+      else if(form.find('select').val() == 0){
+        phone.next().next('span').html("请选择桌数");
+        return false;
+      }
+      else if(phone.val() == ''){
+        phone.next().next('span').html("请输入手机号");
+        return false;
+      }
+      else if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone.val()))){
+        phone.next().next('span').html("请输入正确的手机号");
+        return false;
+      }
+      else{
+        phone.next().next('span').html("");
+        $('#doc-modal-1').modal('open');
+        return false;
+      }
+      
     }) 
 })
 </script>

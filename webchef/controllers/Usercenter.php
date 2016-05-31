@@ -69,6 +69,42 @@ class Usercenter extends CI_Controller
 				$this->load->view('footer');
 
 	}
+	// 订单状态
+	public function orderState(){
+		if($_GET){
+			$data['State'] = $_GET['state'];
+			$data['POOrderId'] = $_GET['id'];
+			//var_dump($data);
+			$jsonorder = json_encode($data);
+			$state = curl_post(POSTAPI.'API_Poorder?dis=state',$jsonorder);
+		
+			if($state == '"1"'){
+				if($_GET['state'] == 7){
+					echo "<script>alert('你的退款信息已经提交！');window.location.href='myorder';</script>";
+				}else{
+					echo "<script>alert('你的订单已经取消！');window.location.href='myorder';</script>";
+				}
+			}else{
+				if($_GET['state'] == 7){
+					echo "<script>alert('你的退款信息提交失败！')；window.location.href='myorder';</script>";
+				}else{
+					echo "<script>alert('你的订单取消失败！')；window.location.href='myorder';</script>";
+				}
+			}
+		}
+	}
+	// 订单历史支付
+	public function payment()
+	{
+		if($_GET){
+			$data['POOrderId'] = $_GET['id'];
+			$data['MoneyAll'] = $_GET['money'];
+			$arr[] = $data;
+			// $_SESSION['rePayData'] = $arr;
+			//var_dumP($_SESSION['rePayData']);
+			 // redirect('orderWXPay/jumpLink');
+		}
+	}
 
 	// 我的退款
     public function back()

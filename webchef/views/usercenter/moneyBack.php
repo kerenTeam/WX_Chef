@@ -10,8 +10,8 @@
               <ul>
                   <li><a href="<?=site_url('usercenter/myorder');?>">我的订单</a></li>
                   <!-- <li><a href="<?=site_url('usercenter/collection');?>">我的收藏</a></li> -->
-                  <li><a href="<?=site_url('usercenter/appraise');?>">我的评价</a></li>
-                  <li><a href="<?=site_url('usercenter/back');?>" class="active">我的退款</a></li>
+                <!--   <li><a href="<?=site_url('usercenter/appraise');?>">我的评价</a></li>
+                  <li><a href="<?=site_url('usercenter/back');?>" class="active">我的退款</a></li> -->
               </ul>
             </div>
             <div class="per-nav">
