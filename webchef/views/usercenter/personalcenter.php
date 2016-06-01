@@ -149,64 +149,7 @@
                       </div>
                   </div>
               </div>
-              <!-- 足迹 -->
-              <div class="per-ctt">
-                  <div class="crr-tit clear">
-                    <ul>
-                        <li class="active">美食足迹</li>
-                        <li>我的收藏</li>
-                    </ul>
-                  </div>
-                  <ul class="am-avg-sm-4 footmarks">
-                      <li>
-                        <a href="<?=site_url('home/info');?>">
-                          <div class="footmark">
-                          
-                              <img src="skin/img/orderimg_03.png">
-                              <h2>回锅肉</h2>
-                              <span class="index-num"><i></i></span>
-
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        
-                        <a href="<?=site_url('home/info');?>">
-                          <div class="footmark">
-                          
-                              <img src="skin/img/orderimg_03.png">
-                              <h2>回锅肉</h2>
-                              <span class="index-num"><i></i></span>
-
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        
-                        <a href="<?=site_url('home/info');?>">
-                          <div class="footmark">
-                          
-                              <img src="skin/img/orderimg_03.png">
-                              <h2>回锅肉</h2>
-                              <span class="index-num"><i></i></span>
-
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        
-                        <a href="<?=site_url('home/info');?>">
-                          <div class="footmark">
-                          
-                              <img src="skin/img/orderimg_03.png">
-                              <h2>回锅肉</h2>
-                              <span class="index-num"><i></i></span>
-
-                          </div>
-                        </a>
-                      </li>
-                  </ul>
-              </div>
+              
           </div>
         <?php else:?>
             <div class="per-pr">

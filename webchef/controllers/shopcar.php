@@ -44,7 +44,6 @@ class Shopcar extends CI_Controller
 		}else{
 			$data['carts'] = '';
 		}
-		// unset($_SESSION['witer']);
 		// 服务员
 		if(isset($_SESSION['witer'])){
 			if($_SESSION['witer'] == ''){
@@ -283,7 +282,10 @@ class Shopcar extends CI_Controller
 		if($_POST){
 			$foodid = $_POST['foodid'];
 			$numbers = $_POST['numbers'];
+			$code = $_POST['code'];
 			$shopid = rand(1,100);
+
+			
 		}
 	}
 

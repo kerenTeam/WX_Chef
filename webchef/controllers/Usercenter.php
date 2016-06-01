@@ -141,7 +141,12 @@ class Usercenter extends CI_Controller
 				// 获取会员卡
 				$vip = file_get_contents(POSTAPI.'API_User?dis=ckxx&UserPhone='.$_SESSION['phone']);
 				$data['vip'] = json_decode(json_decode($vip),true);
-				var_dump($data);
+				// var_dump($data);
+				// 获取会员卡数目
+				$vipcard = file_get_contents(POSTAPI.'API_Grades');
+				$data['vipcard'] = json_decode(json_decode($vipcard),true);
+				// var_dump($data);
+
 				$this->load->view('usercenter/member',$data);
 				$this->load->view('footer');
 			}else{

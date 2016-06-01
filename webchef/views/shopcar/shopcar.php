@@ -3,15 +3,15 @@
 <link href="skin/css/shopcar.css" rel="stylesheet">
 <script>
 function addshopcar(id,num,code){
-	console.log(id+'=='+num+'=='+code)
-	// $.ajax({
-	// 	type:'post',
-	// 	url:'<?=site_url("shopcar/shopcahe");?>',
-	// 	data:'id='+id+'&number='+num,
-	// 	success:function(data){
-	// 		console.log(data);
-	// 	}
-	// })
+	// console.log(id+'=='+num+'=='+code)
+	$.ajax({
+		type:'post',
+		url:'<?=site_url("shopcar/shopcahe");?>',
+		data:'id='+id+'&number='+num+'&code='+code,
+		success:function(data){
+			console.log(data);
+		}
+	})
 
 
 }	

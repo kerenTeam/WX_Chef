@@ -1,4 +1,23 @@
-
+<style>
+.fitem {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+.fitem img {
+    width: 100%;
+}
+.open {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: rgba(94, 185, 94, 0.55);
+    font-size: 1.4rem;
+    border: 1px solid rgba(94, 185, 94, 0.51);
+    padding: 0px 5px;
+    border-radius: 3px;
+}
+</style>
       <div class="center">
       <div class="personal clear">
           <div class="per-pl">
@@ -50,64 +69,18 @@
                       			</div>
                       		</div>
                       </div>
+                      <!-- 会员卡 -->
+                      <div class="am-g">
+                      <?php foreach($vipcard as $v):?>
+                        <div class="am-u-sm-3">
+                          <div class="fitem">
+                            <img src="<?=IP.$v['img']?>" alt="">
+                            <a href="" class="open">开通</a>
+                          </div>
+                        </div>
+                      <?php endforeach;?>
+                      </div>
                   </div>
-              </div>
-              <!-- 足迹 -->
-              <div class="per-ctt">
-                  <div class="crr-tit clear">
-                    <ul>
-                        <li class="active">美食足迹</li>
-                    </ul>
-                  </div>
-                  <ul class="am-avg-sm-4 footmarks">
-                      <li>
-                        <a href="<?=site_url('order/info');?>">
-                          <div class="footmark">
-                          
-                              <img src="skin/img/orderimg_03.png">
-                              <h2>回锅肉</h2>
-                              <span class="index-num"><i></i></span>
-
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        
-                        <a href="<?=site_url('order/info');?>">
-                          <div class="footmark">
-                          
-                              <img src="skin/img/orderimg_03.png">
-                              <h2>回锅肉</h2>
-                              <span class="index-num"><i></i></span>
-
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        
-                        <a href="<?=site_url('order/info');?>">
-                          <div class="footmark">
-                          
-                              <img src="skin/img/orderimg_03.png">
-                              <h2>回锅肉</h2>
-                              <span class="index-num"><i></i></span>
-
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        
-                        <a href="<?=site_url('order/info');?>">
-                          <div class="footmark">
-                          
-                              <img src="skin/img/orderimg_03.png">
-                              <h2>回锅肉</h2>
-                              <span class="index-num"><i></i></span>
-
-                          </div>
-                        </a>
-                      </li>
-                  </ul>
               </div>
           </div>
       </div>
