@@ -39,7 +39,7 @@
             <ul>
             <?php foreach($promotion as $v):?>
                 <li>
-                    <a href="<?=site_url('home/activity');?>" class="fix">
+                    <a href="<?=site_url('order/info?id=').$v['foodid'];?>" class="fix">
                         <span class="fl"><i class="am-icon-square"></i> <?=$v['foodname']?></span>
                         <span class="fr"><?php $time = substr($v['begintime'],0,10);echo $time;?></span>
                     </a>
@@ -65,7 +65,7 @@
                     <h2>热门销量</h2>
                   <ul class="cen-nav">
                   <?php foreach($sales as $val):?>
-                      <li><a href="<?=site_url('order/info');?>"><?=$val['foodname'];?></a></li>
+                      <li><a href="<?=site_url('order/info?id=').$val['foodid'];?>"><?=$val['foodname'];?></a></li>
                   <?php endforeach;?>
                   </ul>
               </div>
@@ -78,7 +78,7 @@
         <div class="am-u-sm-12"><h2>部分菜品</h2></div>
             <?php foreach($foods as $value):?>
                 <div class="am-u-sm-3">
-                    <a href="<?=site_url('order/info');?>">
+                    <a href="<?=site_url('order/info?id=').$value['FoodId'];?>">
                         <div class="bf_pic">
                             <img src="<?=IP.$value['Thumbnail'];?>">
                             <p><?=$value['FoodName'];?></p>

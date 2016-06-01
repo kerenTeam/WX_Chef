@@ -13,7 +13,7 @@ function addshopcar(id,num){
 	})
 
 
-}
+}	
 
 
 </script>
@@ -123,7 +123,7 @@ function addshopcar(id,num){
 				<?php if(!empty($witer)):?>
 				<li>
 					<label class="am-checkbox am-danger cheall">
-						<input class="<?php if(!$witer['boy']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="boyid" value ="1" data-am-ucheck  />
+						<input class="<?php if(!$witer['boy']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="boyid" value ="1" data-am-ucheck  <?php if($witer['boy'] != ''){echo "checked";}?>/>
 					</label>
 					<span class="serTit">
 						服务员（男）
@@ -137,7 +137,7 @@ function addshopcar(id,num){
 
 				<li>
 					<label class="am-checkbox am-danger cheall">
-						<input class="<?php if(!$witer['girl']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="girlid" value ="1" data-am-ucheck  />
+						<input class="<?php if(!$witer['girl']){echo "fuwuyuan";}?> cheyou" type ="checkbox" name ="girlid" value ="1" data-am-ucheck  <?php if($witer['girl'] != ''){echo "checked";}?>/>
 					</label>
 					<span class="serTit">
 						服务员（女）

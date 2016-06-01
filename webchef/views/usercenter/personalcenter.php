@@ -216,26 +216,11 @@
                         <img src="skin/img/portrait_03.png">
                     </div>
                     <div class="per-name">
-                        <h2>晚上好,<span>-LERSUNY</span></h2>
-                        <P>账户安全: <b>中</b>&nbsp;&nbsp;&nbsp;<a href="javascript:;">提升等级</a></P>
+                        <h2>晚上好</h2>
+                        <P>你还没有登录: <a href="<?=site_url('login/index');?>">去登录</a></P>
                     </div>
                   </div>
-                  <div class="per-right">
-                    <ul>
-                      <li>
-                        <h2>账户余额</h2>
-                        <p>0</p>
-                      </li>
-                      <li>
-                        <h2>我的积分</h2>
-                        <p>0</p>
-                      </li>
-                      <li>
-                        <h2>优惠劵</h2>
-                        <p>0</p>
-                      </li>
-                    </ul>
-                  </div>
+                 
               </div>
             </div>
         <?php endif;?>

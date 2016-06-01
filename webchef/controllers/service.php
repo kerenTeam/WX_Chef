@@ -148,6 +148,7 @@ class Service extends CI_Controller
 				exit;
 			}
 			$_SESSION['witer'] = $_POST;
+
 			redirect('shopcar/car');
 		}
 	}
