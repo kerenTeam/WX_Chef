@@ -48,6 +48,10 @@
 				}
 			}
 		}
+		if(fuwu.length <= 0){
+			serviceNum = 0;
+			service.parentNode.style.display = 'none';
+		}
 		if(fuwuPrice >= 240 && fuwuPrice <= 300){
 			serviceNum = 300 - fuwuPrice;
 		}else if(fuwuPrice > 300){
@@ -84,7 +88,8 @@
 			subtotal(this);
 			// 调用合计
 			count();
-			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value);
+			var code = this.parentNode.getElementsByClassName('foodcode')[0].value;
+			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value,code);
 			}
 		}
 	// 减
@@ -99,7 +104,8 @@
 			subtotal(this);
 			// 调用合计
 			count();
-			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value);
+			var code = this.parentNode.getElementsByClassName('foodcode')[0].value;
+			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value,code);
 		}		
 	}
 
@@ -122,7 +128,8 @@
  		subtotal(this);
  		// 调用合计
  		count();
-		addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value);
+		var code = this.parentNode.getElementsByClassName('foodcode')[0].value;
+		addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value,code);
  		}
  	}
 

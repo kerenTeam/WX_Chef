@@ -44,6 +44,7 @@ class Shopcar extends CI_Controller
 		}else{
 			$data['carts'] = '';
 		}
+		// unset($_SESSION['witer']);
 		// 服务员
 		if(isset($_SESSION['witer'])){
 			if($_SESSION['witer'] == ''){
@@ -75,6 +76,7 @@ class Shopcar extends CI_Controller
 		}else{
 			$data['cerearr'] = '';
 		}
+
 		// echo "<pre>";
 		$this->load->view('shopcar/shopcar',$data);
 		$this->load->view('footer');
@@ -171,7 +173,7 @@ class Shopcar extends CI_Controller
 				if($_SESSION['phone'] != ''){
 					$checkid = $this->input->post('checkid');
 					if(!$checkid && !$this->input->post('cereid') && !$this->input->post('eleg')){
-						echo "<script>alert('你还没有选择菜品！');window.location.href='car';</script>";
+						echo "<script>alert('你还没有选择菜品！');window.location.href='car';</script>";exit;
 					}
 					// var_dump($this->input->post('servmoneydata'));
 					// 总金额
@@ -195,6 +197,8 @@ class Shopcar extends CI_Controller
                     }else{
                     	$data['writes']['girl'] = '0';
                     }
+                    var_dump($data['writes']);
+                    exit;
                     // 菜品
                     if($this->input->post('foodid')){
                     	// 所有菜id和数量

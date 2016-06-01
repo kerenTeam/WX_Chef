@@ -135,10 +135,22 @@ class Usercenter extends CI_Controller
 
 	// 会员卡
     public function member()
-	{
-		
-		$this->load->view('usercenter/member');
+	{	
+		if(isset($_SESSION['phone'])){
+			if($_SESSION['phone']){
+				// 获取会员卡
+				$vip = file_get_contents(POSTAPI.'API_User?dis=ckxx&UserPhone='.$_SESSION['phone']);
+				$data['vip'] = json_decode(json_decode($vip),true);
+				var_dump($data);
+				$this->load->view('usercenter/member',$data);
 				$this->load->view('footer');
+			}else{
+				echo "<script>alert('你还没有登陆！');window.location.href='".site_url('login/index')."'</script>";exit;
+			}
+		}else{
+			echo "<script>alert('你还没有登陆！');window.location.href='".site_url('login/index')."'</script>";exit;
+		}
+	
 
 	}
 
