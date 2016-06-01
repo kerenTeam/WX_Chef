@@ -23,28 +23,26 @@ $input->SetNotify_url($bcUrl);
 $input->SetTrade_type("NATIVE");
 $input->SetProduct_id($isOrderOk['0']['POOrderId']); 
 $result = $notify->GetPayUrl($input);
+
+
 // echo " <pre>";
 // var_dump($input);
 // var_dump($result);
 // var_dump($isOrderOk);
 // echo "</pre>";
+
+
 $url2 = $result["code_url"];
 ?>
 
-<script type=”text/javascript”> 
-	//循环执行，每隔3秒钟执行一次showalert（） 
-	window.setInterval(showalert, 3000); 
-	function showalert() 
-	{ 
-		var isPay = '<?php curl_post(POSTAPI.'API_Poorder?dis=state'); ?>';	  
-		if (isPay == 1) {
-			$('#isPayShow').css("display:block");
-			location.href = "<?=site_url('shopcar/okPay');?>";
-		}
-	} 
-</script> 
-
-
+<div class="am-modal am-modal-alert" tabindex="-1" id="doc-modal-1">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd"><i class="am-icon-check text-center am-text-xxxl am-text-success"></i>支付成功</div>
+    <div class="am-modal-bd">
+      <span id="time">3</span>秒后将跳转到首页，或<a style="color: red;" href="<?=site_url('home/add');?>">点击</a>继续点菜
+    </div>
+  </div>
+</div>
 <div class="payCtt">
 	<h1><img src="skin/img/LOGO-ug_03.png">收银台</h1>
 	<div class="am-cf payInfo">
@@ -103,6 +101,13 @@ $url2 = $result["code_url"];
 		</div>
 	</div>
 </div>
+<button
+  id="okBtn"
+  type="button"
+  class="am-btn am-btn-primary am-hide"
+  data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0}">
+</button>
+
 
 <script type="text/javascript" src="skin/js/jquery.min.js"></script>
 <script type="text/javascript" src="skin/js/amazeui.min.js"></script>
@@ -110,6 +115,32 @@ $url2 = $result["code_url"];
   $(function() {
     $('#doc-my-tabs').tabs();
   })
+</script>
+<script> 
+	//循环执行，每隔3秒钟执行一次showalert（） 
+	$(function(){
+		var goback = setInterval(showalert, 3000);
+		function showalert() 
+		{ 
+			var isPay = '<?php curl_post(POSTAPI.'API_Poorder?dis=state'); ?>';	  
+			if (isPay == 1) {
+				// 扫码成功弹出层
+				$('#okBtn').click();
+				clearInterval(goback);
+				// 三秒跳转
+				var time = $('#time').html();
+	     		var go = setInterval(function(){
+	     			time--;
+	     			$('#time').html(time)
+	     			if(time <= 0){
+	     				location.href = "<?=site_url('shopcar/okPay');?>";
+	     				clearInterval(go);
+	     			}
+	     		},1000);
+			}
+		} 
+	})
+	
 </script>
 
 
