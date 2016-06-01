@@ -2,8 +2,15 @@
 
 <link href="skin/css/shopcar.css" rel="stylesheet">
 <script>
-function addshopcar(){
-	alert(123);
+function addshopcar(id,num){
+	$.ajax({
+		type:'post',
+		url:'<?=site_url("shopcar/shopcahe");?>',
+		data:'id='+id+'&number='+num,
+		success:function(data){
+			console.log(data);
+		}
+	})
 
 
 }
@@ -98,7 +105,7 @@ function addshopcar(){
 								<p class="p1">￥<span class="p1span"><?=$food['foodprice'];?></span></p>
 							<?php endif;?>
 							<div class="jiajian">
-								<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$cart['number'];?>" name="numbers[]"><img class="jia"  src="skin/img/jia.jpg">
+								<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$cart['number'];?>" name="numbers[]" id='<?=$food['foodid'];?>'><img class="jia"  src="skin/img/jia.jpg">
 							</div>
 							<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
 							<?php if($food['code'] == 1999):?>

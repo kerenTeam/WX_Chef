@@ -102,7 +102,7 @@ class home extends CI_Controller {
 		// 菜市场分类
 		$cate = file_get_contents(POSTAPI.'API_Vegetable?dis=MarketCategorie');
 		$data['cates'] = json_decode(json_decode($cate),true);
-		$this->load->view('price');
+		$this->load->view('price',$data);
 	}
 	// 我的收藏
 	function collection(){

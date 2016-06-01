@@ -43,7 +43,6 @@
 		for (var i = 0; i < oP2span.length; i++) {
 			if (ochecklist[i].checked) {
 				total += parseFloat(oP2span[i].innerHTML);
-				console.log(oP2span[i].className.indexOf('caipin'));
 				if(oP2span[i].className.indexOf('caipin') > -1){
 					fuwuPrice += parseFloat(oP2span[i].innerHTML);
 				}
@@ -51,7 +50,6 @@
 		}
 		if(fuwuPrice >= 240 && fuwuPrice <= 300){
 			serviceNum = 300 - fuwuPrice;
-			console.log(total);
 		}else if(fuwuPrice > 300){
 			serviceNum = 0;
 		}
@@ -61,7 +59,6 @@
 			service.parentNode.style.display = 'block';
 			service.innerHTML = serviceNum.toFixed(2);
 		}
-		console.log(fuwu.length);
 		total += parseFloat(serviceNum);
 		document.getElementById('fee').value = parseFloat(serviceNum);
 		oP3span.innerHTML = total.toFixed(2);
@@ -87,6 +84,7 @@
 			subtotal(this);
 			// 调用合计
 			count();
+			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value);
 			}
 		}
 	// 减
@@ -101,6 +99,7 @@
 			subtotal(this);
 			// 调用合计
 			count();
+			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value);
 		}		
 	}
 
@@ -123,6 +122,7 @@
  		subtotal(this);
  		// 调用合计
  		count();
+		addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value);
  		}
  	}
 

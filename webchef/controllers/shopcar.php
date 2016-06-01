@@ -274,6 +274,13 @@ class Shopcar extends CI_Controller
 		$this->load->view('footer');
 	}
 
+	function shopcahe(){
+		if($_POST){
+			$foodid = $_POST['foodid'];
+			$numbers = $_POST['numbers'];
+			
+		}
+	}
 
 }
 

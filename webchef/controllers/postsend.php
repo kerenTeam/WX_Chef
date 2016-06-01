@@ -54,5 +54,35 @@ class postsend extends CI_Controller{
 	}
 
 
+	// 返回菜价
+	public function caiprice()
+	{
+		if($_POST){
+			$name = $_POST['name'];
+			$time = $_POST['time'];
+			$cate = $_POST['cates'];
+			$arr = array(
+				'FoodMarket' => $name,
+				'MarketCategorie' => $cate,
+				'time' => $time,
+				);
+			$json = json_encode($arr);
+			$cai = curl_post(POSTAPI."API_Vegetable?dis=xc",$json);
+			$data = json_decode(json_decode($cai),true);
+			
+			if($data == NULL){
+				var_dumP("<tr><td></td><td>没有最新菜价！换前一天试试。</td><td></td></tr>");
+			}else{
+				$str ='';
+				for ($i=0; $i < count($data); $i++) { 
+					$str .="<tr><td>".$data[$i]['name']."</td>";
+		            $str .="<td>1".$data[$i]['unit']."</td>";
+		            $str .="<td>".$data[$i]['price']."</td>";
+				}
+				$str .= "</tr>";
+				var_dump($str);
+			}
+		}
 
+	}
 }
