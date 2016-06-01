@@ -2,15 +2,16 @@
 
 <link href="skin/css/shopcar.css" rel="stylesheet">
 <script>
-function addshopcar(id,num){
-	$.ajax({
-		type:'post',
-		url:'<?=site_url("shopcar/shopcahe");?>',
-		data:'id='+id+'&number='+num,
-		success:function(data){
-			console.log(data);
-		}
-	})
+function addshopcar(id,num,code){
+	console.log(id+'=='+num+'=='+code)
+	// $.ajax({
+	// 	type:'post',
+	// 	url:'<?=site_url("shopcar/shopcahe");?>',
+	// 	data:'id='+id+'&number='+num,
+	// 	success:function(data){
+	// 		console.log(data);
+	// 	}
+	// })
 
 
 }	
@@ -104,8 +105,16 @@ function addshopcar(id,num){
 							<?php else:?>
 								<p class="p1">￥<span class="p1span"><?=$food['foodprice'];?></span></p>
 							<?php endif;?>
+							<?php if($food['code'] == 1999){
+									$code = '1';
+								}else if($food['foodkind'] ==1){
+									$code = '0';
+								}else{
+									$code = '2';
+								}
+							?>
 							<div class="jiajian">
-								<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$cart['number'];?>" name="numbers[]" id='<?=$food['foodid'];?>'><img class="jia"  src="skin/img/jia.jpg">
+								<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$cart['number'];?>" name="numbers[]" id='<?=$food['foodid'];?>'><input type="hidden" class="foodcode" value="<?=$code;?>" /><img class="jia"  src="skin/img/jia.jpg">
 							</div>
 							<p class="p2">￥ <span class="p2span caipin">0.00</span> </p>
 							<?php if($food['code'] == 1999):?>
@@ -222,7 +231,7 @@ function addshopcar(id,num){
 			<div class="jiesuan">
 				<p class="p3 service"><span style="color: #999">服务费 :</span> ￥<span id="service">60.00</span><input type="hidden" id="fee" name="servmoneydata" value="0"></p>
 				<p class="p3"><span style="color: #000">合计：</span>￥<span id="p3span">0.00</span></p>
-				<p>
+				<p class="p3">
 				<!-- <input type="submit" value="去付款" class="am-btn am-btn-danger am-radius" /> -->
 				<button type='submit' class="am-btn am-btn-danger am-radius">去付款</button>
 				</p>
