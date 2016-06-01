@@ -3,7 +3,7 @@
  * @Author: Harris-Aaron
  * @Date:   2016-05-27 16:16:16
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-31 14:37:27
+ * @Last Modified time: 2016-06-01 13:08:03
  */
 
 ini_set('date.timezone','Asia/Shanghai');
@@ -23,15 +23,12 @@ $input->SetNotify_url($bcUrl);
 $input->SetTrade_type("NATIVE");
 $input->SetProduct_id($isOrderOk['0']['POOrderId']); 
 $result = $notify->GetPayUrl($input);
-echo " <pre>";
-var_dump($input);
-var_dump($result);
-var_dump($isOrderOk);
-echo "</pre>";
+// echo " <pre>";
+// var_dump($input);
+// var_dump($result);
+// var_dump($isOrderOk);
+// echo "</pre>";
 $url2 = $result["code_url"];
-
-
-
 ?>
 
 <script type=”text/javascript”> 
@@ -39,26 +36,13 @@ $url2 = $result["code_url"];
 	window.setInterval(showalert, 3000); 
 	function showalert() 
 	{ 
-	   jQuery.ajaxSetup({
-	     url: '/path/to/file',
-	     type: 'POST',
-	     dataType: 'xml/html/script/json/jsonp',
-	     data: {param1: 'value1'},
-	     complete: function(xhr, textStatus) {
-	       //called when complete
-	     },
-	     success: function(data, textStatus, xhr) {
-	       //called when successful
-	     },
-	     error: function(xhr, textStatus, errorThrown) {
-	       //called when there is an error
-	     }
-	   });
-	   
+		var isPay = '<?php curl_post(POSTAPI.'API_Poorder?dis=state'); ?>';	  
+		if (isPay == 1) {
+			$('#isPayShow').css("display:block");
+			location.href = "<?=site_url('shopcar/okPay');?>";
+		}
 	} 
 </script> 
-
-
 
 
 <div class="payCtt">
