@@ -89,7 +89,22 @@ defined('IP')                  OR define('IP','http://211.149.195.183:88'); //21
 defined('POSTAPI')             OR define('POSTAPI',"http://211.149.195.183:88/API/");
 
 //～～～～～～～～～～～～～～～～～～～～～微信配置～～～～～～～～～～～～～～～～～～～～～～～
-defined('APPID')               OR define('APPID', 'wxa997c956cf6631b0'); 
-defined('APPSECRET')           OR define('APPSECRET', 'ee3f2a43a6c508708780dba0c5bd7393'); 
-defined('MCHID')               OR define('MCHID', '1254100101'); //商户号
-defined('PRIVATEKEY')          OR define('PRIVATEKEY', 'qwertyuiopasdfghjklzxcvbnmqwerty'); //私钥
+// defined('APPID')               OR define('APPID', 'wxa997c956cf6631b0'); 
+// defined('APPSECRET')           OR define('APPSECRET', 'ee3f2a43a6c508708780dba0c5bd7393'); 
+// defined('MCHID')               OR define('MCHID', '1254100101'); //商户号
+// defined('PRIVATEKEY')          OR define('PRIVATEKEY', 'qwertyuiopasdfghjklzxcvbnmqwerty'); //私钥
+
+defined('APPID')               OR define('APPID', 'wx8655702929a5ad7d'); 
+defined('APPSECRET')           OR define('APPSECRET', '7071ed881808c75d1ce314155145bba0'); 
+defined('MCHID')               OR define('MCHID', '1348057201'); //商户号
+defined('PRIVATEKEY')          OR define('PRIVATEKEY', 'e10adc3949ba59abbe56e057f20f883e'); //私钥
+
+
+
+
+
+
+
+
+
+
