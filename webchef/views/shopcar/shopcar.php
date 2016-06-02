@@ -132,7 +132,7 @@ function addshopcar(id,num){
 					</span>
 					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
 					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['boy'];?>" name='boy'><img class="jia"  src="skin/img/jia.jpg">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?php if($witer['boy'] == ''){echo "1";}else{echo $witer['boy'];}?>" name='boy'><img class="jia"  src="skin/img/jia.jpg">
 					</div>
 					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
 				</li>
@@ -146,7 +146,7 @@ function addshopcar(id,num){
 					</span>
 					<p class="serPrice p1"><span class="p1span">80</span>/位</p>
 					<div class="jiajian">
-						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?=$witer['girl'];?>" name="girl"><img class="jia"  src="skin/img/jia.jpg">
+						<img class="jian"  src="skin/img/jian.png"><input class="shuzhi" value="<?php if($witer['girl'] == ''){echo "1";}else{echo $witer['girl'];}?>" name="girl"><img class="jia"  src="skin/img/jia.jpg">
 					</div>
 					<p class="serPris p2">￥ <span class="p2span">0.00</span> </p>
 				</li>
