@@ -1,9 +1,5 @@
 /* Write your styles*/
 
-::-webkit-scrollbar {
-    width: 0px;
-}
-
 html {
     overflow-y: visible;
 }
@@ -737,7 +733,7 @@ body {
 }
 
 .foodNum {
-    margin-top: 3rem;
+    // margin-top: 5rem;
     float: right!important;
     position: relative!important;
     top: 0.2em!important;

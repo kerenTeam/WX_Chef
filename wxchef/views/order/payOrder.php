@@ -162,7 +162,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 
     <div class="tk" style="display: none;">
          <div class="tkcontent tkvip bwhite" style="background: white;border-radius: 5px;">
-		 <?php if($balance > $_SESSION['rePayData'][0]['MoneyAll']):?>
+		 <?php if($balance >= $_SESSION['rePayData'][0]['MoneyAll']):?>
 			 <div class="tktxt2">
               <div class="am-text-center am-text-lg am-margin-sm">会员卡支付</div>
 			 <!-- <hr data-am-widget="divider" style="margin:0;" class="am-divider am-divider-default" /> -->
@@ -181,7 +181,7 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
 				</div> 
              </div>
 			 <button type='button' class="am-u-sm-6 bno gray closem">取消</button>
-			 <a href='<?=site_url('home/vipCard');?>' class="am-u-sm-6 bno green">去充值</a>
+			 <a href='<?=site_url('home/vipCard');?>' class="am-u-sm-6 bno green" onclick='delrepaydata();'>去充值</a>
 		<?php endif;?>
           </div>
      </div>
@@ -237,5 +237,18 @@ $jsApiParameters = $tools->GetJsApiParameters($order);
           window.location.href="<?php echo base_url().'index.php/orderWXPay/postOrderData?MenberMoney=1'?>" ;
         });
         })
+
+        function delrepaydata(){
+          $.ajax({
+            type:'post',
+            url:'<?=site_url("orderWXPay/delpaydata")?>',
+            data: 'id=1',
+            success: function(data){
+
+            }
+          });
+        }
+
+
       </script>
 </html>

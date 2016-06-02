@@ -48,7 +48,7 @@
     <div class="pink typec"><img src="skin/img/type.png" alt="">&nbsp;分类</div>
     <ul class="am-list typel">
     <?php foreach($cates as $cate):?>
-        <li><a href="#<?=$cate['foodcategoryid'];?>"><img src="<?php echo IP.$cate['imgaddress'];?>" alt=""> <?=$cate['name'];?></a></li>
+        <li><a href="javascript:;"><img src="<?php echo IP.$cate['imgaddress'];?>" alt=""> <?=$cate['name'];?></a></li>
       <?php endforeach;?>
     </ul>
     </nav>
@@ -59,7 +59,7 @@
       <div class="am-list-news-bd">
   
       <?php foreach($cates as $val):?>
-        <div class="cptit" id="<?=$val['foodcategoryid']?>"><span><?=$val['name'];?></span></div>
+        <div class="cptit typeName" id="<?=$val['foodcategoryid']?>"><span><?=$val['name'];?></span></div>
         <ul class="am-list">
         
         <?php foreach($foods as $v):?>
@@ -88,8 +88,7 @@
                 <span class="price am-icon-cny"><?php echo $v['foodprice']*$v['discountproportion'];?></span>
                 <span class="am-text-xs gray"> /份</span>
   
-                <span class="am-icon-cny old">
-                <?=$v['foodprice'];?></span>
+                
               </div>
             <?php else:?>
                <div class="pr">
@@ -103,7 +102,7 @@
                 
                 <input type="text" class="numTxt" name="numbers[]" onkeydown="keydown(this)" onkeypress="return IsNum(event)" oninput="ueserWrite(this)" value="<?php if(isset($v['number'])){echo $v['number'];}else{echo '0';}?>">
                 
-                <span class="add am-icon-plus-circle"></span><!--  onClick="handle(this, true)" -->
+                <span class="add am-icon-plus-circle"  onClick="handle(this, true)"></span><!--  onClick="handle(this, true)" -->
               </div>
             </div>
           </li>
@@ -150,6 +149,29 @@ $(this).css('display','inline-block');
 $(this).parent('.foodNum').find('.reduce').css('display','inline-block');
 }
 });
+
+$('.typel li:first-child a').addClass('currentType');
+$('.typel li').on('click',function(){
+  $('.typel li a').removeClass('currentType');
+  var curT =  $(this);
+ curT.find('a').addClass('currentType'); 
+  var typeLi = curT.find('a').text();
+  console.log($.trim(typeLi)); 
+   $('.typeName').each(function(){
+    if($.trim(typeLi) == $(this).find('span').html()){ 
+      $(this).css('display','block');
+      // $(this).css('marginTop','49px');
+      $('body').scrollTop(0);
+      $(this).next('ul').css('display','block');
+    }
+    else{
+       $(this).css('display','none');
+      $(this).next('ul').css('display','none');
+    }
+  })
+
+})
+
  $("img.lazy").lazyload();
 }) 
 </script>
@@ -164,6 +186,14 @@ $(this).parent('.foodNum').find('.reduce').css('display','inline-block');
                    0.5s top ease-in,
                    0.1s 0.5s visibility linear;
   }
+  .typeName:not(:first-child),.typeName:not(:first-child)+ul{
+    display:none;
+   }
+   .currentType{
+    border-left: 2px solid #ED3F59;
+    background: rgba(248, 85, 84, 0.27);
+    color: #ED3F59;
+   }
 </style>
 <script type="text/javascript">
     var add = document.getElementsByClassName("add"); 
@@ -182,11 +212,25 @@ $(this).parent('.foodNum').find('.reduce').css('display','inline-block');
             div.setAttribute("class","add am-icon-plus-circle oo");
             document.documentElement.appendChild(div);
              handle(this, true);
-             var par = setTimeout(function(){ 
-                 div.style.zIndex=99999;
-                 div.style.left=car_x + "px";
-                 div.style.top=car_y + "px";//加单位很重要，不然不会动 
-           var remove=setTimeout(function(){
+             var par = setTimeout(function(){
+          // var divX = parseInt(div.style.left);
+         //  var divY = parseInt(div.style.top);
+         div.style.zIndex=99999;
+                    div.style.left=car_x + "px";
+                    div.style.top=car_y + "px";//加单位很重要，不然不会动
+        // var speedX = (car_x-divX)/10;
+        // var speedY = (car_y-divY)/30;
+        // speedX=speedX>0?Math.ceil(speedX):Math.floor(speedX);
+        // // speedY=speedY>0?Math.ceil(speedY):Math.floor(speedY);
+        // div.style.left = divX + speedX + "px";
+        // div.style.top = divY + speedY + "px";
+        // if(divY == car_y && divX == car_x){
+        //  clearInterval(par);
+        //  div.parentNode.removeChild(div);
+        // }
+        // // console.log(divX)
+        // console.log(divX,divY +'======'+ car_x,car_y); 
+        var remove=setTimeout(function(){
                div.parentNode.removeChild(div);
       },550)
       },1)

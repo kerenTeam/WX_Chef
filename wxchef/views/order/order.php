@@ -310,7 +310,12 @@
         $('#yfje').val(payable);
         var jifenmoney = 0;
         // 积分
-       var html;
+     
+        
+      
+      $(function(){
+        var adate = $('#beginTime');
+        var html;
         var date = new Date();
         var month = date.getMonth() + 1;
         var m =(month <10) ? '0'+month : month;
@@ -325,11 +330,6 @@
             minutes =b;
         var curTime = hour+2+":"+minutes;
          html=year+'-'+month+'-'+day;
-      
-        
-      
-      $(function(){
-        var adate = $('#beginTime');
        adate.attr('placeholder',html+" 默认");
        adate.val(html);
        console.log(html);
@@ -414,12 +414,12 @@
                   $(this).attr({
                     disabled: 'disabled'
                   });
-                  $(this).css('color','#eee');
+                  $(this).css('color','#eee')
                 }
-              }) 
-      }) 
-        $('#dateconfirm').live('click',function(){  
+              })
+               $('#dateconfirm').live('click',function(){  
                  console.log($('#beginTime').val()); 
+
                  $('td').removeClass('can am-danger');
                  $('#pay').attr({
                     disabled: 'disabled'
@@ -427,9 +427,10 @@
               if(html!=$('#beginTime').val()){ 
                  console.log($('#beginTime').val()); 
                  $("td").css('color','')
-                 $('td').removeAttr('disabled').addClass('can'); 
+                 $('td').removeAttr('disabled');
+                 $('td').addClass('can'); 
              }else{ 
-                
+
               $('td').each(function(){ 
 
                 if($(this).html()>curTime){
@@ -441,17 +442,23 @@
               })
              }   
              });
-  $('td.can').live('click',function() { 
+              $('td').click(function() { 
+                if($(this).hasClass('can')){
                $('#pay').removeAttr('disabled');
                $('td').removeClass('am-danger');
                $(this).addClass('am-danger');
                $('#timeEat').val($(this).html());
+             }else{
+               return;
+             }
               }); 
             $('.firstPay').live('click',function(){
               if(!$('#mainContent').has('li').length){
                 alert('请添加服务地址');
               }
             })
+      })
+
 function getorders(){
             var name=$('#name').val();
             var city = $('input[name="cho_City"]').val();

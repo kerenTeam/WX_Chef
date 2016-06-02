@@ -204,6 +204,17 @@ class orderWXPay extends CI_Controller{
       
         echo "清除完成";
     }
+    //  清除redelpaydata
+    public function delpaydata()
+    {
+        if($_POST){
+            unset(
+                $_SESSION['rePayData']
+
+            );
+        }
+    }
+
 //订单支付完成,数据提交向后台	
     public function postOrderData()
     {	//如果是会员卡支付

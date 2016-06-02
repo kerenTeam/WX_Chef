@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @Author: Harris-Aaron
  * @Date:   2016-04-12 10:31:05
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-05-31 16:53:49
+ * @Last Modified time: 2016-04-16 14:57:13
  */
 
 $wechatObj = new IndexValid();
@@ -101,7 +101,7 @@ class IndexValid
         switch ($object->Event)
         {
             case "subscribe":
-                $contentStr = "可人软件测试二";
+                $contentStr = "欢迎关注".$this->bytes_to_emoji(U+FE038);
                 break;
             case "unsubscribe":
                 $contentStr = "";

@@ -2,7 +2,7 @@
   <!-- header -->
   <header data-am-widget="header" class="am-header am-header-default topform bheader">
   <div class="am-header-left am-header-nav">
-    <a href="<?php echo site_url('home/ceremony')?>">
+    <a href="<?php echo site_url('home/cart')?>">
       <i class="am-header-icon am-icon-chevron-left"></i>
     </a>
   </div>

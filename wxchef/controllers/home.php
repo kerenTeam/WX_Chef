@@ -182,6 +182,7 @@ class home extends CI_Controller
 		//获取banner
 		$banner = file_get_contents(POSTAPI.'API_Banner?number=1&dis=number');
 		$data['banners'] = json_decode(json_decode($banner),true);
+	
 		$this->load->view('index',$data);
 	}
 	//菜单 by wf
