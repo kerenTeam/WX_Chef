@@ -21,7 +21,7 @@
         <a href="javascript:;"><img src="skin/img/log_logo.png"></a>
         <ul class="head-nav">
             <li><a href="<?=site_url('home/add');?>">点菜</a></li>
-            <li><a href="<?=site_url('home/add#meal');?>">套餐</a></li>
+            <li><a href="<?=site_url('home/add#fe7ad9a9-1bec-4929-b160-85f9a784f527');?>">套餐</a></li>
             <li><a href="<?=site_url('order/custom');?>">宴会定制</a></li>
             <li><a href="<?=site_url('order/vegetable');?>">净菜</a></li>
             <li><a href="<?=site_url('home/price');?>">实时菜价</a></li>
