@@ -256,7 +256,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="defr_info clear">
+					<!-- <div class="defr_info clear">
 						<p>选择支付方式</p>
 						<div class="payment">
 								<label class="am-radio am-danger">
@@ -272,7 +272,7 @@
 										<input type="radio" name="PaymentMethod" value="4" data-am-ucheck> 线下支付
 								</label>
 						</div>
-				</div>
+				</div> -->
 				</div>
 				<p class="defr_he">应付金额: <span>￥<i id="sum">00.00</i></span><input type="hidden" id="yfje" value="" name="yfje" /></p>
 				<p class="txt-r ord_buy">

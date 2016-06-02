@@ -196,8 +196,7 @@ class Shopcar extends CI_Controller
                     }else{
                     	$data['writes']['girl'] = '0';
                     }
-                    var_dump($data['writes']);
-                    exit;
+                  
                     // 菜品
                     if($this->input->post('foodid')){
                     	// 所有菜id和数量
