@@ -3,7 +3,7 @@
  * @Author: Harris-Aaron
  * @Date:   2016-05-27 16:16:16
  * @Last Modified by:   Harris-Aaron
- * @Last Modified time: 2016-06-01 13:08:03
+ * @Last Modified time: 2016-06-02 17:27:52
  */
 
 ini_set('date.timezone','Asia/Shanghai');
@@ -48,7 +48,6 @@ $url2 = $result["code_url"];
 	<div class="am-cf payInfo">
 		<div class="am-fl am-padding-sm">
 			<p>订单编号: <?php $_SESSION['thisPOOrderId'] = $isOrderOk['0']['POOrderId']; echo  $isOrderOk['0']['POOrderId']; ?></p>
-			<?php var_dump($_SESSION['thisPOOrderId']); ?>
 			<p>订单类型: 在线支付</p>
 		</div>
 		<div class="am-fr am-padding-sm">
