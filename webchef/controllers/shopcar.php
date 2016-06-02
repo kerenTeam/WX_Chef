@@ -278,14 +278,20 @@ class Shopcar extends CI_Controller
 		$this->load->view('footer');
 	}
 
+	// 购物车添加数量
 	function shopcahe(){
 		if($_POST){
-			$foodid = $_POST['foodid'];
-			$numbers = $_POST['numbers'];
-			$code = $_POST['code'];
-			$shopid = rand(1,100);
-
-			
+			$foodid = $_POST['id'];
+			$number = $_POST['number'];
+			if(isset($_SESSION['shoping'])){
+				$shoping = $_SESSION['shoping'];
+				foreach ($shoping as $key => $value) {
+					if($value['foodid'] == $foodid){
+						$shoping[$key]['number'] = $number;
+					}
+				}
+				$_SESSION['shoping'] = $shoping;
+			}
 		}
 	}
 

@@ -88,8 +88,8 @@
 			subtotal(this);
 			// 调用合计
 			count();
-			var code = this.parentNode.getElementsByClassName('foodcode')[0].value;
-			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value,code);
+			//var code = this.parentNode.getElementsByClassName('foodcode')[0].value;
+			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value);
 			}
 		}
 	// 减
@@ -104,8 +104,8 @@
 			subtotal(this);
 			// 调用合计
 			count();
-			var code = this.parentNode.getElementsByClassName('foodcode')[0].value;
-			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value,code);
+			//var code = this.parentNode.getElementsByClassName('foodcode')[0].value;
+			addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value);
 		}		
 	}
 
@@ -128,8 +128,8 @@
  		subtotal(this);
  		// 调用合计
  		count();
-		var code = this.parentNode.getElementsByClassName('foodcode')[0].value;
-		addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value,code);
+		//var code = this.parentNode.getElementsByClassName('foodcode')[0].value;
+		addshopcar(oNumbernode.getAttribute('id'),oNumbernode.value);
  		}
  	}
 
