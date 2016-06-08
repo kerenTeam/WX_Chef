@@ -26,7 +26,20 @@
 		        <!-- <li><a href="<?=site_url('welcome/recommend');?>">我的大厨</a></li> -->
 		        <li><a href="<?=site_url('welcome/help');?>">联系我们</a></li>
 		        <li><a href="<?=site_url('shopcar/car');?>">购物篮</a></li>
-		        <li><a href="<?=site_url('login/index');?>">登录</a>/<a href="<?=site_url('login/register');?>">注册</a></li>
+		        <?php if(!isset($_SESSION['phone'])):?>
+			        <li><a href="<?=site_url('login/index');?>">登录</a>/<a href="<?=site_url('login/register');?>">注册</a></li>
+			        <?php else:?>
+			        <li><div  class="am-dropdown headerdown" data-am-dropdown>
+			            <a href="javascript:;" class="am-dropdown-toggle" data-am-dropdown-toggle><?=$_SESSION['phone'];?> <span class="am-icon-caret-down"></span></a>
+			            <ul class="am-dropdown-content">
+			              <li><a href="<?=site_url('usercenter/personal');?>"><i class="am-icon-home"></i> 我的主页</a></li>
+			              <li><a href="<?=site_url('usercenter/userInfo');?>"><i class="am-icon-user"></i> 个人信息</a></li>
+			              <li><a href="<?=site_url('usercenter/address');?>"><i class="am-icon-map-marker"></i>&nbsp;&nbsp;地址管理</a></li>
+			              <li class="am-divider"></li>
+			              <li><a href="<?=site_url('login/outlogin')?>"><i class="am-icon-power-off"></i> 退出登录</a></li>
+			            </ul>
+			        </div></li>
+			      <?php endif;?>
 			</ul>
 		</div>
 	</div>

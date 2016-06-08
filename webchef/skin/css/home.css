@@ -81,19 +81,23 @@ a.am-btn{
 	height: 40px;
 	background-color: #F85554;
 }
-.header div ul{
+.header>div>ul{
 	float: right;
 	color: white;
 }
-.header div ul li{
+.header>div>ul>li{
 	float: left;
 	line-height: 40px;
 	margin: 0 40px;
 }
-.header div ul li a{
+.header>div>ul>li>a{
 	color: white;
 	line-height: 40px;
 	font-size: 16px;
+}
+.headerdown>a{
+	color: #fff;
+	
 }
 .min-center .content-tit{
 	min-width: 960px;

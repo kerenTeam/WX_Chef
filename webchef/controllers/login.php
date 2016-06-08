@@ -40,6 +40,20 @@ class Login extends CI_Controller {
 			$this->load->view('login/login');
 		}
 	}
+
+
+	// 退出登录
+	public function outlogin()
+	{
+		unset(
+			$_SESSION['phone']
+
+
+		);
+		redirect('home/add');
+	}
+
+
 	// 注册
 	function register(){
 		if($_POST){
