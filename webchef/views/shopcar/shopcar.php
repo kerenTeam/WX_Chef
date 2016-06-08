@@ -3,20 +3,14 @@
 <link href="skin/css/shopcar.css" rel="stylesheet">
 <script>
 function addshopcar(id,num){
-	// console.log(id+'=='+num+'=='+code)
 	$.ajax({
 		type:'post',
 		url:'<?=site_url("shopcar/shopcahe");?>',
 		data:'id='+id+'&number='+num,
 		success:function(data){
-			// console.log(data);
 		}
 	})
-
-
 }	
-
-
 </script>
 	<!-- main -->
 	<div class="main">
@@ -207,7 +201,7 @@ function addshopcar(id,num){
 						<input class="cheyou" type ="checkbox" name ="cereid" value ="<?=$cerearr['celebrationid'];?>" data-am-ucheck checked />
 					</label>
 					<span class="serTit">
-						<a href="" title=""><?=$cerearr['name'];?></a>
+						<a href="<?=site_url('service/ceremonyInfo?id=').$cerearr['celebrationid'];?>" title=""><?=$cerearr['name'];?></a>
 					</span>
 					<p class="serPrice p1 am-hide"><span class="p1span"><?=$cerearr['moneyall'];?></span></p>
 					<div class="jiajian am-hide">

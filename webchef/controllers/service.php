@@ -155,9 +155,21 @@ class Service extends CI_Controller
 	// 庆典编辑
     public function ceremonyInfo()
 	{
+		if($_GET){
+			$data['id']  = $_GET['id'];
+                                                                                          
+		echo "<pre>";
+			// 返回所有区域器械
+			var_dump($_SESSION['ceremoney']);
+			$cere = file_get_contents(POSTAPI.'API_details?dis=qy');
+			$data['ceredetails'] = json_decode(json_decode($cere),true);
+			// echo "<pre>";
+			// var_dump($data);
+			// exit;
+			$this->load->view('service/ceremonyInfo',$data);
+			$this->load->view('footer');
+		}
 		
-		$this->load->view('service/ceremonyInfo');
-		$this->load->view('footer');
 	}
 
 	// 服务详情

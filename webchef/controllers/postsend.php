@@ -29,7 +29,6 @@ class postsend extends CI_Controller{
 			
 			$postadd = curl_post(POSTAPI."API_MenberAddress?dis=xz&phone=".$_SESSION['phone'],$b);
 			$add = json_decode(json_decode($postadd),true);
-			// var_dump($add);
 			if($add != ''){
 				echo $add[0]['memberaddressid'];
 			}
