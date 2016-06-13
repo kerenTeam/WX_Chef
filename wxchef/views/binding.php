@@ -8,7 +8,7 @@ html {
 </head>
 
 <body class="register">
-<form method="post" action="<?=site_url('home/registeradd');?>" class="form_test" id="regForm">
+<form method="post" action="<?=site_url('home/binding');?>" class="form_test" id="regForm">
   <div class="first">
     <div class="reg_input flex">
       <label>中国 +86</label>
@@ -20,22 +20,13 @@ html {
     </div>
     <div class="user_agreement">
       <label class="am-radio am-success">
-        <input type="checkbox" data-am-ucheck/>
+        <input type="checkbox" checked data-am-ucheck/>
         <span class="user">我已阅读并同意<a href="<?php echo site_url('home/protocol')?>">《大厨到家》</a>用户手册.</span> </label>
     </div>
   </div>
-  <div class="seconde" style="display:none;">
-     <div class="reg_input flex">
-		<label class="am-text-sm">设置密码</label>
-		<input type="password" placeholder="请输入密码" class="pass" name="UserPwd" id="UserPwd"/>
-	</div>
-     <div class="reg_input flex">
-		<label class="am-text-sm">确认密码</label>
-		<input type="password"  placeholder="确认密码" class="passcheck"/>
-	</div>
-  </div>
+ 
   <div class="reg_btn">
-    <button type="button" class="am-btn am-btn-default">下一步</button>
+    <button type="submit" class="am-btn am-btn-success">绑定</button>
   </div>
 </form>
 <div class="shade">
@@ -49,13 +40,14 @@ html {
 <!--<![endif]--> 
 <script src="skin/js/amazeui.min.js"></script> 
 <script type="text/javascript"> 
-		 var code;
+		 var code = '';
 		// 验证是否同意协议
 			function yzm(input){
 		 	var phone = $("#userphone").val();
 		 	if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(phone))){
 		 		shade('am-icon-meh-o','请输入正确的手机号码');
-		 	}else{
+		 	}
+		 	else{
 		 		time(input);
 		 		$.ajax({
 		 			type: "post",
@@ -70,17 +62,9 @@ html {
 		 	}
 
 		}
-		var checkbox = $(".user_agreement input[type='checkbox']");
-		checkbox.bind('change',function(){ 
-			if(checkbox.is(':checked')){
-				$('.reg_btn button').removeAttr('disabled').removeClass('am-btn-default').addClass('am-btn-success');
-			}else{
-				$('.reg_btn button').attr('disabled','disabled').addClass('am-btn-default').removeClass('am-btn-success');
-			}
-		});
 		   
 		// 绑定提交按钮
-		$('.reg_btn button[type=button]').bind('click',function(){
+		$('#regForm').bind('submit',function(){
 			//alert('123');
 			var tell = $(".reg_input input[type='tel']").val();
 			var test = $(".reg_test input[type='text']").val();
@@ -88,55 +72,25 @@ html {
 				shade('am-icon-meh-o','请输入手机号');
 				return false;
 			}
-			if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(tell))){
+			else if(!(/^1((3|4|5|8|7){1}\d{1}|70)\d{8}$/.test(tell))){
 				shade('am-icon-meh-o','请输入正确的手机号码');
 				return false;
 			}
 
-			if(test == ''){
+			else if(test == ''){
 				shade('am-icon-meh-o','请输入验证码');
 				return false;
 			}
-		    if(test !== code.toString()){
+		    else if(test != code.toString()){
 				shade('am-icon-meh-o','验证码输入错误');
 				return false;
 			}
-			else{
-				$('.first').css('display','none');
-			    $('.seconde').css('display','block');
-				$(this).addClass('submit');
-			    $(this).html('确认');
-			    $('.reg_btn button[type=button]').unbind('click')
+			else if(test == code.toString()){
+			 	return true;
 			}
 			
 		
 		});
-			var pass=$('.pass');
-			var passcheck=$('.passcheck');
-		 
-            pass.focus(function(){ 
-				  $('.reg_btn button').attr('type','submit'); 
-				  console.log( $('.reg_btn button').prop('type'));
-				 // alert($('.reg_btn button').prop('type'))
-            });
-           $('#regForm').bind('submit',function(){
-           	if(pass.val()==''){
-           		shade('am-icon-meh-o','请输入密码');
-           		return false;
-           	}
-           	 if(pass.val()!==passcheck.val()){
-				shade('am-icon-meh-o','密码输入不一致，请重输！！');
-				 return false;
-			}
-           });
-		// 表单验证
-		/*$('.form_test.submit').bind('click',function(){
-            var pass=$('.pass');
-			var passcheck=$('.passcheck');
-		  if(pass.val()==passcheck.val()){
-			  $(this).prop('type','submit');
-			  }	
-		});*/
 		// 提示框
 		function shade(icon,cue){
 				$('.shade').addClass('up');

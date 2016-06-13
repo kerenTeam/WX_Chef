@@ -35,13 +35,23 @@ class home extends CI_Controller
 		$this->load->view('login');
 		
 	}
+	//地图
+	public function map(){
+
+		$this->load->view('map');
+		
+	}
 	//订单总评价
 	public function commentTotal(){
 		if($_GET){
 			$id = $_GET['id'];
+			// 获取订单详情
 			$food = file_get_contents(POSTAPI.'API_Poorder?dis=ddxq&UserPhone='.$id);
 			$data['foods'] = json_decode(json_decode($food),true);
 			$data['id'] = $id;
+			// 获取订单总评
+			
+
 			$this->load->view('commentTotal',$data);
 		}
 
@@ -151,7 +161,7 @@ class home extends CI_Controller
 			
 		}
 	}
-	
+	// 注册用户
 	public function registeradd(){
 
 		 $reigsterFrom = array('UserPwd' => md5($this->input->post('UserPwd')),'UserPhone' => $this->input->post('UserPhone'));
@@ -172,9 +182,33 @@ class home extends CI_Controller
          		break;	
          }
 	}
+
+	// 微信绑定手机号码
+	public function binding()
+	{
+		if($_POST){
+			$data = array('UserPhone' => $this->input->post('UserPhone'),'openid'=>$_SESSION['userinfo']['openid']);
+			$bangdata = json_encode($data);
+			$banisok = curl_post(POSTAPI.'API_User?dis=weixin',$bangdata);
+			switch ($banisok) {
+				case '0':
+					echo "<script>alert('绑定失败');window.location.href='binding';</script>";
+					break;
+				case '1':
+					echo "<script>alert('绑定成功！');window.location.href='index';</script>";
+					break;
+				case '2':
+					echo "<script>alert('该号码已被绑定，请换一个新的手机号。');window.location.href='binding';</script>";
+					break;
+			}
+		}else{
+			$this->load->view('binding');
+		}
+	}
 	
 	//首页
 	public function index(){
+
 		// 获取菜价
 		$caijia = file_get_contents(POSTAPI.'API_Vegetable?dis=food');
 		$data['caijia'] = json_decode(json_decode($caijia),true);
@@ -182,8 +216,36 @@ class home extends CI_Controller
 		//获取banner
 		$banner = file_get_contents(POSTAPI.'API_Banner?number=1&dis=number');
 		$data['banners'] = json_decode(json_decode($banner),true);
-	
 		$this->load->view('index',$data);
+	}
+	// 购物车demo
+	public function demo(){
+
+		$catejson = file_get_contents(POSTAPI.'API_Food?dis=c');
+		$data['cates'] = json_decode(json_decode($catejson),true);
+		$foodjson = file_get_contents(POSTAPI.'API_Food?dis=d');
+		// 去掉首尾引号
+		$food = ltrim(rtrim($foodjson,'"'),'"');
+		// 转换json
+		$a =   str_replace('\"','"',$food);
+		$foods = json_decode($a,true);
+		if(isset($_SESSION['shoping'])){
+			if($_SESSION['shoping'] != ''){
+				$shop = $_SESSION['shoping'];
+				foreach($foods as $k=>$v){
+					$foods[$k]['number'] = '0';
+					foreach ($shop as $key => $value) {
+						if($v['foodid'] == $value['foodid']){
+							$foods[$k]['number'] = $value['number'];
+						}
+					}
+					
+				}
+			}
+		}
+		
+		$data['foods'] = $foods;
+		$this->load->view('cailanDemo',$data);
 	}
 	//菜单 by wf
 	public function cailan(){
@@ -264,14 +326,23 @@ class home extends CI_Controller
 	//菜品详情
 	public function food(){
 		$id = $_GET['id'];
-		$number = $_GET['number'];
-		isset($number) ? $data['number'] = $number : $data['number'] = '0';
-		isset($_GET['shopid']) ? $data['shopid'] = $_GET['shopid'] : NULL;
 		//产品详情
 		$foods = file_get_contents(POSTAPI.'API_Food?dis=xq&foodid='.$id);
 		$foodjson = ltrim(rtrim($foods,'"'),'"');
       	$a =   str_replace('\"','"',$foodjson);
-        $data['foods'] = json_decode($a,true);
+        $food = json_decode($a,true);
+        //菜品数量
+        if(isset($_SESSION['shoping'])){
+        	if($_SESSION['shoping'] != ''){
+        		$shoping = $_SESSION['shoping'];
+        		foreach ($shoping as $key => $value) {
+        			if($value['foodid'] == $id){
+        				$food['number'] = $value['number'];
+        			}
+        		}
+        	}
+        }
+        $data['foods'] = $food;
 		// 产品图片
 		$foodpic= file_get_contents(POSTAPI.'API_Food?dis=xqimg&foodid='.$id);
 		$data['foodspic'] = json_decode(json_decode($foodpic),true);
@@ -496,7 +567,6 @@ class home extends CI_Controller
 			$_SESSION['userinfo'],
 		    $_SESSION['shoping'],
 		    $_SESSION['booking'],
-		    $_SESSION['phone'],
 		    $_SESSION['witer'],
 		    $_SESSION['eleg'],
 		    $_SESSION['cerearr'],
@@ -692,7 +762,7 @@ class home extends CI_Controller
 				}
 				$this->load->view('set',$data);
 		}else{
-			echo "<script>alert('你还没有登陆!');window.location.href='login2';</script>";
+			echo "<script>alert('你还没有绑定手机号!');window.location.href='binding';</script>";
 		}
 	}
 	//更改用户资料
@@ -773,7 +843,8 @@ class home extends CI_Controller
     	}else{
     		$data['record'] = '';
     	}
-		//var_Dump($data);
+  //   	echo "<pre>";
+		// var_Dump($data['record']);
 		$this->load->view('orderRecorde',$data);
 	}
    //订单详情
@@ -811,7 +882,7 @@ class home extends CI_Controller
 	//新增address
 	public function addressAdd2(){
 		if(!isset($_SESSION['phone'])){
-			echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+			echo "<script>alert('你还没有绑定手机号！');window.location.href='binding';</script>";
 		}else{
 		    $a['UserPhone'] = $_SESSION['phone'];
 		}
@@ -913,17 +984,17 @@ class home extends CI_Controller
 				$data['balance'] = $_GET['balance'];
 				$this->load->view('vip',$data);
 			}else{
-				echo "<script>alert('您还没有登陆哟。');window.location.href='login';</script>";
+				echo "<script>alert('您还没有绑定手机号。');window.location.href='binding';</script>";exit;
 			}
 	}
 	//会员卡
 	public function vipCard(){
 		if(isset($_SESSION['phone'])){
 			if($_SESSION['phone'] == ''){
-				echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+				echo "<script>alert('你还没有绑定手机号！');window.location.href='binding';</script>";exit;
 			}
 		}else{
-			echo "<script>alert('你还没有登陆哦！');window.location.href='login';</script>";
+			echo "<script>alert('你还没有绑定手机号！');window.location.href='binding';</script>";exit;
 		}
 		$vip = file_get_contents(POSTAPI.'API_Grades');
 		$data['vip'] = json_decode(json_decode($vip),true);
@@ -1219,10 +1290,8 @@ class home extends CI_Controller
 	{
 		if($_POST){
 			$arr = $_POST;
-
 			$_SESSION['witer'] = $arr;
 			redirect('home/cart');
-
 		}
 	}
 
